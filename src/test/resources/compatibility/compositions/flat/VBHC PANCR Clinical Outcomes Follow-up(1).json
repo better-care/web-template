@@ -1,0 +1,63 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/_uid" : "5ae1c45c-53c2-4e3a-b9ff-c979e0494f35::default::1",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/_feeder_audit/originating_system_audit|system_id" : "FormRenderer",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/_feeder_audit/original_content" : "{\"/generic-label-2781139\":[],\"/generic-spacer-6312167\":[],\"/generic-label-9829144\":[],\"/generic-fieldset-4296800/generic-button-9418317\":[],\"/generic-spacer-8206756\":[],\"/generic-label-1173975\":[],\"/generic-fieldset-7643070/generic-label-680869\":[],\"/generic-fieldset-7643070/generic-spacer-3697546\":[],\"/generic-fieldset-7643070/ecog_performance_status/generic-label-9024732\":[],\"/generic-spacer-74290\":[],\"/generic-label-7059633\":[],\"/pancreatic_cancer_comorbidities/generic-label-9776839\":[],\"/pancreatic_cancer_comorbidities/generic-label-2944210\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/ND\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/PD\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/CPD\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/MLD\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/MSRD\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/Leukemia\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/MST\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/MI\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/AVC\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/CTD\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/Diabetes\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/DiabetesDamage\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/Lymph\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/AIDS\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/CHF\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/Dementia\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/PUD\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/Hemiplegia\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/TWM\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/MSLD\":[],\"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/unknown\":[],\"/generic-spacer-4175697\":[],\"/cognitive_status/generic-label-2443338\":[],\"/cognitive_status/generic-coded_text-4211538\":[],\"/generic-spacer-7013138\":[],\"/multidisciplinary_team_meeting/generic-label-323870\":[],\"/generic-spacer-2428147\":[],\"/generic-fieldset-2435311/generic-label-9115530\":[],\"/generic-spacer-9845530\":[],\"/generic-fieldset-7076302/generic-label-812332\":[],\"/generic-fieldset-7076302/generic-spacer-8696219\":[],\"/generic-fieldset-7076302/generic-label-1950042\":[],\"/generic-fieldset-7076302/surgeryB\":[],\"/generic-fieldset-7076302/systemicT\":[],\"/generic-fieldset-7076302/radioT\":[],\"/generic-fieldset-7076302/unk\":[],\"/generic-spacer-4804257\":[],\"/drainage/generic-label-5497705\":[],\"/asa_physical_status_classification/generic-label-7076061\":[],\"/post-surgical_complications/generic-label-5696172\":[],\"/generic-fieldset-4259686/pancreatic_fistula/generic-label-9314474\":[],\"/generic-fieldset-4259686/gastroparesis/generic-label-4146198\":[],\"/generic-fieldset-4259686/haemorrhage/generic-label-5616831\":[],\"/radiotherapy/generic-label-2381278\":[],\"/chemotherapy/generic-label-2060657\":[],\"/adverse_reaction/generic-spacer-4328456\":[],\"/adverse_reaction/generic-label-2623716\":[],\"/analgesic_power/generic-label-9335855\":[],\"/care_of_pain_management/generic-label-738418\":[],\"/interventional_act/generic-label-3573827\":[],\"/disease_control/generic-spacer-1805925\":[],\"/disease_control/generic-label-7001276\":[],\"/disease_control/generic-spacer-9872976\":[],\"/quality_of_death/generic-label-7645617\":[],\"/quality_of_death/generic-coded_text-3296878\":[],\"/surgery/generic-label-7490455\":[],\"/generic-fieldset-8385338/generic-label-1258635\":[]}",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/_feeder_audit/original_content|formalism" : "application/json",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/language|code" : "en",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/language|terminology" : "ISO_639-1",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/territory|code" : "EN",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/territory|terminology" : "ISO_3166-1",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/context/research_information/cohort_study_name|code" : "PANCR",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/context/research_information/cohort_study_name|value" : "Pancreas cancer screening",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/context/research_information/cohort_study_name|terminology" : "cohortStudyName",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/context/research_information/assessment_timeline|code" : "M1",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/context/research_information/assessment_timeline|value" : "1 month",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/context/research_information/assessment_timeline|terminology" : "followupAssessmentTimingMEDPANCR",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/context/start_time" : "2020-07-01T19:35:00+02:00",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/context/setting|code" : "238",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/context/setting|value" : "other care",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/context/setting|terminology" : "openehr",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/tumor_factors/problem_diagnosis/problem_diagnosis_name|code" : "C25.9",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/tumor_factors/problem_diagnosis/problem_diagnosis_name|value" : "Malignant neoplasm of pancreas, unspecified",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/tumor_factors/problem_diagnosis/problem_diagnosis_name|terminology" : "ICD10MEDPANCR",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/tumor_factors/problem_diagnosis/language|code" : "en",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/tumor_factors/problem_diagnosis/language|terminology" : "ISO_639-1",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/tumor_factors/problem_diagnosis/encoding|code" : "UTF-8",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/tumor_factors/problem_diagnosis/encoding|terminology" : "IANA_character-sets",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/follow-up_treatment_factors/treatment_intent/_uid" : "36da0394-d319-4e2d-a1bf-c62811c38802",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/follow-up_treatment_factors/treatment_intent/current_activity:0/treatment_name|code" : "PANCRTREAT",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/follow-up_treatment_factors/treatment_intent/current_activity:0/treatment_name|value" : "Treatment on malignant tumour of pancreas",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/follow-up_treatment_factors/treatment_intent/current_activity:0/treatment_name|terminology" : "proceduresMEDPANCR",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/follow-up_treatment_factors/treatment_intent/current_activity:0/timing" : "R1",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/follow-up_treatment_factors/treatment_intent/current_activity:0/timing|formalism" : "timing",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/follow-up_treatment_factors/treatment_intent/narrative" : "<none>",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/follow-up_treatment_factors/treatment_intent/language|code" : "en",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/follow-up_treatment_factors/treatment_intent/language|terminology" : "ISO_639-1",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/follow-up_treatment_factors/treatment_intent/encoding|code" : "UTF-8",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/follow-up_treatment_factors/treatment_intent/encoding|terminology" : "IANA_character-sets",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/follow-up_treatment_factors/patient_admission/patient_class|code" : "at0005",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/follow-up_treatment_factors/patient_admission/patient_class|value" : "Outpatient",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/follow-up_treatment_factors/patient_admission/patient_class|terminology" : "local",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/follow-up_treatment_factors/patient_admission/language|code" : "en",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/follow-up_treatment_factors/patient_admission/language|terminology" : "ISO_639-1",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/follow-up_treatment_factors/patient_admission/encoding|code" : "UTF-8",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/follow-up_treatment_factors/patient_admission/encoding|terminology" : "IANA_character-sets",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/category|code" : "433",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/category|value" : "event",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/category|terminology" : "openehr",
+	"medtronic_vbhc_pancr_clinical_outcomes_follow-up/composer|name" : "Testing Nurse"
+}

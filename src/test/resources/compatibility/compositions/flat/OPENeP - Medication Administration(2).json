@@ -1,0 +1,80 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "medication_administration/_uid" : "284ef845-57da-475d-abad-b5b286d6b673::default::1",
+  "medication_administration/language|code" : "sl",
+  "medication_administration/language|terminology" : "ISO_639-1",
+  "medication_administration/territory|code" : "SI",
+  "medication_administration/territory|terminology" : "ISO_3166-1",
+  "medication_administration/context/context_detail:0/period_of_care_identifier" : "540606494",
+  "medication_administration/context/context_detail:0/departmental_period_of_care_identifier" : "244131",
+  "medication_administration/context/start_time" : "2019-01-22T10:41:24.979+01:00",
+  "medication_administration/context/setting|code" : "238",
+  "medication_administration/context/setting|value" : "other care",
+  "medication_administration/context/setting|terminology" : "openehr",
+  "medication_administration/medication_management:0/_instruction_details|composition_uid" : "e0f0d098-335f-4220-8886-e987604aefb6",
+  "medication_administration/medication_management:0/_instruction_details|path" : "content[openEHR-EHR-INSTRUCTION.medication_order.v2]",
+  "medication_administration/medication_management:0/_instruction_details|activity_id" : "activities[at0001] ",
+  "medication_administration/medication_management:0/ism_transition/current_state|code" : "245",
+  "medication_administration/medication_management:0/ism_transition/current_state|value" : "active",
+  "medication_administration/medication_management:0/ism_transition/current_state|terminology" : "openehr",
+  "medication_administration/medication_management:0/ism_transition/careflow_step|code" : "at0006",
+  "medication_administration/medication_management:0/ism_transition/careflow_step|value" : "Dose administered",
+  "medication_administration/medication_management:0/ism_transition/careflow_step|terminology" : "local",
+  "medication_administration/medication_management:0/medication_item|code" : "1146076",
+  "medication_administration/medication_management:0/medication_item|value" : "Ketanest 25 mg/ml razt.za inj. ampula 2 ml 10x",
+  "medication_administration/medication_management:0/medication_item|terminology" : "local",
+  "medication_administration/medication_management:0/medication/component_name|code" : "1146076",
+  "medication_administration/medication_management:0/medication/component_name|value" : "Ketanest 25 mg/ml razt.za inj. ampula 2 ml 10x",
+  "medication_administration/medication_management:0/medication/component_name|terminology" : "local",
+  "medication_administration/medication_management:0/dosage/dose_amount/quantity_value|magnitude" : 35.0,
+  "medication_administration/medication_management:0/dosage/dose_amount/quantity_value|unit" : "1",
+  "medication_administration/medication_management:0/dosage/dose_unit|code" : "mg",
+  "medication_administration/medication_management:0/dosage/dose_unit|value" : "mg",
+  "medication_administration/medication_management:0/dosage/dose_unit|terminology" : "local",
+  "medication_administration/medication_management:0/dosage/alternate_dose_amount/quantity_value|magnitude" : 1.4,
+  "medication_administration/medication_management:0/dosage/alternate_dose_amount/quantity_value|unit" : "1",
+  "medication_administration/medication_management:0/dosage/alternate_dose_unit|code" : "ml",
+  "medication_administration/medication_management:0/dosage/alternate_dose_unit|value" : "ml",
+  "medication_administration/medication_management:0/dosage/alternate_dose_unit|terminology" : "local",
+  "medication_administration/medication_management:0/substitution|code" : "at0139",
+  "medication_administration/medication_management:0/substitution|value" : "Not performed",
+  "medication_administration/medication_management:0/substitution|terminology" : "local",
+  "medication_administration/medication_management:0/original_scheduled_date_time" : "2019-01-23T10:10:00+01:00",
+  "medication_administration/medication_management:0/administration_details/route|code" : "45",
+  "medication_administration/medication_management:0/administration_details/route|value" : "ivk",
+  "medication_administration/medication_management:0/administration_details/route|terminology" : "local",
+  "medication_administration/medication_management:0/medication_additional_details:0/administration_type" : "START",
+  "medication_administration/medication_management:0/medication_additional_details:0/planned_administration/dosage/dose_amount/quantity_value|magnitude" : 35.0,
+  "medication_administration/medication_management:0/medication_additional_details:0/planned_administration/dosage/dose_amount/quantity_value|unit" : "1",
+  "medication_administration/medication_management:0/medication_additional_details:0/planned_administration/dosage/dose_unit" : "mg",
+  "medication_administration/medication_management:0/medication_additional_details:0/planned_administration/dosage/alternate_dose_amount/quantity_value|magnitude" : 1.4,
+  "medication_administration/medication_management:0/medication_additional_details:0/planned_administration/dosage/alternate_dose_amount/quantity_value|unit" : "1",
+  "medication_administration/medication_management:0/medication_additional_details:0/planned_administration/dosage/alternate_dose_unit" : "ml",
+  "medication_administration/medication_management:0/medication_additional_details:0/planned_administration/different_dose_administered" : false,
+  "medication_administration/medication_management:0/medication_additional_details:0/planned_administration/task_id" : "9241187",
+  "medication_administration/medication_management:0/time" : "2019-01-22T10:43:00+01:00",
+  "medication_administration/medication_management:0/language|code" : "sl",
+  "medication_administration/medication_management:0/language|terminology" : "ISO_639-1",
+  "medication_administration/medication_management:0/encoding|code" : "UTF-8",
+  "medication_administration/medication_management:0/encoding|terminology" : "IANA_character-sets",
+  "medication_administration/category|code" : "433",
+  "medication_administration/category|value" : "event",
+  "medication_administration/category|terminology" : "openehr",
+  "medication_administration/composer|id" : "6227562",
+  "medication_administration/composer|id_scheme" : "scheme",
+  "medication_administration/composer|id_namespace" : "ns",
+  "medication_administration/composer|name" : "Testing Nurse"
+}

@@ -1,0 +1,57 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+	"hpv_report/_feeder_audit/originating_system_audit|system_id" : "FormRenderer",
+	"hpv_report/_feeder_audit/original_content" : "{}",
+	"hpv_report/_feeder_audit/original_content|formalism" : "application/json",
+	"hpv_report/language|code" : "sl",
+	"hpv_report/language|terminology" : "ISO_639-1",
+	"hpv_report/territory|code" : "SI",
+	"hpv_report/territory|terminology" : "ISO_3166-1",
+	"hpv_report/context/start_time" : "2021-02-15T12:14:00+01:00",
+	"hpv_report/context/setting|code" : "238",
+	"hpv_report/context/setting|value" : "other care",
+	"hpv_report/context/setting|terminology" : "openehr",
+	"hpv_report/laboratory_test_result/test_name|code" : "35904009",
+	"hpv_report/laboratory_test_result/test_name|value" : "HPV DNA detection",
+	"hpv_report/laboratory_test_result/test_name|terminology" : "SNOMEDCT",
+	"hpv_report/laboratory_test_result/specimen:0/specimen_quality/specimen_received_issues|code" : "1",
+	"hpv_report/laboratory_test_result/specimen:0/specimen_quality/specimen_received_issues|value" : "Ni krtačke",
+	"hpv_report/laboratory_test_result/specimen:0/specimen_quality/specimen_received_issues|terminology" : "AN_specimen_received_issues",
+	"hpv_report/laboratory_test_result/laboratory_test_analyte:0/rlu_co|magnitude" : 0.5,
+	"hpv_report/laboratory_test_result/laboratory_test_analyte:0/rlu_co|unit" : "1",
+	"hpv_report/laboratory_test_result/laboratory_test_analyte:0/laboratory_record|code" : "2",
+	"hpv_report/laboratory_test_result/laboratory_test_analyte:0/laboratory_record|value" : "Negativen",
+	"hpv_report/laboratory_test_result/laboratory_test_analyte:0/laboratory_record|terminology" : "AJ_lab_record",
+	"hpv_report/laboratory_test_result/laboratory_test_analyte:0/date_and_time_of_testing" : "2021-02-02T12:00:00+01:00",
+	"hpv_report/laboratory_test_result/conclusion|code" : "6",
+	"hpv_report/laboratory_test_result/conclusion|value" : "brisa) ali s premajhno količino gojišča. Ker triažni HPV test hc2 nima t.i. interne kontrole, s katero se preverja prisotnost DNK človeških celic v kužnini, rezultata preiskave ne moremo opredeliti. Prosimo za nov, ustrezen vzorec, v katerem bo tako krtačka (bris",
+	"hpv_report/laboratory_test_result/conclusion|terminology" : "AJ00_comments",
+	"hpv_report/laboratory_test_result/result|code" : "4",
+	"hpv_report/laboratory_test_result/result|value" : "Neustrezen",
+	"hpv_report/laboratory_test_result/result|terminology" : "AJ_lab_record",
+	"hpv_report/laboratory_test_result/recommendations|code" : "2",
+	"hpv_report/laboratory_test_result/recommendations|value" : "Priporočamo takojšnje ponovno testiranje. Prosimo za nov vzorec.",
+	"hpv_report/laboratory_test_result/recommendations|terminology" : "AK_hpv_recommendations",
+	"hpv_report/laboratory_test_result/comment" : "Komentar",
+	"hpv_report/laboratory_test_result/time" : "2021-02-15T12:14:00+01:00",
+	"hpv_report/laboratory_test_result/language|code" : "sl",
+	"hpv_report/laboratory_test_result/language|terminology" : "ISO_639-1",
+	"hpv_report/laboratory_test_result/encoding|code" : "UTF-8",
+	"hpv_report/laboratory_test_result/encoding|terminology" : "IANA_character-sets",
+	"hpv_report/category|code" : "433",
+	"hpv_report/category|value" : "event",
+	"hpv_report/category|terminology" : "openehr"
+}

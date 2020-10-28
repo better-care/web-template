@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	Copyright 2021 Better Ltd (www.better.care)
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<ns2:composition archetype_node_id="openEHR-EHR-COMPOSITION.encounter.v1" xmlns:te="http://schemas.marand.com/thinkehr/v1" xmlns:ns2="http://schemas.openehr.org/v1">
+    <ns2:name>
+        <ns2:value>MEDTRONIC VBHC PANCR Clinical Outcomes Follow-up</ns2:value>
+    </ns2:name>
+    <ns2:uid xsi:type="ns2:HIER_OBJECT_ID" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:value>5ae1c45c-53c2-4e3a-b9ff-c979e0494f35::default::1</ns2:value>
+    </ns2:uid>
+    <ns2:archetype_details>
+        <ns2:archetype_id>
+            <ns2:value>openEHR-EHR-COMPOSITION.encounter.v1</ns2:value>
+        </ns2:archetype_id>
+        <ns2:template_id>
+            <ns2:value>MEDTRONIC VBHC PANCR Clinical Outcomes Follow-up</ns2:value>
+        </ns2:template_id>
+        <ns2:rm_version>1.0.4</ns2:rm_version>
+    </ns2:archetype_details>
+    <ns2:feeder_audit>
+        <ns2:original_content xsi:type="ns2:DV_PARSABLE" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ns2:value>{"/generic-label-2781139":[],"/generic-spacer-6312167":[],"/generic-label-9829144":[],"/generic-fieldset-4296800/generic-button-9418317":[],"/generic-spacer-8206756":[],"/generic-label-1173975":[],"/generic-fieldset-7643070/generic-label-680869":[],"/generic-fieldset-7643070/generic-spacer-3697546":[],"/generic-fieldset-7643070/ecog_performance_status/generic-label-9024732":[],"/generic-spacer-74290":[],"/generic-label-7059633":[],"/pancreatic_cancer_comorbidities/generic-label-9776839":[],"/pancreatic_cancer_comorbidities/generic-label-2944210":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/ND":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/PD":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/CPD":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/MLD":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/MSRD":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/Leukemia":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/MST":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/MI":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/AVC":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/CTD":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/Diabetes":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/DiabetesDamage":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/Lymph":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/AIDS":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/CHF":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/Dementia":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/PUD":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/Hemiplegia":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/TWM":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/MSLD":[],"/pancreatic_cancer_comorbidities/generic-fieldset-1838144/unknown":[],"/generic-spacer-4175697":[],"/cognitive_status/generic-label-2443338":[],"/cognitive_status/generic-coded_text-4211538":[],"/generic-spacer-7013138":[],"/multidisciplinary_team_meeting/generic-label-323870":[],"/generic-spacer-2428147":[],"/generic-fieldset-2435311/generic-label-9115530":[],"/generic-spacer-9845530":[],"/generic-fieldset-7076302/generic-label-812332":[],"/generic-fieldset-7076302/generic-spacer-8696219":[],"/generic-fieldset-7076302/generic-label-1950042":[],"/generic-fieldset-7076302/surgeryB":[],"/generic-fieldset-7076302/systemicT":[],"/generic-fieldset-7076302/radioT":[],"/generic-fieldset-7076302/unk":[],"/generic-spacer-4804257":[],"/drainage/generic-label-5497705":[],"/asa_physical_status_classification/generic-label-7076061":[],"/post-surgical_complications/generic-label-5696172":[],"/generic-fieldset-4259686/pancreatic_fistula/generic-label-9314474":[],"/generic-fieldset-4259686/gastroparesis/generic-label-4146198":[],"/generic-fieldset-4259686/haemorrhage/generic-label-5616831":[],"/radiotherapy/generic-label-2381278":[],"/chemotherapy/generic-label-2060657":[],"/adverse_reaction/generic-spacer-4328456":[],"/adverse_reaction/generic-label-2623716":[],"/analgesic_power/generic-label-9335855":[],"/care_of_pain_management/generic-label-738418":[],"/interventional_act/generic-label-3573827":[],"/disease_control/generic-spacer-1805925":[],"/disease_control/generic-label-7001276":[],"/disease_control/generic-spacer-9872976":[],"/quality_of_death/generic-label-7645617":[],"/quality_of_death/generic-coded_text-3296878":[],"/surgery/generic-label-7490455":[],"/generic-fieldset-8385338/generic-label-1258635":[]}</ns2:value>
+            <ns2:formalism>application/json</ns2:formalism>
+        </ns2:original_content>
+        <ns2:originating_system_audit>
+            <ns2:system_id>FormRenderer</ns2:system_id>
+        </ns2:originating_system_audit>
+    </ns2:feeder_audit>
+    <ns2:language>
+        <ns2:terminology_id>
+            <ns2:value>ISO_639-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>en</ns2:code_string>
+    </ns2:language>
+    <ns2:territory>
+        <ns2:terminology_id>
+            <ns2:value>ISO_3166-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>EN</ns2:code_string>
+    </ns2:territory>
+    <ns2:category>
+        <ns2:value>event</ns2:value>
+        <ns2:defining_code>
+            <ns2:terminology_id>
+                <ns2:value>openehr</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>433</ns2:code_string>
+        </ns2:defining_code>
+    </ns2:category>
+    <ns2:composer xsi:type="ns2:PARTY_IDENTIFIED" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>Testing Nurse</ns2:name>
+    </ns2:composer>
+    <ns2:context>
+        <ns2:start_time>
+            <ns2:value>2020-07-01T19:35:00+02:00</ns2:value>
+        </ns2:start_time>
+        <ns2:setting>
+            <ns2:value>other care</ns2:value>
+            <ns2:defining_code>
+                <ns2:terminology_id>
+                    <ns2:value>openehr</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>238</ns2:code_string>
+            </ns2:defining_code>
+        </ns2:setting>
+        <ns2:other_context xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ns2:name>
+                <ns2:value>Tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.research_information.v0">
+                <ns2:name>
+                    <ns2:value>Research information</ns2:value>
+                </ns2:name>
+                <ns2:archetype_details>
+                    <ns2:archetype_id>
+                        <ns2:value>openEHR-EHR-CLUSTER.research_information.v0</ns2:value>
+                    </ns2:archetype_id>
+                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                </ns2:archetype_details>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                    <ns2:name>
+                        <ns2:value>Cohort study name</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Pancreas cancer screening</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>cohortStudyName</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>PANCR</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Assessment timeline</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>1 month</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>followupAssessmentTimingMEDPANCR</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>M1</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:items>
+        </ns2:other_context>
+    </ns2:context>
+    <ns2:content xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.adhoc.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Tumor factors</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.problem_diagnosis.v1">
+            <ns2:name>
+                <ns2:value>Problem/Diagnosis</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-EVALUATION.problem_diagnosis.v1</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>structure</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Problem/Diagnosis name</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Malignant neoplasm of pancreas, unspecified</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>ICD10MEDPANCR</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>C25.9</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:data>
+        </ns2:items>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.adhoc.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Follow-up treatment factors</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:INSTRUCTION" archetype_node_id="openEHR-EHR-INSTRUCTION.service_request.v1">
+            <ns2:name>
+                <ns2:value>Treatment Intent</ns2:value>
+            </ns2:name>
+            <ns2:uid xsi:type="ns2:HIER_OBJECT_ID">
+                <ns2:value>36da0394-d319-4e2d-a1bf-c62811c38802</ns2:value>
+            </ns2:uid>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-INSTRUCTION.service_request.v1</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:narrative>
+                <ns2:value>&lt;none&gt;</ns2:value>
+            </ns2:narrative>
+            <ns2:activities archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Current Activity</ns2:value>
+                </ns2:name>
+                <ns2:description xsi:type="ns2:ITEM_TREE" archetype_node_id="at0009">
+                    <ns2:name>
+                        <ns2:value>Tree</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0121">
+                        <ns2:name>
+                            <ns2:value>Treatment name</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>Treatment on malignant tumour of pancreas</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>proceduresMEDPANCR</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>PANCRTREAT</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:description>
+                <ns2:timing>
+                    <ns2:value>R1</ns2:value>
+                    <ns2:formalism>timing</ns2:formalism>
+                </ns2:timing>
+                <ns2:action_archetype_id>/.*/</ns2:action_archetype_id>
+            </ns2:activities>
+        </ns2:items>
+        <ns2:items xsi:type="ns2:ADMIN_ENTRY" archetype_node_id="openEHR-EHR-ADMIN_ENTRY.admission.v0">
+            <ns2:name>
+                <ns2:value>Patient admission</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-ADMIN_ENTRY.admission.v0</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Tree</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Patient class</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Outpatient</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>local</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>at0005</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:data>
+        </ns2:items>
+    </ns2:content>
+</ns2:composition>

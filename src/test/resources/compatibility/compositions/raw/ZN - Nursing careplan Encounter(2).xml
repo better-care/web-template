@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	Copyright 2021 Better Ltd (www.better.care)
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<ns2:composition archetype_node_id="openEHR-EHR-COMPOSITION.encounter.v1" xmlns:te="http://schemas.marand.com/thinkehr/v1" xmlns:ns2="http://schemas.openehr.org/v1">
+    <ns2:name>
+        <ns2:value>Careplan</ns2:value>
+    </ns2:name>
+    <ns2:uid xsi:type="ns2:HIER_OBJECT_ID" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:value>ec002ede-57e7-428a-bd0c-8dfd19dd7f53::default::1</ns2:value>
+    </ns2:uid>
+    <ns2:archetype_details>
+        <ns2:archetype_id>
+            <ns2:value>openEHR-EHR-COMPOSITION.encounter.v1</ns2:value>
+        </ns2:archetype_id>
+        <ns2:template_id>
+            <ns2:value>ISPEK - ZN - Nursing careplan Encounter</ns2:value>
+        </ns2:template_id>
+        <ns2:rm_version>1.0.4</ns2:rm_version>
+    </ns2:archetype_details>
+    <ns2:language>
+        <ns2:terminology_id>
+            <ns2:value>ISO_639-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>sl</ns2:code_string>
+    </ns2:language>
+    <ns2:territory>
+        <ns2:terminology_id>
+            <ns2:value>ISO_3166-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>SI</ns2:code_string>
+    </ns2:territory>
+    <ns2:category>
+        <ns2:value>event</ns2:value>
+        <ns2:defining_code>
+            <ns2:terminology_id>
+                <ns2:value>openehr</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>433</ns2:code_string>
+        </ns2:defining_code>
+    </ns2:category>
+    <ns2:composer xsi:type="ns2:PARTY_IDENTIFIED" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:external_ref>
+            <ns2:id xsi:type="ns2:GENERIC_ID">
+                <ns2:value>6141998</ns2:value>
+                <ns2:scheme>ispek_scheme</ns2:scheme>
+            </ns2:id>
+            <ns2:namespace>ispek</ns2:namespace>
+            <ns2:type>ANY</ns2:type>
+        </ns2:external_ref>
+        <ns2:name>Testing Nurse</ns2:name>
+    </ns2:composer>
+    <ns2:context>
+        <ns2:start_time>
+            <ns2:value>2015-01-13T00:00:00+01:00</ns2:value>
+        </ns2:start_time>
+        <ns2:setting>
+            <ns2:value>other care</ns2:value>
+            <ns2:defining_code>
+                <ns2:terminology_id>
+                    <ns2:value>openehr</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>238</ns2:code_string>
+            </ns2:defining_code>
+        </ns2:setting>
+        <ns2:other_context xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ns2:name>
+                <ns2:value>Tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.composition_context_detail.v1">
+                <ns2:name>
+                    <ns2:value>Context detail</ns2:value>
+                </ns2:name>
+                <ns2:archetype_details>
+                    <ns2:archetype_id>
+                        <ns2:value>openEHR-EHR-CLUSTER.composition_context_detail.v1</ns2:value>
+                    </ns2:archetype_id>
+                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                </ns2:archetype_details>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                    <ns2:name>
+                        <ns2:value>Period of care identifier</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_TEXT">
+                        <ns2:value>388125241</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:items>
+        </ns2:other_context>
+    </ns2:context>
+    <ns2:content xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.care_plan_zn.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Care plan</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.care_plan_zn.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:SECTION" archetype_node_id="at0009">
+            <ns2:name>
+                <ns2:value>Problem plan</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:SECTION" archetype_node_id="at0004">
+                <ns2:name>
+                    <ns2:value>Intervention group</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ACTION" archetype_node_id="openEHR-EHR-ACTION.procedure-zn.v1">
+                    <ns2:name>
+                        <ns2:value>Clinical intervention</ns2:value>
+                    </ns2:name>
+                    <ns2:archetype_details>
+                        <ns2:archetype_id>
+                            <ns2:value>openEHR-EHR-ACTION.procedure-zn.v1</ns2:value>
+                        </ns2:archetype_id>
+                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                    </ns2:archetype_details>
+                    <ns2:language>
+                        <ns2:terminology_id>
+                            <ns2:value>ISO_639-1</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>sl</ns2:code_string>
+                    </ns2:language>
+                    <ns2:encoding>
+                        <ns2:terminology_id>
+                            <ns2:value>IANA_character-sets</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>UTF-8</ns2:code_string>
+                    </ns2:encoding>
+                    <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+                    <ns2:other_participations>
+                        <ns2:function>
+                            <ns2:value>performer</ns2:value>
+                        </ns2:function>
+                        <ns2:performer xsi:type="ns2:PARTY_IDENTIFIED">
+                            <ns2:name>Testing Nurse</ns2:name>
+                            <ns2:identifiers>
+                                <ns2:id>6141998</ns2:id>
+                            </ns2:identifiers>
+                        </ns2:performer>
+                        <ns2:mode>
+                            <ns2:value>not specified</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>openehr</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>193</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:mode>
+                    </ns2:other_participations>
+                    <ns2:time>
+                        <ns2:value>2015-01-13T08:00:00+01:00</ns2:value>
+                    </ns2:time>
+                    <ns2:description xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                        <ns2:name>
+                            <ns2:value>Tree</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                            <ns2:name>
+                                <ns2:value>Nursing intervention</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                <ns2:value>Izmeri vitalne funkcije</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>PK-Nanda</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>8.12.2.11</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Intervention unsuccessful</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                <ns2:value>false</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:description>
+                    <ns2:ism_transition>
+                        <ns2:current_state>
+                            <ns2:value>Completed</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>openehr</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>532</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:current_state>
+                    </ns2:ism_transition>
+                    <ns2:instruction_details>
+                        <ns2:instruction_id>
+                            <ns2:id xsi:type="ns2:HIER_OBJECT_ID">
+                                <ns2:value>0e3bf40b-c889-4348-a2f1-c1f0b4dfff89::default::1</ns2:value>
+                            </ns2:id>
+                            <ns2:namespace>local</ns2:namespace>
+                            <ns2:type>INSTRUCTION</ns2:type>
+                            <ns2:path>/content[openEHR-EHR-SECTION.care_plan_zn.v1,'Care plan']/items[at0009,'Problem plan']/items[at0004,'Intervention group']/items[openEHR-EHR-INSTRUCTION.request-zn.v1,'Healthcare service request #3']/activities[at0001,'Request']/description[at0009,'Tree']/items[at0121,'Nursing intervention request']</ns2:path>
+                        </ns2:instruction_id>
+                        <ns2:activity_id>activities[at0001]</ns2:activity_id>
+                    </ns2:instruction_details>
+                </ns2:items>
+            </ns2:items>
+        </ns2:items>
+    </ns2:content>
+</ns2:composition>

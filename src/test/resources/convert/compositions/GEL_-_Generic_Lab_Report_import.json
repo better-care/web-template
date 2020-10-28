@@ -1,0 +1,56 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "ctx/language": "en",
+  "ctx/territory": "GB",
+  "ctx/composer_name": "TDL",
+  "ctx/time": "2018-01-26T20:05",
+  "ctx/id_namespace": "Rhapsody",
+  "ctx/id_scheme": "TDLResults",
+  "ctx/health_care_facility|name": "The Best Hospital",
+  "ctx/health_care_facility|id": "TBH",
+  "laboratory_result_report/context/report_id": "7315TEST2sd3-",
+  "laboratory_result_report/context/start_time": "2018-08-14T14:09",
+  "laboratory_result_report/laboratory_test:0/requested_test|value": ".HEPATITIS B PROFILE",
+  "laboratory_result_report/laboratory_test:0/requested_test|code": "HEPB",
+  "laboratory_result_report/laboratory_test:0/history_origin": "2018-03-21T00:00",
+  "laboratory_result_report/laboratory_test:0/requested_test|terminology": "WinPath",
+  "laboratory_result_report/laboratory_test:0/test_status|code": "at0038",
+  "laboratory_result_report/laboratory_test:0/test_status_timestamp": "2018-03-21T21:36",
+  "laboratory_result_report/laboratory_test:0/specimen:0/specimen_type": "",
+  "laboratory_result_report/laboratory_test:0/specimen:0/datetime_collected": "2018-03-21T00:00",
+  "laboratory_result_report/laboratory_test:0/specimen:0/collection_method": "Collection method not provided",
+  "laboratory_result_report/laboratory_test:0/specimen:0/processing/datetime_received": "2018-03-21T00:00",
+  "laboratory_result_report/laboratory_test:0/responsible_laboratory/name_of_organisation": "WinPath",
+  "laboratory_result_report/laboratory_test:0/test_request_details/placer_order_number": "TBH-AD",
+  "laboratory_result_report/laboratory_test:0/test_request_details/placer_order_number|issuer": "Placer order number issuer - not provided",
+  "laboratory_result_report/laboratory_test:0/test_request_details/placer_order_number|assigner": "Placer order number assigner - not provided",
+  "laboratory_result_report/laboratory_test:0/test_request_details/placer_order_number|type": "Placer order number type - not provided",
+  "laboratory_result_report/laboratory_test:0/test_request_details/filler_order_number": "TBH-0018T444619",
+  "laboratory_result_report/laboratory_test:0/test_request_details/filler_order_number|issuer": "Filler order number issuer - not provided",
+  "laboratory_result_report/laboratory_test:0/test_request_details/filler_order_number|assigner": "Filler order number assigmer - not provided",
+  "laboratory_result_report/laboratory_test:0/test_request_details/filler_order_number|type": "Filler order number type - not provided",
+  "laboratory_result_report/laboratory_test:0/test_request_details/requester/ordering_provider/ordering_provider/given_name": "hatfields",
+  "laboratory_result_report/laboratory_test:0/test_request_details/requester/ordering_provider/ordering_provider/family_name": "hatfields",
+  "laboratory_result_report/laboratory_test:0/laboratory_test_panel:0/laboratory_result:0/result_value/_name|value": "HBsAg",
+  "laboratory_result_report/laboratory_test:0/laboratory_test_panel:0/laboratory_result:0/result_value/_name|code": "HB01",
+  "laboratory_result_report/laboratory_test:0/laboratory_test_panel:0/laboratory_result:0/result_value/_name|terminology": "EXT",
+  "laboratory_result_report/laboratory_test:0/laboratory_test_panel:0/laboratory_result:0/result_status|code": "at0009",
+  "laboratory_result_report/laboratory_test:0/laboratory_test_panel:0/laboratory_result:0/reference_range_guidance": "Normal_Status = N",
+  "laboratory_result_report/laboratory_test:0/laboratory_test_panel:0/laboratory_result:0/result_value/text_value": "Negative",
+  "laboratory_result_report/laboratory_test:0/laboratory_test_panel:0/laboratory_result:0/result_value/_name/_mapping:0/target|code": "5195-3",
+  "laboratory_result_report/laboratory_test:0/laboratory_test_panel:0/laboratory_result:0/result_value/_name/_mapping:0/target|terminology": "LOINC",
+  "laboratory_result_report/laboratory_test:0/laboratory_test_panel:0/laboratory_result:0/result_value/_name/_mapping:0|match": "="
+}

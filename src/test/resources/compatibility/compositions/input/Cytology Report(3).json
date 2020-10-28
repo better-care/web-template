@@ -1,0 +1,202 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "cytology_report": {
+    "context": [
+      {
+        "context_detail": [
+          {
+            "guideline_id": []
+          }
+        ],
+        "report_version": [],
+        "status": [],
+        "report_id": []
+      }
+    ],
+    "laboratory_test_result": [
+      {
+        "test_request_details": [
+          {
+            "request_id": []
+          }
+        ],
+        "test_name": [
+          {
+            "|code": "116147009",
+            "|value": "Cytologic test"
+          }
+        ],
+        "date_of_report": [
+          "2021-02-22T08:09:00+01:00"
+        ],
+        "receiving_laboratory": [
+          {
+            "organisation_name": [],
+            "identifier": [],
+            "contact_details": [
+              {
+                "professional_individual_demographics": [
+                  {
+                    "person_name": [
+                      {
+                        "structured_name": [
+                          {
+                            "given_name": [
+                              "Miha"
+                            ],
+                            "family_name": [
+                              "Lenič"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "professional_details": [
+                      {
+                        "professional_identifier": []
+                      }
+                    ]
+                  }
+                ],
+                "role_in_organisation": [
+                  {
+                    "|code": "1",
+                    "|value": "Mlajši presejalec",
+                    "|terminology": "laboratoryExperienceLevel"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "specimen": [
+          {
+            "processing": [
+              {
+                "laboratory_specimen_id": [],
+                "date_and_time_specimen_received": [],
+                "specimen_quality": [
+                  {
+                    "quality_indicators": [
+                      {
+                        "|code": "1",
+                        "|value": "Prekrit s krvjo",
+                        "|terminology": "D1_quality_indicators"
+                      },
+                      {
+                        "|code": "3",
+                        "|value": "Majhno število ploščatih celic",
+                        "|terminology": "D1_quality_indicators"
+                      }
+                    ],
+                    "specimen_adequacy": [
+                      {
+                        "|code": "1",
+                        "|value": "Uporaben",
+                        "|terminology": "D_adequacy"
+                      }
+                    ],
+                    "not_examined_-_reason": []
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "cytology_findings": [
+          {
+            "organisms": [
+              {
+                "|code": "1",
+                "|value": "Döderlein",
+                "|terminology": "AF00.1_microorganisms"
+              }
+            ],
+            "general_categorization": [],
+            "negative_for_intraepithelial_leison_or_malignancy": [
+              {
+                "non-neoplastic_findings": [
+                  {
+                    "non-neoplastic_cellular_variations": [
+                      {
+                        "|code": "1",
+                        "|value": "Ploščatocelična metaplazija",
+                        "|terminology": "AF00.0.0_non_neoplastic_variations"
+                      }
+                    ],
+                    "reactive_cellular_changes_associated_with": [
+                      {
+                        "|code": "2",
+                        "|value": "Folikularni cervicitis",
+                        "|terminology": "AF00.0.1_reactive_changes"
+                      }
+                    ],
+                    "glandular_cells_status_post_hysterectomy": []
+                  }
+                ]
+              }
+            ],
+            "epithelial_cell_abnormalities": [
+              {
+                "squamous_cell": [],
+                "glandular_cell": [],
+                "origin_of_glandular_cells": [],
+                "other_cell": []
+              }
+            ],
+            "endometrial_cells_after_age_45": [],
+            "ancillary_testing": [
+              {
+                "ancillary_test_name": [],
+                "ancillary_test_result": [],
+                "ancillary_test_date": [],
+                "comment": []
+              }
+            ],
+            "recommendations": [
+              {
+                "|code": "2",
+                "|value": "Bris ponoviti čez ____",
+                "|terminology": "AH_recommendations"
+              }
+            ],
+            "months_until_next_smear_sampling": [
+              {
+                "month": "2"
+              }
+            ]
+          }
+        ],
+        "opinion_and_comments": [
+          "Komentar"
+        ],
+        "major_findings": [],
+        "cervical_cytology_test_details": [
+          {
+            "consensus_participants": []
+          }
+        ]
+      }
+    ]
+  },
+  "ctx": {
+    "language": "sl",
+    "territory": "SI",
+    "time": "2021-02-15T12:14:00+01:00",
+    "action_time": "2021-02-15T12:14:00+01:00",
+    "generic_fields": {}
+  }
+}

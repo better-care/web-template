@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	Copyright 2021 Better Ltd (www.better.care)
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<ns2:composition archetype_node_id="openEHR-EHR-COMPOSITION.encounter.v1" xmlns:te="http://schemas.marand.com/thinkehr/v1" xmlns:ns2="http://schemas.openehr.org/v1">
+    <ns2:name>
+        <ns2:value>Malnutrition universal screening tool</ns2:value>
+    </ns2:name>
+    <ns2:uid xsi:type="ns2:HIER_OBJECT_ID" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:value>a14bcf59-5289-48cd-ac78-f54f98d1324f::default::1</ns2:value>
+    </ns2:uid>
+    <ns2:archetype_details>
+        <ns2:archetype_id>
+            <ns2:value>openEHR-EHR-COMPOSITION.encounter.v1</ns2:value>
+        </ns2:archetype_id>
+        <ns2:template_id>
+            <ns2:value>Malnutrition universal screening tool</ns2:value>
+        </ns2:template_id>
+        <ns2:rm_version>1.0.4</ns2:rm_version>
+    </ns2:archetype_details>
+    <ns2:language>
+        <ns2:terminology_id>
+            <ns2:value>ISO_639-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>en</ns2:code_string>
+    </ns2:language>
+    <ns2:territory>
+        <ns2:terminology_id>
+            <ns2:value>ISO_3166-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>SI</ns2:code_string>
+    </ns2:territory>
+    <ns2:category>
+        <ns2:value>event</ns2:value>
+        <ns2:defining_code>
+            <ns2:terminology_id>
+                <ns2:value>openehr</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>433</ns2:code_string>
+        </ns2:defining_code>
+    </ns2:category>
+    <ns2:composer xsi:type="ns2:PARTY_IDENTIFIED" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>doctor</ns2:name>
+    </ns2:composer>
+    <ns2:context>
+        <ns2:start_time>
+            <ns2:value>2019-10-14T15:35:58.41+02:00</ns2:value>
+        </ns2:start_time>
+        <ns2:setting>
+            <ns2:value>other care</ns2:value>
+            <ns2:defining_code>
+                <ns2:terminology_id>
+                    <ns2:value>openehr</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>238</ns2:code_string>
+            </ns2:defining_code>
+        </ns2:setting>
+        <ns2:other_context xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ns2:name>
+                <ns2:value>Tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.xds_metadata.v0">
+                <ns2:name>
+                    <ns2:value>XDS Metadata</ns2:value>
+                </ns2:name>
+                <ns2:archetype_details>
+                    <ns2:archetype_id>
+                        <ns2:value>openEHR-EHR-CLUSTER.xds_metadata.v0</ns2:value>
+                    </ns2:archetype_id>
+                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                </ns2:archetype_details>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0003">
+                    <ns2:name>
+                        <ns2:value>Document type</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_TEXT">
+                        <ns2:value>SNOMED-CT::443216009::Assessment using malnutrition universal screening tool</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:items>
+        </ns2:other_context>
+    </ns2:context>
+    <ns2:content xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.must.v0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Malnutrition Universal Screening Tool (MUST)</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-OBSERVATION.must.v0</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:language>
+            <ns2:terminology_id>
+                <ns2:value>ISO_639-1</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>en</ns2:code_string>
+        </ns2:language>
+        <ns2:encoding>
+            <ns2:terminology_id>
+                <ns2:value>IANA_character-sets</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>UTF-8</ns2:code_string>
+        </ns2:encoding>
+        <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+        <ns2:protocol xsi:type="ns2:ITEM_TREE" archetype_node_id="at0020">
+            <ns2:name>
+                <ns2:value>Tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0021">
+                <ns2:name>
+                    <ns2:value>Height determination method for body mass index</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                    <ns2:value>Derived from ulna length</ns2:value>
+                    <ns2:defining_code>
+                        <ns2:terminology_id>
+                            <ns2:value>local</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>at0025</ns2:code_string>
+                    </ns2:defining_code>
+                </ns2:value>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0030">
+                <ns2:name>
+                    <ns2:value>Body mass index estimation method</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                    <ns2:value>Calculation from height and weight measurements</ns2:value>
+                    <ns2:defining_code>
+                        <ns2:terminology_id>
+                            <ns2:value>local</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>at0031</ns2:code_string>
+                    </ns2:defining_code>
+                </ns2:value>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0033">
+                <ns2:name>
+                    <ns2:value>Weight loss determination method</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                    <ns2:value>Direct weight change measurement</ns2:value>
+                    <ns2:defining_code>
+                        <ns2:terminology_id>
+                            <ns2:value>local</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>at0034</ns2:code_string>
+                    </ns2:defining_code>
+                </ns2:value>
+            </ns2:items>
+        </ns2:protocol>
+        <ns2:data archetype_node_id="at0001">
+            <ns2:name>
+                <ns2:value>Event Series</ns2:value>
+            </ns2:name>
+            <ns2:origin>
+                <ns2:value>2019-10-14T12:00:00+02:00</ns2:value>
+            </ns2:origin>
+            <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                <ns2:name>
+                    <ns2:value>Any event</ns2:value>
+                </ns2:name>
+                <ns2:time>
+                    <ns2:value>2019-10-14T12:00:00+02:00</ns2:value>
+                </ns2:time>
+                <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                    <ns2:name>
+                        <ns2:value>Tree</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                        <ns2:name>
+                            <ns2:value>Body mass index score</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_ORDINAL">
+                            <ns2:value>0</ns2:value>
+                            <ns2:symbol>
+                                <ns2:value>&gt;20 (&gt;30 Obese)</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>local</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>at0005</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:symbol>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0008">
+                        <ns2:name>
+                            <ns2:value>Weight loss score</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_ORDINAL">
+                            <ns2:value>0</ns2:value>
+                            <ns2:symbol>
+                                <ns2:value>&lt;5 %</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>local</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>at0009</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:symbol>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0012">
+                        <ns2:name>
+                            <ns2:value>Acute disease effect score</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_ORDINAL">
+                            <ns2:value>2</ns2:value>
+                            <ns2:symbol>
+                                <ns2:value>Acutely ill and there has been or is likely to be no nutritional intake for &gt;5 days</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>local</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>at0014</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:symbol>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0015">
+                        <ns2:name>
+                            <ns2:value>Total score</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_COUNT">
+                            <ns2:magnitude>2</ns2:magnitude>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0016">
+                        <ns2:name>
+                            <ns2:value>Risk category</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>High risk</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>local</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>at0019</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0039">
+                        <ns2:name>
+                            <ns2:value>Evaluation period</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>On admission</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:data>
+            </ns2:events>
+        </ns2:data>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.body_weight.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Body weight</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-OBSERVATION.body_weight.v2</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:language>
+            <ns2:terminology_id>
+                <ns2:value>ISO_639-1</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>en</ns2:code_string>
+        </ns2:language>
+        <ns2:encoding>
+            <ns2:terminology_id>
+                <ns2:value>IANA_character-sets</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>UTF-8</ns2:code_string>
+        </ns2:encoding>
+        <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+        <ns2:data archetype_node_id="at0002">
+            <ns2:name>
+                <ns2:value>history</ns2:value>
+            </ns2:name>
+            <ns2:origin>
+                <ns2:value>2019-10-14T15:35:58.41+02:00</ns2:value>
+            </ns2:origin>
+            <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0003">
+                <ns2:name>
+                    <ns2:value>Any event</ns2:value>
+                </ns2:name>
+                <ns2:time>
+                    <ns2:value>2019-10-14T15:35:58.41+02:00</ns2:value>
+                </ns2:time>
+                <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                    <ns2:name>
+                        <ns2:value>Simple</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                        <ns2:name>
+                            <ns2:value>Weight</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_QUANTITY">
+                            <ns2:magnitude>65.0</ns2:magnitude>
+                            <ns2:units>kg</ns2:units>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:data>
+            </ns2:events>
+        </ns2:data>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.body_weight.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Body weight 3 to 6 months ago</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-OBSERVATION.body_weight.v2</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:language>
+            <ns2:terminology_id>
+                <ns2:value>ISO_639-1</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>en</ns2:code_string>
+        </ns2:language>
+        <ns2:encoding>
+            <ns2:terminology_id>
+                <ns2:value>IANA_character-sets</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>UTF-8</ns2:code_string>
+        </ns2:encoding>
+        <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+        <ns2:protocol xsi:type="ns2:ITEM_TREE" archetype_node_id="at0015">
+            <ns2:name>
+                <ns2:value>protocol structure</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.reporting_status.v0">
+                <ns2:name>
+                    <ns2:value>Reporting status</ns2:value>
+                </ns2:name>
+                <ns2:archetype_details>
+                    <ns2:archetype_id>
+                        <ns2:value>openEHR-EHR-CLUSTER.reporting_status.v0</ns2:value>
+                    </ns2:archetype_id>
+                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                </ns2:archetype_details>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                    <ns2:name>
+                        <ns2:value>Measurement input</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_TEXT">
+                        <ns2:value>Actual</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0003">
+                    <ns2:name>
+                        <ns2:value>Estimated date</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_DATE">
+                        <ns2:value>2019-01</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:items>
+        </ns2:protocol>
+        <ns2:data archetype_node_id="at0002">
+            <ns2:name>
+                <ns2:value>history</ns2:value>
+            </ns2:name>
+            <ns2:origin>
+                <ns2:value>2019-10-14T15:35:58.41+02:00</ns2:value>
+            </ns2:origin>
+            <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0003">
+                <ns2:name>
+                    <ns2:value>Any event</ns2:value>
+                </ns2:name>
+                <ns2:time>
+                    <ns2:value>2019-10-14T15:35:58.41+02:00</ns2:value>
+                </ns2:time>
+                <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                    <ns2:name>
+                        <ns2:value>Simple</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                        <ns2:name>
+                            <ns2:value>Weight</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_QUANTITY">
+                            <ns2:magnitude>65.0</ns2:magnitude>
+                            <ns2:units>kg</ns2:units>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:data>
+            </ns2:events>
+        </ns2:data>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.height.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Height/Length</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-OBSERVATION.height.v2</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:language>
+            <ns2:terminology_id>
+                <ns2:value>ISO_639-1</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>en</ns2:code_string>
+        </ns2:language>
+        <ns2:encoding>
+            <ns2:terminology_id>
+                <ns2:value>IANA_character-sets</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>UTF-8</ns2:code_string>
+        </ns2:encoding>
+        <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+        <ns2:protocol xsi:type="ns2:ITEM_TREE" archetype_node_id="at0007">
+            <ns2:name>
+                <ns2:value>List</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.reporting_status.v0">
+                <ns2:name>
+                    <ns2:value>Reporting status</ns2:value>
+                </ns2:name>
+                <ns2:archetype_details>
+                    <ns2:archetype_id>
+                        <ns2:value>openEHR-EHR-CLUSTER.reporting_status.v0</ns2:value>
+                    </ns2:archetype_id>
+                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                </ns2:archetype_details>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                    <ns2:name>
+                        <ns2:value>Measurement input</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_TEXT">
+                        <ns2:value>Ulna length used</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:items>
+        </ns2:protocol>
+        <ns2:data archetype_node_id="at0001">
+            <ns2:name>
+                <ns2:value>history</ns2:value>
+            </ns2:name>
+            <ns2:origin>
+                <ns2:value>2019-10-14T15:35:58.41+02:00</ns2:value>
+            </ns2:origin>
+            <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                <ns2:name>
+                    <ns2:value>Any event</ns2:value>
+                </ns2:name>
+                <ns2:time>
+                    <ns2:value>2019-10-14T15:35:58.41+02:00</ns2:value>
+                </ns2:time>
+                <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                    <ns2:name>
+                        <ns2:value>Simple</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                        <ns2:name>
+                            <ns2:value>Height/Length</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_QUANTITY">
+                            <ns2:magnitude>146.0</ns2:magnitude>
+                            <ns2:units>cm</ns2:units>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:data>
+            </ns2:events>
+        </ns2:data>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.body_mass_index.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Body mass index</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-OBSERVATION.body_mass_index.v2</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:language>
+            <ns2:terminology_id>
+                <ns2:value>ISO_639-1</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>en</ns2:code_string>
+        </ns2:language>
+        <ns2:encoding>
+            <ns2:terminology_id>
+                <ns2:value>IANA_character-sets</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>UTF-8</ns2:code_string>
+        </ns2:encoding>
+        <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+        <ns2:data archetype_node_id="at0001">
+            <ns2:name>
+                <ns2:value>history</ns2:value>
+            </ns2:name>
+            <ns2:origin>
+                <ns2:value>2019-10-14T15:35:58.41+02:00</ns2:value>
+            </ns2:origin>
+            <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                <ns2:name>
+                    <ns2:value>Any event</ns2:value>
+                </ns2:name>
+                <ns2:time>
+                    <ns2:value>2019-10-14T15:35:58.41+02:00</ns2:value>
+                </ns2:time>
+                <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                    <ns2:name>
+                        <ns2:value>Single</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                        <ns2:name>
+                            <ns2:value>Body mass index</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_QUANTITY">
+                            <ns2:magnitude>30.5</ns2:magnitude>
+                            <ns2:units>kg/m2</ns2:units>
+                            <ns2:precision>1</ns2:precision>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:data>
+            </ns2:events>
+        </ns2:data>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.management_guidelines.v0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Management guidelines</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-EVALUATION.management_guidelines.v0</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:language>
+            <ns2:terminology_id>
+                <ns2:value>ISO_639-1</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>en</ns2:code_string>
+        </ns2:language>
+        <ns2:encoding>
+            <ns2:terminology_id>
+                <ns2:value>IANA_character-sets</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>UTF-8</ns2:code_string>
+        </ns2:encoding>
+        <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+        <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+            <ns2:name>
+                <ns2:value>Item tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                <ns2:name>
+                    <ns2:value>Proposed activities</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_TEXT">
+                    <ns2:value>Treat - Refer to nutrition care plan for MUST 2+.</ns2:value>
+                </ns2:value>
+            </ns2:items>
+        </ns2:data>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.body_segment_length.v0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Body segment - length</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-OBSERVATION.body_segment_length.v0</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:language>
+            <ns2:terminology_id>
+                <ns2:value>ISO_639-1</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>en</ns2:code_string>
+        </ns2:language>
+        <ns2:encoding>
+            <ns2:terminology_id>
+                <ns2:value>IANA_character-sets</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>UTF-8</ns2:code_string>
+        </ns2:encoding>
+        <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+        <ns2:data archetype_node_id="at0001">
+            <ns2:name>
+                <ns2:value>Event Series</ns2:value>
+            </ns2:name>
+            <ns2:origin>
+                <ns2:value>2019-10-14T15:35:58.41+02:00</ns2:value>
+            </ns2:origin>
+            <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                <ns2:name>
+                    <ns2:value>Any event</ns2:value>
+                </ns2:name>
+                <ns2:time>
+                    <ns2:value>2019-10-14T15:35:58.41+02:00</ns2:value>
+                </ns2:time>
+                <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                    <ns2:name>
+                        <ns2:value>ItemTree</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                        <ns2:name>
+                            <ns2:value>Body segment</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>Elbow to wrist</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
+                        <ns2:name>
+                            <ns2:value>Laterality</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>Right</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>local</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>at0007</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0008">
+                        <ns2:name>
+                            <ns2:value>Length</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_QUANTITY">
+                            <ns2:magnitude>19.0</ns2:magnitude>
+                            <ns2:units>cm</ns2:units>
+                            <ns2:precision>1</ns2:precision>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:data>
+            </ns2:events>
+        </ns2:data>
+    </ns2:content>
+</ns2:composition>

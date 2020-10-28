@@ -1,0 +1,387 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "cattedra_chaq": {
+    "context": [
+      {
+        "encounter_context": [
+          {
+            "encounter_id": [],
+            "encounter_type": [],
+            "encounter_reason": [],
+            "appointment_id": []
+          }
+        ],
+        "xds_metadata": [
+          {
+            "author_specialty": [],
+            "class_code": [],
+            "document_type": [],
+            "confidentiality_code": [],
+            "health_care_facility_type": [],
+            "practice_setting_code": [],
+            "event_code": [],
+            "document_media": []
+          }
+        ],
+        "anonymised_person_parent": [
+          {
+            "administrative_gender": [],
+            "birth_sex": [],
+            "vital_status": [],
+            "anonymised_current_location": [],
+            "age": []
+          }
+        ],
+        "start_time": [],
+        "individual_s_personal_demographics": [
+          {
+            "relationship_to_subject": []
+          }
+        ]
+      }
+    ],
+    "care_plan": [
+      {
+        "care_plan_name": [],
+        "description": [],
+        "reason": [],
+        "care_plan_id": [
+          {
+            "|id": "",
+            "|type": "",
+            "|issuer": "",
+            "|assigner": ""
+          }
+        ],
+        "expiry_date": []
+      }
+    ],
+    "childhood_health_assessment_questionnaire": [
+      {
+        "childhood_health_assessment_questionnaire": [
+          {
+            "any_event": [
+              {
+                "dressing_and_grooming": [
+                  {
+                    "dress": [],
+                    "shampoo": [],
+                    "remove_socks": [],
+                    "cut_fingernails": [],
+                    "dressing_and_grooming_score": []
+                  }
+                ],
+                "arising": [
+                  {
+                    "stand_up": [],
+                    "get_in_and_out_of_bed_or_stand_up_in_crib": [],
+                    "arising_score": []
+                  }
+                ],
+                "eating": [
+                  {
+                    "cut_meat": [],
+                    "lift_up_cup_or_glass_to_mouth": [],
+                    "open_new_cereal_box": [],
+                    "eating_score": []
+                  }
+                ],
+                "walking": [
+                  {
+                    "walk_outdoors_on_flat_ground": [],
+                    "climb_up_five_steps": [],
+                    "walking_score": []
+                  }
+                ],
+                "devices_used_dressing_grooming_arising_eating_and_walking": [
+                  {
+                    "cane": [],
+                    "devices_used_for_dressing_button_hook_zipper_pull_longhandled_shoe_horn_etc.": [],
+                    "walker": [],
+                    "built_up_pencil_or_special_utensils": [],
+                    "crutches": [],
+                    "special_or_built_up_chair": [],
+                    "weelchair": [],
+                    "other": [],
+                    "other_specify": []
+                  }
+                ],
+                "help_from_another_person": [
+                  {
+                    "dressing_and_grooming": [],
+                    "eating": [],
+                    "arising": [],
+                    "walking": []
+                  }
+                ],
+                "hygiene": [
+                  {
+                    "wash_and_dry_entire_body": [],
+                    "take_a_tub_bath": [],
+                    "get_on_and_off_toilet_or_potty_chair": [],
+                    "brush_teeth": [],
+                    "comb_or_brush_hair": [],
+                    "hygiene_score": []
+                  }
+                ],
+                "reach": [
+                  {
+                    "reach_and_get_down_heavy_object": [],
+                    "bend_down_to_pick_up": [],
+                    "pull_on_sweater": [],
+                    "turn_neck": [],
+                    "reach_score": []
+                  }
+                ],
+                "grip": [
+                  {
+                    "write_or_scribble": [],
+                    "open_car_doors": [],
+                    "open_jars": [],
+                    "turn_faucets_on_and_off": [],
+                    "push_open_door": [],
+                    "grip_score": []
+                  }
+                ],
+                "activities": [
+                  {
+                    "run_errands_and_shop": [],
+                    "get_in_and_out_of_car": [],
+                    "ride_bike_or_tricycle": [],
+                    "do_household_chores": [],
+                    "run_and_play": [],
+                    "activities_score": [],
+                    "devices_used_hygiene_reach_grip_and_activities": [
+                      {
+                        "raised_toilet_seat": [],
+                        "bathtub_bar": [],
+                        "bathtub_seat": [],
+                        "long-handled_appliances_for_reach": [],
+                        "jar_opener_for_jars_previously_opened": [],
+                        "long-handled_appliances_in_bathroom": []
+                      }
+                    ]
+                  }
+                ],
+                "help_from_other_person": [
+                  {
+                    "hygiene": [],
+                    "reach": [],
+                    "gripping_and_opening_things": [],
+                    "errands_and_chores": []
+                  }
+                ],
+                "comments": [],
+                "pain_score": [
+                  {
+                    "|unit": "1",
+                    "|magnitude": null
+                  }
+                ],
+                "global_evaluation": [
+                  {
+                    "|unit": "1",
+                    "|magnitude": null
+                  }
+                ],
+                "total_score": [
+                  {
+                    "|unit": "1"
+                  }
+                ],
+                "disability_index": [
+                  {
+                    "|unit": "1"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ctx": {
+    "language": "en",
+    "territory": "SI",
+    "time": "2021-02-17T11:11:00+01:00",
+    "action_time": "2021-02-17T11:11:00+01:00",
+    "generic_fields": {
+      "/generic-fieldset-6625683/generic-fieldset-8678835/generic-boolean-6062067": [
+        false
+      ],
+      "/generic-fieldset-6625683/generic-fieldset-8678835/generic-boolean-6502228": [
+        false
+      ],
+      "/generic-fieldset-6625683/generic-fieldset-8678835/generic-boolean-18675": [
+        false
+      ],
+      "/generic-fieldset-6625683/generic-fieldset-8678835/generic-boolean-4902912": [
+        false
+      ],
+      "/generic-fieldset-6625683/generic-fieldset-8678835/generic-numeric_field-5131372": [
+        0
+      ],
+      "/generic-fieldset-6625683/generic-fieldset-8678835/generic-ordinal-8930170": [],
+      "/generic-fieldset-6625683/generic-fieldset-3573691/generic-boolean-9548952": [
+        false
+      ],
+      "/generic-fieldset-6625683/generic-fieldset-3573691/generic-boolean-314154": [
+        false
+      ],
+      "/generic-fieldset-6625683/generic-fieldset-3573691/generic-numeric_field-9680465": [
+        0
+      ],
+      "/generic-fieldset-6625683/generic-fieldset-3573691/generic-ordinal-5818364": [],
+      "/generic-fieldset-6625683/generic-fieldset-8779034/generic-boolean-5303976": [
+        false
+      ],
+      "/generic-fieldset-6625683/generic-fieldset-8779034/generic-boolean-484513": [
+        false
+      ],
+      "/generic-fieldset-6625683/generic-fieldset-8779034/generic-boolean-8726168": [
+        false
+      ],
+      "/generic-fieldset-6625683/generic-fieldset-8779034/generic-numeric_field-4505759": [
+        0
+      ],
+      "/generic-fieldset-6625683/generic-fieldset-8779034/generic-ordinal-3973593": [],
+      "/generic-fieldset-6625683/generic-fieldset-6541113/generic-boolean-9595480": [
+        false
+      ],
+      "/generic-fieldset-6625683/generic-fieldset-6541113/generic-boolean-1427011": [
+        false
+      ],
+      "/generic-fieldset-6625683/generic-fieldset-6541113/generic-numeric_field-9045629": [
+        0
+      ],
+      "/generic-fieldset-6625683/generic-fieldset-6541113/generic-ordinal-4020892": [],
+      "/generic-fieldset-6625683/generic-quantity-3524915": [
+        {
+          "|unit": "score"
+        }
+      ],
+      "/generic-fieldset-6625683/generic-quantity-1330774": [
+        {
+          "|unit": "score"
+        }
+      ],
+      "/generic-fieldset-6625683/generic-quantity-5960539": [
+        {
+          "|unit": "score",
+          "|magnitude": 4
+        }
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-5932770/generic-boolean-5149160": [
+        false
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-5932770/generic-boolean-8623079": [
+        false
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-5932770/generic-boolean-6421698": [
+        false
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-5932770/generic-boolean-1521128": [
+        false
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-5932770/generic-boolean-2779352": [
+        false
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-5932770/generic-numeric_field-5875267": [
+        0
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-5932770/generic-ordinal-4230316": [],
+      "/generic-fieldset-9741303/generic-fieldset-7574134/generic-boolean-6011438": [
+        false
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-7574134/generic-boolean-6359489": [
+        false
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-7574134/generic-boolean-1891074": [
+        false
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-7574134/generic-boolean-6894417": [
+        false
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-7574134/generic-numeric_field-7900674": [
+        0
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-7574134/generic-ordinal-7475386": [],
+      "/generic-fieldset-9741303/generic-fieldset-3671091/generic-boolean-2197265": [
+        false
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-3671091/generic-boolean-1184790": [
+        false
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-3671091/generic-boolean-8028184": [
+        false
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-3671091/generic-boolean-1934595": [
+        false
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-3671091/generic-boolean-83343": [
+        false
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-3671091/generic-numeric_field-15676": [
+        0
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-3671091/generic-ordinal-1958965": [],
+      "/generic-fieldset-9741303/generic-fieldset-2281602/generic-boolean-5912948": [
+        false
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-2281602/generic-boolean-7581038": [
+        false
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-2281602/generic-boolean-5128539": [
+        false
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-2281602/generic-boolean-7908866": [
+        false
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-2281602/generic-boolean-942797": [
+        false
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-2281602/generic-numeric_field-2609542": [
+        0
+      ],
+      "/generic-fieldset-9741303/generic-fieldset-2281602/generic-ordinal-9379479": [],
+      "/generic-fieldset-9741303/generic-quantity-7134336": [
+        {
+          "|unit": "score"
+        }
+      ],
+      "/generic-fieldset-9741303/generic-quantity-7447207": [
+        {
+          "|unit": "score"
+        }
+      ],
+      "/generic-fieldset-9741303/generic-quantity-7519407": [
+        {
+          "|unit": "score",
+          "|magnitude": 4
+        }
+      ],
+      "/generic-fieldset-184327/generic-external_widget-8816469": [],
+      "/generic-fieldset-145696/generic-external_widget-158625": [],
+      "/generic-quantity-4773037": [
+        {
+          "|unit": "score",
+          "|magnitude": 8
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	Copyright 2021 Better Ltd (www.better.care)
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<composition xmlns="http://schemas.openehr.org/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" archetype_node_id="openEHR-EHR-COMPOSITION.action_test.v1">
+    <name>
+        <value>Action test</value>
+    </name>
+    <uid xmlns:v1="http://schemas.openehr.org/v1" xsi:type="v1:OBJECT_VERSION_ID">
+        <value>a5edc308-5cc1-4088-ab4d-29ca15308e9e::example.ethercis.com::1</value>
+    </uid>
+    <archetype_details>
+        <archetype_id>
+            <value>openEHR-EHR-COMPOSITION.action_test.v1</value>
+        </archetype_id>
+        <template_id>
+            <value>action test</value>
+        </template_id>
+        <rm_version>1.0.1</rm_version>
+    </archetype_details>
+    <language>
+        <terminology_id>
+            <value>ISO_639-1</value>
+        </terminology_id>
+        <code_string>en</code_string>
+    </language>
+    <territory>
+        <terminology_id>
+            <value>ISO_3166-1</value>
+        </terminology_id>
+        <code_string>GB</code_string>
+    </territory>
+    <category>
+        <value>event</value>
+        <defining_code>
+            <terminology_id>
+                <value>openehr</value>
+            </terminology_id>
+            <code_string>433</code_string>
+        </defining_code>
+    </category>
+    <composer xmlns:v1="http://schemas.openehr.org/v1" xsi:type="v1:PARTY_IDENTIFIED">
+        <external_ref>
+            <id xsi:type="v1:HIER_OBJECT_ID">
+                <value>ref</value>
+            </id>
+            <namespace>DEMOGRAPHIC</namespace>
+            <type>PARTY</type>
+        </external_ref>
+        <name>Composer</name>
+        <identifiers>
+            <issuer>ETHERCIS</issuer>
+            <assigner>dummy</assigner>
+            <id>1234-5678</id>
+            <type>dummy</type>
+        </identifiers>
+    </composer>
+    <context>
+        <start_time>
+            <value>2016-02-22T10:18:47.392+07:00</value>
+        </start_time>
+        <location>TEST LAB</location>
+        <setting>
+            <value>Other Care</value>
+            <defining_code>
+                <terminology_id>
+                    <value>openehr</value>
+                </terminology_id>
+                <code_string>238</code_string>
+            </defining_code>
+        </setting>
+        <health_care_facility>
+            <external_ref>
+                <id xmlns:v1="http://schemas.openehr.org/v1" xsi:type="v1:HIER_OBJECT_ID">
+                    <value>ref</value>
+                </id>
+                <namespace>DEMOGRAPHIC</namespace>
+                <type>PARTY</type>
+            </external_ref>
+            <name>FACILITY</name>
+        </health_care_facility>
+    </context>
+    <content xmlns:v1="http://schemas.openehr.org/v1" archetype_node_id="openEHR-EHR-ACTION.medication.v1" xsi:type="v1:ACTION">
+        <name>
+            <value>Medication action</value>
+        </name>
+        <archetype_details>
+            <archetype_id>
+                <value>openEHR-EHR-ACTION.medication.v1</value>
+            </archetype_id>
+            <rm_version>1.0.1</rm_version>
+        </archetype_details>
+        <language>
+            <terminology_id>
+                <value>ISO_639-1</value>
+            </terminology_id>
+            <code_string>en</code_string>
+        </language>
+        <encoding>
+            <terminology_id>
+                <value>IANA_character-sets</value>
+            </terminology_id>
+            <code_string>UTF-8</code_string>
+        </encoding>
+        <subject xsi:type="v1:PARTY_SELF"/>
+        <time>
+            <value>2016-02-22T10:18:47.387+07:00</value>
+        </time>
+        <description archetype_node_id="openEHR-EHR-ITEM_TREE.medication.v1" xsi:type="v1:ITEM_TREE">
+            <name>
+                <value>Medication description</value>
+            </name>
+            <items archetype_node_id="at0001" xsi:type="v1:ELEMENT">
+                <name>
+                    <value>Name of medication</value>
+                </name>
+                <value xsi:type="v1:DV_TEXT">
+                    <value>text value</value>
+                </value>
+            </items>
+            <items archetype_node_id="at0012" xsi:type="v1:ELEMENT">
+                <name xsi:type="v1:DV_CODED_TEXT">
+                    <value>coded text value</value>
+                    <defining_code>
+                        <terminology_id>
+                            <value>local</value>
+                        </terminology_id>
+                        <code_string>at9999</code_string>
+                    </defining_code>
+                </name>
+                <value xsi:type="v1:DV_TEXT">
+                    <value>text value</value>
+                </value>
+            </items>
+            <items archetype_node_id="at0003" xsi:type="v1:ELEMENT">
+                <name>
+                    <value>Strength per dose unit</value>
+                </name>
+                <value xsi:type="v1:DV_QUANTITY">
+                    <accuracy>0.0</accuracy>
+                    <magnitude>0.0</magnitude>
+                    <units>pg</units>
+                    <precision>0</precision>
+                </value>
+            </items>
+            <items archetype_node_id="at0006" xsi:type="v1:ELEMENT">
+                <name>
+                    <value>Dose unit</value>
+                </name>
+                <value xsi:type="v1:DV_CODED_TEXT">
+                    <value>coded text value</value>
+                    <defining_code>
+                        <terminology_id>
+                            <value>local</value>
+                        </terminology_id>
+                        <code_string>at9999</code_string>
+                    </defining_code>
+                </value>
+            </items>
+            <items archetype_node_id="at0004" xsi:type="v1:ELEMENT">
+                <name>
+                    <value>Form</value>
+                </name>
+                <value xsi:type="v1:DV_CODED_TEXT">
+                    <value>coded text value</value>
+                    <defining_code>
+                        <terminology_id>
+                            <value>local</value>
+                        </terminology_id>
+                        <code_string>at9999</code_string>
+                    </defining_code>
+                </value>
+            </items>
+            <items archetype_node_id="at0033" xsi:type="v1:CLUSTER">
+                <name>
+                    <value>Dose</value>
+                </name>
+                <items archetype_node_id="at0035" xsi:type="v1:CLUSTER">
+                    <name>
+                        <value>By absolute quantity</value>
+                    </name>
+                    <items archetype_node_id="at0036" xsi:type="v1:ELEMENT">
+                        <name>
+                            <value>Quantity by volume</value>
+                        </name>
+                        <value xsi:type="v1:DV_QUANTITY">
+                            <accuracy>0.0</accuracy>
+                            <magnitude>0.0</magnitude>
+                            <units>ml</units>
+                            <precision>0</precision>
+                        </value>
+                    </items>
+                    <items archetype_node_id="at0037" xsi:type="v1:ELEMENT">
+                        <name>
+                            <value>Quantity by mass</value>
+                        </name>
+                        <value xsi:type="v1:DV_QUANTITY">
+                            <accuracy>0.0</accuracy>
+                            <magnitude>0.0</magnitude>
+                            <units>µg</units>
+                            <precision>0</precision>
+                        </value>
+                    </items>
+                </items>
+                <items archetype_node_id="at0034" xsi:type="v1:CLUSTER">
+                    <name>
+                        <value>By dose units</value>
+                    </name>
+                    <items archetype_node_id="at0005" xsi:type="v1:ELEMENT">
+                        <name>
+                            <value>Number or fraction</value>
+                        </name>
+                        <value xsi:type="v1:DV_COUNT">
+                            <accuracy>0.0</accuracy>
+                            <magnitude>0</magnitude>
+                        </value>
+                    </items>
+                </items>
+            </items>
+            <items archetype_node_id="at0007" xsi:type="v1:ELEMENT">
+                <name>
+                    <value>Dose duration</value>
+                </name>
+                <value xsi:type="v1:DV_QUANTITY">
+                    <accuracy>0.0</accuracy>
+                    <magnitude>0.0</magnitude>
+                    <units>d</units>
+                    <precision>0</precision>
+                </value>
+            </items>
+            <items archetype_node_id="at0008" xsi:type="v1:ELEMENT">
+                <name>
+                    <value>Route</value>
+                </name>
+                <value xsi:type="v1:DV_CODED_TEXT">
+                    <value>coded text value</value>
+                    <defining_code>
+                        <terminology_id>
+                            <value>local</value>
+                        </terminology_id>
+                        <code_string>at9999</code_string>
+                    </defining_code>
+                </value>
+            </items>
+            <items archetype_node_id="at0057" xsi:type="v1:CLUSTER">
+                <name>
+                    <value>Timing</value>
+                </name>
+                <items archetype_node_id="at0061" xsi:type="v1:CLUSTER">
+                    <name>
+                        <value>Approximate</value>
+                    </name>
+                    <items archetype_node_id="at0052" xsi:type="v1:ELEMENT">
+                        <name>
+                            <value>Frequency</value>
+                        </name>
+                        <value xsi:type="v1:DV_CODED_TEXT">
+                            <value>Once</value>
+                            <defining_code>
+                                <terminology_id>
+                                    <value>local</value>
+                                </terminology_id>
+                                <code_string>at0053</code_string>
+                            </defining_code>
+                        </value>
+                    </items>
+                    <items archetype_node_id="at0059" xsi:type="v1:ELEMENT">
+                        <name>
+                            <value>Unit time</value>
+                        </name>
+                        <value xsi:type="v1:DV_QUANTITY">
+                            <accuracy>0.0</accuracy>
+                            <magnitude>0.0</magnitude>
+                            <units>a</units>
+                            <precision>0</precision>
+                        </value>
+                    </items>
+                </items>
+                <items archetype_node_id="at0062" xsi:type="v1:CLUSTER">
+                    <name>
+                        <value>Exact</value>
+                    </name>
+                    <items archetype_node_id="at0063" xsi:type="v1:ELEMENT">
+                        <name>
+                            <value>Exact time of administration</value>
+                        </name>
+                        <value xsi:type="v1:DV_DATE_TIME">
+                            <value>2010-01-01T10:00:00</value>
+                        </value>
+                    </items>
+                </items>
+                <items archetype_node_id="at0064" xsi:type="v1:CLUSTER">
+                    <name>
+                        <value>Relative</value>
+                    </name>
+                    <items archetype_node_id="at0065" xsi:type="v1:ELEMENT">
+                        <name>
+                            <value>Timing</value>
+                        </name>
+                        <value xsi:type="v1:DV_QUANTITY">
+                            <accuracy>0.0</accuracy>
+                            <magnitude>0.0</magnitude>
+                            <units>a</units>
+                            <precision>0</precision>
+                        </value>
+                    </items>
+                    <items archetype_node_id="at0066" xsi:type="v1:ELEMENT">
+                        <name>
+                            <value>Qualifier</value>
+                        </name>
+                        <value xsi:type="v1:DV_CODED_TEXT">
+                            <value>before</value>
+                            <defining_code>
+                                <terminology_id>
+                                    <value>local</value>
+                                </terminology_id>
+                                <code_string>at0068</code_string>
+                            </defining_code>
+                        </value>
+                    </items>
+                    <items archetype_node_id="at0067" xsi:type="v1:ELEMENT">
+                        <name>
+                            <value>Event</value>
+                        </name>
+                        <value xsi:type="v1:DV_TEXT">
+                            <value>text value</value>
+                        </value>
+                    </items>
+                </items>
+            </items>
+            <items archetype_node_id="at0060" xsi:type="v1:ELEMENT">
+                <name>
+                    <value>Instruction qualifiers</value>
+                </name>
+                <value xsi:type="v1:DV_TEXT">
+                    <value>text value</value>
+                </value>
+            </items>
+            <items archetype_node_id="at0050" xsi:type="v1:ELEMENT">
+                <name>
+                    <value>Reason for commencement</value>
+                </name>
+                <value xsi:type="v1:DV_TEXT">
+                    <value>text value</value>
+                </value>
+            </items>
+            <items archetype_node_id="at0051" xsi:type="v1:ELEMENT">
+                <name>
+                    <value>Reason for ceasing</value>
+                </name>
+                <value xsi:type="v1:DV_TEXT">
+                    <value>text value</value>
+                </value>
+            </items>
+            <items archetype_node_id="at0009" xsi:type="v1:ELEMENT">
+                <name>
+                    <value>Is long term</value>
+                </name>
+                <value xsi:type="v1:DV_BOOLEAN">
+                    <value>true</value>
+                </value>
+            </items>
+            <items archetype_node_id="at0010" xsi:type="v1:CLUSTER">
+                <name>
+                    <value>Indications</value>
+                </name>
+                <items archetype_node_id="at0011" xsi:type="v1:ELEMENT">
+                    <name>
+                        <value>Indication</value>
+                    </name>
+                    <value xsi:type="v1:DV_TEXT">
+                        <value>text value</value>
+                    </value>
+                </items>
+            </items>
+            <items archetype_node_id="at0013" xsi:type="v1:CLUSTER">
+                <name>
+                    <value>Safety limits</value>
+                </name>
+                <items archetype_node_id="at0015" xsi:type="v1:ELEMENT">
+                    <name>
+                        <value>Dosage per kg body weight</value>
+                    </name>
+                    <value xsi:type="v1:DV_INTERVAL">
+                        <lower xsi:type="v1:DV_QUANTITY">
+                            <accuracy>0.0</accuracy>
+                            <magnitude>0.0</magnitude>
+                            <units/>
+                            <precision>0</precision>
+                        </lower>
+                        <upper xsi:type="v1:DV_QUANTITY">
+                            <accuracy>0.0</accuracy>
+                            <magnitude>1.0</magnitude>
+                            <units/>
+                            <precision>0</precision>
+                        </upper>
+                        <lower_unbounded>false</lower_unbounded>
+                        <upper_unbounded>false</upper_unbounded>
+                    </value>
+                </items>
+                <items archetype_node_id="at0016" xsi:type="v1:ELEMENT">
+                    <name>
+                        <value>Minimum dose interval</value>
+                    </name>
+                    <value xsi:type="v1:DV_QUANTITY">
+                        <accuracy>0.0</accuracy>
+                        <magnitude>0.0</magnitude>
+                        <units>min</units>
+                        <precision>0</precision>
+                    </value>
+                </items>
+                <items archetype_node_id="at0017" xsi:type="v1:ELEMENT">
+                    <name>
+                        <value>Maximum dose interval</value>
+                    </name>
+                    <value xsi:type="v1:DV_QUANTITY">
+                        <accuracy>0.0</accuracy>
+                        <magnitude>0.0</magnitude>
+                        <units>d</units>
+                        <precision>0</precision>
+                    </value>
+                </items>
+                <items archetype_node_id="at0002" xsi:type="v1:ELEMENT">
+                    <name>
+                        <value>Administration instructions</value>
+                    </name>
+                    <value xsi:type="v1:DV_TEXT">
+                        <value>text value</value>
+                    </value>
+                </items>
+            </items>
+            <items archetype_node_id="at0018" xsi:type="v1:CLUSTER">
+                <name>
+                    <value>Administration information</value>
+                </name>
+                <items archetype_node_id="at0019" xsi:type="v1:ELEMENT">
+                    <name>
+                        <value>Date (time) of first administration</value>
+                    </name>
+                    <value xsi:type="v1:DV_DATE_TIME">
+                        <value>2010-01-01T10:00:00</value>
+                    </value>
+                </items>
+                <items archetype_node_id="at0020" xsi:type="v1:ELEMENT">
+                    <name>
+                        <value>Batch number</value>
+                    </name>
+                    <value xsi:type="v1:DV_TEXT">
+                        <value>text value</value>
+                    </value>
+                </items>
+                <items archetype_node_id="at0021" xsi:type="v1:ELEMENT">
+                    <name>
+                        <value>Site of administration</value>
+                    </name>
+                    <value xsi:type="v1:DV_CODED_TEXT">
+                        <value>coded text value</value>
+                        <defining_code>
+                            <terminology_id>
+                                <value>local</value>
+                            </terminology_id>
+                            <code_string>0123456789</code_string>
+                        </defining_code>
+                    </value>
+                </items>
+                <items archetype_node_id="at0022" xsi:type="v1:ELEMENT">
+                    <name>
+                        <value>Sequence number</value>
+                    </name>
+                    <value xsi:type="v1:DV_COUNT">
+                        <accuracy>0.0</accuracy>
+                        <magnitude>1</magnitude>
+                    </value>
+                </items>
+                <items archetype_node_id="at0032" xsi:type="v1:ELEMENT">
+                    <name>
+                        <value>Date (time) of last administration</value>
+                    </name>
+                    <value xsi:type="v1:DV_DATE_TIME">
+                        <value>2010-01-01T10:00:00</value>
+                    </value>
+                </items>
+            </items>
+            <items archetype_node_id="at0023" xsi:type="v1:CLUSTER">
+                <name>
+                    <value>Dispensing information</value>
+                </name>
+                <items archetype_node_id="at0024" xsi:type="v1:ELEMENT">
+                    <name>
+                        <value>Quantity to be dispensed</value>
+                    </name>
+                    <value xsi:type="v1:DV_QUANTITY">
+                        <accuracy>0.0</accuracy>
+                        <magnitude>0.0</magnitude>
+                        <units/>
+                        <precision>0</precision>
+                    </value>
+                </items>
+                <items archetype_node_id="at0025" xsi:type="v1:ELEMENT">
+                    <name>
+                        <value>Number of authorised repeat dispensing</value>
+                    </name>
+                    <value xsi:type="v1:DV_COUNT">
+                        <accuracy>0.0</accuracy>
+                        <magnitude>0</magnitude>
+                    </value>
+                </items>
+                <items archetype_node_id="at0026" xsi:type="v1:ELEMENT">
+                    <name>
+                        <value>Dispensed product</value>
+                    </name>
+                    <value xsi:type="v1:DV_TEXT">
+                        <value>text value</value>
+                    </value>
+                </items>
+                <items archetype_node_id="at0027" xsi:type="v1:ELEMENT">
+                    <name>
+                        <value>Brand substitution allowed</value>
+                    </name>
+                    <value xsi:type="v1:DV_BOOLEAN">
+                        <value>true</value>
+                    </value>
+                </items>
+                <items archetype_node_id="at0028" xsi:type="v1:ELEMENT">
+                    <name>
+                        <value>Authority approval number</value>
+                    </name>
+                    <value xsi:type="v1:DV_TEXT">
+                        <value>text value</value>
+                    </value>
+                </items>
+                <items archetype_node_id="at0029" xsi:type="v1:ELEMENT">
+                    <name>
+                        <value>Patient counselled on CMI</value>
+                    </name>
+                    <value xsi:type="v1:DV_BOOLEAN">
+                        <value>true</value>
+                    </value>
+                </items>
+                <items archetype_node_id="at0030" xsi:type="v1:ELEMENT">
+                    <name>
+                        <value>Deferred supply</value>
+                    </name>
+                    <value xsi:type="v1:DV_BOOLEAN">
+                        <value>true</value>
+                    </value>
+                </items>
+                <items archetype_node_id="at0031" xsi:type="v1:ELEMENT">
+                    <name>
+                        <value>Reason for deferred supply</value>
+                    </name>
+                    <value xsi:type="v1:DV_TEXT">
+                        <value>text value</value>
+                    </value>
+                </items>
+            </items>
+            <items archetype_node_id="at0049" xsi:type="v1:CLUSTER">
+                <name>
+                    <value>Admission information</value>
+                </name>
+                <items archetype_node_id="at0048" xsi:type="v1:ELEMENT">
+                    <name>
+                        <value>Own Medication</value>
+                    </name>
+                    <value xsi:type="v1:DV_BOOLEAN">
+                        <value>true</value>
+                    </value>
+                </items>
+            </items>
+        </description>
+        <ism_transition>
+            <current_state>
+                <value>initial</value>
+                <defining_code>
+                    <terminology_id>
+                        <value>openehr</value>
+                    </terminology_id>
+                    <code_string>524</code_string>
+                </defining_code>
+            </current_state>
+        </ism_transition>
+    </content>
+</composition>
+

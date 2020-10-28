@@ -1,0 +1,46 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "ctx/composer_name": "Testing Doctor",
+  "ctx/health_care_facility|id": "999999-345",
+  "ctx/health_care_facility|name": "Testing Hospital",
+  "ctx/id_namespace": "default",
+  "ctx/id_scheme": "2.16.840.1.113883.2.1.4.3",
+  "ctx/language": "en",
+  "ctx/territory": "GB",
+  "ctx/time": "2015-02-22T00:11:02.518+02:00",
+  "ctx/participation_name": "Named Participant",
+  "ctx/participation_function": "District Nurse",
+  "ctx/participation_id": "998877",
+  "ctx/participation_mode": "videoconference",
+  "visual_acuity_report/visual_acuity:0/any_event:0/test_name|code": "at0139",
+  "visual_acuity_report/visual_acuity:0/any_event:0/left_eye/eye_examined|code": "at0012",
+  "visual_acuity_report/visual_acuity:0/any_event:0/left_eye/notation/low_vision_score|code": "at0018",
+  "visual_acuity_report/visual_acuity:0/any_event:0/left_eye/notation/low_vision_score|ordinal": 3,
+  "visual_acuity_report/visual_acuity:0/any_event:0/left_eye/notation/low_vision_score|value": "HM - Hand movement",
+  "visual_acuity_report/visual_acuity:0/any_event:0/right_eye/eye_examined|code": "at0013",
+  "visual_acuity_report/visual_acuity:0/any_event:0/right_eye/notation/metric_snellen|numerator": 6,
+  "visual_acuity_report/visual_acuity:0/any_event:0/right_eye/notation/metric_snellen|denominator": 60,
+  "visual_acuity_report/visual_acuity:0/any_event:1/test_name|code": "at0137",
+  "visual_acuity_report/visual_acuity:0/any_event:1/left_eye/eye_examined|code": "at0012",
+  "visual_acuity_report/visual_acuity:0/any_event:1/left_eye/notation/low_vision_score|code": "at0019",
+  "visual_acuity_report/visual_acuity:0/any_event:1/left_eye/notation/low_vision_score|ordinal": 4,
+  "visual_acuity_report/visual_acuity:0/any_event:1/left_eye/notation/low_vision_score|value": "CF - Count fingers",
+  "visual_acuity_report/visual_acuity:0/any_event:1/left_eye/interpretation:0": "Very poor vision.",
+  "visual_acuity_report/visual_acuity:0/any_event:1/right_eye/eye_examined|code": "at0013",
+  "visual_acuity_report/visual_acuity:0/any_event:1/right_eye/notation/metric_snellen|numerator": 6,
+  "visual_acuity_report/visual_acuity:0/any_event:1/right_eye/notation/metric_snellen|denominator": 18,
+  "visual_acuity_report/visual_acuity:0/any_event:1/right_eye/interpretation:0": "Cotrected vision in right eye pretty good"
+}

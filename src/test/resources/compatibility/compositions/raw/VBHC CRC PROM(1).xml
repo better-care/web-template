@@ -1,0 +1,1600 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	Copyright 2021 Better Ltd (www.better.care)
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<ns2:composition archetype_node_id="openEHR-EHR-COMPOSITION.encounter.v1" xmlns:te="http://schemas.marand.com/thinkehr/v1" xmlns:ns2="http://schemas.openehr.org/v1">
+    <ns2:name>
+        <ns2:value>MEDTRONIC VBHC CRC PROM</ns2:value>
+    </ns2:name>
+    <ns2:archetype_details>
+        <ns2:archetype_id>
+            <ns2:value>openEHR-EHR-COMPOSITION.encounter.v1</ns2:value>
+        </ns2:archetype_id>
+        <ns2:template_id>
+            <ns2:value>MEDTRONIC VBHC CRC PROM</ns2:value>
+        </ns2:template_id>
+        <ns2:rm_version>1.0.4</ns2:rm_version>
+    </ns2:archetype_details>
+    <ns2:feeder_audit>
+        <ns2:original_content xsi:type="ns2:DV_PARSABLE" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ns2:value>{"/generic-IELDSET-5661972/generic-date_time-2236388":[],"/generic-IELDSET-5661972/generic-input_text-5005795":[],"/generic-IELDSET-5661972/generic-input_text-5680063":[],"/generic-IELDSET-5661972/generic-input_text-226816":[],"/generic-IELDSET-5661972/generic-fieldset-5252901/generic-fieldset-1504002/generic-coded_text-4664915":[],"/generic-IELDSET-2205752/generic-input_text-5201865":[],"/generic-IELDSET-2205752/generic-input_text-710359":[],"/generic-IELDSET-2205752/generic-input_text-1311664":[],"/generic-IELDSET-2205752/generic-input_text-1021417":[],"/generic-IELDSET-2508729/generic-input_text-8040464":[],"/generic-IELDSET-3448979/generic-NPUT_TEXT-824123":["47/61 Questions answered"],"/generic-IELDSET-5782155/generic-input_text-6085799":["47/61 Questions answered"],"/generic-IELDSET-3770737/generic-input_text-2655250":["47/61 Questions answered"],"/generic-IELDSET-3804323/generic-input_text-2601597":["47/61 Questions answered"],"/generic-IELDSET-9220118/generic-input_text-4297044":["47/61 Questions answered"],"/generic-IELDSET-844069/generic-input_text-8098470":["47/61 Questions answered"],"/generic-IELDSET-2937663/generic-input_text-5390152":["47/61 Questions answered"],"/generic-IELDSET-5967868/generic-input_text-589084":["47/61 Questions answered"],"/generic-IELDSET-2414157/generic-input_text-4001714":["47/61 Questions answered"],"/generic-IELDSET-7602892/generic-input_text-4202531":["47/61 Questions answered"],"/generic-IELDSET-559251/generic-coded_text-7990634":[{"|code":"2a1c0582-69b9-4fcf-87fc-949cd7a3f48f","|value":"No"}],"/generic-IELDSET-559251/generic-input_text-9975816":["47/61 Questions answered"],"/generic-IELDSET-5092922/generic-input_text-5940375":["47/61 Questions answered"],"/generic-IELDSET-4971383/generic-input_text-2621740":["47/61 Questions answered"],"/generic-IELDSET-5528019/generic-input_text-6575340":["47/61 Questions answered"],"/generic-IELDSET-7646571/generic-input_text-788932":["47/61 Questions answered"],"/generic-IELDSET-447661/generic-input_text-2045966":[],"/generic-IELDSET-447661/generic-input_text-5484663":[],"/generic-IELDSET-447661/generic-RDINAL-3275237":[{"|code":"6d451580-92ff-4602-b804-dce1af1203e0","|value":"Male","|ordinal":"1"}],"/generic-IELDSET-447661/generic-input_text-5821556":["47/61 Questions answered"],"/generic-IELDSET-3610640/generic-input_text-7494758":["47/61 Questions answered"]}</ns2:value>
+            <ns2:formalism>application/json</ns2:formalism>
+        </ns2:original_content>
+        <ns2:originating_system_audit>
+            <ns2:system_id>FormRenderer</ns2:system_id>
+        </ns2:originating_system_audit>
+    </ns2:feeder_audit>
+    <ns2:language>
+        <ns2:terminology_id>
+            <ns2:value>ISO_639-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>en</ns2:code_string>
+    </ns2:language>
+    <ns2:territory>
+        <ns2:terminology_id>
+            <ns2:value>ISO_3166-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>SI</ns2:code_string>
+    </ns2:territory>
+    <ns2:category>
+        <ns2:value>event</ns2:value>
+        <ns2:defining_code>
+            <ns2:terminology_id>
+                <ns2:value>openehr</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>433</ns2:code_string>
+        </ns2:defining_code>
+    </ns2:category>
+    <ns2:context>
+        <ns2:start_time>
+            <ns2:value>2021-02-15T12:22:00+01:00</ns2:value>
+        </ns2:start_time>
+        <ns2:setting>
+            <ns2:value>other care</ns2:value>
+            <ns2:defining_code>
+                <ns2:terminology_id>
+                    <ns2:value>openehr</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>238</ns2:code_string>
+            </ns2:defining_code>
+        </ns2:setting>
+        <ns2:other_context xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ns2:name>
+                <ns2:value>Tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.person_anonymised_parent.v0">
+                <ns2:name>
+                    <ns2:value>Anonymised person</ns2:value>
+                </ns2:name>
+                <ns2:archetype_details>
+                    <ns2:archetype_id>
+                        <ns2:value>openEHR-EHR-CLUSTER.person_anonymised_parent.v0</ns2:value>
+                    </ns2:archetype_id>
+                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                </ns2:archetype_details>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Birth Sex</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Male</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>local</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>at0009</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.research_information.v0">
+                <ns2:name>
+                    <ns2:value>Research information</ns2:value>
+                </ns2:name>
+                <ns2:archetype_details>
+                    <ns2:archetype_id>
+                        <ns2:value>openEHR-EHR-CLUSTER.research_information.v0</ns2:value>
+                    </ns2:archetype_id>
+                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                </ns2:archetype_details>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Assessment timeline</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>1 month</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>promTimelineAssessmentICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>M1</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:items>
+        </ns2:other_context>
+    </ns2:context>
+    <ns2:content xsi:type="ns2:ACTION" archetype_node_id="openEHR-EHR-ACTION.care_plan.v0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Care Plan</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-ACTION.care_plan.v0</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:language>
+            <ns2:terminology_id>
+                <ns2:value>ISO_639-1</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>en</ns2:code_string>
+        </ns2:language>
+        <ns2:encoding>
+            <ns2:terminology_id>
+                <ns2:value>IANA_character-sets</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>UTF-8</ns2:code_string>
+        </ns2:encoding>
+        <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+        <ns2:time>
+            <ns2:value>2021-02-15T12:14:00+01:00</ns2:value>
+        </ns2:time>
+        <ns2:description xsi:type="ns2:ITEM_TREE" archetype_node_id="at0019">
+            <ns2:name>
+                <ns2:value>Tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                <ns2:name>
+                    <ns2:value>Care Plan Name</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_TEXT">
+                    <ns2:value>TEST_carePlanName</ns2:value>
+                </ns2:value>
+            </ns2:items>
+        </ns2:description>
+        <ns2:ism_transition>
+            <ns2:current_state>
+                <ns2:value>completed</ns2:value>
+                <ns2:defining_code>
+                    <ns2:terminology_id>
+                        <ns2:value>openehr</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>532</ns2:code_string>
+                </ns2:defining_code>
+            </ns2:current_state>
+        </ns2:ism_transition>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.adhoc.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Socioeconomic status</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.education_summary.v1">
+            <ns2:name>
+                <ns2:value>Education summary</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-EVALUATION.education_summary.v1</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Tree</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Highest level completed</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Primary</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>local_terms</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>1</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:data>
+        </ns2:items>
+        <ns2:items xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.social_network.v0">
+            <ns2:name>
+                <ns2:value>Social network</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-EVALUATION.social_network.v0</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Tree</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0003">
+                    <ns2:name>
+                        <ns2:value>Network</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0006">
+                        <ns2:name>
+                            <ns2:value>Relationship</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>Married/partnered</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>maritalStatusICHOMCRC</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>1</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:items>
+            </ns2:data>
+        </ns2:items>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.adhoc.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Baseline clinical factors</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:ACTION" archetype_node_id="openEHR-EHR-ACTION.procedure.v1">
+            <ns2:name>
+                <ns2:value>Treatment</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-ACTION.procedure.v1</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:time>
+                <ns2:value>2021-02-15T12:14:00+01:00</ns2:value>
+            </ns2:time>
+            <ns2:description xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Tree</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Treatment name</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Chemotherapy</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>treatmentFUICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>3</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0060">
+                    <ns2:name>
+                        <ns2:value>Treatment date</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_DATE_TIME">
+                        <ns2:value>2021-02-05</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:description>
+            <ns2:ism_transition>
+                <ns2:current_state>
+                    <ns2:value>completed</ns2:value>
+                    <ns2:defining_code>
+                        <ns2:terminology_id>
+                            <ns2:value>openehr</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>532</ns2:code_string>
+                    </ns2:defining_code>
+                </ns2:current_state>
+            </ns2:ism_transition>
+        </ns2:items>
+        <ns2:items xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.ichom_crc_comorbidities.v0">
+            <ns2:name>
+                <ns2:value>ICHOM CRC Dataset Patient-reported co-morbidities</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-OBSERVATION.ichom_crc_comorbidities.v0</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>History</ns2:value>
+                </ns2:name>
+                <ns2:origin>
+                    <ns2:value>2021-02-15T12:14:00+01:00</ns2:value>
+                </ns2:origin>
+                <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Any event</ns2:value>
+                    </ns2:name>
+                    <ns2:time>
+                        <ns2:value>2021-02-15T12:14:00+01:00</ns2:value>
+                    </ns2:time>
+                    <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                        <ns2:name>
+                            <ns2:value>Tree</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Co-morbidities</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>1</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Heart disease</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0006</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Co-morbidities #2</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>2</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>High blood pressure</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0007</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Co-morbidities #3</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>3</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Leg pain when walking due to poor circulation</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0008</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Co-morbidities #4</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>4</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Lung disease</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0009</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Co-morbidities #5</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>5</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Diabetes</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0010</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Co-morbidities #6</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>6</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Kidney disease</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0011</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Co-morbidities #7</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>7</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Liver disease</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0012</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Co-morbidities #8</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>8</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Problems caused by stroke</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0013</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Co-morbidities #9</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>9</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Disease of the nervous system</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0014</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Co-morbidities #10</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>10</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Other cancer (within the last 5 years)</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0015</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Co-morbidities #11</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>11</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Depression</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0016</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Co-morbidities #12</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>12</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Arthritis</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0017</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:data>
+                </ns2:events>
+            </ns2:data>
+        </ns2:items>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.adhoc.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Degree of health</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.eortc_qlq_c30.v0">
+            <ns2:name>
+                <ns2:value>EORTC QLQ-C30</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-OBSERVATION.eortc_qlq_c30.v0</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>History</ns2:value>
+                </ns2:name>
+                <ns2:origin>
+                    <ns2:value>2021-02-15T12:14:00+01:00</ns2:value>
+                </ns2:origin>
+                <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Any event</ns2:value>
+                    </ns2:name>
+                    <ns2:time>
+                        <ns2:value>2021-02-15T12:14:00+01:00</ns2:value>
+                    </ns2:time>
+                    <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                        <ns2:name>
+                            <ns2:value>Tree</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Trouble doing strenuous activities</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>2</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>A little</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0006</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0009">
+                            <ns2:name>
+                                <ns2:value>Trouble taking a long walk</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>2</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>A little</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0039</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0010">
+                            <ns2:name>
+                                <ns2:value>Trouble taking a short walk outside of the house</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>2</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>A little</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0043</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0011">
+                            <ns2:name>
+                                <ns2:value>Need to stay in bed or a chair during the day</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>2</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>A little</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0047</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0012">
+                            <ns2:name>
+                                <ns2:value>Need help with eating, dressing, washing yourself or using the toilet</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>2</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>A little</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0051</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0013">
+                            <ns2:name>
+                                <ns2:value>During the past week were limited in doing either work or other daily activities</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>3</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Quite a bit</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0056</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0014">
+                            <ns2:name>
+                                <ns2:value>During the past week were limited in pursuing hobbies or other leisure time activities</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>3</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Quite a bit</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0060</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0015">
+                            <ns2:name>
+                                <ns2:value>During the past week had short of breath</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>3</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Quite a bit</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0064</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0016">
+                            <ns2:name>
+                                <ns2:value>During the past week had pain</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>3</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Quite a bit</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0068</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0017">
+                            <ns2:name>
+                                <ns2:value>During the past week need to rest</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>3</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Quite a bit</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0072</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0018">
+                            <ns2:name>
+                                <ns2:value>During the past week had trouble sleeping</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>4</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Very much</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0077</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0019">
+                            <ns2:name>
+                                <ns2:value>During the past week felt weak</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>4</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Very much</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0081</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0020">
+                            <ns2:name>
+                                <ns2:value>During the past week lacked appetite</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>4</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Very much</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0085</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0021">
+                            <ns2:name>
+                                <ns2:value>During the past week felt nauseated</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>4</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Very much</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0089</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0022">
+                            <ns2:name>
+                                <ns2:value>During the past week had vomited</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>4</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Very much</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0093</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0023">
+                            <ns2:name>
+                                <ns2:value>During the past week have been constipated</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>1</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Not at all</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0094</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0024">
+                            <ns2:name>
+                                <ns2:value>During the past week had diarrhea</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>1</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Not at all</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0098</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0025">
+                            <ns2:name>
+                                <ns2:value>During the past week were tired</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>1</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Not at all</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0102</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0026">
+                            <ns2:name>
+                                <ns2:value>During the past week pain interfere with daily activities</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>1</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Not at all</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0106</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0027">
+                            <ns2:name>
+                                <ns2:value>During the past week had difficulty in concentrating</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>1</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Not at all</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0110</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0028">
+                            <ns2:name>
+                                <ns2:value>During the past week felt tense</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>1</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Not at all</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0114</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0029">
+                            <ns2:name>
+                                <ns2:value>During the past week were worried</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>2</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>A little</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0119</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0030">
+                            <ns2:name>
+                                <ns2:value>During the past week felt irritable</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>3</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Quite a bit</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0124</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0031">
+                            <ns2:name>
+                                <ns2:value>During the past week felt depressed</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>4</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Very much</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0129</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0032">
+                            <ns2:name>
+                                <ns2:value>During the past week had difficulty remembering things</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>4</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Very much</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0133</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0033">
+                            <ns2:name>
+                                <ns2:value>During the past week physical condition or medical treatment interfered with family life</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>1</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Not at all</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0134</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0034">
+                            <ns2:name>
+                                <ns2:value>During the past week physical condition or medical treatment interfered with social activities</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>2</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>A little</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0139</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0035">
+                            <ns2:name>
+                                <ns2:value>During the past week physical condition or medical treatment caused financial difficulties</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>3</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Quite a bit</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0144</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0036">
+                            <ns2:name>
+                                <ns2:value>Rate overall health during the past week</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>7</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Excellent</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0152</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0037">
+                            <ns2:name>
+                                <ns2:value>Rate overall quality of life during the past week</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>1</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Very poor</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0153</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:data>
+                </ns2:events>
+            </ns2:data>
+        </ns2:items>
+        <ns2:items xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.eortc_qlq_cr29.v0">
+            <ns2:name>
+                <ns2:value>EORTC QLQ-CR29</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-OBSERVATION.eortc_qlq_cr29.v0</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>History</ns2:value>
+                </ns2:name>
+                <ns2:origin>
+                    <ns2:value>2021-02-15T12:14:00+01:00</ns2:value>
+                </ns2:origin>
+                <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Any point in time event</ns2:value>
+                    </ns2:name>
+                    <ns2:time>
+                        <ns2:value>2021-02-15T12:14:00+01:00</ns2:value>
+                    </ns2:time>
+                    <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                        <ns2:name>
+                            <ns2:value>Tree</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>During the past week had urinated frequently during the day</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>1</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Not at all</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0038</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
+                            <ns2:name>
+                                <ns2:value>During the past week had urinated frequently during the night</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>2</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>A little</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0039</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0006">
+                            <ns2:name>
+                                <ns2:value>During the past week had any unintentional release (leakage) of urine</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>3</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Quite a bit</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0040</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0021">
+                            <ns2:name>
+                                <ns2:value>Do you have a stoma bag (colostomy/ileostomy)?</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                <ns2:value>false</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0028">
+                            <ns2:name>
+                                <ns2:value>During the past week had unintentional release of gas/flatulence from your back passage</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>3</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Quite a bit</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0040</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0029">
+                            <ns2:name>
+                                <ns2:value>During the past week had leakage of stools from your back passage</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>4</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Very much</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0041</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0030">
+                            <ns2:name>
+                                <ns2:value>During the past week had sore skin around your anal area</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>4</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Very much</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0041</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0031">
+                            <ns2:name>
+                                <ns2:value>During the past week had frequent bowel movements occur during the day</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>4</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Very much</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0041</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0032">
+                            <ns2:name>
+                                <ns2:value>During the past week had frequent bowel movements occur during the night</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>4</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Very much</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0041</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0033">
+                            <ns2:name>
+                                <ns2:value>During the past week felt embarrassed because of your bowel movement</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>4</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Very much</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0041</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0034">
+                            <ns2:name>
+                                <ns2:value>During the past 4 weeks to what extent were you interested in sex?</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>2</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>A little</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0039</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0035">
+                            <ns2:name>
+                                <ns2:value>During the past 4 weeks had difficulty getting or maintaining an erection</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>2</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>A little</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0039</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:data>
+                </ns2:events>
+            </ns2:data>
+        </ns2:items>
+        <ns2:items xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.mskcc_bowel_function_instrument.v0">
+            <ns2:name>
+                <ns2:value>MSKCC Bowel Function Instrument</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-OBSERVATION.mskcc_bowel_function_instrument.v0</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>History</ns2:value>
+                </ns2:name>
+                <ns2:origin>
+                    <ns2:value>2021-02-15T12:14:00+01:00</ns2:value>
+                </ns2:origin>
+                <ns2:events xsi:type="ns2:INTERVAL_EVENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Over the last 4 weeks</ns2:value>
+                    </ns2:name>
+                    <ns2:time>
+                        <ns2:value>2021-02-15T12:14:00+01:00</ns2:value>
+                    </ns2:time>
+                    <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                        <ns2:name>
+                            <ns2:value>Tree</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
+                            <ns2:name>
+                                <ns2:value>Certain solid foods increase the number of bowel movements in a day</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>1</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Always</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0023</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0006">
+                            <ns2:name>
+                                <ns2:value>Certain liquids increase the number of bowel movements in a day</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>1</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Always</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0023</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0016">
+                            <ns2:name>
+                                <ns2:value>Had limited the types of solid foods to control bowel movements</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>1</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Always</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0023</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0017">
+                            <ns2:name>
+                                <ns2:value>Had limited the types of liquids to control bowel movements</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>1</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>Always</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0023</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:data>
+                    <ns2:width>
+                        <ns2:value>P4W</ns2:value>
+                    </ns2:width>
+                    <ns2:math_function>
+                        <ns2:value>mean</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>openehr</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>146</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:math_function>
+                </ns2:events>
+            </ns2:data>
+        </ns2:items>
+        <ns2:items xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.eortc_qlq_lmc21.v0">
+            <ns2:name>
+                <ns2:value>EORTC QLQ-LMC21</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-OBSERVATION.eortc_qlq_lmc21.v0</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>History</ns2:value>
+                </ns2:name>
+                <ns2:origin>
+                    <ns2:value>2021-02-15T12:14:00+01:00</ns2:value>
+                </ns2:origin>
+                <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Any event</ns2:value>
+                    </ns2:name>
+                    <ns2:time>
+                        <ns2:value>2021-02-15T12:14:00+01:00</ns2:value>
+                    </ns2:time>
+                    <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                        <ns2:name>
+                            <ns2:value>Tree</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0011">
+                            <ns2:name>
+                                <ns2:value>During the past week had tingling hands or feet</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                <ns2:value>2</ns2:value>
+                                <ns2:symbol>
+                                    <ns2:value>A little</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0059</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:symbol>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:data>
+                </ns2:events>
+            </ns2:data>
+        </ns2:items>
+    </ns2:content>
+</ns2:composition>

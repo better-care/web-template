@@ -1,0 +1,86 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+	"colposcopy/_feeder_audit/originating_system_audit|system_id" : "FormRenderer",
+	"colposcopy/_feeder_audit/original_content" : "{\"/colposcopy_of_cervix/colposcopy_findings/generic-ANVAS-8538164\":[],\"/colposcopy_of_vulva/colposcopy_findings/generic-ANVAS-5561180\":[],\"/inspection_of_vagina/colposcopy_findings/generic-ANVAS-4151073\":[]}",
+	"colposcopy/_feeder_audit/original_content|formalism" : "application/json",
+	"colposcopy/language|code" : "sl",
+	"colposcopy/language|terminology" : "ISO_639-1",
+	"colposcopy/territory|code" : "SI",
+	"colposcopy/territory|terminology" : "ISO_3166-1",
+	"colposcopy/context/context_detail:0/date_and_time" : "2021-02-22T08:22:00+01:00",
+	"colposcopy/context/start_time" : "2021-02-15T12:14:00+01:00",
+	"colposcopy/context/setting|code" : "238",
+	"colposcopy/context/setting|value" : "other care",
+	"colposcopy/context/setting|terminology" : "openehr",
+	"colposcopy/colposcopy_of_cervix/procedure_name|code" : "1",
+	"colposcopy/colposcopy_of_cervix/procedure_name|value" : "Odščip",
+	"colposcopy/colposcopy_of_cervix/procedure_name|terminology" : "BO_SNOMEDCT",
+	"colposcopy/colposcopy_of_cervix/site_of_procedure|code" : "1",
+	"colposcopy/colposcopy_of_cervix/site_of_procedure|value" : "Maternični vrat",
+	"colposcopy/colposcopy_of_cervix/site_of_procedure|terminology" : "F_site_procedure",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/colposcopy_evaluation|code" : "1",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/colposcopy_evaluation|value" : "Zadovoljiva",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/colposcopy_evaluation|terminology" : "AT_colposcopy_evaluation",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/tz_type|code" : "2",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/tz_type|value" : "Tz 2",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/tz_type|terminology" : "AZ_tz_type",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/atypical_transformation_zone_atz|code" : "2",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/atypical_transformation_zone_atz|value" : "Atz 2",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/atypical_transformation_zone_atz|terminology" : "AX_atz_type",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/findings|code" : "2",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/findings|value" : "Nenormalen",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/findings|terminology" : "BB_findings",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/lesion_surface_area" : "50",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/examination_of_a_lesion:0/lesion_type|code" : "2",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/examination_of_a_lesion:0/lesion_type|value" : "PIL-VS",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/examination_of_a_lesion:0/lesion_type|terminology" : "AB_lesion_type",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/examination_of_a_lesion:0/body_site:0|code" : "1",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/examination_of_a_lesion:0/body_site:0|value" : "A1",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/examination_of_a_lesion:0/body_site:0|terminology" : "local_terms",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/examination_of_a_lesion:0/atypical_figures:0|code" : "3",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/examination_of_a_lesion:0/atypical_figures:0|value" : "Kongenitalna TZ",
+	"colposcopy/colposcopy_of_cervix/colposcopy_findings:0/examination_of_a_lesion:0/atypical_figures:0|terminology" : "AV_atypical_figures",
+	"colposcopy/colposcopy_of_cervix/comment" : "asdasd",
+	"colposcopy/colposcopy_of_cervix/time" : "2021-02-15T12:14:00+01:00",
+	"colposcopy/colposcopy_of_cervix/language|code" : "sl",
+	"colposcopy/colposcopy_of_cervix/language|terminology" : "ISO_639-1",
+	"colposcopy/colposcopy_of_cervix/encoding|code" : "UTF-8",
+	"colposcopy/colposcopy_of_cervix/encoding|terminology" : "IANA_character-sets",
+	"colposcopy/colposcopy_of_vulva/colposcopy_findings:0/anomalies:0/anomaly_type|code" : "2",
+	"colposcopy/colposcopy_of_vulva/colposcopy_findings:0/anomalies:0/anomaly_type|value" : "VIN",
+	"colposcopy/colposcopy_of_vulva/colposcopy_findings:0/anomalies:0/anomaly_type|terminology" : "AY_vulva_anomalies",
+	"colposcopy/colposcopy_of_vulva/colposcopy_findings:0/anomalies:0/location|code" : "2",
+	"colposcopy/colposcopy_of_vulva/colposcopy_findings:0/anomalies:0/location|value" : "Velika sramna ustnica levo",
+	"colposcopy/colposcopy_of_vulva/colposcopy_findings:0/anomalies:0/location|terminology" : "local_terms",
+	"colposcopy/colposcopy_of_vulva/time" : "2021-02-15T12:14:00+01:00",
+	"colposcopy/colposcopy_of_vulva/language|code" : "sl",
+	"colposcopy/colposcopy_of_vulva/language|terminology" : "ISO_639-1",
+	"colposcopy/colposcopy_of_vulva/encoding|code" : "UTF-8",
+	"colposcopy/colposcopy_of_vulva/encoding|terminology" : "IANA_character-sets",
+	"colposcopy/inspection_of_vagina/inspection_of_vagina:0/no_abnormality_detected" : true,
+	"colposcopy/inspection_of_vagina/colposcopy_findings:0/anomalies:0/anomaly_type|code" : "3",
+	"colposcopy/inspection_of_vagina/colposcopy_findings:0/anomalies:0/anomaly_type|value" : "Nespecifične lezije",
+	"colposcopy/inspection_of_vagina/colposcopy_findings:0/anomalies:0/anomaly_type|terminology" : "BA_vagina_anomalies",
+	"colposcopy/inspection_of_vagina/colposcopy_findings:0/anomalies:0/location" : "asdads",
+	"colposcopy/inspection_of_vagina/time" : "2021-02-15T12:14:00+01:00",
+	"colposcopy/inspection_of_vagina/language|code" : "sl",
+	"colposcopy/inspection_of_vagina/language|terminology" : "ISO_639-1",
+	"colposcopy/inspection_of_vagina/encoding|code" : "UTF-8",
+	"colposcopy/inspection_of_vagina/encoding|terminology" : "IANA_character-sets",
+	"colposcopy/category|code" : "433",
+	"colposcopy/category|value" : "event",
+	"colposcopy/category|terminology" : "openehr"
+}

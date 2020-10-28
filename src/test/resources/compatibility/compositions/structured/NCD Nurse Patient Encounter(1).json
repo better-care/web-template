@@ -1,0 +1,844 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "ncd_nurse_patient_encounter": {
+    "_uid": [
+      "b0137c11-dd3d-464d-92da-3fcea0ca13a9::default::1"
+    ],
+    "language": [
+      {
+        "|code": "en",
+        "|terminology": "ISO_639-1"
+      }
+    ],
+    "territory": [
+      {
+        "|code": "en",
+        "|terminology": "ISO_3166-1"
+      }
+    ],
+    "context": [
+      {
+        "start_time": [
+          "2021-01-11T22:10:03.400+01:00"
+        ],
+        "setting": [
+          {
+            "|code": "238",
+            "|value": "other care",
+            "|terminology": "openehr"
+          }
+        ]
+      }
+    ],
+    "reason_for_encounter": [
+      {
+        "presenting_problem": [
+          "teste"
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "vital_signs": [
+      {
+        "blood_pressure": [
+          {
+            "blood_pressure_reading": [
+              {
+                "systolic": [
+                  {
+                    "|magnitude": 180.0,
+                    "|unit": "mm[Hg]"
+                  }
+                ],
+                "diastolic": [
+                  {
+                    "|magnitude": 120.0,
+                    "|unit": "mm[Hg]"
+                  }
+                ],
+                "position": [
+                  {
+                    "|code": "at1000",
+                    "|value": "Standing",
+                    "|terminology": "local"
+                  }
+                ],
+                "time": [
+                  "2021-01-11T22:10:03.400+01:00"
+                ]
+              }
+            ],
+            "location_of_measurement": [
+              {
+                "|code": "at0026",
+                "|value": "Left arm",
+                "|terminology": "local"
+              }
+            ],
+            "method": [
+              {
+                "|code": "at1039",
+                "|value": "Machine",
+                "|terminology": "local"
+              }
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "heart_rate": [
+          {
+            "heart_rate_reading": [
+              {
+                "heart_rate": [
+                  {
+                    "|magnitude": 60.0,
+                    "|unit": "/min"
+                  }
+                ],
+                "time": [
+                  "2021-01-11T22:10:03.400+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "respiration": [
+          {
+            "respiration_rate": [
+              {
+                "respiratory_rate": [
+                  {
+                    "|magnitude": 60.0,
+                    "|unit": "/min"
+                  }
+                ],
+                "time": [
+                  "2021-01-11T22:10:03.400+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "body_temperature": [
+          {
+            "body_temperature_reading": [
+              {
+                "temperature": [
+                  {
+                    "|magnitude": 37.0,
+                    "|unit": "Cel"
+                  }
+                ],
+                "time": [
+                  "2021-01-11T22:10:03.400+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "oxygen_saturation": [
+          {
+            "spo2_reading": [
+              {
+                "spo": [
+                  {
+                    "|numerator": 96.0,
+                    "|denominator": 100.0,
+                    "|type": 2,
+                    "": 0.96
+                  }
+                ],
+                "inspired_oxygen": [
+                  {
+                    "flow_rate": [
+                      {
+                        "|magnitude": 45.0,
+                        "|unit": "l/min"
+                      }
+                    ],
+                    "method_of_oxygen_delivery": [
+                      "Nasal cannula"
+                    ]
+                  }
+                ],
+                "time": [
+                  "2021-01-11T22:10:03.400+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "anthropometrics": [
+      {
+        "height_length": [
+          {
+            "height_length_measurement": [
+              {
+                "height_length": [
+                  {
+                    "|magnitude": 165.0,
+                    "|unit": "cm"
+                  }
+                ],
+                "position": [
+                  {
+                    "|code": "at0016",
+                    "|value": "Standing",
+                    "|terminology": "local"
+                  }
+                ],
+                "time": [
+                  "2021-01-11T22:10:03.400+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "body_weight": [
+          {
+            "body_weight_measurement": [
+              {
+                "weight": [
+                  {
+                    "|magnitude": 70.0,
+                    "|unit": "kg"
+                  }
+                ],
+                "state_of_dress": [
+                  {
+                    "|code": "at0011",
+                    "|value": "Lightly clothed/underwear",
+                    "|terminology": "local"
+                  }
+                ],
+                "time": [
+                  "2021-01-11T22:10:03.400+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "body_mass_index": [
+          {
+            "bmi_measurement": [
+              {
+                "body_mass_index": [
+                  {
+                    "|magnitude": 26.0,
+                    "|unit": "kg/m2"
+                  }
+                ],
+                "time": [
+                  "2021-01-11T22:10:03.400+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "waist_circumference": [
+          {
+            "waist_circumference_measurement": [
+              {
+                "waist_circumference": [
+                  {
+                    "|magnitude": 35.0,
+                    "|unit": "cm"
+                  }
+                ],
+                "time": [
+                  "2021-01-11T22:10:03.400+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "point_of_care_tests": [
+      {
+        "random_blood_glucose": [
+          {
+            "rbg_test": [
+              {
+                "test_name": [
+                  {
+                    "|code": "14743-9",
+                    "|value": "Glucose [Moles/volume] in Capillary blood by Glucometer",
+                    "|terminology": "LOINC"
+                  }
+                ],
+                "glucose_result": [
+                  {
+                    "analyte_name": [
+                      {
+                        "|code": "14743-9",
+                        "|value": "Glucose [Moles/volume] in Capillary blood by Glucometer",
+                        "|terminology": "LOINC"
+                      }
+                    ],
+                    "result": [
+                      {
+                        "|magnitude": 165.0,
+                        "|unit": "mg/dl"
+                      }
+                    ]
+                  }
+                ],
+                "time": [
+                  "2021-01-11T22:10:03.400+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "hiv_rapid_test": [
+          {
+            "hiv_test": [
+              {
+                "test_name": [
+                  {
+                    "|code": "LOINC3",
+                    "|value": "HIV rapid test",
+                    "|terminology": "LOINC"
+                  }
+                ],
+                "hiv_result": [
+                  {
+                    "result": [
+                      "Negative"
+                    ]
+                  }
+                ],
+                "time": [
+                  "2021-01-11T22:10:03.400+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "vdrl_test_result": [
+          {
+            "vdrl_test": [
+              {
+                "test_name": [
+                  {
+                    "|code": "LOINC4",
+                    "|value": "VDRL",
+                    "|terminology": "LOINC"
+                  }
+                ],
+                "vdrl_result": [
+                  {
+                    "result": [
+                      "Weakly reactive"
+                    ]
+                  }
+                ],
+                "time": [
+                  "2021-01-11T22:10:03.400+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "urine_dipstick": [
+          {
+            "point_in_time": [
+              {
+                "glucose": [
+                  {
+                    "|code": "at0115",
+                    "|value": "Negative",
+                    "|ordinal": 1
+                  }
+                ],
+                "bilirubin": [
+                  {
+                    "|code": "at0121",
+                    "|value": "Negative",
+                    "|ordinal": 1
+                  }
+                ],
+                "ketones": [
+                  {
+                    "|code": "at0109",
+                    "|value": "Negative",
+                    "|ordinal": 1
+                  }
+                ],
+                "specific_gravity": [
+                  {
+                    "|code": "at0153",
+                    "|value": "1.005",
+                    "|ordinal": 2
+                  }
+                ],
+                "blood": [
+                  {
+                    "|code": "at0103",
+                    "|value": "Non-haemolysed Trace",
+                    "|ordinal": 2
+                  }
+                ],
+                "ph": [
+                  {
+                    "|code": "at0127",
+                    "|value": "5.0",
+                    "|ordinal": 1
+                  }
+                ],
+                "protein": [
+                  {
+                    "|code": "at0099",
+                    "|value": "2+",
+                    "|ordinal": 4
+                  }
+                ],
+                "urobilinogen": [
+                  {
+                    "|code": "at0163",
+                    "|value": "2 mg/dL",
+                    "|ordinal": 3
+                  }
+                ],
+                "nitrite": [
+                  {
+                    "|code": "at0160",
+                    "|value": "Positive",
+                    "|ordinal": 2
+                  }
+                ],
+                "leukocytes": [
+                  {
+                    "|code": "at0136",
+                    "|value": "Trace",
+                    "|ordinal": 2
+                  }
+                ],
+                "time": [
+                  "2021-01-11T22:10:03.400+01:00"
+                ]
+              }
+            ],
+            "method": [
+              {
+                "|code": "at0188",
+                "|value": "Automatic",
+                "|terminology": "local"
+              }
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "hba1c": [
+          {
+            "hba1c_test": [
+              {
+                "test_name": [
+                  "HbA1c"
+                ],
+                "hba1c_result": [
+                  {
+                    "result": [
+                      {
+                        "|magnitude": 25.0,
+                        "|unit": "%"
+                      }
+                    ]
+                  }
+                ],
+                "time": [
+                  "2021-01-11T22:10:03.400+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "cholesterol": [
+          {
+            "cholesterol_test": [
+              {
+                "test_name": [
+                  "Cholesterol"
+                ],
+                "cholesterol_result": [
+                  {
+                    "result": [
+                      {
+                        "|magnitude": 65.0,
+                        "|unit": "mg/dl"
+                      }
+                    ]
+                  }
+                ],
+                "time": [
+                  "2021-01-11T22:10:03.400+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "cd4_count": [
+          {
+            "cd4_test": [
+              {
+                "test_name": [
+                  "CD4 Count"
+                ],
+                "cd4_count": [
+                  {
+                    "result": [
+                      {
+                        "|magnitude": 65.0,
+                        "|unit": "mm3"
+                      }
+                    ]
+                  }
+                ],
+                "time": [
+                  "2021-01-11T22:10:03.400+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "covid_antigen_test_result": [
+          {
+            "covid_antigen_test": [
+              {
+                "test_name": [
+                  "Covid antigen test"
+                ],
+                "covid_antigen_test": [
+                  {
+                    "result": [
+                      "Indeterminate"
+                    ]
+                  }
+                ],
+                "time": [
+                  "2021-01-11T22:10:03.400+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "problem_list": [
+      {
+        "current_problems": [
+          {
+            "problem_diagnosis_name": [
+              "ACHF"
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "tobacco_smoking_summary": [
+      {
+        "overall_status": [
+          {
+            "|code": "at0006",
+            "|value": "Never smoked",
+            "|terminology": "local"
+          }
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "clinical_synopsis": [
+      {
+        "synopsis": [
+          "TESTE"
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "category": [
+      {
+        "|code": "433",
+        "|value": "event",
+        "|terminology": "openehr"
+      }
+    ],
+    "composer": [
+      {
+        "|name": "Testing Nurse"
+      }
+    ]
+  },
+  "ctx": {
+    "generic_fields": {
+      "/ncd_nurse_patient_encounter/vital_signs/blood_pressure/generic-input_text-4045865": [],
+      "/ncd_nurse_patient_encounter/vital_signs/blood_pressure/generic-input_text-1516503": [],
+      "/ncd_nurse_patient_encounter/vital_signs/blood_pressure/generic-input_text-1021186": [],
+      "/ncd_nurse_patient_encounter/vital_signs/oxygen_saturation/spo2_reading|0/generic-input_text-7559265": [],
+      "/ncd_nurse_patient_encounter/anthropometrics/body_weight/generic-fieldset-8886655/generic-input_text-3640596": [],
+      "/ncd_nurse_patient_encounter/anthropometrics/body_weight/generic-fieldset-8886655/generic-input_text-4286269": []
+    }
+  }
+}

@@ -1,0 +1,72 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "ctx": {
+    "language": "en",
+    "territory": "EN",
+    "composer_name": "Test"
+  },
+  "apgar": {
+    "apgar_score": [
+      {
+        "a5_minute": [
+          {
+            "respiratory_effort": [
+              {
+                "|code": "at0011",
+                "|value": "Weak or irregular",
+                "|ordinal": 1
+              }
+            ],
+            "heart_rate": [
+              {
+                "|code": "at0007",
+                "|value": "<100 beats per minute",
+                "|ordinal": 1
+              }
+            ],
+            "muscle_tone": [
+              {
+                "|code": "at0016",
+                "|value": "Normal tone",
+                "|ordinal": 2
+              }
+            ],
+            "reflex_irritability": [
+              {
+                "|code": "at0020",
+                "|value": "Normal response",
+                "|ordinal": 2
+              }
+            ],
+            "skin_colour": [
+              {
+                "|code": "at0024",
+                "|value": "Completely pink",
+                "|ordinal": 2
+              }
+            ],
+            "total": [
+              8
+            ],
+            "time": [
+              "2020-02-05T12:00:00+01:00"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

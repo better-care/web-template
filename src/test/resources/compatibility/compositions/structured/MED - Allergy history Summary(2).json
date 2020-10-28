@@ -1,0 +1,251 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "allergy_history": {
+    "_uid": [
+      "f07c4461-0165-49c3-b4af-c3e3972e259e::default::1"
+    ],
+    "language": [
+      {
+        "|code": "sl",
+        "|terminology": "ISO_639-1"
+      }
+    ],
+    "territory": [
+      {
+        "|code": "SI",
+        "|terminology": "ISO_3166-1"
+      }
+    ],
+    "summary_context": [
+      {
+        "_other_participation": [
+          {
+            "|function": "requester",
+            "|mode": "not specified",
+            "|name": "Testing Doctor",
+            "|id": "6227006",
+            "|id_namespace": "ispek",
+            "|id_scheme": "ispek_scheme"
+          }
+        ],
+        "date_last_reviewed": [
+          "2016-04-18T11:56:38.930+02:00"
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "allergies": [
+      {
+        "clinical_synopses_-_allergies": [
+          {
+            "_other_participation": [
+              {
+                "|function": "requester",
+                "|mode": "not specified",
+                "|name": "Testing Doctor",
+                "|id": "6227006",
+                "|id_namespace": "ispek",
+                "|id_scheme": "ispek_scheme"
+              }
+            ],
+            "presence_of_allergies": [
+              {
+                "|code": "at0.11",
+                "|value": "Allergies are present",
+                "|terminology": "local"
+              }
+            ],
+            "language": [
+              {
+                "|code": "sl",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "adverse_reaction": [
+          {
+            "_other_participation": [
+              {
+                "|function": "requester",
+                "|mode": "not specified",
+                "|name": "Testing Doctor",
+                "|id": "6227006",
+                "|id_namespace": "ispek",
+                "|id_scheme": "ispek_scheme"
+              }
+            ],
+            "type_of_allergen": [
+              {
+                "|code": "1",
+                "|value": "Arašidi",
+                "|terminology": "external"
+              }
+            ],
+            "language": [
+              {
+                "|code": "sl",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          },
+          {
+            "_other_participation": [
+              {
+                "|function": "requester",
+                "|mode": "not specified",
+                "|name": "Testing Doctor",
+                "|id": "6227006",
+                "|id_namespace": "ispek",
+                "|id_scheme": "ispek_scheme"
+              }
+            ],
+            "type_of_allergen": [
+              {
+                "|code": "6",
+                "|value": "Jajce",
+                "|terminology": "external"
+              }
+            ],
+            "language": [
+              {
+                "|code": "sl",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          },
+          {
+            "_other_participation": [
+              {
+                "|function": "requester",
+                "|mode": "not specified",
+                "|name": "Testing Doctor",
+                "|id": "6227006",
+                "|id_namespace": "ispek",
+                "|id_scheme": "ispek_scheme"
+              }
+            ],
+            "type_of_allergen": [
+              {
+                "|code": "17",
+                "|value": "Mačja dlaka",
+                "|terminology": "external"
+              }
+            ],
+            "language": [
+              {
+                "|code": "sl",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          },
+          {
+            "_other_participation": [
+              {
+                "|function": "requester",
+                "|mode": "not specified",
+                "|name": "Testing Doctor",
+                "|id": "6227006",
+                "|id_namespace": "ispek",
+                "|id_scheme": "ispek_scheme"
+              }
+            ],
+            "type_of_allergen": [
+              {
+                "|code": "1248",
+                "|value": "Amoxicillin",
+                "|terminology": "external"
+              }
+            ],
+            "reaction_event_summary": [
+              {
+                "reaction_detail": [
+                  {
+                    "reaction_description": [
+                      "Pozna preobčetljivostna reakcija - generalizirana urtikarija"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "sl",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "category": [
+      {
+        "|code": "431",
+        "|value": "persistent",
+        "|terminology": "openehr"
+      }
+    ],
+    "composer": [
+      {
+        "|id": "434714707",
+        "|id_scheme": "ispek_scheme",
+        "|id_namespace": "ispek",
+        "|name": "Testing Nurse"
+      }
+    ]
+  }
+}

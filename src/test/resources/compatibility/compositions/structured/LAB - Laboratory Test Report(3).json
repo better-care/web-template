@@ -1,0 +1,3366 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "laboratory_report": {
+    "_uid": [
+      "28406098-3e1d-4f8b-b876-3f115d0eae36::default::6"
+    ],
+    "language": [
+      {
+        "|code": "sl",
+        "|terminology": "ISO_639-1"
+      }
+    ],
+    "territory": [
+      {
+        "|code": "SI",
+        "|terminology": "ISO_3166-1"
+      }
+    ],
+    "context": [
+      {
+        "_end_time": [
+          "2015-03-17T15:56:44+01:00"
+        ],
+        "order_group_number": [
+          "4637941/962366"
+        ],
+        "start_time": [
+          "2015-03-17T15:56:44+01:00"
+        ],
+        "setting": [
+          {
+            "|code": "238",
+            "|value": "other care",
+            "|terminology": "openehr"
+          }
+        ]
+      }
+    ],
+    "laboratory_test_result": [
+      {
+        "any_event": [
+          {
+            "universal_service_identifier": [
+              {
+                "|code": "060051",
+                "|value": "P-Fibrinogen",
+                "|terminology": "local"
+              }
+            ],
+            "specimen": [
+              {
+                "specimen_type": [
+                  {
+                    "|code": "41",
+                    "|value": "Plazma-citrat",
+                    "|terminology": "local"
+                  }
+                ],
+                "collection_details": [
+                  {
+                    "datetime_collection_start": [
+                      "2015-03-17T14:05+01:00"
+                    ]
+                  }
+                ],
+                "identifiers": [
+                  {
+                    "placer_assigned_identifier": [
+                      "2040676"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "overall_test_result_status": [
+              {
+                "|code": "at0038",
+                "|value": "Final",
+                "|terminology": "local"
+              }
+            ],
+            "datetime_result_issued": [
+              "2015-03-17T15:56:54+01:00"
+            ],
+            "result_group": [
+              {
+                "_name": [
+                  {
+                    "|code": "06005101",
+                    "|value": "P-Fibrinogen",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "06005101",
+                        "|value": "P-Fibrinogen",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "2.9|2.1-3.7|g/L|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 2.9,
+                            "|unit": "g/L",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 2.1,
+                                    "|unit": "g/L"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 3.7,
+                                    "|unit": "g/L"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T15:56:44+01:00"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "time": [
+              "2015-03-17T15:57:16.708+01:00"
+            ]
+          }
+        ],
+        "test_request_details": [
+          {
+            "requester_order_identifier": [
+              {
+                "|id": "4695920",
+                "|issuer": "PeK",
+                "|assigner": "PeK",
+                "|type": "lab test result"
+              }
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      },
+      {
+        "any_event": [
+          {
+            "universal_service_identifier": [
+              {
+                "|code": "LAB_ORDER_COMMENT",
+                "|value": "LAB_ORDER_COMMENT",
+                "|terminology": "local"
+              }
+            ],
+            "overall_test_result_status": [
+              {
+                "|code": "at0038",
+                "|value": "Final",
+                "|terminology": "local"
+              }
+            ],
+            "datetime_result_issued": [
+              "2015-03-24T10:04:06.393+01:00"
+            ],
+            "result_group": [
+              {
+                "_name": [
+                  {
+                    "|code": "LAB_RESULT_COMMENT",
+                    "|value": "LAB_RESULT_COMMENT",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "LAB_RESULT_COMMENT",
+                        "|value": "LAB_RESULT_COMMENT",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "LAB_RESULT_COMMENT",
+                            "|formalism": "duration"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_comment": [
+                      "TEKOČE BLATO"
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "test_result_representation": [
+              {
+                "|value": "5c1a0736-9461-4819-85b5-3fc6933d3406",
+                "|mediatype": "application/pdf"
+              }
+            ],
+            "time": [
+              "2015-03-17T15:57:16.708+01:00"
+            ]
+          }
+        ],
+        "test_request_details": [
+          {
+            "requester_order_identifier": [
+              {
+                "|id": "4637941/962366",
+                "|issuer": "PeK",
+                "|assigner": "PeK",
+                "|type": "lab test result"
+              }
+            ],
+            "receiver_order_identifier": [
+              {
+                "|id": "4637941/962366",
+                "|issuer": "LIS",
+                "|assigner": "LIS",
+                "|type": "lab test result"
+              }
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      },
+      {
+        "any_event": [
+          {
+            "universal_service_identifier": [
+              {
+                "|code": "000056",
+                "|value": "K-CRP",
+                "|terminology": "local"
+              }
+            ],
+            "specimen": [
+              {
+                "specimen_type": [
+                  {
+                    "|code": "46",
+                    "|value": "Kri-EDTA",
+                    "|terminology": "local"
+                  }
+                ],
+                "collection_details": [
+                  {
+                    "datetime_collection_start": [
+                      "2015-03-17T14:05+01:00"
+                    ]
+                  }
+                ],
+                "identifiers": [
+                  {
+                    "placer_assigned_identifier": [
+                      "2040675"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "overall_test_result_status": [
+              {
+                "|code": "at0038",
+                "|value": "Final",
+                "|terminology": "local"
+              }
+            ],
+            "datetime_result_issued": [
+              "2015-03-17T16:31:16+01:00"
+            ],
+            "result_group": [
+              {
+                "_name": [
+                  {
+                    "|code": "00005601",
+                    "|value": "K-CRP",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "00005601",
+                        "|value": "K-CRP",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "< 8|do 8|mg/L|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "time": [
+              "2015-03-17T16:31:32.333+01:00"
+            ]
+          }
+        ],
+        "test_request_details": [
+          {
+            "requester_order_identifier": [
+              {
+                "|id": "4695909",
+                "|issuer": "PeK",
+                "|assigner": "PeK",
+                "|type": "lab test result"
+              }
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      },
+      {
+        "any_event": [
+          {
+            "universal_service_identifier": [
+              {
+                "|code": "020001",
+                "|value": "K-Hemogram",
+                "|terminology": "local"
+              }
+            ],
+            "specimen": [
+              {
+                "specimen_type": [
+                  {
+                    "|code": "46",
+                    "|value": "Kri-EDTA",
+                    "|terminology": "local"
+                  }
+                ],
+                "collection_details": [
+                  {
+                    "datetime_collection_start": [
+                      "2015-03-17T14:05+01:00"
+                    ]
+                  }
+                ],
+                "identifiers": [
+                  {
+                    "placer_assigned_identifier": [
+                      "2040675"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "overall_test_result_status": [
+              {
+                "|code": "at0038",
+                "|value": "Final",
+                "|terminology": "local"
+              }
+            ],
+            "datetime_result_issued": [
+              "2015-03-17T16:31:17+01:00"
+            ],
+            "result_group": [
+              {
+                "_name": [
+                  {
+                    "|code": "02000101",
+                    "|value": "K-Levkociti",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "02000101",
+                        "|value": "K-Levkociti",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "6.2|4.2-9.4|10^9/L|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 6.2,
+                            "|unit": "10^9/L",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 4.2,
+                                    "|unit": "10^9/L"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 9.4,
+                                    "|unit": "10^9/L"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              },
+              {
+                "_name": [
+                  {
+                    "|code": "02000102",
+                    "|value": "K-Eritrociti",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "02000102",
+                        "|value": "K-Eritrociti",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "3.57|3.93-4.90|10^12/L|L",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 3.57,
+                            "|unit": "10^12/L",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 3.93,
+                                    "|unit": "10^12/L"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 4.9,
+                                    "|unit": "10^12/L"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "L"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              },
+              {
+                "_name": [
+                  {
+                    "|code": "02000103",
+                    "|value": "K-Hemoglobin",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "02000103",
+                        "|value": "K-Hemoglobin",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "96|108-133|g/L|L",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 96.0,
+                            "|unit": "g/L",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 108.0,
+                                    "|unit": "g/L"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 133.0,
+                                    "|unit": "g/L"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "L"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              },
+              {
+                "_name": [
+                  {
+                    "|code": "02000104",
+                    "|value": "K-Hematokrit",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "02000104",
+                        "|value": "K-Hematokrit",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "0.290|0.334-0.404|1|L",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 0.29,
+                            "|unit": "1",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 0.334,
+                                    "|unit": "1"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 0.404,
+                                    "|unit": "1"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "L"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              },
+              {
+                "_name": [
+                  {
+                    "|code": "02000105",
+                    "|value": "K-MCV",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "02000105",
+                        "|value": "K-MCV",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "81|77-91|fL|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 81.0,
+                            "|unit": "fL",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 77.0,
+                                    "|unit": "fL"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 91.0,
+                                    "|unit": "fL"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              },
+              {
+                "_name": [
+                  {
+                    "|code": "02000106",
+                    "|value": "K-MCH",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "02000106",
+                        "|value": "K-MCH",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "26.9|24.8-30.2|pg|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 26.9,
+                            "|unit": "pg",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 24.8,
+                                    "|unit": "pg"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 30.2,
+                                    "|unit": "pg"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              },
+              {
+                "_name": [
+                  {
+                    "|code": "02000107",
+                    "|value": "K-MCHC",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "02000107",
+                        "|value": "K-MCHC",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "331|315-342|g/L|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 331.0,
+                            "|unit": "g/L",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 315.0,
+                                    "|unit": "g/L"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 342.0,
+                                    "|unit": "g/L"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              },
+              {
+                "_name": [
+                  {
+                    "|code": "02000108",
+                    "|value": "K-RDW",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "02000108",
+                        "|value": "K-RDW",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "14.7|12.3-14.6|%|H",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 14.7,
+                            "|unit": "%",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 12.3,
+                                    "|unit": "%"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 14.6,
+                                    "|unit": "%"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "H"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              },
+              {
+                "_name": [
+                  {
+                    "|code": "02000109",
+                    "|value": "K-Trombociti",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "02000109",
+                        "|value": "K-Trombociti",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "344|194-345|10^9/L|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 344.0,
+                            "|unit": "10^9/L",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 194.0,
+                                    "|unit": "10^9/L"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 345.0,
+                                    "|unit": "10^9/L"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              },
+              {
+                "_name": [
+                  {
+                    "|code": "02000110",
+                    "|value": "K-MPV",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "02000110",
+                        "|value": "K-MPV",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "9.9|9.6-11.7|fL|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 9.9,
+                            "|unit": "fL",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 9.6,
+                                    "|unit": "fL"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 11.7,
+                                    "|unit": "fL"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "time": [
+              "2015-03-17T16:31:32.333+01:00"
+            ]
+          }
+        ],
+        "test_request_details": [
+          {
+            "requester_order_identifier": [
+              {
+                "|id": "4695908",
+                "|issuer": "PeK",
+                "|assigner": "PeK",
+                "|type": "lab test result"
+              }
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      },
+      {
+        "any_event": [
+          {
+            "universal_service_identifier": [
+              {
+                "|code": "020003",
+                "|value": "K-Diferencialna krvna slika",
+                "|terminology": "local"
+              }
+            ],
+            "specimen": [
+              {
+                "specimen_type": [
+                  {
+                    "|code": "46",
+                    "|value": "Kri-EDTA",
+                    "|terminology": "local"
+                  }
+                ],
+                "collection_details": [
+                  {
+                    "datetime_collection_start": [
+                      "2015-03-17T14:05+01:00"
+                    ]
+                  }
+                ],
+                "identifiers": [
+                  {
+                    "placer_assigned_identifier": [
+                      "2040675"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "overall_test_result_status": [
+              {
+                "|code": "at0038",
+                "|value": "Final",
+                "|terminology": "local"
+              }
+            ],
+            "datetime_result_issued": [
+              "2015-03-17T16:31:17+01:00"
+            ],
+            "result_group": [
+              {
+                "_name": [
+                  {
+                    "|code": "02000301",
+                    "|value": "Limfociti #",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "02000301",
+                        "|value": "Limfociti #",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "2.1|1.2-3.3|10^9/L|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 2.1,
+                            "|unit": "10^9/L",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 1.2,
+                                    "|unit": "10^9/L"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 3.3,
+                                    "|unit": "10^9/L"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              },
+              {
+                "_name": [
+                  {
+                    "|code": "02000302",
+                    "|value": "Monociti #",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "02000302",
+                        "|value": "Monociti #",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "0.5|0.2-0.7|10^9/L|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 0.5,
+                            "|unit": "10^9/L",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 0.2,
+                                    "|unit": "10^9/L"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 0.7,
+                                    "|unit": "10^9/L"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              },
+              {
+                "_name": [
+                  {
+                    "|code": "02000303",
+                    "|value": "Nevtr. segmentirani #",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "02000303",
+                        "|value": "Nevtr. segmentirani #",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "3.5|1.8-7.5|10^9/L|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 3.5,
+                            "|unit": "10^9/L",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 1.8,
+                                    "|unit": "10^9/L"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 7.5,
+                                    "|unit": "10^9/L"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              },
+              {
+                "_name": [
+                  {
+                    "|code": "02000304",
+                    "|value": "Eozinofilci #",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "02000304",
+                        "|value": "Eozinofilci #",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "0.1|0.0-0.3|10^9/L|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 0.1,
+                            "|unit": "10^9/L",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 0.0,
+                                    "|unit": "10^9/L"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 0.3,
+                                    "|unit": "10^9/L"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              },
+              {
+                "_name": [
+                  {
+                    "|code": "02000305",
+                    "|value": "Bazofilci #",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "02000305",
+                        "|value": "Bazofilci #",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "0.0|0.0-0.1|10^9/L|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 0.0,
+                            "|unit": "10^9/L",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 0.0,
+                                    "|unit": "10^9/L"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 0.1,
+                                    "|unit": "10^9/L"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              },
+              {
+                "_name": [
+                  {
+                    "|code": "02000306",
+                    "|value": "Limfociti",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "02000306",
+                        "|value": "Limfociti",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "33.2|18-50|%|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 33.2,
+                            "|unit": "%",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 18.0,
+                                    "|unit": "%"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 50.0,
+                                    "|unit": "%"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              },
+              {
+                "_name": [
+                  {
+                    "|code": "02000307",
+                    "|value": "Monociti",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "02000307",
+                        "|value": "Monociti",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "8.2|4-11|%|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 8.2,
+                            "|unit": "%",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 4.0,
+                                    "|unit": "%"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 11.0,
+                                    "|unit": "%"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              },
+              {
+                "_name": [
+                  {
+                    "|code": "02000308",
+                    "|value": "Nevtr. segmentirani",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "02000308",
+                        "|value": "Nevtr. segmentirani",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "56.2|39-74|%|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 56.2,
+                            "|unit": "%",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 39.0,
+                                    "|unit": "%"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 74.0,
+                                    "|unit": "%"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              },
+              {
+                "_name": [
+                  {
+                    "|code": "02000309",
+                    "|value": "Eozinofilci",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "02000309",
+                        "|value": "Eozinofilci",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "2.1|0-3|%|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 2.1,
+                            "|unit": "%",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 0.0,
+                                    "|unit": "%"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 3.0,
+                                    "|unit": "%"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              },
+              {
+                "_name": [
+                  {
+                    "|code": "02000310",
+                    "|value": "Bazofilci",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "02000310",
+                        "|value": "Bazofilci",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "0.3|0-1|%|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 0.3,
+                            "|unit": "%",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 0.0,
+                                    "|unit": "%"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 1.0,
+                                    "|unit": "%"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T16:31:06+01:00"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "time": [
+              "2015-03-17T16:31:32.333+01:00"
+            ]
+          }
+        ],
+        "test_request_details": [
+          {
+            "requester_order_identifier": [
+              {
+                "|id": "4696653",
+                "|issuer": "PeK",
+                "|assigner": "PeK",
+                "|type": "lab test result"
+              }
+            ],
+            "receiver_order_identifier": [
+              {
+                "|id": "11021",
+                "|issuer": "LIS",
+                "|assigner": "LIS",
+                "|type": "lab test result"
+              }
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      },
+      {
+        "any_event": [
+          {
+            "universal_service_identifier": [
+              {
+                "|code": "010017",
+                "|value": "S-Magnezij",
+                "|terminology": "local"
+              }
+            ],
+            "specimen": [
+              {
+                "specimen_type": [
+                  {
+                    "|code": "02",
+                    "|value": "Serum",
+                    "|terminology": "local"
+                  }
+                ],
+                "collection_details": [
+                  {
+                    "datetime_collection_start": [
+                      "2015-03-17T14:05+01:00"
+                    ]
+                  }
+                ],
+                "identifiers": [
+                  {
+                    "placer_assigned_identifier": [
+                      "2040677"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "overall_test_result_status": [
+              {
+                "|code": "at0038",
+                "|value": "Final",
+                "|terminology": "local"
+              }
+            ],
+            "datetime_result_issued": [
+              "2015-03-17T17:23:02+01:00"
+            ],
+            "result_group": [
+              {
+                "_name": [
+                  {
+                    "|code": "01001701",
+                    "|value": "S-Magnezij",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "01001701",
+                        "|value": "S-Magnezij",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "0.8|0.6-1.1|mmol/L|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 0.8,
+                            "|unit": "mmol/L",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 0.6,
+                                    "|unit": "mmol/L"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 1.1,
+                                    "|unit": "mmol/L"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T17:22:49+01:00"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "time": [
+              "2015-03-17T17:23:21.754+01:00"
+            ]
+          }
+        ],
+        "test_request_details": [
+          {
+            "requester_order_identifier": [
+              {
+                "|id": "4695921",
+                "|issuer": "PeK",
+                "|assigner": "PeK",
+                "|type": "lab test result"
+              }
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      },
+      {
+        "any_event": [
+          {
+            "universal_service_identifier": [
+              {
+                "|code": "030008",
+                "|value": "S-Kalij",
+                "|terminology": "local"
+              }
+            ],
+            "specimen": [
+              {
+                "specimen_type": [
+                  {
+                    "|code": "02",
+                    "|value": "Serum",
+                    "|terminology": "local"
+                  }
+                ],
+                "collection_details": [
+                  {
+                    "datetime_collection_start": [
+                      "2015-03-17T14:05+01:00"
+                    ]
+                  }
+                ],
+                "identifiers": [
+                  {
+                    "placer_assigned_identifier": [
+                      "2040677"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "overall_test_result_status": [
+              {
+                "|code": "at0038",
+                "|value": "Final",
+                "|terminology": "local"
+              }
+            ],
+            "datetime_result_issued": [
+              "2015-03-17T17:23:03+01:00"
+            ],
+            "result_group": [
+              {
+                "_name": [
+                  {
+                    "|code": "03000801",
+                    "|value": "S-Kalij",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "03000801",
+                        "|value": "S-Kalij",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "3.80|3.80-5.50|mmol/L|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 3.8,
+                            "|unit": "mmol/L",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 3.8,
+                                    "|unit": "mmol/L"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 5.5,
+                                    "|unit": "mmol/L"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T17:22:49+01:00"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "time": [
+              "2015-03-17T17:23:21.754+01:00"
+            ]
+          }
+        ],
+        "test_request_details": [
+          {
+            "requester_order_identifier": [
+              {
+                "|id": "4695913",
+                "|issuer": "PeK",
+                "|assigner": "PeK",
+                "|type": "lab test result"
+              }
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      },
+      {
+        "any_event": [
+          {
+            "universal_service_identifier": [
+              {
+                "|code": "030009",
+                "|value": "S-Proteini",
+                "|terminology": "local"
+              }
+            ],
+            "specimen": [
+              {
+                "specimen_type": [
+                  {
+                    "|code": "02",
+                    "|value": "Serum",
+                    "|terminology": "local"
+                  }
+                ],
+                "collection_details": [
+                  {
+                    "datetime_collection_start": [
+                      "2015-03-17T14:05+01:00"
+                    ]
+                  }
+                ],
+                "identifiers": [
+                  {
+                    "placer_assigned_identifier": [
+                      "2040677"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "overall_test_result_status": [
+              {
+                "|code": "at0038",
+                "|value": "Final",
+                "|terminology": "local"
+              }
+            ],
+            "datetime_result_issued": [
+              "2015-03-17T17:23:03+01:00"
+            ],
+            "result_group": [
+              {
+                "_name": [
+                  {
+                    "|code": "03000901",
+                    "|value": "S-Proteini",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "03000901",
+                        "|value": "S-Proteini",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "62|65-80|g/L|L",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 62.0,
+                            "|unit": "g/L",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 65.0,
+                                    "|unit": "g/L"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 80.0,
+                                    "|unit": "g/L"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "L"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T17:22:49+01:00"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "time": [
+              "2015-03-17T17:23:21.754+01:00"
+            ]
+          }
+        ],
+        "test_request_details": [
+          {
+            "requester_order_identifier": [
+              {
+                "|id": "4695917",
+                "|issuer": "PeK",
+                "|assigner": "PeK",
+                "|type": "lab test result"
+              }
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      },
+      {
+        "any_event": [
+          {
+            "universal_service_identifier": [
+              {
+                "|code": "030011",
+                "|value": "S-Natrij",
+                "|terminology": "local"
+              }
+            ],
+            "specimen": [
+              {
+                "specimen_type": [
+                  {
+                    "|code": "02",
+                    "|value": "Serum",
+                    "|terminology": "local"
+                  }
+                ],
+                "collection_details": [
+                  {
+                    "datetime_collection_start": [
+                      "2015-03-17T14:05+01:00"
+                    ]
+                  }
+                ],
+                "identifiers": [
+                  {
+                    "placer_assigned_identifier": [
+                      "2040677"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "overall_test_result_status": [
+              {
+                "|code": "at0038",
+                "|value": "Final",
+                "|terminology": "local"
+              }
+            ],
+            "datetime_result_issued": [
+              "2015-03-17T17:23:03+01:00"
+            ],
+            "result_group": [
+              {
+                "_name": [
+                  {
+                    "|code": "03001101",
+                    "|value": "S-Natrij",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "03001101",
+                        "|value": "S-Natrij",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "139.7|135.0-145.0|mmol/L|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 139.7,
+                            "|unit": "mmol/L",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 135.0,
+                                    "|unit": "mmol/L"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 145.0,
+                                    "|unit": "mmol/L"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T17:22:49+01:00"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "time": [
+              "2015-03-17T17:23:21.754+01:00"
+            ]
+          }
+        ],
+        "test_request_details": [
+          {
+            "requester_order_identifier": [
+              {
+                "|id": "4695914",
+                "|issuer": "PeK",
+                "|assigner": "PeK",
+                "|type": "lab test result"
+              }
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      },
+      {
+        "any_event": [
+          {
+            "universal_service_identifier": [
+              {
+                "|code": "030012",
+                "|value": "S-Kloridi",
+                "|terminology": "local"
+              }
+            ],
+            "specimen": [
+              {
+                "specimen_type": [
+                  {
+                    "|code": "02",
+                    "|value": "Serum",
+                    "|terminology": "local"
+                  }
+                ],
+                "collection_details": [
+                  {
+                    "datetime_collection_start": [
+                      "2015-03-17T14:05+01:00"
+                    ]
+                  }
+                ],
+                "identifiers": [
+                  {
+                    "placer_assigned_identifier": [
+                      "2040677"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "overall_test_result_status": [
+              {
+                "|code": "at0038",
+                "|value": "Final",
+                "|terminology": "local"
+              }
+            ],
+            "datetime_result_issued": [
+              "2015-03-17T17:23:04+01:00"
+            ],
+            "result_group": [
+              {
+                "_name": [
+                  {
+                    "|code": "03001201",
+                    "|value": "S-Kloridi",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "03001201",
+                        "|value": "S-Kloridi",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "104.0|95-107|mmol/L|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 104.0,
+                            "|unit": "mmol/L",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 95.0,
+                                    "|unit": "mmol/L"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 107.0,
+                                    "|unit": "mmol/L"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T17:22:49+01:00"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "time": [
+              "2015-03-17T17:23:21.754+01:00"
+            ]
+          }
+        ],
+        "test_request_details": [
+          {
+            "requester_order_identifier": [
+              {
+                "|id": "4695910",
+                "|issuer": "PeK",
+                "|assigner": "PeK",
+                "|type": "lab test result"
+              }
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      },
+      {
+        "any_event": [
+          {
+            "universal_service_identifier": [
+              {
+                "|code": "030013",
+                "|value": "S-Kalcij",
+                "|terminology": "local"
+              }
+            ],
+            "specimen": [
+              {
+                "specimen_type": [
+                  {
+                    "|code": "02",
+                    "|value": "Serum",
+                    "|terminology": "local"
+                  }
+                ],
+                "collection_details": [
+                  {
+                    "datetime_collection_start": [
+                      "2015-03-17T14:05+01:00"
+                    ]
+                  }
+                ],
+                "identifiers": [
+                  {
+                    "placer_assigned_identifier": [
+                      "2040677"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "overall_test_result_status": [
+              {
+                "|code": "at0038",
+                "|value": "Final",
+                "|terminology": "local"
+              }
+            ],
+            "datetime_result_issued": [
+              "2015-03-17T17:23:04+01:00"
+            ],
+            "result_group": [
+              {
+                "_name": [
+                  {
+                    "|code": "03001301",
+                    "|value": "S-Kalcij",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "03001301",
+                        "|value": "S-Kalcij",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "2.3|2.1-2.6|mmol/L|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 2.3,
+                            "|unit": "mmol/L",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 2.1,
+                                    "|unit": "mmol/L"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 2.6,
+                                    "|unit": "mmol/L"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T17:22:49+01:00"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "time": [
+              "2015-03-17T17:23:21.754+01:00"
+            ]
+          }
+        ],
+        "test_request_details": [
+          {
+            "requester_order_identifier": [
+              {
+                "|id": "4695912",
+                "|issuer": "PeK",
+                "|assigner": "PeK",
+                "|type": "lab test result"
+              }
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      },
+      {
+        "any_event": [
+          {
+            "universal_service_identifier": [
+              {
+                "|code": "030014",
+                "|value": "S-Fosfat anorganski",
+                "|terminology": "local"
+              }
+            ],
+            "specimen": [
+              {
+                "specimen_type": [
+                  {
+                    "|code": "02",
+                    "|value": "Serum",
+                    "|terminology": "local"
+                  }
+                ],
+                "collection_details": [
+                  {
+                    "datetime_collection_start": [
+                      "2015-03-17T14:05+01:00"
+                    ]
+                  }
+                ],
+                "identifiers": [
+                  {
+                    "placer_assigned_identifier": [
+                      "2040677"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "overall_test_result_status": [
+              {
+                "|code": "at0038",
+                "|value": "Final",
+                "|terminology": "local"
+              }
+            ],
+            "datetime_result_issued": [
+              "2015-03-17T17:23:04+01:00"
+            ],
+            "result_group": [
+              {
+                "_name": [
+                  {
+                    "|code": "03001401",
+                    "|value": "S-Fosfat anorganski",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "03001401",
+                        "|value": "S-Fosfat anorganski",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "1.2|0.8-2.1|mmol/L|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 1.2,
+                            "|unit": "mmol/L",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 0.8,
+                                    "|unit": "mmol/L"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 2.1,
+                                    "|unit": "mmol/L"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T17:22:49+01:00"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "time": [
+              "2015-03-17T17:23:21.754+01:00"
+            ]
+          }
+        ],
+        "test_request_details": [
+          {
+            "requester_order_identifier": [
+              {
+                "|id": "4695919",
+                "|issuer": "PeK",
+                "|assigner": "PeK",
+                "|type": "lab test result"
+              }
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      },
+      {
+        "any_event": [
+          {
+            "universal_service_identifier": [
+              {
+                "|code": "030015",
+                "|value": "S-Albumin",
+                "|terminology": "local"
+              }
+            ],
+            "specimen": [
+              {
+                "specimen_type": [
+                  {
+                    "|code": "02",
+                    "|value": "Serum",
+                    "|terminology": "local"
+                  }
+                ],
+                "collection_details": [
+                  {
+                    "datetime_collection_start": [
+                      "2015-03-17T14:05+01:00"
+                    ]
+                  }
+                ],
+                "identifiers": [
+                  {
+                    "placer_assigned_identifier": [
+                      "2040677"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "overall_test_result_status": [
+              {
+                "|code": "at0038",
+                "|value": "Final",
+                "|terminology": "local"
+              }
+            ],
+            "datetime_result_issued": [
+              "2015-03-17T17:23:04+01:00"
+            ],
+            "result_group": [
+              {
+                "_name": [
+                  {
+                    "|code": "03001501",
+                    "|value": "S-Albumin",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "03001501",
+                        "|value": "S-Albumin",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "44|30-50|g/L|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_value": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 44.0,
+                            "|unit": "g/L",
+                            "_normal_range": [
+                              {
+                                "lower": [
+                                  {
+                                    "|magnitude": 30.0,
+                                    "|unit": "g/L"
+                                  }
+                                ],
+                                "upper": [
+                                  {
+                                    "|magnitude": 50.0,
+                                    "|unit": "g/L"
+                                  }
+                                ]
+                              }
+                            ],
+                            "|normal_status": "N"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-17T17:22:49+01:00"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "time": [
+              "2015-03-17T17:23:21.754+01:00"
+            ]
+          }
+        ],
+        "test_request_details": [
+          {
+            "requester_order_identifier": [
+              {
+                "|id": "4695918",
+                "|issuer": "PeK",
+                "|assigner": "PeK",
+                "|type": "lab test result"
+              }
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      },
+      {
+        "any_event": [
+          {
+            "universal_service_identifier": [
+              {
+                "|code": "422490",
+                "|value": "F-Calprest",
+                "|terminology": "local"
+              }
+            ],
+            "specimen": [
+              {
+                "specimen_type": [
+                  {
+                    "|code": "12",
+                    "|value": "Blato",
+                    "|terminology": "local"
+                  }
+                ],
+                "collection_details": [
+                  {
+                    "datetime_collection_start": [
+                      "2015-03-17T18:09+01:00"
+                    ]
+                  }
+                ],
+                "identifiers": [
+                  {
+                    "placer_assigned_identifier": [
+                      "2040822"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "overall_test_result_status": [
+              {
+                "|code": "at0038",
+                "|value": "Final",
+                "|terminology": "local"
+              }
+            ],
+            "datetime_result_issued": [
+              "2015-03-24T10:03:46+01:00"
+            ],
+            "result_group": [
+              {
+                "_name": [
+                  {
+                    "|code": "42249001",
+                    "|value": "F-Calprest",
+                    "|terminology": "local"
+                  }
+                ],
+                "result": [
+                  {
+                    "_name": [
+                      {
+                        "|code": "42249001",
+                        "|value": "F-Calprest",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "_feeder_audit": [
+                      {
+                        "originating_system_audit": [
+                          {
+                            "|system_id": "LIS"
+                          }
+                        ],
+                        "original_content": [
+                          {
+                            "|value": "<15.6|<50|mg/kg|N",
+                            "|formalism": "original"
+                          }
+                        ]
+                      }
+                    ],
+                    "result_status": [
+                      {
+                        "|code": "at0038",
+                        "|value": "Final",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "date_time_result_issued": [
+                      "2015-03-24T10:03:35+01:00"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "time": [
+              "2015-03-24T10:04:06.424+01:00"
+            ]
+          }
+        ],
+        "test_request_details": [
+          {
+            "requester_order_identifier": [
+              {
+                "|id": "4695916",
+                "|issuer": "PeK",
+                "|assigner": "PeK",
+                "|type": "lab test result"
+              }
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "category": [
+      {
+        "|code": "433",
+        "|value": "event",
+        "|terminology": "openehr"
+      }
+    ],
+    "composer": [
+      {
+        "|name": "lis"
+      }
+    ]
+  }
+}
+

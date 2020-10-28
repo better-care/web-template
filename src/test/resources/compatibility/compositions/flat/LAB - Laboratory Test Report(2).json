@@ -1,0 +1,87 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "laboratory_report/_uid" : "d91212d7-803f-41bc-af25-a8cf5f47bb05::default::1",
+  "laboratory_report/language|code" : "sl",
+  "laboratory_report/language|terminology" : "ISO_639-1",
+  "laboratory_report/territory|code" : "SI",
+  "laboratory_report/territory|terminology" : "ISO_3166-1",
+  "laboratory_report/context/_end_time" : "2015-01-22T13:58:43+01:00",
+  "laboratory_report/context/order_group_number" : "4398722/954918",
+  "laboratory_report/context/start_time" : "2015-01-22T13:58:43+01:00",
+  "laboratory_report/context/setting|code" : "238",
+  "laboratory_report/context/setting|value" : "other care",
+  "laboratory_report/context/setting|terminology" : "openehr",
+  "laboratory_report/laboratory_test_result:0/any_event:0/universal_service_identifier|code" : "422490",
+  "laboratory_report/laboratory_test_result:0/any_event:0/universal_service_identifier|value" : "F-Calprest",
+  "laboratory_report/laboratory_test_result:0/any_event:0/universal_service_identifier|terminology" : "local",
+  "laboratory_report/laboratory_test_result:0/any_event:0/specimen:0/specimen_type|code" : "12",
+  "laboratory_report/laboratory_test_result:0/any_event:0/specimen:0/specimen_type|value" : "Blato",
+  "laboratory_report/laboratory_test_result:0/any_event:0/specimen:0/specimen_type|terminology" : "local",
+  "laboratory_report/laboratory_test_result:0/any_event:0/specimen:0/collection_details/datetime_collection_start" : "2015-01-13T07:35:00+01:00",
+  "laboratory_report/laboratory_test_result:0/any_event:0/specimen:0/identifiers/placer_assigned_identifier" : "1796449",
+  "laboratory_report/laboratory_test_result:0/any_event:0/overall_test_result_status|code" : "at0038",
+  "laboratory_report/laboratory_test_result:0/any_event:0/overall_test_result_status|value" : "Final",
+  "laboratory_report/laboratory_test_result:0/any_event:0/overall_test_result_status|terminology" : "local",
+  "laboratory_report/laboratory_test_result:0/any_event:0/datetime_result_issued" : "2015-01-22T13:57:55+01:00",
+  "laboratory_report/laboratory_test_result:0/any_event:0/result_group:0/_name|code" : "42249001",
+  "laboratory_report/laboratory_test_result:0/any_event:0/result_group:0/_name|value" : "F-Calprest",
+  "laboratory_report/laboratory_test_result:0/any_event:0/result_group:0/_name|terminology" : "local",
+  "laboratory_report/laboratory_test_result:0/any_event:0/result_group:0/result:0/_name|code" : "42249001",
+  "laboratory_report/laboratory_test_result:0/any_event:0/result_group:0/result:0/_name|value" : "F-Calprest",
+  "laboratory_report/laboratory_test_result:0/any_event:0/result_group:0/result:0/_name|terminology" : "local",
+  "laboratory_report/laboratory_test_result:0/any_event:0/result_group:0/result:0/_feeder_audit/originating_system_audit|system_id" : "LIS",
+  "laboratory_report/laboratory_test_result:0/any_event:0/result_group:0/result:0/_feeder_audit/original_content" : ">500|<50|mg/kg|H",
+  "laboratory_report/laboratory_test_result:0/any_event:0/result_group:0/result:0/_feeder_audit/original_content|formalism" : "original",
+  "laboratory_report/laboratory_test_result:0/any_event:0/result_group:0/result:0/result_status|code" : "at0038",
+  "laboratory_report/laboratory_test_result:0/any_event:0/result_group:0/result:0/result_status|value" : "Final",
+  "laboratory_report/laboratory_test_result:0/any_event:0/result_group:0/result:0/result_status|terminology" : "local",
+  "laboratory_report/laboratory_test_result:0/any_event:0/result_group:0/result:0/date_time_result_issued" : "2015-01-22T13:58:43+01:00",
+  "laboratory_report/laboratory_test_result:0/any_event:0/time" : "2015-01-22T13:58:54.005+01:00",
+  "laboratory_report/laboratory_test_result:0/test_request_details/requester_order_identifier" : "4466272",
+  "laboratory_report/laboratory_test_result:0/test_request_details/requester_order_identifier|issuer" : "PeK",
+  "laboratory_report/laboratory_test_result:0/test_request_details/requester_order_identifier|assigner" : "PeK",
+  "laboratory_report/laboratory_test_result:0/test_request_details/requester_order_identifier|type" : "lab test result",
+  "laboratory_report/laboratory_test_result:0/language|code" : "sl",
+  "laboratory_report/laboratory_test_result:0/language|terminology" : "ISO_639-1",
+  "laboratory_report/laboratory_test_result:0/encoding|code" : "UTF-8",
+  "laboratory_report/laboratory_test_result:0/encoding|terminology" : "IANA_character-sets",
+  "laboratory_report/laboratory_test_result:1/any_event:0/universal_service_identifier|code" : "LAB_ORDER_COMMENT",
+  "laboratory_report/laboratory_test_result:1/any_event:0/universal_service_identifier|value" : "LAB_ORDER_COMMENT",
+  "laboratory_report/laboratory_test_result:1/any_event:0/universal_service_identifier|terminology" : "local",
+  "laboratory_report/laboratory_test_result:1/any_event:0/overall_test_result_status|code" : "at0038",
+  "laboratory_report/laboratory_test_result:1/any_event:0/overall_test_result_status|value" : "Final",
+  "laboratory_report/laboratory_test_result:1/any_event:0/overall_test_result_status|terminology" : "local",
+  "laboratory_report/laboratory_test_result:1/any_event:0/datetime_result_issued" : "2015-01-22T13:58:53.978+01:00",
+  "laboratory_report/laboratory_test_result:1/any_event:0/test_result_representation:0" : "433e72f9-3626-43b1-a8fc-5ba445a55d0f",
+  "laboratory_report/laboratory_test_result:1/any_event:0/test_result_representation:0|mediatype" : "application/pdf",
+  "laboratory_report/laboratory_test_result:1/any_event:0/time" : "2015-01-22T13:58:54.005+01:00",
+  "laboratory_report/laboratory_test_result:1/test_request_details/requester_order_identifier" : "4398722/954918",
+  "laboratory_report/laboratory_test_result:1/test_request_details/requester_order_identifier|issuer" : "PeK",
+  "laboratory_report/laboratory_test_result:1/test_request_details/requester_order_identifier|assigner" : "PeK",
+  "laboratory_report/laboratory_test_result:1/test_request_details/requester_order_identifier|type" : "lab test result",
+  "laboratory_report/laboratory_test_result:1/test_request_details/receiver_order_identifier" : "4398722/954918",
+  "laboratory_report/laboratory_test_result:1/test_request_details/receiver_order_identifier|issuer" : "LIS",
+  "laboratory_report/laboratory_test_result:1/test_request_details/receiver_order_identifier|assigner" : "LIS",
+  "laboratory_report/laboratory_test_result:1/test_request_details/receiver_order_identifier|type" : "lab test result",
+  "laboratory_report/laboratory_test_result:1/language|code" : "sl",
+  "laboratory_report/laboratory_test_result:1/language|terminology" : "ISO_639-1",
+  "laboratory_report/laboratory_test_result:1/encoding|code" : "UTF-8",
+  "laboratory_report/laboratory_test_result:1/encoding|terminology" : "IANA_character-sets",
+  "laboratory_report/category|code" : "433",
+  "laboratory_report/category|value" : "event",
+  "laboratory_report/category|terminology" : "openehr",
+  "laboratory_report/composer|name" : "lis"
+}

@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	Copyright 2021 Better Ltd (www.better.care)
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<ns2:composition archetype_node_id="openEHR-EHR-COMPOSITION.summary.v1" xmlns:te="http://schemas.marand.com/thinkehr/v1" xmlns:ns2="http://schemas.openehr.org/v1">
+    <ns2:name>
+        <ns2:value>Allergy history</ns2:value>
+    </ns2:name>
+    <ns2:uid xsi:type="ns2:HIER_OBJECT_ID" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:value>82772444-da1f-42ef-8c0f-51862686a4f4::default::1</ns2:value>
+    </ns2:uid>
+    <ns2:archetype_details>
+        <ns2:archetype_id>
+            <ns2:value>openEHR-EHR-COMPOSITION.summary.v1</ns2:value>
+        </ns2:archetype_id>
+        <ns2:template_id>
+            <ns2:value>ISPEK - MED - Allergy history Summary</ns2:value>
+        </ns2:template_id>
+        <ns2:rm_version>1.0.4</ns2:rm_version>
+    </ns2:archetype_details>
+    <ns2:language>
+        <ns2:terminology_id>
+            <ns2:value>ISO_639-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>sl</ns2:code_string>
+    </ns2:language>
+    <ns2:territory>
+        <ns2:terminology_id>
+            <ns2:value>ISO_3166-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>SI</ns2:code_string>
+    </ns2:territory>
+    <ns2:category>
+        <ns2:value>persistent</ns2:value>
+        <ns2:defining_code>
+            <ns2:terminology_id>
+                <ns2:value>openehr</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>431</ns2:code_string>
+        </ns2:defining_code>
+    </ns2:category>
+    <ns2:composer xsi:type="ns2:PARTY_IDENTIFIED" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:external_ref>
+            <ns2:id xsi:type="ns2:GENERIC_ID">
+                <ns2:value>109950656</ns2:value>
+                <ns2:scheme>ispek_scheme</ns2:scheme>
+            </ns2:id>
+            <ns2:namespace>ispek</ns2:namespace>
+            <ns2:type>ANY</ns2:type>
+        </ns2:external_ref>
+        <ns2:name>Testing Nurse</ns2:name>
+    </ns2:composer>
+    <ns2:content xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.summary_context.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Summary context</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-EVALUATION.summary_context.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:language>
+            <ns2:terminology_id>
+                <ns2:value>ISO_639-1</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>sl</ns2:code_string>
+        </ns2:language>
+        <ns2:encoding>
+            <ns2:terminology_id>
+                <ns2:value>IANA_character-sets</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>UTF-8</ns2:code_string>
+        </ns2:encoding>
+        <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+        <ns2:other_participations>
+            <ns2:function>
+                <ns2:value>requester</ns2:value>
+            </ns2:function>
+            <ns2:performer xsi:type="ns2:PARTY_IDENTIFIED">
+                <ns2:external_ref>
+                    <ns2:id xsi:type="ns2:GENERIC_ID">
+                        <ns2:value>110394179</ns2:value>
+                        <ns2:scheme>ispek_scheme</ns2:scheme>
+                    </ns2:id>
+                    <ns2:namespace>ispek</ns2:namespace>
+                    <ns2:type>ANY</ns2:type>
+                </ns2:external_ref>
+                <ns2:name>Testing Nurse</ns2:name>
+            </ns2:performer>
+            <ns2:mode>
+                <ns2:value>not specified</ns2:value>
+                <ns2:defining_code>
+                    <ns2:terminology_id>
+                        <ns2:value>openehr</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>193</ns2:code_string>
+                </ns2:defining_code>
+            </ns2:mode>
+        </ns2:other_participations>
+        <ns2:other_participations>
+            <ns2:function>
+                <ns2:value>performer</ns2:value>
+            </ns2:function>
+            <ns2:performer xsi:type="ns2:PARTY_IDENTIFIED">
+                <ns2:external_ref>
+                    <ns2:id xsi:type="ns2:GENERIC_ID">
+                        <ns2:value>110394179</ns2:value>
+                        <ns2:scheme>ispek_scheme</ns2:scheme>
+                    </ns2:id>
+                    <ns2:namespace>ispek</ns2:namespace>
+                    <ns2:type>ANY</ns2:type>
+                </ns2:external_ref>
+                <ns2:name>Testing Nurse</ns2:name>
+            </ns2:performer>
+            <ns2:mode>
+                <ns2:value>not specified</ns2:value>
+                <ns2:defining_code>
+                    <ns2:terminology_id>
+                        <ns2:value>openehr</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>193</ns2:code_string>
+                </ns2:defining_code>
+            </ns2:mode>
+        </ns2:other_participations>
+        <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+            <ns2:name>
+                <ns2:value>Tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0003">
+                <ns2:name>
+                    <ns2:value>Date last reviewed</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_DATE_TIME">
+                    <ns2:value>2019-10-17T08:31:52.535+02:00</ns2:value>
+                </ns2:value>
+            </ns2:items>
+        </ns2:data>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.ispek_dialog.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Allergies</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.ispek_dialog.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.adverse_reaction-md.v1">
+            <ns2:name>
+                <ns2:value>Adverse reaction</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-EVALUATION.adverse_reaction-md.v1</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>sl</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:other_participations>
+                <ns2:function>
+                    <ns2:value>requester</ns2:value>
+                </ns2:function>
+                <ns2:performer xsi:type="ns2:PARTY_IDENTIFIED">
+                    <ns2:external_ref>
+                        <ns2:id xsi:type="ns2:GENERIC_ID">
+                            <ns2:value>110394179</ns2:value>
+                            <ns2:scheme>ispek_scheme</ns2:scheme>
+                        </ns2:id>
+                        <ns2:namespace>ispek</ns2:namespace>
+                        <ns2:type>ANY</ns2:type>
+                    </ns2:external_ref>
+                    <ns2:name>Testing Nurse</ns2:name>
+                </ns2:performer>
+                <ns2:mode>
+                    <ns2:value>not specified</ns2:value>
+                    <ns2:defining_code>
+                        <ns2:terminology_id>
+                            <ns2:value>openehr</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>193</ns2:code_string>
+                    </ns2:defining_code>
+                </ns2:mode>
+            </ns2:other_participations>
+            <ns2:other_participations>
+                <ns2:function>
+                    <ns2:value>performer</ns2:value>
+                </ns2:function>
+                <ns2:performer xsi:type="ns2:PARTY_IDENTIFIED">
+                    <ns2:external_ref>
+                        <ns2:id xsi:type="ns2:GENERIC_ID">
+                            <ns2:value>110394179</ns2:value>
+                            <ns2:scheme>ispek_scheme</ns2:scheme>
+                        </ns2:id>
+                        <ns2:namespace>ispek</ns2:namespace>
+                        <ns2:type>ANY</ns2:type>
+                    </ns2:external_ref>
+                    <ns2:name>Testing Nurse</ns2:name>
+                </ns2:performer>
+                <ns2:mode>
+                    <ns2:value>not specified</ns2:value>
+                    <ns2:defining_code>
+                        <ns2:terminology_id>
+                            <ns2:value>openehr</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>193</ns2:code_string>
+                    </ns2:defining_code>
+                </ns2:mode>
+            </ns2:other_participations>
+            <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Tree</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002.1">
+                    <ns2:name>
+                        <ns2:value>Type of allergen</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Pršica</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>external</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>23</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:data>
+        </ns2:items>
+        <ns2:items xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.adverse_reaction-md.v1">
+            <ns2:name>
+                <ns2:value>Adverse reaction #2</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-EVALUATION.adverse_reaction-md.v1</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>sl</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:other_participations>
+                <ns2:function>
+                    <ns2:value>requester</ns2:value>
+                </ns2:function>
+                <ns2:performer xsi:type="ns2:PARTY_IDENTIFIED">
+                    <ns2:external_ref>
+                        <ns2:id xsi:type="ns2:GENERIC_ID">
+                            <ns2:value>110394179</ns2:value>
+                            <ns2:scheme>ispek_scheme</ns2:scheme>
+                        </ns2:id>
+                        <ns2:namespace>ispek</ns2:namespace>
+                        <ns2:type>ANY</ns2:type>
+                    </ns2:external_ref>
+                    <ns2:name>Testing Nurse</ns2:name>
+                </ns2:performer>
+                <ns2:mode>
+                    <ns2:value>not specified</ns2:value>
+                    <ns2:defining_code>
+                        <ns2:terminology_id>
+                            <ns2:value>openehr</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>193</ns2:code_string>
+                    </ns2:defining_code>
+                </ns2:mode>
+            </ns2:other_participations>
+            <ns2:other_participations>
+                <ns2:function>
+                    <ns2:value>performer</ns2:value>
+                </ns2:function>
+                <ns2:performer xsi:type="ns2:PARTY_IDENTIFIED">
+                    <ns2:external_ref>
+                        <ns2:id xsi:type="ns2:GENERIC_ID">
+                            <ns2:value>110394179</ns2:value>
+                            <ns2:scheme>ispek_scheme</ns2:scheme>
+                        </ns2:id>
+                        <ns2:namespace>ispek</ns2:namespace>
+                        <ns2:type>ANY</ns2:type>
+                    </ns2:external_ref>
+                    <ns2:name>Testing Nurse</ns2:name>
+                </ns2:performer>
+                <ns2:mode>
+                    <ns2:value>not specified</ns2:value>
+                    <ns2:defining_code>
+                        <ns2:terminology_id>
+                            <ns2:value>openehr</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>193</ns2:code_string>
+                    </ns2:defining_code>
+                </ns2:mode>
+            </ns2:other_participations>
+            <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Tree</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002.1">
+                    <ns2:name>
+                        <ns2:value>Type of allergen</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Travni pelodi</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>external</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>21</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:data>
+        </ns2:items>
+    </ns2:content>
+</ns2:composition>

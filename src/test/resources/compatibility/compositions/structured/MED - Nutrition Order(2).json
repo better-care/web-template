@@ -1,0 +1,213 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "nutrition_order": {
+    "language": [
+      {
+        "|code": "sl",
+        "|terminology": "ISO_639-1"
+      }
+    ],
+    "territory": [
+      {
+        "|code": "SLO",
+        "|terminology": "ISO_3166-1"
+      }
+    ],
+    "context": [
+      {
+        "start_time": [
+          "2019-01-22T15:20:00.129+01:00"
+        ],
+        "setting": [
+          {
+            "|code": "238",
+            "|value": "other care",
+            "|terminology": "openehr"
+          }
+        ]
+      }
+    ],
+    "nutrition": [
+      {
+        "nutrition_order": [
+          {
+            "_uid": [
+              "5817aecf-10cc-463e-afb8-8c2611f98152"
+            ],
+            "order": [
+              {
+                "type_of_diet": [
+                  "DIABETES"
+                ],
+                "additional_diet_details": [
+                  {
+                    "name_of_diet": [
+                      "DIABETES"
+                    ]
+                  }
+                ],
+                "adjustments": [
+                  "BREZ ARAŠIDOV, BREZ BANANE, BELJAKOVINE 1.5 g/kg TM"
+                ],
+                "nutrition_direction": [
+                  {
+                    "meals": [
+                      {
+                        "type_of_meal": [
+                          {
+                            "|code": "at0187",
+                            "|value": "Zajtrk",
+                            "|terminology": "local"
+                          }
+                        ]
+                      },
+                      {
+                        "type_of_meal": [
+                          {
+                            "|code": "at0188",
+                            "|value": "Kosilo",
+                            "|terminology": "local"
+                          }
+                        ]
+                      },
+                      {
+                        "type_of_meal": [
+                          {
+                            "|code": "at0189",
+                            "|value": "Večerja",
+                            "|terminology": "local"
+                          }
+                        ]
+                      },
+                      {
+                        "type_of_meal": [
+                          {
+                            "|code": "at0187",
+                            "|value": "Zajtrk",
+                            "|terminology": "local"
+                          }
+                        ]
+                      },
+                      {
+                        "type_of_meal": [
+                          {
+                            "|code": "at0188",
+                            "|value": "Kosilo",
+                            "|terminology": "local"
+                          }
+                        ]
+                      },
+                      {
+                        "type_of_meal": [
+                          {
+                            "|code": "at0189",
+                            "|value": "Večerja",
+                            "|terminology": "local"
+                          }
+                        ]
+                      },
+                      {
+                        "type_of_meal": [
+                          {
+                            "|code": "at0187",
+                            "|value": "Zajtrk",
+                            "|terminology": "local"
+                          }
+                        ]
+                      },
+                      {
+                        "type_of_meal": [
+                          {
+                            "|code": "at0188",
+                            "|value": "Kosilo",
+                            "|terminology": "local"
+                          }
+                        ]
+                      },
+                      {
+                        "type_of_meal": [
+                          {
+                            "|code": "at0189",
+                            "|value": "Večerja",
+                            "|terminology": "local"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "order_details": [
+                  {
+                    "order_start_date_time": [
+                      "2019-01-22T15:20:00.129+01:00"
+                    ],
+                    "nutrition_course_summary": [
+                      {
+                        "date_of_next_meal": [
+                          "2019-01-22T15:20:00.129+01:00"
+                        ],
+                        "type_of_next_meal": [
+                          {
+                            "|code": "at0036",
+                            "|value": "Zajtrk",
+                            "|terminology": "local"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "timing": [
+                  {
+                    "|value": "R1",
+                    "|formalism": "timing"
+                  }
+                ]
+              }
+            ],
+            "narrative": [
+              "<none>"
+            ],
+            "language": [
+              {
+                "|code": "sl",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "category": [
+      {
+        "|code": "433",
+        "|value": "event",
+        "|terminology": "openehr"
+      }
+    ],
+    "composer": [
+      {
+        "|name": "Niko Testni"
+      }
+    ]
+  }
+}

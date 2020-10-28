@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	Copyright 2021 Better Ltd (www.better.care)
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<composition archetype_node_id="openEHR-EHR-COMPOSITION.report-mnd.v1" xmlns:ns2="http://schemas.openehr.org/v1">
+    <ns2:name>
+        <ns2:value>Clinical Notes Report</ns2:value>
+    </ns2:name>
+    <ns2:uid xsi:type="ns2:OBJECT_VERSION_ID" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:value>8a16f119-a4d8-4c14-bee1-bac8b0acf68c::default::1</ns2:value>
+    </ns2:uid>
+    <ns2:archetype_details>
+        <ns2:archetype_id>
+            <ns2:value>openEHR-EHR-COMPOSITION.report-mnd.v1</ns2:value>
+        </ns2:archetype_id>
+        <ns2:template_id>
+            <ns2:value>TMC - Clinical Notes Report</ns2:value>
+        </ns2:template_id>
+        <ns2:rm_version>1.0.1</ns2:rm_version>
+    </ns2:archetype_details>
+    <ns2:language>
+        <ns2:terminology_id>
+            <ns2:value>ISO_639-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>sl</ns2:code_string>
+    </ns2:language>
+    <ns2:territory>
+        <ns2:terminology_id>
+            <ns2:value>ISO_3166-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>SI</ns2:code_string>
+    </ns2:territory>
+    <ns2:category>
+        <ns2:value>event</ns2:value>
+        <ns2:defining_code>
+            <ns2:terminology_id>
+                <ns2:value>openehr</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>433</ns2:code_string>
+        </ns2:defining_code>
+    </ns2:category>
+    <ns2:composer xsi:type="ns2:PARTY_IDENTIFIED" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>Ehr Form</ns2:name>
+    </ns2:composer>
+    <ns2:context>
+        <ns2:start_time>
+            <ns2:value>2014-04-04T15:21:07.995+02:00</ns2:value>
+        </ns2:start_time>
+        <ns2:setting>
+            <ns2:value>other care</ns2:value>
+            <ns2:defining_code>
+                <ns2:terminology_id>
+                    <ns2:value>openehr</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>238</ns2:code_string>
+            </ns2:defining_code>
+        </ns2:setting>
+    </ns2:context>
+    <ns2:content xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.adhoc.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Clinical notes</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.1</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.clinical_synopsis-general_mnd.v1">
+            <ns2:name>
+                <ns2:value>Clinical Synopses</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-EVALUATION.clinical_synopsis-general_mnd.v1</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.1</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>sl</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>List</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002.1">
+                    <ns2:name>
+                        <ns2:value>Synopsis</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_TEXT">
+                        <ns2:value>matija je tukaj1</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:data>
+        </ns2:items>
+    </ns2:content>
+</composition>

@@ -1,0 +1,55 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+	"adverse_reaction_list/_uid" : "a6c4909f-d98b-414c-8f59-fe31f80b0178::default::1",
+	"adverse_reaction_list/language|code" : "en",
+	"adverse_reaction_list/language|terminology" : "ISO_639-1",
+	"adverse_reaction_list/territory|code" : "UK",
+	"adverse_reaction_list/territory|terminology" : "ISO_3166-1",
+	"adverse_reaction_list/context/start_time" : "2021-02-11T13:34:29.395+01:00",
+	"adverse_reaction_list/context/setting|code" : "238",
+	"adverse_reaction_list/context/setting|value" : "other care",
+	"adverse_reaction_list/context/setting|terminology" : "openehr",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/adverse_reaction_risk:0/causative_agent|code" : "227491007",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/adverse_reaction_risk:0/causative_agent|value" : "Betel nut",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/adverse_reaction_risk:0/causative_agent|terminology" : "external",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/adverse_reaction_risk:0/status|code" : "at0064",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/adverse_reaction_risk:0/status|value" : "Likely",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/adverse_reaction_risk:0/status|terminology" : "local",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/adverse_reaction_risk:0/language|code" : "en",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/adverse_reaction_risk:0/language|terminology" : "ISO_639-1",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/adverse_reaction_risk:0/encoding|code" : "UTF-8",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/adverse_reaction_risk:0/encoding|terminology" : "IANA_character-sets",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/adverse_reaction_risk:1/causative_agent|code" : "256351003",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/adverse_reaction_risk:1/causative_agent|value" : "Brazil nut",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/adverse_reaction_risk:1/causative_agent|terminology" : "external",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/adverse_reaction_risk:1/status|code" : "at0127",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/adverse_reaction_risk:1/status|value" : "Suspected",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/adverse_reaction_risk:1/status|terminology" : "local",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/adverse_reaction_risk:1/language|code" : "en",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/adverse_reaction_risk:1/language|terminology" : "ISO_639-1",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/adverse_reaction_risk:1/encoding|code" : "UTF-8",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/adverse_reaction_risk:1/encoding|terminology" : "IANA_character-sets",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/general_information:0/general_report_comment" : "patient suspecrs strawberry intolarence",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/general_information:0/time" : "2021-02-11T13:34:29.395+01:00",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/general_information:0/language|code" : "en",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/general_information:0/language|terminology" : "ISO_639-1",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/general_information:0/encoding|code" : "UTF-8",
+	"adverse_reaction_list/allergies_and_adverse_reactions:0/general_information:0/encoding|terminology" : "IANA_character-sets",
+	"adverse_reaction_list/category|code" : "433",
+	"adverse_reaction_list/category|value" : "event",
+	"adverse_reaction_list/category|terminology" : "openehr",
+	"adverse_reaction_list/composer|name" : "Testing Nurse"
+}

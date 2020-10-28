@@ -1,0 +1,364 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "ctx": {
+    "language": "pt",
+    "territory": "US",
+    "health_care_facility": {
+      "|name": "OBV"
+    }
+  },
+  "report": {
+    "context": {
+      "patient": {
+        "person_identifiers": {
+          "kzz": "028939558"
+        },
+        "person_name_isa": {
+          "family_name": "Testing ",
+          "given_name": "Patient"
+        },
+        "date_of_birth": "1948-06-10T22:00:00.000Z",
+        "anonymised_person_parent": {
+          "gender": {
+            "|code": "at0009"
+          }
+        }
+      }
+    },
+    "previous_procedures": {
+      "primary_hip_arthroplasty_-_previous_procedure": {
+        "previous_procedure": {
+          "|code": ""
+        }
+      }
+    },
+    "current_procedure": {
+      "primary_hip_arthroplasty": {
+        "procedure_identifier": "3869622",
+        "current_procedure": {
+          "|code": "at0.60"
+        },
+        "ism_transition": {
+          "current_state": {
+            "|value": "completed"
+          }
+        },
+        "time": "2015-01-27T09:26:00.000Z",
+        "anatomical_location": {
+          "specific_location": {
+            "side": {
+              "|code": "at0003"
+            }
+          }
+        },
+        "reason_for_procedure": {
+          "|code": "at0.62"
+        },
+        "prosthesis_fixation": {
+          "|code": "at0.69"
+        },
+        "approach": {
+          "|code": "at0.75"
+        },
+        "hip_procedure_registry_details_valdoltra": {
+          "trochanter_osteotomy": {
+            "|code": "at0012"
+          },
+          "prophylactic_antibiotics": {
+            "|code": "at0003"
+          },
+          "duration_of_procedure": "PT60M",
+          "wound_drainage": {
+            "|code": "at0006"
+          }
+        },
+        "complication": "1",
+        "hip_device_components": [
+          {
+            "device_name": "Hip implant",
+            "hip_arthroplasty_component": [
+              {
+                "manufacturer_device_name": " PC PINNACLE MARA HON NEU .PE 56/36",
+                "type": "standard",
+                "manufacturer": "JO&J",
+                "ref_number": "121936056",
+                "part": "vložek",
+                "barcode_number": "10603295014461",
+                "batch_lot_number": "3678",
+                "hip_arthroplasty_component_details": {
+                  "fixation_sub-type": "NA",
+                  "material": "PE zamreženi",
+                  "material_sub-group": "Marathon",
+                  "specific_material": "MS40000089 UHMWPE"
+                }
+              },
+              {
+                "manufacturer_device_name": " PC PINNACLE MARA HON NEU .PE 56/36",
+                "type": "standard",
+                "manufacturer": "JO&J",
+                "ref_number": "121936056",
+                "part": "vložek",
+                "barcode_number": "121936056",
+                "batch_lot_number": "3678",
+                "hip_arthroplasty_component_details": {
+                  "fixation_sub-type": "NA",
+                  "material": "PE zamreženi",
+                  "material_sub-group": "Marathon",
+                  "specific_material": "MS40000089 UHMWPE"
+                }
+              },
+              {
+                "manufacturer_device_name": " PC PINNACLE GLAVA 12/14 KOV 36 +1,5",
+                "type": "standard",
+                "manufacturer": "JO&J",
+                "ref_number": "136551000",
+                "part": "glava",
+                "barcode_number": "10603295033912",
+                "batch_lot_number": "3686",
+                "hip_arthroplasty_component_details": {
+                  "fixation_sub-type": "NA",
+                  "size": {
+                    "|magnitude": "36",
+                    "|unit": "mm"
+                  },
+                  "material": "kovina",
+                  "material_sub-group": "CoCr zlitina",
+                  "specific_material": "CoCrMo (ASTM F 1537)"
+                }
+              },
+              {
+                "manufacturer_device_name": " PC PINNACLE HOLE ELIMINA OR (DURALOC)",
+                "type": "NA",
+                "manufacturer": "JO&J",
+                "ref_number": "124603000",
+                "part": "čep za acetabul",
+                "barcode_number": "10603295019688",
+                "batch_lot_number": "459",
+                "hip_arthroplasty_component_details": {
+                  "fixation_sub-type": "NA",
+                  "material": "kovina",
+                  "material_sub-group": "Ti zlitina",
+                  "specific_material": "ASTM F 136"
+                }
+              },
+              {
+                "manufacturer_device_name": " PC PINNACLE HOLE ELIMINA OR (DURALOC)",
+                "type": "NA",
+                "manufacturer": "JO&J",
+                "ref_number": "124603000",
+                "part": "čep za acetabul",
+                "barcode_number": "G31000",
+                "batch_lot_number": "459",
+                "hip_arthroplasty_component_details": {
+                  "fixation_sub-type": "NA",
+                  "material": "kovina",
+                  "material_sub-group": "Ti zlitina",
+                  "specific_material": "ASTM F 136"
+                }
+              },
+              {
+                "manufacturer_device_name": " PC PINNACLE HOLE ELIMINA OR (DURALOC)",
+                "type": "NA",
+                "manufacturer": "JO&J",
+                "ref_number": "124603000",
+                "part": "čep za acetabul",
+                "barcode_number": "124603000",
+                "batch_lot_number": "459",
+                "hip_arthroplasty_component_details": {
+                  "fixation_sub-type": "NA",
+                  "material": "kovina",
+                  "material_sub-group": "Ti zlitina",
+                  "specific_material": "ASTM F 136"
+                }
+              },
+              {
+                "manufacturer_device_name": " PC PINNACLE HOLE ELIMINA OR (DURALOC)",
+                "type": "NA",
+                "manufacturer": "JO&J",
+                "ref_number": "124603000",
+                "part": "čep za acetabul",
+                "barcode_number": "G31000",
+                "batch_lot_number": "459",
+                "hip_arthroplasty_component_details": {
+                  "fixation_sub-type": "NA",
+                  "material": "kovina",
+                  "material_sub-group": "Ti zlitina",
+                  "specific_material": "ASTM F 136"
+                }
+              },
+              {
+                "manufacturer_device_name": " PC PINNACLE HOLE ELIMINA OR (DURALOC)",
+                "type": "NA",
+                "manufacturer": "JO&J",
+                "ref_number": "124603000",
+                "part": "čep za acetabul",
+                "barcode_number": "124603000",
+                "batch_lot_number": "459",
+                "hip_arthroplasty_component_details": {
+                  "fixation_sub-type": "NA",
+                  "material": "kovina",
+                  "material_sub-group": "Ti zlitina",
+                  "specific_material": "ASTM F 136"
+                }
+              },
+              {
+                "manufacturer_device_name": " PC PINNACLE HOLE ELIMINA OR (DURALOC)",
+                "type": "NA",
+                "manufacturer": "JO&J",
+                "ref_number": "124603000",
+                "part": "čep za acetabul",
+                "barcode_number": "*h4411246030001*",
+                "batch_lot_number": "459",
+                "hip_arthroplasty_component_details": {
+                  "fixation_sub-type": "NA",
+                  "material": "kovina",
+                  "material_sub-group": "Ti zlitina",
+                  "specific_material": "ASTM F 136"
+                }
+              },
+              {
+                "manufacturer_device_name": " PC CORAIL S EM 10 KLA",
+                "type": "standard",
+                "manufacturer": "JO&J",
+                "ref_number": "3L93710",
+                "part": "stem",
+                "barcode_number": "10603295168874",
+                "batch_lot_number": "1211",
+                "hip_arthroplasty_component_details": {
+                  "fixation_type": {
+                    "|code": "at0015"
+                  },
+                  "fixation_sub-type": "diafizalna",
+                  "material": "kovina",
+                  "material_sub-group": "Ti zlitina",
+                  "specific_material": "Ti6Al4V+HA prevleka"
+                }
+              },
+              {
+                "manufacturer_device_name": " PC CORAIL S EM 10 KLA",
+                "type": "standard",
+                "manufacturer": "JO&J",
+                "ref_number": "3L93710",
+                "part": "stem",
+                "barcode_number": "3L93710",
+                "batch_lot_number": "1211",
+                "hip_arthroplasty_component_details": {
+                  "fixation_type": {
+                    "|code": "at0015"
+                  },
+                  "fixation_sub-type": "diafizalna",
+                  "material": "kovina",
+                  "material_sub-group": "Ti zlitina",
+                  "specific_material": "Ti6Al4V+HA prevleka"
+                }
+              },
+              {
+                "manufacturer_device_name": " PC CORAIL S EM 10 KLA",
+                "type": "standard",
+                "manufacturer": "JO&J",
+                "ref_number": "3L93710",
+                "part": "stem",
+                "barcode_number": "3L93710",
+                "batch_lot_number": "1211",
+                "hip_arthroplasty_component_details": {
+                  "fixation_type": {
+                    "|code": "at0015"
+                  },
+                  "fixation_sub-type": "diafizalna",
+                  "material": "kovina",
+                  "material_sub-group": "Ti zlitina",
+                  "specific_material": "Ti6Al4V+HA prevleka"
+                }
+              },
+              {
+                "manufacturer_device_name": " PC CORAIL S EM 10 KLA",
+                "type": "standard",
+                "manufacturer": "JO&J",
+                "ref_number": "3L93710",
+                "part": "stem",
+                "barcode_number": "*e1813l937101o",
+                "batch_lot_number": "1211",
+                "hip_arthroplasty_component_details": {
+                  "fixation_type": {
+                    "|code": "at0015"
+                  },
+                  "fixation_sub-type": "diafizalna",
+                  "material": "kovina",
+                  "material_sub-group": "Ti zlitina",
+                  "specific_material": "Ti6Al4V+HA prevleka"
+                }
+              },
+              {
+                "manufacturer_device_name": " PC PINNACLE ACE .56 OD POROCOA  SHELL",
+                "type": "standard",
+                "manufacturer": "JO&J",
+                "ref_number": "121701056",
+                "part": "acetabularna komp",
+                "barcode_number": "20228208832",
+                "batch_lot_number": "906255",
+                "hip_arthroplasty_component_details": {
+                  "fixation_type": {
+                    "|code": "at0015"
+                  },
+                  "fixation_sub-type": "press fit",
+                  "material": "kovina",
+                  "material_sub-group": "Ti zlitina",
+                  "specific_material": "ASTM F 136"
+                }
+              },
+              {
+                "manufacturer_device_name": " PC PINNACLE ACE .56 OD POROCOA  SHELL",
+                "type": "standard",
+                "manufacturer": "JO&J",
+                "ref_number": "121701056",
+                "part": "acetabularna komp",
+                "barcode_number": "121701056",
+                "batch_lot_number": "906255",
+                "hip_arthroplasty_component_details": {
+                  "fixation_type": {
+                    "|code": "at0015"
+                  },
+                  "fixation_sub-type": "press fit",
+                  "material": "kovina",
+                  "material_sub-group": "Ti zlitina",
+                  "specific_material": "ASTM F 136"
+                }
+              },
+              {
+                "manufacturer_device_name": " PC PINNACLE ACE .56 OD POROCOA  SHELL",
+                "type": "standard",
+                "manufacturer": "JO&J",
+                "ref_number": "121701056",
+                "part": "acetabularna komp",
+                "barcode_number": "10603295008576",
+                "batch_lot_number": "906255",
+                "hip_arthroplasty_component_details": {
+                  "fixation_type": {
+                    "|code": "at0015"
+                  },
+                  "fixation_sub-type": "press fit",
+                  "material": "kovina",
+                  "material_sub-group": "Ti zlitina",
+                  "specific_material": "ASTM F 136"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

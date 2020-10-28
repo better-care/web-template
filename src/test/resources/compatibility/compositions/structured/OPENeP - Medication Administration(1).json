@@ -1,0 +1,197 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "medication_administration": {
+    "_uid": [
+      "8b91d052-44fd-4e2f-b162-363433e73c86::default::1"
+    ],
+    "language": [
+      {
+        "|code": "sl",
+        "|terminology": "ISO_639-1"
+      }
+    ],
+    "territory": [
+      {
+        "|code": "SI",
+        "|terminology": "ISO_3166-1"
+      }
+    ],
+    "context": [
+      {
+        "start_time": [
+          "2015-03-19T11:05:31.145+01:00"
+        ],
+        "setting": [
+          {
+            "|code": "238",
+            "|value": "other care",
+            "|terminology": "openehr"
+          }
+        ]
+      }
+    ],
+    "medication_management": [
+      {
+        "_instruction_details": [
+          {
+            "|composition_uid": "9f5c790c-cb49-4ef8-a496-f8fff649135e",
+            "|path": "content[openEHR-EHR-INSTRUCTION.medication_order.v2]",
+            "|activity_id": "activities[at0001] "
+          }
+        ],
+        "ism_transition": [
+          {
+            "current_state": [
+              {
+                "|code": "245",
+                "|value": "active",
+                "|terminology": "openehr"
+              }
+            ],
+            "careflow_step": [
+              {
+                "|code": "at0018",
+                "|value": "Dose administration omitted",
+                "|terminology": "local"
+              }
+            ]
+          }
+        ],
+        "medication_item": [
+          {
+            "|code": "1702862",
+            "|value": "GLUKOZA 5%-3D, NACL 0.9%-1D PM3, razt. za inf.",
+            "|terminology": "local"
+          }
+        ],
+        "medication": [
+          {
+            "component_name": [
+              {
+                "|code": "1702862",
+                "|value": "GLUKOZA 5%-3D, NACL 0.9%-1D PM3, razt. za inf.",
+                "|terminology": "local"
+              }
+            ]
+          }
+        ],
+        "dosage": [
+          {
+            "administration_rate": [
+              {
+                "quantity_value": [
+                  {
+                    "|magnitude": 100.0,
+                    "|unit": "ml/h"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "substitution": [
+          {
+            "|code": "at0139",
+            "|value": "Not performed",
+            "|terminology": "local"
+          }
+        ],
+        "original_scheduled_date_time": [
+          "2015-03-18T00:00+01:00"
+        ],
+        "administration_details": [
+          {
+            "route": [
+              {
+                "|code": "45",
+                "|value": "ivk",
+                "|terminology": "local"
+              }
+            ],
+            "administration_method": [
+              {
+                "|code": "Continuous infusion",
+                "|value": "Continuous infusion",
+                "|terminology": "local"
+              }
+            ]
+          }
+        ],
+        "medication_additional_details": [
+          {
+            "administration_type": [
+              "START"
+            ],
+            "planned_administration": [
+              {
+                "dosage": [
+                  {
+                    "administration_rate": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 100.0,
+                            "|unit": "ml/h"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "different_dose_administered": [
+                  false
+                ],
+                "task_id": [
+                  "17590600"
+                ]
+              }
+            ]
+          }
+        ],
+        "time": [
+          "2015-03-18T00:00+01:00"
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "category": [
+      {
+        "|code": "433",
+        "|value": "event",
+        "|terminology": "openehr"
+      }
+    ],
+    "composer": [
+      {
+        "|id": "61249527",
+        "|id_scheme": "scheme",
+        "|id_namespace": "ns",
+        "|name": "Testing Nurse"
+      }
+    ]
+  }
+}

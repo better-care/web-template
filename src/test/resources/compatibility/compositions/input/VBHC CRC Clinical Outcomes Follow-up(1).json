@@ -1,0 +1,459 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "medtronic_vbhc_crc_clinical_outcomes_follow-up": {
+    "context": [
+      {
+        "encounter_context": [
+          {
+            "encounter_id": [],
+            "encounter_type": [],
+            "encounter_reason": [],
+            "appointment_id": []
+          }
+        ],
+        "xds_metadata": [
+          {
+            "author_specialty": [],
+            "class_code": [],
+            "document_type": [],
+            "confidentiality_code": [],
+            "health_care_facility_type": [],
+            "practice_setting_code": [],
+            "event_code": [],
+            "document_media": []
+          }
+        ],
+        "start_time": [
+          "2021-02-15T12:19:00+01:00"
+        ],
+        "research_information": [
+          {
+            "assessment_timeline": [
+              {
+                "|code": "A9",
+                "|value": "9 years",
+                "|terminology": "followTimelineAssessmentICHOMCRC"
+              }
+            ],
+            "cohort_study_name": [
+              {
+                "|code": "CRC",
+                "|value": "Colorectal cancer screening",
+                "|terminology": "cohortStudyName"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "care_plan": [
+      {
+        "care_plan_name": [
+          "test_carePlaneName"
+        ],
+        "care_plan_id": [
+          {
+            "|id": ""
+          }
+        ],
+        "description": [],
+        "reason": [],
+        "expiry_date": []
+      }
+    ],
+    "treatment_variables": [
+      {
+        "ichom_crc_treatment_modalities": [
+          {
+            "treatment_modalities_used": [
+              {
+                "|code": "1",
+                "|value": "Surgery",
+                "|terminology": "treatmentFUICHOMCRC"
+              },
+              {
+                "|code": "2",
+                "|value": "Radiotherapy",
+                "|terminology": "treatmentFUICHOMCRC"
+              },
+              {
+                "|code": "3",
+                "|value": "Chemotherapy",
+                "|terminology": "treatmentFUICHOMCRC"
+              },
+              {
+                "|code": "4",
+                "|value": "Targeted therapy",
+                "|terminology": "treatmentFUICHOMCRC"
+              },
+              {
+                "|code": "5",
+                "|value": "Best supportive care",
+                "|terminology": "treatmentFUICHOMCRC"
+              }
+            ]
+          }
+        ],
+        "surgery": [
+          {
+            "procedure_name": [
+              {
+                "|code": "1",
+                "|value": "Hemicolectomy right",
+                "|terminology": "surgeryFUICHOMCRC"
+              }
+            ],
+            "procedure_method": [
+              {
+                "|code": "2",
+                "|value": "Transabdominal open",
+                "|terminology": "surgeryProcFUICHOMCRC"
+              }
+            ],
+            "surgery_date": [
+              "2021-02-02"
+            ]
+          }
+        ],
+        "radiotherapy": [
+          {
+            "procedure_name": [
+              {
+                "|code": "1",
+                "|value": "Neoadjuvant ",
+                "|terminology": "radioFUICHOMCRC"
+              }
+            ],
+            "start_of_radiotherapy": [
+              "2021-02-01"
+            ],
+            "end_of_radiotherapy": [
+              "2021-02-04"
+            ],
+            "radiotherapy_type": [
+              {
+                "|code": "0",
+                "|value": "Short course",
+                "|terminology": "radioTypeFUICHOMCRC"
+              }
+            ]
+          }
+        ],
+        "chemotherapy": [
+          {
+            "procedure_name": [
+              {
+                "|code": "1",
+                "|value": "Neoadjuvant",
+                "|terminology": "chemoFUICHOMCRC"
+              }
+            ],
+            "start_of_chemotherapy": [
+              "2021-02-03"
+            ],
+            "end_of_chemotherapy": [
+              "2021-02-04"
+            ],
+            "chemotherapy_type": [
+              {
+                "|code": "0",
+                "|value": "FOLFOX regimen",
+                "|terminology": "chemoTypeFUICHOMCRC"
+              }
+            ]
+          }
+        ],
+        "targeted_therapy": [
+          {
+            "procedure_name": [
+              {
+                "|code": "1",
+                "|value": "Cetuximab",
+                "|terminology": "targetedTxFUICHOMCRC"
+              }
+            ],
+            "start_of_targeted_therapy": [
+              "2021-02-03"
+            ],
+            "end_of_targeted_therapy": [
+              "2021-02-01"
+            ]
+          }
+        ],
+        "stoma": [
+          {
+            "device_type": [
+              {
+                "|code": "ST",
+                "|value": "Stoma",
+                "|terminology": "procedureDefinitionFUCRCMED"
+              }
+            ],
+            "status": [
+              {
+                "|code": "1",
+                "|value": "Temporary",
+                "|terminology": "stomaFUICHOMCRC"
+              }
+            ],
+            "device_details": [
+              {
+                "start_date": [
+                  "2021-02-04"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "disutility_of_care": [
+      {
+        "ichom_crc_complications": [
+          {
+            "complications_while_or_90_days_after_initiation_of_treatment": [
+              {
+                "complications_name": [
+                  {
+                    "|code": "1",
+                    "|value": "Complication requiring intervention (surgical, radiological, endoscopic)",
+                    "|terminology": "complicationsFUICHOMCRC"
+                  },
+                  {
+                    "|code": "2",
+                    "|value": "Complication leading to prolonged hospitalisation (>14days)",
+                    "|terminology": "complicationsFUICHOMCRC"
+                  },
+                  {
+                    "|code": "3",
+                    "|value": "Complication leading to unplanned readmission",
+                    "|terminology": "complicationsFUICHOMCRC"
+                  },
+                  {
+                    "|code": "4",
+                    "|value": "Complication leading to ICU admission",
+                    "|terminology": "complicationsFUICHOMCRC"
+                  },
+                  {
+                    "|code": "5",
+                    "|value": "Complication leading to discontinuing of treatment",
+                    "|terminology": "complicationsFUICHOMCRC"
+                  },
+                  {
+                    "|code": "7",
+                    "|value": "Complication leading to death",
+                    "|terminology": "complicationsFUICHOMCRC"
+                  },
+                  {
+                    "|code": "6",
+                    "|value": "Complication leading to reduced dosing",
+                    "|terminology": "complicationsFUICHOMCRC"
+                  },
+                  {
+                    "|code": "8",
+                    "|value": "Complication, but did not result in any of the above mentioned",
+                    "|terminology": "complicationsFUICHOMCRC"
+                  }
+                ],
+                "complications_type": [
+                  {
+                    "|code": "8",
+                    "|value": "Dehydration",
+                    "|terminology": "complicationTypeFUICHOMCRC"
+                  },
+                  {
+                    "|code": "10",
+                    "|value": "Febrile neuropathy",
+                    "|terminology": "complicationTypeFUICHOMCRC"
+                  },
+                  {
+                    "|code": "12",
+                    "|value": "Mucositis",
+                    "|terminology": "complicationTypeFUICHOMCRC"
+                  }
+                ],
+                "complication_related_to_colorectal_cancer_treatment": [
+                  {
+                    "|code": "999",
+                    "|value": "Unknown",
+                    "|terminology": "ternaryValuesMED"
+                  }
+                ],
+                "width": []
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "survival_and_disease_control": [
+      {
+        "ichom_crc_disease_control": [
+          {
+            "residual_invasive_cancer": [
+              {
+                "|code": "1",
+                "|value": "Yes",
+                "|terminology": "ternaryValuesMED"
+              }
+            ],
+            "tumour_-_surgical_resection_margins": [
+              {
+                "circumferential_margin": [
+                  {
+                    "|code": "0",
+                    "|value": "Positive (<= 1mm)",
+                    "|terminology": "circumfMarginFUICHOMCRC"
+                  }
+                ]
+              }
+            ],
+            "recurrence": [
+              {
+                "|code": "1",
+                "|value": "Local recurrence",
+                "|terminology": "recurrenceFUICHOMCRC"
+              }
+            ],
+            "recurrence_method": [
+              {
+                "|code": "0",
+                "|value": "Radiological diagnosis",
+                "|terminology": "recurrenceMethodFUICHOMCRC"
+              }
+            ],
+            "recurrence_date": [
+              "2021-02-05"
+            ],
+            "disease_progression": [
+              {
+                "|code": "1",
+                "|value": "Yes",
+                "|terminology": "ternaryValuesMED"
+              }
+            ],
+            "progression_method": [
+              {
+                "|code": "2",
+                "|value": "Radiological diagnosis",
+                "|terminology": "progressionMethodFUICHOMCRC"
+              }
+            ],
+            "progression_date": [
+              "2021-02-05"
+            ]
+          }
+        ],
+        "patient_death_information": [
+          {
+            "anonymised_person": [
+              {
+                "dead": [
+                  {
+                    "|code": "1",
+                    "|value": "Yes",
+                    "|terminology": "ternaryValuesMED"
+                  }
+                ]
+              }
+            ],
+            "death_details": [
+              {
+                "date_of_death": [],
+                "death_attributable_to_colorectal_cancer": [
+                  {
+                    "coded_text_value": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "metastasis_or_progression_of_treatment": [
+      {
+        "cancer_organ_treatment": [
+          {
+            "procedure_name": [
+              "Cancer metastasis or treatment progression"
+            ],
+            "treated_organ": [
+              "aaa"
+            ],
+            "treatment_date": [
+              "2021-02-03"
+            ],
+            "type_of_treatment": [
+              "bbb"
+            ]
+          }
+        ]
+      }
+    ],
+    "quality_of_death": [
+      {
+        "ichom_crc_quality_of_death": [
+          {
+            "place_of_death": [
+              {
+                "|code": "2",
+                "|value": "Hospital",
+                "|terminology": "deathPlaceFUICHOMCRC"
+              }
+            ],
+            "hospice": [
+              {
+                "|code": "1",
+                "|value": "Yes",
+                "|terminology": "ternaryValuesMED"
+              }
+            ],
+            "prefered_place_of_death": [
+              {
+                "|code": "2",
+                "|value": "Hospital",
+                "|terminology": "deathPlacePrefFUICHOMCRC"
+              }
+            ],
+            "date_of_documentation_of_desired_place_of_death": [
+              "2021-02-04"
+            ],
+            "hospital_readmission_1_time_during_the_last_30_days_of_life_excluding_emergency_consultations": [
+              {
+                "|code": "1",
+                "|value": "Yes",
+                "|terminology": "ternaryValuesMED"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ctx": {
+    "language": "en",
+    "territory": "SI",
+    "time": "2021-02-15T12:14:00+01:00",
+    "action_time": "2021-02-15T12:14:00+01:00",
+    "generic_fields": {
+      "/generic-fieldset-8009165/generic-input_text-2463686": [],
+      "/generic-fieldset-8009165/generic-input_text-6521670": [],
+      "/generic-fieldset-5885294/generic-fieldset-7569843/generic-coded_text-8621066": []
+    }
+  }
+}
+

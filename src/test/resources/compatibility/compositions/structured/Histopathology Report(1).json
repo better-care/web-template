@@ -1,0 +1,459 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "histopathology_report": {
+    "_link": [
+      {
+        "|meaning": "Link histopathology_report to request.",
+        "|type": "origin",
+        "|target": "2e4689cf-1a85-4688-aad8-1f3630a04120::Testing::1"
+      }
+    ],
+    "_uid": [
+      "b34a1abe-3964-4fb4-b7d1-ebc8303cfba2::Testing::1"
+    ],
+    "language": [
+      {
+        "|code": "sl",
+        "|terminology": "ISO_639-1"
+      }
+    ],
+    "territory": [
+      {
+        "|code": "SI",
+        "|terminology": "ISO_3166-1"
+      }
+    ],
+    "context": [
+      {
+        "report_id": [
+          "cistipodatki08"
+        ],
+        "status": [
+          {
+            "|code": "3",
+            "|value": "Avtoriziran",
+            "|terminology": "B03_report_status"
+          }
+        ],
+        "report_version": [
+          1
+        ],
+        "start_time": [
+          "2020-04-08T12:05:16.145+02:00"
+        ],
+        "setting": [
+          {
+            "|code": "238",
+            "|value": "other care",
+            "|terminology": "openehr"
+          }
+        ]
+      }
+    ],
+    "laboratory_test_result": [
+      {
+        "test_name": [
+          {
+            "|code": "250537006",
+            "|value": "Histopathology finding",
+            "|terminology": "SNOMEDCT"
+          }
+        ],
+        "specimen": [
+          {
+            "processing": [
+              {
+                "date_and_time_specimen_received": [
+                  {
+                    "date_time_value": [
+                      "2020-04-01T12:00+02:00"
+                    ]
+                  }
+                ],
+                "laboratory_specimen_id": [
+                  "cistipodatki08"
+                ]
+              }
+            ]
+          }
+        ],
+        "date_of_report": [
+          "2020-04-08T12:01+02:00"
+        ],
+        "histopathology_findings": [
+          {
+            "histopathology_examination": [
+              {
+                "histopathology_finding": [
+                  {
+                    "microscopic_findings_-_cervical_cancer": [
+                      {
+                        "malignant_tumour": [
+                          {
+                            "|code": "2",
+                            "|value": "Ni prisoten",
+                            "|terminology": "BJ_malignant_tumour_presence"
+                          }
+                        ],
+                        "extent_of_invasion": [
+                          {
+                            "extent_to_vagina": [
+                              {
+                                "body_site": [
+                                  {
+                                    "|code": "1",
+                                    "|value": "Nožnica",
+                                    "|terminology": "BL_tumour_tissue_invasion"
+                                  }
+                                ]
+                              }
+                            ],
+                            "extent_to_lower_uterine_segment": [
+                              {
+                                "body_site": [
+                                  {
+                                    "|code": "2",
+                                    "|value": "Spodnji segment maternice",
+                                    "|terminology": "BL_tumour_tissue_invasion"
+                                  }
+                                ]
+                              }
+                            ],
+                            "extent_to_endometrium": [
+                              {
+                                "body_site": [
+                                  {
+                                    "|code": "3",
+                                    "|value": "Endometrij",
+                                    "|terminology": "BL_tumour_tissue_invasion"
+                                  }
+                                ]
+                              }
+                            ],
+                            "extent_to_myometrium": [
+                              {
+                                "body_site": [
+                                  {
+                                    "|code": "4",
+                                    "|value": "Miometrij",
+                                    "|terminology": "BL_tumour_tissue_invasion"
+                                  }
+                                ]
+                              }
+                            ],
+                            "extent_to_parametrium": [
+                              {
+                                "body_site": [
+                                  {
+                                    "|code": "5",
+                                    "|value": "Parametrij",
+                                    "|terminology": "BL_tumour_tissue_invasion"
+                                  }
+                                ]
+                              }
+                            ],
+                            "extent_to_fallopian_tube": [
+                              {
+                                "body_site": [
+                                  {
+                                    "|code": "6",
+                                    "|value": "Jajcevod",
+                                    "|terminology": "BL_tumour_tissue_invasion"
+                                  }
+                                ]
+                              }
+                            ],
+                            "extent_to_ovary": [
+                              {
+                                "body_site": [
+                                  {
+                                    "|code": "7",
+                                    "|value": "Jajčnik",
+                                    "|terminology": "BL_tumour_tissue_invasion"
+                                  }
+                                ]
+                              }
+                            ],
+                            "extent_to_bladder": [
+                              {
+                                "body_site": [
+                                  {
+                                    "|code": "8",
+                                    "|value": "Mehur",
+                                    "|terminology": "BL_tumour_tissue_invasion"
+                                  }
+                                ]
+                              }
+                            ],
+                            "extent_to_rectum": [
+                              {
+                                "body_site": [
+                                  {
+                                    "|code": "9",
+                                    "|value": "Rektum",
+                                    "|terminology": "BL_tumour_tissue_invasion"
+                                  }
+                                ]
+                              }
+                            ],
+                            "extent_to_other_organs_or_tissues": [
+                              {
+                                "body_site": [
+                                  {
+                                    "|code": "10",
+                                    "|value": "Ostali organi ali tkiva",
+                                    "|terminology": "BL_tumour_tissue_invasion"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "pathological_staging": [
+                          {
+                            "tumour_-_cervical_cancer_figo_staging": [
+                              {
+                                "figo_edition": [
+                                  "2018"
+                                ]
+                              }
+                            ],
+                            "tumour_-_tnm_cancer_staging": [
+                              {
+                                "tnm_edition": [
+                                  "8th edition 2016"
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "specimen": [
+                  {
+                    "datetime_collected": [
+                      "2020-04-01T11:00+02:00"
+                    ],
+                    "anatomical_location": [
+                      {
+                        "site_of_procedure": [
+                          {
+                            "|code": "1",
+                            "|value": "Maternični vrat",
+                            "|terminology": "F_site_procedure"
+                          }
+                        ]
+                      }
+                    ],
+                    "procedure_performed": [
+                      {
+                        "|code": "1",
+                        "|value": "Odščip",
+                        "|terminology": "E_procedure"
+                      }
+                    ],
+                    "procedure_group": [
+                      {
+                        "|code": "2",
+                        "|value": "Abrazija",
+                        "|terminology": "K_procedure_group"
+                      }
+                    ],
+                    "specimen_container": [
+                      {
+                        "container_identifier": [
+                          "A"
+                        ]
+                      }
+                    ],
+                    "specimen_quality": [
+                      {
+                        "adequacy_for_testing": [
+                          {
+                            "|code": "1",
+                            "|value": "Uporaben",
+                            "|terminology": "D_adequacy"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "time": [
+          "2020-04-08T12:05:16.145+02:00"
+        ],
+        "test_request_details": [
+          {
+            "request_id": [
+              {
+                "text_value": [
+                  "2e4689cf-1a85-4688-aad8-1f3630a04120::Testing::1"
+                ]
+              }
+            ]
+          }
+        ],
+        "zora": [
+          {
+            "organisation_name": [
+              "DP ZORA"
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "tnm_stage_-_pathological": [
+      {
+        "any_event": [
+          {
+            "primary_tumour_pt": [
+              {
+                "|code": "T0",
+                "|value": "No evidence of primary tumour",
+                "|terminology": "BD_pTNM_primary_tumour"
+              }
+            ],
+            "time": [
+              "2020-04-08T12:05:16.145+02:00"
+            ]
+          }
+        ],
+        "tnm_edition": [
+          "8th edition 2016"
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "figo_stage_-_pathological": [
+      {
+        "any_event": [
+          {
+            "primary_tumour_pt": [
+              {
+                "|code": "0",
+                "|value": "-",
+                "|terminology": "BF_FIGO_staging"
+              }
+            ],
+            "time": [
+              "2020-04-08T12:05:16.145+02:00"
+            ]
+          }
+        ],
+        "figo_edition": [
+          "2018"
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "recommendation": [
+      {
+        "recommendation": [
+          {
+            "|code": "1",
+            "|value": "Ponovna biopsija",
+            "|terminology": "BN_histo_recommendations"
+          }
+        ],
+        "histopathology_findings_match_cytopathology_findings": [
+          {
+            "|code": "at0.3",
+            "|value": "Ne",
+            "|terminology": "local"
+          }
+        ],
+        "multidisciplinary_consilium_review_recommended": [
+          {
+            "|code": "at0.8",
+            "|value": "Ne",
+            "|terminology": "local"
+          }
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "category": [
+      {
+        "|code": "433",
+        "|value": "event",
+        "|terminology": "openehr"
+      }
+    ],
+    "composer": [
+      {
+        "|name": "gyn2"
+      }
+    ]
+  },
+  "ctx": {
+    "generic_fields": {
+      "/generic-label-2771981": [],
+      "/generic-spacer-9932385": [],
+      "/generic-label-9585108": []
+    }
+  }
+}

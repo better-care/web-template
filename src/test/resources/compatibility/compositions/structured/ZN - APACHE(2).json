@@ -1,0 +1,456 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "apache_ii": {
+    "_uid": [
+      "476fc706-1fc1-4e55-b715-9e7ca6586ff8::default::1"
+    ],
+    "language": [
+      {
+        "|code": "sl",
+        "|terminology": "ISO_639-1"
+      }
+    ],
+    "territory": [
+      {
+        "|code": "SI",
+        "|terminology": "ISO_3166-1"
+      }
+    ],
+    "context": [
+      {
+        "context_detail": [
+          {
+            "period_of_care_identifier": [
+              "421720171"
+            ]
+          }
+        ],
+        "start_time": [
+          "2015-11-13T14:59:58.738+01:00"
+        ],
+        "setting": [
+          {
+            "|code": "238",
+            "|value": "other care",
+            "|terminology": "openehr"
+          }
+        ]
+      }
+    ],
+    "vitals": [
+      {
+        "body_temperature": [
+          {
+            "any_event": [
+              {
+                "temperature": [
+                  {
+                    "|magnitude": 36.6,
+                    "|unit": "°C"
+                  }
+                ],
+                "time": [
+                  "2015-11-13T14:59:58.738+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "sl",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "pulse": [
+          {
+            "any_event": [
+              {
+                "rate": [
+                  {
+                    "|magnitude": 104.0,
+                    "|unit": "/min"
+                  }
+                ],
+                "time": [
+                  "2015-11-13T14:59:58.738+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "sl",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "blood_pressure": [
+          {
+            "any_event": [
+              {
+                "mean_arterial_pressure": [
+                  {
+                    "|magnitude": 99.66666666666666,
+                    "|unit": "mm[Hg]"
+                  }
+                ],
+                "time": [
+                  "2015-11-13T14:59:58.738+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "sl",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "respirations": [
+          {
+            "any_event": [
+              {
+                "rate": [
+                  {
+                    "|magnitude": 27.0,
+                    "|unit": "/min"
+                  }
+                ],
+                "time": [
+                  "2015-11-13T14:59:58.738+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "sl",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "oxygenation": [
+      {
+        "unassisted_oxygen_delivery": [
+          {
+            "ism_transition": [
+              {
+                "current_state": [
+                  {
+                    "|code": "532",
+                    "|value": "completed",
+                    "|terminology": "openehr"
+                  }
+                ]
+              }
+            ],
+            "intervention": [
+              {
+                "|code": "at0.2",
+                "|value": "Spontano dihajoč",
+                "|terminology": "local"
+              }
+            ],
+            "oxygen_delivery": [
+              {
+                "ambient_oxygen": [
+                  {
+                    "fio2": [
+                      {
+                        "|numerator": 0.3,
+                        "|denominator": 1.0,
+                        "|type": 1,
+                        "": 0.3
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "time": [
+              "2015-11-13T14:59:58.940+01:00"
+            ],
+            "language": [
+              {
+                "|code": "sl",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "glasgow_coma_scale": [
+      {
+        "glasgow_coma_scale": [
+          {
+            "total_score": [
+              10
+            ],
+            "time": [
+              "2015-11-13T14:59:58.738+01:00"
+            ],
+            "language": [
+              {
+                "|code": "sl",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "apache_ii_score": [
+      {
+        "apache_ii_scoring_system": [
+          {
+            "lab_resaults": [
+              {
+                "serum_na": [
+                  {
+                    "|magnitude": 146.0,
+                    "|unit": "mmol/l"
+                  }
+                ],
+                "serum_k": [
+                  {
+                    "|magnitude": 4.4,
+                    "|unit": "mmol/l"
+                  }
+                ],
+                "serum_hco3": [
+                  {
+                    "|magnitude": 18.4,
+                    "|unit": "mmol/l"
+                  }
+                ],
+                "serum_creatinine": [
+                  {
+                    "|magnitude": 5.9276018099547505,
+                    "|unit": "mg/dl"
+                  }
+                ],
+                "hematocrit_-_hct": [
+                  {
+                    "|magnitude": 31.5,
+                    "|unit": "%"
+                  }
+                ],
+                "wbs_-_lkci": [
+                  {
+                    "|magnitude": 12.9,
+                    "|unit": "10^3"
+                  }
+                ],
+                "arterial_ph": [
+                  {
+                    "|magnitude": 7.5,
+                    "|unit": "1"
+                  }
+                ]
+              }
+            ],
+            "mean_arterial_pressure_score": [
+              {
+                "|code": "at0015",
+                "|value": "0 points for patient who has mean arterial pressure >= 70 - 109",
+                "|ordinal": 0
+              }
+            ],
+            "temperature_score": [
+              {
+                "|code": "at0008",
+                "|value": "0 points for patient who has body temperature >= 36° - 38,4°",
+                "|ordinal": 0
+              }
+            ],
+            "heart_rate_score": [
+              {
+                "|code": "at0021",
+                "|value": "0 points for patient who has heart rat >= 70 - 109",
+                "|ordinal": 0
+              }
+            ],
+            "respiratory_rate_score": [
+              {
+                "|code": "at0028",
+                "|value": "1 points for patient who has respiratory rate >= 10 - 11 or >= 25 - 34",
+                "|ordinal": 1
+              }
+            ],
+            "pao2_score": [
+              {
+                "|code": "at0077",
+                "|value": "4 points for patient who has PaO2 < 55 mmHg or < 7,3 kPa",
+                "|ordinal": 4
+              }
+            ],
+            "arterial_ph_score": [
+              {
+                "|code": "at0106",
+                "|value": "1 points for patient who has arterial PH >= 7,5 - 7,59",
+                "|ordinal": 1
+              }
+            ],
+            "serum_na_score": [
+              {
+                "|code": "at0037",
+                "|value": "0 points for patient who has Serum Na >= 130 - 149",
+                "|ordinal": 0
+              }
+            ],
+            "serum_k_score": [
+              {
+                "|code": "at0054",
+                "|value": "Add 0 points for patient who has Serum K >= 3,5 - 5,4",
+                "|ordinal": 0
+              }
+            ],
+            "serum_hco3_score": [
+              {
+                "|code": "at0061",
+                "|value": "Add 2 points for patient who has Serum HCO3 >= 18 - 21,9",
+                "|ordinal": 2
+              }
+            ],
+            "serum_creatinine_score": [
+              {
+                "|code": "at0094",
+                "|value": "4 points for patient who has Serum Creatinine >= 3,5 or 305",
+                "|ordinal": 4
+              }
+            ],
+            "acute_renal_failure_score": [
+              true
+            ],
+            "htc_score": [
+              {
+                "|code": "at0082",
+                "|value": "0 points for patient who has Hct >= 30 - 45,9",
+                "|ordinal": 0
+              }
+            ],
+            "wbc_score": [
+              {
+                "|code": "at0086",
+                "|value": "0 points for patient who has Lkci >= 3 - 14,9",
+                "|ordinal": 0
+              }
+            ],
+            "apache_ii_gcs_score": [
+              5
+            ],
+            "age_group_score": [
+              {
+                "|code": "at0067",
+                "|value": "0 points for patient old <= 44 years",
+                "|ordinal": 0
+              }
+            ],
+            "chronic_organ_insufficiency": [
+              {
+                "|code": "at0065",
+                "|value": "2 points for elective postoperative patients",
+                "|ordinal": 2
+              }
+            ],
+            "apache_ii_score": [
+              21
+            ],
+            "predicted_death_rate": [
+              {
+                "|numerator": 38.912304,
+                "|denominator": 100.0,
+                "|type": 2,
+                "": 0.38912305
+              }
+            ],
+            "time": [
+              "2015-11-13T14:59:58.738+01:00"
+            ],
+            "language": [
+              {
+                "|code": "sl",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "category": [
+      {
+        "|code": "433",
+        "|value": "event",
+        "|terminology": "openehr"
+      }
+    ],
+    "composer": [
+      {
+        "|id": "6226133",
+        "|id_scheme": "ispek_scheme",
+        "|id_namespace": "ispek",
+        "|name": "Testing Nurse"
+      }
+    ]
+  }
+}

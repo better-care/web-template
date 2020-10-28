@@ -1,0 +1,290 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "medication_administration": {
+    "_uid": [
+      "ef72534e-98af-4b40-85ac-a42719012f5c::default::1"
+    ],
+    "language": [
+      {
+        "|code": "sl",
+        "|terminology": "ISO_639-1"
+      }
+    ],
+    "territory": [
+      {
+        "|code": "SI",
+        "|terminology": "ISO_3166-1"
+      }
+    ],
+    "context": [
+      {
+        "context_detail": [
+          {
+            "period_of_care_identifier": [
+              "543658424"
+            ],
+            "departmental_period_of_care_identifier": [
+              "244131"
+            ]
+          }
+        ],
+        "start_time": [
+          "2019-02-15T09:31:42.054+01:00"
+        ],
+        "setting": [
+          {
+            "|code": "238",
+            "|value": "other care",
+            "|terminology": "openehr"
+          }
+        ]
+      }
+    ],
+    "medication_management": [
+      {
+        "_instruction_details": [
+          {
+            "|composition_uid": "23501b1b-b498-4462-9296-033680ac5b10",
+            "|path": "content[openEHR-EHR-INSTRUCTION.medication_order.v2]",
+            "|activity_id": "activities[at0001] "
+          }
+        ],
+        "ism_transition": [
+          {
+            "current_state": [
+              {
+                "|code": "245",
+                "|value": "active",
+                "|terminology": "openehr"
+              }
+            ],
+            "careflow_step": [
+              {
+                "|code": "at0006",
+                "|value": "Dose administered",
+                "|terminology": "local"
+              }
+            ]
+          }
+        ],
+        "medication_item": [
+          "REMICADE 100 mg prašek za konc.za razt.za inf. viala 1x, Fiziološka razt. NACL 0,9%"
+        ],
+        "medication": [
+          {
+            "component_name": [
+              "REMICADE 100 mg prašek za konc.za razt.za inf. viala 1x, Fiziološka razt. NACL 0,9%"
+            ],
+            "category": [
+              {
+                "|code": "at0143",
+                "|value": "Ad-hoc mixture",
+                "|terminology": "local"
+              }
+            ],
+            "medication": [
+              {
+                "component_name": [
+                  {
+                    "|code": "1057126",
+                    "|value": "REMICADE 100 mg prašek za konc.za razt.za inf. viala 1x",
+                    "|terminology": "local"
+                  }
+                ],
+                "amount_value": [
+                  {
+                    "|magnitude": 300.0,
+                    "|unit": "1"
+                  }
+                ],
+                "amount_unit": [
+                  "mg"
+                ],
+                "alternate_amount_value": [
+                  {
+                    "|magnitude": 30.0,
+                    "|unit": "1"
+                  }
+                ],
+                "alternate_amount_unit": [
+                  "ml"
+                ],
+                "role": [
+                  {
+                    "|code": "at0080",
+                    "|value": "Therapeutic",
+                    "|terminology": "local"
+                  }
+                ]
+              },
+              {
+                "component_name": [
+                  {
+                    "|code": "1702579",
+                    "|value": "Fiziološka razt. NACL 0,9%",
+                    "|terminology": "local"
+                  }
+                ],
+                "amount_value": [
+                  {
+                    "|magnitude": 250.0,
+                    "|unit": "1"
+                  }
+                ],
+                "amount_unit": [
+                  "ml"
+                ],
+                "role": [
+                  {
+                    "|code": "at0084",
+                    "|value": "Excipient",
+                    "|terminology": "local"
+                  }
+                ]
+              }
+            ],
+            "amount_value": [
+              {
+                "|magnitude": 280.0,
+                "|unit": "1"
+              }
+            ],
+            "amount_unit": [
+              "ml"
+            ]
+          }
+        ],
+        "dosage": [
+          {
+            "dose_formula": [
+              {
+                "text_value": [
+                  "1.3736263736263736 mg/kg/h"
+                ]
+              }
+            ],
+            "administration_rate": [
+              {
+                "quantity_value": [
+                  {
+                    "|magnitude": 50.0,
+                    "|unit": "ml/h"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "substitution": [
+          {
+            "|code": "at0139",
+            "|value": "Not performed",
+            "|terminology": "local"
+          }
+        ],
+        "original_scheduled_date_time": [
+          "2019-02-15T09:00+01:00"
+        ],
+        "administration_details": [
+          {
+            "route": [
+              {
+                "|code": "45",
+                "|value": "ivk",
+                "|terminology": "local"
+              }
+            ],
+            "administration_method": [
+              {
+                "|code": "Continuous infusion",
+                "|value": "Continuous infusion",
+                "|terminology": "local"
+              }
+            ]
+          }
+        ],
+        "medication_additional_details": [
+          {
+            "administration_type": [
+              "START"
+            ],
+            "planned_administration": [
+              {
+                "dosage": [
+                  {
+                    "dose_formula": [
+                      {
+                        "text_value": [
+                          "1.3807069219 mg/kg/h"
+                        ]
+                      }
+                    ],
+                    "administration_rate": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 50.0,
+                            "|unit": "ml/h"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "different_dose_administered": [
+                  false
+                ],
+                "task_id": [
+                  "63210741"
+                ]
+              }
+            ]
+          }
+        ],
+        "time": [
+          "2019-02-15T09:00+01:00"
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "category": [
+      {
+        "|code": "433",
+        "|value": "event",
+        "|terminology": "openehr"
+      }
+    ],
+    "composer": [
+      {
+        "|id": "40878802",
+        "|id_scheme": "scheme",
+        "|id_namespace": "ns",
+        "|name": "Testing Nurse"
+      }
+    ]
+  }
+}

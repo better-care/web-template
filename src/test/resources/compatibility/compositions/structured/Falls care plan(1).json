@@ -1,0 +1,514 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "multidisciplinary_individualised_falls_care_plan": {
+    "language": [
+      {
+        "|code": "en",
+        "|terminology": "ISO_639-1"
+      }
+    ],
+    "territory": [
+      {
+        "|code": "US",
+        "|terminology": "ISO_3166-1"
+      }
+    ],
+    "event_context": [
+      {
+        "_participation": [
+          {
+            "|function": "requester",
+            "|mode": "face-to-face communication",
+            "|name": "Testing Doctor",
+            "|id": "199",
+            "|id_namespace": "HOSPITAL-NS",
+            "|id_scheme": "HOSPITAL-NS"
+          },
+          {
+            "|function": "performer",
+            "|mode": "not specified",
+            "|name": "Testing Nurse",
+            "|id": "198",
+            "|id_namespace": "HOSPITAL-NS",
+            "|id_scheme": "HOSPITAL-NS"
+          }
+        ],
+        "_health_care_facility": [
+          {
+            "|id": "9091",
+            "|id_scheme": "HOSPITAL-NS",
+            "|id_namespace": "HOSPITAL-NS",
+            "|name": "Hospital"
+          }
+        ],
+        "xds_metadata": [
+          {
+            "author_specialty": [
+              "Author specialty 73"
+            ]
+          }
+        ],
+        "start_time": [
+          "2021-02-11T11:33:29.266+01:00"
+        ],
+        "setting": [
+          {
+            "|code": "238",
+            "|value": "other care",
+            "|terminology": "openehr"
+          }
+        ]
+      }
+    ],
+    "patient_falls_risk": [
+      {
+        "_other_participation": [
+          {
+            "|function": "requester",
+            "|mode": "face-to-face communication",
+            "|name": "Testing Doctor",
+            "|id": "199",
+            "|id_namespace": "HOSPITAL-NS",
+            "|id_scheme": "HOSPITAL-NS"
+          },
+          {
+            "|function": "performer",
+            "|mode": "not specified",
+            "|name": "Testing Nurse",
+            "|id": "198",
+            "|id_namespace": "HOSPITAL-NS",
+            "|id_scheme": "HOSPITAL-NS"
+          }
+        ],
+        "assessment_date": [
+          "2019-08-21"
+        ],
+        "health_risk": [
+          "Health risk 36"
+        ],
+        "patient_fall_risk_assessment": [
+          {
+            "are_they_over_65": [
+              true
+            ],
+            "have_they_fallen_in_the_last_12_months": [
+              true
+            ],
+            "do_they_have_confusion": [
+              true
+            ],
+            "do_you_believe_they_are_at_risk_of_falling": [
+              false
+            ]
+          }
+        ],
+        "fall_risk_assessment_result": [
+          {
+            "|code": "at0015",
+            "|value": "Unlikely faller",
+            "|terminology": "local"
+          }
+        ],
+        "comment": [
+          "Comment 10"
+        ],
+        "last_updated": [
+          "2019-08-21T14:23:46.036838+02:00"
+        ],
+        "assessment_method": [
+          "Assessment method 13"
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "patient_falls_risk_checklist": [
+      {
+        "_other_participation": [
+          {
+            "|function": "requester",
+            "|mode": "face-to-face communication",
+            "|name": "Testing Doctor",
+            "|id": "199",
+            "|id_namespace": "HOSPITAL-NS",
+            "|id_scheme": "HOSPITAL-NS"
+          },
+          {
+            "|function": "performer",
+            "|mode": "not specified",
+            "|name": "Testing Nurse",
+            "|id": "198",
+            "|id_namespace": "HOSPITAL-NS",
+            "|id_scheme": "HOSPITAL-NS"
+          }
+        ],
+        "any_event": [
+          {
+            "lying_and_standing_bp_completed": [
+              {
+                "result": [
+                  true
+                ],
+                "comment": [
+                  "Comment 28"
+                ],
+                "confirmation_sign": [
+                  {
+                    "|id": "b49fa06b-8187-4893-aa54-7ae7ced2aca0",
+                    "|issuer": "Issuer",
+                    "|assigner": "Assigner",
+                    "|type": "Prescription"
+                  }
+                ]
+              }
+            ],
+            "consider_elimination_needs": [
+              {
+                "result": [
+                  false
+                ],
+                "comment": [
+                  "Comment 43"
+                ],
+                "confirmation_sign": [
+                  {
+                    "|id": "50ba4b65-d7d7-4e8e-b3ff-4b4b811ae8c8",
+                    "|issuer": "Issuer",
+                    "|assigner": "Assigner",
+                    "|type": "Prescription"
+                  }
+                ]
+              }
+            ],
+            "fear_of_falling": [
+              {
+                "result": [
+                  false
+                ],
+                "comment": [
+                  "Comment 28"
+                ],
+                "confirmation_sign": [
+                  {
+                    "|id": "c8b21d26-545f-4393-a9cb-fe343e6ac33a",
+                    "|issuer": "Issuer",
+                    "|assigner": "Assigner",
+                    "|type": "Prescription"
+                  }
+                ]
+              }
+            ],
+            "sensory_issues_eyesight_hearing": [
+              {
+                "result": [
+                  true
+                ],
+                "comment": [
+                  "Comment 47"
+                ],
+                "confirmation_sign": [
+                  {
+                    "|id": "a2af23dd-6505-416a-8c50-7d7335d83843",
+                    "|issuer": "Issuer",
+                    "|assigner": "Assigner",
+                    "|type": "Prescription"
+                  }
+                ]
+              }
+            ],
+            "collateral_history": [
+              {
+                "result": [
+                  false
+                ],
+                "comment": [
+                  "Comment 99"
+                ],
+                "confirmation_sign": [
+                  {
+                    "|id": "f1defd91-621c-4531-8eb0-bde3d9410094",
+                    "|issuer": "Issuer",
+                    "|assigner": "Assigner",
+                    "|type": "Prescription"
+                  }
+                ]
+              }
+            ],
+            "include_in_safety_briefing": [
+              {
+                "result": [
+                  false
+                ],
+                "comment": [
+                  "Comment 72"
+                ],
+                "confirmation_sign": [
+                  {
+                    "|id": "2240996a-25e5-42c2-8e28-31ec838c4daf",
+                    "|issuer": "Issuer",
+                    "|assigner": "Assigner",
+                    "|type": "Prescription"
+                  }
+                ]
+              }
+            ],
+            "bed_rails": [
+              {
+                "result": [
+                  false
+                ],
+                "comment": [
+                  "Comment 17"
+                ],
+                "confirmation_sign": [
+                  {
+                    "|id": "318a5633-35f0-48af-be20-befac23dbe91",
+                    "|issuer": "Issuer",
+                    "|assigner": "Assigner",
+                    "|type": "Prescription"
+                  }
+                ]
+              }
+            ],
+            "high_low_bed": [
+              {
+                "result": [
+                  true
+                ],
+                "comment": [
+                  "Comment 61"
+                ],
+                "confirmation_sign": [
+                  {
+                    "|id": "c8911e07-1671-4a8e-898b-9d64aa3d9739",
+                    "|issuer": "Issuer",
+                    "|assigner": "Assigner",
+                    "|type": "Prescription"
+                  }
+                ]
+              }
+            ],
+            "crash_mat_falls_alarm": [
+              {
+                "result": [
+                  true
+                ],
+                "comment": [
+                  "Comment 67"
+                ],
+                "confirmation_sign": [
+                  {
+                    "|id": "8a0776fb-3a5e-44a3-a170-193fb8a5f790",
+                    "|issuer": "Issuer",
+                    "|assigner": "Assigner",
+                    "|type": "Prescription"
+                  }
+                ]
+              }
+            ],
+            "medication_review": [
+              {
+                "result": [
+                  true
+                ],
+                "comment": [
+                  "Comment 68"
+                ],
+                "confirmation_sign": [
+                  {
+                    "|id": "1d5293e4-89eb-4d0d-b9f7-d78ba910914f",
+                    "|issuer": "Issuer",
+                    "|assigner": "Assigner",
+                    "|type": "Prescription"
+                  }
+                ]
+              }
+            ],
+            "visible_bed_space": [
+              {
+                "result": [
+                  true
+                ],
+                "comment": [
+                  "Comment 85"
+                ],
+                "confirmation_sign": [
+                  {
+                    "|id": "fb33c862-9e49-4cfb-9e66-de5dbb450ac0",
+                    "|issuer": "Issuer",
+                    "|assigner": "Assigner",
+                    "|type": "Prescription"
+                  }
+                ]
+              }
+            ],
+            "stay_close_toileting_call_bell_reminder_regular_check": [
+              {
+                "result": [
+                  true
+                ],
+                "comment": [
+                  "Comment 50"
+                ],
+                "confirmation_sign": [
+                  {
+                    "|id": "e8bac0f2-29fa-4f95-83fb-3326461e19e5",
+                    "|issuer": "Issuer",
+                    "|assigner": "Assigner",
+                    "|type": "Prescription"
+                  }
+                ]
+              }
+            ],
+            "vision_assessment_advice_given_in_self-referral_to_optician": [
+              {
+                "result": [
+                  false
+                ],
+                "comment": [
+                  "Comment 30"
+                ],
+                "confirmation_sign": [
+                  {
+                    "|id": "b421c98b-1bcc-4fce-8119-ee8c448df4ea",
+                    "|issuer": "Issuer",
+                    "|assigner": "Assigner",
+                    "|type": "Prescription"
+                  }
+                ]
+              }
+            ],
+            "additional_supervision": [
+              {
+                "result": [
+                  false
+                ],
+                "comment": [
+                  "Comment 65"
+                ],
+                "confirmation_sign": [
+                  {
+                    "|id": "ab44cdad-4232-443c-9e0c-1e4bb44f5250",
+                    "|issuer": "Issuer",
+                    "|assigner": "Assigner",
+                    "|type": "Prescription"
+                  }
+                ]
+              }
+            ],
+            "hourly_intentional_rounding": [
+              {
+                "result": [
+                  true
+                ],
+                "comment": [
+                  "Comment 49"
+                ],
+                "confirmation_sign": [
+                  {
+                    "|id": "b2ddcf32-8f46-4536-9b93-9a828fe17ad7",
+                    "|issuer": "Issuer",
+                    "|assigner": "Assigner",
+                    "|type": "Prescription"
+                  }
+                ]
+              }
+            ],
+            "footwear": [
+              {
+                "result": [
+                  false
+                ],
+                "comment": [
+                  "Comment 67"
+                ],
+                "confirmation_sign": [
+                  {
+                    "|id": "101a4c44-77e0-4323-ae59-a0680a712f3b",
+                    "|issuer": "Issuer",
+                    "|assigner": "Assigner",
+                    "|type": "Prescription"
+                  }
+                ]
+              }
+            ],
+            "walking_aids": [
+              {
+                "result": [
+                  true
+                ],
+                "comment": [
+                  "Comment 19"
+                ],
+                "confirmation_sign": [
+                  {
+                    "|id": "56e0f125-f4ff-4789-bc91-b91d420515cd",
+                    "|issuer": "Issuer",
+                    "|assigner": "Assigner",
+                    "|type": "Prescription"
+                  }
+                ]
+              }
+            ],
+            "time": [
+              "2021-02-11T11:33:29.266+01:00"
+            ]
+          }
+        ],
+        "last_updated": [
+          "2019-08-21"
+        ],
+        "assessment_method": [
+          "Assessment method 81"
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "category": [
+      {
+        "|code": "431",
+        "|value": "persistent",
+        "|terminology": "openehr"
+      }
+    ],
+    "composer": [
+      {
+        "|name": "Testing Nurse"
+      }
+    ]
+  }
+}

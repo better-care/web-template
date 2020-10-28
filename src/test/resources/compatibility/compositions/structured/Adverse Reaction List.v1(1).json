@@ -1,0 +1,143 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "adverse_reaction_list": {
+    "_uid": [
+      "a6c4909f-d98b-414c-8f59-fe31f80b0178::default::1"
+    ],
+    "language": [
+      {
+        "|code": "en",
+        "|terminology": "ISO_639-1"
+      }
+    ],
+    "territory": [
+      {
+        "|code": "UK",
+        "|terminology": "ISO_3166-1"
+      }
+    ],
+    "context": [
+      {
+        "start_time": [
+          "2021-02-11T13:34:29.395+01:00"
+        ],
+        "setting": [
+          {
+            "|code": "238",
+            "|value": "other care",
+            "|terminology": "openehr"
+          }
+        ]
+      }
+    ],
+    "allergies_and_adverse_reactions": [
+      {
+        "adverse_reaction_risk": [
+          {
+            "causative_agent": [
+              {
+                "|code": "227491007",
+                "|value": "Betel nut",
+                "|terminology": "external"
+              }
+            ],
+            "status": [
+              {
+                "|code": "at0064",
+                "|value": "Likely",
+                "|terminology": "local"
+              }
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          },
+          {
+            "causative_agent": [
+              {
+                "|code": "256351003",
+                "|value": "Brazil nut",
+                "|terminology": "external"
+              }
+            ],
+            "status": [
+              {
+                "|code": "at0127",
+                "|value": "Suspected",
+                "|terminology": "local"
+              }
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "general_information": [
+          {
+            "general_report_comment": [
+              "patient suspecrs strawberry intolarence"
+            ],
+            "time": [
+              "2021-02-11T13:34:29.395+01:00"
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "category": [
+      {
+        "|code": "433",
+        "|value": "event",
+        "|terminology": "openehr"
+      }
+    ],
+    "composer": [
+      {
+        "|name": "Testing Nurse"
+      }
+    ]
+  }
+}

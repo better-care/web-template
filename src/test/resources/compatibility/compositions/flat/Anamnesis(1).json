@@ -1,0 +1,72 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+    "anamnesis/_feeder_audit/originating_system_audit|system_id" : "FormRenderer",
+    "anamnesis/_feeder_audit/original_content" : "{}",
+    "anamnesis/_feeder_audit/original_content|formalism" : "application/json",
+    "anamnesis/language|code" : "en",
+    "anamnesis/language|terminology" : "ISO_639-1",
+    "anamnesis/territory|code" : "SI",
+    "anamnesis/territory|terminology" : "ISO_3166-1",
+    "anamnesis/context/context_detail:0/source|code" : "1",
+    "anamnesis/context/context_detail:0/source|value" : "Ginekolog",
+    "anamnesis/context/context_detail:0/source|terminology" : "A02_anamnesis_source",
+    "anamnesis/context/start_time" : "2021-02-15T12:14:00+01:00",
+    "anamnesis/context/setting|code" : "238",
+    "anamnesis/context/setting|value" : "other care",
+    "anamnesis/context/setting|terminology" : "openehr",
+    "anamnesis/menstrual_cycle/length_of_cycle" : "P23D",
+    "anamnesis/menstrual_cycle/description_of_cycle|code" : "1",
+    "anamnesis/menstrual_cycle/description_of_cycle|value" : "Redna",
+    "anamnesis/menstrual_cycle/description_of_cycle|terminology" : "A01_menstruation",
+    "anamnesis/menstrual_cycle/last_menstruation_date" : "2021-02-02",
+    "anamnesis/menstrual_cycle/duration_of_menses" : "P5D",
+    "anamnesis/menstrual_cycle/diagnosis_details:0/pregnant|code" : "2",
+    "anamnesis/menstrual_cycle/diagnosis_details:0/pregnant|value" : "Ne",
+    "anamnesis/menstrual_cycle/diagnosis_details:0/pregnant|terminology" : "A03_pregnancy",
+    "anamnesis/menstrual_cycle/contraception_use|code" : "1",
+    "anamnesis/menstrual_cycle/contraception_use|value" : "Nobena",
+    "anamnesis/menstrual_cycle/contraception_use|terminology" : "A05_contraception",
+    "anamnesis/menstrual_cycle/time" : "2021-02-15T12:14:00+01:00",
+    "anamnesis/menstrual_cycle/language|code" : "en",
+    "anamnesis/menstrual_cycle/language|terminology" : "ISO_639-1",
+    "anamnesis/menstrual_cycle/encoding|code" : "UTF-8",
+    "anamnesis/menstrual_cycle/encoding|terminology" : "IANA_character-sets",
+    "anamnesis/obstetric_summary/abortions_a" : 0,
+    "anamnesis/obstetric_summary/live_births" : 0,
+    "anamnesis/obstetric_summary/language|code" : "en",
+    "anamnesis/obstetric_summary/language|terminology" : "ISO_639-1",
+    "anamnesis/obstetric_summary/encoding|code" : "UTF-8",
+    "anamnesis/obstetric_summary/encoding|terminology" : "IANA_character-sets",
+    "anamnesis/problem_diagnosis/clinical_diagnosis_icd|code" : "Z01.4",
+    "anamnesis/problem_diagnosis/clinical_diagnosis_icd|value" : "Ginekološki pregled (splošni)(rutinski)",
+    "anamnesis/problem_diagnosis/clinical_diagnosis_icd|terminology" : "ICD",
+    "anamnesis/problem_diagnosis/accompanying_diagnosis:0|code" : "R87.9",
+    "anamnesis/problem_diagnosis/accompanying_diagnosis:0|value" : "Nenormalni izvidi vzorcev iz ženskih spolovil, neopredeljeni",
+    "anamnesis/problem_diagnosis/accompanying_diagnosis:0|terminology" : "ICD",
+    "anamnesis/problem_diagnosis/terminology_details:0/terminology_name|code" : "at0005",
+    "anamnesis/problem_diagnosis/terminology_details:0/terminology_name|value" : "MKB",
+    "anamnesis/problem_diagnosis/terminology_details:0/terminology_name|terminology" : "local",
+    "anamnesis/problem_diagnosis/terminology_details:0/terminology_version|code" : "at0006",
+    "anamnesis/problem_diagnosis/terminology_details:0/terminology_version|value" : "10",
+    "anamnesis/problem_diagnosis/terminology_details:0/terminology_version|terminology" : "local",
+    "anamnesis/problem_diagnosis/language|code" : "en",
+    "anamnesis/problem_diagnosis/language|terminology" : "ISO_639-1",
+    "anamnesis/problem_diagnosis/encoding|code" : "UTF-8",
+    "anamnesis/problem_diagnosis/encoding|terminology" : "IANA_character-sets",
+    "anamnesis/category|code" : "433",
+    "anamnesis/category|value" : "event",
+    "anamnesis/category|terminology" : "openehr"
+}

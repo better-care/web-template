@@ -1,0 +1,246 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "colposcopy": {
+    "language": [
+      {
+        "|code": "sl",
+        "|terminology": "ISO_639-1"
+      }
+    ],
+    "territory": [
+      {
+        "|code": "SI",
+        "|terminology": "ISO_3166-1"
+      }
+    ],
+    "context": [
+      {
+        "context_detail": [
+          {
+            "date_and_time": [
+              "2021-02-22T08:22+01:00"
+            ]
+          }
+        ],
+        "start_time": [
+          "2021-02-15T12:14+01:00"
+        ],
+        "setting": [
+          {
+            "|code": "238",
+            "|value": "other care",
+            "|terminology": "openehr"
+          }
+        ]
+      }
+    ],
+    "colposcopy_of_cervix": [
+      {
+        "procedure_name": [
+          {
+            "|code": "1",
+            "|value": "Odščip",
+            "|terminology": "BO_SNOMEDCT"
+          }
+        ],
+        "site_of_procedure": [
+          {
+            "|code": "1",
+            "|value": "Maternični vrat",
+            "|terminology": "F_site_procedure"
+          }
+        ],
+        "colposcopy_findings": [
+          {
+            "colposcopy_evaluation": [
+              {
+                "|code": "1",
+                "|value": "Zadovoljiva",
+                "|terminology": "AT_colposcopy_evaluation"
+              }
+            ],
+            "tz_type": [
+              {
+                "|code": "2",
+                "|value": "Tz 2",
+                "|terminology": "AZ_tz_type"
+              }
+            ],
+            "atypical_transformation_zone_atz": [
+              {
+                "|code": "2",
+                "|value": "Atz 2",
+                "|terminology": "AX_atz_type"
+              }
+            ],
+            "findings": [
+              {
+                "|code": "2",
+                "|value": "Nenormalen",
+                "|terminology": "BB_findings"
+              }
+            ],
+            "lesion_surface_area": [
+              "50"
+            ],
+            "examination_of_a_lesion": [
+              {
+                "lesion_type": [
+                  {
+                    "|code": "2",
+                    "|value": "PIL-VS",
+                    "|terminology": "AB_lesion_type"
+                  }
+                ],
+                "body_site": [
+                  {
+                    "|code": "1",
+                    "|value": "A1",
+                    "|terminology": "local_terms"
+                  }
+                ],
+                "atypical_figures": [
+                  {
+                    "|code": "3",
+                    "|value": "Kongenitalna TZ",
+                    "|terminology": "AV_atypical_figures"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "comment": [
+          "asdasd"
+        ],
+        "time": [
+          "2021-02-15T12:14+01:00"
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "colposcopy_of_vulva": [
+      {
+        "colposcopy_findings": [
+          {
+            "anomalies": [
+              {
+                "anomaly_type": [
+                  {
+                    "|code": "2",
+                    "|value": "VIN",
+                    "|terminology": "AY_vulva_anomalies"
+                  }
+                ],
+                "location": [
+                  {
+                    "|code": "2",
+                    "|value": "Velika sramna ustnica levo",
+                    "|terminology": "local_terms"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "time": [
+          "2021-02-15T12:14+01:00"
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "inspection_of_vagina": [
+      {
+        "inspection_of_vagina": [
+          {
+            "no_abnormality_detected": [
+              true
+            ]
+          }
+        ],
+        "colposcopy_findings": [
+          {
+            "anomalies": [
+              {
+                "anomaly_type": [
+                  {
+                    "|code": "3",
+                    "|value": "Nespecifične lezije",
+                    "|terminology": "BA_vagina_anomalies"
+                  }
+                ],
+                "location": [
+                  "asdads"
+                ]
+              }
+            ]
+          }
+        ],
+        "time": [
+          "2021-02-15T12:14+01:00"
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "category": [
+      {
+        "|code": "433",
+        "|value": "event",
+        "|terminology": "openehr"
+      }
+    ]
+  },
+  "ctx": {
+    "generic_fields": {
+      "/colposcopy_of_cervix/colposcopy_findings/generic-ANVAS-8538164": [],
+      "/colposcopy_of_vulva/colposcopy_findings/generic-ANVAS-5561180": [],
+      "/inspection_of_vagina/colposcopy_findings/generic-ANVAS-4151073": []
+    }
+  }
+}

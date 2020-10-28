@@ -1,0 +1,988 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	Copyright 2021 Better Ltd (www.better.care)
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<ns2:composition archetype_node_id="openEHR-EHR-COMPOSITION.care_plan.v0" xmlns:te="http://schemas.marand.com/thinkehr/v1" xmlns:ns2="http://schemas.openehr.org/v1">
+    <ns2:name>
+        <ns2:value>Multidisciplinary individualised falls care plan</ns2:value>
+    </ns2:name>
+    <ns2:archetype_details>
+        <ns2:archetype_id>
+            <ns2:value>openEHR-EHR-COMPOSITION.care_plan.v0</ns2:value>
+        </ns2:archetype_id>
+        <ns2:template_id>
+            <ns2:value>Falls care plan</ns2:value>
+        </ns2:template_id>
+        <ns2:rm_version>1.0.4</ns2:rm_version>
+    </ns2:archetype_details>
+    <ns2:language>
+        <ns2:terminology_id>
+            <ns2:value>ISO_639-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>en</ns2:code_string>
+    </ns2:language>
+    <ns2:territory>
+        <ns2:terminology_id>
+            <ns2:value>ISO_3166-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>US</ns2:code_string>
+    </ns2:territory>
+    <ns2:category>
+        <ns2:value>persistent</ns2:value>
+        <ns2:defining_code>
+            <ns2:terminology_id>
+                <ns2:value>openehr</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>431</ns2:code_string>
+        </ns2:defining_code>
+    </ns2:category>
+    <ns2:composer xsi:type="ns2:PARTY_IDENTIFIED" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>Testing Nurse</ns2:name>
+    </ns2:composer>
+    <ns2:context>
+        <ns2:start_time>
+            <ns2:value>2021-02-11T11:33:29.266+01:00</ns2:value>
+        </ns2:start_time>
+        <ns2:setting>
+            <ns2:value>other care</ns2:value>
+            <ns2:defining_code>
+                <ns2:terminology_id>
+                    <ns2:value>openehr</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>238</ns2:code_string>
+            </ns2:defining_code>
+        </ns2:setting>
+        <ns2:other_context xsi:type="ns2:ITEM_TREE" archetype_node_id="at0002" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ns2:name>
+                <ns2:value>Item tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.xds_metadata.v0">
+                <ns2:name>
+                    <ns2:value>XDS Metadata</ns2:value>
+                </ns2:name>
+                <ns2:archetype_details>
+                    <ns2:archetype_id>
+                        <ns2:value>openEHR-EHR-CLUSTER.xds_metadata.v0</ns2:value>
+                    </ns2:archetype_id>
+                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                </ns2:archetype_details>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                    <ns2:name>
+                        <ns2:value>Author specialty</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_TEXT">
+                        <ns2:value>Author specialty 73</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:items>
+        </ns2:other_context>
+        <ns2:health_care_facility>
+            <ns2:external_ref>
+                <ns2:id xsi:type="ns2:GENERIC_ID" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <ns2:value>9091</ns2:value>
+                    <ns2:scheme>HOSPITAL-NS</ns2:scheme>
+                </ns2:id>
+                <ns2:namespace>HOSPITAL-NS</ns2:namespace>
+                <ns2:type>PARTY</ns2:type>
+            </ns2:external_ref>
+            <ns2:name>Hospital</ns2:name>
+        </ns2:health_care_facility>
+        <ns2:participations>
+            <ns2:function>
+                <ns2:value>requester</ns2:value>
+            </ns2:function>
+            <ns2:performer xsi:type="ns2:PARTY_IDENTIFIED" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <ns2:external_ref>
+                    <ns2:id xsi:type="ns2:GENERIC_ID">
+                        <ns2:value>199</ns2:value>
+                        <ns2:scheme>HOSPITAL-NS</ns2:scheme>
+                    </ns2:id>
+                    <ns2:namespace>HOSPITAL-NS</ns2:namespace>
+                    <ns2:type>ANY</ns2:type>
+                </ns2:external_ref>
+                <ns2:name>Testing Doctor</ns2:name>
+            </ns2:performer>
+            <ns2:mode>
+                <ns2:value>face-to-face communication</ns2:value>
+                <ns2:defining_code>
+                    <ns2:terminology_id>
+                        <ns2:value>openehr</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>216</ns2:code_string>
+                </ns2:defining_code>
+            </ns2:mode>
+        </ns2:participations>
+        <ns2:participations>
+            <ns2:function>
+                <ns2:value>performer</ns2:value>
+            </ns2:function>
+            <ns2:performer xsi:type="ns2:PARTY_IDENTIFIED" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <ns2:external_ref>
+                    <ns2:id xsi:type="ns2:GENERIC_ID">
+                        <ns2:value>198</ns2:value>
+                        <ns2:scheme>HOSPITAL-NS</ns2:scheme>
+                    </ns2:id>
+                    <ns2:namespace>HOSPITAL-NS</ns2:namespace>
+                    <ns2:type>ANY</ns2:type>
+                </ns2:external_ref>
+                <ns2:name>Testing Nurse</ns2:name>
+            </ns2:performer>
+            <ns2:mode>
+                <ns2:value>not specified</ns2:value>
+                <ns2:defining_code>
+                    <ns2:terminology_id>
+                        <ns2:value>openehr</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>193</ns2:code_string>
+                </ns2:defining_code>
+            </ns2:mode>
+        </ns2:participations>
+    </ns2:context>
+    <ns2:content xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.patient_falls_risk.v0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Patient falls risk</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-EVALUATION.patient_falls_risk.v0</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:language>
+            <ns2:terminology_id>
+                <ns2:value>ISO_639-1</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>en</ns2:code_string>
+        </ns2:language>
+        <ns2:encoding>
+            <ns2:terminology_id>
+                <ns2:value>IANA_character-sets</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>UTF-8</ns2:code_string>
+        </ns2:encoding>
+        <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+        <ns2:other_participations>
+            <ns2:function>
+                <ns2:value>requester</ns2:value>
+            </ns2:function>
+            <ns2:performer xsi:type="ns2:PARTY_IDENTIFIED">
+                <ns2:external_ref>
+                    <ns2:id xsi:type="ns2:GENERIC_ID">
+                        <ns2:value>199</ns2:value>
+                        <ns2:scheme>HOSPITAL-NS</ns2:scheme>
+                    </ns2:id>
+                    <ns2:namespace>HOSPITAL-NS</ns2:namespace>
+                    <ns2:type>ANY</ns2:type>
+                </ns2:external_ref>
+                <ns2:name>Testing Doctor</ns2:name>
+            </ns2:performer>
+            <ns2:mode>
+                <ns2:value>face-to-face communication</ns2:value>
+                <ns2:defining_code>
+                    <ns2:terminology_id>
+                        <ns2:value>openehr</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>216</ns2:code_string>
+                </ns2:defining_code>
+            </ns2:mode>
+        </ns2:other_participations>
+        <ns2:other_participations>
+            <ns2:function>
+                <ns2:value>performer</ns2:value>
+            </ns2:function>
+            <ns2:performer xsi:type="ns2:PARTY_IDENTIFIED">
+                <ns2:external_ref>
+                    <ns2:id xsi:type="ns2:GENERIC_ID">
+                        <ns2:value>198</ns2:value>
+                        <ns2:scheme>HOSPITAL-NS</ns2:scheme>
+                    </ns2:id>
+                    <ns2:namespace>HOSPITAL-NS</ns2:namespace>
+                    <ns2:type>ANY</ns2:type>
+                </ns2:external_ref>
+                <ns2:name>Testing Nurse</ns2:name>
+            </ns2:performer>
+            <ns2:mode>
+                <ns2:value>not specified</ns2:value>
+                <ns2:defining_code>
+                    <ns2:terminology_id>
+                        <ns2:value>openehr</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>193</ns2:code_string>
+                </ns2:defining_code>
+            </ns2:mode>
+        </ns2:other_participations>
+        <ns2:protocol xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+            <ns2:name>
+                <ns2:value>Item tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0011">
+                <ns2:name>
+                    <ns2:value>Last updated</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_DATE_TIME">
+                    <ns2:value>2019-08-21T14:23:46.036838+02:00</ns2:value>
+                </ns2:value>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0012">
+                <ns2:name>
+                    <ns2:value>Assessment method</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_TEXT">
+                    <ns2:value>Assessment method 13</ns2:value>
+                </ns2:value>
+            </ns2:items>
+        </ns2:protocol>
+        <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0002">
+            <ns2:name>
+                <ns2:value>Item tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0010">
+                <ns2:name>
+                    <ns2:value>Assessment date</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_DATE">
+                    <ns2:value>2019-08-21</ns2:value>
+                </ns2:value>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0003">
+                <ns2:name>
+                    <ns2:value>Health risk</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_TEXT">
+                    <ns2:value>Health risk 36</ns2:value>
+                </ns2:value>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0005">
+                <ns2:name>
+                    <ns2:value>Patient fall risk assessment</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0006">
+                    <ns2:name>
+                        <ns2:value>Are they over 65 ?</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                        <ns2:value>true</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0007">
+                    <ns2:name>
+                        <ns2:value>Have they fallen in the last 12 months ?</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                        <ns2:value>true</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0008">
+                    <ns2:name>
+                        <ns2:value>Do they have confusion ?</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                        <ns2:value>true</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0009">
+                    <ns2:name>
+                        <ns2:value>Do you believe they are at risk of falling ?</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                        <ns2:value>false</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0014">
+                <ns2:name>
+                    <ns2:value>Fall risk assessment result</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                    <ns2:value>Unlikely faller</ns2:value>
+                    <ns2:defining_code>
+                        <ns2:terminology_id>
+                            <ns2:value>local</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>at0015</ns2:code_string>
+                    </ns2:defining_code>
+                </ns2:value>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0013">
+                <ns2:name>
+                    <ns2:value>Comment</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_TEXT">
+                    <ns2:value>Comment 10</ns2:value>
+                </ns2:value>
+            </ns2:items>
+        </ns2:data>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Patient falls risk checklist</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:language>
+            <ns2:terminology_id>
+                <ns2:value>ISO_639-1</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>en</ns2:code_string>
+        </ns2:language>
+        <ns2:encoding>
+            <ns2:terminology_id>
+                <ns2:value>IANA_character-sets</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>UTF-8</ns2:code_string>
+        </ns2:encoding>
+        <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+        <ns2:other_participations>
+            <ns2:function>
+                <ns2:value>requester</ns2:value>
+            </ns2:function>
+            <ns2:performer xsi:type="ns2:PARTY_IDENTIFIED">
+                <ns2:external_ref>
+                    <ns2:id xsi:type="ns2:GENERIC_ID">
+                        <ns2:value>199</ns2:value>
+                        <ns2:scheme>HOSPITAL-NS</ns2:scheme>
+                    </ns2:id>
+                    <ns2:namespace>HOSPITAL-NS</ns2:namespace>
+                    <ns2:type>ANY</ns2:type>
+                </ns2:external_ref>
+                <ns2:name>Testing Doctor</ns2:name>
+            </ns2:performer>
+            <ns2:mode>
+                <ns2:value>face-to-face communication</ns2:value>
+                <ns2:defining_code>
+                    <ns2:terminology_id>
+                        <ns2:value>openehr</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>216</ns2:code_string>
+                </ns2:defining_code>
+            </ns2:mode>
+        </ns2:other_participations>
+        <ns2:other_participations>
+            <ns2:function>
+                <ns2:value>performer</ns2:value>
+            </ns2:function>
+            <ns2:performer xsi:type="ns2:PARTY_IDENTIFIED">
+                <ns2:external_ref>
+                    <ns2:id xsi:type="ns2:GENERIC_ID">
+                        <ns2:value>198</ns2:value>
+                        <ns2:scheme>HOSPITAL-NS</ns2:scheme>
+                    </ns2:id>
+                    <ns2:namespace>HOSPITAL-NS</ns2:namespace>
+                    <ns2:type>ANY</ns2:type>
+                </ns2:external_ref>
+                <ns2:name>Testing Nurse</ns2:name>
+            </ns2:performer>
+            <ns2:mode>
+                <ns2:value>not specified</ns2:value>
+                <ns2:defining_code>
+                    <ns2:terminology_id>
+                        <ns2:value>openehr</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>193</ns2:code_string>
+                </ns2:defining_code>
+            </ns2:mode>
+        </ns2:other_participations>
+        <ns2:protocol xsi:type="ns2:ITEM_TREE" archetype_node_id="at0007">
+            <ns2:name>
+                <ns2:value>Item tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0008">
+                <ns2:name>
+                    <ns2:value>Last updated</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_DATE">
+                    <ns2:value>2019-08-21</ns2:value>
+                </ns2:value>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0009">
+                <ns2:name>
+                    <ns2:value>Assessment method</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_TEXT">
+                    <ns2:value>Assessment method 81</ns2:value>
+                </ns2:value>
+            </ns2:items>
+        </ns2:protocol>
+        <ns2:data archetype_node_id="at0001">
+            <ns2:name>
+                <ns2:value>History</ns2:value>
+            </ns2:name>
+            <ns2:origin>
+                <ns2:value>2021-02-11T11:33:29.266+01:00</ns2:value>
+            </ns2:origin>
+            <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                <ns2:name>
+                    <ns2:value>Any event</ns2:value>
+                </ns2:name>
+                <ns2:time>
+                    <ns2:value>2021-02-11T11:33:29.266+01:00</ns2:value>
+                </ns2:time>
+                <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                    <ns2:name>
+                        <ns2:value>Tree</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0012">
+                        <ns2:name>
+                            <ns2:value>Lying and standing BP completed</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0006">
+                            <ns2:name>
+                                <ns2:value>Result</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                <ns2:value>true</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
+                            <ns2:name>
+                                <ns2:value>Comment</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>Comment 28</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0011">
+                            <ns2:name>
+                                <ns2:value>Confirmation sign</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                                <ns2:issuer>Issuer</ns2:issuer>
+                                <ns2:assigner>Assigner</ns2:assigner>
+                                <ns2:id>b49fa06b-8187-4893-aa54-7ae7ced2aca0</ns2:id>
+                                <ns2:type>Prescription</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0013">
+                        <ns2:name>
+                            <ns2:value>Consider elimination needs</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0014">
+                            <ns2:name>
+                                <ns2:value>Result</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                <ns2:value>false</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0015">
+                            <ns2:name>
+                                <ns2:value>Comment</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>Comment 43</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0016">
+                            <ns2:name>
+                                <ns2:value>Confirmation sign</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                                <ns2:issuer>Issuer</ns2:issuer>
+                                <ns2:assigner>Assigner</ns2:assigner>
+                                <ns2:id>50ba4b65-d7d7-4e8e-b3ff-4b4b811ae8c8</ns2:id>
+                                <ns2:type>Prescription</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0017">
+                        <ns2:name>
+                            <ns2:value>Fear of falling</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0018">
+                            <ns2:name>
+                                <ns2:value>Result</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                <ns2:value>false</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0019">
+                            <ns2:name>
+                                <ns2:value>Comment</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>Comment 28</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0020">
+                            <ns2:name>
+                                <ns2:value>Confirmation sign</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                                <ns2:issuer>Issuer</ns2:issuer>
+                                <ns2:assigner>Assigner</ns2:assigner>
+                                <ns2:id>c8b21d26-545f-4393-a9cb-fe343e6ac33a</ns2:id>
+                                <ns2:type>Prescription</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0021">
+                        <ns2:name>
+                            <ns2:value>Sensory issues (eyesight/hearing)</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0022">
+                            <ns2:name>
+                                <ns2:value>Result</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                <ns2:value>true</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0023">
+                            <ns2:name>
+                                <ns2:value>Comment</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>Comment 47</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0024">
+                            <ns2:name>
+                                <ns2:value>Confirmation sign</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                                <ns2:issuer>Issuer</ns2:issuer>
+                                <ns2:assigner>Assigner</ns2:assigner>
+                                <ns2:id>a2af23dd-6505-416a-8c50-7d7335d83843</ns2:id>
+                                <ns2:type>Prescription</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0025">
+                        <ns2:name>
+                            <ns2:value>Collateral history</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0026">
+                            <ns2:name>
+                                <ns2:value>Result</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                <ns2:value>false</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0027">
+                            <ns2:name>
+                                <ns2:value>Comment</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>Comment 99</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0028">
+                            <ns2:name>
+                                <ns2:value>Confirmation sign</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                                <ns2:issuer>Issuer</ns2:issuer>
+                                <ns2:assigner>Assigner</ns2:assigner>
+                                <ns2:id>f1defd91-621c-4531-8eb0-bde3d9410094</ns2:id>
+                                <ns2:type>Prescription</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0033">
+                        <ns2:name>
+                            <ns2:value>Include in safety briefing</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0034">
+                            <ns2:name>
+                                <ns2:value>Result</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                <ns2:value>false</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0035">
+                            <ns2:name>
+                                <ns2:value>Comment</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>Comment 72</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0036">
+                            <ns2:name>
+                                <ns2:value>Confirmation sign</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                                <ns2:issuer>Issuer</ns2:issuer>
+                                <ns2:assigner>Assigner</ns2:assigner>
+                                <ns2:id>2240996a-25e5-42c2-8e28-31ec838c4daf</ns2:id>
+                                <ns2:type>Prescription</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0029">
+                        <ns2:name>
+                            <ns2:value>Bed rails</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0030">
+                            <ns2:name>
+                                <ns2:value>Result</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                <ns2:value>false</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0031">
+                            <ns2:name>
+                                <ns2:value>Comment</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>Comment 17</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0032">
+                            <ns2:name>
+                                <ns2:value>Confirmation sign</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                                <ns2:issuer>Issuer</ns2:issuer>
+                                <ns2:assigner>Assigner</ns2:assigner>
+                                <ns2:id>318a5633-35f0-48af-be20-befac23dbe91</ns2:id>
+                                <ns2:type>Prescription</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0037">
+                        <ns2:name>
+                            <ns2:value>High low bed</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0038">
+                            <ns2:name>
+                                <ns2:value>Result</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                <ns2:value>true</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0039">
+                            <ns2:name>
+                                <ns2:value>Comment</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>Comment 61</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0040">
+                            <ns2:name>
+                                <ns2:value>Confirmation sign</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                                <ns2:issuer>Issuer</ns2:issuer>
+                                <ns2:assigner>Assigner</ns2:assigner>
+                                <ns2:id>c8911e07-1671-4a8e-898b-9d64aa3d9739</ns2:id>
+                                <ns2:type>Prescription</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0041">
+                        <ns2:name>
+                            <ns2:value>Crash mat / falls alarm</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0042">
+                            <ns2:name>
+                                <ns2:value>Result</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                <ns2:value>true</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0043">
+                            <ns2:name>
+                                <ns2:value>Comment</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>Comment 67</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0044">
+                            <ns2:name>
+                                <ns2:value>Confirmation sign</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                                <ns2:issuer>Issuer</ns2:issuer>
+                                <ns2:assigner>Assigner</ns2:assigner>
+                                <ns2:id>8a0776fb-3a5e-44a3-a170-193fb8a5f790</ns2:id>
+                                <ns2:type>Prescription</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0045">
+                        <ns2:name>
+                            <ns2:value>Medication review</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0046">
+                            <ns2:name>
+                                <ns2:value>Result</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                <ns2:value>true</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0047">
+                            <ns2:name>
+                                <ns2:value>Comment</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>Comment 68</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0048">
+                            <ns2:name>
+                                <ns2:value>Confirmation sign</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                                <ns2:issuer>Issuer</ns2:issuer>
+                                <ns2:assigner>Assigner</ns2:assigner>
+                                <ns2:id>1d5293e4-89eb-4d0d-b9f7-d78ba910914f</ns2:id>
+                                <ns2:type>Prescription</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0049">
+                        <ns2:name>
+                            <ns2:value>Visible bed space</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0050">
+                            <ns2:name>
+                                <ns2:value>Result</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                <ns2:value>true</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0051">
+                            <ns2:name>
+                                <ns2:value>Comment</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>Comment 85</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0052">
+                            <ns2:name>
+                                <ns2:value>Confirmation sign</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                                <ns2:issuer>Issuer</ns2:issuer>
+                                <ns2:assigner>Assigner</ns2:assigner>
+                                <ns2:id>fb33c862-9e49-4cfb-9e66-de5dbb450ac0</ns2:id>
+                                <ns2:type>Prescription</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0053">
+                        <ns2:name>
+                            <ns2:value>Stay close toileting / call bell reminder / regular check</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0054">
+                            <ns2:name>
+                                <ns2:value>Result</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                <ns2:value>true</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0055">
+                            <ns2:name>
+                                <ns2:value>Comment</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>Comment 50</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0056">
+                            <ns2:name>
+                                <ns2:value>Confirmation sign</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                                <ns2:issuer>Issuer</ns2:issuer>
+                                <ns2:assigner>Assigner</ns2:assigner>
+                                <ns2:id>e8bac0f2-29fa-4f95-83fb-3326461e19e5</ns2:id>
+                                <ns2:type>Prescription</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0057">
+                        <ns2:name>
+                            <ns2:value>Vision assessment, advice given in self-referral to optician</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0058">
+                            <ns2:name>
+                                <ns2:value>Result</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                <ns2:value>false</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0059">
+                            <ns2:name>
+                                <ns2:value>Comment</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>Comment 30</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0060">
+                            <ns2:name>
+                                <ns2:value>Confirmation sign</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                                <ns2:issuer>Issuer</ns2:issuer>
+                                <ns2:assigner>Assigner</ns2:assigner>
+                                <ns2:id>b421c98b-1bcc-4fce-8119-ee8c448df4ea</ns2:id>
+                                <ns2:type>Prescription</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0061">
+                        <ns2:name>
+                            <ns2:value>Additional supervision</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0062">
+                            <ns2:name>
+                                <ns2:value>Result</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                <ns2:value>false</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0063">
+                            <ns2:name>
+                                <ns2:value>Comment</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>Comment 65</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0064">
+                            <ns2:name>
+                                <ns2:value>Confirmation sign</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                                <ns2:issuer>Issuer</ns2:issuer>
+                                <ns2:assigner>Assigner</ns2:assigner>
+                                <ns2:id>ab44cdad-4232-443c-9e0c-1e4bb44f5250</ns2:id>
+                                <ns2:type>Prescription</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0065">
+                        <ns2:name>
+                            <ns2:value>Hourly intentional rounding</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0066">
+                            <ns2:name>
+                                <ns2:value>Result</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                <ns2:value>true</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0067">
+                            <ns2:name>
+                                <ns2:value>Comment</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>Comment 49</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0068">
+                            <ns2:name>
+                                <ns2:value>Confirmation sign</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                                <ns2:issuer>Issuer</ns2:issuer>
+                                <ns2:assigner>Assigner</ns2:assigner>
+                                <ns2:id>b2ddcf32-8f46-4536-9b93-9a828fe17ad7</ns2:id>
+                                <ns2:type>Prescription</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0069">
+                        <ns2:name>
+                            <ns2:value>Footwear</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0070">
+                            <ns2:name>
+                                <ns2:value>Result</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                <ns2:value>false</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0071">
+                            <ns2:name>
+                                <ns2:value>Comment</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>Comment 67</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0072">
+                            <ns2:name>
+                                <ns2:value>Confirmation sign</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                                <ns2:issuer>Issuer</ns2:issuer>
+                                <ns2:assigner>Assigner</ns2:assigner>
+                                <ns2:id>101a4c44-77e0-4323-ae59-a0680a712f3b</ns2:id>
+                                <ns2:type>Prescription</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0073">
+                        <ns2:name>
+                            <ns2:value>Walking aids</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0074">
+                            <ns2:name>
+                                <ns2:value>Result</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                <ns2:value>true</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0075">
+                            <ns2:name>
+                                <ns2:value>Comment</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>Comment 19</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0076">
+                            <ns2:name>
+                                <ns2:value>Confirmation sign</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                                <ns2:issuer>Issuer</ns2:issuer>
+                                <ns2:assigner>Assigner</ns2:assigner>
+                                <ns2:id>56e0f125-f4ff-4789-bc91-b91d420515cd</ns2:id>
+                                <ns2:type>Prescription</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                </ns2:data>
+            </ns2:events>
+        </ns2:data>
+    </ns2:content>
+</ns2:composition>

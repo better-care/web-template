@@ -1,0 +1,51 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+{
+  "careplan/_uid" : "ec002ede-57e7-428a-bd0c-8dfd19dd7f53::default::1",
+  "careplan/language|code" : "sl",
+  "careplan/language|terminology" : "ISO_639-1",
+  "careplan/territory|code" : "SI",
+  "careplan/territory|terminology" : "ISO_3166-1",
+  "careplan/context/context_detail:0/period_of_care_identifier" : "388125241",
+  "careplan/context/start_time" : "2015-01-13T00:00:00+01:00",
+  "careplan/context/setting|code" : "238",
+  "careplan/context/setting|value" : "other care",
+  "careplan/context/setting|terminology" : "openehr",
+  "careplan/care_plan/problem_plan:0/intervention_group:0/clinical_intervention:0/_other_participation:0|function" : "performer",
+  "careplan/care_plan/problem_plan:0/intervention_group:0/clinical_intervention:0/_other_participation:0|mode" : "not specified",
+  "careplan/care_plan/problem_plan:0/intervention_group:0/clinical_intervention:0/_other_participation:0|name" : "Testing Nurse",
+  "careplan/care_plan/problem_plan:0/intervention_group:0/clinical_intervention:0/_other_participation:0|identifiers_id:0" : "6141998",
+  "careplan/care_plan/problem_plan:0/intervention_group:0/clinical_intervention:0/_instruction_details|composition_uid" : "0e3bf40b-c889-4348-a2f1-c1f0b4dfff89::default::1",
+  "careplan/care_plan/problem_plan:0/intervention_group:0/clinical_intervention:0/_instruction_details|path" : "/content[openEHR-EHR-SECTION.care_plan_zn.v1,'Care plan']/items[at0009,'Problem plan']/items[at0004,'Intervention group']/items[openEHR-EHR-INSTRUCTION.request-zn.v1,'Healthcare service request #3']/activities[at0001,'Request']/description[at0009,'Tree']/items[at0121,'Nursing intervention request']",
+  "careplan/care_plan/problem_plan:0/intervention_group:0/clinical_intervention:0/_instruction_details|activity_id" : "activities[at0001]",
+  "careplan/care_plan/problem_plan:0/intervention_group:0/clinical_intervention:0/ism_transition/current_state|code" : "532",
+  "careplan/care_plan/problem_plan:0/intervention_group:0/clinical_intervention:0/ism_transition/current_state|value" : "Completed",
+  "careplan/care_plan/problem_plan:0/intervention_group:0/clinical_intervention:0/ism_transition/current_state|terminology" : "openehr",
+  "careplan/care_plan/problem_plan:0/intervention_group:0/clinical_intervention:0/nursing_intervention|code" : "8.12.2.11",
+  "careplan/care_plan/problem_plan:0/intervention_group:0/clinical_intervention:0/nursing_intervention|value" : "Izmeri vitalne funkcije",
+  "careplan/care_plan/problem_plan:0/intervention_group:0/clinical_intervention:0/nursing_intervention|terminology" : "PK-Nanda",
+  "careplan/care_plan/problem_plan:0/intervention_group:0/clinical_intervention:0/intervention_unsuccessful" : false,
+  "careplan/care_plan/problem_plan:0/intervention_group:0/clinical_intervention:0/time" : "2015-01-13T08:00:00+01:00",
+  "careplan/care_plan/problem_plan:0/intervention_group:0/clinical_intervention:0/language|code" : "sl",
+  "careplan/care_plan/problem_plan:0/intervention_group:0/clinical_intervention:0/language|terminology" : "ISO_639-1",
+  "careplan/care_plan/problem_plan:0/intervention_group:0/clinical_intervention:0/encoding|code" : "UTF-8",
+  "careplan/care_plan/problem_plan:0/intervention_group:0/clinical_intervention:0/encoding|terminology" : "IANA_character-sets",
+  "careplan/category|code" : "433",
+  "careplan/category|value" : "event",
+  "careplan/category|terminology" : "openehr",
+  "careplan/composer|id" : "6141998",
+  "careplan/composer|id_scheme" : "ispek_scheme",
+  "careplan/composer|id_namespace" : "ispek",
+  "careplan/composer|name" : "Testing Nurse"
+}

@@ -1,0 +1,82 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+{
+	"allergy_history/_uid" : "82772444-da1f-42ef-8c0f-51862686a4f4::default::1",
+	"allergy_history/language|code" : "sl",
+	"allergy_history/language|terminology" : "ISO_639-1",
+	"allergy_history/territory|code" : "SI",
+	"allergy_history/territory|terminology" : "ISO_3166-1",
+	"allergy_history/summary_context/_other_participation:0|function" : "requester",
+	"allergy_history/summary_context/_other_participation:0|mode" : "not specified",
+	"allergy_history/summary_context/_other_participation:0|name" : "Testing Nurse",
+	"allergy_history/summary_context/_other_participation:0|id" : "110394179",
+	"allergy_history/summary_context/_other_participation:0|id_namespace" : "ispek",
+	"allergy_history/summary_context/_other_participation:0|id_scheme" : "ispek_scheme",
+	"allergy_history/summary_context/_other_participation:1|function" : "performer",
+	"allergy_history/summary_context/_other_participation:1|mode" : "not specified",
+	"allergy_history/summary_context/_other_participation:1|name" : "Testing Nurse",
+	"allergy_history/summary_context/_other_participation:1|id" : "110394179",
+	"allergy_history/summary_context/_other_participation:1|id_namespace" : "ispek",
+	"allergy_history/summary_context/_other_participation:1|id_scheme" : "ispek_scheme",
+	"allergy_history/summary_context/date_last_reviewed" : "2019-10-17T08:31:52.535+02:00",
+	"allergy_history/summary_context/language|code" : "sl",
+	"allergy_history/summary_context/language|terminology" : "ISO_639-1",
+	"allergy_history/summary_context/encoding|code" : "UTF-8",
+	"allergy_history/summary_context/encoding|terminology" : "IANA_character-sets",
+	"allergy_history/allergies/adverse_reaction:0/_other_participation:0|function" : "requester",
+	"allergy_history/allergies/adverse_reaction:0/_other_participation:0|mode" : "not specified",
+	"allergy_history/allergies/adverse_reaction:0/_other_participation:0|name" : "Testing Nurse",
+	"allergy_history/allergies/adverse_reaction:0/_other_participation:0|id" : "110394179",
+	"allergy_history/allergies/adverse_reaction:0/_other_participation:0|id_namespace" : "ispek",
+	"allergy_history/allergies/adverse_reaction:0/_other_participation:0|id_scheme" : "ispek_scheme",
+	"allergy_history/allergies/adverse_reaction:0/_other_participation:1|function" : "performer",
+	"allergy_history/allergies/adverse_reaction:0/_other_participation:1|mode" : "not specified",
+	"allergy_history/allergies/adverse_reaction:0/_other_participation:1|name" : "Testing Nurse",
+	"allergy_history/allergies/adverse_reaction:0/_other_participation:1|id" : "110394179",
+	"allergy_history/allergies/adverse_reaction:0/_other_participation:1|id_namespace" : "ispek",
+	"allergy_history/allergies/adverse_reaction:0/_other_participation:1|id_scheme" : "ispek_scheme",
+	"allergy_history/allergies/adverse_reaction:0/type_of_allergen|code" : "23",
+	"allergy_history/allergies/adverse_reaction:0/type_of_allergen|value" : "Pršica",
+	"allergy_history/allergies/adverse_reaction:0/type_of_allergen|terminology" : "external",
+	"allergy_history/allergies/adverse_reaction:0/language|code" : "sl",
+	"allergy_history/allergies/adverse_reaction:0/language|terminology" : "ISO_639-1",
+	"allergy_history/allergies/adverse_reaction:0/encoding|code" : "UTF-8",
+	"allergy_history/allergies/adverse_reaction:0/encoding|terminology" : "IANA_character-sets",
+	"allergy_history/allergies/adverse_reaction:1/_other_participation:0|function" : "requester",
+	"allergy_history/allergies/adverse_reaction:1/_other_participation:0|mode" : "not specified",
+	"allergy_history/allergies/adverse_reaction:1/_other_participation:0|name" : "Testing Nurse",
+	"allergy_history/allergies/adverse_reaction:1/_other_participation:0|id" : "110394179",
+	"allergy_history/allergies/adverse_reaction:1/_other_participation:0|id_namespace" : "ispek",
+	"allergy_history/allergies/adverse_reaction:1/_other_participation:0|id_scheme" : "ispek_scheme",
+	"allergy_history/allergies/adverse_reaction:1/_other_participation:1|function" : "performer",
+	"allergy_history/allergies/adverse_reaction:1/_other_participation:1|mode" : "not specified",
+	"allergy_history/allergies/adverse_reaction:1/_other_participation:1|name" : "Testing Nurse",
+	"allergy_history/allergies/adverse_reaction:1/_other_participation:1|id" : "110394179",
+	"allergy_history/allergies/adverse_reaction:1/_other_participation:1|id_namespace" : "ispek",
+	"allergy_history/allergies/adverse_reaction:1/_other_participation:1|id_scheme" : "ispek_scheme",
+	"allergy_history/allergies/adverse_reaction:1/type_of_allergen|code" : "21",
+	"allergy_history/allergies/adverse_reaction:1/type_of_allergen|value" : "Travni pelodi",
+	"allergy_history/allergies/adverse_reaction:1/type_of_allergen|terminology" : "external",
+	"allergy_history/allergies/adverse_reaction:1/language|code" : "sl",
+	"allergy_history/allergies/adverse_reaction:1/language|terminology" : "ISO_639-1",
+	"allergy_history/allergies/adverse_reaction:1/encoding|code" : "UTF-8",
+	"allergy_history/allergies/adverse_reaction:1/encoding|terminology" : "IANA_character-sets",
+	"allergy_history/category|code" : "431",
+	"allergy_history/category|value" : "persistent",
+	"allergy_history/category|terminology" : "openehr",
+	"allergy_history/composer|id" : "109950656",
+	"allergy_history/composer|id_scheme" : "ispek_scheme",
+	"allergy_history/composer|id_namespace" : "ispek",
+	"allergy_history/composer|name" : "Testing Nurse"
+}

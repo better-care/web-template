@@ -1,0 +1,41 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+	"nutrition_administration/_uid" : "f4c75c64-5f49-4335-906c-85bcef3f5518::default::1",
+	"nutrition_administration/language|code" : "sl",
+	"nutrition_administration/language|terminology" : "ISO_639-1",
+	"nutrition_administration/territory|code" : "SLO",
+	"nutrition_administration/territory|terminology" : "ISO_3166-1",
+	"nutrition_administration/context/start_time" : "2019-09-29T11:28:12.012+02:00",
+	"nutrition_administration/context/setting|code" : "238",
+	"nutrition_administration/context/setting|value" : "other care",
+	"nutrition_administration/context/setting|terminology" : "openehr",
+	"nutrition_administration/nutrition_detail/nutrition:0/ism_transition/current_state|code" : "526",
+	"nutrition_administration/nutrition_detail/nutrition:0/ism_transition/current_state|value" : "planned",
+	"nutrition_administration/nutrition_detail/nutrition:0/ism_transition/current_state|terminology" : "openehr",
+	"nutrition_administration/nutrition_detail/nutrition:0/meal/type_of_meal|other" : "EXTRA_FOOD",
+	"nutrition_administration/nutrition_detail/nutrition:0/meal/meal_pattern:0/supplement" : "Mlečni riž PK",
+	"nutrition_administration/nutrition_detail/nutrition:0/meal/meal_pattern:0/time_consumed" : "11:27+01:00",
+	"nutrition_administration/nutrition_detail/nutrition:0/meal/meal_pattern:0/dosage:0/dose_unit" : "g",
+	"nutrition_administration/nutrition_detail/nutrition:0/time" : "2019-09-29T11:27:00+02:00",
+	"nutrition_administration/nutrition_detail/nutrition:0/language|code" : "sl",
+	"nutrition_administration/nutrition_detail/nutrition:0/language|terminology" : "ISO_639-1",
+	"nutrition_administration/nutrition_detail/nutrition:0/encoding|code" : "UTF-8",
+	"nutrition_administration/nutrition_detail/nutrition:0/encoding|terminology" : "IANA_character-sets",
+	"nutrition_administration/category|code" : "433",
+	"nutrition_administration/category|value" : "event",
+	"nutrition_administration/category|terminology" : "openehr",
+	"nutrition_administration/composer|name" : "Testing Nurse"
+}

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	Copyright 2021 Better Ltd (www.better.care)
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<ns2:composition archetype_node_id="openEHR-EHR-COMPOSITION.report.v1" xmlns:te="http://schemas.marand.com/thinkehr/v1" xmlns:ns2="http://schemas.openehr.org/v1">
+    <ns2:name>
+        <ns2:value>JIA JADAS</ns2:value>
+    </ns2:name>
+    <ns2:archetype_details>
+        <ns2:archetype_id>
+            <ns2:value>openEHR-EHR-COMPOSITION.report.v1</ns2:value>
+        </ns2:archetype_id>
+        <ns2:template_id>
+            <ns2:value>JIA JADAS</ns2:value>
+        </ns2:template_id>
+        <ns2:rm_version>1.0.4</ns2:rm_version>
+    </ns2:archetype_details>
+    <ns2:feeder_audit>
+        <ns2:original_content xsi:type="ns2:DV_PARSABLE" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ns2:value>{"/generic-fieldset-3563905/generic-date_field-5409744":["2021-02-06T23:54:00Z"],"/generic-fieldset-3563905/generic-date_field-8358595":["2021-02-16T13:38:00Z"],"/generic-fieldset-3563905/generic-date_field-9790178":["2021-02-03T10:21:00Z"],"/generic-fieldset-3563905/generic-date_field-8068721":["2021-02-17T15:06:11+00:00"],"/generic-fieldset-3563905/generic-date_field-5376774":["2021-02-17T15:06:12+00:00"],"/generic-numeric_field-2798964":[9],"/generic-numeric_field-1960128":[9],"/generic-numeric_field-3547240":[9]}</ns2:value>
+            <ns2:formalism>application/json</ns2:formalism>
+        </ns2:original_content>
+        <ns2:originating_system_audit>
+            <ns2:system_id>FormRenderer</ns2:system_id>
+        </ns2:originating_system_audit>
+    </ns2:feeder_audit>
+    <ns2:language>
+        <ns2:terminology_id>
+            <ns2:value>ISO_639-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>en</ns2:code_string>
+    </ns2:language>
+    <ns2:territory>
+        <ns2:terminology_id>
+            <ns2:value>ISO_3166-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>SI</ns2:code_string>
+    </ns2:territory>
+    <ns2:category>
+        <ns2:value>event</ns2:value>
+        <ns2:defining_code>
+            <ns2:terminology_id>
+                <ns2:value>openehr</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>433</ns2:code_string>
+        </ns2:defining_code>
+    </ns2:category>
+    <ns2:context>
+        <ns2:start_time>
+            <ns2:value>2021-02-17T15:06:00Z</ns2:value>
+        </ns2:start_time>
+        <ns2:setting>
+            <ns2:value>other care</ns2:value>
+            <ns2:defining_code>
+                <ns2:terminology_id>
+                    <ns2:value>openehr</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>238</ns2:code_string>
+            </ns2:defining_code>
+        </ns2:setting>
+    </ns2:context>
+    <ns2:content xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.jadas.v0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>JADAS</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-OBSERVATION.jadas.v0</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:language>
+            <ns2:terminology_id>
+                <ns2:value>ISO_639-1</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>en</ns2:code_string>
+        </ns2:language>
+        <ns2:encoding>
+            <ns2:terminology_id>
+                <ns2:value>IANA_character-sets</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>UTF-8</ns2:code_string>
+        </ns2:encoding>
+        <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+        <ns2:data archetype_node_id="at0001">
+            <ns2:name>
+                <ns2:value>History</ns2:value>
+            </ns2:name>
+            <ns2:origin>
+                <ns2:value>2021-02-17T11:11:00+01:00</ns2:value>
+            </ns2:origin>
+            <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                <ns2:name>
+                    <ns2:value>Any event</ns2:value>
+                </ns2:name>
+                <ns2:time>
+                    <ns2:value>2021-02-17T11:11:00+01:00</ns2:value>
+                </ns2:time>
+                <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                    <ns2:name>
+                        <ns2:value>Tree</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0008">
+                        <ns2:name>
+                            <ns2:value>Physician global assessment of disease activity</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_QUANTITY">
+                            <ns2:magnitude>0.0</ns2:magnitude>
+                            <ns2:units>cm</ns2:units>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0009">
+                        <ns2:name>
+                            <ns2:value>Parent/child global assessment of well-being and pain</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_QUANTITY">
+                            <ns2:magnitude>0.0</ns2:magnitude>
+                            <ns2:units>cm</ns2:units>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0010">
+                        <ns2:name>
+                            <ns2:value>Number of active joints</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_COUNT">
+                            <ns2:magnitude>9</ns2:magnitude>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0038">
+                        <ns2:name>
+                            <ns2:value>Arthritis subtype</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>at0173</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0011">
+                        <ns2:name>
+                            <ns2:value>Erythrocyte sedimentation rate (ESR)</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_QUANTITY">
+                            <ns2:magnitude>123.0</ns2:magnitude>
+                            <ns2:units>mm/h</ns2:units>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0013">
+                        <ns2:name>
+                            <ns2:value>Normalized ESR value</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_PROPORTION">
+                            <ns2:numerator>10.0</ns2:numerator>
+                            <ns2:denominator>1.0</ns2:denominator>
+                            <ns2:type>1</ns2:type>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0012">
+                        <ns2:name>
+                            <ns2:value>C-reactive protein (CRP)</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_QUANTITY">
+                            <ns2:magnitude>12.0</ns2:magnitude>
+                            <ns2:units>mg/L</ns2:units>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0014">
+                        <ns2:name>
+                            <ns2:value>Normalized CRP value</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_PROPORTION">
+                            <ns2:numerator>0.2</ns2:numerator>
+                            <ns2:denominator>1.0</ns2:denominator>
+                            <ns2:type>1</ns2:type>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0048">
+                        <ns2:name>
+                            <ns2:value>JADAS10</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0015">
+                            <ns2:name>
+                                <ns2:value>JADAS10-ESR score</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_PROPORTION">
+                                <ns2:numerator>19.0</ns2:numerator>
+                                <ns2:denominator>1.0</ns2:denominator>
+                                <ns2:type>1</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0043">
+                            <ns2:name>
+                                <ns2:value>JADAS10-CRP score</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_PROPORTION">
+                                <ns2:numerator>9.2</ns2:numerator>
+                                <ns2:denominator>1.0</ns2:denominator>
+                                <ns2:type>1</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0044">
+                            <ns2:name>
+                                <ns2:value>cJADAS10 score</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_PROPORTION">
+                                <ns2:numerator>9.0</ns2:numerator>
+                                <ns2:denominator>1.0</ns2:denominator>
+                                <ns2:type>1</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0058">
+                            <ns2:name>
+                                <ns2:value>JIA status JADAS10</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                <ns2:value>High disease activity</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>local</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>at0062</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0051">
+                        <ns2:name>
+                            <ns2:value>JADAS27</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0045">
+                            <ns2:name>
+                                <ns2:value>JADAS27-ESR score</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_PROPORTION">
+                                <ns2:numerator>19.0</ns2:numerator>
+                                <ns2:denominator>1.0</ns2:denominator>
+                                <ns2:type>1</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0046">
+                            <ns2:name>
+                                <ns2:value>JADAS27-CRP score</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_PROPORTION">
+                                <ns2:numerator>9.2</ns2:numerator>
+                                <ns2:denominator>1.0</ns2:denominator>
+                                <ns2:type>1</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0047">
+                            <ns2:name>
+                                <ns2:value>cJADAS27 score</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_PROPORTION">
+                                <ns2:numerator>9.0</ns2:numerator>
+                                <ns2:denominator>1.0</ns2:denominator>
+                                <ns2:type>1</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0063">
+                            <ns2:name>
+                                <ns2:value>JIA status JADAS27</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                <ns2:value>High disease activity</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>local</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>at0067</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0053">
+                        <ns2:name>
+                            <ns2:value>JADAS71</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0054">
+                            <ns2:name>
+                                <ns2:value>JADAS71-ESR score</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_PROPORTION">
+                                <ns2:numerator>19.0</ns2:numerator>
+                                <ns2:denominator>1.0</ns2:denominator>
+                                <ns2:type>1</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0055">
+                            <ns2:name>
+                                <ns2:value>JADAS71-CRP score</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_PROPORTION">
+                                <ns2:numerator>9.2</ns2:numerator>
+                                <ns2:denominator>1.0</ns2:denominator>
+                                <ns2:type>1</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0056">
+                            <ns2:name>
+                                <ns2:value>cJADAS score</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_PROPORTION">
+                                <ns2:numerator>9.0</ns2:numerator>
+                                <ns2:denominator>1.0</ns2:denominator>
+                                <ns2:type>1</ns2:type>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0068">
+                            <ns2:name>
+                                <ns2:value>JIA status JADAS71</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                <ns2:value>High disease activity</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>local</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>at0072</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                </ns2:data>
+            </ns2:events>
+        </ns2:data>
+    </ns2:content>
+</ns2:composition>

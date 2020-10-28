@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	Copyright 2021 Better Ltd (www.better.care)
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<ns2:composition archetype_node_id="openEHR-EHR-COMPOSITION.encounter.v1" xmlns:te="http://schemas.marand.com/thinkehr/v1" xmlns:ns2="http://schemas.openehr.org/v1">
+    <ns2:name>
+        <ns2:value>Medication Administration</ns2:value>
+    </ns2:name>
+    <ns2:uid xsi:type="ns2:HIER_OBJECT_ID" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:value>ef72534e-98af-4b40-85ac-a42719012f5c::default::1</ns2:value>
+    </ns2:uid>
+    <ns2:archetype_details>
+        <ns2:archetype_id>
+            <ns2:value>openEHR-EHR-COMPOSITION.encounter.v1</ns2:value>
+        </ns2:archetype_id>
+        <ns2:template_id>
+            <ns2:value>OPENeP - Medication Administration</ns2:value>
+        </ns2:template_id>
+        <ns2:rm_version>1.0.4</ns2:rm_version>
+    </ns2:archetype_details>
+    <ns2:language>
+        <ns2:terminology_id>
+            <ns2:value>ISO_639-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>sl</ns2:code_string>
+    </ns2:language>
+    <ns2:territory>
+        <ns2:terminology_id>
+            <ns2:value>ISO_3166-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>SI</ns2:code_string>
+    </ns2:territory>
+    <ns2:category>
+        <ns2:value>event</ns2:value>
+        <ns2:defining_code>
+            <ns2:terminology_id>
+                <ns2:value>openehr</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>433</ns2:code_string>
+        </ns2:defining_code>
+    </ns2:category>
+    <ns2:composer xsi:type="ns2:PARTY_IDENTIFIED" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:external_ref>
+            <ns2:id xsi:type="ns2:GENERIC_ID">
+                <ns2:value>40878802</ns2:value>
+                <ns2:scheme>scheme</ns2:scheme>
+            </ns2:id>
+            <ns2:namespace>ns</ns2:namespace>
+            <ns2:type>ANY</ns2:type>
+        </ns2:external_ref>
+        <ns2:name>Testing Nurse</ns2:name>
+    </ns2:composer>
+    <ns2:context>
+        <ns2:start_time>
+            <ns2:value>2019-02-15T09:31:42.054+01:00</ns2:value>
+        </ns2:start_time>
+        <ns2:setting>
+            <ns2:value>other care</ns2:value>
+            <ns2:defining_code>
+                <ns2:terminology_id>
+                    <ns2:value>openehr</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>238</ns2:code_string>
+            </ns2:defining_code>
+        </ns2:setting>
+        <ns2:other_context xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ns2:name>
+                <ns2:value>Tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.composition_context_detail.v1">
+                <ns2:name>
+                    <ns2:value>Context detail</ns2:value>
+                </ns2:name>
+                <ns2:archetype_details>
+                    <ns2:archetype_id>
+                        <ns2:value>openEHR-EHR-CLUSTER.composition_context_detail.v1</ns2:value>
+                    </ns2:archetype_id>
+                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                </ns2:archetype_details>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                    <ns2:name>
+                        <ns2:value>Period of care identifier</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_TEXT">
+                        <ns2:value>543658424</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Departmental period of care identifier</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_TEXT">
+                        <ns2:value>244131</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:items>
+        </ns2:other_context>
+    </ns2:context>
+    <ns2:content xsi:type="ns2:ACTION" archetype_node_id="openEHR-EHR-ACTION.medication.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Medication management</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-ACTION.medication.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:language>
+            <ns2:terminology_id>
+                <ns2:value>ISO_639-1</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>sl</ns2:code_string>
+        </ns2:language>
+        <ns2:encoding>
+            <ns2:terminology_id>
+                <ns2:value>IANA_character-sets</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>UTF-8</ns2:code_string>
+        </ns2:encoding>
+        <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+        <ns2:time>
+            <ns2:value>2019-02-15T09:00:00+01:00</ns2:value>
+        </ns2:time>
+        <ns2:description xsi:type="ns2:ITEM_TREE" archetype_node_id="at0017">
+            <ns2:name>
+                <ns2:value>Tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0020">
+                <ns2:name>
+                    <ns2:value>Medication item</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_TEXT">
+                    <ns2:value>REMICADE 100 mg prašek za konc.za razt.za inf. viala 1x, Fiziološka razt. NACL 0,9%</ns2:value>
+                </ns2:value>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.medication.v0">
+                <ns2:name>
+                    <ns2:value>Medication</ns2:value>
+                </ns2:name>
+                <ns2:archetype_details>
+                    <ns2:archetype_id>
+                        <ns2:value>openEHR-EHR-CLUSTER.medication.v0</ns2:value>
+                    </ns2:archetype_id>
+                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                </ns2:archetype_details>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0132">
+                    <ns2:name>
+                        <ns2:value>Component name</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_TEXT">
+                        <ns2:value>REMICADE 100 mg prašek za konc.za razt.za inf. viala 1x, Fiziološka razt. NACL 0,9%</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0142">
+                    <ns2:name>
+                        <ns2:value>Category</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Ad-hoc mixture</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>local</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>at0143</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.medication.v0">
+                    <ns2:name>
+                        <ns2:value>Medication</ns2:value>
+                    </ns2:name>
+                    <ns2:archetype_details>
+                        <ns2:archetype_id>
+                            <ns2:value>openEHR-EHR-CLUSTER.medication.v0</ns2:value>
+                        </ns2:archetype_id>
+                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                    </ns2:archetype_details>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0132">
+                        <ns2:name>
+                            <ns2:value>Component name</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>REMICADE 100 mg prašek za konc.za razt.za inf. viala 1x</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>local</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>1057126</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0139">
+                        <ns2:name>
+                            <ns2:value>Amount value</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_QUANTITY">
+                            <ns2:magnitude>300.0</ns2:magnitude>
+                            <ns2:units>1</ns2:units>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0008">
+                        <ns2:name>
+                            <ns2:value>Amount unit</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>mg</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0148">
+                        <ns2:name>
+                            <ns2:value>Alternate amount value</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_QUANTITY">
+                            <ns2:magnitude>30.0</ns2:magnitude>
+                            <ns2:units>1</ns2:units>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0007">
+                        <ns2:name>
+                            <ns2:value>Alternate amount unit</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>ml</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0127">
+                        <ns2:name>
+                            <ns2:value>Role</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>Therapeutic</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>local</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>at0080</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.medication.v0">
+                    <ns2:name>
+                        <ns2:value>Medication #2</ns2:value>
+                    </ns2:name>
+                    <ns2:archetype_details>
+                        <ns2:archetype_id>
+                            <ns2:value>openEHR-EHR-CLUSTER.medication.v0</ns2:value>
+                        </ns2:archetype_id>
+                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                    </ns2:archetype_details>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0132">
+                        <ns2:name>
+                            <ns2:value>Component name</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>Fiziološka razt. NACL 0,9%</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>local</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>1702579</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0139">
+                        <ns2:name>
+                            <ns2:value>Amount value</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_QUANTITY">
+                            <ns2:magnitude>250.0</ns2:magnitude>
+                            <ns2:units>1</ns2:units>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0008">
+                        <ns2:name>
+                            <ns2:value>Amount unit</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>ml</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0127">
+                        <ns2:name>
+                            <ns2:value>Role</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>Excipient</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>local</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>at0084</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0139">
+                    <ns2:name>
+                        <ns2:value>Amount value</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_QUANTITY">
+                        <ns2:magnitude>280.0</ns2:magnitude>
+                        <ns2:units>1</ns2:units>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0008">
+                    <ns2:name>
+                        <ns2:value>Amount unit</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_TEXT">
+                        <ns2:value>ml</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.dosage.v1">
+                <ns2:name>
+                    <ns2:value>Dosage</ns2:value>
+                </ns2:name>
+                <ns2:archetype_details>
+                    <ns2:archetype_id>
+                        <ns2:value>openEHR-EHR-CLUSTER.dosage.v1</ns2:value>
+                    </ns2:archetype_id>
+                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                </ns2:archetype_details>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0135">
+                    <ns2:name>
+                        <ns2:value>Dose formula</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_TEXT">
+                        <ns2:value>1.3736263736263736 mg/kg/h</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0134">
+                    <ns2:name>
+                        <ns2:value>Administration rate</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_QUANTITY">
+                        <ns2:magnitude>50.0</ns2:magnitude>
+                        <ns2:units>ml/h</ns2:units>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0132">
+                <ns2:name>
+                    <ns2:value>Substitution</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                    <ns2:value>Not performed</ns2:value>
+                    <ns2:defining_code>
+                        <ns2:terminology_id>
+                            <ns2:value>local</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>at0139</ns2:code_string>
+                    </ns2:defining_code>
+                </ns2:value>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0043">
+                <ns2:name>
+                    <ns2:value>Original scheduled date/time</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_DATE_TIME">
+                    <ns2:value>2019-02-15T09:00:00+01:00</ns2:value>
+                </ns2:value>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0140">
+                <ns2:name>
+                    <ns2:value>Administration details</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0147">
+                    <ns2:name>
+                        <ns2:value>Route</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>ivk</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>local</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>45</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0143">
+                    <ns2:name>
+                        <ns2:value>Administration method</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Continuous infusion</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>local</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>Continuous infusion</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.Medication_additional_details.v0">
+                <ns2:name>
+                    <ns2:value>Medication additional details</ns2:value>
+                </ns2:name>
+                <ns2:archetype_details>
+                    <ns2:archetype_id>
+                        <ns2:value>openEHR-EHR-CLUSTER.Medication_additional_details.v0</ns2:value>
+                    </ns2:archetype_id>
+                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                </ns2:archetype_details>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0010">
+                    <ns2:name>
+                        <ns2:value>Administration type</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_TEXT">
+                        <ns2:value>START</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0013">
+                    <ns2:name>
+                        <ns2:value>Planned administration</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.dosage.v1">
+                        <ns2:name>
+                            <ns2:value>Dosage</ns2:value>
+                        </ns2:name>
+                        <ns2:archetype_details>
+                            <ns2:archetype_id>
+                                <ns2:value>openEHR-EHR-CLUSTER.dosage.v1</ns2:value>
+                            </ns2:archetype_id>
+                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                        </ns2:archetype_details>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0135">
+                            <ns2:name>
+                                <ns2:value>Dose formula</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>1.3807069219 mg/kg/h</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0134">
+                            <ns2:name>
+                                <ns2:value>Administration rate</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_QUANTITY">
+                                <ns2:magnitude>50.0</ns2:magnitude>
+                                <ns2:units>ml/h</ns2:units>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0017">
+                        <ns2:name>
+                            <ns2:value>Different dose administered</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                            <ns2:value>false</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0018">
+                        <ns2:name>
+                            <ns2:value>Task ID</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>63210741</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:items>
+            </ns2:items>
+        </ns2:description>
+        <ns2:ism_transition>
+            <ns2:current_state>
+                <ns2:value>active</ns2:value>
+                <ns2:defining_code>
+                    <ns2:terminology_id>
+                        <ns2:value>openehr</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>245</ns2:code_string>
+                </ns2:defining_code>
+            </ns2:current_state>
+            <ns2:careflow_step>
+                <ns2:value>Dose administered</ns2:value>
+                <ns2:defining_code>
+                    <ns2:terminology_id>
+                        <ns2:value>local</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>at0006</ns2:code_string>
+                </ns2:defining_code>
+            </ns2:careflow_step>
+        </ns2:ism_transition>
+        <ns2:instruction_details>
+            <ns2:instruction_id>
+                <ns2:id xsi:type="ns2:HIER_OBJECT_ID">
+                    <ns2:value>23501b1b-b498-4462-9296-033680ac5b10</ns2:value>
+                </ns2:id>
+                <ns2:namespace>local</ns2:namespace>
+                <ns2:type>INSTRUCTION</ns2:type>
+                <ns2:path>content[openEHR-EHR-INSTRUCTION.medication_order.v2]</ns2:path>
+            </ns2:instruction_id>
+            <ns2:activity_id>activities[at0001] </ns2:activity_id>
+        </ns2:instruction_details>
+    </ns2:content>
+</ns2:composition>

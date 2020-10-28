@@ -1,0 +1,373 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "vital_functions": {
+    "_uid": [
+      "36c55d88-b2b1-4e80-b59d-868ad25c0dbb::default::1"
+    ],
+    "language": [
+      {
+        "|code": "sl",
+        "|terminology": "ISO_639-1"
+      }
+    ],
+    "territory": [
+      {
+        "|code": "SI",
+        "|terminology": "ISO_3166-1"
+      }
+    ],
+    "context": [
+      {
+        "context_detail": [
+          {
+            "period_of_care_identifier": [
+              "34768465"
+            ],
+            "departmental_period_of_care_identifier": [
+              "244130"
+            ],
+            "portlet_id": [
+              "NURSING"
+            ]
+          }
+        ],
+        "start_time": [
+          "2011-11-17T00:00+01:00"
+        ],
+        "setting": [
+          {
+            "|code": "238",
+            "|value": "other care",
+            "|terminology": "openehr"
+          }
+        ]
+      }
+    ],
+    "vital_signs": [
+      {
+        "pulse": [
+          {
+            "any_event": [
+              {
+                "heart_rate": [
+                  {
+                    "|magnitude": 85.0,
+                    "|unit": "/min"
+                  }
+                ],
+                "time": [
+                  "2011-11-17T00:22:26.171+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "sl",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "patient_state": [
+          {
+            "patient_state": [
+              {
+                "confounding_factors": [
+                  {
+                    "|code": "at0005",
+                    "|value": "Sleeping",
+                    "|terminology": "local"
+                  }
+                ]
+              }
+            ],
+            "time": [
+              "2011-11-17T00:22:26.171+01:00"
+            ],
+            "language": [
+              {
+                "|code": "sl",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "respiratory_assessment": [
+      {
+        "respirations": [
+          {
+            "any_event": [
+              {
+                "rate": [
+                  {
+                    "|magnitude": 25.0,
+                    "|unit": "/min"
+                  }
+                ],
+                "rhythm": [
+                  {
+                    "|code": "at0006",
+                    "|value": "Regular",
+                    "|terminology": "local"
+                  }
+                ],
+                "time": [
+                  "2011-11-17T00:22:39.046+01:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "sl",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "respiratory_examination": [
+          {
+            "difficulties_effort": [
+              {
+                "|code": "at0047",
+                "|value": "1-2 None => Moderate",
+                "|terminology": "local"
+              }
+            ],
+            "breathing_sounds": [
+              {
+                "stridor": [
+                  {
+                    "inspiratory": [
+                      {
+                        "|code": "at0014",
+                        "|value": "Absent",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "expiratory": [
+                      {
+                        "|code": "at0021",
+                        "|value": "Absent",
+                        "|terminology": "local"
+                      }
+                    ]
+                  }
+                ],
+                "wheeze": [
+                  {
+                    "inspiratory": [
+                      {
+                        "|code": "at0023",
+                        "|value": "Absent",
+                        "|terminology": "local"
+                      }
+                    ],
+                    "expiratory": [
+                      {
+                        "|code": "at0025",
+                        "|value": "Absent",
+                        "|terminology": "local"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "body_position_exercise": [
+              {
+                "|code": "at0058",
+                "|value": "Resting",
+                "|terminology": "local"
+              }
+            ],
+            "time": [
+              "2011-11-17T00:22:39.046+01:00"
+            ],
+            "language": [
+              {
+                "|code": "sl",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "indirect_oximetry": [
+          {
+            "spo2": [
+              {
+                "|numerator": 96.0,
+                "|denominator": 100.0,
+                "|type": 2,
+                "": 0.96
+              }
+            ],
+            "time": [
+              "2011-11-17T00:22:39.046+01:00"
+            ],
+            "language": [
+              {
+                "|code": "sl",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "aspiration": [
+          {
+            "ism_transition": [
+              {
+                "current_state": [
+                  {
+                    "|code": "532",
+                    "|value": "completed",
+                    "|terminology": "openehr"
+                  }
+                ]
+              }
+            ],
+            "aspiration": [
+              {
+                "assisted_ventilation": [
+                  false
+                ]
+              }
+            ],
+            "time": [
+              "2011-11-17T00:22:39.046+01:00"
+            ],
+            "language": [
+              {
+                "|code": "sl",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ],
+        "unassisted_oxygen_delivery": [
+          {
+            "ism_transition": [
+              {
+                "current_state": [
+                  {
+                    "|code": "532",
+                    "|value": "completed",
+                    "|terminology": "openehr"
+                  }
+                ]
+              }
+            ],
+            "intervention": [
+              {
+                "|code": "at0.2",
+                "|value": "Unassisted oxygen delivery",
+                "|terminology": "local"
+              }
+            ],
+            "oxygen_delivery": [
+              {
+                "ambient_oxygen": [
+                  {
+                    "oxygen_flow_rate": [
+                      {
+                        "|magnitude": 0.0,
+                        "|unit": "l/m"
+                      }
+                    ]
+                  }
+                ],
+                "humidifier": [
+                  {
+                    "humidifer_used": [
+                      false
+                    ]
+                  }
+                ]
+              }
+            ],
+            "time": [
+              "2011-11-17T00:22:39.046+01:00"
+            ],
+            "language": [
+              {
+                "|code": "sl",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "category": [
+      {
+        "|code": "433",
+        "|value": "event",
+        "|terminology": "openehr"
+      }
+    ],
+    "composer": [
+      {
+        "|id": "6074922",
+        "|id_scheme": "ispek_scheme",
+        "|id_namespace": "ispek",
+        "|name": "Testing Nurse"
+      }
+    ]
+  }
+}

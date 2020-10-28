@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	Copyright 2021 Better Ltd (www.better.care)
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<ns2:composition archetype_node_id="openEHR-EHR-COMPOSITION.encounter.v1" xmlns:te="http://schemas.marand.com/thinkehr/v1" xmlns:ns2="http://schemas.openehr.org/v1">
+    <ns2:name>
+        <ns2:value>CATTEDRA JIA Body map</ns2:value>
+    </ns2:name>
+    <ns2:archetype_details>
+        <ns2:archetype_id>
+            <ns2:value>openEHR-EHR-COMPOSITION.encounter.v1</ns2:value>
+        </ns2:archetype_id>
+        <ns2:template_id>
+            <ns2:value>CATTEDRA JIA Body map</ns2:value>
+        </ns2:template_id>
+        <ns2:rm_version>1.0.4</ns2:rm_version>
+    </ns2:archetype_details>
+    <ns2:feeder_audit>
+        <ns2:original_content xsi:type="ns2:DV_PARSABLE" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ns2:value>{"/generic-fieldset-8705021/generic-input_text-9006921":["Shoulder Right, \nElbow Right, \nThoracic spine, \nLumbosacral spine / Lower back, \nWrist Left"],"/generic-fieldset-1983497/generic-input_text-4277881":["Quadriceps tendon insertion to patella (2 and 10 o'clock) Left, \nInfrapatellar ligament insertion to patella (6 o'clock) and tibial tuberosity Right, \nQuadriceps tendon insertion to patella (2 and 10 o'clock) Right"],"/generic-fieldset-2606261/generic-fieldset-6258302/otherTenosynovitisBoolean":[],"/generic-fieldset-2606261/generic-fieldset-6258302/generic-tenosynovitisOther":[],"/generic-fieldset-2881319/generic-fieldset-2906463/generic-fieldset-832894/otherOrgansBoolean":[],"/generic-fieldset-2881319/generic-fieldset-2906463/generic-fieldset-832894/generic-otherOrgansOther":[]}</ns2:value>
+            <ns2:formalism>application/json</ns2:formalism>
+        </ns2:original_content>
+        <ns2:originating_system_audit>
+            <ns2:system_id>FormRenderer</ns2:system_id>
+        </ns2:originating_system_audit>
+    </ns2:feeder_audit>
+    <ns2:language>
+        <ns2:terminology_id>
+            <ns2:value>ISO_639-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>en</ns2:code_string>
+    </ns2:language>
+    <ns2:territory>
+        <ns2:terminology_id>
+            <ns2:value>ISO_3166-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>SI</ns2:code_string>
+    </ns2:territory>
+    <ns2:category>
+        <ns2:value>event</ns2:value>
+        <ns2:defining_code>
+            <ns2:terminology_id>
+                <ns2:value>openehr</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>433</ns2:code_string>
+        </ns2:defining_code>
+    </ns2:category>
+    <ns2:context>
+        <ns2:start_time>
+            <ns2:value>2021-02-17T14:22:00Z</ns2:value>
+        </ns2:start_time>
+        <ns2:setting>
+            <ns2:value>other care</ns2:value>
+            <ns2:defining_code>
+                <ns2:terminology_id>
+                    <ns2:value>openehr</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>238</ns2:code_string>
+            </ns2:defining_code>
+        </ns2:setting>
+    </ns2:context>
+    <ns2:content xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.adhoc.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Active joints</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.exam.v1">
+            <ns2:name>
+                <ns2:value>Physical examination findings</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-OBSERVATION.exam.v1</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Event Series</ns2:value>
+                </ns2:name>
+                <ns2:origin>
+                    <ns2:value>2021-02-17T11:11:00+01:00</ns2:value>
+                </ns2:origin>
+                <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Any event</ns2:value>
+                    </ns2:name>
+                    <ns2:time>
+                        <ns2:value>2021-02-17T11:11:00+01:00</ns2:value>
+                    </ns2:time>
+                    <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                        <ns2:name>
+                            <ns2:value>Tree</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.exam.v1">
+                            <ns2:name>
+                                <ns2:value>Active joints</ns2:value>
+                            </ns2:name>
+                            <ns2:archetype_details>
+                                <ns2:archetype_id>
+                                    <ns2:value>openEHR-EHR-CLUSTER.exam.v1</ns2:value>
+                                </ns2:archetype_id>
+                                <ns2:rm_version>1.0.4</ns2:rm_version>
+                            </ns2:archetype_details>
+                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                                <ns2:name>
+                                    <ns2:value>System or structure examined</ns2:value>
+                                </ns2:name>
+                                <ns2:value xsi:type="ns2:DV_TEXT">
+                                    <ns2:value>Joints</ns2:value>
+                                </ns2:value>
+                            </ns2:items>
+                            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.active_joints.v0">
+                                <ns2:name>
+                                    <ns2:value>Active joints</ns2:value>
+                                </ns2:name>
+                                <ns2:archetype_details>
+                                    <ns2:archetype_id>
+                                        <ns2:value>openEHR-EHR-CLUSTER.active_joints.v0</ns2:value>
+                                    </ns2:archetype_id>
+                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                </ns2:archetype_details>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                                    <ns2:name>
+                                        <ns2:value>List of active joints</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                        <ns2:value>Shoulder Right</ns2:value>
+                                        <ns2:defining_code>
+                                            <ns2:terminology_id>
+                                                <ns2:value>local</ns2:value>
+                                            </ns2:terminology_id>
+                                            <ns2:code_string>at0010</ns2:code_string>
+                                        </ns2:defining_code>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                                    <ns2:name>
+                                        <ns2:value>List of active joints #2</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                        <ns2:value>Elbow Right</ns2:value>
+                                        <ns2:defining_code>
+                                            <ns2:terminology_id>
+                                                <ns2:value>local</ns2:value>
+                                            </ns2:terminology_id>
+                                            <ns2:code_string>at0012</ns2:code_string>
+                                        </ns2:defining_code>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                                    <ns2:name>
+                                        <ns2:value>List of active joints #3</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                        <ns2:value>Thoracic spine</ns2:value>
+                                        <ns2:defining_code>
+                                            <ns2:terminology_id>
+                                                <ns2:value>local</ns2:value>
+                                            </ns2:terminology_id>
+                                            <ns2:code_string>at0005</ns2:code_string>
+                                        </ns2:defining_code>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                                    <ns2:name>
+                                        <ns2:value>List of active joints #4</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                        <ns2:value>Lumbosacral spine / Lower back</ns2:value>
+                                        <ns2:defining_code>
+                                            <ns2:terminology_id>
+                                                <ns2:value>local</ns2:value>
+                                            </ns2:terminology_id>
+                                            <ns2:code_string>at0006</ns2:code_string>
+                                        </ns2:defining_code>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                                    <ns2:name>
+                                        <ns2:value>List of active joints #5</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                        <ns2:value>Wrist Left</ns2:value>
+                                        <ns2:defining_code>
+                                            <ns2:terminology_id>
+                                                <ns2:value>local</ns2:value>
+                                            </ns2:terminology_id>
+                                            <ns2:code_string>at0013</ns2:code_string>
+                                        </ns2:defining_code>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0168">
+                                    <ns2:name>
+                                        <ns2:value>List of active joints with effusion</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                        <ns2:value>Elbow Right</ns2:value>
+                                        <ns2:defining_code>
+                                            <ns2:terminology_id>
+                                                <ns2:value>external</ns2:value>
+                                            </ns2:terminology_id>
+                                            <ns2:code_string>at0012</ns2:code_string>
+                                        </ns2:defining_code>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0168">
+                                    <ns2:name>
+                                        <ns2:value>List of active joints with effusion #2</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                        <ns2:value>Lumbosacral spine / Lower back</ns2:value>
+                                        <ns2:defining_code>
+                                            <ns2:terminology_id>
+                                                <ns2:value>external</ns2:value>
+                                            </ns2:terminology_id>
+                                            <ns2:code_string>at0006</ns2:code_string>
+                                        </ns2:defining_code>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0168">
+                                    <ns2:name>
+                                        <ns2:value>List of active joints with effusion #3</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                        <ns2:value>Thoracic spine</ns2:value>
+                                        <ns2:defining_code>
+                                            <ns2:terminology_id>
+                                                <ns2:value>external</ns2:value>
+                                            </ns2:terminology_id>
+                                            <ns2:code_string>at0005</ns2:code_string>
+                                        </ns2:defining_code>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                                    <ns2:name>
+                                        <ns2:value>Total number of active joints</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_COUNT">
+                                        <ns2:magnitude>5</ns2:magnitude>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0171">
+                                    <ns2:name>
+                                        <ns2:value>Arthritis subtype</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                        <ns2:value>Polyarthritis</ns2:value>
+                                        <ns2:defining_code>
+                                            <ns2:terminology_id>
+                                                <ns2:value>local</ns2:value>
+                                            </ns2:terminology_id>
+                                            <ns2:code_string>at0173</ns2:code_string>
+                                        </ns2:defining_code>
+                                    </ns2:value>
+                                </ns2:items>
+                            </ns2:items>
+                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0007">
+                                <ns2:name>
+                                    <ns2:value>Comment</ns2:value>
+                                </ns2:name>
+                                <ns2:value xsi:type="ns2:DV_TEXT">
+                                    <ns2:value>teste</ns2:value>
+                                </ns2:value>
+                            </ns2:items>
+                        </ns2:items>
+                    </ns2:data>
+                </ns2:events>
+            </ns2:data>
+        </ns2:items>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.adhoc.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Dactylitis</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.exam.v1">
+            <ns2:name>
+                <ns2:value>Physical examination findings</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-OBSERVATION.exam.v1</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Event Series</ns2:value>
+                </ns2:name>
+                <ns2:origin>
+                    <ns2:value>2021-02-17T11:11:00+01:00</ns2:value>
+                </ns2:origin>
+                <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Any event</ns2:value>
+                    </ns2:name>
+                    <ns2:time>
+                        <ns2:value>2021-02-17T11:11:00+01:00</ns2:value>
+                    </ns2:time>
+                    <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                        <ns2:name>
+                            <ns2:value>Tree</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.exam.v1">
+                            <ns2:name>
+                                <ns2:value>Examination findings</ns2:value>
+                            </ns2:name>
+                            <ns2:archetype_details>
+                                <ns2:archetype_id>
+                                    <ns2:value>openEHR-EHR-CLUSTER.exam.v1</ns2:value>
+                                </ns2:archetype_id>
+                                <ns2:rm_version>1.0.4</ns2:rm_version>
+                            </ns2:archetype_details>
+                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                                <ns2:name>
+                                    <ns2:value>System or structure examined</ns2:value>
+                                </ns2:name>
+                                <ns2:value xsi:type="ns2:DV_TEXT">
+                                    <ns2:value>Finger or toe</ns2:value>
+                                </ns2:value>
+                            </ns2:items>
+                            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.dactylitis.v0">
+                                <ns2:name>
+                                    <ns2:value>Dactylitis</ns2:value>
+                                </ns2:name>
+                                <ns2:archetype_details>
+                                    <ns2:archetype_id>
+                                        <ns2:value>openEHR-EHR-CLUSTER.dactylitis.v0</ns2:value>
+                                    </ns2:archetype_id>
+                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                </ns2:archetype_details>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                                    <ns2:name>
+                                        <ns2:value>Dactylitis present</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>true</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                                    <ns2:name>
+                                        <ns2:value>Fingers and toes</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                        <ns2:value>3rd finger Left</ns2:value>
+                                        <ns2:defining_code>
+                                            <ns2:terminology_id>
+                                                <ns2:value>dactylicsFingersAndToesBodyMapCAT</ns2:value>
+                                            </ns2:terminology_id>
+                                            <ns2:code_string>5</ns2:code_string>
+                                        </ns2:defining_code>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                                    <ns2:name>
+                                        <ns2:value>Fingers and toes #2</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                        <ns2:value>4th finger Right</ns2:value>
+                                        <ns2:defining_code>
+                                            <ns2:terminology_id>
+                                                <ns2:value>dactylicsFingersAndToesBodyMapCAT</ns2:value>
+                                            </ns2:terminology_id>
+                                            <ns2:code_string>8</ns2:code_string>
+                                        </ns2:defining_code>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                                    <ns2:name>
+                                        <ns2:value>Fingers and toes #3</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                        <ns2:value>3rd toe Right</ns2:value>
+                                        <ns2:defining_code>
+                                            <ns2:terminology_id>
+                                                <ns2:value>dactylicsFingersAndToesBodyMapCAT</ns2:value>
+                                            </ns2:terminology_id>
+                                            <ns2:code_string>16</ns2:code_string>
+                                        </ns2:defining_code>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                                    <ns2:name>
+                                        <ns2:value>Fingers and toes #4</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                        <ns2:value>2nd toe Left</ns2:value>
+                                        <ns2:defining_code>
+                                            <ns2:terminology_id>
+                                                <ns2:value>dactylicsFingersAndToesBodyMapCAT</ns2:value>
+                                            </ns2:terminology_id>
+                                            <ns2:code_string>13</ns2:code_string>
+                                        </ns2:defining_code>
+                                    </ns2:value>
+                                </ns2:items>
+                            </ns2:items>
+                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0007">
+                                <ns2:name>
+                                    <ns2:value>Comment</ns2:value>
+                                </ns2:name>
+                                <ns2:value xsi:type="ns2:DV_TEXT">
+                                    <ns2:value>teste</ns2:value>
+                                </ns2:value>
+                            </ns2:items>
+                        </ns2:items>
+                    </ns2:data>
+                </ns2:events>
+            </ns2:data>
+        </ns2:items>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.adhoc.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Enthesitis</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.exam.v1">
+            <ns2:name>
+                <ns2:value>Physical examination findings</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-OBSERVATION.exam.v1</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Event Series</ns2:value>
+                </ns2:name>
+                <ns2:origin>
+                    <ns2:value>2021-02-17T11:11:00+01:00</ns2:value>
+                </ns2:origin>
+                <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Any event</ns2:value>
+                    </ns2:name>
+                    <ns2:time>
+                        <ns2:value>2021-02-17T11:11:00+01:00</ns2:value>
+                    </ns2:time>
+                    <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                        <ns2:name>
+                            <ns2:value>Tree</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.exam.v1">
+                            <ns2:name>
+                                <ns2:value>Enthesitis</ns2:value>
+                            </ns2:name>
+                            <ns2:archetype_details>
+                                <ns2:archetype_id>
+                                    <ns2:value>openEHR-EHR-CLUSTER.exam.v1</ns2:value>
+                                </ns2:archetype_id>
+                                <ns2:rm_version>1.0.4</ns2:rm_version>
+                            </ns2:archetype_details>
+                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                                <ns2:name>
+                                    <ns2:value>System or structure examined</ns2:value>
+                                </ns2:name>
+                                <ns2:value xsi:type="ns2:DV_TEXT">
+                                    <ns2:value>Enthesis</ns2:value>
+                                </ns2:value>
+                            </ns2:items>
+                            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.enthesitis.v0">
+                                <ns2:name>
+                                    <ns2:value>Enthesitis</ns2:value>
+                                </ns2:name>
+                                <ns2:archetype_details>
+                                    <ns2:archetype_id>
+                                        <ns2:value>openEHR-EHR-CLUSTER.enthesitis.v0</ns2:value>
+                                    </ns2:archetype_id>
+                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                </ns2:archetype_details>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0037">
+                                    <ns2:name>
+                                        <ns2:value>Enthesitis present</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>true</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                                    <ns2:name>
+                                        <ns2:value>List of inflamed entheses</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                        <ns2:value>Quadriceps tendon insertion to patella (2 and 10 o'clock) Left</ns2:value>
+                                        <ns2:defining_code>
+                                            <ns2:terminology_id>
+                                                <ns2:value>local</ns2:value>
+                                            </ns2:terminology_id>
+                                            <ns2:code_string>at0007</ns2:code_string>
+                                        </ns2:defining_code>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                                    <ns2:name>
+                                        <ns2:value>List of inflamed entheses #2</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                        <ns2:value>Infrapatellar ligament insertion to patella (6 o'clock) and tibial tuberosity Right</ns2:value>
+                                        <ns2:defining_code>
+                                            <ns2:terminology_id>
+                                                <ns2:value>local</ns2:value>
+                                            </ns2:terminology_id>
+                                            <ns2:code_string>at0025</ns2:code_string>
+                                        </ns2:defining_code>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                                    <ns2:name>
+                                        <ns2:value>List of inflamed entheses #3</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                        <ns2:value>Quadriceps tendon insertion to patella (2 and 10 o'clock) Right</ns2:value>
+                                        <ns2:defining_code>
+                                            <ns2:terminology_id>
+                                                <ns2:value>local</ns2:value>
+                                            </ns2:terminology_id>
+                                            <ns2:code_string>at0024</ns2:code_string>
+                                        </ns2:defining_code>
+                                    </ns2:value>
+                                </ns2:items>
+                            </ns2:items>
+                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0006">
+                                <ns2:name>
+                                    <ns2:value>Clinical interpretation</ns2:value>
+                                </ns2:name>
+                                <ns2:value xsi:type="ns2:DV_TEXT">
+                                    <ns2:value>Inflamed</ns2:value>
+                                </ns2:value>
+                            </ns2:items>
+                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0007">
+                                <ns2:name>
+                                    <ns2:value>Comment</ns2:value>
+                                </ns2:name>
+                                <ns2:value xsi:type="ns2:DV_TEXT">
+                                    <ns2:value>teste</ns2:value>
+                                </ns2:value>
+                            </ns2:items>
+                        </ns2:items>
+                    </ns2:data>
+                </ns2:events>
+            </ns2:data>
+        </ns2:items>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.adhoc.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Tenosynovitis</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.exam.v1">
+            <ns2:name>
+                <ns2:value>Physical examination findings</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-OBSERVATION.exam.v1</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Event Series</ns2:value>
+                </ns2:name>
+                <ns2:origin>
+                    <ns2:value>2021-02-17T11:11:00+01:00</ns2:value>
+                </ns2:origin>
+                <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Any event</ns2:value>
+                    </ns2:name>
+                    <ns2:time>
+                        <ns2:value>2021-02-17T11:11:00+01:00</ns2:value>
+                    </ns2:time>
+                    <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                        <ns2:name>
+                            <ns2:value>Tree</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.exam.v1">
+                            <ns2:name>
+                                <ns2:value>Tenosynovitis</ns2:value>
+                            </ns2:name>
+                            <ns2:archetype_details>
+                                <ns2:archetype_id>
+                                    <ns2:value>openEHR-EHR-CLUSTER.exam.v1</ns2:value>
+                                </ns2:archetype_id>
+                                <ns2:rm_version>1.0.4</ns2:rm_version>
+                            </ns2:archetype_details>
+                            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.tenosynovitis.v0">
+                                <ns2:name>
+                                    <ns2:value>Tenosynovitis</ns2:value>
+                                </ns2:name>
+                                <ns2:archetype_details>
+                                    <ns2:archetype_id>
+                                        <ns2:value>openEHR-EHR-CLUSTER.tenosynovitis.v0</ns2:value>
+                                    </ns2:archetype_id>
+                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                </ns2:archetype_details>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
+                                    <ns2:name>
+                                        <ns2:value>Tenosynovitis present</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>true</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                            </ns2:items>
+                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0006">
+                                <ns2:name>
+                                    <ns2:value>Clinical interpretation</ns2:value>
+                                </ns2:name>
+                                <ns2:value xsi:type="ns2:DV_TEXT">
+                                    <ns2:value>Inflamed tendons</ns2:value>
+                                </ns2:value>
+                            </ns2:items>
+                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0007">
+                                <ns2:name>
+                                    <ns2:value>Comment</ns2:value>
+                                </ns2:name>
+                                <ns2:value xsi:type="ns2:DV_TEXT">
+                                    <ns2:value>teste</ns2:value>
+                                </ns2:value>
+                            </ns2:items>
+                        </ns2:items>
+                    </ns2:data>
+                </ns2:events>
+            </ns2:data>
+        </ns2:items>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.adhoc.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Other organ systems</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.problem_diagnosis.v1">
+            <ns2:name>
+                <ns2:value>Problem/Diagnosis</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-EVALUATION.problem_diagnosis.v1</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>structure</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Problem/Diagnosis name</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_TEXT">
+                        <ns2:value>Other inflamed organ systems</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:data>
+        </ns2:items>
+        <ns2:items xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.exam.v1">
+            <ns2:name>
+                <ns2:value>Physical examination findings</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-OBSERVATION.exam.v1</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Event Series</ns2:value>
+                </ns2:name>
+                <ns2:origin>
+                    <ns2:value>2021-02-17T11:11:00+01:00</ns2:value>
+                </ns2:origin>
+                <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Any event</ns2:value>
+                    </ns2:name>
+                    <ns2:time>
+                        <ns2:value>2021-02-17T11:11:00+01:00</ns2:value>
+                    </ns2:time>
+                    <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                        <ns2:name>
+                            <ns2:value>Tree</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.exam.v1">
+                            <ns2:name>
+                                <ns2:value>Examination findings</ns2:value>
+                            </ns2:name>
+                            <ns2:archetype_details>
+                                <ns2:archetype_id>
+                                    <ns2:value>openEHR-EHR-CLUSTER.exam.v1</ns2:value>
+                                </ns2:archetype_id>
+                                <ns2:rm_version>1.0.4</ns2:rm_version>
+                            </ns2:archetype_details>
+                            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.other_organ_systems.v0">
+                                <ns2:name>
+                                    <ns2:value>Other organ systems</ns2:value>
+                                </ns2:name>
+                                <ns2:archetype_details>
+                                    <ns2:archetype_id>
+                                        <ns2:value>openEHR-EHR-CLUSTER.other_organ_systems.v0</ns2:value>
+                                    </ns2:archetype_id>
+                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                </ns2:archetype_details>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0003">
+                                    <ns2:name>
+                                        <ns2:value>Active uveitis of left eye</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>true</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
+                                    <ns2:name>
+                                        <ns2:value>Active uveitis of right eye</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>true</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0006">
+                                    <ns2:name>
+                                        <ns2:value>Date of ophthalmology examinations</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_DATE">
+                                        <ns2:value>2021-02-17</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                                    <ns2:name>
+                                        <ns2:value>Other organs effected</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>true</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                            </ns2:items>
+                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0006">
+                                <ns2:name>
+                                    <ns2:value>Clinical interpretation</ns2:value>
+                                </ns2:name>
+                                <ns2:value xsi:type="ns2:DV_TEXT">
+                                    <ns2:value>Inflamed organ</ns2:value>
+                                </ns2:value>
+                            </ns2:items>
+                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0007">
+                                <ns2:name>
+                                    <ns2:value>Comment</ns2:value>
+                                </ns2:name>
+                                <ns2:value xsi:type="ns2:DV_TEXT">
+                                    <ns2:value>teste</ns2:value>
+                                </ns2:value>
+                            </ns2:items>
+                        </ns2:items>
+                    </ns2:data>
+                </ns2:events>
+            </ns2:data>
+        </ns2:items>
+    </ns2:content>
+</ns2:composition>

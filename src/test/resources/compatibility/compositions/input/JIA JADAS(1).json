@@ -1,0 +1,207 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "jia_jadas": {
+    "care_plan": [
+      {
+        "care_plan_name": [],
+        "description": [],
+        "reason": [],
+        "care_plan_id": [
+          {
+            "|id": "",
+            "|type": "",
+            "|issuer": "",
+            "|assigner": ""
+          }
+        ],
+        "expiry_date": []
+      }
+    ],
+    "context": [
+      {
+        "start_time": [
+          "2021-02-17T15:06:00+00:00"
+        ]
+      }
+    ],
+    "jadas": [
+      {
+        "any_event": [
+          {
+            "physician_global_assessment_of_disease_activity": [
+              {
+                "|unit": "cm",
+                "|magnitude": 0
+              }
+            ],
+            "parent_child_global_assessment_of_well-being_and_pain": [
+              {
+                "|unit": "cm",
+                "|magnitude": 0
+              }
+            ],
+            "number_of_active_joints": [
+              9
+            ],
+            "erythrocyte_sedimentation_rate_esr": [
+              {
+                "|magnitude": 123,
+                "|unit": "mm/h"
+              }
+            ],
+            "c-reactive_protein_crp": [
+              {
+                "|magnitude": 12,
+                "|unit": "mg/L"
+              }
+            ],
+            "arthritis_subtype": [
+              "at0173"
+            ],
+            "normalized_esr_value": [
+              {
+                "|numerator": 10,
+                "|denominator": 1
+              }
+            ],
+            "normalized_crp_value": [
+              {
+                "|numerator": 0.2,
+                "|denominator": 1
+              }
+            ],
+            "jadas10": [
+              {
+                "jadas10-esr_score": [
+                  {
+                    "|numerator": 19,
+                    "|denominator": 1
+                  }
+                ],
+                "jadas10-crp_score": [
+                  {
+                    "|numerator": 9.2,
+                    "|denominator": 1
+                  }
+                ],
+                "cjadas10_score": [
+                  {
+                    "|numerator": 9,
+                    "|denominator": 1
+                  }
+                ],
+                "jia_status_jadas10": [
+                  {
+                    "|code": "at0062",
+                    "|value": "High disease activity"
+                  }
+                ]
+              }
+            ],
+            "jadas27": [
+              {
+                "jadas27-esr_score": [
+                  {
+                    "|numerator": 19,
+                    "|denominator": 1
+                  }
+                ],
+                "jadas27-crp_score": [
+                  {
+                    "|numerator": 9.2,
+                    "|denominator": 1
+                  }
+                ],
+                "cjadas27_score": [
+                  {
+                    "|numerator": 9,
+                    "|denominator": 1
+                  }
+                ],
+                "jia_status_jadas27": [
+                  {
+                    "|code": "at0067",
+                    "|value": "High disease activity"
+                  }
+                ]
+              }
+            ],
+            "jadas71": [
+              {
+                "jadas71-esr_score": [
+                  {
+                    "|numerator": 19,
+                    "|denominator": 1
+                  }
+                ],
+                "jadas71-crp_score": [
+                  {
+                    "|numerator": 9.2,
+                    "|denominator": 1
+                  }
+                ],
+                "cjadas_score": [
+                  {
+                    "|numerator": 9,
+                    "|denominator": 1
+                  }
+                ],
+                "jia_status_jadas71": [
+                  {
+                    "|code": "at0072",
+                    "|value": "High disease activity"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ctx": {
+    "language": "en",
+    "territory": "SI",
+    "time": "2021-02-17T11:11:00+01:00",
+    "action_time": "2021-02-17T11:11:00+01:00",
+    "generic_fields": {
+      "/generic-fieldset-3563905/generic-date_field-5409744": [
+        "2021-02-06T23:54:00Z"
+      ],
+      "/generic-fieldset-3563905/generic-date_field-8358595": [
+        "2021-02-16T13:38:00Z"
+      ],
+      "/generic-fieldset-3563905/generic-date_field-9790178": [
+        "2021-02-03T10:21:00Z"
+      ],
+      "/generic-fieldset-3563905/generic-date_field-8068721": [
+        "2021-02-17T15:06:11+00:00"
+      ],
+      "/generic-fieldset-3563905/generic-date_field-5376774": [
+        "2021-02-17T15:06:12+00:00"
+      ],
+      "/generic-numeric_field-2798964": [
+        9
+      ],
+      "/generic-numeric_field-1960128": [
+        9
+      ],
+      "/generic-numeric_field-3547240": [
+        9
+      ]
+    }
+  }
+}

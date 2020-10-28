@@ -1,0 +1,650 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "medtronic_vbhc_crc_prom": {
+    "context": [
+      {
+        "research_information": [
+          {
+            "assessment_timeline": [
+              {
+                "|code": "M1",
+                "|value": "1 month",
+                "|terminology": "promTimelineAssessmentICHOMCRC"
+              }
+            ],
+            "cohort_study_name": []
+          }
+        ],
+        "start_time": [
+          "2021-02-15T12:22:00+01:00"
+        ],
+        "anonymised_person": [
+          {
+            "birth_sex": [
+              {
+                "|code": "at0009",
+                "|value": "Male"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "baseline_clinical_factors": [
+      {
+        "treatment": [
+          {
+            "treatment_name": [
+              {
+                "|code": "3",
+                "|value": "Chemotherapy",
+                "|terminology": "treatmentFUICHOMCRC"
+              }
+            ],
+            "treatment_date": [
+              "2021-02-05"
+            ]
+          }
+        ],
+        "ichom_crc_dataset_patient-reported_co-morbidities": [
+          {
+            "any_event": [
+              {
+                "co-morbidities": [
+                  {
+                    "|code": null
+                  },
+                  {
+                    "|code": "at0006",
+                    "|value": "Heart disease (Angina, heart attack, heart failure, ...)",
+                    "|ordinal": 1
+                  },
+                  {
+                    "|code": "at0007",
+                    "|value": "High blood pressure",
+                    "|ordinal": 2
+                  },
+                  {
+                    "|code": "at0008",
+                    "|value": "Leg pain when walking due to poor circulation",
+                    "|ordinal": 3
+                  },
+                  {
+                    "|code": "at0009",
+                    "|value": "Lung disease (Asthma, chronic bronchitis, emphysema, ...)",
+                    "|ordinal": 4
+                  },
+                  {
+                    "|code": "at0010",
+                    "|value": "Diabetes",
+                    "|ordinal": 5
+                  },
+                  {
+                    "|code": "at0011",
+                    "|value": "Kidney disease",
+                    "|ordinal": 6
+                  },
+                  {
+                    "|code": "at0012",
+                    "|value": "Liver disease",
+                    "|ordinal": 7
+                  },
+                  {
+                    "|code": "at0013",
+                    "|value": "Problems caused by stroke",
+                    "|ordinal": 8
+                  },
+                  {
+                    "|code": "at0014",
+                    "|value": "Disease of the nervous system (Parkinson’s disease, multiple sclerosis, ...)",
+                    "|ordinal": 9
+                  },
+                  {
+                    "|code": "at0015",
+                    "|value": "Other cancer (within the last 5 years)",
+                    "|ordinal": 10
+                  },
+                  {
+                    "|code": "at0016",
+                    "|value": "Depression",
+                    "|ordinal": 11
+                  },
+                  {
+                    "|code": "at0017",
+                    "|value": "Arthritis",
+                    "|ordinal": 12
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "care_plan": [
+      {
+        "care_plan_name": [
+          "TEST_carePlanName"
+        ],
+        "description": [],
+        "reason": [],
+        "expiry_date": [],
+        "care_plan_id": [
+          {
+            "|id": ""
+          }
+        ]
+      }
+    ],
+    "socioeconomic_status": [
+      {
+        "education_summary": [
+          {
+            "highest_level_completed": [
+              {
+                "|code": "1",
+                "|value": "Primary",
+                "|terminology": "local_terms"
+              }
+            ]
+          }
+        ],
+        "social_network": [
+          {
+            "network": [
+              {
+                "relationship": [
+                  {
+                    "|code": "1",
+                    "|value": "Married/partnered",
+                    "|terminology": "maritalStatusICHOMCRC"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "degree_of_health": [
+      {
+        "eortc_qlq-c30": [
+          {
+            "any_event": [
+              {
+                "trouble_doing_strenuous_activities": [
+                  {
+                    "|code": "at0006",
+                    "|value": "A little",
+                    "|ordinal": 2
+                  }
+                ],
+                "trouble_taking_a_long_walk": [
+                  {
+                    "|code": "at0039",
+                    "|value": "A little",
+                    "|ordinal": 2
+                  }
+                ],
+                "trouble_taking_a_short_walk_outside_of_the_house": [
+                  {
+                    "|code": "at0043",
+                    "|value": "A little",
+                    "|ordinal": 2
+                  }
+                ],
+                "need_to_stay_in_bed_or_a_chair_during_the_day": [
+                  {
+                    "|code": "at0047",
+                    "|value": "A little",
+                    "|ordinal": 2
+                  }
+                ],
+                "need_help_with_eating_dressing_washing_yourself_or_using_the_toilet": [
+                  {
+                    "|code": "at0051",
+                    "|value": "A little",
+                    "|ordinal": 2
+                  }
+                ],
+                "during_the_past_week_were_limited_in_doing_either_work_or_other_daily_activities": [
+                  {
+                    "|code": "at0056",
+                    "|value": "Quite a bit",
+                    "|ordinal": 3
+                  }
+                ],
+                "during_the_past_week_were_limited_in_pursuing_hobbies_or_other_leisure_time_activities": [
+                  {
+                    "|code": "at0060",
+                    "|value": "Quite a bit",
+                    "|ordinal": 3
+                  }
+                ],
+                "during_the_past_week_had_short_of_breath": [
+                  {
+                    "|code": "at0064",
+                    "|value": "Quite a bit",
+                    "|ordinal": 3
+                  }
+                ],
+                "during_the_past_week_had_pain": [
+                  {
+                    "|code": "at0068",
+                    "|value": "Quite a bit",
+                    "|ordinal": 3
+                  }
+                ],
+                "during_the_past_week_need_to_rest": [
+                  {
+                    "|code": "at0072",
+                    "|value": "Quite a bit",
+                    "|ordinal": 3
+                  }
+                ],
+                "during_the_past_week_had_trouble_sleeping": [
+                  {
+                    "|code": "at0077",
+                    "|value": "Very much",
+                    "|ordinal": 4
+                  }
+                ],
+                "during_the_past_week_felt_weak": [
+                  {
+                    "|code": "at0081",
+                    "|value": "Very much",
+                    "|ordinal": 4
+                  }
+                ],
+                "during_the_past_week_lacked_appetite": [
+                  {
+                    "|code": "at0085",
+                    "|value": "Very much",
+                    "|ordinal": 4
+                  }
+                ],
+                "during_the_past_week_felt_nauseated": [
+                  {
+                    "|code": "at0089",
+                    "|value": "Very much",
+                    "|ordinal": 4
+                  }
+                ],
+                "during_the_past_week_had_vomited": [
+                  {
+                    "|code": "at0093",
+                    "|value": "Very much",
+                    "|ordinal": 4
+                  }
+                ],
+                "during_the_past_week_have_been_constipated": [
+                  {
+                    "|code": "at0094",
+                    "|value": "Not at all",
+                    "|ordinal": 1
+                  }
+                ],
+                "during_the_past_week_had_diarrhea": [
+                  {
+                    "|code": "at0098",
+                    "|value": "Not at all",
+                    "|ordinal": 1
+                  }
+                ],
+                "during_the_past_week_were_tired": [
+                  {
+                    "|code": "at0102",
+                    "|value": "Not at all",
+                    "|ordinal": 1
+                  }
+                ],
+                "during_the_past_week_pain_interfere_with_daily_activities": [
+                  {
+                    "|code": "at0106",
+                    "|value": "Not at all",
+                    "|ordinal": 1
+                  }
+                ],
+                "during_the_past_week_had_difficulty_in_concentrating": [
+                  {
+                    "|code": "at0110",
+                    "|value": "Not at all",
+                    "|ordinal": 1
+                  }
+                ],
+                "during_the_past_week_felt_tense": [
+                  {
+                    "|code": "at0114",
+                    "|value": "Not at all",
+                    "|ordinal": 1
+                  }
+                ],
+                "during_the_past_week_were_worried": [
+                  {
+                    "|code": "at0119",
+                    "|value": "A little",
+                    "|ordinal": 2
+                  }
+                ],
+                "during_the_past_week_felt_irritable": [
+                  {
+                    "|code": "at0124",
+                    "|value": "Quite a bit",
+                    "|ordinal": 3
+                  }
+                ],
+                "during_the_past_week_felt_depressed": [
+                  {
+                    "|code": "at0129",
+                    "|value": "Very much",
+                    "|ordinal": 4
+                  }
+                ],
+                "during_the_past_week_had_difficulty_remembering_things": [
+                  {
+                    "|code": "at0133",
+                    "|value": "Very much",
+                    "|ordinal": 4
+                  }
+                ],
+                "during_the_past_week_physical_condition_or_medical_treatment_interfered_with_family_life": [
+                  {
+                    "|code": "at0134",
+                    "|value": "Not at all",
+                    "|ordinal": 1
+                  }
+                ],
+                "during_the_past_week_physical_condition_or_medical_treatment_interfered_with_social_activities": [
+                  {
+                    "|code": "at0139",
+                    "|value": "A little",
+                    "|ordinal": 2
+                  }
+                ],
+                "during_the_past_week_physical_condition_or_medical_treatment_caused_financial_difficulties": [
+                  {
+                    "|code": "at0144",
+                    "|value": "Quite a bit",
+                    "|ordinal": 3
+                  }
+                ],
+                "rate_overall_health_during_the_past_week": [
+                  {
+                    "|code": "at0152",
+                    "|value": "7. Excellent",
+                    "|ordinal": 7
+                  }
+                ],
+                "rate_overall_quality_of_life_during_the_past_week": [
+                  {
+                    "|code": "at0153",
+                    "|value": "1. Very poor",
+                    "|ordinal": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "eortc_qlq-cr29": [
+          {
+            "any_point_in_time_event": [
+              {
+                "during_the_past_week_had_urinated_frequently_during_the_day": [
+                  {
+                    "|code": "at0038",
+                    "|value": "Not at all",
+                    "|ordinal": 1
+                  }
+                ],
+                "during_the_past_week_had_urinated_frequently_during_the_night": [
+                  {
+                    "|code": "at0039",
+                    "|value": "A little",
+                    "|ordinal": 2
+                  }
+                ],
+                "during_the_past_week_had_any_unintentional_release_leakage_of_urine": [
+                  {
+                    "|code": "at0040",
+                    "|value": "Quite a bit",
+                    "|ordinal": 3
+                  }
+                ],
+                "during_the_past_week_had_pain_when_you_urinated": [],
+                "during_the_past_week_had_abdominal_pain": [],
+                "during_the_past_week_had_pain_in_your_buttocks_anal_area_rectum": [],
+                "during_the_past_week_had_a_bloated_feeling_in_abdomen": [],
+                "during_the_past_week_had_blood_in_your_stools": [],
+                "during_the_past_week_had_mucus_in_your_stools": [],
+                "during_the_past_week_had_dry_mouth": [],
+                "during_the_past_week_had_lost_hair_as_a_result_of_treatment": [],
+                "during_the_past_week_had_problems_with_sense_of_taste": [],
+                "during_the_past_week_were_worried_about_health_in_the_future": [],
+                "during_the_past_week_were_worried_about_weight": [],
+                "during_the_past_week_felt_physically_less_attractive_as_a_result_of_disease_or_treatment": [],
+                "during_the_past_week_felt_less_feminine_masculine_as_a_result_of_disease_or_treatment": [],
+                "during_the_past_week_had_been_dissatisfied_with_your_body": [],
+                "do_you_have_a_stoma_bag_colostomy_ileostomy": [
+                  false
+                ],
+                "during_the_past_week_had_unintentional_release_of_gas_flatulence_from_your_stoma_bag": [],
+                "during_the_past_week_had_leakage_of_stools_from_your_stoma_bag": [],
+                "during_the_past_week_had_sore_skin_around_your_stoma": [],
+                "during_the_past_week_did_frequent_bag_changes_occur_during_the_day": [],
+                "during_the_past_week_did_frequent_bag_changes_occur_during_the_night": [],
+                "during_the_past_week_felt_embarrassed_because_of_your_stoma": [],
+                "during_the_past_week_had_problems_caring_for_your_stoma": [],
+                "during_the_past_week_had_unintentional_release_of_gas_flatulence_from_your_back_passage": [
+                  {
+                    "|code": "at0040",
+                    "|value": "Quite a bit",
+                    "|ordinal": 3
+                  }
+                ],
+                "during_the_past_week_had_leakage_of_stools_from_your_back_passage": [
+                  {
+                    "|code": "at0041",
+                    "|value": "Very much",
+                    "|ordinal": 4
+                  }
+                ],
+                "during_the_past_week_had_sore_skin_around_your_anal_area": [
+                  {
+                    "|code": "at0041",
+                    "|value": "Very much",
+                    "|ordinal": 4
+                  }
+                ],
+                "during_the_past_week_had_frequent_bowel_movements_occur_during_the_day": [
+                  {
+                    "|code": "at0041",
+                    "|value": "Very much",
+                    "|ordinal": 4
+                  }
+                ],
+                "during_the_past_week_had_frequent_bowel_movements_occur_during_the_night": [
+                  {
+                    "|code": "at0041",
+                    "|value": "Very much",
+                    "|ordinal": 4
+                  }
+                ],
+                "during_the_past_week_felt_embarrassed_because_of_your_bowel_movement": [
+                  {
+                    "|code": "at0041",
+                    "|value": "Very much",
+                    "|ordinal": 4
+                  }
+                ],
+                "during_the_past_4_weeks_to_what_extent_were_you_interested_in_sex": [
+                  {
+                    "|code": "at0039",
+                    "|value": "A little",
+                    "|ordinal": 2
+                  }
+                ],
+                "during_the_past_4_weeks_had_difficulty_getting_or_maintaining_an_erection": [
+                  {
+                    "|code": "at0039",
+                    "|value": "A little",
+                    "|ordinal": 2
+                  }
+                ],
+                "during_the_past_4_weeks_had_pain_or_discomfort_during_intercourse": []
+              }
+            ]
+          }
+        ],
+        "mskcc_bowel_function_instrument": [
+          {
+            "over_the_last_4_weeks": [
+              {
+                "certain_solid_foods_increase_the_number_of_bowel_movements_in_a_day": [
+                  {
+                    "|code": "at0023",
+                    "|value": "Always",
+                    "|ordinal": 1
+                  }
+                ],
+                "certain_liquids_increase_the_number_of_bowel_movements_in_a_day": [
+                  {
+                    "|code": "at0023",
+                    "|value": "Always",
+                    "|ordinal": 1
+                  }
+                ],
+                "had_limited_the_types_of_solid_foods_to_control_bowel_movements": [
+                  {
+                    "|code": "at0023",
+                    "|value": "Always",
+                    "|ordinal": 1
+                  }
+                ],
+                "had_limited_the_types_of_liquids_to_control_bowel_movements": [
+                  {
+                    "|code": "at0023",
+                    "|value": "Always",
+                    "|ordinal": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "eortc_qlq-lmc21": [
+          {
+            "any_event": [
+              {
+                "during_the_past_week_had_tingling_hands_or_feet": [
+                  {
+                    "|code": "at0059",
+                    "|value": "A little",
+                    "|ordinal": 2
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ctx": {
+    "language": "en",
+    "territory": "SI",
+    "time": "2021-02-15T12:14:00+01:00",
+    "action_time": "2021-02-15T12:14:00+01:00",
+    "generic_fields": {
+      "/generic-IELDSET-5661972/generic-date_time-2236388": [],
+      "/generic-IELDSET-5661972/generic-input_text-5005795": [],
+      "/generic-IELDSET-5661972/generic-input_text-5680063": [],
+      "/generic-IELDSET-5661972/generic-input_text-226816": [],
+      "/generic-IELDSET-5661972/generic-fieldset-5252901/generic-fieldset-1504002/generic-coded_text-4664915": [],
+      "/generic-IELDSET-2205752/generic-input_text-5201865": [],
+      "/generic-IELDSET-2205752/generic-input_text-710359": [],
+      "/generic-IELDSET-2205752/generic-input_text-1311664": [],
+      "/generic-IELDSET-2205752/generic-input_text-1021417": [],
+      "/generic-IELDSET-2508729/generic-input_text-8040464": [],
+      "/generic-IELDSET-3448979/generic-NPUT_TEXT-824123": [
+        "47/61 Questions answered"
+      ],
+      "/generic-IELDSET-5782155/generic-input_text-6085799": [
+        "47/61 Questions answered"
+      ],
+      "/generic-IELDSET-3770737/generic-input_text-2655250": [
+        "47/61 Questions answered"
+      ],
+      "/generic-IELDSET-3804323/generic-input_text-2601597": [
+        "47/61 Questions answered"
+      ],
+      "/generic-IELDSET-9220118/generic-input_text-4297044": [
+        "47/61 Questions answered"
+      ],
+      "/generic-IELDSET-844069/generic-input_text-8098470": [
+        "47/61 Questions answered"
+      ],
+      "/generic-IELDSET-2937663/generic-input_text-5390152": [
+        "47/61 Questions answered"
+      ],
+      "/generic-IELDSET-5967868/generic-input_text-589084": [
+        "47/61 Questions answered"
+      ],
+      "/generic-IELDSET-2414157/generic-input_text-4001714": [
+        "47/61 Questions answered"
+      ],
+      "/generic-IELDSET-7602892/generic-input_text-4202531": [
+        "47/61 Questions answered"
+      ],
+      "/generic-IELDSET-559251/generic-coded_text-7990634": [
+        {
+          "|code": "2a1c0582-69b9-4fcf-87fc-949cd7a3f48f",
+          "|value": "No"
+        }
+      ],
+      "/generic-IELDSET-559251/generic-input_text-9975816": [
+        "47/61 Questions answered"
+      ],
+      "/generic-IELDSET-5092922/generic-input_text-5940375": [
+        "47/61 Questions answered"
+      ],
+      "/generic-IELDSET-4971383/generic-input_text-2621740": [
+        "47/61 Questions answered"
+      ],
+      "/generic-IELDSET-5528019/generic-input_text-6575340": [
+        "47/61 Questions answered"
+      ],
+      "/generic-IELDSET-7646571/generic-input_text-788932": [
+        "47/61 Questions answered"
+      ],
+      "/generic-IELDSET-447661/generic-input_text-2045966": [],
+      "/generic-IELDSET-447661/generic-input_text-5484663": [],
+      "/generic-IELDSET-447661/generic-RDINAL-3275237": [
+        {
+          "|code": "6d451580-92ff-4602-b804-dce1af1203e0",
+          "|value": "Male",
+          "|ordinal": "1"
+        }
+      ],
+      "/generic-IELDSET-447661/generic-input_text-5821556": [
+        "47/61 Questions answered"
+      ],
+      "/generic-IELDSET-3610640/generic-input_text-7494758": [
+        "47/61 Questions answered"
+      ]
+    }
+  }
+}

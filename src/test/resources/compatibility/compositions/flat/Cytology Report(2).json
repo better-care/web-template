@@ -1,0 +1,65 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+	"cytology_report/_link:0|meaning" : "Link cytology report to request.",
+	"cytology_report/_link:0|type" : "origin",
+	"cytology_report/_link:0|target" : "9786f04f-f637-4642-a89c-a26c7c5bf24f",
+	"cytology_report/_uid" : "4534f5f2-98fb-4454-b6e7-a6f5ede42fed::Testing::3",
+	"cytology_report/language|code" : "sl",
+	"cytology_report/language|terminology" : "ISO_639-1",
+	"cytology_report/territory|code" : "SI",
+	"cytology_report/territory|terminology" : "ISO_3166-1",
+	"cytology_report/context/_location" : "22",
+	"cytology_report/context/start_time" : "2020-04-09T15:06:27.971+02:00",
+	"cytology_report/context/setting|code" : "238",
+	"cytology_report/context/setting|value" : "other care",
+	"cytology_report/context/setting|terminology" : "openehr",
+	"cytology_report/laboratory_test_result/test_name|code" : "116147009",
+	"cytology_report/laboratory_test_result/test_name|value" : "116147009",
+	"cytology_report/laboratory_test_result/test_name|terminology" : "SNOMEDCT",
+	"cytology_report/laboratory_test_result/specimen/processing/date_and_time_specimen_received" : "2020-04-09T15:06:00+02:00",
+	"cytology_report/laboratory_test_result/specimen/processing/laboratory_specimen_id" : "tecko1",
+	"cytology_report/laboratory_test_result/specimen/processing/specimen_quality/specimen_adequacy|code" : "1",
+	"cytology_report/laboratory_test_result/specimen/processing/specimen_quality/specimen_adequacy|value" : "Uporaben",
+	"cytology_report/laboratory_test_result/specimen/processing/specimen_quality/specimen_adequacy|terminology" : "D_adequacy",
+	"cytology_report/laboratory_test_result/date_of_report" : "2020-04-09T13:17:58.173Z",
+	"cytology_report/laboratory_test_result/cytology_findings:0/recommendations|code" : "1",
+	"cytology_report/laboratory_test_result/cytology_findings:0/recommendations|value" : "Kontrola oziroma postopek kot je zapisano v smernicah za ginekologe",
+	"cytology_report/laboratory_test_result/cytology_findings:0/recommendations|terminology" : "AH_recommendations",
+	"cytology_report/laboratory_test_result/time" : "2020-04-09T15:06:27.971+02:00",
+	"cytology_report/laboratory_test_result/receiving_laboratory/organisation_name" : "Hospital",
+	"cytology_report/laboratory_test_result/receiving_laboratory/identifier" : "22",
+	"cytology_report/laboratory_test_result/receiving_laboratory/contact_details:0/professional_individual_demographics:0/person_name/structured_name/given_name" : "Testing",
+	"cytology_report/laboratory_test_result/receiving_laboratory/contact_details:0/professional_individual_demographics:0/person_name/structured_name/family_name" : "Doctor",
+	"cytology_report/laboratory_test_result/receiving_laboratory/contact_details:0/professional_individual_demographics:0/professional_details/professional_identifier" : "2214",
+	"cytology_report/laboratory_test_result/receiving_laboratory/contact_details:0/role_in_organisation|code" : "3",
+	"cytology_report/laboratory_test_result/receiving_laboratory/contact_details:0/role_in_organisation|value" : "Citopatolog",
+	"cytology_report/laboratory_test_result/receiving_laboratory/contact_details:0/role_in_organisation|terminology" : "laboratoryExperienceLevel",
+	"cytology_report/laboratory_test_result/test_request_details/request_id" : "9786f04f-f637-4642-a89c-a26c7c5bf24f::Testing::1",
+	"cytology_report/laboratory_test_result/cervical_cytology_test_details:0/consensus_participants:0|code" : "6008",
+	"cytology_report/laboratory_test_result/cervical_cytology_test_details:0/consensus_participants:0|value" : "LEA BOBEK",
+	"cytology_report/laboratory_test_result/cervical_cytology_test_details:0/consensus_participants:0|terminology" : "external",
+	"cytology_report/laboratory_test_result/language|code" : "sl",
+	"cytology_report/laboratory_test_result/language|terminology" : "ISO_639-1",
+	"cytology_report/laboratory_test_result/encoding|code" : "UTF-8",
+	"cytology_report/laboratory_test_result/encoding|terminology" : "IANA_character-sets",
+	"cytology_report/category|code" : "433",
+	"cytology_report/category|value" : "event",
+	"cytology_report/category|terminology" : "openehr",
+	"cytology_report/composer|id" : "50041725-dbc0-4f66-a4b0-fe67ae3e90b7",
+	"cytology_report/composer|id_scheme" : "identity",
+	"cytology_report/composer|id_namespace" : "com.marand.mafng.security.identity",
+	"cytology_report/composer|name" : "Cyto  Cytologist 1"
+}

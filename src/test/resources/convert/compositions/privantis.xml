@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	Copyright 2021 Better Ltd (www.better.care)
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<composition xmlns:ns2="http://schemas.openehr.org/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:COMPOSITION" archetype_node_id="openEHR-EHR-COMPOSITION.diabetic_retinopathy_screening_od.v1">
+    <ns2:name>
+        <ns2:value>openEHR-EHR-COMPOSITION.diabetic_retinopathy_screening_od.v1</ns2:value>
+    </ns2:name>
+    <ns2:uid xsi:type="ns2:OBJECT_VERSION_ID">
+        <ns2:value>54b7ff66-6736-4e95-ae04-559adebfda05::privantis.ehrscape.com::1</ns2:value>
+    </ns2:uid>
+    <ns2:archetype_details>
+        <ns2:archetype_id>
+            <ns2:value>openEHR-EHR-COMPOSITION.diabetic_retinopathy_screening_od.v1</ns2:value>
+        </ns2:archetype_id>
+        <ns2:template_id>
+            <ns2:value>DRS Fundus Severity for od form</ns2:value>
+        </ns2:template_id>
+        <ns2:rm_version>1.0.1</ns2:rm_version>
+    </ns2:archetype_details>
+    <ns2:language>
+        <ns2:terminology_id>
+            <ns2:value>ISO_639-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>en</ns2:code_string>
+    </ns2:language>
+    <ns2:territory>
+        <ns2:terminology_id>
+            <ns2:value>ISO_3166-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>SE</ns2:code_string>
+    </ns2:territory>
+    <ns2:category>
+        <ns2:value>event</ns2:value>
+        <ns2:defining_code>
+            <ns2:terminology_id>
+                <ns2:value>openehr</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>433</ns2:code_string>
+        </ns2:defining_code>
+    </ns2:category>
+    <ns2:composer xsi:type="ns2:PARTY_IDENTIFIED">
+        <ns2:name>Doctor</ns2:name>
+    </ns2:composer>
+    <ns2:context>
+        <ns2:start_time>
+            <ns2:value>2015-03-17T09:23:19,690</ns2:value>
+        </ns2:start_time>
+        <ns2:setting>
+            <ns2:value>secondary care</ns2:value>
+            <ns2:defining_code>
+                <ns2:terminology_id>
+                    <ns2:value>openehr</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>232</ns2:code_string>
+            </ns2:defining_code>
+        </ns2:setting>
+    </ns2:context>
+    <ns2:content xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.drs_severity_fundus.v1">
+        <ns2:name>
+            <ns2:value>openEHR-EHR-OBSERVATION.drs_severity_fundus.v1</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-OBSERVATION.drs_severity_fundus.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:template_id>
+                <ns2:value>DRS Fundus Severity for od form</ns2:value>
+            </ns2:template_id>
+            <ns2:rm_version>1.0.1</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:language>
+            <ns2:terminology_id>
+                <ns2:value>ISO_639-1</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>en</ns2:code_string>
+        </ns2:language>
+        <ns2:encoding>
+            <ns2:terminology_id>
+                <ns2:value>IANA_character-sets</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>UTF-8</ns2:code_string>
+        </ns2:encoding>
+        <ns2:subject xsi:type="ns2:PARTY_SELF">
+            <ns2:external_ref>
+                <ns2:id xsi:type="ns2:HIER_OBJECT_ID">
+                    <ns2:value>1.2.4.5.6.12.1</ns2:value>
+                </ns2:id>
+                <ns2:namespace>DEMOGRAPHIC</ns2:namespace>
+                <ns2:type>PARTY</ns2:type>
+            </ns2:external_ref>
+        </ns2:subject>
+        <ns2:data archetype_node_id="at0001">
+            <ns2:name>
+                <ns2:value>Event Series</ns2:value>
+            </ns2:name>
+            <ns2:origin>
+                <ns2:value>2015-03-17T09:23:19,690</ns2:value>
+            </ns2:origin>
+            <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                <ns2:name>
+                    <ns2:value>Any event</ns2:value>
+                </ns2:name>
+                <ns2:time>
+                    <ns2:value>2015-03-17T09:23:19,689</ns2:value>
+                </ns2:time>
+                <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                    <ns2:name>
+                        <ns2:value>Tree</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0006">
+                        <ns2:name>
+                            <ns2:value>Ocular Fundus Evaluation</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.drs_exam_type.v1">
+                            <ns2:name>
+                                <ns2:value>openEHR-EHR-CLUSTER.drs_exam_type.v1</ns2:value>
+                            </ns2:name>
+                            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0001">
+                                <ns2:name>
+                                    <ns2:value>Exam Type</ns2:value>
+                                </ns2:name>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                                    <ns2:name>
+                                        <ns2:value>Exam</ns2:value>
+                                    </ns2:name>
+                                    <ns2:null_flavour>
+                                        <ns2:value>no information</ns2:value>
+                                        <ns2:defining_code>
+                                            <ns2:terminology_id>
+                                                <ns2:value>openehr</ns2:value>
+                                            </ns2:terminology_id>
+                                            <ns2:code_string>271</ns2:code_string>
+                                        </ns2:defining_code>
+                                    </ns2:null_flavour>
+                                </ns2:items>
+                            </ns2:items>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.drs_fundus_reflex.v1">
+                            <ns2:name>
+                                <ns2:value>openEHR-EHR-CLUSTER.drs_fundus_reflex.v1</ns2:value>
+                            </ns2:name>
+                            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0001">
+                                <ns2:name>
+                                    <ns2:value>Fundus Reflex</ns2:value>
+                                </ns2:name>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0003">
+                                    <ns2:name>
+                                        <ns2:value>Evaluation</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                        <ns2:value>0</ns2:value>
+                                        <ns2:symbol>
+                                            <ns2:value>No or mild opacity</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>local</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>at0004</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:symbol>
+                                    </ns2:value>
+                                </ns2:items>
+                            </ns2:items>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.drs_fundus_visibility.v1">
+                            <ns2:name>
+                                <ns2:value>openEHR-EHR-CLUSTER.drs_fundus_visibility.v1</ns2:value>
+                            </ns2:name>
+                            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0001">
+                                <ns2:name>
+                                    <ns2:value>Fundus Visibility</ns2:value>
+                                </ns2:name>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                                    <ns2:name>
+                                        <ns2:value>Visibility of II-order retinal vessels</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                        <ns2:value>0</ns2:value>
+                                        <ns2:symbol>
+                                            <ns2:value>Good</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>local</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>at0003</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:symbol>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0007">
+                                    <ns2:name>
+                                        <ns2:value>Analysable Fundus Area</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                        <ns2:value>0</ns2:value>
+                                        <ns2:symbol>
+                                            <ns2:value>The entire fundus area</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>local</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>at0008</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:symbol>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0012">
+                                    <ns2:name>
+                                        <ns2:value>Macular Region Visibility</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                        <ns2:value>0</ns2:value>
+                                        <ns2:symbol>
+                                            <ns2:value>Analysable</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>local</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>at0013</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:symbol>
+                                    </ns2:value>
+                                </ns2:items>
+                            </ns2:items>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.drs_dr_severity_evaluation.v1">
+                            <ns2:name>
+                                <ns2:value>openEHR-EHR-CLUSTER.drs_dr_severity_evaluation.v1</ns2:value>
+                            </ns2:name>
+                            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0001">
+                                <ns2:name>
+                                    <ns2:value>DR Severity Evaluation (IC)</ns2:value>
+                                </ns2:name>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                                    <ns2:name>
+                                        <ns2:value>Microaneurysms</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                        <ns2:value>0</ns2:value>
+                                        <ns2:symbol>
+                                            <ns2:value>Absent</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>local</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>at0003</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:symbol>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0007">
+                                    <ns2:name>
+                                        <ns2:value>Retinal Hemorrhages</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                        <ns2:value>0</ns2:value>
+                                        <ns2:symbol>
+                                            <ns2:value>Absent</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>local</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>at0008</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:symbol>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0012">
+                                    <ns2:name>
+                                        <ns2:value>Venous Beading (VB)</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                        <ns2:value>0</ns2:value>
+                                        <ns2:symbol>
+                                            <ns2:value>Absent</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>local</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>at0013</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:symbol>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0017">
+                                    <ns2:name>
+                                        <ns2:value>IRMA</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                        <ns2:value>0</ns2:value>
+                                        <ns2:symbol>
+                                            <ns2:value>Absent</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>local</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>at0018</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:symbol>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0021">
+                                    <ns2:name>
+                                        <ns2:value>NVE</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                        <ns2:value>0</ns2:value>
+                                        <ns2:symbol>
+                                            <ns2:value>Absent</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>local</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>at0022</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:symbol>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0025">
+                                    <ns2:name>
+                                        <ns2:value>NVD</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                        <ns2:value>0</ns2:value>
+                                        <ns2:symbol>
+                                            <ns2:value>Absent</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>local</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>at0026</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:symbol>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0029">
+                                    <ns2:name>
+                                        <ns2:value>PRH</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                        <ns2:value>0</ns2:value>
+                                        <ns2:symbol>
+                                            <ns2:value>Absent</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>local</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>at0030</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:symbol>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0033">
+                                    <ns2:name>
+                                        <ns2:value>VH</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                        <ns2:value>0</ns2:value>
+                                        <ns2:symbol>
+                                            <ns2:value>Absent</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>local</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>at0034</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:symbol>
+                                    </ns2:value>
+                                </ns2:items>
+                            </ns2:items>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.drs_laser_photocoagulation.v1">
+                            <ns2:name>
+                                <ns2:value>openEHR-EHR-CLUSTER.drs_laser_photocoagulation.v1</ns2:value>
+                            </ns2:name>
+                            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0003">
+                                <ns2:name>
+                                    <ns2:value>Laser Photocoagulation (UW-FPRC)</ns2:value>
+                                </ns2:name>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                                    <ns2:name>
+                                        <ns2:value>Presence of Focal/Grid PC</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                        <ns2:value>0</ns2:value>
+                                        <ns2:symbol>
+                                            <ns2:value>None</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>local</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>at0002</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:symbol>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0012">
+                                    <ns2:name>
+                                        <ns2:value>Presence of scatter PC</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                        <ns2:value>0</ns2:value>
+                                        <ns2:symbol>
+                                            <ns2:value>None</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>local</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>at0013</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:symbol>
+                                    </ns2:value>
+                                </ns2:items>
+                            </ns2:items>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.drs_diabetic_macular_edema_severity.v1">
+                            <ns2:name>
+                                <ns2:value>openEHR-EHR-CLUSTER.drs_diabetic_macular_edema_severity.v1</ns2:value>
+                            </ns2:name>
+                            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0001">
+                                <ns2:name>
+                                    <ns2:value>Diabetic Macular Edema Severity (IC)</ns2:value>
+                                </ns2:name>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                                    <ns2:name>
+                                        <ns2:value>Presence of HE in PP</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                        <ns2:value>0</ns2:value>
+                                        <ns2:symbol>
+                                            <ns2:value>No apparent HE in the grid</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>local</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>at0003</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:symbol>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0008">
+                                    <ns2:name>
+                                        <ns2:value>Presence of RT in PP</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                        <ns2:value>0</ns2:value>
+                                        <ns2:symbol>
+                                            <ns2:value>No apparent RT in the grid</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>local</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>at0009</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:symbol>
+                                    </ns2:value>
+                                </ns2:items>
+                            </ns2:items>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.drs_ocular_abnormalities.v1">
+                            <ns2:name>
+                                <ns2:value>openEHR-EHR-CLUSTER.drs_ocular_abnormalities.v1</ns2:value>
+                            </ns2:name>
+                            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0019">
+                                <ns2:name>
+                                    <ns2:value>Non DR-Specific Ocular Abnormalities</ns2:value>
+                                </ns2:name>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0046">
+                                    <ns2:name>
+                                        <ns2:value>Presence of ocular abnormalities?</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                        <ns2:value>0</ns2:value>
+                                        <ns2:symbol>
+                                            <ns2:value>Absent</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>local</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>at0062</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:symbol>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0021">
+                                    <ns2:name>
+                                        <ns2:value>Large drusen area</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0025">
+                                    <ns2:name>
+                                        <ns2:value>AMD RPE depigmentation</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0026">
+                                    <ns2:name>
+                                        <ns2:value>AMD RPE hyperpigmentation</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0029">
+                                    <ns2:name>
+                                        <ns2:value>AMD subretinal hemorrhage</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0028">
+                                    <ns2:name>
+                                        <ns2:value>AMD subretinal fibrous scar</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0027">
+                                    <ns2:name>
+                                        <ns2:value>AMD SSE/RPE detachment</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0024">
+                                    <ns2:name>
+                                        <ns2:value>AMD Geographic atropy</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0031">
+                                    <ns2:name>
+                                        <ns2:value>Angioid Streaks</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0032">
+                                    <ns2:name>
+                                        <ns2:value>Asteroid Hyalosis</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0034">
+                                    <ns2:name>
+                                        <ns2:value>CRAO or BRAO</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0035">
+                                    <ns2:name>
+                                        <ns2:value>CRVO or BRVO</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0048">
+                                    <ns2:name>
+                                        <ns2:value>Chorioretinal Scars</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0068">
+                                    <ns2:name>
+                                        <ns2:value>Drusen on optic nervehead</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0049">
+                                    <ns2:name>
+                                        <ns2:value>Hollenhorst Plaques</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0050">
+                                    <ns2:name>
+                                        <ns2:value>Large cup/disc Ratio</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0051">
+                                    <ns2:name>
+                                        <ns2:value>Macular Hole or Pseudo Hole</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0052">
+                                    <ns2:name>
+                                        <ns2:value>Nevus</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0053">
+                                    <ns2:name>
+                                        <ns2:value>Papillary Swelling</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0054">
+                                    <ns2:name>
+                                        <ns2:value>Peripapillary Atrophy, Myopic Crescent</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0056">
+                                    <ns2:name>
+                                        <ns2:value>Surface Wrinkling, Epiretinal Membrane</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0057">
+                                    <ns2:name>
+                                        <ns2:value>Tension Lines, Dragged Macula</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0058">
+                                    <ns2:name>
+                                        <ns2:value>Vitrous Opacity, Glial Remnant</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0059">
+                                    <ns2:name>
+                                        <ns2:value>Other</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_BOOLEAN">
+                                        <ns2:value>false</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                            </ns2:items>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.drs_conclusions.v1">
+                            <ns2:name>
+                                <ns2:value>openEHR-EHR-CLUSTER.drs_conclusions.v1</ns2:value>
+                            </ns2:name>
+                            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0001">
+                                <ns2:name>
+                                    <ns2:value>Evaluation Conclusions</ns2:value>
+                                </ns2:name>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                                    <ns2:name>
+                                        <ns2:value>Level of Fundus Visibility</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                        <ns2:value>0</ns2:value>
+                                        <ns2:symbol>
+                                            <ns2:value>Good for evaluation</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>local</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>at0003</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:symbol>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0006">
+                                    <ns2:name>
+                                        <ns2:value>DR Severity Level (IC)</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                        <ns2:value>0</ns2:value>
+                                        <ns2:symbol>
+                                            <ns2:value>No apparent DR</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>local</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>at0007</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:symbol>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0013">
+                                    <ns2:name>
+                                        <ns2:value>DME Severity Level (IC)</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                        <ns2:value>0</ns2:value>
+                                        <ns2:symbol>
+                                            <ns2:value>DME apparently absent</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>local</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>at0014</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:symbol>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0019">
+                                    <ns2:name>
+                                        <ns2:value>Recommendations</ns2:value>
+                                    </ns2:name>
+                                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0020">
+                                        <ns2:name>
+                                            <ns2:value>Next DR screening exam</ns2:value>
+                                        </ns2:name>
+                                        <ns2:value xsi:type="ns2:DV_ORDINAL">
+                                            <ns2:value>0</ns2:value>
+                                            <ns2:symbol>
+                                                <ns2:value>Two years</ns2:value>
+                                                <ns2:defining_code>
+                                                    <ns2:terminology_id>
+                                                        <ns2:value>local</ns2:value>
+                                                    </ns2:terminology_id>
+                                                    <ns2:code_string>at0021</ns2:code_string>
+                                                </ns2:defining_code>
+                                            </ns2:symbol>
+                                        </ns2:value>
+                                    </ns2:items>
+                                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0023">
+                                        <ns2:name>
+                                            <ns2:value>Next consultation with an ophthalmologist</ns2:value>
+                                        </ns2:name>
+                                        <ns2:null_flavour>
+                                            <ns2:value>no information</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>openehr</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>271</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:null_flavour>
+                                    </ns2:items>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0030">
+                                    <ns2:name>
+                                        <ns2:value>Comments section</ns2:value>
+                                    </ns2:name>
+                                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0031">
+                                        <ns2:name>
+                                            <ns2:value>Comments</ns2:value>
+                                        </ns2:name>
+                                        <ns2:value xsi:type="ns2:DV_TEXT">
+                                            <ns2:value>test by vaadin7.2</ns2:value>
+                                        </ns2:value>
+                                    </ns2:items>
+                                </ns2:items>
+                            </ns2:items>
+                        </ns2:items>
+                    </ns2:items>
+                </ns2:data>
+            </ns2:events>
+        </ns2:data>
+    </ns2:content>
+</composition>

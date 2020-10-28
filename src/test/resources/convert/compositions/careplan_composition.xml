@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	Copyright 2021 Better Ltd (www.better.care)
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<composition archetype_node_id="openEHR-EHR-COMPOSITION.encounter.v1" xmlns="http://schemas.openehr.org/v1">
+    <name>
+        <value>Careplan</value>
+    </name>
+    <archetype_details>
+        <archetype_id>
+            <value>openEHR-EHR-COMPOSITION.encounter.v1</value>
+        </archetype_id>
+        <template_id>
+            <value>ISPEK - ZN - Nursing careplan Encounter</value>
+        </template_id>
+        <rm_version>1.0.1</rm_version>
+    </archetype_details>
+    <language>
+        <terminology_id>
+            <value>ISO_639-1</value>
+        </terminology_id>
+        <code_string>sl</code_string>
+    </language>
+    <territory>
+        <terminology_id>
+            <value>ISO_3166-1</value>
+        </terminology_id>
+        <code_string>SI</code_string>
+    </territory>
+    <category>
+        <value>event</value>
+        <defining_code>
+            <terminology_id>
+                <value>openehr</value>
+            </terminology_id>
+            <code_string>433</code_string>
+        </defining_code>
+    </category>
+    <composer xsi:type="PARTY_IDENTIFIED" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <name>test user</name>
+    </composer>
+    <context>
+        <start_time>
+            <value>2013-10-14T00:00:00.000+02:00</value>
+        </start_time>
+        <setting>
+            <value>other care</value>
+            <defining_code>
+                <terminology_id>
+                    <value>openehr</value>
+                </terminology_id>
+                <code_string>238</code_string>
+            </defining_code>
+        </setting>
+    </context>
+    <content xsi:type="SECTION" archetype_node_id="openEHR-EHR-SECTION.care_plan_zn.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <name>
+            <value>Care plan</value>
+        </name>
+        <archetype_details>
+            <archetype_id>
+                <value>openEHR-EHR-SECTION.care_plan_zn.v1</value>
+            </archetype_id>
+            <rm_version>1.0.1</rm_version>
+        </archetype_details>
+        <items xsi:type="SECTION" archetype_node_id="at0009">
+            <name>
+                <value>Problem plan</value>
+            </name>
+            <items xsi:type="EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.problem_diagnosis.v1">
+                <name>
+                    <value>Problem/Diagnosis</value>
+                </name>
+                <archetype_details>
+                    <archetype_id>
+                        <value>openEHR-EHR-EVALUATION.problem_diagnosis.v1</value>
+                    </archetype_id>
+                    <rm_version>1.0.1</rm_version>
+                </archetype_details>
+                <language>
+                    <terminology_id>
+                        <value>ISO_639-1</value>
+                    </terminology_id>
+                    <code_string>sl</code_string>
+                </language>
+                <encoding>
+                    <terminology_id>
+                        <value>IANA_character-sets</value>
+                    </terminology_id>
+                    <code_string>UTF-8</code_string>
+                </encoding>
+                <subject xsi:type="PARTY_SELF"/>
+                <protocol xsi:type="ITEM_TREE" archetype_node_id="at0074">
+                    <name>
+                        <value>Tree</value>
+                    </name>
+                    <items xsi:type="CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.problem_status.v1">
+                        <name>
+                            <value>Problem status/context qualifiers</value>
+                        </name>
+                        <archetype_details>
+                            <archetype_id>
+                                <value>openEHR-EHR-CLUSTER.problem_status.v1</value>
+                            </archetype_id>
+                            <rm_version>1.0.1</rm_version>
+                        </archetype_details>
+                        <items xsi:type="ELEMENT" archetype_node_id="at0004">
+                            <name>
+                                <value>Evolution</value>
+                            </name>
+                            <value xsi:type="DV_CODED_TEXT">
+                                <value>Sprejemna</value>
+                                <defining_code>
+                                    <terminology_id>
+                                        <value>local</value>
+                                    </terminology_id>
+                                    <code_string>at0016</code_string>
+                                </defining_code>
+                            </value>
+                        </items>
+                    </items>
+                </protocol>
+                <data xsi:type="ITEM_TREE" archetype_node_id="at0001">
+                    <name>
+                        <value>structure</value>
+                    </name>
+                    <items xsi:type="ELEMENT" archetype_node_id="at0002">
+                        <name>
+                            <value>Nursing diagnosis</value>
+                        </name>
+                        <value xsi:type="DV_CODED_TEXT">
+                            <value>Možnost odklanjanja (specificirajte področje)</value>
+                            <defining_code>
+                                <terminology_id>
+                                    <value>PK-Nanda</value>
+                                </terminology_id>
+                                <code_string>A.10</code_string>
+                            </defining_code>
+                        </value>
+                    </items>
+                    <items xsi:type="CLUSTER" archetype_node_id="at0026">
+                        <name>
+                            <value>Related items</value>
+                        </name>
+                        <items xsi:type="ELEMENT" archetype_node_id="at0028">
+                            <name>
+                                <value>Related items</value>
+                            </name>
+                            <value xsi:type="DV_CODED_TEXT">
+                                <value>Nepopolno znanje ali pomanjkanje spretnosti (za terapevtske aktivnosti)</value>
+                                <defining_code>
+                                    <terminology_id>
+                                        <value>PK-Nanda</value>
+                                    </terminology_id>
+                                    <code_string>SPL213</code_string>
+                                </defining_code>
+                            </value>
+                        </items>
+                        <items xsi:type="ELEMENT" archetype_node_id="at0056">
+                            <name>
+                                <value>Relationship type</value>
+                            </name>
+                            <value xsi:type="DV_CODED_TEXT">
+                                <value>Tveganje</value>
+                                <defining_code>
+                                    <terminology_id>
+                                        <value>local</value>
+                                    </terminology_id>
+                                    <code_string>at0077</code_string>
+                                </defining_code>
+                            </value>
+                        </items>
+                    </items>
+                    <items xsi:type="CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.diagnostic_evidence.v1">
+                        <name>
+                            <value>Diagnostic evidence</value>
+                        </name>
+                        <archetype_details>
+                            <archetype_id>
+                                <value>openEHR-EHR-CLUSTER.diagnostic_evidence.v1</value>
+                            </archetype_id>
+                            <rm_version>1.0.1</rm_version>
+                        </archetype_details>
+                        <items xsi:type="ELEMENT" archetype_node_id="at0005">
+                            <name>
+                                <value>Diagnostic category</value>
+                            </name>
+                            <value xsi:type="DV_CODED_TEXT">
+                                <value>FUNKCIONALNA STANJA IN VZORCI ZDRAVEGA OBNAŠANJA</value>
+                                <defining_code>
+                                    <terminology_id>
+                                        <value>PK-Nanda</value>
+                                    </terminology_id>
+                                    <code_string>1</code_string>
+                                </defining_code>
+                            </value>
+                        </items>
+                    </items>
+                    <items xsi:type="ELEMENT" archetype_node_id="at0069">
+                        <name>
+                            <value>Evaluation</value>
+                        </name>
+                        <value xsi:type="DV_TEXT">
+                            <value>opomba pri diagnozi</value>
+                        </value>
+                    </items>
+                </data>
+            </items>
+            <items xsi:type="EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.goal_set-zn.v1">
+                <name>
+                    <value>Goal setting</value>
+                </name>
+                <archetype_details>
+                    <archetype_id>
+                        <value>openEHR-EHR-EVALUATION.goal_set-zn.v1</value>
+                    </archetype_id>
+                    <rm_version>1.0.1</rm_version>
+                </archetype_details>
+                <language>
+                    <terminology_id>
+                        <value>ISO_639-1</value>
+                    </terminology_id>
+                    <code_string>sl</code_string>
+                </language>
+                <encoding>
+                    <terminology_id>
+                        <value>IANA_character-sets</value>
+                    </terminology_id>
+                    <code_string>UTF-8</code_string>
+                </encoding>
+                <subject xsi:type="PARTY_SELF"/>
+                <data xsi:type="ITEM_TREE" archetype_node_id="at0001">
+                    <name>
+                        <value>Tree</value>
+                    </name>
+                    <items xsi:type="ELEMENT" archetype_node_id="at0002.1">
+                        <name>
+                            <value>Goal</value>
+                        </name>
+                        <value xsi:type="DV_CODED_TEXT">
+                            <value>pacient bo s pomočjo svojcev lažje razumel navodila - vodenje svoje bolezni</value>
+                            <defining_code>
+                                <terminology_id>
+                                    <value>PK-Nanda</value>
+                                </terminology_id>
+                                <code_string>G0170</code_string>
+                            </defining_code>
+                        </value>
+                    </items>
+                    <items xsi:type="ELEMENT" archetype_node_id="at0011">
+                        <name>
+                            <value>Date goal established</value>
+                        </name>
+                        <value xsi:type="DV_DATE_TIME">
+                            <value>2013-10-14T10:40:25.689+02:00</value>
+                        </value>
+                    </items>
+                </data>
+            </items>
+            <items xsi:type="SECTION" archetype_node_id="at0004">
+                <name>
+                    <value>Intervention group</value>
+                </name>
+                <items xsi:type="INSTRUCTION" archetype_node_id="openEHR-EHR-INSTRUCTION.request.v1">
+                    <name>
+                        <value>Healthcare service request</value>
+                    </name>
+                    <archetype_details>
+                        <archetype_id>
+                            <value>openEHR-EHR-INSTRUCTION.request.v1</value>
+                        </archetype_id>
+                        <rm_version>1.0.1</rm_version>
+                    </archetype_details>
+                    <language>
+                        <terminology_id>
+                            <value>ISO_639-1</value>
+                        </terminology_id>
+                        <code_string>sl</code_string>
+                    </language>
+                    <encoding>
+                        <terminology_id>
+                            <value>IANA_character-sets</value>
+                        </terminology_id>
+                        <code_string>UTF-8</code_string>
+                    </encoding>
+                    <subject xsi:type="PARTY_SELF"/>
+                    <narrative>
+                        <value>Ocena pacientovega psihičnega stanja s poudarkom na čustvovanju</value>
+                    </narrative>
+                    <activities archetype_node_id="at0001">
+                        <name>
+                            <value>Request</value>
+                        </name>
+                        <description xsi:type="ITEM_TREE" archetype_node_id="at0009">
+                            <name>
+                                <value>Tree</value>
+                            </name>
+                            <items xsi:type="ELEMENT" archetype_node_id="at0121">
+                                <name>
+                                    <value>Nursing intervention request</value>
+                                </name>
+                                <value xsi:type="DV_CODED_TEXT">
+                                    <value>Ocena pacientovega psihičnega stanja s poudarkom na čustvovanju</value>
+                                    <defining_code>
+                                        <terminology_id>
+                                            <value>PK-Nanda</value>
+                                        </terminology_id>
+                                        <code_string>7.10.0.8</code_string>
+                                    </defining_code>
+                                </value>
+                            </items>
+                            <items xsi:type="ELEMENT" archetype_node_id="at0135">
+                                <name>
+                                    <value>Instructions</value>
+                                </name>
+                                <value xsi:type="DV_TEXT">
+                                    <value>opomba aktivnosti</value>
+                                </value>
+                            </items>
+                            <items xsi:type="ELEMENT" archetype_node_id="at0040">
+                                <name>
+                                    <value>Date-time service required</value>
+                                </name>
+                                <value xsi:type="DV_DATE_TIME">
+                                    <value>2013-10-14T10:40:25.689+02:00</value>
+                                </value>
+                            </items>
+                        </description>
+                        <timing>
+                            <value>P1D</value>
+                            <formalism>duration</formalism>
+                        </timing>
+                        <action_archetype_id>/.*/</action_archetype_id>
+                    </activities>
+                </items>
+            </items>
+        </items>
+    </content>
+</composition>

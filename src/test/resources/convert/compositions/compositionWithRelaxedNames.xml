@@ -1,0 +1,944 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	Copyright 2021 Better Ltd (www.better.care)
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<ns2:composition xmlns:te="http://schemas.marand.com/thinkehr/v1" xmlns:ns2="http://schemas.openehr.org/v1" archetype_node_id="openEHR-EHR-COMPOSITION.encounter.v1">
+    <ns2:name>
+        <ns2:value>Осмотр специалиста</ns2:value>
+    </ns2:name>
+    <ns2:uid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:HIER_OBJECT_ID">
+        <ns2:value>6c1ee2b3-e2ae-486a-9f78-446063b4c828::default::1</ns2:value>
+    </ns2:uid>
+    <ns2:archetype_details>
+        <ns2:archetype_id>
+            <ns2:value>openEHR-EHR-COMPOSITION.encounter.v1</ns2:value>
+        </ns2:archetype_id>
+        <ns2:template_id>
+            <ns2:value>openEHR-EHR-COMPOSITION.t_specialist_examination.v2</ns2:value>
+        </ns2:template_id>
+        <ns2:rm_version>1.0.1</ns2:rm_version>
+    </ns2:archetype_details>
+    <ns2:language>
+        <ns2:terminology_id>
+            <ns2:value>ISO_639-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>ru</ns2:code_string>
+    </ns2:language>
+    <ns2:territory>
+        <ns2:terminology_id>
+            <ns2:value>ISO_3166-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>RU</ns2:code_string>
+    </ns2:territory>
+    <ns2:category>
+        <ns2:value>event</ns2:value>
+        <ns2:defining_code>
+            <ns2:terminology_id>
+                <ns2:value>openehr</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>433</ns2:code_string>
+        </ns2:defining_code>
+    </ns2:category>
+    <ns2:composer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:PARTY_IDENTIFIED">
+        <ns2:external_ref>
+            <ns2:id xsi:type="ns2:GENERIC_ID">
+                <ns2:value>DDemicheva</ns2:value>
+                <ns2:scheme>undefined</ns2:scheme>
+            </ns2:id>
+            <ns2:namespace>Парус</ns2:namespace>
+            <ns2:type>ANY</ns2:type>
+        </ns2:external_ref>
+        <ns2:name>Testing Nurse</ns2:name>
+    </ns2:composer>
+    <ns2:context>
+        <ns2:start_time>
+            <ns2:value>2018-02-28T13:16:22.131+03:00</ns2:value>
+        </ns2:start_time>
+        <ns2:end_time>
+            <ns2:value>2018-02-28T13:16:22.131+03:00</ns2:value>
+        </ns2:end_time>
+        <ns2:setting>
+            <ns2:value>other care</ns2:value>
+            <ns2:defining_code>
+                <ns2:terminology_id>
+                    <ns2:value>openehr</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>238</ns2:code_string>
+            </ns2:defining_code>
+        </ns2:setting>
+        <ns2:other_context xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+            <ns2:name>
+                <ns2:value>*Tree(en)</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.composition_context_details_simi.v0">
+                <ns2:name>
+                    <ns2:value>Подробности контекста</ns2:value>
+                </ns2:name>
+                <ns2:archetype_details>
+                    <ns2:archetype_id>
+                        <ns2:value>openEHR-EHR-CLUSTER.composition_context_details_simi.v0</ns2:value>
+                    </ns2:archetype_id>
+                    <ns2:rm_version>1.0.1</ns2:rm_version>
+                </ns2:archetype_details>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0035">
+                    <ns2:name>
+                        <ns2:value>ИД события</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                        <ns2:issuer>undefined</ns2:issuer>
+                        <ns2:assigner>undefined</ns2:assigner>
+                        <ns2:id>2875</ns2:id>
+                        <ns2:type>Идентификатор События</ns2:type>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0073">
+                    <ns2:name>
+                        <ns2:value>ИД документа</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                        <ns2:issuer>undefined</ns2:issuer>
+                        <ns2:assigner>undefined</ns2:assigner>
+                        <ns2:id>ce3be251-5ab7-45e5-974d-1e1ca45703ae</ns2:id>
+                        <ns2:type>Идентификатор документа СИМИ</ns2:type>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0075">
+                    <ns2:name>
+                        <ns2:value>ИД пациента</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                        <ns2:issuer>undefined</ns2:issuer>
+                        <ns2:assigner>undefined</ns2:assigner>
+                        <ns2:id>16278700</ns2:id>
+                        <ns2:type>Идентификатор пациента</ns2:type>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0036">
+                    <ns2:name>
+                        <ns2:value>Автор информации</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0092">
+                        <ns2:name>
+                            <ns2:value>Идентификатор исполнения должности медработника</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                            <ns2:issuer>undefined</ns2:issuer>
+                            <ns2:assigner>undefined</ns2:assigner>
+                            <ns2:id>123321</ns2:id>
+                            <ns2:type>EMIAS</ns2:type>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0037">
+                        <ns2:name>
+                            <ns2:value>Наименование должности</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>Врач-терапевт</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0038">
+                        <ns2:name>
+                            <ns2:value>Наименование структурного подразделения</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>наименование_структурного_подразделения</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0039">
+                        <ns2:name>
+                            <ns2:value>Наименование филиала</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>наименование_филиала</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0040">
+                        <ns2:name>
+                            <ns2:value>Наименование юридического лица</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>наименование_юридического_лица</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0014">
+                    <ns2:name>
+                        <ns2:value>Структура медицинской организации</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0015">
+                        <ns2:name>
+                            <ns2:value>ИД объекта</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_IDENTIFIER">
+                            <ns2:issuer>issuer</ns2:issuer>
+                            <ns2:assigner>assigner</ns2:assigner>
+                            <ns2:id>204</ns2:id>
+                            <ns2:type>type</ns2:type>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0018">
+                        <ns2:name>
+                            <ns2:value>Тип объекта</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>амбулаторно-поликлинический центр</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>local</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>at0019</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0016">
+                        <ns2:name>
+                            <ns2:value>Наименование</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>ЛПУ 204 (МО)</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0022">
+                    <ns2:name>
+                        <ns2:value>Адрес медицинской организации</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0026">
+                        <ns2:name>
+                            <ns2:value>Субъект РФ</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>субъект_рф</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0027">
+                        <ns2:name>
+                            <ns2:value>Муниципальный район (городской округ)</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>муниципальный_район_городской_округ</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0076">
+                        <ns2:name>
+                            <ns2:value>Поселение</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>номер_земельного_участка</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0025">
+                        <ns2:name>
+                            <ns2:value>Населенный пункт</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>населенный_пункт</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0078">
+                        <ns2:name>
+                            <ns2:value>Элемент планировочной структуры</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>элемент_планировочной_структуры</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0079">
+                        <ns2:name>
+                            <ns2:value>Улица</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>улица</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0077">
+                        <ns2:name>
+                            <ns2:value>Номер здания (сооружения)</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0024">
+                            <ns2:name>
+                                <ns2:value>Номер дома</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>номер_дома</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0029">
+                            <ns2:name>
+                                <ns2:value>Номер строения</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>номер_строения</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0028">
+                            <ns2:name>
+                                <ns2:value>Номер корпуса</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>номер_корпуса</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0080">
+                        <ns2:name>
+                            <ns2:value>Номер земельного участка</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>номер_земельного_участка</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0081">
+                        <ns2:name>
+                            <ns2:value>Дополнительная информация</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>дополнительная_информация</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0061">
+                    <ns2:name>
+                        <ns2:value>Информация о месте Cобытия</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0069">
+                        <ns2:name>
+                            <ns2:value>Событие произошло</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>номер_земельного_участка</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>local</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>at0070</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0062">
+                        <ns2:name>
+                            <ns2:value>Субъект РФ</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>субъект_рф</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0063">
+                        <ns2:name>
+                            <ns2:value>Муниципальный район (городской округ)</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>муниципальный_район_городской_округ</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0064">
+                        <ns2:name>
+                            <ns2:value>Поселение</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>номер_земельного_участка</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0065">
+                        <ns2:name>
+                            <ns2:value>Населенный пункт</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>населенный_пункт</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0066">
+                        <ns2:name>
+                            <ns2:value>Элемент планировочной структуры</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>элемент_планировочной_структуры</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0067">
+                        <ns2:name>
+                            <ns2:value>Улица</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>улица</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0082">
+                        <ns2:name>
+                            <ns2:value>Номер здания (сооружения)</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0085">
+                            <ns2:name>
+                                <ns2:value>Номер дома</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>номер_дома</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0084">
+                            <ns2:name>
+                                <ns2:value>Номер строения</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>номер_строения</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0083">
+                            <ns2:name>
+                                <ns2:value>Номер корпуса</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_TEXT">
+                                <ns2:value>номер_корпуса</ns2:value>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0030">
+                        <ns2:name>
+                            <ns2:value>Номер земельного участка</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>номер_земельного_участка</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0031">
+                        <ns2:name>
+                            <ns2:value>Номер помещения</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>номер_земельного_участка</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0032">
+                        <ns2:name>
+                            <ns2:value>Дополнительная информация</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_TEXT">
+                            <ns2:value>дополнительная_информация</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0046">
+                    <ns2:name>
+                        <ns2:value>Дополнительная информация</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0086">
+                        <ns2:name>
+                            <ns2:value>Профиль медицинской помощи</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>Терапия</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>local</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>at0087</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0047">
+                        <ns2:name>
+                            <ns2:value>Виды медицинской помощи</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>специализированная</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>local</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>at0051</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0048">
+                        <ns2:name>
+                            <ns2:value>Условия оказания медицинской помощи</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>вне медицинской организации</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>local</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>at0054</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0049">
+                        <ns2:name>
+                            <ns2:value>Форма оказания медицинской помощи</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>экстренная</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>local</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>at0058</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:items>
+            </ns2:items>
+        </ns2:other_context>
+        <ns2:health_care_facility>
+            <ns2:external_ref>
+                <ns2:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:GENERIC_ID">
+                    <ns2:value>1117746711180</ns2:value>
+                    <ns2:scheme>undefined</ns2:scheme>
+                </ns2:id>
+                <ns2:namespace>Справочник медицинских организаций</ns2:namespace>
+                <ns2:type>ANY</ns2:type>
+            </ns2:external_ref>
+            <ns2:name>ГБУЗ г. Москвы "Детская городская поликлиника № 110 ДЗМ"</ns2:name>
+        </ns2:health_care_facility>
+        <ns2:participations>
+            <ns2:function>
+                <ns2:value>Врач</ns2:value>
+            </ns2:function>
+            <ns2:performer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:PARTY_IDENTIFIED">
+                <ns2:external_ref>
+                    <ns2:id xsi:type="ns2:GENERIC_ID">
+                        <ns2:value>4</ns2:value>
+                    </ns2:id>
+                    <ns2:type>ANY</ns2:type>
+                </ns2:external_ref>
+                <ns2:name>Testing Nurse</ns2:name>
+            </ns2:performer>
+            <ns2:mode>
+                <ns2:value>not specified</ns2:value>
+                <ns2:defining_code>
+                    <ns2:terminology_id>
+                        <ns2:value>openehr</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>193</ns2:code_string>
+                </ns2:defining_code>
+            </ns2:mode>
+        </ns2:participations>
+    </ns2:context>
+    <ns2:content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.adhoc.v1">
+        <ns2:name>
+            <ns2:value>Жалобы и анамнез заболевания</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.1</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.story.v1">
+            <ns2:name>
+                <ns2:value>Жалобы и анамнез заболевания</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-OBSERVATION.story.v1</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.1</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>ru</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Серия событий</ns2:value>
+                </ns2:name>
+                <ns2:origin>
+                    <ns2:value>2018-02-28T13:11:54.657+03:00</ns2:value>
+                </ns2:origin>
+                <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Любое событие</ns2:value>
+                    </ns2:name>
+                    <ns2:time>
+                        <ns2:value>2018-02-28T13:11:54.657+03:00</ns2:value>
+                    </ns2:time>
+                    <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                        <ns2:name>
+                            <ns2:value>Tree</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.complaints_simi.v3">
+                            <ns2:name>
+                                <ns2:value>Жалобы</ns2:value>
+                            </ns2:name>
+                            <ns2:archetype_details>
+                                <ns2:archetype_id>
+                                    <ns2:value>openEHR-EHR-CLUSTER.complaints_simi.v3</ns2:value>
+                                </ns2:archetype_id>
+                                <ns2:rm_version>1.0.1</ns2:rm_version>
+                            </ns2:archetype_details>
+                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                                <ns2:name>
+                                    <ns2:value>На момент осмотра жалобы</ns2:value>
+                                </ns2:name>
+                                <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                    <ns2:value>не предъявляет</ns2:value>
+                                    <ns2:defining_code>
+                                        <ns2:terminology_id>
+                                            <ns2:value>local</ns2:value>
+                                        </ns2:terminology_id>
+                                        <ns2:code_string>at0002</ns2:code_string>
+                                    </ns2:defining_code>
+                                </ns2:value>
+                            </ns2:items>
+                        </ns2:items>
+                    </ns2:data>
+                </ns2:events>
+            </ns2:data>
+        </ns2:items>
+    </ns2:content>
+    <ns2:content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.adhoc.v1">
+        <ns2:name>
+            <ns2:value>Интерпретация результатов обследования</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.1</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.adhoc.v1">
+            <ns2:name>
+                <ns2:value>Исследование</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.1</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:items xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.container.v0">
+                <ns2:name>
+                    <ns2:value>Сведения об исследовании</ns2:value>
+                </ns2:name>
+                <ns2:archetype_details>
+                    <ns2:archetype_id>
+                        <ns2:value>openEHR-EHR-OBSERVATION.container.v0</ns2:value>
+                    </ns2:archetype_id>
+                    <ns2:rm_version>1.0.1</ns2:rm_version>
+                </ns2:archetype_details>
+                <ns2:language>
+                    <ns2:terminology_id>
+                        <ns2:value>ISO_639-1</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>ru</ns2:code_string>
+                </ns2:language>
+                <ns2:encoding>
+                    <ns2:terminology_id>
+                        <ns2:value>IANA_character-sets</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>UTF-8</ns2:code_string>
+                </ns2:encoding>
+                <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+                <ns2:data archetype_node_id="at0001">
+                    <ns2:name>
+                        <ns2:value>Серия событий</ns2:value>
+                    </ns2:name>
+                    <ns2:origin>
+                        <ns2:value>2018-02-28T13:11:54.657+03:00</ns2:value>
+                    </ns2:origin>
+                    <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                        <ns2:name>
+                            <ns2:value>Любое событие</ns2:value>
+                        </ns2:name>
+                        <ns2:time>
+                            <ns2:value>2018-02-28T13:11:54.657+03:00</ns2:value>
+                        </ns2:time>
+                        <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                            <ns2:name>
+                                <ns2:value>Дерево</ns2:value>
+                            </ns2:name>
+                            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.interpretation_of_results_simi.v2">
+                                <ns2:name>
+                                    <ns2:value>Сведения об исследовании</ns2:value>
+                                </ns2:name>
+                                <ns2:archetype_details>
+                                    <ns2:archetype_id>
+                                        <ns2:value>openEHR-EHR-CLUSTER.interpretation_of_results_simi.v2</ns2:value>
+                                    </ns2:archetype_id>
+                                    <ns2:rm_version>1.0.1</ns2:rm_version>
+                                </ns2:archetype_details>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0008">
+                                    <ns2:name>
+                                        <ns2:value>Название исследования</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_TEXT">
+                                        <ns2:value>авыпывап</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0009">
+                                    <ns2:name>
+                                        <ns2:value>Другие исследования</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_TEXT">
+                                        <ns2:value>вап ваыпывап</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                                    <ns2:name>
+                                        <ns2:value>Результат</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                        <ns2:value>без патологии</ns2:value>
+                                        <ns2:defining_code>
+                                            <ns2:terminology_id>
+                                                <ns2:value>local</ns2:value>
+                                            </ns2:terminology_id>
+                                            <ns2:code_string>at0011</ns2:code_string>
+                                        </ns2:defining_code>
+                                    </ns2:value>
+                                </ns2:items>
+                            </ns2:items>
+                        </ns2:data>
+                    </ns2:events>
+                </ns2:data>
+            </ns2:items>
+        </ns2:items>
+    </ns2:content>
+    <ns2:content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.problems_and_diagnoses.v1">
+        <ns2:name>
+            <ns2:value>Диагноз</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.problems_and_diagnoses.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.1</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:SECTION" archetype_node_id="at0001">
+            <ns2:name>
+                <ns2:value>Основной диагноз</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.problem_diagnosis.v1">
+                <ns2:name>
+                    <ns2:value>Основной диагноз</ns2:value>
+                </ns2:name>
+                <ns2:archetype_details>
+                    <ns2:archetype_id>
+                        <ns2:value>openEHR-EHR-EVALUATION.problem_diagnosis.v1</ns2:value>
+                    </ns2:archetype_id>
+                    <ns2:rm_version>1.0.1</ns2:rm_version>
+                </ns2:archetype_details>
+                <ns2:language>
+                    <ns2:terminology_id>
+                        <ns2:value>ISO_639-1</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>ru</ns2:code_string>
+                </ns2:language>
+                <ns2:encoding>
+                    <ns2:terminology_id>
+                        <ns2:value>IANA_character-sets</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>UTF-8</ns2:code_string>
+                </ns2:encoding>
+                <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+                <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                    <ns2:name>
+                        <ns2:value>structure</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                        <ns2:name>
+                            <ns2:value>Код по МКБ 10</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>A02.2 - +Локализованная сальмонеллезная инфекция</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>NSI</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>A02.2</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.problem_status.v0">
+                        <ns2:name>
+                            <ns2:value>Вид диагноза</ns2:value>
+                        </ns2:name>
+                        <ns2:archetype_details>
+                            <ns2:archetype_id>
+                                <ns2:value>openEHR-EHR-CLUSTER.problem_status.v0</ns2:value>
+                            </ns2:archetype_id>
+                            <ns2:rm_version>1.0.1</ns2:rm_version>
+                        </ns2:archetype_details>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0063">
+                            <ns2:name>
+                                <ns2:value>Вид диагноза</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                <ns2:value>основной диагноз</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>local</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>at0064</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                </ns2:data>
+            </ns2:items>
+        </ns2:items>
+        <ns2:items xsi:type="ns2:SECTION" archetype_node_id="at0002">
+            <ns2:name>
+                <ns2:value>Сопутствующие заболевания</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.problem_diagnosis.v1">
+                <ns2:name>
+                    <ns2:value>Сопутствующее заболевание</ns2:value>
+                </ns2:name>
+                <ns2:archetype_details>
+                    <ns2:archetype_id>
+                        <ns2:value>openEHR-EHR-EVALUATION.problem_diagnosis.v1</ns2:value>
+                    </ns2:archetype_id>
+                    <ns2:rm_version>1.0.1</ns2:rm_version>
+                </ns2:archetype_details>
+                <ns2:language>
+                    <ns2:terminology_id>
+                        <ns2:value>ISO_639-1</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>ru</ns2:code_string>
+                </ns2:language>
+                <ns2:encoding>
+                    <ns2:terminology_id>
+                        <ns2:value>IANA_character-sets</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>UTF-8</ns2:code_string>
+                </ns2:encoding>
+                <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+                <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                    <ns2:name>
+                        <ns2:value>structure</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                        <ns2:name>
+                            <ns2:value>Код по МКБ 10</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>A04.6 - Энтерит, вызванный Yersinia enterocolitica</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>NSI</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>A04.6</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.problem_status.v0">
+                        <ns2:name>
+                            <ns2:value>Вид диагноза</ns2:value>
+                        </ns2:name>
+                        <ns2:archetype_details>
+                            <ns2:archetype_id>
+                                <ns2:value>openEHR-EHR-CLUSTER.problem_status.v0</ns2:value>
+                            </ns2:archetype_id>
+                            <ns2:rm_version>1.0.1</ns2:rm_version>
+                        </ns2:archetype_details>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0063">
+                            <ns2:name>
+                                <ns2:value>Вид диагноза</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                <ns2:value>сопутствующее заболевание</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>local</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>at0066</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                </ns2:data>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.problem_diagnosis.v1">
+                <ns2:name>
+                    <ns2:value>Сопутствующее заболевание #2</ns2:value>
+                </ns2:name>
+                <ns2:archetype_details>
+                    <ns2:archetype_id>
+                        <ns2:value>openEHR-EHR-EVALUATION.problem_diagnosis.v1</ns2:value>
+                    </ns2:archetype_id>
+                    <ns2:rm_version>1.0.1</ns2:rm_version>
+                </ns2:archetype_details>
+                <ns2:language>
+                    <ns2:terminology_id>
+                        <ns2:value>ISO_639-1</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>ru</ns2:code_string>
+                </ns2:language>
+                <ns2:encoding>
+                    <ns2:terminology_id>
+                        <ns2:value>IANA_character-sets</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>UTF-8</ns2:code_string>
+                </ns2:encoding>
+                <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+                <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                    <ns2:name>
+                        <ns2:value>structure</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                        <ns2:name>
+                            <ns2:value>Код по МКБ 10</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>A06.4 - Амебный абсцесс печени</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>NSI</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>A06.4</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.problem_status.v0">
+                        <ns2:name>
+                            <ns2:value>Вид диагноза</ns2:value>
+                        </ns2:name>
+                        <ns2:archetype_details>
+                            <ns2:archetype_id>
+                                <ns2:value>openEHR-EHR-CLUSTER.problem_status.v0</ns2:value>
+                            </ns2:archetype_id>
+                            <ns2:rm_version>1.0.1</ns2:rm_version>
+                        </ns2:archetype_details>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0063">
+                            <ns2:name>
+                                <ns2:value>Вид диагноза</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                <ns2:value>сопутствующее заболевание</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>local</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>at0066</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:items>
+                </ns2:data>
+            </ns2:items>
+        </ns2:items>
+    </ns2:content>
+</ns2:composition>

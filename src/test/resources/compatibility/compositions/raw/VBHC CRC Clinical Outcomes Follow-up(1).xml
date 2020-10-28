@@ -1,0 +1,1311 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	Copyright 2021 Better Ltd (www.better.care)
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<ns2:composition archetype_node_id="openEHR-EHR-COMPOSITION.encounter.v1" xmlns:te="http://schemas.marand.com/thinkehr/v1" xmlns:ns2="http://schemas.openehr.org/v1">
+    <ns2:name>
+        <ns2:value>MEDTRONIC VBHC CRC Clinical Outcomes Follow-up</ns2:value>
+    </ns2:name>
+    <ns2:archetype_details>
+        <ns2:archetype_id>
+            <ns2:value>openEHR-EHR-COMPOSITION.encounter.v1</ns2:value>
+        </ns2:archetype_id>
+        <ns2:template_id>
+            <ns2:value>MEDTRONIC VBHC CRC Clinical Outcomes Follow-up</ns2:value>
+        </ns2:template_id>
+        <ns2:rm_version>1.0.4</ns2:rm_version>
+    </ns2:archetype_details>
+    <ns2:feeder_audit>
+        <ns2:original_content xsi:type="ns2:DV_PARSABLE" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ns2:value>{"/generic-fieldset-8009165/generic-input_text-2463686":[],"/generic-fieldset-8009165/generic-input_text-6521670":[],"/generic-fieldset-5885294/generic-fieldset-7569843/generic-coded_text-8621066":[]}</ns2:value>
+            <ns2:formalism>application/json</ns2:formalism>
+        </ns2:original_content>
+        <ns2:originating_system_audit>
+            <ns2:system_id>FormRenderer</ns2:system_id>
+        </ns2:originating_system_audit>
+    </ns2:feeder_audit>
+    <ns2:language>
+        <ns2:terminology_id>
+            <ns2:value>ISO_639-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>en</ns2:code_string>
+    </ns2:language>
+    <ns2:territory>
+        <ns2:terminology_id>
+            <ns2:value>ISO_3166-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>SI</ns2:code_string>
+    </ns2:territory>
+    <ns2:category>
+        <ns2:value>event</ns2:value>
+        <ns2:defining_code>
+            <ns2:terminology_id>
+                <ns2:value>openehr</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>433</ns2:code_string>
+        </ns2:defining_code>
+    </ns2:category>
+    <ns2:context>
+        <ns2:start_time>
+            <ns2:value>2021-02-15T12:19:00+01:00</ns2:value>
+        </ns2:start_time>
+        <ns2:setting>
+            <ns2:value>other care</ns2:value>
+            <ns2:defining_code>
+                <ns2:terminology_id>
+                    <ns2:value>openehr</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>238</ns2:code_string>
+            </ns2:defining_code>
+        </ns2:setting>
+        <ns2:other_context xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ns2:name>
+                <ns2:value>Tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.research_information.v0">
+                <ns2:name>
+                    <ns2:value>Research information</ns2:value>
+                </ns2:name>
+                <ns2:archetype_details>
+                    <ns2:archetype_id>
+                        <ns2:value>openEHR-EHR-CLUSTER.research_information.v0</ns2:value>
+                    </ns2:archetype_id>
+                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                </ns2:archetype_details>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                    <ns2:name>
+                        <ns2:value>Cohort study name</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Colorectal cancer screening</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>cohortStudyName</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>CRC</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Assessment timeline</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>9 years</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>followTimelineAssessmentICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>A9</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:items>
+        </ns2:other_context>
+    </ns2:context>
+    <ns2:content xsi:type="ns2:ACTION" archetype_node_id="openEHR-EHR-ACTION.care_plan.v0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Care Plan</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-ACTION.care_plan.v0</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:language>
+            <ns2:terminology_id>
+                <ns2:value>ISO_639-1</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>en</ns2:code_string>
+        </ns2:language>
+        <ns2:encoding>
+            <ns2:terminology_id>
+                <ns2:value>IANA_character-sets</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>UTF-8</ns2:code_string>
+        </ns2:encoding>
+        <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+        <ns2:time>
+            <ns2:value>2021-02-15T12:14:00+01:00</ns2:value>
+        </ns2:time>
+        <ns2:description xsi:type="ns2:ITEM_TREE" archetype_node_id="at0019">
+            <ns2:name>
+                <ns2:value>Tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                <ns2:name>
+                    <ns2:value>Care Plan Name</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_TEXT">
+                    <ns2:value>test_carePlaneName</ns2:value>
+                </ns2:value>
+            </ns2:items>
+        </ns2:description>
+        <ns2:ism_transition>
+            <ns2:current_state>
+                <ns2:value>completed</ns2:value>
+                <ns2:defining_code>
+                    <ns2:terminology_id>
+                        <ns2:value>openehr</ns2:value>
+                    </ns2:terminology_id>
+                    <ns2:code_string>532</ns2:code_string>
+                </ns2:defining_code>
+            </ns2:current_state>
+        </ns2:ism_transition>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.adhoc.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Treatment variables</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.ichom_crc_treatment_modalities.v0">
+            <ns2:name>
+                <ns2:value>ICHOM CRC Treatment modalities</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-EVALUATION.ichom_crc_treatment_modalities.v0</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0002">
+                <ns2:name>
+                    <ns2:value>Item tree</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0003">
+                    <ns2:name>
+                        <ns2:value>Treatment modalities used</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Surgery</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>treatmentFUICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>1</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0003">
+                    <ns2:name>
+                        <ns2:value>Treatment modalities used #2</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Radiotherapy</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>treatmentFUICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>2</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0003">
+                    <ns2:name>
+                        <ns2:value>Treatment modalities used #3</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Chemotherapy</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>treatmentFUICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>3</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0003">
+                    <ns2:name>
+                        <ns2:value>Treatment modalities used #4</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Targeted therapy</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>treatmentFUICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>4</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0003">
+                    <ns2:name>
+                        <ns2:value>Treatment modalities used #5</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Best supportive care</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>treatmentFUICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>5</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:data>
+        </ns2:items>
+        <ns2:items xsi:type="ns2:ACTION" archetype_node_id="openEHR-EHR-ACTION.procedure.v1">
+            <ns2:name>
+                <ns2:value>Surgery</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-ACTION.procedure.v1</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:time>
+                <ns2:value>2021-02-15T12:14:00+01:00</ns2:value>
+            </ns2:time>
+            <ns2:description xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Tree</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Procedure name</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Hemicolectomy right</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>surgeryFUICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>1</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0065">
+                    <ns2:name>
+                        <ns2:value>Procedure method</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Transabdominal open</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>surgeryProcFUICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>2</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0060">
+                    <ns2:name>
+                        <ns2:value>Surgery date</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_DATE_TIME">
+                        <ns2:value>2021-02-02</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:description>
+            <ns2:ism_transition>
+                <ns2:current_state>
+                    <ns2:value>completed</ns2:value>
+                    <ns2:defining_code>
+                        <ns2:terminology_id>
+                            <ns2:value>openehr</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>532</ns2:code_string>
+                    </ns2:defining_code>
+                </ns2:current_state>
+            </ns2:ism_transition>
+        </ns2:items>
+        <ns2:items xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.device_summary.v0">
+            <ns2:name>
+                <ns2:value>Stoma</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-EVALUATION.device_summary.v0</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Tree</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0020">
+                    <ns2:name>
+                        <ns2:value>Device type</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Stoma</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>procedureDefinitionFUCRCMED</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>ST</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Status</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Temporary</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>stomaFUICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>1</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0022">
+                    <ns2:name>
+                        <ns2:value>Device details</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0008">
+                        <ns2:name>
+                            <ns2:value>Start date</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_DATE_TIME">
+                            <ns2:value>2021-02-04</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:items>
+            </ns2:data>
+        </ns2:items>
+        <ns2:items xsi:type="ns2:ACTION" archetype_node_id="openEHR-EHR-ACTION.procedure.v1">
+            <ns2:name>
+                <ns2:value>Chemotherapy</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-ACTION.procedure.v1</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:time>
+                <ns2:value>2021-02-15T12:14:00+01:00</ns2:value>
+            </ns2:time>
+            <ns2:description xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Tree</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Procedure name</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Neoadjuvant</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>chemoFUICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>1</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0066">
+                    <ns2:name>
+                        <ns2:value>Start of chemotherapy</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_DATE_TIME">
+                        <ns2:value>2021-02-03</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0060">
+                    <ns2:name>
+                        <ns2:value>End of chemotherapy</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_DATE_TIME">
+                        <ns2:value>2021-02-04</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0067">
+                    <ns2:name>
+                        <ns2:value>Chemotherapy type</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>FOLFOX regimen</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>chemoTypeFUICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>0</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:description>
+            <ns2:ism_transition>
+                <ns2:current_state>
+                    <ns2:value>completed</ns2:value>
+                    <ns2:defining_code>
+                        <ns2:terminology_id>
+                            <ns2:value>openehr</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>532</ns2:code_string>
+                    </ns2:defining_code>
+                </ns2:current_state>
+            </ns2:ism_transition>
+        </ns2:items>
+        <ns2:items xsi:type="ns2:ACTION" archetype_node_id="openEHR-EHR-ACTION.procedure.v1">
+            <ns2:name>
+                <ns2:value>Radiotherapy</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-ACTION.procedure.v1</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:time>
+                <ns2:value>2021-02-15T12:14:00+01:00</ns2:value>
+            </ns2:time>
+            <ns2:description xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Tree</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Procedure name</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Neoadjuvant </ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>radioFUICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>1</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0066">
+                    <ns2:name>
+                        <ns2:value>Start of radiotherapy</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_DATE_TIME">
+                        <ns2:value>2021-02-01</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0060">
+                    <ns2:name>
+                        <ns2:value>End of radiotherapy</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_DATE_TIME">
+                        <ns2:value>2021-02-04</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0067">
+                    <ns2:name>
+                        <ns2:value>Radiotherapy type</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Short course</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>radioTypeFUICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>0</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:description>
+            <ns2:ism_transition>
+                <ns2:current_state>
+                    <ns2:value>completed</ns2:value>
+                    <ns2:defining_code>
+                        <ns2:terminology_id>
+                            <ns2:value>openehr</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>532</ns2:code_string>
+                    </ns2:defining_code>
+                </ns2:current_state>
+            </ns2:ism_transition>
+        </ns2:items>
+        <ns2:items xsi:type="ns2:ACTION" archetype_node_id="openEHR-EHR-ACTION.procedure.v1">
+            <ns2:name>
+                <ns2:value>Targeted therapy</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-ACTION.procedure.v1</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:time>
+                <ns2:value>2021-02-15T12:14:00+01:00</ns2:value>
+            </ns2:time>
+            <ns2:description xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Tree</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Procedure name</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Cetuximab</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>targetedTxFUICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>1</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0066">
+                    <ns2:name>
+                        <ns2:value>Start of targeted therapy</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_DATE_TIME">
+                        <ns2:value>2021-02-03</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0060">
+                    <ns2:name>
+                        <ns2:value>End of targeted therapy</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_DATE_TIME">
+                        <ns2:value>2021-02-01</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:description>
+            <ns2:ism_transition>
+                <ns2:current_state>
+                    <ns2:value>completed</ns2:value>
+                    <ns2:defining_code>
+                        <ns2:terminology_id>
+                            <ns2:value>openehr</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>532</ns2:code_string>
+                    </ns2:defining_code>
+                </ns2:current_state>
+            </ns2:ism_transition>
+        </ns2:items>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.adhoc.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Metastasis or progression of treatment</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:ACTION" archetype_node_id="openEHR-EHR-ACTION.procedure.v1">
+            <ns2:name>
+                <ns2:value>Cancer organ treatment</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-ACTION.procedure.v1</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:time>
+                <ns2:value>2021-02-15T12:14:00+01:00</ns2:value>
+            </ns2:time>
+            <ns2:description xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Tree</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Procedure name</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_TEXT">
+                        <ns2:value>Cancer metastasis or treatment progression</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0063">
+                    <ns2:name>
+                        <ns2:value>Treated organ</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_TEXT">
+                        <ns2:value>aaa</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0060">
+                    <ns2:name>
+                        <ns2:value>Treatment date</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_DATE_TIME">
+                        <ns2:value>2021-02-03</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0067">
+                    <ns2:name>
+                        <ns2:value>Type of treatment</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_TEXT">
+                        <ns2:value>bbb</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:description>
+            <ns2:ism_transition>
+                <ns2:current_state>
+                    <ns2:value>completed</ns2:value>
+                    <ns2:defining_code>
+                        <ns2:terminology_id>
+                            <ns2:value>openehr</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>532</ns2:code_string>
+                    </ns2:defining_code>
+                </ns2:current_state>
+            </ns2:ism_transition>
+        </ns2:items>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.adhoc.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Disutility of care</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.ichom_crc_complications.v0">
+            <ns2:name>
+                <ns2:value>ICHOM CRC Complications</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-OBSERVATION.ichom_crc_complications.v0</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>History</ns2:value>
+                </ns2:name>
+                <ns2:origin>
+                    <ns2:value>2021-02-15T12:14:00+01:00</ns2:value>
+                </ns2:origin>
+                <ns2:events xsi:type="ns2:INTERVAL_EVENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Complications while or 90 days after initiation of treatment</ns2:value>
+                    </ns2:name>
+                    <ns2:time>
+                        <ns2:value>2021-02-15T12:14:00+01:00</ns2:value>
+                    </ns2:time>
+                    <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                        <ns2:name>
+                            <ns2:value>Tree</ns2:value>
+                        </ns2:name>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Complications name</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                <ns2:value>Complication requiring intervention (surgical, radiological, endoscopic)</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>complicationsFUICHOMCRC</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>1</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Complications name #2</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                <ns2:value>Complication leading to prolonged hospitalisation (&gt;14days)</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>complicationsFUICHOMCRC</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>2</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Complications name #3</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                <ns2:value>Complication leading to unplanned readmission</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>complicationsFUICHOMCRC</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>3</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Complications name #4</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                <ns2:value>Complication leading to ICU admission</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>complicationsFUICHOMCRC</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>4</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Complications name #5</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                <ns2:value>Complication leading to discontinuing of treatment</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>complicationsFUICHOMCRC</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>5</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Complications name #6</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                <ns2:value>Complication leading to death</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>complicationsFUICHOMCRC</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>7</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Complications name #7</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                <ns2:value>Complication leading to reduced dosing</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>complicationsFUICHOMCRC</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>6</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
+                            <ns2:name>
+                                <ns2:value>Complications name #8</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                <ns2:value>Complication, but did not result in any of the above mentioned</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>complicationsFUICHOMCRC</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>8</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
+                            <ns2:name>
+                                <ns2:value>Complications type</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                <ns2:value>Dehydration</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>complicationTypeFUICHOMCRC</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>8</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
+                            <ns2:name>
+                                <ns2:value>Complications type #2</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                <ns2:value>Febrile neuropathy</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>complicationTypeFUICHOMCRC</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>10</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
+                            <ns2:name>
+                                <ns2:value>Complications type #3</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                <ns2:value>Mucositis</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>complicationTypeFUICHOMCRC</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>12</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:value>
+                        </ns2:items>
+                        <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0017">
+                            <ns2:name>
+                                <ns2:value>Complication related to colorectal cancer treatment</ns2:value>
+                            </ns2:name>
+                            <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                <ns2:value>Unknown</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>ternaryValuesMED</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>999</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:value>
+                        </ns2:items>
+                    </ns2:data>
+                    <ns2:width>
+                        <ns2:value>P90D</ns2:value>
+                    </ns2:width>
+                    <ns2:math_function>
+                        <ns2:value>mean</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>openehr</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>146</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:math_function>
+                </ns2:events>
+            </ns2:data>
+        </ns2:items>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.adhoc.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Survival and disease control</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:ADMIN_ENTRY" archetype_node_id="openEHR-EHR-ADMIN_ENTRY.death_information.v0">
+            <ns2:name>
+                <ns2:value>Patient death information</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-ADMIN_ENTRY.death_information.v0</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Item tree</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.person_anonymised_parent.v0">
+                    <ns2:name>
+                        <ns2:value>Anonymised person</ns2:value>
+                    </ns2:name>
+                    <ns2:archetype_details>
+                        <ns2:archetype_id>
+                            <ns2:value>openEHR-EHR-CLUSTER.person_anonymised_parent.v0</ns2:value>
+                        </ns2:archetype_id>
+                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                    </ns2:archetype_details>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0003">
+                        <ns2:name>
+                            <ns2:value>Dead?</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>Yes</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>ternaryValuesMED</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>1</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:items>
+            </ns2:data>
+        </ns2:items>
+        <ns2:items xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.ichom_crc_disease_control.v0">
+            <ns2:name>
+                <ns2:value>ICHOM CRC Disease Control</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-EVALUATION.ichom_crc_disease_control.v0</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:protocol xsi:type="ns2:ITEM_TREE" archetype_node_id="at0032">
+                <ns2:name>
+                    <ns2:value>Item tree</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.tumour_resection_margins.v0">
+                    <ns2:name>
+                        <ns2:value>Tumour - Surgical resection margins</ns2:value>
+                    </ns2:name>
+                    <ns2:archetype_details>
+                        <ns2:archetype_id>
+                            <ns2:value>openEHR-EHR-CLUSTER.tumour_resection_margins.v0</ns2:value>
+                        </ns2:archetype_id>
+                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                    </ns2:archetype_details>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                        <ns2:name>
+                            <ns2:value>Circumferential margin</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>Positive (&lt;= 1mm)</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>circumfMarginFUICHOMCRC</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>0</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:items>
+            </ns2:protocol>
+            <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Item tree</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
+                    <ns2:name>
+                        <ns2:value>Residual invasive cancer</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Yes</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>ternaryValuesMED</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>1</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0006">
+                    <ns2:name>
+                        <ns2:value>Recurrence</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Local recurrence</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>recurrenceFUICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>1</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0012">
+                    <ns2:name>
+                        <ns2:value>Recurrence method</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Radiological diagnosis</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>recurrenceMethodFUICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>0</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0018">
+                    <ns2:name>
+                        <ns2:value>Recurrence date</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_DATE">
+                        <ns2:value>2021-02-05</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0020">
+                    <ns2:name>
+                        <ns2:value>Disease progression</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Yes</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>ternaryValuesMED</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>1</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0024">
+                    <ns2:name>
+                        <ns2:value>Progression method</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Radiological diagnosis</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>progressionMethodFUICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>2</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0031">
+                    <ns2:name>
+                        <ns2:value>Progression date</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_DATE">
+                        <ns2:value>2021-02-05</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:data>
+        </ns2:items>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:SECTION" archetype_node_id="openEHR-EHR-SECTION.adhoc.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Quality of death</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:items xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.ichom_crc_quality_death.v0">
+            <ns2:name>
+                <ns2:value>ICHOM CRC Quality of death</ns2:value>
+            </ns2:name>
+            <ns2:archetype_details>
+                <ns2:archetype_id>
+                    <ns2:value>openEHR-EHR-EVALUATION.ichom_crc_quality_death.v0</ns2:value>
+                </ns2:archetype_id>
+                <ns2:rm_version>1.0.4</ns2:rm_version>
+            </ns2:archetype_details>
+            <ns2:language>
+                <ns2:terminology_id>
+                    <ns2:value>ISO_639-1</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>en</ns2:code_string>
+            </ns2:language>
+            <ns2:encoding>
+                <ns2:terminology_id>
+                    <ns2:value>IANA_character-sets</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>UTF-8</ns2:code_string>
+            </ns2:encoding>
+            <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+            <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+                <ns2:name>
+                    <ns2:value>Item tree</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0011">
+                    <ns2:name>
+                        <ns2:value>Place of death</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Hospital</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>deathPlaceFUICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>2</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0027">
+                    <ns2:name>
+                        <ns2:value>Hospice</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Yes</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>ternaryValuesMED</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>1</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0031">
+                    <ns2:name>
+                        <ns2:value>Prefered place of death</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Hospital</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>deathPlacePrefFUICHOMCRC</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>2</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0032">
+                    <ns2:name>
+                        <ns2:value>Date of documentation of desired place of death</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_DATE">
+                        <ns2:value>2021-02-04</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0033">
+                    <ns2:name>
+                        <ns2:value>Hospital readmission &gt; 1 time during the last 30 days of life (excluding emergency consultations)</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                        <ns2:value>Yes</ns2:value>
+                        <ns2:defining_code>
+                            <ns2:terminology_id>
+                                <ns2:value>ternaryValuesMED</ns2:value>
+                            </ns2:terminology_id>
+                            <ns2:code_string>1</ns2:code_string>
+                        </ns2:defining_code>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:data>
+        </ns2:items>
+    </ns2:content>
+</ns2:composition>

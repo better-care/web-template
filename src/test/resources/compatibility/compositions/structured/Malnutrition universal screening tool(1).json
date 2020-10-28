@@ -1,0 +1,335 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "malnutrition_universal_screening_tool": {
+    "_uid": [
+      "a14bcf59-5289-48cd-ac78-f54f98d1324f::default::1"
+    ],
+    "language": [
+      {
+        "|code": "en",
+        "|terminology": "ISO_639-1"
+      }
+    ],
+    "territory": [
+      {
+        "|code": "SI",
+        "|terminology": "ISO_3166-1"
+      }
+    ],
+    "context": [
+      {
+        "xds_metadata": [
+          {
+            "document_type": [
+              "SNOMED-CT::443216009::Assessment using malnutrition universal screening tool"
+            ]
+          }
+        ],
+        "start_time": [
+          "2019-10-14T15:35:58.410+02:00"
+        ],
+        "setting": [
+          {
+            "|code": "238",
+            "|value": "other care",
+            "|terminology": "openehr"
+          }
+        ]
+      }
+    ],
+    "malnutrition_universal_screening_tool_must": [
+      {
+        "body_mass_index_score": [
+          {
+            "|code": "at0005",
+            "|value": ">20 (>30 Obese)",
+            "|ordinal": 0
+          }
+        ],
+        "weight_loss_score": [
+          {
+            "|code": "at0009",
+            "|value": "<5 %",
+            "|ordinal": 0
+          }
+        ],
+        "nutritional_intake_acute_disease_effect_score": [
+          {
+            "|code": "at0014",
+            "|value": "Acutely ill and there has been or is likely to be no nutritional intake for >5 days",
+            "|ordinal": 2,
+            "_name": [
+              "Acute disease effect score"
+            ]
+          }
+        ],
+        "total_score": [
+          2
+        ],
+        "risk_category": [
+          {
+            "|code": "at0019",
+            "|value": "High risk",
+            "|terminology": "local"
+          }
+        ],
+        "evaluation_period": [
+          "On admission"
+        ],
+        "time": [
+          "2019-10-14T12:00+02:00"
+        ],
+        "height_determination_method_for_body_mass_index": [
+          {
+            "|code": "at0025",
+            "|value": "Derived from ulna length",
+            "|terminology": "local"
+          }
+        ],
+        "body_mass_index_estimation_method": [
+          {
+            "|code": "at0031",
+            "|value": "Calculation from height and weight measurements",
+            "|terminology": "local"
+          }
+        ],
+        "weight_loss_determination_method": [
+          {
+            "|code": "at0034",
+            "|value": "Direct weight change measurement",
+            "|terminology": "local"
+          }
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "body_weight": [
+      {
+        "any_event": [
+          {
+            "weight": [
+              {
+                "|magnitude": 65.0,
+                "|unit": "kg"
+              }
+            ],
+            "time": [
+              "2019-10-14T15:35:58.410+02:00"
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      },
+      {
+        "_name": [
+          "Body weight 3 to 6 months ago"
+        ],
+        "any_event": [
+          {
+            "weight": [
+              {
+                "|magnitude": 65.0,
+                "|unit": "kg"
+              }
+            ],
+            "time": [
+              "2019-10-14T15:35:58.410+02:00"
+            ]
+          }
+        ],
+        "reporting_status": [
+          {
+            "measurement_input": [
+              "Actual"
+            ],
+            "estimated_date": [
+              "2019-01"
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "height_length": [
+      {
+        "any_event": [
+          {
+            "height_length": [
+              {
+                "|magnitude": 146.0,
+                "|unit": "cm"
+              }
+            ],
+            "time": [
+              "2019-10-14T15:35:58.410+02:00"
+            ]
+          }
+        ],
+        "reporting_status": [
+          {
+            "measurement_input": [
+              "Ulna length used"
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "body_mass_index": [
+      {
+        "any_event": [
+          {
+            "body_mass_index": [
+              {
+                "|magnitude": 30.5,
+                "|unit": "kg/m2"
+              }
+            ],
+            "time": [
+              "2019-10-14T15:35:58.410+02:00"
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "management_guidelines": [
+      {
+        "proposed_activities": [
+          "Treat - Refer to nutrition care plan for MUST 2+."
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "body_segment_-_length": [
+      {
+        "any_event": [
+          {
+            "body_segment": [
+              "Elbow to wrist"
+            ],
+            "laterality": [
+              {
+                "|code": "at0007",
+                "|value": "Right",
+                "|terminology": "local"
+              }
+            ],
+            "length": [
+              {
+                "|magnitude": 19.0,
+                "|unit": "cm"
+              }
+            ],
+            "time": [
+              "2019-10-14T15:35:58.410+02:00"
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "category": [
+      {
+        "|code": "433",
+        "|value": "event",
+        "|terminology": "openehr"
+      }
+    ],
+    "composer": [
+      {
+        "|name": "doctor"
+      }
+    ]
+  }
+}

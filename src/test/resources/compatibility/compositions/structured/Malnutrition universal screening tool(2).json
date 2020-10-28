@@ -1,0 +1,339 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "malnutrition_universal_screening_tool": {
+    "_uid": [
+      "0cdb0967-1881-4628-9c04-a0c0f4f58e94::default::1"
+    ],
+    "language": [
+      {
+        "|code": "en",
+        "|terminology": "ISO_639-1"
+      }
+    ],
+    "territory": [
+      {
+        "|code": "SI",
+        "|terminology": "ISO_3166-1"
+      }
+    ],
+    "context": [
+      {
+        "xds_metadata": [
+          {
+            "document_type": [
+              "SNOMED-CT::443216009::Assessment using malnutrition universal screening tool"
+            ]
+          }
+        ],
+        "start_time": [
+          "2020-07-23T12:29:57.569+02:00"
+        ],
+        "setting": [
+          {
+            "|code": "238",
+            "|value": "other care",
+            "|terminology": "openehr"
+          }
+        ]
+      }
+    ],
+    "malnutrition_universal_screening_tool_must": [
+      {
+        "body_mass_index_score": [
+          {
+            "|code": "at0005",
+            "|value": ">20 (>30 Obese)",
+            "|ordinal": 0
+          }
+        ],
+        "weight_loss_score": [
+          {
+            "|code": "at0010",
+            "|value": "5-10 %",
+            "|ordinal": 1
+          }
+        ],
+        "nutritional_intake_acute_disease_effect_score": [
+          {
+            "|code": "at0013",
+            "|value": "Not acutely ill and sufficient nutritional intake for >5 days",
+            "|ordinal": 0,
+            "_name": [
+              "Acute disease effect score"
+            ]
+          }
+        ],
+        "total_score": [
+          1
+        ],
+        "risk_category": [
+          {
+            "|code": "at0018",
+            "|value": "Medium risk",
+            "|terminology": "local"
+          }
+        ],
+        "evaluation_period": [
+          "On admission"
+        ],
+        "time": [
+          "2020-07-23T12:29:57.569+02:00"
+        ],
+        "height_determination_method_for_body_mass_index": [
+          {
+            "|code": "at0023",
+            "|value": "Direct height measurement",
+            "|terminology": "local"
+          }
+        ],
+        "body_mass_index_estimation_method": [
+          {
+            "|code": "at0031",
+            "|value": "Calculation from height and weight measurements",
+            "|terminology": "local"
+          }
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "body_weight": [
+      {
+        "any_event": [
+          {
+            "weight": [
+              {
+                "|magnitude": 66.0,
+                "|unit": "kg"
+              }
+            ],
+            "time": [
+              "2020-07-23T12:29:57.569+02:00"
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "height_length": [
+      {
+        "any_event": [
+          {
+            "height_length": [
+              {
+                "|magnitude": 176.0,
+                "|unit": "cm"
+              }
+            ],
+            "time": [
+              "2020-07-23T12:29:57.569+02:00"
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "body_mass_index": [
+      {
+        "any_event": [
+          {
+            "body_mass_index": [
+              {
+                "|magnitude": 21.3,
+                "|unit": "kg/m2"
+              }
+            ],
+            "time": [
+              "2020-07-23T12:29:57.569+02:00"
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "management_guidelines": [
+      {
+        "proposed_activities": [
+          "Observe - Refer to nutrition care plan for MUST 1."
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "weight_loss_comparison": [
+      {
+        "body_weight_3_to_6_months_ago": [
+          {
+            "last_3_to_6_month_ago": [
+              {
+                "weight": [
+                  {
+                    "|magnitude": 70.0,
+                    "|unit": "kg"
+                  }
+                ],
+                "time": [
+                  "2020-07-23T12:29:57.569+02:00"
+                ]
+              }
+            ],
+            "language": [
+              {
+                "|code": "en",
+                "|terminology": "ISO_639-1"
+              }
+            ],
+            "encoding": [
+              {
+                "|code": "UTF-8",
+                "|terminology": "IANA_character-sets"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "category": [
+      {
+        "|code": "433",
+        "|value": "event",
+        "|terminology": "openehr"
+      }
+    ],
+    "composer": [
+      {
+        "|name": "Testing Nurse"
+      }
+    ]
+  },
+  "ctx": {
+    "generic_fields": {
+      "/generic-fieldset-259302/generic-label-1366937": [],
+      "/generic-fieldset-259302/generic-label-3860496": [],
+      "/generic-fieldset-259302/generic-label-7485371": [],
+      "/generic-fieldset-259302/generic-boolean-4467135": [],
+      "/generic-fieldset-259302/generic-spacer-6026848": [],
+      "/generic-fieldset-259302/generic-boolean-4057018": [
+        true
+      ],
+      "/generic-fieldset-9730741/generic-label-2480956": [],
+      "/generic-fieldset-9730741/generic-coded_text-2619516": [
+        {
+          "|code": "ddf82dd0-4dc8-4984-8261-0e84fd5e14f5",
+          "|value": "Metric system"
+        }
+      ],
+      "/generic-fieldset-9730741/generic-label-6457776": [],
+      "/generic-fieldset-9730741/generic-label-339881": [],
+      "/generic-fieldset-9730741/generic-label-8533161": [],
+      "/generic-fieldset-9730741/generic-coded_text-7333453": [
+        {
+          "|code": "job9tqzkqdgk13m5rss",
+          "|value": "Normal measurement"
+        }
+      ],
+      "/body_segment_-_length/any_event/generic-label-6323681": [],
+      "/body_segment_-_length/any_event/generic-coded_text-2923183": [],
+      "/body_segment_-_length/any_event/generic-coded_text-8710968": [],
+      "/generic-spacer-1977987": [],
+      "/generic-fieldset-3023387/generic-label-5641515": [],
+      "/generic-fieldset-3023387/generic-label-7554302": [],
+      "/generic-spacer-8120822": [],
+      "/generic-fieldset-3917362/generic-label-6067529": [],
+      "/generic-fieldset-3917362/generic-label-7698003": [],
+      "/generic-fieldset-3917362/generic-boolean-3581475": [
+        true
+      ],
+      "/generic-fieldset-3917362/absence_of_information/generic-label-252113": [],
+      "/generic-fieldset-3917362/generic-input_text-999285": [],
+      "/generic-spacer-4076002": [],
+      "/generic-fieldset-8809733/generic-label-6618905": [],
+      "/generic-fieldset-8809733/generic-label-8054326": [],
+      "/generic-fieldset-8809733/generic-boolean-893348": [
+        false
+      ],
+      "/generic-fieldset-8809733/generic-numeric_field-7862259": [
+        0
+      ],
+      "/generic-spacer-8865872": [],
+      "/generic-fieldset-2360241/generic-label-766566": [],
+      "/generic-fieldset-2360241/generic-label-8162592": [],
+      "/generic-spacer-982334": [],
+      "/generic-fieldset-8027880/generic-label-4295815": [],
+      "/generic-fieldset-8027880/generic-label-4414489": [],
+      "/generic-fieldset-8027880/generic-label-2116632": [],
+      "/generic-fieldset-8027880/generic-label-5042325": [],
+      "/generic-fieldset-8027880/generic-label-9935049": [],
+      "/generic-fieldset-8027880/generic-label-5593019": [],
+      "/generic-fieldset-8027880/generic-label-2648696": [],
+      "/generic-fieldset-8027880/generic-fieldset-7282122/generic-label-3263898": [],
+      "/generic-fieldset-8027880/generic-fieldset-7282122/generic-label-3927134": []
+    }
+  }
+}

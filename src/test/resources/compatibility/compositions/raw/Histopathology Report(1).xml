@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	Copyright 2021 Better Ltd (www.better.care)
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<ns2:composition archetype_node_id="openEHR-EHR-COMPOSITION.report-result.v1" xmlns:te="http://schemas.marand.com/thinkehr/v1" xmlns:ns2="http://schemas.openehr.org/v1">
+    <ns2:name>
+        <ns2:value>Histopathology Report</ns2:value>
+    </ns2:name>
+    <ns2:uid xsi:type="ns2:HIER_OBJECT_ID" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:value>b34a1abe-3964-4fb4-b7d1-ebc8303cfba2::Testing::1</ns2:value>
+    </ns2:uid>
+    <ns2:links>
+        <ns2:meaning>
+            <ns2:value>Link histopathology_report to request.</ns2:value>
+        </ns2:meaning>
+        <ns2:type>
+            <ns2:value>origin</ns2:value>
+        </ns2:type>
+        <ns2:target>
+            <ns2:value>2e4689cf-1a85-4688-aad8-1f3630a04120::Testing::1</ns2:value>
+        </ns2:target>
+    </ns2:links>
+    <ns2:archetype_details>
+        <ns2:archetype_id>
+            <ns2:value>openEHR-EHR-COMPOSITION.report-result.v1</ns2:value>
+        </ns2:archetype_id>
+        <ns2:template_id>
+            <ns2:value>Histopathology Report</ns2:value>
+        </ns2:template_id>
+        <ns2:rm_version>1.0.4</ns2:rm_version>
+    </ns2:archetype_details>
+    <ns2:feeder_audit>
+        <ns2:original_content xsi:type="ns2:DV_PARSABLE" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ns2:value>{"/generic-label-2771981":[],"/generic-spacer-9932385":[],"/generic-label-9585108":[]}</ns2:value>
+            <ns2:formalism>application/json</ns2:formalism>
+        </ns2:original_content>
+        <ns2:originating_system_audit>
+            <ns2:system_id>FormRenderer</ns2:system_id>
+        </ns2:originating_system_audit>
+    </ns2:feeder_audit>
+    <ns2:language>
+        <ns2:terminology_id>
+            <ns2:value>ISO_639-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>sl</ns2:code_string>
+    </ns2:language>
+    <ns2:territory>
+        <ns2:terminology_id>
+            <ns2:value>ISO_3166-1</ns2:value>
+        </ns2:terminology_id>
+        <ns2:code_string>SI</ns2:code_string>
+    </ns2:territory>
+    <ns2:category>
+        <ns2:value>event</ns2:value>
+        <ns2:defining_code>
+            <ns2:terminology_id>
+                <ns2:value>openehr</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>433</ns2:code_string>
+        </ns2:defining_code>
+    </ns2:category>
+    <ns2:composer xsi:type="ns2:PARTY_IDENTIFIED" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>gyn2</ns2:name>
+    </ns2:composer>
+    <ns2:context>
+        <ns2:start_time>
+            <ns2:value>2020-04-08T12:05:16.145+02:00</ns2:value>
+        </ns2:start_time>
+        <ns2:setting>
+            <ns2:value>other care</ns2:value>
+            <ns2:defining_code>
+                <ns2:terminology_id>
+                    <ns2:value>openehr</ns2:value>
+                </ns2:terminology_id>
+                <ns2:code_string>238</ns2:code_string>
+            </ns2:defining_code>
+        </ns2:setting>
+        <ns2:other_context xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ns2:name>
+                <ns2:value>Tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002.1">
+                <ns2:name>
+                    <ns2:value>Report ID</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_TEXT">
+                    <ns2:value>cistipodatki08</ns2:value>
+                </ns2:value>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
+                <ns2:name>
+                    <ns2:value>Status</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                    <ns2:value>Avtoriziran</ns2:value>
+                    <ns2:defining_code>
+                        <ns2:terminology_id>
+                            <ns2:value>B03_report_status</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>3</ns2:code_string>
+                    </ns2:defining_code>
+                </ns2:value>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0.3">
+                <ns2:name>
+                    <ns2:value>Report Version</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_COUNT">
+                    <ns2:magnitude>1</ns2:magnitude>
+                </ns2:value>
+            </ns2:items>
+        </ns2:other_context>
+    </ns2:context>
+    <ns2:content xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.laboratory_test_result.v0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Laboratory test result</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-OBSERVATION.laboratory_test_result.v0</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:language>
+            <ns2:terminology_id>
+                <ns2:value>ISO_639-1</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>sl</ns2:code_string>
+        </ns2:language>
+        <ns2:encoding>
+            <ns2:terminology_id>
+                <ns2:value>IANA_character-sets</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>UTF-8</ns2:code_string>
+        </ns2:encoding>
+        <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+        <ns2:protocol xsi:type="ns2:ITEM_TREE" archetype_node_id="at0004">
+            <ns2:name>
+                <ns2:value>Tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0094">
+                <ns2:name>
+                    <ns2:value>Test request details</ns2:value>
+                </ns2:name>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0062">
+                    <ns2:name>
+                        <ns2:value>Request ID</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_TEXT">
+                        <ns2:value>2e4689cf-1a85-4688-aad8-1f3630a04120::Testing::1</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.organisation.v0">
+                <ns2:name>
+                    <ns2:value>Zora</ns2:value>
+                </ns2:name>
+                <ns2:archetype_details>
+                    <ns2:archetype_id>
+                        <ns2:value>openEHR-EHR-CLUSTER.organisation.v0</ns2:value>
+                    </ns2:archetype_id>
+                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                </ns2:archetype_details>
+                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                    <ns2:name>
+                        <ns2:value>Organisation name</ns2:value>
+                    </ns2:name>
+                    <ns2:value xsi:type="ns2:DV_TEXT">
+                        <ns2:value>DP ZORA</ns2:value>
+                    </ns2:value>
+                </ns2:items>
+            </ns2:items>
+        </ns2:protocol>
+        <ns2:data archetype_node_id="at0001">
+            <ns2:name>
+                <ns2:value>Event Series</ns2:value>
+            </ns2:name>
+            <ns2:origin>
+                <ns2:value>2020-04-08T12:05:16.145+02:00</ns2:value>
+            </ns2:origin>
+            <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                <ns2:name>
+                    <ns2:value>Any event</ns2:value>
+                </ns2:name>
+                <ns2:time>
+                    <ns2:value>2020-04-08T12:05:16.145+02:00</ns2:value>
+                </ns2:time>
+                <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                    <ns2:name>
+                        <ns2:value>Tree</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
+                        <ns2:name>
+                            <ns2:value>Test name</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>Histopathology finding</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>SNOMEDCT</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>250537006</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.specimen.v0">
+                        <ns2:name>
+                            <ns2:value>Specimen</ns2:value>
+                        </ns2:name>
+                        <ns2:archetype_details>
+                            <ns2:archetype_id>
+                                <ns2:value>openEHR-EHR-CLUSTER.specimen.v0</ns2:value>
+                            </ns2:archetype_id>
+                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                        </ns2:archetype_details>
+                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0046">
+                            <ns2:name>
+                                <ns2:value>Processing</ns2:value>
+                            </ns2:name>
+                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0034">
+                                <ns2:name>
+                                    <ns2:value>Date and time specimen received</ns2:value>
+                                </ns2:name>
+                                <ns2:value xsi:type="ns2:DV_DATE_TIME">
+                                    <ns2:value>2020-04-01T12:00:00+02:00</ns2:value>
+                                </ns2:value>
+                            </ns2:items>
+                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                                <ns2:name>
+                                    <ns2:value>Laboratory specimen ID</ns2:value>
+                                </ns2:name>
+                                <ns2:value xsi:type="ns2:DV_TEXT">
+                                    <ns2:value>cistipodatki08</ns2:value>
+                                </ns2:value>
+                            </ns2:items>
+                        </ns2:items>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0075">
+                        <ns2:name>
+                            <ns2:value>Date of report</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_DATE_TIME">
+                            <ns2:value>2020-04-08T12:01:00+02:00</ns2:value>
+                        </ns2:value>
+                    </ns2:items>
+                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.histopathology_findings.v0">
+                        <ns2:name>
+                            <ns2:value>Histopathology findings</ns2:value>
+                        </ns2:name>
+                        <ns2:archetype_details>
+                            <ns2:archetype_id>
+                                <ns2:value>openEHR-EHR-CLUSTER.histopathology_findings.v0</ns2:value>
+                            </ns2:archetype_id>
+                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                        </ns2:archetype_details>
+                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0012">
+                            <ns2:name xsi:type="ns2:DV_CODED_TEXT">
+                                <ns2:value>Histopathology examination</ns2:value>
+                                <ns2:defining_code>
+                                    <ns2:terminology_id>
+                                        <ns2:value>local</ns2:value>
+                                    </ns2:terminology_id>
+                                    <ns2:code_string>at0004</ns2:code_string>
+                                </ns2:defining_code>
+                            </ns2:name>
+                            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0005">
+                                <ns2:name>
+                                    <ns2:value>Histopathology finding</ns2:value>
+                                </ns2:name>
+                                <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.microscopy_cervical_carcinoma.v0">
+                                    <ns2:name>
+                                        <ns2:value>Microscopic findings - Cervical cancer</ns2:value>
+                                    </ns2:name>
+                                    <ns2:archetype_details>
+                                        <ns2:archetype_id>
+                                            <ns2:value>openEHR-EHR-CLUSTER.microscopy_cervical_carcinoma.v0</ns2:value>
+                                        </ns2:archetype_id>
+                                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                                    </ns2:archetype_details>
+                                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0003">
+                                        <ns2:name>
+                                            <ns2:value>Malignant tumour</ns2:value>
+                                        </ns2:name>
+                                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                            <ns2:value>Ni prisoten</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>BJ_malignant_tumour_presence</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>2</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:value>
+                                    </ns2:items>
+                                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0125">
+                                        <ns2:name>
+                                            <ns2:value>Extent of invasion</ns2:value>
+                                        </ns2:name>
+                                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0151">
+                                            <ns2:name>
+                                                <ns2:value>Extent to vagina</ns2:value>
+                                            </ns2:name>
+                                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0130">
+                                                <ns2:name>
+                                                    <ns2:value>Body site</ns2:value>
+                                                </ns2:name>
+                                                <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                                    <ns2:value>Nožnica</ns2:value>
+                                                    <ns2:defining_code>
+                                                        <ns2:terminology_id>
+                                                            <ns2:value>BL_tumour_tissue_invasion</ns2:value>
+                                                        </ns2:terminology_id>
+                                                        <ns2:code_string>1</ns2:code_string>
+                                                    </ns2:defining_code>
+                                                </ns2:value>
+                                            </ns2:items>
+                                        </ns2:items>
+                                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0151">
+                                            <ns2:name>
+                                                <ns2:value>Extent to lower uterine segment</ns2:value>
+                                            </ns2:name>
+                                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0130">
+                                                <ns2:name>
+                                                    <ns2:value>Body site</ns2:value>
+                                                </ns2:name>
+                                                <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                                    <ns2:value>Spodnji segment maternice</ns2:value>
+                                                    <ns2:defining_code>
+                                                        <ns2:terminology_id>
+                                                            <ns2:value>BL_tumour_tissue_invasion</ns2:value>
+                                                        </ns2:terminology_id>
+                                                        <ns2:code_string>2</ns2:code_string>
+                                                    </ns2:defining_code>
+                                                </ns2:value>
+                                            </ns2:items>
+                                        </ns2:items>
+                                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0151">
+                                            <ns2:name>
+                                                <ns2:value>Extent to endometrium</ns2:value>
+                                            </ns2:name>
+                                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0130">
+                                                <ns2:name>
+                                                    <ns2:value>Body site</ns2:value>
+                                                </ns2:name>
+                                                <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                                    <ns2:value>Endometrij</ns2:value>
+                                                    <ns2:defining_code>
+                                                        <ns2:terminology_id>
+                                                            <ns2:value>BL_tumour_tissue_invasion</ns2:value>
+                                                        </ns2:terminology_id>
+                                                        <ns2:code_string>3</ns2:code_string>
+                                                    </ns2:defining_code>
+                                                </ns2:value>
+                                            </ns2:items>
+                                        </ns2:items>
+                                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0151">
+                                            <ns2:name>
+                                                <ns2:value>Extent to myometrium</ns2:value>
+                                            </ns2:name>
+                                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0130">
+                                                <ns2:name>
+                                                    <ns2:value>Body site</ns2:value>
+                                                </ns2:name>
+                                                <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                                    <ns2:value>Miometrij</ns2:value>
+                                                    <ns2:defining_code>
+                                                        <ns2:terminology_id>
+                                                            <ns2:value>BL_tumour_tissue_invasion</ns2:value>
+                                                        </ns2:terminology_id>
+                                                        <ns2:code_string>4</ns2:code_string>
+                                                    </ns2:defining_code>
+                                                </ns2:value>
+                                            </ns2:items>
+                                        </ns2:items>
+                                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0151">
+                                            <ns2:name>
+                                                <ns2:value>Extent to parametrium</ns2:value>
+                                            </ns2:name>
+                                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0130">
+                                                <ns2:name>
+                                                    <ns2:value>Body site</ns2:value>
+                                                </ns2:name>
+                                                <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                                    <ns2:value>Parametrij</ns2:value>
+                                                    <ns2:defining_code>
+                                                        <ns2:terminology_id>
+                                                            <ns2:value>BL_tumour_tissue_invasion</ns2:value>
+                                                        </ns2:terminology_id>
+                                                        <ns2:code_string>5</ns2:code_string>
+                                                    </ns2:defining_code>
+                                                </ns2:value>
+                                            </ns2:items>
+                                        </ns2:items>
+                                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0151">
+                                            <ns2:name>
+                                                <ns2:value>Extent to fallopian tube</ns2:value>
+                                            </ns2:name>
+                                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0130">
+                                                <ns2:name>
+                                                    <ns2:value>Body site</ns2:value>
+                                                </ns2:name>
+                                                <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                                    <ns2:value>Jajcevod</ns2:value>
+                                                    <ns2:defining_code>
+                                                        <ns2:terminology_id>
+                                                            <ns2:value>BL_tumour_tissue_invasion</ns2:value>
+                                                        </ns2:terminology_id>
+                                                        <ns2:code_string>6</ns2:code_string>
+                                                    </ns2:defining_code>
+                                                </ns2:value>
+                                            </ns2:items>
+                                        </ns2:items>
+                                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0151">
+                                            <ns2:name>
+                                                <ns2:value>Extent to ovary</ns2:value>
+                                            </ns2:name>
+                                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0130">
+                                                <ns2:name>
+                                                    <ns2:value>Body site</ns2:value>
+                                                </ns2:name>
+                                                <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                                    <ns2:value>Jajčnik</ns2:value>
+                                                    <ns2:defining_code>
+                                                        <ns2:terminology_id>
+                                                            <ns2:value>BL_tumour_tissue_invasion</ns2:value>
+                                                        </ns2:terminology_id>
+                                                        <ns2:code_string>7</ns2:code_string>
+                                                    </ns2:defining_code>
+                                                </ns2:value>
+                                            </ns2:items>
+                                        </ns2:items>
+                                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0151">
+                                            <ns2:name>
+                                                <ns2:value>Extent to bladder</ns2:value>
+                                            </ns2:name>
+                                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0130">
+                                                <ns2:name>
+                                                    <ns2:value>Body site</ns2:value>
+                                                </ns2:name>
+                                                <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                                    <ns2:value>Mehur</ns2:value>
+                                                    <ns2:defining_code>
+                                                        <ns2:terminology_id>
+                                                            <ns2:value>BL_tumour_tissue_invasion</ns2:value>
+                                                        </ns2:terminology_id>
+                                                        <ns2:code_string>8</ns2:code_string>
+                                                    </ns2:defining_code>
+                                                </ns2:value>
+                                            </ns2:items>
+                                        </ns2:items>
+                                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0151">
+                                            <ns2:name>
+                                                <ns2:value>Extent to rectum</ns2:value>
+                                            </ns2:name>
+                                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0130">
+                                                <ns2:name>
+                                                    <ns2:value>Body site</ns2:value>
+                                                </ns2:name>
+                                                <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                                    <ns2:value>Rektum</ns2:value>
+                                                    <ns2:defining_code>
+                                                        <ns2:terminology_id>
+                                                            <ns2:value>BL_tumour_tissue_invasion</ns2:value>
+                                                        </ns2:terminology_id>
+                                                        <ns2:code_string>9</ns2:code_string>
+                                                    </ns2:defining_code>
+                                                </ns2:value>
+                                            </ns2:items>
+                                        </ns2:items>
+                                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0151">
+                                            <ns2:name>
+                                                <ns2:value>Extent to other organs or tissues</ns2:value>
+                                            </ns2:name>
+                                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0130">
+                                                <ns2:name>
+                                                    <ns2:value>Body site</ns2:value>
+                                                </ns2:name>
+                                                <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                                    <ns2:value>Ostali organi ali tkiva</ns2:value>
+                                                    <ns2:defining_code>
+                                                        <ns2:terminology_id>
+                                                            <ns2:value>BL_tumour_tissue_invasion</ns2:value>
+                                                        </ns2:terminology_id>
+                                                        <ns2:code_string>10</ns2:code_string>
+                                                    </ns2:defining_code>
+                                                </ns2:value>
+                                            </ns2:items>
+                                        </ns2:items>
+                                    </ns2:items>
+                                    <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0107">
+                                        <ns2:name>
+                                            <ns2:value>Pathological staging</ns2:value>
+                                        </ns2:name>
+                                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.figo_staging-cervical.v0">
+                                            <ns2:name>
+                                                <ns2:value>Tumour - Cervical Cancer FIGO staging</ns2:value>
+                                            </ns2:name>
+                                            <ns2:archetype_details>
+                                                <ns2:archetype_id>
+                                                    <ns2:value>openEHR-EHR-CLUSTER.figo_staging-cervical.v0</ns2:value>
+                                                </ns2:archetype_id>
+                                                <ns2:rm_version>1.0.4</ns2:rm_version>
+                                            </ns2:archetype_details>
+                                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0018">
+                                                <ns2:name>
+                                                    <ns2:value>FIGO Edition</ns2:value>
+                                                </ns2:name>
+                                                <ns2:value xsi:type="ns2:DV_TEXT">
+                                                    <ns2:value>2018</ns2:value>
+                                                </ns2:value>
+                                            </ns2:items>
+                                        </ns2:items>
+                                        <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.tnm_staging.v1">
+                                            <ns2:name>
+                                                <ns2:value>Tumour - TNM Cancer staging</ns2:value>
+                                            </ns2:name>
+                                            <ns2:archetype_details>
+                                                <ns2:archetype_id>
+                                                    <ns2:value>openEHR-EHR-CLUSTER.tnm_staging.v1</ns2:value>
+                                                </ns2:archetype_id>
+                                                <ns2:rm_version>1.0.4</ns2:rm_version>
+                                            </ns2:archetype_details>
+                                            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0043">
+                                                <ns2:name>
+                                                    <ns2:value>TNM Edition</ns2:value>
+                                                </ns2:name>
+                                                <ns2:value xsi:type="ns2:DV_TEXT">
+                                                    <ns2:value>8th edition 2016</ns2:value>
+                                                </ns2:value>
+                                            </ns2:items>
+                                        </ns2:items>
+                                    </ns2:items>
+                                </ns2:items>
+                            </ns2:items>
+                            <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.specimen.v0">
+                                <ns2:name>
+                                    <ns2:value>Specimen</ns2:value>
+                                </ns2:name>
+                                <ns2:archetype_details>
+                                    <ns2:archetype_id>
+                                        <ns2:value>openEHR-EHR-CLUSTER.specimen.v0</ns2:value>
+                                    </ns2:archetype_id>
+                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                </ns2:archetype_details>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0015">
+                                    <ns2:name>
+                                        <ns2:value>Datetime collected</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_DATE_TIME">
+                                        <ns2:value>2020-04-01T11:00:00+02:00</ns2:value>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.anatomical_location.v1">
+                                    <ns2:name>
+                                        <ns2:value>Anatomical location</ns2:value>
+                                    </ns2:name>
+                                    <ns2:archetype_details>
+                                        <ns2:archetype_id>
+                                            <ns2:value>openEHR-EHR-CLUSTER.anatomical_location.v1</ns2:value>
+                                        </ns2:archetype_id>
+                                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                                    </ns2:archetype_details>
+                                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
+                                        <ns2:name>
+                                            <ns2:value>Site of procedure</ns2:value>
+                                        </ns2:name>
+                                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                            <ns2:value>Maternični vrat</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>F_site_procedure</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>1</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:value>
+                                    </ns2:items>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0007">
+                                    <ns2:name>
+                                        <ns2:value>Procedure performed</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                        <ns2:value>Odščip</ns2:value>
+                                        <ns2:defining_code>
+                                            <ns2:terminology_id>
+                                                <ns2:value>E_procedure</ns2:value>
+                                            </ns2:terminology_id>
+                                            <ns2:code_string>1</ns2:code_string>
+                                        </ns2:defining_code>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0079">
+                                    <ns2:name>
+                                        <ns2:value>Procedure group</ns2:value>
+                                    </ns2:name>
+                                    <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                        <ns2:value>Abrazija</ns2:value>
+                                        <ns2:defining_code>
+                                            <ns2:terminology_id>
+                                                <ns2:value>K_procedure_group</ns2:value>
+                                            </ns2:terminology_id>
+                                            <ns2:code_string>2</ns2:code_string>
+                                        </ns2:defining_code>
+                                    </ns2:value>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.specimen_container.v0">
+                                    <ns2:name>
+                                        <ns2:value>Specimen container</ns2:value>
+                                    </ns2:name>
+                                    <ns2:archetype_details>
+                                        <ns2:archetype_id>
+                                            <ns2:value>openEHR-EHR-CLUSTER.specimen_container.v0</ns2:value>
+                                        </ns2:archetype_id>
+                                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                                    </ns2:archetype_details>
+                                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0003">
+                                        <ns2:name>
+                                            <ns2:value>Container Identifier</ns2:value>
+                                        </ns2:name>
+                                        <ns2:value xsi:type="ns2:DV_TEXT">
+                                            <ns2:value>A</ns2:value>
+                                        </ns2:value>
+                                    </ns2:items>
+                                </ns2:items>
+                                <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0039">
+                                    <ns2:name>
+                                        <ns2:value>Specimen quality</ns2:value>
+                                    </ns2:name>
+                                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0041">
+                                        <ns2:name>
+                                            <ns2:value>Adequacy for testing</ns2:value>
+                                        </ns2:name>
+                                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                                            <ns2:value>Uporaben</ns2:value>
+                                            <ns2:defining_code>
+                                                <ns2:terminology_id>
+                                                    <ns2:value>D_adequacy</ns2:value>
+                                                </ns2:terminology_id>
+                                                <ns2:code_string>1</ns2:code_string>
+                                            </ns2:defining_code>
+                                        </ns2:value>
+                                    </ns2:items>
+                                </ns2:items>
+                            </ns2:items>
+                        </ns2:items>
+                    </ns2:items>
+                </ns2:data>
+            </ns2:events>
+        </ns2:data>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.tnm_stage_pathological.v0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>TNM stage - pathological</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-OBSERVATION.tnm_stage_pathological.v0</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:language>
+            <ns2:terminology_id>
+                <ns2:value>ISO_639-1</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>sl</ns2:code_string>
+        </ns2:language>
+        <ns2:encoding>
+            <ns2:terminology_id>
+                <ns2:value>IANA_character-sets</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>UTF-8</ns2:code_string>
+        </ns2:encoding>
+        <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+        <ns2:protocol xsi:type="ns2:ITEM_TREE" archetype_node_id="at0004">
+            <ns2:name>
+                <ns2:value>Tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0021">
+                <ns2:name>
+                    <ns2:value>TNM Edition</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_TEXT">
+                    <ns2:value>8th edition 2016</ns2:value>
+                </ns2:value>
+            </ns2:items>
+        </ns2:protocol>
+        <ns2:data archetype_node_id="at0001">
+            <ns2:name>
+                <ns2:value>Event Series</ns2:value>
+            </ns2:name>
+            <ns2:origin>
+                <ns2:value>2020-04-08T12:05:16.145+02:00</ns2:value>
+            </ns2:origin>
+            <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                <ns2:name>
+                    <ns2:value>Any event</ns2:value>
+                </ns2:name>
+                <ns2:time>
+                    <ns2:value>2020-04-08T12:05:16.145+02:00</ns2:value>
+                </ns2:time>
+                <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                    <ns2:name>
+                        <ns2:value>Tree</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0008">
+                        <ns2:name>
+                            <ns2:value>Primary tumour (pT)</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>No evidence of primary tumour</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>BD_pTNM_primary_tumour</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>T0</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:data>
+            </ns2:events>
+        </ns2:data>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.figo_stage_pathological.v0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>FIGO stage - pathological</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-OBSERVATION.figo_stage_pathological.v0</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:language>
+            <ns2:terminology_id>
+                <ns2:value>ISO_639-1</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>sl</ns2:code_string>
+        </ns2:language>
+        <ns2:encoding>
+            <ns2:terminology_id>
+                <ns2:value>IANA_character-sets</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>UTF-8</ns2:code_string>
+        </ns2:encoding>
+        <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+        <ns2:protocol xsi:type="ns2:ITEM_TREE" archetype_node_id="at0004">
+            <ns2:name>
+                <ns2:value>Item tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
+                <ns2:name>
+                    <ns2:value>FIGO Edition</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_TEXT">
+                    <ns2:value>2018</ns2:value>
+                </ns2:value>
+            </ns2:items>
+        </ns2:protocol>
+        <ns2:data archetype_node_id="at0001">
+            <ns2:name>
+                <ns2:value>History</ns2:value>
+            </ns2:name>
+            <ns2:origin>
+                <ns2:value>2020-04-08T12:05:16.145+02:00</ns2:value>
+            </ns2:origin>
+            <ns2:events xsi:type="ns2:POINT_EVENT" archetype_node_id="at0002">
+                <ns2:name>
+                    <ns2:value>Any event</ns2:value>
+                </ns2:name>
+                <ns2:time>
+                    <ns2:value>2020-04-08T12:05:16.145+02:00</ns2:value>
+                </ns2:time>
+                <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0003">
+                    <ns2:name>
+                        <ns2:value>Tree</ns2:value>
+                    </ns2:name>
+                    <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0010">
+                        <ns2:name>
+                            <ns2:value>Primary tumour (pT)</ns2:value>
+                        </ns2:name>
+                        <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                            <ns2:value>-</ns2:value>
+                            <ns2:defining_code>
+                                <ns2:terminology_id>
+                                    <ns2:value>BF_FIGO_staging</ns2:value>
+                                </ns2:terminology_id>
+                                <ns2:code_string>0</ns2:code_string>
+                            </ns2:defining_code>
+                        </ns2:value>
+                    </ns2:items>
+                </ns2:data>
+            </ns2:events>
+        </ns2:data>
+    </ns2:content>
+    <ns2:content xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.recommendation-histopathology.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:name>
+            <ns2:value>Recommendation</ns2:value>
+        </ns2:name>
+        <ns2:archetype_details>
+            <ns2:archetype_id>
+                <ns2:value>openEHR-EHR-EVALUATION.recommendation-histopathology.v1</ns2:value>
+            </ns2:archetype_id>
+            <ns2:rm_version>1.0.4</ns2:rm_version>
+        </ns2:archetype_details>
+        <ns2:language>
+            <ns2:terminology_id>
+                <ns2:value>ISO_639-1</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>sl</ns2:code_string>
+        </ns2:language>
+        <ns2:encoding>
+            <ns2:terminology_id>
+                <ns2:value>IANA_character-sets</ns2:value>
+            </ns2:terminology_id>
+            <ns2:code_string>UTF-8</ns2:code_string>
+        </ns2:encoding>
+        <ns2:subject xsi:type="ns2:PARTY_SELF"/>
+        <ns2:data xsi:type="ns2:ITEM_TREE" archetype_node_id="at0001">
+            <ns2:name>
+                <ns2:value>Tree</ns2:value>
+            </ns2:name>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002.1">
+                <ns2:name>
+                    <ns2:value>Recommendation</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                    <ns2:value>Ponovna biopsija</ns2:value>
+                    <ns2:defining_code>
+                        <ns2:terminology_id>
+                            <ns2:value>BN_histo_recommendations</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>1</ns2:code_string>
+                    </ns2:defining_code>
+                </ns2:value>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0.1">
+                <ns2:name>
+                    <ns2:value>Histopathology findings match cytopathology findings</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                    <ns2:value>Ne</ns2:value>
+                    <ns2:defining_code>
+                        <ns2:terminology_id>
+                            <ns2:value>local</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>at0.3</ns2:code_string>
+                    </ns2:defining_code>
+                </ns2:value>
+            </ns2:items>
+            <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0.5">
+                <ns2:name>
+                    <ns2:value>Multidisciplinary consilium review recommended</ns2:value>
+                </ns2:name>
+                <ns2:value xsi:type="ns2:DV_CODED_TEXT">
+                    <ns2:value>Ne</ns2:value>
+                    <ns2:defining_code>
+                        <ns2:terminology_id>
+                            <ns2:value>local</ns2:value>
+                        </ns2:terminology_id>
+                        <ns2:code_string>at0.8</ns2:code_string>
+                    </ns2:defining_code>
+                </ns2:value>
+            </ns2:items>
+        </ns2:data>
+    </ns2:content>
+</ns2:composition>

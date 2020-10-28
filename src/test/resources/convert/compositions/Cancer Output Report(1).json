@@ -1,0 +1,54 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "ctx/composer_name": "Testing Doctor",
+  "ctx/health_care_facility|id": "999999-345",
+  "ctx/health_care_facility|name": "Testing Hospital",
+  "ctx/id_namespace": "default",
+  "ctx/id_scheme": "2.16.840.1.113883.2.1.4.3",
+  "ctx/language": "en",
+  "ctx/territory": "GB",
+  "ctx/time": "2015-02-22T00:11:02.518+02:00",
+  "cancer_mdt_output_report/referral_details:0/mdt_referral/request:0/service_requested": "MDT referral",
+  "cancer_mdt_output_report/referral_details:0/mdt_referral/request:0/urgency|code": "at0138",
+  "cancer_mdt_output_report/referral_details:0/mdt_referral/request:0/date_or_time_service_required": "2015-02-22T00:11:02.518+02:00",
+  "cancer_mdt_output_report/referral_details:0/mdt_referral/request:0/timing": "R1/2015-06-03T17:00:00+02:00/P2M",
+  "cancer_mdt_output_report/referral_details:0/mdt_referral/narrative": "Human readable instruction narrative",
+  "cancer_mdt_output_report/referral_details:0/original_referral/request:0/service_requested": "Oncology referral",
+  "cancer_mdt_output_report/referral_details:0/original_referral/request:0/breach_date": "2015-06-03T15:37:40.970Z",
+  "cancer_mdt_output_report/referral_details:0/original_referral/request:0/timing": "R2/2015-06-03T17:00:00+02:00/P3M",
+  "cancer_mdt_output_report/referral_details:0/original_referral/narrative": "Human readable instruction narrative",
+  "cancer_mdt_output_report/history:0/question_for_mdt/question_to_mdt": "Worsening low back pain",
+  "cancer_mdt_output_report/history:0/story_history:0/story:0": "Gradually worsening low back pain over 3 week period",
+  "cancer_mdt_output_report/history:0/significant_past_medical_history/problem_diagnosis:0/past_medical_history": "Angina",
+  "cancer_mdt_output_report/history:0/significant_past_medical_history/problem_diagnosis:0/date_of_onset": "2005-05-03T15:37:40.970Z",
+  "cancer_mdt_output_report/history:0/significant_past_medical_history/problem_diagnosis:0/comment": "Under control",
+  "cancer_mdt_output_report/history:0/signifcant_factors/laboratory_test:0/any_event:0/test_name": "PSA measurement",
+  "cancer_mdt_output_report/history:0/signifcant_factors/laboratory_test:0/any_event:0/test_result|magnitude": 8.2,
+  "cancer_mdt_output_report/history:0/signifcant_factors/laboratory_test:0/any_event:0/test_result|unit": "ng/ml",
+  "cancer_mdt_output_report/history:0/signifcant_factors/physical_examination_findings:0/any_event:0/interpretation:0": "Normal digital rectal examination",
+  "cancer_mdt_output_report/history:0/investigations_and_results:0/imaging_examination_result:0/examination_result_name": "Examination result name 18",
+  "cancer_mdt_output_report/history:0/investigations_and_results:0/imaging_examination_result:0/overall_result_status|code": "at0011",
+  "cancer_mdt_output_report/history:0/investigations_and_results:0/imaging_examination_result:0/conclusion": "Conclusion 2",
+  "cancer_mdt_output_report/history:0/investigations_and_results:0/histopathology:0/test_name": "Histopathology",
+  "cancer_mdt_output_report/history:0/investigations_and_results:0/histopathology:0/overall_interpretation": "Prostatic carcinoma",
+  "cancer_mdt_output_report/history:0/assessment_scales:0/who_performance_status:0/performance_status|code": "at0006",
+  "cancer_mdt_output_report/history:0/assessment_scales:0/who_performance_status:0/performance_status|value": "Ambulatory and light work",
+  "cancer_mdt_output_report/history:0/assessment_scales:0/who_performance_status:0/performance_status|ordinal": 2,
+  "cancer_mdt_output_report/problems_and_diagnoses:0/primary_diagnoses/problem_diagnosis:0/problem_diagnosis_name:code": "399490008",
+  "cancer_mdt_output_report/problems_and_diagnoses:0/primary_diagnoses/problem_diagnosis:0/date_of_onset": "2014-06-03T15:37:40.970Z",
+  "cancer_mdt_output_report/problems_and_diagnoses:0/primary_diagnoses/problem_diagnosis:0/tumour_-_tnm_cancer_staging:0/clinical_ctnm/clinical_staging": "T2 M0 N0",
+  "cancer_mdt_output_report/plan_and_requested_actions:0/recommendation:0/recommendation": "No evidewnce of spinal secondaries. Refer back to GP"
+}

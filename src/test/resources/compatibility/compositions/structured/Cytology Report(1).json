@@ -1,0 +1,217 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "cytology_report": {
+    "_link": [
+      {
+        "|meaning": "Link cytology report to request.",
+        "|type": "origin",
+        "|target": "5c9ee4d1-2d98-4977-9a9b-ced3970bfd7b"
+      }
+    ],
+    "_uid": [
+      "6d26ae52-fd9f-432b-b1e0-47d3f2ba1b8b::Testing::1"
+    ],
+    "language": [
+      {
+        "|code": "sl",
+        "|terminology": "ISO_639-1"
+      }
+    ],
+    "territory": [
+      {
+        "|code": "SI",
+        "|terminology": "ISO_3166-1"
+      }
+    ],
+    "context": [
+      {
+        "_location": [
+          "21"
+        ],
+        "start_time": [
+          "2020-04-10T17:50:21.549+02:00"
+        ],
+        "setting": [
+          {
+            "|code": "238",
+            "|value": "other care",
+            "|terminology": "openehr"
+          }
+        ]
+      }
+    ],
+    "laboratory_test_result": [
+      {
+        "test_name": [
+          {
+            "|code": "116147009",
+            "|value": "116147009",
+            "|terminology": "SNOMEDCT"
+          }
+        ],
+        "specimen": [
+          {
+            "processing": [
+              {
+                "date_and_time_specimen_received": [
+                  "2020-04-10T17:48:36+02:00"
+                ],
+                "laboratory_specimen_id": [
+                  "903000240-miha-test-lab"
+                ],
+                "specimen_quality": [
+                  {
+                    "specimen_adequacy": [
+                      {
+                        "|code": "1",
+                        "|value": "Uporaben",
+                        "|terminology": "D_adequacy"
+                      }
+                    ],
+                    "quality_indicators": [
+                      {
+                        "|code": "1",
+                        "|value": "Prekrit s krvjo",
+                        "|terminology": "D1_quality_indicators"
+                      },
+                      {
+                        "|code": "2",
+                        "|value": "Prekrit z vnetnicami",
+                        "|terminology": "D1_quality_indicators"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "date_of_report": [
+          "2020-04-10T15:50:21.344Z"
+        ],
+        "cytology_findings": [
+          {
+            "negative_for_intraepithelial_leison_or_malignancy": [
+              {
+                "non-neoplastic_findings": [
+                  {
+                    "non-neoplastic_cellular_variations": [
+                      {
+                        "|code": "1",
+                        "|value": "Ploščatocelična metaplazija",
+                        "|terminology": "AF00.0.0_non_neoplastic_variations"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "recommendations": [
+              {
+                "|code": "1",
+                "|value": "Kontrola oziroma postopek kot je zapisano v smernicah za ginekologe",
+                "|terminology": "AH_recommendations"
+              }
+            ]
+          }
+        ],
+        "time": [
+          "2020-04-10T17:50:21.549+02:00"
+        ],
+        "receiving_laboratory": [
+          {
+            "organisation_name": [
+              "Hospital"
+            ],
+            "identifier": [
+              "21"
+            ],
+            "contact_details": [
+              {
+                "professional_individual_demographics": [
+                  {
+                    "person_name": [
+                      {
+                        "structured_name": [
+                          {
+                            "given_name": [
+                              "Testing"
+                            ],
+                            "family_name": [
+                              "Doctor"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "professional_details": [
+                      {
+                        "professional_identifier": [
+                          "1175"
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "role_in_organisation": [
+                  {
+                    "|code": "1",
+                    "|value": "Mlajši presejalec",
+                    "|terminology": "laboratoryExperienceLevel"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "test_request_details": [
+          {
+            "request_id": [
+              "5c9ee4d1-2d98-4977-9a9b-ced3970bfd7b::Testing::1"
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "category": [
+      {
+        "|code": "433",
+        "|value": "event",
+        "|terminology": "openehr"
+      }
+    ],
+    "composer": [
+      {
+        "|id": "428c1e45-858e-446a-b797-95b963e5ae19",
+        "|id_scheme": "identity",
+        "|id_namespace": "com.marand.mafng.security.identity",
+        "|name": "Super Admin"
+      }
+    ]
+  }
+}

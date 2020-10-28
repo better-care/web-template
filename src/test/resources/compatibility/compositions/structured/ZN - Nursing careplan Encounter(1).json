@@ -1,0 +1,2026 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+{
+  "careplan": {
+    "_uid": [
+      "0e3bf40b-c889-4348-a2f1-c1f0b4dfff89::default::1"
+    ],
+    "language": [
+      {
+        "|code": "sl",
+        "|terminology": "ISO_639-1"
+      }
+    ],
+    "territory": [
+      {
+        "|code": "SI",
+        "|terminology": "ISO_3166-1"
+      }
+    ],
+    "context": [
+      {
+        "context_detail": [
+          {
+            "period_of_care_identifier": [
+              "388125241"
+            ]
+          }
+        ],
+        "start_time": [
+          "2015-01-13T00:00+01:00"
+        ],
+        "setting": [
+          {
+            "|code": "238",
+            "|value": "other care",
+            "|terminology": "openehr"
+          }
+        ]
+      }
+    ],
+    "care_plan": [
+      {
+        "problem_plan": [
+          {
+            "problem_diagnosis": [
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "nursing_diagnosis": [
+                  {
+                    "|code": "A.1",
+                    "|value": "Obnašanje v podporo zdravju (specificirajte)",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "diagnostic_evidence": [
+                  {
+                    "diagnostic_category": [
+                      {
+                        "|code": "1",
+                        "|value": "FUNKCIONALNA STANJA IN VZORCI ZDRAVEGA OBNAŠANJA",
+                        "|terminology": "PK-Nanda"
+                      }
+                    ]
+                  }
+                ],
+                "problem_status_context_qualifiers": [
+                  {
+                    "evolution": [
+                      {
+                        "|code": "at0017",
+                        "|value": "Vmesna diagnoza",
+                        "|terminology": "local"
+                      }
+                    ]
+                  }
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              }
+            ],
+            "goal_setting": [
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "goal": [
+                  {
+                    "|code": "G0165",
+                    "|value": "pacient bo pridobil več znanja o zdravem načinu življenja",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "date_goal_established": [
+                  "2015-01-13T00:00+01:00"
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              }
+            ],
+            "intervention_group": [
+              {
+                "healthcare_service_request": [
+                  {
+                    "_uid": [
+                      "27d5fe60-d4f3-443f-b198-e079336589a0"
+                    ],
+                    "_other_participation": [
+                      {
+                        "|function": "performer",
+                        "|mode": "not specified",
+                        "|name": "Testing Nurse",
+                        "|identifiers_id": ["61341959"]
+                      }
+                    ],
+                    "request": [
+                      {
+                        "nursing_intervention_request": [
+                          {
+                            "|code": "7.10.0.17",
+                            "|value": "Pogovor s pacientom",
+                            "|terminology": "PK-Nanda"
+                          }
+                        ],
+                        "date-time_service_required": [
+                          "2015-01-13T00:00+01:00"
+                        ],
+                        "detailed_timing": [
+                          {
+                            "daily_count": [
+                              2
+                            ]
+                          }
+                        ],
+                        "timing": [
+                          {
+                            "|value": "P2D",
+                            "|formalism": "duration"
+                          }
+                        ]
+                      }
+                    ],
+                    "narrative": [
+                      "Pogovor s pacientom"
+                    ],
+                    "language": [
+                      {
+                        "|code": "sl",
+                        "|terminology": "ISO_639-1"
+                      }
+                    ],
+                    "encoding": [
+                      {
+                        "|code": "UTF-8",
+                        "|terminology": "IANA_character-sets"
+                      }
+                    ]
+                  },
+                  {
+                    "_uid": [
+                      "2c716ffb-26bd-44b2-b22c-dcc2190c617e"
+                    ],
+                    "_other_participation": [
+                      {
+                        "|function": "performer",
+                        "|mode": "not specified",
+                        "|name": "Testing Nurse",
+                        "|identifiers_id": ["61341959"]
+                      }
+                    ],
+                    "request": [
+                      {
+                        "nursing_intervention_request": [
+                          {
+                            "|code": "7.14.0.15",
+                            "|value": "Vključevanje svojcev in za pacienta pomembnih drugih ljudi v zvezi z učenjem in pridobivanjem znanja",
+                            "|terminology": "PK-Nanda"
+                          }
+                        ],
+                        "date-time_service_required": [
+                          "2015-01-13T00:00+01:00"
+                        ],
+                        "detailed_timing": [
+                          {
+                            "daily_count": [
+                              1
+                            ]
+                          }
+                        ],
+                        "timing": [
+                          {
+                            "|value": "P1D",
+                            "|formalism": "duration"
+                          }
+                        ]
+                      }
+                    ],
+                    "narrative": [
+                      "Vključevanje svojcev in za pacienta pomembnih drugih ljudi v zvezi z učenjem in pridobivanjem znanja"
+                    ],
+                    "language": [
+                      {
+                        "|code": "sl",
+                        "|terminology": "ISO_639-1"
+                      }
+                    ],
+                    "encoding": [
+                      {
+                        "|code": "UTF-8",
+                        "|terminology": "IANA_character-sets"
+                      }
+                    ]
+                  },
+                  {
+                    "_uid": [
+                      "8630e7d8-9910-4b10-ba70-4dce778d43b7"
+                    ],
+                    "_other_participation": [
+                      {
+                        "|function": "performer",
+                        "|mode": "not specified",
+                        "|name": "Testing Nurse",
+                        "|identifiers_id": ["61341959"]
+                      }
+                    ],
+                    "request": [
+                      {
+                        "nursing_intervention_request": [
+                          {
+                            "|code": "8.12.2.11",
+                            "|value": "Izmeri vitalne funkcije",
+                            "|terminology": "PK-Nanda"
+                          }
+                        ],
+                        "date-time_service_required": [
+                          "2015-01-13T00:00+01:00"
+                        ],
+                        "detailed_timing": [
+                          {
+                            "daily_count": [
+                              8
+                            ]
+                          }
+                        ],
+                        "timing": [
+                          {
+                            "|value": "P8D",
+                            "|formalism": "duration"
+                          }
+                        ]
+                      }
+                    ],
+                    "narrative": [
+                      "Izmeri vitalne funkcije"
+                    ],
+                    "language": [
+                      {
+                        "|code": "sl",
+                        "|terminology": "ISO_639-1"
+                      }
+                    ],
+                    "encoding": [
+                      {
+                        "|code": "UTF-8",
+                        "|terminology": "IANA_character-sets"
+                      }
+                    ]
+                  },
+                  {
+                    "_uid": [
+                      "819cb556-9ef2-40c5-94f4-f567e7e1ffd5"
+                    ],
+                    "_other_participation": [
+                      {
+                        "|function": "performer",
+                        "|mode": "not specified",
+                        "|name": "Testing Nurse",
+                        "|identifiers_id": ["61341959"]
+                      }
+                    ],
+                    "request": [
+                      {
+                        "nursing_intervention_request": [
+                          {
+                            "|code": "8.2.0.51",
+                            "|value": "Odvzem vzorcev za mikrobiološke in druge preiskave",
+                            "|terminology": "PK-Nanda"
+                          }
+                        ],
+                        "date-time_service_required": [
+                          "2015-01-13T00:00+01:00"
+                        ],
+                        "detailed_timing": [
+                          {
+                            "daily_count": [
+                              1
+                            ]
+                          }
+                        ],
+                        "timing": [
+                          {
+                            "|value": "P1D",
+                            "|formalism": "duration"
+                          }
+                        ]
+                      }
+                    ],
+                    "narrative": [
+                      "Odvzem vzorcev za mikrobiološke in druge preiskave"
+                    ],
+                    "language": [
+                      {
+                        "|code": "sl",
+                        "|terminology": "ISO_639-1"
+                      }
+                    ],
+                    "encoding": [
+                      {
+                        "|code": "UTF-8",
+                        "|terminology": "IANA_character-sets"
+                      }
+                    ]
+                  },
+                  {
+                    "_uid": [
+                      "91e6476e-9156-41f7-95e5-9b9caac3beb0"
+                    ],
+                    "_other_participation": [
+                      {
+                        "|function": "performer",
+                        "|mode": "not specified",
+                        "|name": "Testing Nurse",
+                        "|identifiers_id": ["61341959"]
+                      }
+                    ],
+                    "request": [
+                      {
+                        "nursing_intervention_request": [
+                          {
+                            "|code": "7.2.0.22",
+                            "|value": "Nadzor v zvezi s prehranjevanjem in pitjem",
+                            "|terminology": "PK-Nanda"
+                          }
+                        ],
+                        "date-time_service_required": [
+                          "2015-01-13T00:00+01:00"
+                        ],
+                        "detailed_timing": [
+                          {
+                            "daily_count": [
+                              4
+                            ]
+                          }
+                        ],
+                        "timing": [
+                          {
+                            "|value": "P4D",
+                            "|formalism": "duration"
+                          }
+                        ]
+                      }
+                    ],
+                    "narrative": [
+                      "Nadzor v zvezi s prehranjevanjem in pitjem"
+                    ],
+                    "language": [
+                      {
+                        "|code": "sl",
+                        "|terminology": "ISO_639-1"
+                      }
+                    ],
+                    "encoding": [
+                      {
+                        "|code": "UTF-8",
+                        "|terminology": "IANA_character-sets"
+                      }
+                    ]
+                  },
+                  {
+                    "_uid": [
+                      "833eab60-4fca-44ce-bfba-efb7a1d61602"
+                    ],
+                    "_other_participation": [
+                      {
+                        "|function": "performer",
+                        "|mode": "not specified",
+                        "|name": "Testing Nurse",
+                        "|identifiers_id": ["61341959"]
+                      }
+                    ],
+                    "request": [
+                      {
+                        "nursing_intervention_request": [
+                          {
+                            "|code": "7.2.0.48",
+                            "|value": "Preverjanje ustreznosti diete",
+                            "|terminology": "PK-Nanda"
+                          }
+                        ],
+                        "date-time_service_required": [
+                          "2015-01-13T00:00+01:00"
+                        ],
+                        "detailed_timing": [
+                          {
+                            "daily_count": [
+                              4
+                            ]
+                          }
+                        ],
+                        "timing": [
+                          {
+                            "|value": "P4D",
+                            "|formalism": "duration"
+                          }
+                        ]
+                      }
+                    ],
+                    "narrative": [
+                      "Preverjanje ustreznosti diete"
+                    ],
+                    "language": [
+                      {
+                        "|code": "sl",
+                        "|terminology": "ISO_639-1"
+                      }
+                    ],
+                    "encoding": [
+                      {
+                        "|code": "UTF-8",
+                        "|terminology": "IANA_character-sets"
+                      }
+                    ]
+                  },
+                  {
+                    "_uid": [
+                      "56e0b4a7-2fa2-40dc-8232-c4ef50e7a93f"
+                    ],
+                    "_other_participation": [
+                      {
+                        "|function": "performer",
+                        "|mode": "not specified",
+                        "|name": "Testing Nurse",
+                        "|identifiers_id": ["61341959"]
+                      }
+                    ],
+                    "request": [
+                      {
+                        "nursing_intervention_request": [
+                          {
+                            "|code": "7.3.0.12",
+                            "|value": "Higiensko odstranjevanje izločkov",
+                            "|terminology": "PK-Nanda"
+                          }
+                        ],
+                        "date-time_service_required": [
+                          "2015-01-13T00:00+01:00"
+                        ],
+                        "detailed_timing": [
+                          {
+                            "daily_count": [
+                              1
+                            ]
+                          }
+                        ],
+                        "timing": [
+                          {
+                            "|value": "P1D",
+                            "|formalism": "duration"
+                          }
+                        ]
+                      }
+                    ],
+                    "narrative": [
+                      "Higiensko odstranjevanje izločkov"
+                    ],
+                    "language": [
+                      {
+                        "|code": "sl",
+                        "|terminology": "ISO_639-1"
+                      }
+                    ],
+                    "encoding": [
+                      {
+                        "|code": "UTF-8",
+                        "|terminology": "IANA_character-sets"
+                      }
+                    ]
+                  },
+                  {
+                    "_uid": [
+                      "97350a92-88c5-4efb-aea3-992ff5a82ade"
+                    ],
+                    "_other_participation": [
+                      {
+                        "|function": "performer",
+                        "|mode": "not specified",
+                        "|name": "Testing Nurse",
+                        "|identifiers_id": ["61341959"]
+                      }
+                    ],
+                    "request": [
+                      {
+                        "nursing_intervention_request": [
+                          {
+                            "|code": "7.7.0.38",
+                            "|value": "Vzdrževanje ustrezne mikroklime",
+                            "|terminology": "PK-Nanda"
+                          }
+                        ],
+                        "date-time_service_required": [
+                          "2015-01-13T00:00+01:00"
+                        ],
+                        "detailed_timing": [
+                          {
+                            "daily_count": [
+                              2
+                            ]
+                          }
+                        ],
+                        "timing": [
+                          {
+                            "|value": "P2D",
+                            "|formalism": "duration"
+                          }
+                        ]
+                      }
+                    ],
+                    "narrative": [
+                      "Vzdrževanje ustrezne mikroklime"
+                    ],
+                    "language": [
+                      {
+                        "|code": "sl",
+                        "|terminology": "ISO_639-1"
+                      }
+                    ],
+                    "encoding": [
+                      {
+                        "|code": "UTF-8",
+                        "|terminology": "IANA_character-sets"
+                      }
+                    ]
+                  },
+                  {
+                    "_uid": [
+                      "00c8cdfb-49f3-4cbf-bd97-c8136f420f97"
+                    ],
+                    "_other_participation": [
+                      {
+                        "|function": "performer",
+                        "|mode": "not specified",
+                        "|name": "Testing Nurse",
+                        "|identifiers_id": ["61341959"]
+                      }
+                    ],
+                    "request": [
+                      {
+                        "nursing_intervention_request": [
+                          {
+                            "|code": "7.8.0.48",
+                            "|value": "Pomoč pri tuširanju",
+                            "|terminology": "PK-Nanda"
+                          }
+                        ],
+                        "date-time_service_required": [
+                          "2015-01-13T00:00+01:00"
+                        ],
+                        "detailed_timing": [
+                          {
+                            "daily_count": [
+                              1
+                            ]
+                          }
+                        ],
+                        "timing": [
+                          {
+                            "|value": "P1D",
+                            "|formalism": "duration"
+                          }
+                        ]
+                      }
+                    ],
+                    "narrative": [
+                      "Pomoč pri tuširanju"
+                    ],
+                    "language": [
+                      {
+                        "|code": "sl",
+                        "|terminology": "ISO_639-1"
+                      }
+                    ],
+                    "encoding": [
+                      {
+                        "|code": "UTF-8",
+                        "|terminology": "IANA_character-sets"
+                      }
+                    ]
+                  },
+                  {
+                    "_uid": [
+                      "cd81acab-d959-484d-a663-76c191fa59a1"
+                    ],
+                    "_other_participation": [
+                      {
+                        "|function": "performer",
+                        "|mode": "not specified",
+                        "|name": "Testing Nurse",
+                        "|identifiers_id": ["61341959"]
+                      }
+                    ],
+                    "request": [
+                      {
+                        "nursing_intervention_request": [
+                          {
+                            "|code": "8.2.0.60",
+                            "|value": "Razkuževanje kože pacienta pred invazivnim posegom",
+                            "|terminology": "PK-Nanda"
+                          }
+                        ],
+                        "date-time_service_required": [
+                          "2015-01-13T00:00+01:00"
+                        ],
+                        "detailed_timing": [
+                          {
+                            "daily_count": [
+                              1
+                            ]
+                          }
+                        ],
+                        "timing": [
+                          {
+                            "|value": "P1D",
+                            "|formalism": "duration"
+                          }
+                        ]
+                      }
+                    ],
+                    "narrative": [
+                      "Razkuževanje kože pacienta pred invazivnim posegom"
+                    ],
+                    "language": [
+                      {
+                        "|code": "sl",
+                        "|terminology": "ISO_639-1"
+                      }
+                    ],
+                    "encoding": [
+                      {
+                        "|code": "UTF-8",
+                        "|terminology": "IANA_character-sets"
+                      }
+                    ]
+                  },
+                  {
+                    "_uid": [
+                      "e0167b9b-e3fc-4233-8048-0f4387067a58"
+                    ],
+                    "_other_participation": [
+                      {
+                        "|function": "performer",
+                        "|mode": "not specified",
+                        "|name": "Testing Nurse",
+                        "|identifiers_id": ["61341959"]
+                      }
+                    ],
+                    "request": [
+                      {
+                        "nursing_intervention_request": [
+                          {
+                            "|code": "8.4.0.16",
+                            "|value": "Opazovanje vbodnih mest",
+                            "|terminology": "PK-Nanda"
+                          }
+                        ],
+                        "date-time_service_required": [
+                          "2015-01-13T00:00+01:00"
+                        ],
+                        "detailed_timing": [
+                          {
+                            "daily_count": [
+                              3
+                            ]
+                          }
+                        ],
+                        "timing": [
+                          {
+                            "|value": "P3D",
+                            "|formalism": "duration"
+                          }
+                        ]
+                      }
+                    ],
+                    "narrative": [
+                      "Opazovanje vbodnih mest"
+                    ],
+                    "language": [
+                      {
+                        "|code": "sl",
+                        "|terminology": "ISO_639-1"
+                      }
+                    ],
+                    "encoding": [
+                      {
+                        "|code": "UTF-8",
+                        "|terminology": "IANA_character-sets"
+                      }
+                    ]
+                  },
+                  {
+                    "_uid": [
+                      "b6b58857-6772-4fe8-901d-fe7123a804e1"
+                    ],
+                    "_other_participation": [
+                      {
+                        "|function": "performer",
+                        "|mode": "not specified",
+                        "|name": "Testing Nurse",
+                        "|identifiers_id": ["61341959"]
+                      }
+                    ],
+                    "request": [
+                      {
+                        "nursing_intervention_request": [
+                          {
+                            "|code": "7.2.0.2",
+                            "|value": "Dokumentiranje intervencij v zvezi s prehranjevanjem in pitjem",
+                            "|terminology": "PK-Nanda"
+                          }
+                        ],
+                        "date-time_service_required": [
+                          "2015-01-13T00:00+01:00"
+                        ],
+                        "detailed_timing": [
+                          {
+                            "daily_count": [
+                              4
+                            ]
+                          }
+                        ],
+                        "timing": [
+                          {
+                            "|value": "P4D",
+                            "|formalism": "duration"
+                          }
+                        ]
+                      }
+                    ],
+                    "narrative": [
+                      "Dokumentiranje intervencij v zvezi s prehranjevanjem in pitjem"
+                    ],
+                    "language": [
+                      {
+                        "|code": "sl",
+                        "|terminology": "ISO_639-1"
+                      }
+                    ],
+                    "encoding": [
+                      {
+                        "|code": "UTF-8",
+                        "|terminology": "IANA_character-sets"
+                      }
+                    ]
+                  },
+                  {
+                    "_uid": [
+                      "d22f5e4c-decd-4f11-bce5-f9dbcaf79c1f"
+                    ],
+                    "_other_participation": [
+                      {
+                        "|function": "performer",
+                        "|mode": "not specified",
+                        "|name": "Testing Nurse",
+                        "|identifiers_id": ["61341959"]
+                      }
+                    ],
+                    "request": [
+                      {
+                        "nursing_intervention_request": [
+                          {
+                            "|code": "7.4.0.39",
+                            "|value": "Skrb za varnost pacienta",
+                            "|terminology": "PK-Nanda"
+                          }
+                        ],
+                        "date-time_service_required": [
+                          "2015-01-13T00:00+01:00"
+                        ],
+                        "detailed_timing": [
+                          {
+                            "daily_count": [
+                              8
+                            ]
+                          }
+                        ],
+                        "timing": [
+                          {
+                            "|value": "P8D",
+                            "|formalism": "duration"
+                          }
+                        ]
+                      }
+                    ],
+                    "narrative": [
+                      "Skrb za varnost pacienta"
+                    ],
+                    "language": [
+                      {
+                        "|code": "sl",
+                        "|terminology": "ISO_639-1"
+                      }
+                    ],
+                    "encoding": [
+                      {
+                        "|code": "UTF-8",
+                        "|terminology": "IANA_character-sets"
+                      }
+                    ]
+                  },
+                  {
+                    "_uid": [
+                      "c691f5d4-3164-4098-99dc-e9ac2427d7d4"
+                    ],
+                    "_other_participation": [
+                      {
+                        "|function": "performer",
+                        "|mode": "not specified",
+                        "|name": "Testing Nurse",
+                        "|identifiers_id": ["61341959"]
+                      }
+                    ],
+                    "request": [
+                      {
+                        "nursing_intervention_request": [
+                          {
+                            "|code": "7.5.0.17",
+                            "|value": "Priprava okolja za spanje in počitek",
+                            "|terminology": "PK-Nanda"
+                          }
+                        ],
+                        "date-time_service_required": [
+                          "2015-01-13T00:00+01:00"
+                        ],
+                        "detailed_timing": [
+                          {
+                            "daily_count": [
+                              1
+                            ]
+                          }
+                        ],
+                        "timing": [
+                          {
+                            "|value": "P1D",
+                            "|formalism": "duration"
+                          }
+                        ]
+                      }
+                    ],
+                    "narrative": [
+                      "Priprava okolja za spanje in počitek"
+                    ],
+                    "language": [
+                      {
+                        "|code": "sl",
+                        "|terminology": "ISO_639-1"
+                      }
+                    ],
+                    "encoding": [
+                      {
+                        "|code": "UTF-8",
+                        "|terminology": "IANA_character-sets"
+                      }
+                    ]
+                  },
+                  {
+                    "_uid": [
+                      "c4040b3a-25c9-4e04-a6c0-003a15f3477b"
+                    ],
+                    "_other_participation": [
+                      {
+                        "|function": "performer",
+                        "|mode": "not specified",
+                        "|name": "Testing Nurse",
+                        "|identifiers_id": ["61341959"]
+                      }
+                    ],
+                    "request": [
+                      {
+                        "nursing_intervention_request": [
+                          {
+                            "|code": "7.5.0.18",
+                            "|value": "Priprava pacienta na spanje in počitek",
+                            "|terminology": "PK-Nanda"
+                          }
+                        ],
+                        "date-time_service_required": [
+                          "2015-01-13T00:00+01:00"
+                        ],
+                        "detailed_timing": [
+                          {
+                            "daily_count": [
+                              1
+                            ]
+                          }
+                        ],
+                        "timing": [
+                          {
+                            "|value": "P1D",
+                            "|formalism": "duration"
+                          }
+                        ]
+                      }
+                    ],
+                    "narrative": [
+                      "Priprava pacienta na spanje in počitek"
+                    ],
+                    "language": [
+                      {
+                        "|code": "sl",
+                        "|terminology": "ISO_639-1"
+                      }
+                    ],
+                    "encoding": [
+                      {
+                        "|code": "UTF-8",
+                        "|terminology": "IANA_character-sets"
+                      }
+                    ]
+                  },
+                  {
+                    "_uid": [
+                      "bc919b3f-f823-4b04-a1b4-67862260832a"
+                    ],
+                    "_other_participation": [
+                      {
+                        "|function": "performer",
+                        "|mode": "not specified",
+                        "|name": "Testing Nurse",
+                        "|identifiers_id": ["61341959"]
+                      }
+                    ],
+                    "request": [
+                      {
+                        "nursing_intervention_request": [
+                          {
+                            "|code": "8.5.0.49",
+                            "|value": "Ocenjevanje stopnje bolečine",
+                            "|terminology": "PK-Nanda"
+                          }
+                        ],
+                        "date-time_service_required": [
+                          "2015-01-13T00:00+01:00"
+                        ],
+                        "detailed_timing": [
+                          {
+                            "daily_count": [
+                              3
+                            ]
+                          }
+                        ],
+                        "timing": [
+                          {
+                            "|value": "P3D",
+                            "|formalism": "duration"
+                          }
+                        ]
+                      }
+                    ],
+                    "narrative": [
+                      "Ocenjevanje stopnje bolečine"
+                    ],
+                    "language": [
+                      {
+                        "|code": "sl",
+                        "|terminology": "ISO_639-1"
+                      }
+                    ],
+                    "encoding": [
+                      {
+                        "|code": "UTF-8",
+                        "|terminology": "IANA_character-sets"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "problem_diagnosis": [
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "nursing_diagnosis": [
+                  {
+                    "|code": "A.11.6",
+                    "|value": "Nevarnost infekcije krvi",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "diagnostic_evidence": [
+                  {
+                    "diagnostic_category": [
+                      {
+                        "|code": "1",
+                        "|value": "FUNKCIONALNA STANJA IN VZORCI ZDRAVEGA OBNAŠANJA",
+                        "|terminology": "PK-Nanda"
+                      }
+                    ]
+                  }
+                ],
+                "problem_status_context_qualifiers": [
+                  {
+                    "evolution": [
+                      {
+                        "|code": "at0017",
+                        "|value": "Vmesna diagnoza",
+                        "|terminology": "local"
+                      }
+                    ]
+                  }
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              }
+            ],
+            "goal_setting": [
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "goal": [
+                  {
+                    "|code": "G0230",
+                    "|value": "pri otroku bomo preprečili infekcijo krvi",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "date_goal_established": [
+                  "2015-01-13T00:00+01:00"
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              },
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "goal": [
+                  {
+                    "|code": "G0314",
+                    "|value": "Preprečena infekcija krvi",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "date_goal_established": [
+                  "2015-01-13T00:00+01:00"
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "problem_diagnosis": [
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "nursing_diagnosis": [
+                  {
+                    "|code": "A.11.7",
+                    "|value": "Nevarnost infekcije kože",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "diagnostic_evidence": [
+                  {
+                    "diagnostic_category": [
+                      {
+                        "|code": "1",
+                        "|value": "FUNKCIONALNA STANJA IN VZORCI ZDRAVEGA OBNAŠANJA",
+                        "|terminology": "PK-Nanda"
+                      }
+                    ]
+                  }
+                ],
+                "problem_status_context_qualifiers": [
+                  {
+                    "evolution": [
+                      {
+                        "|code": "at0017",
+                        "|value": "Vmesna diagnoza",
+                        "|terminology": "local"
+                      }
+                    ]
+                  }
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              }
+            ],
+            "goal_setting": [
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "goal": [
+                  {
+                    "|code": "G0211",
+                    "|value": "pacientova koža ne bo inficirana",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "date_goal_established": [
+                  "2015-01-13T00:00+01:00"
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              },
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "goal": [
+                  {
+                    "|code": "G0313",
+                    "|value": "Preprečena infekcija kože",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "date_goal_established": [
+                  "2015-01-13T00:00+01:00"
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "problem_diagnosis": [
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "nursing_diagnosis": [
+                  {
+                    "|code": "B.10",
+                    "|value": "Nauzea",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "diagnostic_evidence": [
+                  {
+                    "diagnostic_category": [
+                      {
+                        "|code": "2",
+                        "|value": "PREHRANA - METABOLIZEM",
+                        "|terminology": "PK-Nanda"
+                      }
+                    ]
+                  }
+                ],
+                "problem_status_context_qualifiers": [
+                  {
+                    "evolution": [
+                      {
+                        "|code": "at0017",
+                        "|value": "Vmesna diagnoza",
+                        "|terminology": "local"
+                      }
+                    ]
+                  }
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              }
+            ],
+            "goal_setting": [
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "goal": [
+                  {
+                    "|code": "G0339",
+                    "|value": "Zmanjšana slabost in odsotnost bruhanja",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "date_goal_established": [
+                  "2015-01-13T00:00+01:00"
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "problem_diagnosis": [
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "nursing_diagnosis": [
+                  {
+                    "|code": "B.15",
+                    "|value": "Tekočine, nevarnost za prenizek volumen tekočin",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "related_items": [
+                  {
+                    "related_items": [
+                      {
+                        "|code": "SPL320",
+                        "|value": "Pomanjkljivo znanje (potreba po tekočinah)",
+                        "|terminology": "PK-Nanda"
+                      }
+                    ],
+                    "relationship_type": [
+                      {
+                        "|code": "at0077",
+                        "|value": "Tveganje",
+                        "|terminology": "local"
+                      }
+                    ]
+                  }
+                ],
+                "diagnostic_evidence": [
+                  {
+                    "diagnostic_category": [
+                      {
+                        "|code": "2",
+                        "|value": "PREHRANA - METABOLIZEM",
+                        "|terminology": "PK-Nanda"
+                      }
+                    ]
+                  }
+                ],
+                "problem_status_context_qualifiers": [
+                  {
+                    "evolution": [
+                      {
+                        "|code": "at0017",
+                        "|value": "Vmesna diagnoza",
+                        "|terminology": "local"
+                      }
+                    ]
+                  }
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "problem_diagnosis": [
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "nursing_diagnosis": [
+                  {
+                    "|code": "D.3",
+                    "|value": "Utrujenost",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "diagnostic_evidence": [
+                  {
+                    "diagnostic_category": [
+                      {
+                        "|code": "4",
+                        "|value": "FIZIČNA AKTIVNOST",
+                        "|terminology": "PK-Nanda"
+                      }
+                    ]
+                  }
+                ],
+                "problem_status_context_qualifiers": [
+                  {
+                    "evolution": [
+                      {
+                        "|code": "at0017",
+                        "|value": "Vmesna diagnoza",
+                        "|terminology": "local"
+                      }
+                    ]
+                  }
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              }
+            ],
+            "goal_setting": [
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "goal": [
+                  {
+                    "|code": "G0062",
+                    "|value": "ne bo utrujen",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "date_goal_established": [
+                  "2015-01-13T00:00+01:00"
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "problem_diagnosis": [
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "nursing_diagnosis": [
+                  {
+                    "|code": "E.1",
+                    "|value": "Spanje, motnje spanja (specificirajte)",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "diagnostic_evidence": [
+                  {
+                    "diagnostic_category": [
+                      {
+                        "|code": "5",
+                        "|value": "POČITEK, SPANJE",
+                        "|terminology": "PK-Nanda"
+                      }
+                    ]
+                  }
+                ],
+                "problem_status_context_qualifiers": [
+                  {
+                    "evolution": [
+                      {
+                        "|code": "at0017",
+                        "|value": "Vmesna diagnoza",
+                        "|terminology": "local"
+                      }
+                    ]
+                  }
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              }
+            ],
+            "goal_setting": [
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "goal": [
+                  {
+                    "|code": "G0016",
+                    "|value": "bolnik bo naspan in spočit",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "date_goal_established": [
+                  "2015-01-13T00:00+01:00"
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              },
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "goal": [
+                  {
+                    "|code": "G0291",
+                    "|value": "Naspan bolnik",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "date_goal_established": [
+                  "2015-01-13T00:00+01:00"
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "problem_diagnosis": [
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "nursing_diagnosis": [
+                  {
+                    "|code": "F.1",
+                    "|value": "Bolečina (specificirajte lokacijo)",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "diagnostic_evidence": [
+                  {
+                    "diagnostic_category": [
+                      {
+                        "|code": "6",
+                        "|value": "KOGNITIVNI PROCESI",
+                        "|terminology": "PK-Nanda"
+                      }
+                    ]
+                  }
+                ],
+                "problem_status_context_qualifiers": [
+                  {
+                    "evolution": [
+                      {
+                        "|code": "at0017",
+                        "|value": "Vmesna diagnoza",
+                        "|terminology": "local"
+                      }
+                    ]
+                  }
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              }
+            ],
+            "goal_setting": [
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "goal": [
+                  {
+                    "|code": "G0011",
+                    "|value": "bolečina bo zmanjšana ali odpravljena",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "date_goal_established": [
+                  "2015-01-13T00:00+01:00"
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              },
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "goal": [
+                  {
+                    "|code": "G0282",
+                    "|value": "Bolečina bo nadzorovana (VAS ?3)",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "date_goal_established": [
+                  "2015-01-13T00:00+01:00"
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "problem_diagnosis": [
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "nursing_diagnosis": [
+                  {
+                    "|code": "G.1",
+                    "|value": "Strah (specificirajte)",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "diagnostic_evidence": [
+                  {
+                    "diagnostic_category": [
+                      {
+                        "|code": "7",
+                        "|value": "ZAZNAVANJE SAMEGA SEBE",
+                        "|terminology": "PK-Nanda"
+                      }
+                    ]
+                  }
+                ],
+                "problem_status_context_qualifiers": [
+                  {
+                    "evolution": [
+                      {
+                        "|code": "at0017",
+                        "|value": "Vmesna diagnoza",
+                        "|terminology": "local"
+                      }
+                    ]
+                  }
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              }
+            ],
+            "goal_setting": [
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "goal": [
+                  {
+                    "|code": "G0245",
+                    "|value": "strah pri otroku bo zmanjšanj",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "date_goal_established": [
+                  "2015-01-13T00:00+01:00"
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              },
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "goal": [
+                  {
+                    "|code": "G0338",
+                    "|value": "Zmanjšan strah",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "date_goal_established": [
+                  "2015-01-13T00:00+01:00"
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              },
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "goal": [
+                  {
+                    "|code": "G0287",
+                    "|value": "Informiran bolnik",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "date_goal_established": [
+                  "2015-01-13T00:00+01:00"
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "problem_diagnosis": [
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "nursing_diagnosis": [
+                  {
+                    "|code": "J.1",
+                    "|value": "Obvladovanje, neučinkovito",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "diagnostic_evidence": [
+                  {
+                    "diagnostic_category": [
+                      {
+                        "|code": "10",
+                        "|value": "OBVLADOVANJE STRESNIH SITUACIJ",
+                        "|terminology": "PK-Nanda"
+                      }
+                    ]
+                  }
+                ],
+                "problem_status_context_qualifiers": [
+                  {
+                    "evolution": [
+                      {
+                        "|code": "at0017",
+                        "|value": "Vmesna diagnoza",
+                        "|terminology": "local"
+                      }
+                    ]
+                  }
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              }
+            ],
+            "goal_setting": [
+              {
+                "_other_participation": [
+                  {
+                    "|function": "performer",
+                    "|mode": "not specified",
+                    "|name": "Testing Nurse",
+                    "|identifiers_id": ["61341959"]
+                  }
+                ],
+                "goal": [
+                  {
+                    "|code": "G0153",
+                    "|value": "pacient bo obvladoval stresne situacije",
+                    "|terminology": "PK-Nanda"
+                  }
+                ],
+                "date_goal_established": [
+                  "2015-01-13T00:00+01:00"
+                ],
+                "language": [
+                  {
+                    "|code": "sl",
+                    "|terminology": "ISO_639-1"
+                  }
+                ],
+                "encoding": [
+                  {
+                    "|code": "UTF-8",
+                    "|terminology": "IANA_character-sets"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "category": [
+      {
+        "|code": "433",
+        "|value": "event",
+        "|terminology": "openehr"
+      }
+    ],
+    "composer": [
+      {
+        "|id": "60587669",
+        "|id_scheme": "ispek_scheme",
+        "|id_namespace": "ispek",
+        "|name": "Testing Nurse"
+      }
+    ]
+  }
+}

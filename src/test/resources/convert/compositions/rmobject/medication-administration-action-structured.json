@@ -1,0 +1,191 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+    "medication_management": [
+      {
+        "_instruction_details": [
+          {
+            "|composition_uid": "eca64ae0-14fa-42a5-8edc-0f61dac2a657",
+            "|path": "content[openEHR-EHR-INSTRUCTION.medication_order.v2]",
+            "|activity_id": "activities[at0001] "
+          }
+        ],
+        "ism_transition": [
+          {
+            "current_state": [
+              {
+                "|code": "245",
+                "|value": "active",
+                "|terminology": "openehr"
+              }
+            ],
+            "careflow_step": [
+              {
+                "|code": "at0018",
+                "|value": "Dose administration omitted",
+                "|terminology": "local"
+              }
+            ]
+          }
+        ],
+        "medication_item": [
+          {
+            "|code": "1064122",
+            "|value": "Daleron 500 mg tbl.",
+            "|terminology": "local"
+          }
+        ],
+        "substitution": [
+          {
+            "|code": "at0139",
+            "|value": "Not performed",
+            "|terminology": "local"
+          }
+        ],
+        "original_scheduled_date_time": [
+          "2017-05-07T18:06+02:00"
+        ],
+        "administration_details": [
+          {
+            "route": [
+              {
+                "|code": "34",
+                "|value": "po",
+                "|terminology": "local"
+              }
+            ]
+          }
+        ],
+        "medication": [
+          {
+            "component_name": [
+              {
+                "|code": "1064122",
+                "|value": "Daleron 500 mg tbl.",
+                "|terminology": "local"
+              }
+            ],
+            "form": [
+              {
+                "|code": "294",
+                "|value": "Tableta",
+                "|terminology": "local"
+              }
+            ]
+          }
+        ],
+        "dosage": [
+          {
+            "dose_amount": [
+              {
+                "quantity_value": [
+                  {
+                    "|magnitude": 250.0,
+                    "|unit": "1"
+                  }
+                ]
+              }
+            ],
+            "dose_unit": [
+              {
+                "|code": "mg",
+                "|value": "mg",
+                "|terminology": "local"
+              }
+            ],
+            "alternate_dose_amount": [
+              {
+                "quantity_value": [
+                  {
+                    "|magnitude": 0.5,
+                    "|unit": "1"
+                  }
+                ]
+              }
+            ],
+            "alternate_dose_unit": [
+              {
+                "|code": "tableta",
+                "|value": "tableta",
+                "|terminology": "local"
+              }
+            ]
+          }
+        ],
+        "medication_additional_details": [
+          {
+            "administration_type": [
+              "START"
+            ],
+            "planned_administration": [
+              {
+                "different_dose_administered": [
+                  false
+                ],
+                "task_id": [
+                  "48301273"
+                ],
+                "dosage": [
+                  {
+                    "dose_amount": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 250.0,
+                            "|unit": "1"
+                          }
+                        ]
+                      }
+                    ],
+                    "dose_unit": [
+                      "mg"
+                    ],
+                    "alternate_dose_amount": [
+                      {
+                        "quantity_value": [
+                          {
+                            "|magnitude": 0.5,
+                            "|unit": "1"
+                          }
+                        ]
+                      }
+                    ],
+                    "alternate_dose_unit": [
+                      "tableta"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "time": [
+          "2017-05-07T18:06+02:00"
+        ],
+        "language": [
+          {
+            "|code": "sl",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ]
+}

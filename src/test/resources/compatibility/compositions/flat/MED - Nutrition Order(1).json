@@ -1,0 +1,44 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+{
+	"nutrition_order/_uid" : "3adaffca-6c7b-49ed-aea7-b3e9c8049a7e::default::3",
+	"nutrition_order/language|code" : "sl",
+	"nutrition_order/language|terminology" : "ISO_639-1",
+	"nutrition_order/territory|code" : "SLO",
+	"nutrition_order/territory|terminology" : "ISO_3166-1",
+	"nutrition_order/context/start_time" : "2019-01-22T15:20:00.129+01:00",
+	"nutrition_order/context/setting|code" : "238",
+	"nutrition_order/context/setting|value" : "other care",
+	"nutrition_order/context/setting|terminology" : "openehr",
+	"nutrition_order/nutrition/nutrition_order:0/_uid" : "932ba8bf-b3ef-4396-958a-5394686bf347",
+	"nutrition_order/nutrition/nutrition_order:0/order:0/type_of_diet" : "LAKTOZNA INTOLERANCA",
+	"nutrition_order/nutrition/nutrition_order:0/order:0/additional_diet_details/name_of_diet" : "LAKTOZNA INTOLERANCA",
+	"nutrition_order/nutrition/nutrition_order:0/order:0/order_details/order_start_date_time" : "2019-01-22T11:30:00+01:00",
+	"nutrition_order/nutrition/nutrition_order:0/order:0/order_details/order_stop_date_time" : "2019-01-22T15:20:00.1+01:00",
+	"nutrition_order/nutrition/nutrition_order:0/order:0/order_details/nutrition_course_summary:0/date_of_next_meal:0" : "2019-01-22T11:30:00+01:00",
+	"nutrition_order/nutrition/nutrition_order:0/order:0/order_details/nutrition_course_summary:0/type_of_next_meal|code" : "at0037",
+	"nutrition_order/nutrition/nutrition_order:0/order:0/order_details/nutrition_course_summary:0/type_of_next_meal|value" : "Kosilo",
+	"nutrition_order/nutrition/nutrition_order:0/order:0/order_details/nutrition_course_summary:0/type_of_next_meal|terminology" : "local",
+	"nutrition_order/nutrition/nutrition_order:0/order:0/timing" : "R1",
+	"nutrition_order/nutrition/nutrition_order:0/order:0/timing|formalism" : "timing",
+	"nutrition_order/nutrition/nutrition_order:0/narrative" : "<none>",
+	"nutrition_order/nutrition/nutrition_order:0/language|code" : "sl",
+	"nutrition_order/nutrition/nutrition_order:0/language|terminology" : "ISO_639-1",
+	"nutrition_order/nutrition/nutrition_order:0/encoding|code" : "UTF-8",
+	"nutrition_order/nutrition/nutrition_order:0/encoding|terminology" : "IANA_character-sets",
+	"nutrition_order/category|code" : "433",
+	"nutrition_order/category|value" : "event",
+	"nutrition_order/category|terminology" : "openehr",
+	"nutrition_order/composer|name" : "Testing Nurse"
+}

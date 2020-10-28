@@ -1,0 +1,73 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "vital_signs_pathfinder_demo/_uid" : "4ab1e57a-b2c1-4fb0-8766-3e359ec16c44::default::1",
+  "vital_signs_pathfinder_demo/_feeder_audit/originating_system_audit|system_id" : "FormRenderer",
+  "vital_signs_pathfinder_demo/_feeder_audit/original_content" : "{\"/generic-fieldset-5840487/generic-label-8924408\":[],\"/generic-fieldset-5840487/generic-label-5623011\":[],\"/generic-fieldset-5840487/generic-boolean-2540368\":[],\"/generic-spacer-9381473\":[],\"/generic-fieldset-4774527/generic-label-8787325\":[],\"/generic-fieldset-4774527/generic-fieldset-4971261/generic-spacer-5929834\":[],\"/generic-fieldset-4774527/generic-fieldset-4971261/generic-label-6564690\":[],\"/generic-fieldset-4774527/generic-fieldset-4971261/generic-label-2353443\":[],\"/generic-fieldset-4774527/generic-fieldset-4971261/generic-spacer-8646390\":[],\"/generic-spacer-2440954\":[],\"/generic-fieldset-8579015/generic-label-1014785\":[],\"/generic-fieldset-8579015/generic-fieldset-275735/generic-label-1249512\":[],\"/generic-fieldset-8579015/generic-fieldset-275735/generic-label-9705012\":[],\"/generic-fieldset-8579015/generic-fieldset-275735/generic-spacer-8568212\":[],\"/generic-fieldset-8579015/generic-fieldset-275735/generic-label-9995810\":[],\"/generic-fieldset-8579015/generic-fieldset-275735/generic-spacer-2211262\":[],\"/generic-spacer-4876933\":[],\"/generic-fieldset-1465939/generic-label-6073602\":[],\"/generic-fieldset-1465939/generic-fieldset-1002955/generic-spacer-2623696\":[],\"/generic-fieldset-1465939/generic-fieldset-1002955/generic-label-2700884\":[],\"/generic-fieldset-1465939/generic-fieldset-1002955/generic-label-1984093\":[],\"/generic-fieldset-1465939/generic-fieldset-1002955/generic-label-2928464\":[],\"/generic-fieldset-1465939/generic-fieldset-1002955/generic-spacer-6177609\":[],\"/generic-fieldset-1465939/generic-fieldset-1002955/generic-spacer-6606811\":[],\"/generic-spacer-2902179\":[],\"/generic-fieldset-8674642/generic-label-7569655\":[],\"/generic-fieldset-8674642/generic-fieldset-1183602/generic-spacer-4063972\":[],\"/generic-fieldset-8674642/generic-fieldset-1183602/generic-label-9301775\":[],\"/generic-fieldset-8674642/generic-fieldset-1183602/generic-spacer-3789414\":[],\"/generic-fieldset-8674642/generic-fieldset-1183602/generic-spacer-4960301\":[]}",
+  "vital_signs_pathfinder_demo/_feeder_audit/original_content|formalism" : "application/json",
+  "vital_signs_pathfinder_demo/language|code" : "en",
+  "vital_signs_pathfinder_demo/language|terminology" : "ISO_639-1",
+  "vital_signs_pathfinder_demo/territory|code" : "SI",
+  "vital_signs_pathfinder_demo/territory|terminology" : "ISO_3166-1",
+  "vital_signs_pathfinder_demo/context/start_time" : "2020-02-19T14:01:00+01:00",
+  "vital_signs_pathfinder_demo/context/setting|code" : "238",
+  "vital_signs_pathfinder_demo/context/setting|value" : "other care",
+  "vital_signs_pathfinder_demo/context/setting|terminology" : "openehr",
+  "vital_signs_pathfinder_demo/body_temperature:0/any_event:0/temperature|magnitude" : 36.0,
+  "vital_signs_pathfinder_demo/body_temperature:0/any_event:0/temperature|unit" : "Cel",
+  "vital_signs_pathfinder_demo/body_temperature:0/any_event:0/body_exposure|code" : "at0033",
+  "vital_signs_pathfinder_demo/body_temperature:0/any_event:0/body_exposure|value" : "Appropriate clothing/bedding",
+  "vital_signs_pathfinder_demo/body_temperature:0/any_event:0/body_exposure|terminology" : "local",
+  "vital_signs_pathfinder_demo/body_temperature:0/any_event:0/time" : "2020-02-19T14:01:53.014+01:00",
+  "vital_signs_pathfinder_demo/body_temperature:0/language|code" : "en",
+  "vital_signs_pathfinder_demo/body_temperature:0/language|terminology" : "ISO_639-1",
+  "vital_signs_pathfinder_demo/body_temperature:0/encoding|code" : "UTF-8",
+  "vital_signs_pathfinder_demo/body_temperature:0/encoding|terminology" : "IANA_character-sets",
+  "vital_signs_pathfinder_demo/pulse_oximetry:0/any_event:0/spo|numerator" : 92.0,
+  "vital_signs_pathfinder_demo/pulse_oximetry:0/any_event:0/spo|denominator" : 100.0,
+  "vital_signs_pathfinder_demo/pulse_oximetry:0/any_event:0/spo|type" : 2,
+  "vital_signs_pathfinder_demo/pulse_oximetry:0/any_event:0/spo" : 0.92,
+  "vital_signs_pathfinder_demo/pulse_oximetry:0/any_event:0/inspired_oxygen/flow_rate|magnitude" : 0.01,
+  "vital_signs_pathfinder_demo/pulse_oximetry:0/any_event:0/inspired_oxygen/flow_rate|unit" : "l/min",
+  "vital_signs_pathfinder_demo/pulse_oximetry:0/any_event:0/time" : "2020-02-19T14:01:53.014+01:00",
+  "vital_signs_pathfinder_demo/pulse_oximetry:0/language|code" : "en",
+  "vital_signs_pathfinder_demo/pulse_oximetry:0/language|terminology" : "ISO_639-1",
+  "vital_signs_pathfinder_demo/pulse_oximetry:0/encoding|code" : "UTF-8",
+  "vital_signs_pathfinder_demo/pulse_oximetry:0/encoding|terminology" : "IANA_character-sets",
+  "vital_signs_pathfinder_demo/pulse_heart_beat:0/any_event:0/heart_rate|magnitude" : 60.0,
+  "vital_signs_pathfinder_demo/pulse_heart_beat:0/any_event:0/heart_rate|unit" : "/min",
+  "vital_signs_pathfinder_demo/pulse_heart_beat:0/any_event:0/position|code" : "at1001",
+  "vital_signs_pathfinder_demo/pulse_heart_beat:0/any_event:0/position|value" : "Sitting",
+  "vital_signs_pathfinder_demo/pulse_heart_beat:0/any_event:0/position|terminology" : "local",
+  "vital_signs_pathfinder_demo/pulse_heart_beat:0/any_event:0/time" : "2020-02-19T14:01:53.014+01:00",
+  "vital_signs_pathfinder_demo/pulse_heart_beat:0/language|code" : "en",
+  "vital_signs_pathfinder_demo/pulse_heart_beat:0/language|terminology" : "ISO_639-1",
+  "vital_signs_pathfinder_demo/pulse_heart_beat:0/encoding|code" : "UTF-8",
+  "vital_signs_pathfinder_demo/pulse_heart_beat:0/encoding|terminology" : "IANA_character-sets",
+  "vital_signs_pathfinder_demo/body_weight:0/any_event:0/weight|magnitude" : 3.3,
+  "vital_signs_pathfinder_demo/body_weight:0/any_event:0/weight|unit" : "kg",
+  "vital_signs_pathfinder_demo/body_weight:0/any_event:0/state_of_dress|code" : "at0011",
+  "vital_signs_pathfinder_demo/body_weight:0/any_event:0/state_of_dress|value" : "Lightly clothed/underwear",
+  "vital_signs_pathfinder_demo/body_weight:0/any_event:0/state_of_dress|terminology" : "local",
+  "vital_signs_pathfinder_demo/body_weight:0/any_event:0/time" : "2020-02-19T14:01:53.014+01:00",
+  "vital_signs_pathfinder_demo/body_weight:0/language|code" : "en",
+  "vital_signs_pathfinder_demo/body_weight:0/language|terminology" : "ISO_639-1",
+  "vital_signs_pathfinder_demo/body_weight:0/encoding|code" : "UTF-8",
+  "vital_signs_pathfinder_demo/body_weight:0/encoding|terminology" : "IANA_character-sets",
+  "vital_signs_pathfinder_demo/category|code" : "433",
+  "vital_signs_pathfinder_demo/category|value" : "event",
+  "vital_signs_pathfinder_demo/category|terminology" : "openehr",
+  "vital_signs_pathfinder_demo/composer|name" : "user"
+}

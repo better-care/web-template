@@ -1,0 +1,63 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "vitals/_link:0|meaning": "Follow up to",
+  "vitals/_link:0|type": "Problem",
+  "vitals/_link:0|target": "ehr://uid/value",
+  "vitals/_uid": "cda8944a-1e45-4a38-a4d4-fb4b5ad9eb02::example::1",
+  "vitals/context/start_time": "2014-12-18T09:58:46.504Z",
+  "vitals/context/setting|238": true,
+  "vitals/context/setting|code": "238",
+  "vitals/context/setting|value": "other care",
+  "vitals/context/setting|terminology": "openehr",
+  "vitals/vitals/haemoglobin_a1c:0/_other_participation:0|function": "performer",
+  "vitals/vitals/haemoglobin_a1c:0/_other_participation:0|mode": "not specified",
+  "vitals/vitals/haemoglobin_a1c:0/_other_participation:0|name": "Testing Nurse",
+  "vitals/vitals/haemoglobin_a1c:0/any_event:0/test_name": "Test name 10",
+  "vitals/vitals/haemoglobin_a1c:0/any_event:0/diagnostic_service": "Diagnostic service 40",
+  "vitals/vitals/haemoglobin_a1c:0/any_event:0/test_status|at0039": true,
+  "vitals/vitals/haemoglobin_a1c:0/any_event:0/test_status|code": "at0039",
+  "vitals/vitals/haemoglobin_a1c:0/any_event:0/test_status|value": "Supplementary",
+  "vitals/vitals/haemoglobin_a1c:0/any_event:0/test_status|terminology": "local",
+  "vitals/vitals/haemoglobin_a1c:0/any_event:0/hba1c|numerator": 87.95,
+  "vitals/vitals/haemoglobin_a1c:0/any_event:0/hba1c|denominator": 100,
+  "vitals/vitals/haemoglobin_a1c:0/any_event:0/hba1c": 0.8795,
+  "vitals/vitals/haemoglobin_a1c:0/any_event:0/overall_interpretation": "Overall interpretation 95",
+  "vitals/vitals/haemoglobin_a1c:0/any_event:0/time": "2014-12-18T09:58:46.505Z",
+  "vitals/vitals/haemoglobin_a1c:0/requestor_order_identifier": "Ident. 91",
+  "vitals/vitals/haemoglobin_a1c:0/receiver_order_identifier": "Ident. 10",
+  "vitals/vitals/haemoglobin_a1c:0/laboratory_test_result_identifier": "Ident. 41",
+  "vitals/vitals/haemoglobin_a1c:0/datetime_result_issued": "2014-12-18T09:58:46.505Z",
+  "vitals/vitals/body_temperature:0/_other_participation:0|function": "performer",
+  "vitals/vitals/body_temperature:0/_other_participation:0|mode": "not specified",
+  "vitals/vitals/body_temperature:0/_other_participation:0|name": "Testing Nurse",
+  "vitals/vitals/body_temperature:0/any_event:0/temperature|magnitude": 97.91,
+  "vitals/vitals/body_temperature:0/any_event:0/temperature|unit": "°C",
+  "vitals/vitals/body_temperature:0/any_event:0/symptoms|at0.65": true,
+  "vitals/vitals/body_temperature:0/any_event:0/symptoms:0/_null_flavour|code": "271",
+  "vitals/vitals/body_temperature:0/any_event:0/symptoms:0/_null_flavour|value": "no information",
+  "vitals/vitals/body_temperature:0/any_event:0/symptoms:0/_null_flavour|terminology": "openehr",
+  "vitals/vitals/body_temperature:0/any_event:0/body_exposure|at0033": true,
+  "vitals/vitals/body_temperature:0/any_event:0/body_exposure|code": "at0033",
+  "vitals/vitals/body_temperature:0/any_event:0/body_exposure|value": "Appropriate clothing/bedding",
+  "vitals/vitals/body_temperature:0/any_event:0/body_exposure|terminology": "local",
+  "vitals/vitals/body_temperature:0/any_event:0/description_of_thermal_stress": "Description of thermal stress 25",
+  "vitals/vitals/body_temperature:0/any_event:0/time": "2014-12-18T09:58:46.505Z",
+  "vitals/vitals/body_temperature:0/site_of_measurement|at0027": true,
+  "vitals/vitals/body_temperature:0/site_of_measurement|code": "at0027",
+  "vitals/vitals/body_temperature:0/site_of_measurement|value": "Urinary bladder",
+  "vitals/vitals/body_temperature:0/site_of_measurement|terminology": "local",
+  "vitals/vitals/body_temperature:0/other_site_of_measurement": "Other site of measurement 49"
+}

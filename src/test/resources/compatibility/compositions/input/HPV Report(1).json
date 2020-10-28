@@ -1,0 +1,170 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "hpv_report": {
+    "context": [
+      {
+        "context_detail": [
+          {
+            "guideline_id": []
+          }
+        ],
+        "report_id": [],
+        "status": [],
+        "report_version": []
+      }
+    ],
+    "laboratory_test_result": [
+      {
+        "test_name": [
+          {
+            "|code": "35904009",
+            "|value": "HPV DNA detection"
+          }
+        ],
+        "date_of_report": [],
+        "specimen": [
+          {
+            "processing": [
+              {
+                "laboratory_specimen_id": [],
+                "date_and_time_specimen_received": []
+              }
+            ],
+            "specimen_quality": [
+              {
+                "specimen_received_issues": [
+                  {
+                    "|code": "1",
+                    "|value": "Ni krtačke",
+                    "|terminology": "AN_specimen_received_issues"
+                  }
+                ],
+                "comment": []
+              }
+            ]
+          }
+        ],
+        "laboratory_test_analyte": [
+          {
+            "test_name": [],
+            "date_and_time_of_testing": [
+              "2021-02-02T12:00:00+01:00"
+            ],
+            "rlu_co": [
+              {
+                "|magnitude": "0.5",
+                "|unit": "1"
+              }
+            ],
+            "test_result": [],
+            "laboratory_record": [
+              {
+                "|code": "2",
+                "|value": "Negativen",
+                "|terminology": "AJ_lab_record"
+              }
+            ]
+          }
+        ],
+        "result": [
+          {
+            "|code": "4",
+            "|value": "Neustrezen",
+            "|terminology": "AJ_lab_record"
+          }
+        ],
+        "conclusion": [
+          {
+            "|code": "6",
+            "|value": "brisa) ali s premajhno količino gojišča. Ker triažni HPV test hc2 nima t.i. interne kontrole, s katero se preverja prisotnost DNK človeških celic v kužnini, rezultata preiskave ne moremo opredeliti. Prosimo za nov, ustrezen vzorec, v katerem bo tako krtačka (bris",
+            "|terminology": "AJ00_comments"
+          }
+        ],
+        "recommendations": [
+          {
+            "|code": "2",
+            "|value": "Priporočamo takojšnje ponovno testiranje. Prosimo za nov vzorec.",
+            "|terminology": "AK_hpv_recommendations"
+          }
+        ],
+        "comment": [
+          "Komentar"
+        ],
+        "receiving_laboratory": [
+          {
+            "organisation_name": [],
+            "identifier": [],
+            "analysis_performed_by": [
+              {
+                "role_in_organisation": [],
+                "professional_individual_demographics": [
+                  {
+                    "professional_details": [
+                      {
+                        "professional_identifier": []
+                      }
+                    ],
+                    "person_name": [
+                      {
+                        "structured_name": [
+                          {
+                            "given_name": [],
+                            "family_name": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "contact_details": [
+              {
+                "role_in_organisation": [],
+                "professional_individual_demographics": [
+                  {
+                    "professional_details": [
+                      {
+                        "professional_identifier": []
+                      }
+                    ],
+                    "person_name": [
+                      {
+                        "structured_name": [
+                          {
+                            "given_name": [],
+                            "family_name": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ctx": {
+    "language": "sl",
+    "territory": "SI",
+    "time": "2021-02-15T12:14:00+01:00",
+    "action_time": "2021-02-15T12:14:00+01:00",
+    "generic_fields": {}
+  }
+}
