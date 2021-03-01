@@ -22,7 +22,7 @@ import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.databind.node.TextNode
-import com.marand.thinkehr.web.build.WebTemplateNode
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.common.Locatable
 import org.openehr.rm.datatypes.DvText
 

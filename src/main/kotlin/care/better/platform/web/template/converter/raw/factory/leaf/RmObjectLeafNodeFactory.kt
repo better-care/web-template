@@ -30,7 +30,7 @@ import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.databind.node.TextNode
 import com.fasterxml.jackson.databind.node.ValueNode
-import com.marand.thinkehr.web.build.input.WebTemplateInput
+import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import org.openehr.rm.datatypes.DataValue
 
 /**

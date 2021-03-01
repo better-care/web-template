@@ -19,7 +19,6 @@ import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import com.marand.thinkehr.web.WebTemplateConstants
 import org.openehr.rm.datatypes.DvCodedText
 import java.util.regex.Pattern
 
@@ -32,7 +31,7 @@ import java.util.regex.Pattern
 internal object DvCodedTextPostProcessor : PostProcessor<DvCodedText> {
     private val supportedClass = DvCodedText::class.java
 
-    private val SUBFIELD_PATTERN = Pattern.compile("(.*?)(" + Pattern.quote(WebTemplateConstants.SUBFIELD_DELIMITER) + "(.+))?$")
+    private val SUBFIELD_PATTERN = Pattern.compile("(.*?)(" + Pattern.quote("|") + "(.+))?$")
 
     override fun postProcess(conversionContext: ConversionContext, amNode: AmNode, instance: DvCodedText, webTemplatePath: WebTemplatePath) {
         if (instance.value == null && instance.definingCode != null) {

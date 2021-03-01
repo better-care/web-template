@@ -21,8 +21,8 @@ import care.better.platform.web.template.converter.exceptions.ConversionExceptio
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.core.type.TypeReference
 import com.google.common.collect.ImmutableList
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
@@ -41,7 +41,7 @@ class OtherReferenceRangesTest : AbstractWebTemplateTest() {
         val compositionFlatMap: Map<String, Any?> = getObjectMapper().readValue(getJson("/convert/compositions/IDCR_-_Laboratory_Test_Report(1).json"), object : TypeReference<Map<String, Any?>>() {})
 
         val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/IDCR_-_Laboratory_Test_Report.v0.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/IDCR_-_Laboratory_Test_Report.v0.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(compositionFlatMap, ConversionContext.create().build())
 
         val flatMap: Map<String, Any?> = webTemplate.convertFromRawToFlat(composition!!, FromRawConversion.create())
@@ -63,7 +63,7 @@ class OtherReferenceRangesTest : AbstractWebTemplateTest() {
         val compositionFlatMap: Map<String, Any?> = getObjectMapper().readValue(getJson("/convert/compositions/IDCR_-_Laboratory_Test_Report(2).json"), object : TypeReference<Map<String, Any?>>() {})
 
         val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/IDCR_-_Laboratory_Test_Report.v0.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/IDCR_-_Laboratory_Test_Report.v0.opt"), builderContext)
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(compositionFlatMap, ConversionContext.create().build()) }
             .isInstanceOf(ConversionException::class.java)
             .hasMessageContaining("DV_QUANTITY has no attribute  (path: laboratory_test_report/laboratory_test:0/laboratory_test_panel/laboratory_result:0/result_value/_other_reference_ranges:0).")
@@ -75,7 +75,7 @@ class OtherReferenceRangesTest : AbstractWebTemplateTest() {
         val compositionFlatMap: Map<String, Any?> = getObjectMapper().readValue(getJson("/convert/compositions/IDCR_-_Laboratory_Test_Report(3).json"), object : TypeReference<Map<String, Any?>>() {})
 
         val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/IDCR_-_Laboratory_Test_Report.v0.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/IDCR_-_Laboratory_Test_Report.v0.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(compositionFlatMap, ConversionContext.create().build())
 
         val flatMap: Map<String, Any?> = webTemplate.convertFromRawToFlat(composition!!, FromRawConversion.create())

@@ -19,8 +19,8 @@ import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.google.common.collect.ImmutableMap
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
@@ -43,7 +43,7 @@ class CodedTextTest : AbstractWebTemplateTest() {
     fun testCodedText() {
         val template = getTemplate("/convert/templates/Demo Vitals.opt")
         val context = ConversionContext.create().withLanguage("en").withTerritory("IE").withComposerName("composer").build()
-        val webTemplate: WebTemplate = WTBuilder.build(template, WebTemplateBuilderContext("en"))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en"))
 
         val values: Map<String, String> = ImmutableMap.builder<String, String>()
             .put("vitals/vitals/haemoglobin_a1c/any_event/test_status", "at0038")

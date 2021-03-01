@@ -20,15 +20,13 @@ import care.better.platform.template.AmUtils
 import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
+import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import com.marand.thinkehr.web.WebTemplateConstants
-import com.marand.thinkehr.web.build.WebTemplateUtils
 import org.openehr.am.aom.CBoolean
 import org.openehr.am.aom.CInteger
 import org.openehr.am.aom.CReal
 import org.openehr.rm.datatypes.DvProportion
-import java.math.BigInteger
 import java.math.RoundingMode
 
 /**
@@ -190,23 +188,23 @@ internal object DvProportionFactory : DvQuantifiedFactory<DvProportion>() {
      * @param precisionMax Maximal precision
      */
     private fun setWithoutAttribute(conversionContext: ConversionContext, amNode: AmNode, rmObject: DvProportion, jsonNode: JsonNode, precisionMax: Int?) {
-        val numerator = AmUtils.getPrimitiveItem(amNode, CReal::class.java, WebTemplateConstants.NUMERATOR)?.also {
-            val fixedNumerator = WebTemplateUtils.getFixedValue(it.range)
+        val numerator = AmUtils.getPrimitiveItem(amNode, CReal::class.java, "numerator")?.also {
+            val fixedNumerator = WebTemplateConversionUtils.getFixedValue(it.range)
             if (fixedNumerator != null) {
                 rmObject.numerator = fixedNumerator
                 rmObject.denominator = convertValue(conversionContext, jsonNode, precisionMax)
             }
         }
 
-        val denominator = AmUtils.getPrimitiveItem(amNode, CReal::class.java, WebTemplateConstants.DENOMINATOR)?.also {
-            val fixedDenominator = WebTemplateUtils.getFixedValue(it.range)
+        val denominator = AmUtils.getPrimitiveItem(amNode, CReal::class.java, "denominator")?.also {
+            val fixedDenominator = WebTemplateConversionUtils.getFixedValue(it.range)
             if (fixedDenominator != null) {
                 rmObject.numerator = convertValue(conversionContext, jsonNode, precisionMax)
                 rmObject.denominator = fixedDenominator
             }
         }
 
-        if (numerator == null && denominator == null && rmObject.type?.toInt() == WebTemplateConstants.PROPORTION_TYPE_PERCENTAGE) {
+        if (numerator == null && denominator == null && rmObject.type == 2) {
             rmObject.numerator = convertValue(conversionContext, jsonNode, precisionMax)
             rmObject.denominator = 100.0f
         }

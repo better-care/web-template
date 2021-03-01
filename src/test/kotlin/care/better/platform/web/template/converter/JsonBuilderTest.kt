@@ -21,8 +21,8 @@ import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.google.common.collect.ImmutableList
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
@@ -38,7 +38,7 @@ class JsonBuilderTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testJson() {
         val json = getJson("/convert/compositions/ISPEK - ZN - Vital Functions Encounter.json")
-        val webTemplate: WebTemplate = WTBuilder.build(
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(
             getTemplate("/convert/templates/ZN - Vital Functions Encounter.xml"),
             WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("Composer").build()
@@ -79,7 +79,7 @@ class JsonBuilderTest : AbstractWebTemplateTest() {
                 }
             }""".trimIndent()
 
-        val webTemplate: WebTemplate = WTBuilder.build(
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(
             getTemplate("/convert/templates/ZN - Vital Functions Encounter.xml"),
             WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
 
@@ -106,7 +106,7 @@ class JsonBuilderTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testOptIssue() {
-        val webTemplate: WebTemplate = WTBuilder.build(
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(
             getTemplate("/convert/templates/ZN - Vital Functions Encounter-1.xml"),
             WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
         assertThat(webTemplate).isNotNull

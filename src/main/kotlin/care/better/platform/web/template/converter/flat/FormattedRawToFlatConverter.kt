@@ -20,7 +20,7 @@ import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.flat.mapper.RmObjectToFlatMapperDelegator
 import care.better.platform.web.template.converter.value.ValueConverter
-import com.marand.thinkehr.web.build.WebTemplateNode
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.composition.Composition
 
 /**

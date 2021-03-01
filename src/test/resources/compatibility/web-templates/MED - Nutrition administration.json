@@ -1,0 +1,2507 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "templateId": "ISPEK - MED - Nutrition administration",
+  "version": "2.3",
+  "defaultLanguage": "en",
+  "languages": [
+    "en"
+  ],
+  "tree": {
+    "id": "nutrition_administration",
+    "name": "Nutrition Administration",
+    "localizedName": "Nutrition Administration",
+    "rmType": "COMPOSITION",
+    "nodeId": "openEHR-EHR-COMPOSITION.encounter.v1",
+    "min": 1,
+    "max": 1,
+    "localizedNames": {
+      "en": "Nutrition Administration"
+    },
+    "localizedDescriptions": {
+      "en": "Generic encounter or progress note composition"
+    },
+    "aqlPath": "",
+    "children": [
+      {
+        "id": "context",
+        "rmType": "EVENT_CONTEXT",
+        "nodeId": "",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/context",
+        "children": [
+          {
+            "id": "context_detail",
+            "name": "Context detail",
+            "localizedName": "Context detail",
+            "rmType": "CLUSTER",
+            "nodeId": "openEHR-EHR-CLUSTER.composition_context_detail.v1",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "Context detail"
+            },
+            "localizedDescriptions": {
+              "en": "Additional contextual detail to be applied to all compositions."
+            },
+            "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.composition_context_detail.v1]",
+            "children": [
+              {
+                "id": "period_of_care_identifier",
+                "name": "Period of care identifier",
+                "localizedName": "Period of care identifier",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0001",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Period of care identifier"
+                },
+                "localizedDescriptions": {
+                  "en": "The period of care to which this composition belongs. This equates to the CONTSYS concept and repesents an admisitrative or contractual spell of care, involving a specific instiution or care provider."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.composition_context_detail.v1]/items[at0001]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "departmental_period_of_care_identifier",
+                "name": "Departmental period of care identifier",
+                "localizedName": "Departmental period of care identifier",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0002",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Departmental period of care identifier"
+                },
+                "localizedDescriptions": {
+                  "en": "The identifier of the departmental period of care to which this Composition belongs."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.composition_context_detail.v1]/items[at0002]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "portlet_id",
+                "name": "Portlet Id",
+                "localizedName": "Portlet Id",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0003",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Portlet Id"
+                },
+                "localizedDescriptions": {
+                  "en": "Portlet ID from which stores the information where was the composition saved."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.composition_context_detail.v1]/items[at0003]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "medication_order_type",
+                "name": "Medication order type",
+                "localizedName": "Medication order type",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0004",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Medication order type"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.composition_context_detail.v1]/items[at0004]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0005",
+                        "label": "Oral",
+                        "localizedLabels": {
+                          "en": "Oral"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0006",
+                        "label": "Intravenous",
+                        "localizedLabels": {
+                          "en": "Intravenous"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0007",
+                        "label": "Mixture",
+                        "localizedLabels": {
+                          "en": "Mixture"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "tags",
+                "name": "Tags",
+                "localizedName": "Tags",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0008",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Tags"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.composition_context_detail.v1]/items[at0008]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "document_status",
+                "name": "Document status",
+                "localizedName": "Document status",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0010",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Document status"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.composition_context_detail.v1]/items[at0010]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0011",
+                        "label": "Authorised",
+                        "localizedLabels": {
+                          "en": "Authorised"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0012",
+                        "label": "Confirmed",
+                        "localizedLabels": {
+                          "en": "Confirmed"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0013",
+                        "label": "Open",
+                        "localizedLabels": {
+                          "en": "Open"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "attachment",
+                "name": "Attachment",
+                "localizedName": "Attachment",
+                "rmType": "DV_MULTIMEDIA",
+                "nodeId": "at0009",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Attachment"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.composition_context_detail.v1]/items[at0009]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "start_time",
+            "name": "Start_time",
+            "rmType": "DV_DATE_TIME",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/context/start_time",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "setting",
+            "name": "Setting",
+            "rmType": "DV_CODED_TEXT",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/context/setting",
+            "inputs": [
+              {
+                "suffix": "code",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "value",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "nutrition_detail",
+        "name": "Nutrition detail",
+        "localizedName": "Nutrition detail",
+        "rmType": "SECTION",
+        "nodeId": "openEHR-EHR-SECTION.adhoc.v1",
+        "min": 0,
+        "max": 1,
+        "localizedNames": {
+          "en": "Nutrition detail"
+        },
+        "localizedDescriptions": {
+          "en": "A generic section header."
+        },
+        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']",
+        "children": [
+          {
+            "id": "nutrition",
+            "name": "Nutrition",
+            "localizedName": "Nutrition",
+            "rmType": "ACTION",
+            "nodeId": "openEHR-EHR-ACTION.nutrition.v0",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "Nutrition"
+            },
+            "localizedDescriptions": {
+              "en": "Details of use, administration, dispensing or other care step relating to a food which may arise from an instruction from a clinician."
+            },
+            "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]",
+            "children": [
+              {
+                "id": "ism_transition",
+                "name": "Ism_transition",
+                "rmType": "ISM_TRANSITION",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/ism_transition",
+                "children": [
+                  {
+                    "id": "current_state",
+                    "name": "Current_state",
+                    "rmType": "DV_CODED_TEXT",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/ism_transition/current_state",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "530",
+                            "label": "suspended"
+                          },
+                          {
+                            "value": "245",
+                            "label": "active"
+                          },
+                          {
+                            "value": "531",
+                            "label": "aborted"
+                          },
+                          {
+                            "value": "532",
+                            "label": "completed"
+                          },
+                          {
+                            "value": "526",
+                            "label": "planned"
+                          },
+                          {
+                            "value": "527",
+                            "label": "postponed"
+                          },
+                          {
+                            "value": "528",
+                            "label": "cancelled"
+                          },
+                          {
+                            "value": "529",
+                            "label": "scheduled"
+                          }
+                        ]
+                      }
+                    ],
+                    "inContext": true
+                  },
+                  {
+                    "id": "transition",
+                    "name": "Transition",
+                    "rmType": "DV_CODED_TEXT",
+                    "min": 0,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/ism_transition/transition",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "value",
+                        "type": "TEXT"
+                      }
+                    ],
+                    "inContext": true
+                  },
+                  {
+                    "id": "careflow_step",
+                    "name": "Careflow_step",
+                    "rmType": "DV_CODED_TEXT",
+                    "min": 0,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/ism_transition/careflow_step",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0109",
+                            "label": "Nutrition recommended",
+                            "localizedLabels": {
+                              "en": "Nutrition recommended"
+                            },
+                            "currentStates": [
+                              "526"
+                            ]
+                          },
+                          {
+                            "value": "at0013",
+                            "label": "Scheduled nutrition postponed",
+                            "localizedLabels": {
+                              "en": "Scheduled nutrition postponed"
+                            },
+                            "currentStates": [
+                              "527"
+                            ]
+                          },
+                          {
+                            "value": "at0012",
+                            "label": "Nutrition course cancelled",
+                            "localizedLabels": {
+                              "en": "Nutrition course cancelled"
+                            },
+                            "currentStates": [
+                              "528"
+                            ]
+                          },
+                          {
+                            "value": "at0016",
+                            "label": "Nutrition start date/condition set",
+                            "localizedLabels": {
+                              "en": "Nutrition start date/condition set"
+                            },
+                            "currentStates": [
+                              "529"
+                            ]
+                          },
+                          {
+                            "value": "at0137",
+                            "label": "Nutrition restart date/condition set",
+                            "localizedLabels": {
+                              "en": "Nutrition restart date/condition set"
+                            },
+                            "currentStates": [
+                              "529"
+                            ]
+                          },
+                          {
+                            "value": "at0002",
+                            "label": "Nutrition order first issued",
+                            "localizedLabels": {
+                              "en": "Nutrition order first issued"
+                            },
+                            "currentStates": [
+                              "245"
+                            ]
+                          },
+                          {
+                            "value": "at0003",
+                            "label": "Nutrition dispensed",
+                            "localizedLabels": {
+                              "en": "Nutrition dispensed"
+                            },
+                            "currentStates": [
+                              "245"
+                            ]
+                          },
+                          {
+                            "value": "at0004",
+                            "label": "Nutrition course commenced",
+                            "localizedLabels": {
+                              "en": "Nutrition course commenced"
+                            },
+                            "currentStates": [
+                              "245"
+                            ]
+                          },
+                          {
+                            "value": "at0005",
+                            "label": "Nutrition course reviewed",
+                            "localizedLabels": {
+                              "en": "Nutrition course reviewed"
+                            },
+                            "currentStates": [
+                              "245"
+                            ]
+                          },
+                          {
+                            "value": "at0041",
+                            "label": "Minor change to order",
+                            "localizedLabels": {
+                              "en": "Minor change to order"
+                            },
+                            "currentStates": [
+                              "245"
+                            ]
+                          },
+                          {
+                            "value": "at0006",
+                            "label": "Meal administered",
+                            "localizedLabels": {
+                              "en": "Meal administered"
+                            },
+                            "currentStates": [
+                              "245"
+                            ]
+                          },
+                          {
+                            "value": "at0106",
+                            "label": "Nutrition re-authorised",
+                            "localizedLabels": {
+                              "en": "Nutrition re-authorised"
+                            },
+                            "currentStates": [
+                              "245"
+                            ]
+                          },
+                          {
+                            "value": "at0010",
+                            "label": "Nutrition order re-issued",
+                            "localizedLabels": {
+                              "en": "Nutrition order re-issued"
+                            },
+                            "currentStates": [
+                              "245"
+                            ]
+                          },
+                          {
+                            "value": "at0018",
+                            "label": "Meal administration omitted",
+                            "localizedLabels": {
+                              "en": "Meal administration omitted"
+                            },
+                            "currentStates": [
+                              "245"
+                            ]
+                          },
+                          {
+                            "value": "at0044",
+                            "label": "Meal administration deferred",
+                            "localizedLabels": {
+                              "en": "Meal administration deferred"
+                            },
+                            "currentStates": [
+                              "245"
+                            ]
+                          },
+                          {
+                            "value": "at0035",
+                            "label": "Dispensed nutrition returned.",
+                            "localizedLabels": {
+                              "en": "Dispensed nutrition returned."
+                            },
+                            "currentStates": [
+                              "245"
+                            ]
+                          },
+                          {
+                            "value": "at0008",
+                            "label": "Nutrition course supply delayed",
+                            "localizedLabels": {
+                              "en": "Nutrition course supply delayed"
+                            },
+                            "currentStates": [
+                              "530"
+                            ]
+                          },
+                          {
+                            "value": "at0009",
+                            "label": "Nutrition course suspended",
+                            "localizedLabels": {
+                              "en": "Nutrition course suspended"
+                            },
+                            "currentStates": [
+                              "530"
+                            ]
+                          },
+                          {
+                            "value": "at0011",
+                            "label": "Nutrition order re-issue suspended",
+                            "localizedLabels": {
+                              "en": "Nutrition order re-issue suspended"
+                            },
+                            "currentStates": [
+                              "530"
+                            ]
+                          },
+                          {
+                            "value": "at0174",
+                            "label": "Fasting",
+                            "localizedLabels": {
+                              "en": "Fasting"
+                            },
+                            "currentStates": [
+                              "530"
+                            ]
+                          },
+                          {
+                            "value": "at0175",
+                            "label": "Abstinence",
+                            "localizedLabels": {
+                              "en": "Abstinence"
+                            },
+                            "currentStates": [
+                              "530"
+                            ]
+                          },
+                          {
+                            "value": "at0015",
+                            "label": "Nutrition course stopped",
+                            "localizedLabels": {
+                              "en": "Nutrition course stopped"
+                            },
+                            "currentStates": [
+                              "531"
+                            ]
+                          },
+                          {
+                            "value": "at0039",
+                            "label": "Major change to order.",
+                            "localizedLabels": {
+                              "en": "Major change to order."
+                            },
+                            "currentStates": [
+                              "531"
+                            ]
+                          },
+                          {
+                            "value": "at0007",
+                            "label": "Nutrition course completed",
+                            "localizedLabels": {
+                              "en": "Nutrition course completed"
+                            },
+                            "currentStates": [
+                              "532"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "inContext": true
+                  }
+                ],
+                "inContext": true
+              },
+              {
+                "id": "nutrition",
+                "name": "Nutrition",
+                "localizedName": "Nutrition",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0020",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Nutrition"
+                },
+                "localizedDescriptions": {
+                  "en": "The food which was the focus of the action. This element will normally be coded with a foods terminology but free text may be required in some cases."
+                },
+                "annotations": {
+                  "comment": "For example: 'Atenolol 100mg' or 'Atenolol tablets 100mg'."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0020]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "order_scheduled_datetime",
+                "name": "Order scheduled datetime",
+                "localizedName": "Order scheduled datetime",
+                "rmType": "DV_DATE_TIME",
+                "nodeId": "at0043",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Order scheduled datetime"
+                },
+                "localizedDescriptions": {
+                  "en": "The datetime at which the nutrition order was scheduled to occur."
+                },
+                "annotations": {
+                  "comment": "Used to compare variance from actual action time where this is not readily calculable from the original instruction."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0043]/value",
+                "inputs": [
+                  {
+                    "type": "DATETIME"
+                  }
+                ]
+              },
+              {
+                "id": "reason",
+                "name": "Reason",
+                "localizedName": "Reason",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0021",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Reason"
+                },
+                "localizedDescriptions": {
+                  "en": "The reason(s) the specific action or step was carried out. Note: This is not the reason for the nutrition instruction, rather the specific reason e.g. for administration."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0021]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "reason_course_amended_stopped",
+                "name": "Reason course amended/stopped",
+                "localizedName": "Reason course amended/stopped",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0117",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Reason course amended/stopped"
+                },
+                "localizedDescriptions": {
+                  "en": "The reason(s) for amending or stopping a course of nutrition."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0117]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0118",
+                        "label": "Allergy/Adverse Reaction/ Intolerance",
+                        "localizedLabels": {
+                          "en": "Allergy/Adverse Reaction/ Intolerance"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The patient experienced an adverse reaction."
+                        }
+                      },
+                      {
+                        "value": "at0119",
+                        "label": "Inadequate clinical response",
+                        "localizedLabels": {
+                          "en": "Inadequate clinical response"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The clinical response to the nutrition was inadequate."
+                        }
+                      },
+                      {
+                        "value": "at0120",
+                        "label": "Patient choice / difficulty",
+                        "localizedLabels": {
+                          "en": "Patient choice / difficulty"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The course was changed because of patient preference or difficulty."
+                        }
+                      },
+                      {
+                        "value": "at0121",
+                        "label": "Prescribed in error",
+                        "localizedLabels": {
+                          "en": "Prescribed in error"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The nutrition was prescribed in error."
+                        }
+                      },
+                      {
+                        "value": "at0122",
+                        "label": "Additional information available",
+                        "localizedLabels": {
+                          "en": "Additional information available"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Addiotnal information informed the amendment."
+                        }
+                      },
+                      {
+                        "value": "at0123",
+                        "label": "Temporarily suspended",
+                        "localizedLabels": {
+                          "en": "Temporarily suspended"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The nutrition was suspended for a temporary period only."
+                        }
+                      },
+                      {
+                        "value": "at0124",
+                        "label": "Change to dose form/ strength /route",
+                        "localizedLabels": {
+                          "en": "Change to dose form/ strength /route"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The dose form/strength and or route were changed."
+                        }
+                      }
+                    ],
+                    "listOpen": true
+                  },
+                  {
+                    "suffix": "other",
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "reason_dose_not_administered",
+                "name": "Reason dose not administered",
+                "localizedName": "Reason dose not administered",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0116",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Reason dose not administered"
+                },
+                "localizedDescriptions": {
+                  "en": "The reason(s) why a particular dose administration did not take place, including complte omission of the dose and deferral of the dose."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0116]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0125",
+                        "label": "Patient refused",
+                        "localizedLabels": {
+                          "en": "Patient refused"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The patient refused to take the nutrition."
+                        }
+                      },
+                      {
+                        "value": "at0126",
+                        "label": "Nil by mouth",
+                        "localizedLabels": {
+                          "en": "Nil by mouth"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The patient is on a nil-by-mouth regime."
+                        }
+                      },
+                      {
+                        "value": "at0127",
+                        "label": "Food unavailable",
+                        "localizedLabels": {
+                          "en": "Food unavailable"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The food was unavailable."
+                        }
+                      },
+                      {
+                        "value": "at0128",
+                        "label": "Patient unavailable",
+                        "localizedLabels": {
+                          "en": "Patient unavailable"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The patient was not available."
+                        }
+                      },
+                      {
+                        "value": "at0129",
+                        "label": "Clinical reason",
+                        "localizedLabels": {
+                          "en": "Clinical reason"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The nutrition administration was withheld/deferred for a clinical reason."
+                        }
+                      },
+                      {
+                        "value": "at0176",
+                        "label": "Abstinence",
+                        "localizedLabels": {
+                          "en": "Abstinence"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0177",
+                        "label": "Fasting",
+                        "localizedLabels": {
+                          "en": "Fasting"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "meal",
+                "name": "Meal",
+                "localizedName": "Meal",
+                "rmType": "CLUSTER",
+                "nodeId": "at0146",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Meal"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]",
+                "children": [
+                  {
+                    "id": "type_of_meal",
+                    "name": "Type of meal",
+                    "localizedName": "Type of meal",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0166",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Type of meal"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[at0166]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0167",
+                            "label": "Breakfast",
+                            "localizedLabels": {
+                              "en": "Breakfast"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Breakfast"
+                            }
+                          },
+                          {
+                            "value": "at0168",
+                            "label": "Lunch",
+                            "localizedLabels": {
+                              "en": "Lunch"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Lunch"
+                            }
+                          },
+                          {
+                            "value": "at0169",
+                            "label": "Dinner",
+                            "localizedLabels": {
+                              "en": "Dinner"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Dinner"
+                            }
+                          },
+                          {
+                            "value": "at0170",
+                            "label": "Morning snack",
+                            "localizedLabels": {
+                              "en": "Morning snack"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Morning snack"
+                            }
+                          },
+                          {
+                            "value": "at0171",
+                            "label": "Afternoon snack",
+                            "localizedLabels": {
+                              "en": "Afternoon snack"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Afternoon snack"
+                            }
+                          },
+                          {
+                            "value": "at0172",
+                            "label": "Evening snack",
+                            "localizedLabels": {
+                              "en": "Evening snack"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Evening snack"
+                            }
+                          }
+                        ],
+                        "listOpen": true
+                      },
+                      {
+                        "suffix": "other",
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "meal_pattern",
+                    "name": "Meal pattern",
+                    "localizedName": "Meal pattern",
+                    "rmType": "CLUSTER",
+                    "nodeId": "openEHR-EHR-CLUSTER.meal_pattern.v0",
+                    "min": 0,
+                    "max": -1,
+                    "localizedNames": {
+                      "en": "Meal pattern"
+                    },
+                    "localizedDescriptions": {
+                      "en": "unknown"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[openEHR-EHR-CLUSTER.meal_pattern.v0]",
+                    "children": [
+                      {
+                        "id": "nutrition_item",
+                        "name": "Nutrition item",
+                        "localizedName": "Nutrition item",
+                        "rmType": "DV_TEXT",
+                        "nodeId": "at0180",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Nutrition item"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[openEHR-EHR-CLUSTER.meal_pattern.v0]/items[at0180,'Nutrition item']/value",
+                        "inputs": [
+                          {
+                            "type": "TEXT"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "supplement",
+                        "name": "Supplement",
+                        "localizedName": "Supplement",
+                        "rmType": "DV_TEXT",
+                        "nodeId": "at0180",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Supplement"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[openEHR-EHR-CLUSTER.meal_pattern.v0]/items[at0180,'Supplement']/value",
+                        "inputs": [
+                          {
+                            "type": "TEXT"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "kilocalories",
+                        "name": "Kilocalories",
+                        "localizedName": "Kilocalories",
+                        "rmType": "DV_QUANTITY",
+                        "nodeId": "at0003",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Kilocalories"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[openEHR-EHR-CLUSTER.meal_pattern.v0]/items[at0003]/value",
+                        "inputs": [
+                          {
+                            "suffix": "magnitude",
+                            "type": "DECIMAL",
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0.0
+                              }
+                            }
+                          },
+                          {
+                            "suffix": "unit",
+                            "type": "CODED_TEXT",
+                            "list": [
+                              {
+                                "value": "kcal",
+                                "label": "kcal",
+                                "validation": {
+                                  "range": {
+                                    "minOp": ">=",
+                                    "min": 0.0
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "time_consumed",
+                        "name": "Time consumed",
+                        "localizedName": "Time consumed",
+                        "rmType": "DV_TIME",
+                        "nodeId": "at0183",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Time consumed"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[openEHR-EHR-CLUSTER.meal_pattern.v0]/items[at0183]/value",
+                        "inputs": [
+                          {
+                            "type": "TIME"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "dosage",
+                        "name": "Dosage",
+                        "localizedName": "Dosage",
+                        "rmType": "CLUSTER",
+                        "nodeId": "openEHR-EHR-CLUSTER.dosage.v1",
+                        "min": 0,
+                        "max": -1,
+                        "localizedNames": {
+                          "en": "Dosage"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The combination of a medication amount and administration timing for a single day, in the context of a medication order or medication management."
+                        },
+                        "annotations": {
+                          "comment": "For example: '2 tablets at 6pm' or '20mg three times per day'. Please note: this cluster allows multiple occurrences to enable representation of a complete set of dose patterns for a single dose direction."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[openEHR-EHR-CLUSTER.meal_pattern.v0]/items[openEHR-EHR-CLUSTER.dosage.v1]",
+                        "children": [
+                          {
+                            "id": "dosage_sequence",
+                            "name": "Dosage sequence",
+                            "localizedName": "Dosage sequence",
+                            "rmType": "DV_COUNT",
+                            "nodeId": "at0164",
+                            "min": 0,
+                            "max": 1,
+                            "localizedNames": {
+                              "en": "Dosage sequence"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The intended position of this dosage within the overall sequence of dosages."
+                            },
+                            "annotations": {
+                              "comment": "For example: '1', '2', '3'.\n                                                                Where multiple dosages are expressed, the 'Pattern sequence' makes the order in which they should be executed explicit. For example: (1) 1 tab in the morning, (2) 2 tab at 2pm, (3) 1 tab at night.\n                                                            "
+                            },
+                            "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[openEHR-EHR-CLUSTER.meal_pattern.v0]/items[openEHR-EHR-CLUSTER.dosage.v1]/items[at0164]/value",
+                            "inputs": [
+                              {
+                                "type": "INTEGER",
+                                "validation": {
+                                  "range": {
+                                    "minOp": ">=",
+                                    "min": 1
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "id": "dose_amount",
+                            "name": "Dose amount",
+                            "localizedName": "Dose amount",
+                            "rmType": "ELEMENT",
+                            "nodeId": "at0144",
+                            "min": 0,
+                            "max": 1,
+                            "localizedNames": {
+                              "en": "Dose amount"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The value of the amount of medication administered at one time, as a real number, or range of real numbers, and associated with the Dose unit."
+                            },
+                            "annotations": {
+                              "comment": "For example: 1, 1.5, 0.125 or 1-2, 12.5-20.5"
+                            },
+                            "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[openEHR-EHR-CLUSTER.meal_pattern.v0]/items[openEHR-EHR-CLUSTER.dosage.v1]/items[at0144]",
+                            "children": [
+                              {
+                                "id": "quantity_value",
+                                "localizedName": "Dose amount",
+                                "rmType": "DV_QUANTITY",
+                                "nodeId": "",
+                                "min": 0,
+                                "max": 1,
+                                "localizedNames": {
+                                  "en": "Dose amount"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "The value of the amount of medication administered at one time, as a real number, or range of real numbers, and associated with the Dose unit."
+                                },
+                                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[openEHR-EHR-CLUSTER.meal_pattern.v0]/items[openEHR-EHR-CLUSTER.dosage.v1]/items[at0144]/value",
+                                "inputs": [
+                                  {
+                                    "suffix": "magnitude",
+                                    "type": "DECIMAL",
+                                    "validation": {
+                                      "range": {
+                                        "minOp": ">=",
+                                        "min": 0.0
+                                      },
+                                      "precision": {
+                                        "minOp": ">=",
+                                        "min": 0,
+                                        "maxOp": "<=",
+                                        "max": 0
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "suffix": "unit",
+                                    "type": "CODED_TEXT",
+                                    "list": [
+                                      {
+                                        "value": "1",
+                                        "label": "1",
+                                        "validation": {
+                                          "range": {
+                                            "minOp": ">=",
+                                            "min": 0.0
+                                          },
+                                          "precision": {
+                                            "minOp": ">=",
+                                            "min": 0,
+                                            "maxOp": "<=",
+                                            "max": 0
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "interval_of_quantity_value",
+                                "localizedName": "Dose amount",
+                                "rmType": "DV_INTERVAL<DV_QUANTITY>",
+                                "nodeId": "",
+                                "min": 0,
+                                "max": 1,
+                                "localizedNames": {
+                                  "en": "Dose amount"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "The value of the amount of medication administered at one time, as a real number, or range of real numbers, and associated with the Dose unit."
+                                },
+                                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[openEHR-EHR-CLUSTER.meal_pattern.v0]/items[openEHR-EHR-CLUSTER.dosage.v1]/items[at0144]/value",
+                                "children": [
+                                  {
+                                    "id": "upper",
+                                    "rmType": "DV_QUANTITY",
+                                    "nodeId": "",
+                                    "min": 1,
+                                    "max": 1,
+                                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[openEHR-EHR-CLUSTER.meal_pattern.v0]/items[openEHR-EHR-CLUSTER.dosage.v1]/items[at0144]/value/upper",
+                                    "inputs": [
+                                      {
+                                        "suffix": "magnitude",
+                                        "type": "DECIMAL",
+                                        "validation": {
+                                          "range": {
+                                            "minOp": ">=",
+                                            "min": 0.0
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "suffix": "unit",
+                                        "type": "CODED_TEXT",
+                                        "list": [
+                                          {
+                                            "value": "1",
+                                            "label": "1",
+                                            "validation": {
+                                              "range": {
+                                                "minOp": ">=",
+                                                "min": 0.0
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": "lower",
+                                    "rmType": "DV_QUANTITY",
+                                    "nodeId": "",
+                                    "min": 1,
+                                    "max": 1,
+                                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[openEHR-EHR-CLUSTER.meal_pattern.v0]/items[openEHR-EHR-CLUSTER.dosage.v1]/items[at0144]/value/lower",
+                                    "inputs": [
+                                      {
+                                        "suffix": "magnitude",
+                                        "type": "DECIMAL",
+                                        "validation": {
+                                          "range": {
+                                            "minOp": ">=",
+                                            "min": 0.0
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "suffix": "unit",
+                                        "type": "CODED_TEXT",
+                                        "list": [
+                                          {
+                                            "value": "1",
+                                            "label": "1",
+                                            "validation": {
+                                              "range": {
+                                                "minOp": ">=",
+                                                "min": 0.0
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "id": "dose_unit",
+                            "name": "Dose unit",
+                            "localizedName": "Dose unit",
+                            "rmType": "DV_TEXT",
+                            "nodeId": "at0145",
+                            "min": 0,
+                            "max": 1,
+                            "localizedNames": {
+                              "en": "Dose unit"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The unit which is associated with the Dose amount."
+                            },
+                            "annotations": {
+                              "comment": "For example: 'tablet','mg'. Coding of the dose unit with a terminology is preferred, where possible."
+                            },
+                            "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[openEHR-EHR-CLUSTER.meal_pattern.v0]/items[openEHR-EHR-CLUSTER.dosage.v1]/items[at0145]/value",
+                            "inputs": [
+                              {
+                                "type": "TEXT"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "dose_description",
+                            "name": "Dose description",
+                            "localizedName": "Dose description",
+                            "rmType": "DV_TEXT",
+                            "nodeId": "at0178",
+                            "min": 0,
+                            "max": 1,
+                            "localizedNames": {
+                              "en": "Dose description"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Text description of the dose."
+                            },
+                            "annotations": {
+                              "comment": "For example: \"Apply ointment to affected area until it glistens\". This element is intended to allow implementers to use the structures for increasing/tapering dosages without necessarily specifying the doses in a structured way."
+                            },
+                            "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[openEHR-EHR-CLUSTER.meal_pattern.v0]/items[openEHR-EHR-CLUSTER.dosage.v1]/items[at0178]/value",
+                            "inputs": [
+                              {
+                                "type": "TEXT"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "type_of_kitchen",
+                        "name": "Type of kitchen",
+                        "localizedName": "Type of kitchen",
+                        "rmType": "DV_CODED_TEXT",
+                        "nodeId": "at0004",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Type of kitchen"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[openEHR-EHR-CLUSTER.meal_pattern.v0]/items[at0004]/value",
+                        "inputs": [
+                          {
+                            "suffix": "code",
+                            "type": "CODED_TEXT",
+                            "list": [
+                              {
+                                "value": "at0012",
+                                "label": "Main kitchen",
+                                "localizedLabels": {
+                                  "en": "Main kitchen"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "*"
+                                }
+                              },
+                              {
+                                "value": "at0013",
+                                "label": "Milk kitchen",
+                                "localizedLabels": {
+                                  "en": "Milk kitchen"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "*"
+                                }
+                              },
+                              {
+                                "value": "at0014",
+                                "label": "Pharmacy",
+                                "localizedLabels": {
+                                  "en": "Pharmacy"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "*"
+                                }
+                              },
+                              {
+                                "value": "at0015",
+                                "label": "Tube kitchen",
+                                "localizedLabels": {
+                                  "en": "Tube kitchen"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "*"
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "milk_nutrition",
+                        "name": "Milk nutrition",
+                        "localizedName": "Milk nutrition",
+                        "rmType": "CLUSTER",
+                        "nodeId": "openEHR-EHR-CLUSTER.milk_nutrition.v0",
+                        "min": 0,
+                        "max": -1,
+                        "localizedNames": {
+                          "en": "Milk nutrition"
+                        },
+                        "localizedDescriptions": {
+                          "en": "unknown"
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[openEHR-EHR-CLUSTER.meal_pattern.v0]/items[openEHR-EHR-CLUSTER.milk_nutrition.v0]",
+                        "children": [
+                          {
+                            "id": "number_on_milk_bottle",
+                            "name": "Number on milk bottle",
+                            "localizedName": "Number on milk bottle",
+                            "rmType": "DV_TEXT",
+                            "nodeId": "at0001",
+                            "min": 0,
+                            "max": 1,
+                            "localizedNames": {
+                              "en": "Number on milk bottle"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            },
+                            "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[openEHR-EHR-CLUSTER.meal_pattern.v0]/items[openEHR-EHR-CLUSTER.milk_nutrition.v0]/items[at0001]/value",
+                            "inputs": [
+                              {
+                                "type": "TEXT"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "number_of_milk_bottles",
+                            "name": "Number of milk bottles",
+                            "localizedName": "Number of milk bottles",
+                            "rmType": "DV_COUNT",
+                            "nodeId": "at0002",
+                            "min": 0,
+                            "max": 1,
+                            "localizedNames": {
+                              "en": "Number of milk bottles"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            },
+                            "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[openEHR-EHR-CLUSTER.meal_pattern.v0]/items[openEHR-EHR-CLUSTER.milk_nutrition.v0]/items[at0002]/value",
+                            "inputs": [
+                              {
+                                "type": "INTEGER"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "quantity_of_meal_consumed",
+                    "name": "Quantity of meal consumed",
+                    "localizedName": "Quantity of meal consumed",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0145",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Quantity of meal consumed"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[at0145]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0147",
+                            "label": "Full meal",
+                            "localizedLabels": {
+                              "en": "Full meal"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          },
+                          {
+                            "value": "at0148",
+                            "label": "1/2 of meal",
+                            "localizedLabels": {
+                              "en": "1/2 of meal"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          },
+                          {
+                            "value": "at0149",
+                            "label": "1/4 of meal",
+                            "localizedLabels": {
+                              "en": "1/4 of meal"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          },
+                          {
+                            "value": "at0180",
+                            "label": "3/4 of meal",
+                            "localizedLabels": {
+                              "en": "3/4 of meal"
+                            },
+                            "localizedDescriptions": {
+                              "en": "3/4 of meal"
+                            }
+                          },
+                          {
+                            "value": "at0150",
+                            "label": "Nothing",
+                            "localizedLabels": {
+                              "en": "Nothing"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "meal_eating_duration",
+                    "name": "Meal eating duration",
+                    "localizedName": "Meal eating duration",
+                    "rmType": "DV_DURATION",
+                    "nodeId": "at0159",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Meal eating duration"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[at0159]/value",
+                    "inputs": [
+                      {
+                        "suffix": "hour",
+                        "type": "INTEGER",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 0
+                          }
+                        }
+                      },
+                      {
+                        "suffix": "minute",
+                        "type": "INTEGER",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 0
+                          }
+                        }
+                      },
+                      {
+                        "suffix": "second",
+                        "type": "INTEGER",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 0
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "appetite_of_patient",
+                    "name": "Appetite of patient",
+                    "localizedName": "Appetite of patient",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0161",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Appetite of patient"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[at0161]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0162",
+                            "label": "Average",
+                            "localizedLabels": {
+                              "en": "Average"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          },
+                          {
+                            "value": "at0163",
+                            "label": "Poor",
+                            "localizedLabels": {
+                              "en": "Poor"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          },
+                          {
+                            "value": "at0164",
+                            "label": "Increased",
+                            "localizedLabels": {
+                              "en": "Increased"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          },
+                          {
+                            "value": "at0165",
+                            "label": "Rejects food",
+                            "localizedLabels": {
+                              "en": "Rejects food"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          }
+                        ],
+                        "listOpen": true
+                      },
+                      {
+                        "suffix": "other",
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "total_kilocalories",
+                    "name": "Total kilocalories",
+                    "localizedName": "Total kilocalories",
+                    "rmType": "DV_QUANTITY",
+                    "nodeId": "at0179",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Total kilocalories"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0146]/items[at0179]/value",
+                    "inputs": [
+                      {
+                        "suffix": "magnitude",
+                        "type": "DECIMAL"
+                      },
+                      {
+                        "suffix": "unit",
+                        "type": "CODED_TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "comment",
+                "name": "Comment",
+                "localizedName": "Comment",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0024",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Comment"
+                },
+                "localizedDescriptions": {
+                  "en": "A comment on the action taken including details of any variance between the intended action and the action actually performed."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/description[at0017]/items[at0024]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "order_id",
+                "name": "Order ID",
+                "localizedName": "Order ID",
+                "rmType": "DV_IDENTIFIER",
+                "nodeId": "at0103",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Order ID"
+                },
+                "localizedDescriptions": {
+                  "en": "The identifier assigned with the original order."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/protocol[at0030]/items[at0103]/value",
+                "inputs": [
+                  {
+                    "suffix": "id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "type",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "issuer",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "assigner",
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "time",
+                "name": "Time",
+                "rmType": "DV_DATE_TIME",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/time",
+                "inputs": [
+                  {
+                    "type": "DATETIME"
+                  }
+                ],
+                "inContext": true
+              },
+              {
+                "id": "language",
+                "name": "Language",
+                "rmType": "CODE_PHRASE",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/language",
+                "inContext": true
+              },
+              {
+                "id": "encoding",
+                "name": "Encoding",
+                "rmType": "CODE_PHRASE",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/encoding",
+                "inContext": true
+              },
+              {
+                "id": "subject",
+                "name": "Subject",
+                "rmType": "PARTY_PROXY",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Nutrition detail']/items[openEHR-EHR-ACTION.nutrition.v0]/subject",
+                "inputs": [
+                  {
+                    "suffix": "id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "id_scheme",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "id_namespace",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "name",
+                    "type": "TEXT"
+                  }
+                ],
+                "inContext": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "fluid_intake",
+        "name": "Fluid intake",
+        "localizedName": "Fluid intake",
+        "rmType": "SECTION",
+        "nodeId": "openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1",
+        "min": 0,
+        "max": -1,
+        "localizedNames": {
+          "en": "Fluid intake"
+        },
+        "localizedDescriptions": {
+          "en": "Acts as a container for multiple Fluid intake entries"
+        },
+        "annotations": {
+          "default": "L10n={sl=Vnos tekočin}"
+        },
+        "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1]",
+        "children": [
+          {
+            "id": "drink",
+            "name": "Drink",
+            "localizedName": "Drink",
+            "rmType": "OBSERVATION",
+            "nodeId": "openEHR-EHR-OBSERVATION.fluid_input-mnd.v1",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Drink"
+            },
+            "localizedDescriptions": {
+              "en": "Recording of findings and measurement (or estimation) of fluid input with ThinkMed! terminology."
+            },
+            "annotations": {
+              "default": "L10n={sl=Pijača}"
+            },
+            "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1]/items[openEHR-EHR-OBSERVATION.fluid_input-mnd.v1,'Drink']",
+            "children": [
+              {
+                "id": "any_event",
+                "name": "Any event",
+                "localizedName": "Any event",
+                "rmType": "EVENT",
+                "nodeId": "at0002",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Any event"
+                },
+                "localizedDescriptions": {
+                  "en": "The estimation of fluid output without specifying the period of time."
+                },
+                "annotations": {
+                  "view:pass_through": "true"
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1]/items[openEHR-EHR-OBSERVATION.fluid_input-mnd.v1,'Drink']/data[at0001]/events[at0002]",
+                "children": [
+                  {
+                    "id": "route",
+                    "name": "Route",
+                    "localizedName": "Route",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0034.1",
+                    "min": 1,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Route"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The delivery route of the fluid."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1]/items[openEHR-EHR-OBSERVATION.fluid_input-mnd.v1,'Drink']/data[at0001]/events[at0002]/data[at0003]/items[at0034.1]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0.59",
+                            "label": "Oral beverage",
+                            "localizedLabels": {
+                              "en": "Oral beverage"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Oral beverage."
+                            }
+                          }
+                        ],
+                        "defaultValue": "at0.59"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "description",
+                    "name": "Description",
+                    "localizedName": "Description",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0036",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Description"
+                    },
+                    "localizedDescriptions": {
+                      "en": "A description of the fluid intake."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1]/items[openEHR-EHR-OBSERVATION.fluid_input-mnd.v1,'Drink']/data[at0001]/events[at0002]/data[at0003]/items[at0036]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "specific_fluid",
+                    "name": "Specific fluid",
+                    "localizedName": "Specific fluid",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0.62",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Specific fluid"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1]/items[openEHR-EHR-OBSERVATION.fluid_input-mnd.v1,'Drink']/data[at0001]/events[at0002]/data[at0003]/items[at0.62]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0.75",
+                            "label": "Water",
+                            "localizedLabels": {
+                              "en": "Water"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          },
+                          {
+                            "value": "at0.63",
+                            "label": "Tea",
+                            "localizedLabels": {
+                              "en": "Tea"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          },
+                          {
+                            "value": "at0.67",
+                            "label": "Coffee",
+                            "localizedLabels": {
+                              "en": "Coffee"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          },
+                          {
+                            "value": "at0.69",
+                            "label": "Cocoa",
+                            "localizedLabels": {
+                              "en": "Cocoa"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          },
+                          {
+                            "value": "at0.79",
+                            "label": "Milk",
+                            "localizedLabels": {
+                              "en": "Milk"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Milk"
+                            }
+                          },
+                          {
+                            "value": "at0.80",
+                            "label": "Milk Drink",
+                            "localizedLabels": {
+                              "en": "Milk Drink"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Milk Drink"
+                            }
+                          },
+                          {
+                            "value": "at0.65",
+                            "label": "Juice",
+                            "localizedLabels": {
+                              "en": "Juice"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          },
+                          {
+                            "value": "at0.73",
+                            "label": "Compote",
+                            "localizedLabels": {
+                              "en": "Compote"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          },
+                          {
+                            "value": "at0.71",
+                            "label": "Soup",
+                            "localizedLabels": {
+                              "en": "Soup"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          },
+                          {
+                            "value": "at0.77",
+                            "label": "Energetic Drink",
+                            "localizedLabels": {
+                              "en": "Energetic Drink"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          },
+                          {
+                            "value": "at0.78",
+                            "label": "Other fluid",
+                            "localizedLabels": {
+                              "en": "Other fluid"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Other fluid"
+                            }
+                          }
+                        ],
+                        "listOpen": true
+                      },
+                      {
+                        "suffix": "other",
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "volume",
+                    "name": "Volume",
+                    "localizedName": "Volume",
+                    "rmType": "DV_QUANTITY",
+                    "nodeId": "at0035",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Volume"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The volume of fluid taken in."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1]/items[openEHR-EHR-OBSERVATION.fluid_input-mnd.v1,'Drink']/data[at0001]/events[at0002]/data[at0003]/items[at0035]/value",
+                    "inputs": [
+                      {
+                        "suffix": "magnitude",
+                        "type": "DECIMAL"
+                      },
+                      {
+                        "suffix": "unit",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "ml",
+                            "label": "ml"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "time",
+                    "name": "Time",
+                    "rmType": "DV_DATE_TIME",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1]/items[openEHR-EHR-OBSERVATION.fluid_input-mnd.v1,'Drink']/data[at0001]/events[at0002]/time",
+                    "inputs": [
+                      {
+                        "type": "DATETIME"
+                      }
+                    ],
+                    "inContext": true
+                  }
+                ]
+              },
+              {
+                "id": "language",
+                "name": "Language",
+                "rmType": "CODE_PHRASE",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1]/items[openEHR-EHR-OBSERVATION.fluid_input-mnd.v1,'Drink']/language",
+                "inContext": true
+              },
+              {
+                "id": "encoding",
+                "name": "Encoding",
+                "rmType": "CODE_PHRASE",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1]/items[openEHR-EHR-OBSERVATION.fluid_input-mnd.v1,'Drink']/encoding",
+                "inContext": true
+              },
+              {
+                "id": "subject",
+                "name": "Subject",
+                "rmType": "PARTY_PROXY",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1]/items[openEHR-EHR-OBSERVATION.fluid_input-mnd.v1,'Drink']/subject",
+                "inputs": [
+                  {
+                    "suffix": "id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "id_scheme",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "id_namespace",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "name",
+                    "type": "TEXT"
+                  }
+                ],
+                "inContext": true
+              }
+            ]
+          },
+          {
+            "id": "parenteral_nutrition",
+            "name": "Parenteral Nutrition",
+            "localizedName": "Parenteral Nutrition",
+            "rmType": "OBSERVATION",
+            "nodeId": "openEHR-EHR-OBSERVATION.fluid_input-mnd.v1",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Parenteral Nutrition"
+            },
+            "localizedDescriptions": {
+              "en": "Recording of findings and measurement (or estimation) of fluid input with ThinkMed! terminology."
+            },
+            "annotations": {
+              "default": "L10n={sl=Parenteralna prehrana}"
+            },
+            "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1]/items[openEHR-EHR-OBSERVATION.fluid_input-mnd.v1,'Parenteral Nutrition']",
+            "children": [
+              {
+                "id": "any_event",
+                "name": "Any event",
+                "localizedName": "Any event",
+                "rmType": "EVENT",
+                "nodeId": "at0002",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Any event"
+                },
+                "localizedDescriptions": {
+                  "en": "The estimation of fluid output without specifying the period of time."
+                },
+                "annotations": {
+                  "view:pass_through": "true"
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1]/items[openEHR-EHR-OBSERVATION.fluid_input-mnd.v1,'Parenteral Nutrition']/data[at0001]/events[at0002]",
+                "children": [
+                  {
+                    "id": "route",
+                    "name": "Route",
+                    "localizedName": "Route",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0034.1",
+                    "min": 1,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Route"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The delivery route of the fluid."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1]/items[openEHR-EHR-OBSERVATION.fluid_input-mnd.v1,'Parenteral Nutrition']/data[at0001]/events[at0002]/data[at0003]/items[at0034.1]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0.41",
+                            "label": "Nutrition - Parenteral",
+                            "localizedLabels": {
+                              "en": "Nutrition - Parenteral"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Nutrition - Parenteral."
+                            }
+                          }
+                        ],
+                        "defaultValue": "at0.41"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "description",
+                    "name": "Description",
+                    "localizedName": "Description",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0036",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Description"
+                    },
+                    "localizedDescriptions": {
+                      "en": "A description of the fluid intake."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1]/items[openEHR-EHR-OBSERVATION.fluid_input-mnd.v1,'Parenteral Nutrition']/data[at0001]/events[at0002]/data[at0003]/items[at0036]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "volume",
+                    "name": "Volume",
+                    "localizedName": "Volume",
+                    "rmType": "DV_QUANTITY",
+                    "nodeId": "at0035",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Volume"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The volume of fluid taken in."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1]/items[openEHR-EHR-OBSERVATION.fluid_input-mnd.v1,'Parenteral Nutrition']/data[at0001]/events[at0002]/data[at0003]/items[at0035]/value",
+                    "inputs": [
+                      {
+                        "suffix": "magnitude",
+                        "type": "DECIMAL"
+                      },
+                      {
+                        "suffix": "unit",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "ml",
+                            "label": "ml"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "time",
+                    "name": "Time",
+                    "rmType": "DV_DATE_TIME",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1]/items[openEHR-EHR-OBSERVATION.fluid_input-mnd.v1,'Parenteral Nutrition']/data[at0001]/events[at0002]/time",
+                    "inputs": [
+                      {
+                        "type": "DATETIME"
+                      }
+                    ],
+                    "inContext": true
+                  }
+                ]
+              },
+              {
+                "id": "language",
+                "name": "Language",
+                "rmType": "CODE_PHRASE",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1]/items[openEHR-EHR-OBSERVATION.fluid_input-mnd.v1,'Parenteral Nutrition']/language",
+                "inContext": true
+              },
+              {
+                "id": "encoding",
+                "name": "Encoding",
+                "rmType": "CODE_PHRASE",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1]/items[openEHR-EHR-OBSERVATION.fluid_input-mnd.v1,'Parenteral Nutrition']/encoding",
+                "inContext": true
+              },
+              {
+                "id": "subject",
+                "name": "Subject",
+                "rmType": "PARTY_PROXY",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog-fluid_intake.v1]/items[openEHR-EHR-OBSERVATION.fluid_input-mnd.v1,'Parenteral Nutrition']/subject",
+                "inputs": [
+                  {
+                    "suffix": "id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "id_scheme",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "id_namespace",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "name",
+                    "type": "TEXT"
+                  }
+                ],
+                "inContext": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "category",
+        "rmType": "DV_CODED_TEXT",
+        "nodeId": "",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/category",
+        "inputs": [
+          {
+            "suffix": "code",
+            "type": "CODED_TEXT",
+            "list": [
+              {
+                "value": "433",
+                "label": "event",
+                "localizedLabels": {
+                  "en": "event"
+                }
+              }
+            ],
+            "terminology": "openehr"
+          }
+        ],
+        "inContext": true
+      },
+      {
+        "id": "language",
+        "name": "Language",
+        "rmType": "CODE_PHRASE",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/language",
+        "inContext": true
+      },
+      {
+        "id": "territory",
+        "name": "Territory",
+        "rmType": "CODE_PHRASE",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/territory",
+        "inContext": true
+      },
+      {
+        "id": "composer",
+        "name": "Composer",
+        "rmType": "PARTY_PROXY",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/composer",
+        "inputs": [
+          {
+            "suffix": "id",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "id_scheme",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "id_namespace",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "name",
+            "type": "TEXT"
+          }
+        ],
+        "inContext": true
+      }
+    ]
+  }
+}

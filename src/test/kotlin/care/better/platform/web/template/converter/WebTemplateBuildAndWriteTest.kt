@@ -18,9 +18,9 @@ package care.better.platform.web.template.converter
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import com.google.common.collect.ImmutableSet
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
-import com.marand.thinkehr.web.build.WebTemplateNode
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -64,49 +64,49 @@ class WebTemplateBuildAndWriteTest : AbstractWebTemplateTest() {
 
     @Test
     @Throws(IOException::class, JAXBException::class)
-    fun medicationErrorReport() {
+    fun testMedicationErrorReport() {
         buildAndExport("/convert/templates/MSE - Medication Error Report.xml", "medicationErrorReport")
     }
 
     @Test
     @Throws(IOException::class, JAXBException::class)
-    fun medicationEventCaseSummary() {
+    fun testMedicationEventCaseSummary() {
         buildAndExport("/convert/templates/MSE - Medication Event Case Summary.opt", "medicationEventCaseSummary")
     }
 
     @Test
     @Throws(IOException::class, JAXBException::class)
-    fun adverseReaction() {
+    fun testAdverseReaction() {
         buildAndExport("/convert/templates/adverse4.opt", "adverse", "sl", ImmutableSet.of("en", "sl"))
     }
 
     @Test
     @Throws(IOException::class, JAXBException::class)
-    fun russian() {
+    fun testRussian() {
         buildAndExport("/convert/templates/openEHR-EHR-COMPOSITION.t_primary_therapeutist_examination.opt", "therapeutist_examination")
     }
 
     @Test
     @Throws(IOException::class, JAXBException::class)
-    fun radImaging() {
+    fun testRadImaging() {
         buildAndExport("/convert/templates/RAD - Imaging status event.opt", "imagingStatus")
     }
 
     @Test
     @Throws(IOException::class, JAXBException::class)
-    fun erco() {
+    fun testErco() {
         buildAndExport("/convert/templates/Vaccination Record.opt", "erco")
     }
 
     @Test
     @Throws(IOException::class, JAXBException::class)
-    fun defaultValues() {
+    fun testDefaultValues() {
         buildAndExport("/convert/templates/Новый Шаблон.opt", "test")
     }
 
     @Test
     @Throws(IOException::class, JAXBException::class)
-    fun parsable() {
+    fun testParsable() {
         buildAndExport("/convert/templates/MED - Document.opt", "meddoc")
     }
 
@@ -114,16 +114,16 @@ class WebTemplateBuildAndWriteTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testScales() {
         val builderContext = WebTemplateBuilderContext("sl")
-        writeOut("scales", WTBuilder.build(getTemplate("/convert/templates/ZN - Assessment Scales Encounter.opt"), builderContext))
+        writeOut("scales", WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/ZN - Assessment Scales Encounter.opt"), builderContext))
     }
 
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testCabinet() {
         val builderContext = WebTemplateBuilderContext("ru")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Cabinet.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Cabinet.opt"), builderContext)
         val webTemplateNode: WebTemplateNode = webTemplate.tree.children[0].children[0]
-        assertThat(webTemplateNode.input.defaultValue).isEqualTo("at0007")
+        assertThat(webTemplateNode.getInput()?.defaultValue).isEqualTo("at0007")
         writeOut("cabinet", webTemplate)
     }
 
@@ -131,7 +131,7 @@ class WebTemplateBuildAndWriteTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testCabinet123() {
         val builderContext = WebTemplateBuilderContext("ru")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Cabinet123.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Cabinet123.opt"), builderContext)
         val webTemplateNode: WebTemplateNode = webTemplate.tree.children[0].children[0]
         assertThat(webTemplateNode.annotations).contains(
             Assertions.entry("GUI Directives.Widget Type", "List"),
@@ -144,7 +144,7 @@ class WebTemplateBuildAndWriteTest : AbstractWebTemplateTest() {
     fun testDefaultValue() {
         val builderContext = WebTemplateBuilderContext("ru")
         val webTemplate: WebTemplate =
-            WTBuilder.build(getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_allergologist_examination.opt"), builderContext)
+            WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_allergologist_examination.opt"), builderContext)
         writeOut("allergology", webTemplate)
     }
 
@@ -156,13 +156,13 @@ class WebTemplateBuildAndWriteTest : AbstractWebTemplateTest() {
 
     @Test
     @Throws(IOException::class, JAXBException::class)
-    fun admission() {
+    fun testAdmission() {
         buildAndExport("/convert/templates/ZN - Admition Summary Encounter new.opt", "admission", "sl", ImmutableSet.of("en", "sl"))
     }
 
     @Test
     @Throws(IOException::class, JAXBException::class)
-    fun formsDemo() {
+    fun testFormsDemo() {
         buildAndExport("/convert/templates/Forms Demo.opt", "formsdemo", "sl", ImmutableSet.of("en", "sl"))
     }
 

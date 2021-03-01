@@ -21,8 +21,8 @@ import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
@@ -39,33 +39,33 @@ import java.time.format.DateTimeFormatter
  */
 class PartialTemporalTest : AbstractWebTemplateTest() {
 
-    private val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/dates.opt"), WebTemplateBuilderContext("en"))
+    private val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/dates.opt"), WebTemplateBuilderContext("en"))
 
     @Test
     fun testDateTimePatterns() {
-        assertThat(webTemplate.findWebTemplateNode("dates/dates/any").input.validation).isNull()
-        assertThat(webTemplate.findWebTemplateNode("dates/dates/date_and_time").input.validation.pattern).isEqualTo("yyyy-mm-ddTHH:MM:SS")
-        assertThat(webTemplate.findWebTemplateNode("dates/dates/date_and_partial_time").input.validation.pattern).isEqualTo("yyyy-mm-ddTHH:??:??")
+        assertThat(webTemplate.findWebTemplateNode("dates/dates/any").getInput()?.validation).isNull()
+        assertThat(webTemplate.findWebTemplateNode("dates/dates/date_and_time").getInput()?.validation?.pattern).isEqualTo("yyyy-mm-ddTHH:MM:SS")
+        assertThat(webTemplate.findWebTemplateNode("dates/dates/date_and_partial_time").getInput()?.validation?.pattern).isEqualTo("yyyy-mm-ddTHH:??:??")
     }
 
     @Test
     fun testDatePatterns() {
-        assertThat(webTemplate.findWebTemplateNode("dates/dates/any_date").input.validation).isNull()
-        assertThat(webTemplate.findWebTemplateNode("dates/dates/full_date").input.validation.pattern).isEqualTo("yyyy-mm-dd")
-        assertThat(webTemplate.findWebTemplateNode("dates/dates/partial_date").input.validation.pattern).isEqualTo("yyyy-??-XX")
-        assertThat(webTemplate.findWebTemplateNode("dates/dates/partial_date_with_month").input.validation.pattern).isEqualTo("yyyy-mm-??")
+        assertThat(webTemplate.findWebTemplateNode("dates/dates/any_date").getInput()?.validation).isNull()
+        assertThat(webTemplate.findWebTemplateNode("dates/dates/full_date").getInput()?.validation?.pattern).isEqualTo("yyyy-mm-dd")
+        assertThat(webTemplate.findWebTemplateNode("dates/dates/partial_date").getInput()?.validation?.pattern).isEqualTo("yyyy-??-XX")
+        assertThat(webTemplate.findWebTemplateNode("dates/dates/partial_date_with_month").getInput()?.validation?.pattern).isEqualTo("yyyy-mm-??")
     }
 
     @Test
     fun testTimePatterns() {
-        assertThat(webTemplate.findWebTemplateNode("dates/dates/any_time").input.validation).isNull()
-        assertThat(webTemplate.findWebTemplateNode("dates/dates/full_time").input.validation.pattern).isEqualTo("HH:MM:SS")
-        assertThat(webTemplate.findWebTemplateNode("dates/dates/partial_time").input.validation.pattern).isEqualTo("HH:??:XX")
-        assertThat(webTemplate.findWebTemplateNode("dates/dates/partial_time_with_minutes").input.validation.pattern).isEqualTo("HH:MM:??")
+        assertThat(webTemplate.findWebTemplateNode("dates/dates/any_time").getInput()?.validation).isNull()
+        assertThat(webTemplate.findWebTemplateNode("dates/dates/full_time").getInput()?.validation?.pattern).isEqualTo("HH:MM:SS")
+        assertThat(webTemplate.findWebTemplateNode("dates/dates/partial_time").getInput()?.validation?.pattern).isEqualTo("HH:??:XX")
+        assertThat(webTemplate.findWebTemplateNode("dates/dates/partial_time_with_minutes").getInput()?.validation?.pattern).isEqualTo("HH:MM:??")
     }
 
     @Test
-    fun dateTimeAny() {
+    fun testDateTimeAny() {
         val extractor = NameAndNodeMatchingPathValueExtractor("/content[openEHR-EHR-ADMIN_ENTRY.dates.v0]/data[at0001]/items[at0002]/value/value")
         val attributeName = "any"
         assertValueMatches(webTemplate, extractor, attributeName, "2019", "2019")
@@ -99,7 +99,7 @@ class PartialTemporalTest : AbstractWebTemplateTest() {
      * When datetime is specified as full in the template we allow only missing seconds, mili/nanoseconds and zone.
      */
     @Test
-    fun dateTimeFull() {
+    fun testDateTimeFull() {
         val extractor = NameAndNodeMatchingPathValueExtractor("/content[openEHR-EHR-ADMIN_ENTRY.dates.v0]/data[at0001]/items[at0003]/value/value")
         val attributeName = "date_and_time"
         val firstDateTime = ZonedDateTime.of(2019, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault()).toOffsetDateTime()
@@ -168,7 +168,7 @@ class PartialTemporalTest : AbstractWebTemplateTest() {
     }
 
     @Test
-    fun dateTimePartial() {
+    fun testDateTimePartial() {
         val extractor = NameAndNodeMatchingPathValueExtractor("/content[openEHR-EHR-ADMIN_ENTRY.dates.v0]/data[at0001]/items[at0004]/value/value")
         val attributeName = "date_and_partial_time"
         val firstDateTime = ZonedDateTime.of(2019, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault()).toOffsetDateTime()
@@ -204,7 +204,7 @@ class PartialTemporalTest : AbstractWebTemplateTest() {
     }
 
     @Test
-    fun dateAny() {
+    fun testDateAny() {
         val extractor = NameAndNodeMatchingPathValueExtractor("/content[openEHR-EHR-ADMIN_ENTRY.dates.v0]/data[at0001]/items[at0005]/value/value")
         val attributeName = "any_date"
         assertValueMatches(webTemplate, extractor, attributeName, "2019", "2019")
@@ -213,7 +213,7 @@ class PartialTemporalTest : AbstractWebTemplateTest() {
     }
 
     @Test
-    fun dateFull() {
+    fun testDateFull() {
         val extractor = NameAndNodeMatchingPathValueExtractor("/content[openEHR-EHR-ADMIN_ENTRY.dates.v0]/data[at0001]/items[at0006]/value/value")
         val attributeName = "full_date"
         assertThatThrownBy { assertValueMatches(webTemplate, extractor, attributeName, "2019", "2019-01-01") }
@@ -226,7 +226,7 @@ class PartialTemporalTest : AbstractWebTemplateTest() {
     }
 
     @Test
-    fun datePartial() {
+    fun testDatePartial() {
         val extractor = NameAndNodeMatchingPathValueExtractor("/content[openEHR-EHR-ADMIN_ENTRY.dates.v0]/data[at0001]/items[at0007]/value/value")
         val attributeName = "partial_date"
         assertValueMatches(webTemplate, extractor, attributeName, "2019", "2019")
@@ -235,7 +235,7 @@ class PartialTemporalTest : AbstractWebTemplateTest() {
     }
 
     @Test
-    fun datePartialWithMonth() {
+    fun testDatePartialWithMonth() {
         val extractor = NameAndNodeMatchingPathValueExtractor("/content[openEHR-EHR-ADMIN_ENTRY.dates.v0]/data[at0001]/items[at0008]/value/value")
         val attributeName = "partial_date_with_month"
         assertThatThrownBy { assertValueMatches(webTemplate, extractor, attributeName, "2019", "2019-01") }
@@ -246,14 +246,14 @@ class PartialTemporalTest : AbstractWebTemplateTest() {
     }
 
     @Test
-    fun timeAny() {
+    fun testTimeAny() {
         val extractor = NameAndNodeMatchingPathValueExtractor("/content[openEHR-EHR-ADMIN_ENTRY.dates.v0]/data[at0001]/items[at0009]/value/value")
         val attributeName = "any_time"
         assertValueMatches(webTemplate, extractor, attributeName, "13:12:11", "13:12:11", LocalTime.of(13, 12, 11))
     }
 
     @Test
-    fun timeFull() {
+    fun testTimeFull() {
         val extractor = NameAndNodeMatchingPathValueExtractor("/content[openEHR-EHR-ADMIN_ENTRY.dates.v0]/data[at0001]/items[at0010]/value/value")
         val attributeName = "full_time"
         assertValueMatches(webTemplate, extractor, attributeName, "13:12:11", "13:12:11", LocalTime.of(13, 12, 11))

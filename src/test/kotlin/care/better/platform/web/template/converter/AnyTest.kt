@@ -18,8 +18,8 @@ package care.better.platform.web.template.converter
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -40,7 +40,7 @@ import javax.xml.bind.JAXBException
  */
 class AnyTest : AbstractWebTemplateTest() {
 
-    private val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/any_element.opt"), WebTemplateBuilderContext("en"))
+    private val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/any_element.opt"), WebTemplateBuilderContext("en"))
     private val context: ConversionContext = ConversionContext.create().build()
 
     @Test
@@ -76,7 +76,7 @@ class AnyTest : AbstractWebTemplateTest() {
 
     @Test
     @Throws(IOException::class, JAXBException::class)
-    fun anyElementCodedText() {
+    fun testAnyElementCodedText() {
         val values = getInitMap()
         values["encounter/test_any/any_element/coded_text_value|value"] = "Hello world!"
         values["encounter/test_any/any_element/coded_text_value|code"] = "HW"

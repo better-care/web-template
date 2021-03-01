@@ -25,7 +25,7 @@ import care.better.platform.web.template.converter.raw.extensions.createPartyRef
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.databind.node.ValueNode
-import com.marand.thinkehr.web.build.input.WebTemplateInput
+import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import org.openehr.base.basetypes.GenericId
 import org.openehr.base.basetypes.PartyRef
 import org.openehr.rm.common.Participation

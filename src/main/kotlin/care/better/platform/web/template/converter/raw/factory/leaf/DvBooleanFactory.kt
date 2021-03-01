@@ -20,7 +20,7 @@ import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.BooleanNode
-import com.marand.thinkehr.web.build.input.WebTemplateInput
+import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import org.openehr.rm.datatypes.DvBoolean
 
 /**
@@ -32,7 +32,7 @@ import org.openehr.rm.datatypes.DvBoolean
 internal object DvBooleanFactory : RmObjectLeafNodeFactory<DvBoolean>() {
 
     override fun handleWebTemplateInput(conversionContext: ConversionContext, amNode: AmNode, rmObject: DvBoolean, webTemplateInput: WebTemplateInput) {
-        if (webTemplateInput.isFixed) {
+        if (webTemplateInput.fixed) {
             rmObject.value = webTemplateInput.list[0].value.toBoolean()
         }
     }

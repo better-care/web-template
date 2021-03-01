@@ -20,8 +20,8 @@ import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.core.type.TypeReference
 import com.google.common.collect.ImmutableList
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
 import org.junit.jupiter.api.Test
@@ -39,7 +39,7 @@ class NormalRangeTest : AbstractWebTemplateTest() {
     fun testNormalRanges() {
 
         val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/IDCR_-_Laboratory_Test_Report.v0.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/IDCR_-_Laboratory_Test_Report.v0.opt"), builderContext)
 
         val flatMap: Map<String, Any?> = getObjectMapper().readValue(
             getJson("/convert/compositions/IDCR_-_Laboratory_Test_Report(Range).json"),

@@ -1,0 +1,2440 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "templateId": "Falls care plan",
+  "version": "2.3",
+  "defaultLanguage": "en",
+  "languages": [
+    "en"
+  ],
+  "tree": {
+    "id": "multidisciplinary_individualised_falls_care_plan",
+    "name": "Multidisciplinary individualised falls care plan",
+    "localizedName": "Multidisciplinary individualised falls care plan",
+    "rmType": "COMPOSITION",
+    "nodeId": "openEHR-EHR-COMPOSITION.care_plan.v0",
+    "min": 1,
+    "max": 1,
+    "localizedNames": {
+      "en": "Multidisciplinary individualised falls care plan"
+    },
+    "localizedDescriptions": {
+      "en": "A persistent and managed list of any combination of archetypes that will support the accurate recording of a Care plan."
+    },
+    "aqlPath": "",
+    "children": [
+      {
+        "id": "event_context",
+        "name": "Event Context",
+        "localizedName": "Event Context",
+        "rmType": "EVENT_CONTEXT",
+        "nodeId": "at0001",
+        "min": 1,
+        "max": 1,
+        "localizedNames": {
+          "en": "Event Context"
+        },
+        "localizedDescriptions": {
+          "en": "*"
+        },
+        "aqlPath": "/context[at0001]",
+        "children": [
+          {
+            "id": "xds_metadata",
+            "name": "XDS Metadata",
+            "localizedName": "XDS Metadata",
+            "rmType": "CLUSTER",
+            "nodeId": "openEHR-EHR-CLUSTER.xds_metadata.v0",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "XDS Metadata"
+            },
+            "localizedDescriptions": {
+              "en": "Additional composition metadata aligned with IHE-XDS which is not already available from the Reference Model COMPOSITION class."
+            },
+            "aqlPath": "/context[at0001]/other_context[at0002]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]",
+            "children": [
+              {
+                "id": "author_specialty",
+                "name": "Author specialty",
+                "localizedName": "Author specialty",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0001",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Author specialty"
+                },
+                "localizedDescriptions": {
+                  "en": "The speciality of the author/composer of the document."
+                },
+                "aqlPath": "/context[at0001]/other_context[at0002]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0001]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "class_code",
+                "name": "Class code",
+                "localizedName": "Class code",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0002",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Class code"
+                },
+                "localizedDescriptions": {
+                  "en": "A high-level document class code, normally selected from a valueset provided by the IHE-XDS Affinity Domain."
+                },
+                "annotations": {
+                  "comment": "For example: Report, Summary, Images, Plan, Patient Preferences, Workflow.\r\n                                        These codes are specific to an XDS Affinity Domain.\n                                    "
+                },
+                "aqlPath": "/context[at0001]/other_context[at0002]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0002]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "document_type",
+                "name": "Document type",
+                "localizedName": "Document type",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0003",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Document type"
+                },
+                "localizedDescriptions": {
+                  "en": "The code specifying the precise type of document from the user perspective. Normally selected from a valueset provided by the local IHE-XDS Affinity Domain or national standard."
+                },
+                "annotations": {
+                  "comment": "for example: Pulmonary History and Physical, Discharge Summary, Ultrasound Report.\r\n                                        These codes are specific to an XDS Affinity Domain.\n                                    "
+                },
+                "aqlPath": "/context[at0001]/other_context[at0002]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0003]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT",
+                    "list": [
+                      {
+                        "value": "SNOMED-CT::414191008::Fall risk assessment (procedure)",
+                        "label": "SNOMED-CT::414191008::Fall risk assessment (procedure)"
+                      }
+                    ],
+                    "listOpen": false
+                  }
+                ]
+              },
+              {
+                "id": "confidentiality_code",
+                "name": "Confidentiality code",
+                "localizedName": "Confidentiality code",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0004",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Confidentiality code"
+                },
+                "localizedDescriptions": {
+                  "en": "A term specifying the level of confidentiality of the XDS Document."
+                },
+                "annotations": {
+                  "comment": "Coded text is preferred, normally specific to an XDS Affinity Domain."
+                },
+                "aqlPath": "/context[at0001]/other_context[at0002]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0004]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "health_care_facility_type",
+                "name": "Health care facility type",
+                "localizedName": "Health care facility type",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0007",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Health care facility type"
+                },
+                "localizedDescriptions": {
+                  "en": "A term defining the healthcare facility type."
+                },
+                "annotations": {
+                  "comment": "Coded text is preferred. The codes are specific to an XDS Affinity Domain."
+                },
+                "aqlPath": "/context[at0001]/other_context[at0002]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0007]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "practice_setting_code",
+                "name": "Practice setting code",
+                "localizedName": "Practice setting code",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0009",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Practice setting code"
+                },
+                "localizedDescriptions": {
+                  "en": "The code specifying the clinical specialty where the act that resulted in the document was performed."
+                },
+                "annotations": {
+                  "comment": "For example: Family Practice, Laboratory, Radiology.\r\n                                        Coded text is preferred, normally specific to an XDS Affinity Domain.\n                                    "
+                },
+                "aqlPath": "/context[at0001]/other_context[at0002]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0009]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "event_code",
+                "name": "Event code",
+                "localizedName": "Event code",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0011",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Event code"
+                },
+                "localizedDescriptions": {
+                  "en": "This list of codes represents the main clinical acts."
+                },
+                "annotations": {
+                  "comment": "For example: Colonoscopy or appendicectomy."
+                },
+                "aqlPath": "/context[at0001]/other_context[at0002]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0011]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "document_media",
+                "name": "Document_media",
+                "localizedName": "Document_media",
+                "rmType": "DV_MULTIMEDIA",
+                "nodeId": "at0010",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Document_media"
+                },
+                "localizedDescriptions": {
+                  "en": "Additional metadata about the document itself, including size, url."
+                },
+                "aqlPath": "/context[at0001]/other_context[at0002]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0010]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "start_time",
+            "name": "Start_time",
+            "rmType": "DV_DATE_TIME",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/context[at0001]/start_time",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "setting",
+            "name": "Setting",
+            "rmType": "DV_CODED_TEXT",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/context[at0001]/setting",
+            "inputs": [
+              {
+                "suffix": "code",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "value",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "patient_falls_risk",
+        "name": "Patient falls risk",
+        "localizedName": "Patient falls risk",
+        "rmType": "EVALUATION",
+        "nodeId": "openEHR-EHR-EVALUATION.patient_falls_risk.v0",
+        "min": 0,
+        "max": -1,
+        "localizedNames": {
+          "en": "Patient falls risk"
+        },
+        "localizedDescriptions": {
+          "en": "Assessment of the potential and likelihood of future adverse patient risk of falling."
+        },
+        "aqlPath": "/content[openEHR-EHR-EVALUATION.patient_falls_risk.v0]",
+        "children": [
+          {
+            "id": "assessment_date",
+            "name": "Assessment date",
+            "localizedName": "Assessment date",
+            "rmType": "DV_DATE",
+            "nodeId": "at0010",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Assessment date"
+            },
+            "localizedDescriptions": {
+              "en": "*"
+            },
+            "aqlPath": "/content[openEHR-EHR-EVALUATION.patient_falls_risk.v0]/data[at0002]/items[at0010]/value",
+            "inputs": [
+              {
+                "type": "DATE"
+              }
+            ]
+          },
+          {
+            "id": "health_risk",
+            "name": "Health risk",
+            "localizedName": "Health risk",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0003",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Health risk"
+            },
+            "localizedDescriptions": {
+              "en": "Identification of the potential future disease, condition or health issue for which the risk is being assessed, by name."
+            },
+            "aqlPath": "/content[openEHR-EHR-EVALUATION.patient_falls_risk.v0]/data[at0002]/items[at0003]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "patient_fall_risk_assessment",
+            "name": "Patient fall risk assessment",
+            "localizedName": "Patient fall risk assessment",
+            "rmType": "CLUSTER",
+            "nodeId": "at0005",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Patient fall risk assessment"
+            },
+            "localizedDescriptions": {
+              "en": "Evaluation of the health risk."
+            },
+            "aqlPath": "/content[openEHR-EHR-EVALUATION.patient_falls_risk.v0]/data[at0002]/items[at0005]",
+            "children": [
+              {
+                "id": "are_they_over_65",
+                "name": "Are they over 65 ?",
+                "localizedName": "Are they over 65 ?",
+                "rmType": "DV_BOOLEAN",
+                "nodeId": "at0006",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Are they over 65 ?"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-EVALUATION.patient_falls_risk.v0]/data[at0002]/items[at0005]/items[at0006]/value",
+                "inputs": [
+                  {
+                    "type": "BOOLEAN"
+                  }
+                ]
+              },
+              {
+                "id": "have_they_fallen_in_the_last_12_months",
+                "name": "Have they fallen in the last 12 months ?",
+                "localizedName": "Have they fallen in the last 12 months ?",
+                "rmType": "DV_BOOLEAN",
+                "nodeId": "at0007",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Have they fallen in the last 12 months ?"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-EVALUATION.patient_falls_risk.v0]/data[at0002]/items[at0005]/items[at0007]/value",
+                "inputs": [
+                  {
+                    "type": "BOOLEAN"
+                  }
+                ]
+              },
+              {
+                "id": "do_they_have_confusion",
+                "name": "Do they have confusion ?",
+                "localizedName": "Do they have confusion ?",
+                "rmType": "DV_BOOLEAN",
+                "nodeId": "at0008",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Do they have confusion ?"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-EVALUATION.patient_falls_risk.v0]/data[at0002]/items[at0005]/items[at0008]/value",
+                "inputs": [
+                  {
+                    "type": "BOOLEAN"
+                  }
+                ]
+              },
+              {
+                "id": "do_you_believe_they_are_at_risk_of_falling",
+                "name": "Do you believe they are at risk of falling ?",
+                "localizedName": "Do you believe they are at risk of falling ?",
+                "rmType": "DV_BOOLEAN",
+                "nodeId": "at0009",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Do you believe they are at risk of falling ?"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-EVALUATION.patient_falls_risk.v0]/data[at0002]/items[at0005]/items[at0009]/value",
+                "inputs": [
+                  {
+                    "type": "BOOLEAN"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "fall_risk_assessment_result",
+            "name": "Fall risk assessment result",
+            "localizedName": "Fall risk assessment result",
+            "rmType": "DV_CODED_TEXT",
+            "nodeId": "at0014",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Fall risk assessment result"
+            },
+            "localizedDescriptions": {
+              "en": "*"
+            },
+            "aqlPath": "/content[openEHR-EHR-EVALUATION.patient_falls_risk.v0]/data[at0002]/items[at0014]/value",
+            "inputs": [
+              {
+                "suffix": "code",
+                "type": "CODED_TEXT",
+                "list": [
+                  {
+                    "value": "at0015",
+                    "label": "Unlikely faller",
+                    "localizedLabels": {
+                      "en": "Unlikely faller"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    }
+                  },
+                  {
+                    "value": "at0016",
+                    "label": "Likely faller",
+                    "localizedLabels": {
+                      "en": "Likely faller"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "comment",
+            "name": "Comment",
+            "localizedName": "Comment",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0013",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Comment"
+            },
+            "localizedDescriptions": {
+              "en": "Additional narrative about the risk assessment not captured in other fields."
+            },
+            "aqlPath": "/content[openEHR-EHR-EVALUATION.patient_falls_risk.v0]/data[at0002]/items[at0013]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "last_updated",
+            "name": "Last updated",
+            "localizedName": "Last updated",
+            "rmType": "DV_DATE_TIME",
+            "nodeId": "at0011",
+            "min": 0,
+            "max": 1,
+            "dependsOn": [
+              "patient_fall_risk_assessment",
+              "health_risk",
+              "comment",
+              "fall_risk_assessment_result",
+              "assessment_date"
+            ],
+            "localizedNames": {
+              "en": "Last updated"
+            },
+            "localizedDescriptions": {
+              "en": "*"
+            },
+            "aqlPath": "/content[openEHR-EHR-EVALUATION.patient_falls_risk.v0]/protocol[at0001]/items[at0011]/value",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ]
+          },
+          {
+            "id": "assessment_method",
+            "name": "Assessment method",
+            "localizedName": "Assessment method",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0012",
+            "min": 0,
+            "max": 1,
+            "dependsOn": [
+              "patient_fall_risk_assessment",
+              "health_risk",
+              "comment",
+              "fall_risk_assessment_result",
+              "assessment_date"
+            ],
+            "localizedNames": {
+              "en": "Assessment method"
+            },
+            "localizedDescriptions": {
+              "en": "*"
+            },
+            "aqlPath": "/content[openEHR-EHR-EVALUATION.patient_falls_risk.v0]/protocol[at0001]/items[at0012]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-EVALUATION.patient_falls_risk.v0]/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-EVALUATION.patient_falls_risk.v0]/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-EVALUATION.patient_falls_risk.v0]/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "patient_falls_risk_checklist",
+        "name": "Patient falls risk checklist",
+        "localizedName": "Patient falls risk checklist",
+        "rmType": "OBSERVATION",
+        "nodeId": "openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0",
+        "min": 0,
+        "max": -1,
+        "localizedNames": {
+          "en": "Patient falls risk checklist"
+        },
+        "localizedDescriptions": {
+          "en": "patient falls risk checklist"
+        },
+        "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]",
+        "children": [
+          {
+            "id": "any_event",
+            "name": "Any event",
+            "localizedName": "Any event",
+            "rmType": "EVENT",
+            "nodeId": "at0002",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "Any event"
+            },
+            "localizedDescriptions": {
+              "en": "*"
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]",
+            "children": [
+              {
+                "id": "lying_and_standing_bp_completed",
+                "name": "Lying and standing BP completed",
+                "localizedName": "Lying and standing BP completed",
+                "rmType": "CLUSTER",
+                "nodeId": "at0012",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Lying and standing BP completed"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0012]",
+                "children": [
+                  {
+                    "id": "result",
+                    "name": "Result",
+                    "localizedName": "Result",
+                    "rmType": "DV_BOOLEAN",
+                    "nodeId": "at0006",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Result"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0012]/items[at0006]/value",
+                    "inputs": [
+                      {
+                        "type": "BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "comment",
+                    "name": "Comment",
+                    "localizedName": "Comment",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0005",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Comment"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0012]/items[at0005]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "confirmation_sign",
+                    "name": "Confirmation sign",
+                    "localizedName": "Confirmation sign",
+                    "rmType": "DV_IDENTIFIER",
+                    "nodeId": "at0011",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Confirmation sign"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0012]/items[at0011]/value",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "type",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "issuer",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "assigner",
+                        "type": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "consider_elimination_needs",
+                "name": "Consider elimination needs",
+                "localizedName": "Consider elimination needs",
+                "rmType": "CLUSTER",
+                "nodeId": "at0013",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Consider elimination needs"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0013]",
+                "children": [
+                  {
+                    "id": "result",
+                    "name": "Result",
+                    "localizedName": "Result",
+                    "rmType": "DV_BOOLEAN",
+                    "nodeId": "at0014",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Result"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0013]/items[at0014]/value",
+                    "inputs": [
+                      {
+                        "type": "BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "comment",
+                    "name": "Comment",
+                    "localizedName": "Comment",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0015",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Comment"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0013]/items[at0015]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "confirmation_sign",
+                    "name": "Confirmation sign",
+                    "localizedName": "Confirmation sign",
+                    "rmType": "DV_IDENTIFIER",
+                    "nodeId": "at0016",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Confirmation sign"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0013]/items[at0016]/value",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "type",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "issuer",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "assigner",
+                        "type": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "fear_of_falling",
+                "name": "Fear of falling",
+                "localizedName": "Fear of falling",
+                "rmType": "CLUSTER",
+                "nodeId": "at0017",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Fear of falling"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0017]",
+                "children": [
+                  {
+                    "id": "result",
+                    "name": "Result",
+                    "localizedName": "Result",
+                    "rmType": "DV_BOOLEAN",
+                    "nodeId": "at0018",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Result"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0017]/items[at0018]/value",
+                    "inputs": [
+                      {
+                        "type": "BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "comment",
+                    "name": "Comment",
+                    "localizedName": "Comment",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0019",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Comment"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0017]/items[at0019]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "confirmation_sign",
+                    "name": "Confirmation sign",
+                    "localizedName": "Confirmation sign",
+                    "rmType": "DV_IDENTIFIER",
+                    "nodeId": "at0020",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Confirmation sign"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0017]/items[at0020]/value",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "type",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "issuer",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "assigner",
+                        "type": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "sensory_issues_eyesight_hearing",
+                "name": "Sensory issues (eyesight/hearing)",
+                "localizedName": "Sensory issues (eyesight/hearing)",
+                "rmType": "CLUSTER",
+                "nodeId": "at0021",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Sensory issues (eyesight/hearing)"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0021]",
+                "children": [
+                  {
+                    "id": "result",
+                    "name": "Result",
+                    "localizedName": "Result",
+                    "rmType": "DV_BOOLEAN",
+                    "nodeId": "at0022",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Result"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0021]/items[at0022]/value",
+                    "inputs": [
+                      {
+                        "type": "BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "comment",
+                    "name": "Comment",
+                    "localizedName": "Comment",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0023",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Comment"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0021]/items[at0023]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "confirmation_sign",
+                    "name": "Confirmation sign",
+                    "localizedName": "Confirmation sign",
+                    "rmType": "DV_IDENTIFIER",
+                    "nodeId": "at0024",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Confirmation sign"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0021]/items[at0024]/value",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "type",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "issuer",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "assigner",
+                        "type": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "collateral_history",
+                "name": "Collateral history",
+                "localizedName": "Collateral history",
+                "rmType": "CLUSTER",
+                "nodeId": "at0025",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Collateral history"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0025]",
+                "children": [
+                  {
+                    "id": "result",
+                    "name": "Result",
+                    "localizedName": "Result",
+                    "rmType": "DV_BOOLEAN",
+                    "nodeId": "at0026",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Result"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0025]/items[at0026]/value",
+                    "inputs": [
+                      {
+                        "type": "BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "comment",
+                    "name": "Comment",
+                    "localizedName": "Comment",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0027",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Comment"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0025]/items[at0027]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "confirmation_sign",
+                    "name": "Confirmation sign",
+                    "localizedName": "Confirmation sign",
+                    "rmType": "DV_IDENTIFIER",
+                    "nodeId": "at0028",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Confirmation sign"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0025]/items[at0028]/value",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "type",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "issuer",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "assigner",
+                        "type": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "include_in_safety_briefing",
+                "name": "Include in safety briefing",
+                "localizedName": "Include in safety briefing",
+                "rmType": "CLUSTER",
+                "nodeId": "at0033",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Include in safety briefing"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0033]",
+                "children": [
+                  {
+                    "id": "result",
+                    "name": "Result",
+                    "localizedName": "Result",
+                    "rmType": "DV_BOOLEAN",
+                    "nodeId": "at0034",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Result"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0033]/items[at0034]/value",
+                    "inputs": [
+                      {
+                        "type": "BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "comment",
+                    "name": "Comment",
+                    "localizedName": "Comment",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0035",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Comment"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0033]/items[at0035]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "confirmation_sign",
+                    "name": "Confirmation sign",
+                    "localizedName": "Confirmation sign",
+                    "rmType": "DV_IDENTIFIER",
+                    "nodeId": "at0036",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Confirmation sign"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0033]/items[at0036]/value",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "type",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "issuer",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "assigner",
+                        "type": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "bed_rails",
+                "name": "Bed rails",
+                "localizedName": "Bed rails",
+                "rmType": "CLUSTER",
+                "nodeId": "at0029",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Bed rails"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0029]",
+                "children": [
+                  {
+                    "id": "result",
+                    "name": "Result",
+                    "localizedName": "Result",
+                    "rmType": "DV_BOOLEAN",
+                    "nodeId": "at0030",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Result"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0029]/items[at0030]/value",
+                    "inputs": [
+                      {
+                        "type": "BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "comment",
+                    "name": "Comment",
+                    "localizedName": "Comment",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0031",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Comment"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0029]/items[at0031]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "confirmation_sign",
+                    "name": "Confirmation sign",
+                    "localizedName": "Confirmation sign",
+                    "rmType": "DV_IDENTIFIER",
+                    "nodeId": "at0032",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Confirmation sign"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0029]/items[at0032]/value",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "type",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "issuer",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "assigner",
+                        "type": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "high_low_bed",
+                "name": "High low bed",
+                "localizedName": "High low bed",
+                "rmType": "CLUSTER",
+                "nodeId": "at0037",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "High low bed"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0037]",
+                "children": [
+                  {
+                    "id": "result",
+                    "name": "Result",
+                    "localizedName": "Result",
+                    "rmType": "DV_BOOLEAN",
+                    "nodeId": "at0038",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Result"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0037]/items[at0038]/value",
+                    "inputs": [
+                      {
+                        "type": "BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "comment",
+                    "name": "Comment",
+                    "localizedName": "Comment",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0039",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Comment"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0037]/items[at0039]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "confirmation_sign",
+                    "name": "Confirmation sign",
+                    "localizedName": "Confirmation sign",
+                    "rmType": "DV_IDENTIFIER",
+                    "nodeId": "at0040",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Confirmation sign"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0037]/items[at0040]/value",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "type",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "issuer",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "assigner",
+                        "type": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "crash_mat_falls_alarm",
+                "name": "Crash mat / falls alarm",
+                "localizedName": "Crash mat / falls alarm",
+                "rmType": "CLUSTER",
+                "nodeId": "at0041",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Crash mat / falls alarm"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0041]",
+                "children": [
+                  {
+                    "id": "result",
+                    "name": "Result",
+                    "localizedName": "Result",
+                    "rmType": "DV_BOOLEAN",
+                    "nodeId": "at0042",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Result"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0041]/items[at0042]/value",
+                    "inputs": [
+                      {
+                        "type": "BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "comment",
+                    "name": "Comment",
+                    "localizedName": "Comment",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0043",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Comment"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0041]/items[at0043]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "confirmation_sign",
+                    "name": "Confirmation sign",
+                    "localizedName": "Confirmation sign",
+                    "rmType": "DV_IDENTIFIER",
+                    "nodeId": "at0044",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Confirmation sign"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0041]/items[at0044]/value",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "type",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "issuer",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "assigner",
+                        "type": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "medication_review",
+                "name": "Medication review",
+                "localizedName": "Medication review",
+                "rmType": "CLUSTER",
+                "nodeId": "at0045",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Medication review"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0045]",
+                "children": [
+                  {
+                    "id": "result",
+                    "name": "Result",
+                    "localizedName": "Result",
+                    "rmType": "DV_BOOLEAN",
+                    "nodeId": "at0046",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Result"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0045]/items[at0046]/value",
+                    "inputs": [
+                      {
+                        "type": "BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "comment",
+                    "name": "Comment",
+                    "localizedName": "Comment",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0047",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Comment"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0045]/items[at0047]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "confirmation_sign",
+                    "name": "Confirmation sign",
+                    "localizedName": "Confirmation sign",
+                    "rmType": "DV_IDENTIFIER",
+                    "nodeId": "at0048",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Confirmation sign"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0045]/items[at0048]/value",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "type",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "issuer",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "assigner",
+                        "type": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "visible_bed_space",
+                "name": "Visible bed space",
+                "localizedName": "Visible bed space",
+                "rmType": "CLUSTER",
+                "nodeId": "at0049",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Visible bed space"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0049]",
+                "children": [
+                  {
+                    "id": "result",
+                    "name": "Result",
+                    "localizedName": "Result",
+                    "rmType": "DV_BOOLEAN",
+                    "nodeId": "at0050",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Result"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0049]/items[at0050]/value",
+                    "inputs": [
+                      {
+                        "type": "BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "comment",
+                    "name": "Comment",
+                    "localizedName": "Comment",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0051",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Comment"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0049]/items[at0051]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "confirmation_sign",
+                    "name": "Confirmation sign",
+                    "localizedName": "Confirmation sign",
+                    "rmType": "DV_IDENTIFIER",
+                    "nodeId": "at0052",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Confirmation sign"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0049]/items[at0052]/value",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "type",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "issuer",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "assigner",
+                        "type": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "stay_close_toileting_call_bell_reminder_regular_check",
+                "name": "Stay close toileting / call bell reminder / regular check",
+                "localizedName": "Stay close toileting / call bell reminder / regular check",
+                "rmType": "CLUSTER",
+                "nodeId": "at0053",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Stay close toileting / call bell reminder / regular check"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0053]",
+                "children": [
+                  {
+                    "id": "result",
+                    "name": "Result",
+                    "localizedName": "Result",
+                    "rmType": "DV_BOOLEAN",
+                    "nodeId": "at0054",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Result"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0053]/items[at0054]/value",
+                    "inputs": [
+                      {
+                        "type": "BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "comment",
+                    "name": "Comment",
+                    "localizedName": "Comment",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0055",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Comment"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0053]/items[at0055]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "confirmation_sign",
+                    "name": "Confirmation sign",
+                    "localizedName": "Confirmation sign",
+                    "rmType": "DV_IDENTIFIER",
+                    "nodeId": "at0056",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Confirmation sign"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0053]/items[at0056]/value",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "type",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "issuer",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "assigner",
+                        "type": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "vision_assessment_advice_given_in_self-referral_to_optician",
+                "name": "Vision assessment, advice given in self-referral to optician",
+                "localizedName": "Vision assessment, advice given in self-referral to optician",
+                "rmType": "CLUSTER",
+                "nodeId": "at0057",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Vision assessment, advice given in self-referral to optician"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0057]",
+                "children": [
+                  {
+                    "id": "result",
+                    "name": "Result",
+                    "localizedName": "Result",
+                    "rmType": "DV_BOOLEAN",
+                    "nodeId": "at0058",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Result"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0057]/items[at0058]/value",
+                    "inputs": [
+                      {
+                        "type": "BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "comment",
+                    "name": "Comment",
+                    "localizedName": "Comment",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0059",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Comment"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0057]/items[at0059]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "confirmation_sign",
+                    "name": "Confirmation sign",
+                    "localizedName": "Confirmation sign",
+                    "rmType": "DV_IDENTIFIER",
+                    "nodeId": "at0060",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Confirmation sign"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0057]/items[at0060]/value",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "type",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "issuer",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "assigner",
+                        "type": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "additional_supervision",
+                "name": "Additional supervision",
+                "localizedName": "Additional supervision",
+                "rmType": "CLUSTER",
+                "nodeId": "at0061",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Additional supervision"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0061]",
+                "children": [
+                  {
+                    "id": "result",
+                    "name": "Result",
+                    "localizedName": "Result",
+                    "rmType": "DV_BOOLEAN",
+                    "nodeId": "at0062",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Result"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0061]/items[at0062]/value",
+                    "inputs": [
+                      {
+                        "type": "BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "comment",
+                    "name": "Comment",
+                    "localizedName": "Comment",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0063",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Comment"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0061]/items[at0063]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "confirmation_sign",
+                    "name": "Confirmation sign",
+                    "localizedName": "Confirmation sign",
+                    "rmType": "DV_IDENTIFIER",
+                    "nodeId": "at0064",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Confirmation sign"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0061]/items[at0064]/value",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "type",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "issuer",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "assigner",
+                        "type": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "hourly_intentional_rounding",
+                "name": "Hourly intentional rounding",
+                "localizedName": "Hourly intentional rounding",
+                "rmType": "CLUSTER",
+                "nodeId": "at0065",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Hourly intentional rounding"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0065]",
+                "children": [
+                  {
+                    "id": "result",
+                    "name": "Result",
+                    "localizedName": "Result",
+                    "rmType": "DV_BOOLEAN",
+                    "nodeId": "at0066",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Result"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0065]/items[at0066]/value",
+                    "inputs": [
+                      {
+                        "type": "BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "comment",
+                    "name": "Comment",
+                    "localizedName": "Comment",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0067",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Comment"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0065]/items[at0067]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "confirmation_sign",
+                    "name": "Confirmation sign",
+                    "localizedName": "Confirmation sign",
+                    "rmType": "DV_IDENTIFIER",
+                    "nodeId": "at0068",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Confirmation sign"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0065]/items[at0068]/value",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "type",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "issuer",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "assigner",
+                        "type": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "footwear",
+                "name": "Footwear",
+                "localizedName": "Footwear",
+                "rmType": "CLUSTER",
+                "nodeId": "at0069",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Footwear"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0069]",
+                "children": [
+                  {
+                    "id": "result",
+                    "name": "Result",
+                    "localizedName": "Result",
+                    "rmType": "DV_BOOLEAN",
+                    "nodeId": "at0070",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Result"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0069]/items[at0070]/value",
+                    "inputs": [
+                      {
+                        "type": "BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "comment",
+                    "name": "Comment",
+                    "localizedName": "Comment",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0071",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Comment"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0069]/items[at0071]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "confirmation_sign",
+                    "name": "Confirmation sign",
+                    "localizedName": "Confirmation sign",
+                    "rmType": "DV_IDENTIFIER",
+                    "nodeId": "at0072",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Confirmation sign"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0069]/items[at0072]/value",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "type",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "issuer",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "assigner",
+                        "type": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "walking_aids",
+                "name": "Walking aids",
+                "localizedName": "Walking aids",
+                "rmType": "CLUSTER",
+                "nodeId": "at0073",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Walking aids"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0073]",
+                "children": [
+                  {
+                    "id": "result",
+                    "name": "Result",
+                    "localizedName": "Result",
+                    "rmType": "DV_BOOLEAN",
+                    "nodeId": "at0074",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Result"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0073]/items[at0074]/value",
+                    "inputs": [
+                      {
+                        "type": "BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "comment",
+                    "name": "Comment",
+                    "localizedName": "Comment",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0075",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Comment"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0073]/items[at0075]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "confirmation_sign",
+                    "name": "Confirmation sign",
+                    "localizedName": "Confirmation sign",
+                    "rmType": "DV_IDENTIFIER",
+                    "nodeId": "at0076",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Confirmation sign"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0073]/items[at0076]/value",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "type",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "issuer",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "assigner",
+                        "type": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "time",
+                "name": "Time",
+                "rmType": "DV_DATE_TIME",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/data[at0001]/events[at0002]/time",
+                "inputs": [
+                  {
+                    "type": "DATETIME"
+                  }
+                ],
+                "inContext": true
+              }
+            ]
+          },
+          {
+            "id": "last_updated",
+            "name": "Last updated",
+            "localizedName": "Last updated",
+            "rmType": "DV_DATE",
+            "nodeId": "at0008",
+            "min": 0,
+            "max": 1,
+            "dependsOn": [
+              "any_event"
+            ],
+            "localizedNames": {
+              "en": "Last updated"
+            },
+            "localizedDescriptions": {
+              "en": "*"
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/protocol[at0007]/items[at0008]/value",
+            "inputs": [
+              {
+                "type": "DATE"
+              }
+            ]
+          },
+          {
+            "id": "assessment_method",
+            "name": "Assessment method",
+            "localizedName": "Assessment method",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0009",
+            "min": 0,
+            "max": 1,
+            "dependsOn": [
+              "any_event"
+            ],
+            "localizedNames": {
+              "en": "Assessment method"
+            },
+            "localizedDescriptions": {
+              "en": "*"
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/protocol[at0007]/items[at0009]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.patient_falls_risk_checklist.v0]/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "category",
+        "rmType": "DV_CODED_TEXT",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/category",
+        "inputs": [
+          {
+            "suffix": "code",
+            "type": "CODED_TEXT",
+            "list": [
+              {
+                "value": "431",
+                "label": "persistent",
+                "localizedLabels": {
+                  "en": "persistent"
+                }
+              }
+            ],
+            "terminology": "openehr"
+          }
+        ],
+        "inContext": true
+      },
+      {
+        "id": "language",
+        "name": "Language",
+        "rmType": "CODE_PHRASE",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/language",
+        "inContext": true
+      },
+      {
+        "id": "territory",
+        "name": "Territory",
+        "rmType": "CODE_PHRASE",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/territory",
+        "inContext": true
+      },
+      {
+        "id": "composer",
+        "name": "Composer",
+        "rmType": "PARTY_PROXY",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/composer",
+        "inputs": [
+          {
+            "suffix": "id",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "id_scheme",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "id_namespace",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "name",
+            "type": "TEXT"
+          }
+        ],
+        "inContext": true
+      }
+    ]
+  }
+}

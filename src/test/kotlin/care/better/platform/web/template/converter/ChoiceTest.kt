@@ -18,9 +18,9 @@ package care.better.platform.web.template.converter
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
-import com.marand.thinkehr.web.build.WebTemplateNode
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
@@ -36,7 +36,7 @@ class ChoiceTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testChoiceDvQuantityAndDvInterval() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order-choice.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order-choice.opt"), builderContext)
         val values: Map<String, Any> = mapOf(
             Pair("ctx/language", "en"),
             Pair("ctx/territory", "IE"),
@@ -57,7 +57,7 @@ class ChoiceTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testLabsOceanTD() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/LAB - Laboratory Test Report.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/LAB - Laboratory Test Report.opt"), builderContext)
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("laboratory_report/laboratory_test_result/any_event/result_group/result/result_value")
         assertThat(node.children).isNotEmpty
     }
@@ -66,7 +66,7 @@ class ChoiceTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testLabsAD() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/LAB - Laboratory Test Report-2.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/LAB - Laboratory Test Report-2.opt"), builderContext)
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("laboratory_report/laboratory_test_result/any_event/result_group/result/result_value")
         assertThat(node.children).isNotEmpty
     }
@@ -75,7 +75,7 @@ class ChoiceTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testAny() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/constraintedv3.xml"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/constraintedv3.xml"), builderContext)
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("encounter/body_weight/any_event_yes/any")
         assertThat(node.children).isNotEmpty
         assertThat(node.children.firstOrNull { "date_time_value" == it.jsonId }?.rmType ?: "xxx").isEqualTo("DV_DATE_TIME")

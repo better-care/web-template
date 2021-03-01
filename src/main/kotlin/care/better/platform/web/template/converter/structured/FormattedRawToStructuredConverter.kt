@@ -19,7 +19,7 @@ import care.better.openehr.rm.RmObject
 import care.better.platform.web.template.converter.structured.mapper.RmObjectToStructuredMapperDelegator
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
-import com.marand.thinkehr.web.build.WebTemplateNode
+import care.better.platform.web.template.builder.model.WebTemplateNode
 
 /**
  * @author Primoz Delopst

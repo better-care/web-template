@@ -1,0 +1,2763 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "templateId": "ISPEK - ZN - Nursing careplan Encounter",
+  "version": "2.3",
+  "defaultLanguage": "en",
+  "languages": [
+    "en"
+  ],
+  "tree": {
+    "id": "careplan",
+    "name": "Careplan",
+    "localizedName": "Careplan",
+    "rmType": "COMPOSITION",
+    "nodeId": "openEHR-EHR-COMPOSITION.encounter.v1",
+    "min": 1,
+    "max": 1,
+    "localizedNames": {
+      "en": "Careplan"
+    },
+    "localizedDescriptions": {
+      "en": "Generic encounter or progress note composition"
+    },
+    "aqlPath": "",
+    "children": [
+      {
+        "id": "context",
+        "rmType": "EVENT_CONTEXT",
+        "nodeId": "",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/context",
+        "children": [
+          {
+            "id": "context_detail",
+            "name": "Context detail",
+            "localizedName": "Context detail",
+            "rmType": "CLUSTER",
+            "nodeId": "openEHR-EHR-CLUSTER.composition_context_detail.v1",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "Context detail"
+            },
+            "localizedDescriptions": {
+              "en": "Additional contextual detail to be applied to all compositions."
+            },
+            "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.composition_context_detail.v1]",
+            "children": [
+              {
+                "id": "period_of_care_identifier",
+                "name": "Period of care identifier",
+                "localizedName": "Period of care identifier",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0001",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Period of care identifier"
+                },
+                "localizedDescriptions": {
+                  "en": "The period of care to which this composition belongs. This equates to the CONTSYS concept and repesents an admisitrative or contractual spell of care, involving a specific instiution or care provider."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.composition_context_detail.v1]/items[at0001]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "departmental_period_of_care_identifier",
+                "name": "Departmental period of care identifier",
+                "localizedName": "Departmental period of care identifier",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0002",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Departmental period of care identifier"
+                },
+                "localizedDescriptions": {
+                  "en": "The identifier of the departmental period of care to which this Composition belongs."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.composition_context_detail.v1]/items[at0002]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "portlet_id",
+                "name": "Portlet Id",
+                "localizedName": "Portlet Id",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0003",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Portlet Id"
+                },
+                "localizedDescriptions": {
+                  "en": "Portlet ID from which stores the information where was the composition saved."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.composition_context_detail.v1]/items[at0003]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "tags",
+                "name": "Tags",
+                "localizedName": "Tags",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0008",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Tags"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.composition_context_detail.v1]/items[at0008]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "attachment",
+                "name": "Attachment",
+                "localizedName": "Attachment",
+                "rmType": "DV_MULTIMEDIA",
+                "nodeId": "at0009",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Attachment"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.composition_context_detail.v1]/items[at0009]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "start_time",
+            "name": "Start_time",
+            "rmType": "DV_DATE_TIME",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/context/start_time",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "setting",
+            "name": "Setting",
+            "rmType": "DV_CODED_TEXT",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/context/setting",
+            "inputs": [
+              {
+                "suffix": "code",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "value",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "care_plan",
+        "name": "Care plan",
+        "localizedName": "Care plan",
+        "rmType": "SECTION",
+        "nodeId": "openEHR-EHR-SECTION.care_plan_zn.v1",
+        "min": 0,
+        "max": 1,
+        "localizedNames": {
+          "en": "Care plan"
+        },
+        "localizedDescriptions": {
+          "en": "To handle a Care plan structure where each problem/issue has a related goal."
+        },
+        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]",
+        "children": [
+          {
+            "id": "problem_plan",
+            "name": "Problem plan",
+            "localizedName": "Problem plan",
+            "rmType": "SECTION",
+            "nodeId": "at0009",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "Problem plan"
+            },
+            "localizedDescriptions": {
+              "en": "*"
+            },
+            "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]",
+            "children": [
+              {
+                "id": "problem_diagnosis",
+                "name": "Problem/Diagnosis",
+                "localizedName": "Problem/Diagnosis",
+                "rmType": "EVALUATION",
+                "nodeId": "openEHR-EHR-EVALUATION.problem_diagnosis.v1",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Problem/Diagnosis"
+                },
+                "localizedDescriptions": {
+                  "en": "Any health care condition which may impact on to mental, physical health of patient"
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]",
+                "children": [
+                  {
+                    "id": "nursing_diagnosis",
+                    "name": "Nursing diagnosis",
+                    "localizedName": "Nursing diagnosis",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0002",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Nursing diagnosis"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Identification of the problem or diagnoses. Should be used a coded text."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[at0002,'Nursing diagnosis']/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "related_items",
+                    "name": "Related items",
+                    "localizedName": "Related items",
+                    "rmType": "CLUSTER",
+                    "nodeId": "at0026",
+                    "min": 0,
+                    "max": -1,
+                    "localizedNames": {
+                      "en": "Related items"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Further problems, diagnoses, procedures aotr events that related to th eproblem/diagnose"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[at0026]",
+                    "children": [
+                      {
+                        "id": "related_items",
+                        "name": "Related items",
+                        "localizedName": "Related items",
+                        "rmType": "DV_CODED_TEXT",
+                        "nodeId": "at0028",
+                        "min": 1,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Related items"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Further problems, diagnoses, procedures aotr events that related to th eproblem/diagnose"
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[at0026]/items[at0028]/value",
+                        "inputs": [
+                          {
+                            "suffix": "code",
+                            "type": "TEXT",
+                            "terminology": "PK-Nanda"
+                          },
+                          {
+                            "suffix": "value",
+                            "type": "TEXT",
+                            "terminology": "PK-Nanda"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "relationship_type",
+                        "name": "Relationship type",
+                        "localizedName": "Relationship type",
+                        "rmType": "DV_CODED_TEXT",
+                        "nodeId": "at0056",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Relationship type"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The type of relationship that this problem/diagnose has to the related itam"
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[at0026]/items[at0056]/value",
+                        "inputs": [
+                          {
+                            "suffix": "code",
+                            "type": "CODED_TEXT",
+                            "list": [
+                              {
+                                "value": "at0077",
+                                "label": "Risk",
+                                "localizedLabels": {
+                                  "en": "Risk"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "Risk"
+                                }
+                              },
+                              {
+                                "value": "at0078",
+                                "label": "Factor",
+                                "localizedLabels": {
+                                  "en": "Factor"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "Factor"
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "diagnostic_evidence",
+                    "name": "Diagnostic evidence",
+                    "localizedName": "Diagnostic evidence",
+                    "rmType": "CLUSTER",
+                    "nodeId": "openEHR-EHR-CLUSTER.diagnostic_evidence.v1",
+                    "min": 0,
+                    "max": -1,
+                    "localizedNames": {
+                      "en": "Diagnostic evidence"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Evidence in support of a problem/diagnosis"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.diagnostic_evidence.v1]",
+                    "children": [
+                      {
+                        "id": "diagnostic_category",
+                        "name": "Diagnostic category",
+                        "localizedName": "Diagnostic category",
+                        "rmType": "DV_CODED_TEXT",
+                        "nodeId": "at0005",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Diagnostic category"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.diagnostic_evidence.v1]/items[at0005]/value",
+                        "inputs": [
+                          {
+                            "suffix": "code",
+                            "type": "TEXT",
+                            "terminology": "PK-Nanda"
+                          },
+                          {
+                            "suffix": "value",
+                            "type": "TEXT",
+                            "terminology": "PK-Nanda"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "description",
+                        "name": "Description",
+                        "localizedName": "Description",
+                        "rmType": "DV_TEXT",
+                        "nodeId": "at0002",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Description"
+                        },
+                        "localizedDescriptions": {
+                          "en": "A narrative description of supportive evidence."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.diagnostic_evidence.v1]/items[at0002]/value",
+                        "inputs": [
+                          {
+                            "type": "TEXT"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "evaluation",
+                    "name": "Evaluation",
+                    "localizedName": "Evaluation",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0069",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Evaluation"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Any comment about problem/diagnose"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[at0069,'Evaluation']/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "problem_status_context_qualifiers",
+                    "name": "Problem status/context qualifiers",
+                    "localizedName": "Problem status/context qualifiers",
+                    "rmType": "CLUSTER",
+                    "nodeId": "openEHR-EHR-CLUSTER.problem_status.v1",
+                    "min": 0,
+                    "max": -1,
+                    "dependsOn": [
+                      "evaluation",
+                      "nursing_diagnosis",
+                      "diagnostic_evidence",
+                      "related_items"
+                    ],
+                    "localizedNames": {
+                      "en": "Problem status/context qualifiers"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Additional status and contextual qualifiers factors related to a problem/diagnosis."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/protocol[at0074]/items[openEHR-EHR-CLUSTER.problem_status.v1]",
+                    "children": [
+                      {
+                        "id": "evolution",
+                        "name": "Evolution",
+                        "localizedName": "Evolution",
+                        "rmType": "DV_CODED_TEXT",
+                        "nodeId": "at0004",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Evolution"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Records temporal/evidential progress towards identification of the problem or diagnosis, recognising that precise identification may take time to evolve as increasing amounts of evidence become available."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/protocol[at0074]/items[openEHR-EHR-CLUSTER.problem_status.v1]/items[at0004]/value",
+                        "inputs": [
+                          {
+                            "suffix": "code",
+                            "type": "CODED_TEXT",
+                            "list": [
+                              {
+                                "value": "at0070",
+                                "label": "Admission assessment",
+                                "localizedLabels": {
+                                  "en": "Admission assessment"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "Admission assessment"
+                                }
+                              },
+                              {
+                                "value": "at0016",
+                                "label": "Initial assessment",
+                                "localizedLabels": {
+                                  "en": "Initial assessment"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "The diagnosis has been made at the outset of the diagnostic process with limited evidence available."
+                                }
+                              },
+                              {
+                                "value": "at0017",
+                                "label": "Interim/working assessment",
+                                "localizedLabels": {
+                                  "en": "Interim/working assessment"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "The problem or diagnosis has been identified with some confidence but further evidence has yet to be considered."
+                                }
+                              },
+                              {
+                                "value": "at0018",
+                                "label": "Final assessment",
+                                "localizedLabels": {
+                                  "en": "Final assessment"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "The problem or diagnosis is made at the end of the diagnostic process taking into account all available significant evidence. It is not expected to change."
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "episodic_care_status",
+                        "name": "Episodic care status",
+                        "localizedName": "Episodic care status",
+                        "rmType": "DV_CODED_TEXT",
+                        "nodeId": "at0063",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Episodic care status"
+                        },
+                        "localizedDescriptions": {
+                          "en": "In episodic care contexts (commonly secondary care) it is common to categorise/ organise problems according to their relationship to the principal problem or diagnosis being addressed during that episode of care. These categories may also be used for clinical coding, reporting and billing purposes."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/protocol[at0074]/items[openEHR-EHR-CLUSTER.problem_status.v1]/items[at0063]/value",
+                        "inputs": [
+                          {
+                            "suffix": "code",
+                            "type": "CODED_TEXT",
+                            "list": [
+                              {
+                                "value": "at0064",
+                                "label": "Primary diagnosis",
+                                "localizedLabels": {
+                                  "en": "Primary diagnosis"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "The main condition treated or investigated during the relevant episode of care."
+                                }
+                              },
+                              {
+                                "value": "at0069",
+                                "label": "Primary procedure",
+                                "localizedLabels": {
+                                  "en": "Primary procedure"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "The main procedure performed during the relevant episode of care."
+                                }
+                              },
+                              {
+                                "value": "at0066",
+                                "label": "Co-morbidity",
+                                "localizedLabels": {
+                                  "en": "Co-morbidity"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "A co-morbidity is a condition that exists at the start of the episode of care, which requires treatment, diagnostic procedures or increased clinical care/monitoring."
+                                }
+                              },
+                              {
+                                "value": "at0067",
+                                "label": "Complication",
+                                "localizedLabels": {
+                                  "en": "Complication"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "A complication is a condition not present at the start of the episode of care which arises during the episode of care, or is a result of a procedure or treatment during that episode."
+                                }
+                              },
+                              {
+                                "value": "at0068",
+                                "label": "Other current problem",
+                                "localizedLabels": {
+                                  "en": "Other current problem"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "Any other problem or issue deemed significant to the patient's care which does not fall into the one of other categories."
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "priority",
+                        "name": "Priority",
+                        "localizedName": "Priority",
+                        "rmType": "DV_COUNT",
+                        "nodeId": "at0006",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Priority"
+                        },
+                        "localizedDescriptions": {
+                          "en": "A numeric or textual representation of the priority assigned to the problem, relative to other problems in a list. This may be used to sort items according to perceived clinical priority or to filter problems felt to be of greater /lesser significance."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/protocol[at0074]/items[openEHR-EHR-CLUSTER.problem_status.v1]/items[at0006]/value",
+                        "inputs": [
+                          {
+                            "type": "INTEGER"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "language",
+                    "name": "Language",
+                    "rmType": "CODE_PHRASE",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/language",
+                    "inContext": true
+                  },
+                  {
+                    "id": "encoding",
+                    "name": "Encoding",
+                    "rmType": "CODE_PHRASE",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/encoding",
+                    "inContext": true
+                  },
+                  {
+                    "id": "subject",
+                    "name": "Subject",
+                    "rmType": "PARTY_PROXY",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/subject",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "id_scheme",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "id_namespace",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "name",
+                        "type": "TEXT"
+                      }
+                    ],
+                    "inContext": true
+                  }
+                ]
+              },
+              {
+                "id": "goal_setting",
+                "name": "Goal setting",
+                "localizedName": "Goal setting",
+                "rmType": "EVALUATION",
+                "nodeId": "openEHR-EHR-EVALUATION.goal_set-zn.v1",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Goal setting"
+                },
+                "localizedDescriptions": {
+                  "en": "A future health state that is agreed to by the person. Aligned with ZN documentation."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.goal_set-zn.v1]",
+                "children": [
+                  {
+                    "id": "goal",
+                    "name": "Goal",
+                    "localizedName": "Goal",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0002.1",
+                    "min": 1,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Goal"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*Želeni cilj(en)"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.goal_set-zn.v1]/data[at0001]/items[at0002.1]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "TEXT",
+                        "terminology": "PK-Nanda"
+                      },
+                      {
+                        "suffix": "value",
+                        "type": "TEXT",
+                        "terminology": "PK-Nanda"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "date_goal_established",
+                    "name": "Date goal established",
+                    "localizedName": "Date goal established",
+                    "rmType": "DV_DATE_TIME",
+                    "nodeId": "at0011",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Date goal established"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The date that this goal was established."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.goal_set-zn.v1]/data[at0001]/items[at0011]/value",
+                    "inputs": [
+                      {
+                        "type": "DATETIME"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "comment",
+                    "name": "Comment",
+                    "localizedName": "Comment",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0012",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Comment"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Further textual commetn on the desired goal."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.goal_set-zn.v1]/data[at0001]/items[at0012]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "expected_timeframe",
+                    "name": "Expected timeframe",
+                    "localizedName": "Expected timeframe",
+                    "rmType": "DV_INTERVAL<DV_DATE_TIME>",
+                    "nodeId": "at0003",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Expected timeframe"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The proposed date interval of achievement."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.goal_set-zn.v1]/data[at0001]/items[at0003,'Expected timeframe']/value",
+                    "children": [
+                      {
+                        "id": "upper",
+                        "rmType": "DV_DATE_TIME",
+                        "nodeId": "",
+                        "min": 1,
+                        "max": 1,
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.goal_set-zn.v1]/data[at0001]/items[at0003,'Expected timeframe']/value/upper",
+                        "inputs": [
+                          {
+                            "type": "DATETIME"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "lower",
+                        "rmType": "DV_DATE_TIME",
+                        "nodeId": "",
+                        "min": 1,
+                        "max": 1,
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.goal_set-zn.v1]/data[at0001]/items[at0003,'Expected timeframe']/value/lower",
+                        "inputs": [
+                          {
+                            "type": "DATETIME"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "language",
+                    "name": "Language",
+                    "rmType": "CODE_PHRASE",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.goal_set-zn.v1]/language",
+                    "inContext": true
+                  },
+                  {
+                    "id": "encoding",
+                    "name": "Encoding",
+                    "rmType": "CODE_PHRASE",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.goal_set-zn.v1]/encoding",
+                    "inContext": true
+                  },
+                  {
+                    "id": "subject",
+                    "name": "Subject",
+                    "rmType": "PARTY_PROXY",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.goal_set-zn.v1]/subject",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "id_scheme",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "id_namespace",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "name",
+                        "type": "TEXT"
+                      }
+                    ],
+                    "inContext": true
+                  }
+                ]
+              },
+              {
+                "id": "goal_assessment",
+                "name": "Goal assessment",
+                "localizedName": "Goal assessment",
+                "rmType": "EVALUATION",
+                "nodeId": "openEHR-EHR-EVALUATION.goal_assessment.v1",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Goal assessment"
+                },
+                "localizedDescriptions": {
+                  "en": "Progress towards the aceivment of a health goal."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.goal_assessment.v1]",
+                "children": [
+                  {
+                    "id": "original_nursing_goal",
+                    "name": "Original nursing goal",
+                    "localizedName": "Original nursing goal",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0002",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Original nursing goal"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The health state desired."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.goal_assessment.v1]/data[at0001]/items[at0002,'Original nursing goal']/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "TEXT",
+                        "terminology": "PK-Nanda"
+                      },
+                      {
+                        "suffix": "value",
+                        "type": "TEXT",
+                        "terminology": "PK-Nanda"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "date_assessed",
+                    "name": "Date assessed",
+                    "localizedName": "Date assessed",
+                    "rmType": "DV_DATE_TIME",
+                    "nodeId": "at0003",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Date assessed"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The date at which progres towards the goal was assessed."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.goal_assessment.v1]/data[at0001]/items[at0003]/value",
+                    "inputs": [
+                      {
+                        "type": "DATETIME"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "evaluation",
+                    "name": "Evaluation",
+                    "localizedName": "Evaluation",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0004",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Evaluation"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Detailed comment about progess towards the goal."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.goal_assessment.v1]/data[at0001]/items[at0004,'Evaluation']/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "timeframe_status",
+                    "name": "Timeframe status",
+                    "localizedName": "Timeframe status",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0005",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Timeframe status"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Estimate of of whether progress towards the goal is on schedule"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.goal_assessment.v1]/data[at0001]/items[at0005,'Timeframe status']/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0006",
+                            "label": "On schedule",
+                            "localizedLabels": {
+                              "en": "On schedule"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Progress towards the goal is within the expected timeframe."
+                            }
+                          },
+                          {
+                            "value": "at0007",
+                            "label": "Ahead of schedule",
+                            "localizedLabels": {
+                              "en": "Ahead of schedule"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The goal is being acheived ahead of the expected timeframe"
+                            }
+                          },
+                          {
+                            "value": "at0008",
+                            "label": "Behind schedule",
+                            "localizedLabels": {
+                              "en": "Behind schedule"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Goal acheivement appears to be progressing more slowly than anticipated."
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "status",
+                    "name": "Status",
+                    "localizedName": "Status",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0009",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Status"
+                    },
+                    "localizedDescriptions": {
+                      "en": "A qualitative estimate of progression towards the goal."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.goal_assessment.v1]/data[at0001]/items[at0009,'Status']/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0010",
+                            "label": "Unchanged",
+                            "localizedLabels": {
+                              "en": "Unchanged"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          },
+                          {
+                            "value": "at0011",
+                            "label": "Improving",
+                            "localizedLabels": {
+                              "en": "Improving"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          },
+                          {
+                            "value": "at0012",
+                            "label": "Deteriorating",
+                            "localizedLabels": {
+                              "en": "Deteriorating"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          },
+                          {
+                            "value": "at0013",
+                            "label": "Goal acheived",
+                            "localizedLabels": {
+                              "en": "Goal acheived"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          },
+                          {
+                            "value": "at0014",
+                            "label": "Problem resolved",
+                            "localizedLabels": {
+                              "en": "Problem resolved"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          },
+                          {
+                            "value": "at0015",
+                            "label": "Patient died",
+                            "localizedLabels": {
+                              "en": "Patient died"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "language",
+                    "name": "Language",
+                    "rmType": "CODE_PHRASE",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.goal_assessment.v1]/language",
+                    "inContext": true
+                  },
+                  {
+                    "id": "encoding",
+                    "name": "Encoding",
+                    "rmType": "CODE_PHRASE",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.goal_assessment.v1]/encoding",
+                    "inContext": true
+                  },
+                  {
+                    "id": "subject",
+                    "name": "Subject",
+                    "rmType": "PARTY_PROXY",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[openEHR-EHR-EVALUATION.goal_assessment.v1]/subject",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "id_scheme",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "id_namespace",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "name",
+                        "type": "TEXT"
+                      }
+                    ],
+                    "inContext": true
+                  }
+                ]
+              },
+              {
+                "id": "intervention_group",
+                "name": "Intervention group",
+                "localizedName": "Intervention group",
+                "rmType": "SECTION",
+                "nodeId": "at0004",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Intervention group"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]",
+                "children": [
+                  {
+                    "id": "healthcare_service_request",
+                    "name": "Healthcare service request",
+                    "localizedName": "Healthcare service request",
+                    "rmType": "INSTRUCTION",
+                    "nodeId": "openEHR-EHR-INSTRUCTION.request-zn.v1",
+                    "min": 0,
+                    "max": -1,
+                    "localizedNames": {
+                      "en": "Healthcare service request"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Generic request for a range of different healthcare services e.g referral, lab request, equipment request."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]",
+                    "children": [
+                      {
+                        "id": "request",
+                        "name": "Request",
+                        "localizedName": "Request",
+                        "rmType": "ACTIVITY",
+                        "nodeId": "at0001",
+                        "min": 1,
+                        "max": -1,
+                        "localizedNames": {
+                          "en": "Request"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Current Activity"
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]",
+                        "children": [
+                          {
+                            "id": "nursing_intervention_request",
+                            "name": "Nursing intervention request",
+                            "localizedName": "Nursing intervention request",
+                            "rmType": "DV_CODED_TEXT",
+                            "nodeId": "at0121",
+                            "min": 1,
+                            "max": 1,
+                            "localizedNames": {
+                              "en": "Nursing intervention request"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Identification of the service requested. This is often coded with an external terminology."
+                            },
+                            "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[at0121,'Nursing intervention request']/value",
+                            "inputs": [
+                              {
+                                "suffix": "code",
+                                "type": "TEXT",
+                                "terminology": "PK-Nanda"
+                              },
+                              {
+                                "suffix": "value",
+                                "type": "TEXT",
+                                "terminology": "PK-Nanda"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "instructions",
+                            "name": "Instructions",
+                            "localizedName": "Instructions",
+                            "rmType": "DV_TEXT",
+                            "nodeId": "at0135",
+                            "min": 0,
+                            "max": 1,
+                            "localizedNames": {
+                              "en": "Instructions"
+                            },
+                            "localizedDescriptions": {
+                              "en": "A detailed narrative description of the service requested."
+                            },
+                            "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[at0135,'Instructions']/value",
+                            "inputs": [
+                              {
+                                "type": "TEXT"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "date-time_service_required",
+                            "name": "Date-time service required",
+                            "localizedName": "Date-time service required",
+                            "rmType": "DV_DATE_TIME",
+                            "nodeId": "at0040",
+                            "min": 0,
+                            "max": 1,
+                            "localizedNames": {
+                              "en": "Date-time service required"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The date and time that the service should be performed or completed."
+                            },
+                            "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[at0040]/value",
+                            "inputs": [
+                              {
+                                "type": "DATETIME"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "detailed_timing",
+                            "name": "Detailed timing",
+                            "localizedName": "Detailed timing",
+                            "rmType": "CLUSTER",
+                            "nodeId": "openEHR-EHR-CLUSTER.timing.v1",
+                            "min": 0,
+                            "max": 1,
+                            "localizedNames": {
+                              "en": "Detailed timing"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Structured information about the timing (intended or actual) of administration or use of a medicine, other therapeutic good or other intervention that is given on a scheduled basis."
+                            },
+                            "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[openEHR-EHR-CLUSTER.timing.v1,'Detailed timing']",
+                            "children": [
+                              {
+                                "id": "daily_count",
+                                "name": "Daily count",
+                                "localizedName": "Daily count",
+                                "rmType": "DV_COUNT",
+                                "nodeId": "at0001",
+                                "min": 0,
+                                "max": 1,
+                                "localizedNames": {
+                                  "en": "Daily count"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "This is the actual or maximum number of doses or other interventions that are to be administered in a 24 hour period."
+                                },
+                                "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[openEHR-EHR-CLUSTER.timing.v1,'Detailed timing']/items[at0001]/value",
+                                "inputs": [
+                                  {
+                                    "type": "INTEGER"
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "frequency",
+                                "name": "Frequency",
+                                "localizedName": "Frequency",
+                                "rmType": "DV_QUANTITY",
+                                "nodeId": "at0003",
+                                "min": 0,
+                                "max": 1,
+                                "localizedNames": {
+                                  "en": "Frequency"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "The frequency as number of times per time period that the intervention is to take place."
+                                },
+                                "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[openEHR-EHR-CLUSTER.timing.v1,'Detailed timing']/items[at0003]/value",
+                                "inputs": [
+                                  {
+                                    "suffix": "magnitude",
+                                    "type": "DECIMAL"
+                                  },
+                                  {
+                                    "suffix": "unit",
+                                    "type": "CODED_TEXT",
+                                    "list": [
+                                      {
+                                        "value": "/d",
+                                        "label": "/d",
+                                        "validation": {
+                                          "range": {
+                                            "minOp": ">=",
+                                            "min": 0.0
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "value": "/wk",
+                                        "label": "/wk",
+                                        "validation": {
+                                          "range": {
+                                            "minOp": ">=",
+                                            "min": 0.0
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "value": "/mo",
+                                        "label": "/mo",
+                                        "validation": {
+                                          "range": {
+                                            "minOp": ">=",
+                                            "min": 0.0
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "value": "/yr",
+                                        "label": "/yr",
+                                        "validation": {
+                                          "range": {
+                                            "minOp": ">=",
+                                            "min": 0.0
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "value": "/min",
+                                        "label": "/min",
+                                        "validation": {
+                                          "range": {
+                                            "minOp": ">=",
+                                            "min": 0.0
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "value": "/s",
+                                        "label": "/s",
+                                        "validation": {
+                                          "range": {
+                                            "minOp": ">=",
+                                            "min": 0.0
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "value": "/h",
+                                        "label": "/h",
+                                        "validation": {
+                                          "range": {
+                                            "minOp": ">=",
+                                            "min": 0.0
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "interval",
+                                "name": "Interval",
+                                "localizedName": "Interval",
+                                "rmType": "DV_DURATION",
+                                "nodeId": "at0014",
+                                "min": 0,
+                                "max": 1,
+                                "localizedNames": {
+                                  "en": "Interval"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "The length of time between doses or interventions. 8 Hourly is PT8H, monthly is P1M, every hour and a half is PT1H30M."
+                                },
+                                "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[openEHR-EHR-CLUSTER.timing.v1,'Detailed timing']/items[at0014]/value",
+                                "inputs": [
+                                  {
+                                    "suffix": "year",
+                                    "type": "INTEGER",
+                                    "validation": {
+                                      "range": {
+                                        "minOp": ">=",
+                                        "min": 0
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "suffix": "month",
+                                    "type": "INTEGER",
+                                    "validation": {
+                                      "range": {
+                                        "minOp": ">=",
+                                        "min": 0
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "suffix": "day",
+                                    "type": "INTEGER",
+                                    "validation": {
+                                      "range": {
+                                        "minOp": ">=",
+                                        "min": 0
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "suffix": "week",
+                                    "type": "INTEGER",
+                                    "validation": {
+                                      "range": {
+                                        "minOp": ">=",
+                                        "min": 0
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "suffix": "hour",
+                                    "type": "INTEGER",
+                                    "validation": {
+                                      "range": {
+                                        "minOp": ">=",
+                                        "min": 0
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "suffix": "minute",
+                                    "type": "INTEGER",
+                                    "validation": {
+                                      "range": {
+                                        "minOp": ">=",
+                                        "min": 0
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "suffix": "second",
+                                    "type": "INTEGER",
+                                    "validation": {
+                                      "range": {
+                                        "minOp": ">=",
+                                        "min": 0
+                                      }
+                                    }
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "variable_frequency",
+                                "name": "Variable frequency",
+                                "localizedName": "Variable frequency",
+                                "rmType": "CLUSTER",
+                                "nodeId": "at0015",
+                                "min": 0,
+                                "max": 1,
+                                "localizedNames": {
+                                  "en": "Variable frequency"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "Details of variable upper and lower frequency e.g. 3-4 times a day."
+                                },
+                                "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[openEHR-EHR-CLUSTER.timing.v1,'Detailed timing']/items[at0015]",
+                                "children": [
+                                  {
+                                    "id": "upper",
+                                    "name": "Upper",
+                                    "localizedName": "Upper",
+                                    "rmType": "CLUSTER",
+                                    "nodeId": "at0016",
+                                    "min": 0,
+                                    "max": 1,
+                                    "localizedNames": {
+                                      "en": "Upper"
+                                    },
+                                    "localizedDescriptions": {
+                                      "en": "The upper value of frequency."
+                                    },
+                                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[openEHR-EHR-CLUSTER.timing.v1,'Detailed timing']/items[at0015]/items[at0016]",
+                                    "children": [
+                                      {
+                                        "id": "frequency",
+                                        "name": "Frequency",
+                                        "localizedName": "Frequency",
+                                        "rmType": "DV_QUANTITY",
+                                        "nodeId": "at0003",
+                                        "min": 0,
+                                        "max": 1,
+                                        "localizedNames": {
+                                          "en": "Frequency"
+                                        },
+                                        "localizedDescriptions": {
+                                          "en": "The frequency as number of times per time period that the intervention is to take place."
+                                        },
+                                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[openEHR-EHR-CLUSTER.timing.v1,'Detailed timing']/items[at0015]/items[at0016]/items[at0003]/value",
+                                        "inputs": [
+                                          {
+                                            "suffix": "magnitude",
+                                            "type": "DECIMAL"
+                                          },
+                                          {
+                                            "suffix": "unit",
+                                            "type": "CODED_TEXT",
+                                            "list": [
+                                              {
+                                                "value": "/d",
+                                                "label": "/d",
+                                                "validation": {
+                                                  "range": {
+                                                    "minOp": ">=",
+                                                    "min": 0.0
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "value": "/wk",
+                                                "label": "/wk",
+                                                "validation": {
+                                                  "range": {
+                                                    "minOp": ">=",
+                                                    "min": 0.0
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "value": "/mo",
+                                                "label": "/mo",
+                                                "validation": {
+                                                  "range": {
+                                                    "minOp": ">=",
+                                                    "min": 0.0
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "value": "/yr",
+                                                "label": "/yr",
+                                                "validation": {
+                                                  "range": {
+                                                    "minOp": ">=",
+                                                    "min": 0.0
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "value": "/min",
+                                                "label": "/min",
+                                                "validation": {
+                                                  "range": {
+                                                    "minOp": ">=",
+                                                    "min": 0.0
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "value": "/s",
+                                                "label": "/s",
+                                                "validation": {
+                                                  "range": {
+                                                    "minOp": ">=",
+                                                    "min": 0.0
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "value": "/h",
+                                                "label": "/h",
+                                                "validation": {
+                                                  "range": {
+                                                    "minOp": ">=",
+                                                    "min": 0.0
+                                                  }
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": "lower",
+                                    "name": "Lower",
+                                    "localizedName": "Lower",
+                                    "rmType": "CLUSTER",
+                                    "nodeId": "at0017",
+                                    "min": 0,
+                                    "max": 1,
+                                    "localizedNames": {
+                                      "en": "Lower"
+                                    },
+                                    "localizedDescriptions": {
+                                      "en": "The lower value of frequency."
+                                    },
+                                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[openEHR-EHR-CLUSTER.timing.v1,'Detailed timing']/items[at0015]/items[at0017]",
+                                    "children": [
+                                      {
+                                        "id": "frequency",
+                                        "name": "Frequency",
+                                        "localizedName": "Frequency",
+                                        "rmType": "DV_QUANTITY",
+                                        "nodeId": "at0003",
+                                        "min": 0,
+                                        "max": 1,
+                                        "localizedNames": {
+                                          "en": "Frequency"
+                                        },
+                                        "localizedDescriptions": {
+                                          "en": "The frequency as number of times per time period that the intervention is to take place."
+                                        },
+                                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[openEHR-EHR-CLUSTER.timing.v1,'Detailed timing']/items[at0015]/items[at0017]/items[at0003]/value",
+                                        "inputs": [
+                                          {
+                                            "suffix": "magnitude",
+                                            "type": "DECIMAL"
+                                          },
+                                          {
+                                            "suffix": "unit",
+                                            "type": "CODED_TEXT",
+                                            "list": [
+                                              {
+                                                "value": "/d",
+                                                "label": "/d",
+                                                "validation": {
+                                                  "range": {
+                                                    "minOp": ">=",
+                                                    "min": 0.0
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "value": "/wk",
+                                                "label": "/wk",
+                                                "validation": {
+                                                  "range": {
+                                                    "minOp": ">=",
+                                                    "min": 0.0
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "value": "/mo",
+                                                "label": "/mo",
+                                                "validation": {
+                                                  "range": {
+                                                    "minOp": ">=",
+                                                    "min": 0.0
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "value": "/yr",
+                                                "label": "/yr",
+                                                "validation": {
+                                                  "range": {
+                                                    "minOp": ">=",
+                                                    "min": 0.0
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "value": "/min",
+                                                "label": "/min",
+                                                "validation": {
+                                                  "range": {
+                                                    "minOp": ">=",
+                                                    "min": 0.0
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "value": "/s",
+                                                "label": "/s",
+                                                "validation": {
+                                                  "range": {
+                                                    "minOp": ">=",
+                                                    "min": 0.0
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "value": "/h",
+                                                "label": "/h",
+                                                "validation": {
+                                                  "range": {
+                                                    "minOp": ">=",
+                                                    "min": 0.0
+                                                  }
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "variable_interval",
+                                "name": "Variable interval",
+                                "localizedName": "Variable interval",
+                                "rmType": "CLUSTER",
+                                "nodeId": "at0019",
+                                "min": 0,
+                                "max": 1,
+                                "localizedNames": {
+                                  "en": "Variable interval"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "Details of variable upper and lower intervals e.g. every 2-3 hours."
+                                },
+                                "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[openEHR-EHR-CLUSTER.timing.v1,'Detailed timing']/items[at0019]",
+                                "children": [
+                                  {
+                                    "id": "upper",
+                                    "name": "Upper",
+                                    "localizedName": "Upper",
+                                    "rmType": "CLUSTER",
+                                    "nodeId": "at0020",
+                                    "min": 0,
+                                    "max": 1,
+                                    "localizedNames": {
+                                      "en": "Upper"
+                                    },
+                                    "localizedDescriptions": {
+                                      "en": "The upper value of the interval."
+                                    },
+                                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[openEHR-EHR-CLUSTER.timing.v1,'Detailed timing']/items[at0019]/items[at0020]",
+                                    "children": [
+                                      {
+                                        "id": "interval",
+                                        "name": "Interval",
+                                        "localizedName": "Interval",
+                                        "rmType": "DV_DURATION",
+                                        "nodeId": "at0014",
+                                        "min": 0,
+                                        "max": 1,
+                                        "localizedNames": {
+                                          "en": "Interval"
+                                        },
+                                        "localizedDescriptions": {
+                                          "en": "The length of time between doses or interventions. 8 Hourly is PT8H, monthly is P1M, every hour and a half is PT1H30M."
+                                        },
+                                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[openEHR-EHR-CLUSTER.timing.v1,'Detailed timing']/items[at0019]/items[at0020]/items[at0014]/value",
+                                        "inputs": [
+                                          {
+                                            "suffix": "year",
+                                            "type": "INTEGER",
+                                            "validation": {
+                                              "range": {
+                                                "minOp": ">=",
+                                                "min": 0
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "suffix": "month",
+                                            "type": "INTEGER",
+                                            "validation": {
+                                              "range": {
+                                                "minOp": ">=",
+                                                "min": 0
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "suffix": "day",
+                                            "type": "INTEGER",
+                                            "validation": {
+                                              "range": {
+                                                "minOp": ">=",
+                                                "min": 0
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "suffix": "week",
+                                            "type": "INTEGER",
+                                            "validation": {
+                                              "range": {
+                                                "minOp": ">=",
+                                                "min": 0
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "suffix": "hour",
+                                            "type": "INTEGER",
+                                            "validation": {
+                                              "range": {
+                                                "minOp": ">=",
+                                                "min": 0
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "suffix": "minute",
+                                            "type": "INTEGER",
+                                            "validation": {
+                                              "range": {
+                                                "minOp": ">=",
+                                                "min": 0
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "suffix": "second",
+                                            "type": "INTEGER",
+                                            "validation": {
+                                              "range": {
+                                                "minOp": ">=",
+                                                "min": 0
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": "lower",
+                                    "name": "Lower",
+                                    "localizedName": "Lower",
+                                    "rmType": "CLUSTER",
+                                    "nodeId": "at0021",
+                                    "min": 0,
+                                    "max": 1,
+                                    "localizedNames": {
+                                      "en": "Lower"
+                                    },
+                                    "localizedDescriptions": {
+                                      "en": "The lower value of the interval."
+                                    },
+                                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[openEHR-EHR-CLUSTER.timing.v1,'Detailed timing']/items[at0019]/items[at0021]",
+                                    "children": [
+                                      {
+                                        "id": "interval",
+                                        "name": "Interval",
+                                        "localizedName": "Interval",
+                                        "rmType": "DV_DURATION",
+                                        "nodeId": "at0014",
+                                        "min": 0,
+                                        "max": 1,
+                                        "localizedNames": {
+                                          "en": "Interval"
+                                        },
+                                        "localizedDescriptions": {
+                                          "en": "The length of time between doses or interventions. 8 Hourly is PT8H, monthly is P1M, every hour and a half is PT1H30M."
+                                        },
+                                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[openEHR-EHR-CLUSTER.timing.v1,'Detailed timing']/items[at0019]/items[at0021]/items[at0014]/value",
+                                        "inputs": [
+                                          {
+                                            "suffix": "year",
+                                            "type": "INTEGER",
+                                            "validation": {
+                                              "range": {
+                                                "minOp": ">=",
+                                                "min": 0
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "suffix": "month",
+                                            "type": "INTEGER",
+                                            "validation": {
+                                              "range": {
+                                                "minOp": ">=",
+                                                "min": 0
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "suffix": "day",
+                                            "type": "INTEGER",
+                                            "validation": {
+                                              "range": {
+                                                "minOp": ">=",
+                                                "min": 0
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "suffix": "week",
+                                            "type": "INTEGER",
+                                            "validation": {
+                                              "range": {
+                                                "minOp": ">=",
+                                                "min": 0
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "suffix": "hour",
+                                            "type": "INTEGER",
+                                            "validation": {
+                                              "range": {
+                                                "minOp": ">=",
+                                                "min": 0
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "suffix": "minute",
+                                            "type": "INTEGER",
+                                            "validation": {
+                                              "range": {
+                                                "minOp": ">=",
+                                                "min": 0
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "suffix": "second",
+                                            "type": "INTEGER",
+                                            "validation": {
+                                              "range": {
+                                                "minOp": ">=",
+                                                "min": 0
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "time",
+                                "name": "Time",
+                                "localizedName": "Time",
+                                "rmType": "DV_TIME",
+                                "nodeId": "at0004",
+                                "min": 0,
+                                "max": -1,
+                                "localizedNames": {
+                                  "en": "Time"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "Specific time(s) during the day when the intervention should be applied."
+                                },
+                                "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[openEHR-EHR-CLUSTER.timing.v1,'Detailed timing']/items[at0004]/value",
+                                "inputs": [
+                                  {
+                                    "type": "TIME"
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "day_of_week",
+                                "name": "Day of week",
+                                "localizedName": "Day of week",
+                                "rmType": "DV_CODED_TEXT",
+                                "nodeId": "at0006",
+                                "min": 0,
+                                "max": -1,
+                                "localizedNames": {
+                                  "en": "Day of week"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "The specific and repeating day(s) of the week."
+                                },
+                                "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[openEHR-EHR-CLUSTER.timing.v1,'Detailed timing']/items[at0006]/value",
+                                "inputs": [
+                                  {
+                                    "suffix": "code",
+                                    "type": "CODED_TEXT",
+                                    "list": [
+                                      {
+                                        "value": "at0007",
+                                        "label": "Monday",
+                                        "localizedLabels": {
+                                          "en": "Monday"
+                                        },
+                                        "localizedDescriptions": {
+                                          "en": "Monday."
+                                        }
+                                      },
+                                      {
+                                        "value": "at0008",
+                                        "label": "Tuesday",
+                                        "localizedLabels": {
+                                          "en": "Tuesday"
+                                        },
+                                        "localizedDescriptions": {
+                                          "en": "Tuesday."
+                                        }
+                                      },
+                                      {
+                                        "value": "at0009",
+                                        "label": "Wednesday",
+                                        "localizedLabels": {
+                                          "en": "Wednesday"
+                                        },
+                                        "localizedDescriptions": {
+                                          "en": "Wednesday."
+                                        }
+                                      },
+                                      {
+                                        "value": "at0010",
+                                        "label": "Thursday",
+                                        "localizedLabels": {
+                                          "en": "Thursday"
+                                        },
+                                        "localizedDescriptions": {
+                                          "en": "Thursday."
+                                        }
+                                      },
+                                      {
+                                        "value": "at0011",
+                                        "label": "Friday",
+                                        "localizedLabels": {
+                                          "en": "Friday"
+                                        },
+                                        "localizedDescriptions": {
+                                          "en": "Friday."
+                                        }
+                                      },
+                                      {
+                                        "value": "at0012",
+                                        "label": "Saturday",
+                                        "localizedLabels": {
+                                          "en": "Saturday"
+                                        },
+                                        "localizedDescriptions": {
+                                          "en": "Saturday."
+                                        }
+                                      },
+                                      {
+                                        "value": "at0013",
+                                        "label": "Sunday",
+                                        "localizedLabels": {
+                                          "en": "Sunday"
+                                        },
+                                        "localizedDescriptions": {
+                                          "en": "Sunday."
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "day_of_month",
+                                "name": "Day of month",
+                                "localizedName": "Day of month",
+                                "rmType": "DV_COUNT",
+                                "nodeId": "at0005",
+                                "min": 0,
+                                "max": -1,
+                                "localizedNames": {
+                                  "en": "Day of month"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "The specific and repeating day(s) of the month e.g. if it is required to give a dose on the 2nd day of each month then the value is 2."
+                                },
+                                "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[openEHR-EHR-CLUSTER.timing.v1,'Detailed timing']/items[at0005]/value",
+                                "inputs": [
+                                  {
+                                    "type": "INTEGER",
+                                    "validation": {
+                                      "range": {
+                                        "minOp": ">=",
+                                        "min": 1,
+                                        "maxOp": "<=",
+                                        "max": 31
+                                      }
+                                    }
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "date",
+                                "name": "Date",
+                                "localizedName": "Date",
+                                "rmType": "DV_DATE",
+                                "nodeId": "at0018",
+                                "min": 0,
+                                "max": -1,
+                                "localizedNames": {
+                                  "en": "Date"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "Actual dates."
+                                },
+                                "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/description[at0009]/items[openEHR-EHR-CLUSTER.timing.v1,'Detailed timing']/items[at0018]/value",
+                                "inputs": [
+                                  {
+                                    "type": "DATE"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "id": "timing",
+                            "name": "Timing",
+                            "rmType": "DV_PARSABLE",
+                            "min": 1,
+                            "max": 1,
+                            "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/timing",
+                            "inputs": [
+                              {
+                                "suffix": "value",
+                                "type": "TEXT"
+                              },
+                              {
+                                "suffix": "formalism",
+                                "type": "TEXT"
+                              }
+                            ],
+                            "inContext": true
+                          },
+                          {
+                            "id": "action_archetype_id",
+                            "name": "Action_archetype_id",
+                            "rmType": "STRING",
+                            "min": 1,
+                            "max": 1,
+                            "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/activities[at0001]/action_archetype_id",
+                            "inputs": [
+                              {
+                                "type": "TEXT"
+                              }
+                            ],
+                            "inContext": true
+                          }
+                        ]
+                      },
+                      {
+                        "id": "expiry_time",
+                        "name": "expiry_time",
+                        "rmType": "DV_DATE_TIME",
+                        "min": 0,
+                        "max": 1,
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/expiry_time",
+                        "inputs": [
+                          {
+                            "type": "DATETIME"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "narrative",
+                        "name": "Narrative",
+                        "rmType": "DV_TEXT",
+                        "min": 1,
+                        "max": 1,
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/narrative",
+                        "inputs": [
+                          {
+                            "type": "TEXT"
+                          }
+                        ],
+                        "inContext": true
+                      },
+                      {
+                        "id": "language",
+                        "name": "Language",
+                        "rmType": "CODE_PHRASE",
+                        "min": 1,
+                        "max": 1,
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/language",
+                        "inContext": true
+                      },
+                      {
+                        "id": "encoding",
+                        "name": "Encoding",
+                        "rmType": "CODE_PHRASE",
+                        "min": 1,
+                        "max": 1,
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/encoding",
+                        "inContext": true
+                      },
+                      {
+                        "id": "subject",
+                        "name": "Subject",
+                        "rmType": "PARTY_PROXY",
+                        "min": 1,
+                        "max": 1,
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-INSTRUCTION.request-zn.v1]/subject",
+                        "inputs": [
+                          {
+                            "suffix": "id",
+                            "type": "TEXT"
+                          },
+                          {
+                            "suffix": "id_scheme",
+                            "type": "TEXT"
+                          },
+                          {
+                            "suffix": "id_namespace",
+                            "type": "TEXT"
+                          },
+                          {
+                            "suffix": "name",
+                            "type": "TEXT"
+                          }
+                        ],
+                        "inContext": true
+                      }
+                    ]
+                  },
+                  {
+                    "id": "clinical_intervention",
+                    "name": "Clinical intervention",
+                    "localizedName": "Clinical intervention",
+                    "rmType": "ACTION",
+                    "nodeId": "openEHR-EHR-ACTION.procedure-zn.v1",
+                    "min": 0,
+                    "max": -1,
+                    "localizedNames": {
+                      "en": "Clinical intervention"
+                    },
+                    "localizedDescriptions": {
+                      "en": "A clinical activity that has been carried out for therapeutic or diagnostic purposes."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-ACTION.procedure-zn.v1]",
+                    "children": [
+                      {
+                        "id": "ism_transition",
+                        "name": "Ism_transition",
+                        "rmType": "ISM_TRANSITION",
+                        "min": 1,
+                        "max": 1,
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-ACTION.procedure-zn.v1]/ism_transition",
+                        "children": [
+                          {
+                            "id": "current_state",
+                            "name": "Current_state",
+                            "rmType": "DV_CODED_TEXT",
+                            "min": 1,
+                            "max": 1,
+                            "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-ACTION.procedure-zn.v1]/ism_transition/current_state",
+                            "inputs": [
+                              {
+                                "suffix": "code",
+                                "type": "CODED_TEXT",
+                                "list": [
+                                  {
+                                    "value": "530",
+                                    "label": "suspended"
+                                  },
+                                  {
+                                    "value": "245",
+                                    "label": "active"
+                                  },
+                                  {
+                                    "value": "531",
+                                    "label": "aborted"
+                                  },
+                                  {
+                                    "value": "532",
+                                    "label": "completed"
+                                  },
+                                  {
+                                    "value": "524",
+                                    "label": "initial"
+                                  },
+                                  {
+                                    "value": "527",
+                                    "label": "postponed"
+                                  },
+                                  {
+                                    "value": "528",
+                                    "label": "cancelled"
+                                  },
+                                  {
+                                    "value": "529",
+                                    "label": "scheduled"
+                                  }
+                                ]
+                              }
+                            ],
+                            "inContext": true
+                          },
+                          {
+                            "id": "transition",
+                            "name": "Transition",
+                            "rmType": "DV_CODED_TEXT",
+                            "min": 0,
+                            "max": 1,
+                            "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-ACTION.procedure-zn.v1]/ism_transition/transition",
+                            "inputs": [
+                              {
+                                "suffix": "code",
+                                "type": "TEXT"
+                              },
+                              {
+                                "suffix": "value",
+                                "type": "TEXT"
+                              }
+                            ],
+                            "inContext": true
+                          },
+                          {
+                            "id": "careflow_step",
+                            "name": "Careflow_step",
+                            "rmType": "DV_CODED_TEXT",
+                            "min": 0,
+                            "max": 1,
+                            "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-ACTION.procedure-zn.v1]/ism_transition/careflow_step",
+                            "inputs": [
+                              {
+                                "suffix": "code",
+                                "type": "CODED_TEXT",
+                                "list": [
+                                  {
+                                    "value": "at0034",
+                                    "label": "Request initiated",
+                                    "localizedLabels": {
+                                      "en": "Request initiated"
+                                    },
+                                    "currentStates": [
+                                      "524"
+                                    ]
+                                  },
+                                  {
+                                    "value": "at0035",
+                                    "label": "Request sent",
+                                    "localizedLabels": {
+                                      "en": "Request sent"
+                                    },
+                                    "currentStates": [
+                                      "524"
+                                    ]
+                                  },
+                                  {
+                                    "value": "at0038",
+                                    "label": "Request postponed",
+                                    "localizedLabels": {
+                                      "en": "Request postponed"
+                                    },
+                                    "currentStates": [
+                                      "527"
+                                    ]
+                                  },
+                                  {
+                                    "value": "at0039",
+                                    "label": "Request cancelled",
+                                    "localizedLabels": {
+                                      "en": "Request cancelled"
+                                    },
+                                    "currentStates": [
+                                      "528"
+                                    ]
+                                  },
+                                  {
+                                    "value": "at0036",
+                                    "label": "Intervention scheduled",
+                                    "localizedLabels": {
+                                      "en": "Intervention scheduled"
+                                    },
+                                    "currentStates": [
+                                      "529"
+                                    ]
+                                  },
+                                  {
+                                    "value": "at0047",
+                                    "label": "In progress",
+                                    "localizedLabels": {
+                                      "en": "In progress"
+                                    },
+                                    "currentStates": [
+                                      "245"
+                                    ]
+                                  },
+                                  {
+                                    "value": "at0040",
+                                    "label": "Intervention suspended",
+                                    "localizedLabels": {
+                                      "en": "Intervention suspended"
+                                    },
+                                    "currentStates": [
+                                      "530"
+                                    ]
+                                  },
+                                  {
+                                    "value": "at0041",
+                                    "label": "Intervention aborted",
+                                    "localizedLabels": {
+                                      "en": "Intervention aborted"
+                                    },
+                                    "currentStates": [
+                                      "531"
+                                    ]
+                                  },
+                                  {
+                                    "value": "at0043",
+                                    "label": "Completed",
+                                    "localizedLabels": {
+                                      "en": "Completed"
+                                    },
+                                    "currentStates": [
+                                      "532"
+                                    ]
+                                  },
+                                  {
+                                    "value": "at0044",
+                                    "label": "Report authored",
+                                    "localizedLabels": {
+                                      "en": "Report authored"
+                                    },
+                                    "currentStates": [
+                                      "532"
+                                    ]
+                                  },
+                                  {
+                                    "value": "at0045",
+                                    "label": "Report attested",
+                                    "localizedLabels": {
+                                      "en": "Report attested"
+                                    },
+                                    "currentStates": [
+                                      "532"
+                                    ]
+                                  },
+                                  {
+                                    "value": "at0046",
+                                    "label": "Report sent",
+                                    "localizedLabels": {
+                                      "en": "Report sent"
+                                    },
+                                    "currentStates": [
+                                      "532"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ],
+                            "inContext": true
+                          }
+                        ],
+                        "inContext": true
+                      },
+                      {
+                        "id": "nursing_intervention",
+                        "name": "Nursing intervention",
+                        "localizedName": "Nursing intervention",
+                        "rmType": "DV_CODED_TEXT",
+                        "nodeId": "at0002",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Nursing intervention"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The name of the procedure."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-ACTION.procedure-zn.v1]/description[at0001]/items[at0002,'Nursing intervention']/value",
+                        "inputs": [
+                          {
+                            "suffix": "code",
+                            "type": "TEXT",
+                            "terminology": "PK-Nanda"
+                          },
+                          {
+                            "suffix": "value",
+                            "type": "TEXT",
+                            "terminology": "PK-Nanda"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "on-spot_evaluation",
+                        "name": "On-spot evaluation",
+                        "localizedName": "On-spot evaluation",
+                        "rmType": "DV_TEXT",
+                        "nodeId": "at0060",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "On-spot evaluation"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Descriptions of variance in the procedure performed from that requested."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-ACTION.procedure-zn.v1]/description[at0001]/items[at0060,'On-spot evaluation']/value",
+                        "inputs": [
+                          {
+                            "type": "TEXT"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "intervention_unsuccessful",
+                        "name": "Intervention unsuccessful",
+                        "localizedName": "Intervention unsuccessful",
+                        "rmType": "DV_BOOLEAN",
+                        "nodeId": "at0004",
+                        "min": 1,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Intervention unsuccessful"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Was the intervention regarded as unsuccessful, from a clinical perspective? True if unsuccessful."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-ACTION.procedure-zn.v1]/description[at0001]/items[at0004]/value",
+                        "inputs": [
+                          {
+                            "type": "BOOLEAN"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "comments",
+                        "name": "Comments",
+                        "localizedName": "Comments",
+                        "rmType": "DV_TEXT",
+                        "nodeId": "at0005",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Comments"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Comments about the procedure."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-ACTION.procedure-zn.v1]/description[at0001]/items[at0005]/value",
+                        "inputs": [
+                          {
+                            "type": "TEXT"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "nursing_process_action",
+                        "name": "Nursing process Action",
+                        "localizedName": "Nursing process Action",
+                        "rmType": "CLUSTER",
+                        "nodeId": "openEHR-EHR-CLUSTER.nursing_process_action_zn.v1",
+                        "min": 0,
+                        "max": -1,
+                        "localizedNames": {
+                          "en": "Nursing process Action"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Nursing process infrastructure for ZN nursing ACTION archetypes."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-ACTION.procedure-zn.v1]/protocol[at0053]/items[openEHR-EHR-CLUSTER.nursing_process_action_zn.v1]",
+                        "children": [
+                          {
+                            "id": "distribution",
+                            "name": "Distribution",
+                            "localizedName": "Distribution",
+                            "rmType": "CLUSTER",
+                            "nodeId": "openEHR-EHR-CLUSTER.distribution.v1",
+                            "min": 0,
+                            "max": -1,
+                            "localizedNames": {
+                              "en": "Distribution"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Details of the target of communication distribution, whether to identified individual parties or as a category."
+                            },
+                            "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-ACTION.procedure-zn.v1]/protocol[at0053]/items[openEHR-EHR-CLUSTER.nursing_process_action_zn.v1]/items[openEHR-EHR-CLUSTER.distribution.v1]",
+                            "children": [
+                              {
+                                "id": "individual_recipient",
+                                "name": "Individual recipient",
+                                "localizedName": "Individual recipient",
+                                "rmType": "CLUSTER",
+                                "nodeId": "at0011",
+                                "min": 0,
+                                "max": 1,
+                                "localizedNames": {
+                                  "en": "Individual recipient"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "Distribution details for an individual recipient."
+                                },
+                                "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-ACTION.procedure-zn.v1]/protocol[at0053]/items[openEHR-EHR-CLUSTER.nursing_process_action_zn.v1]/items[openEHR-EHR-CLUSTER.distribution.v1]/items[at0011]",
+                                "children": [
+                                  {
+                                    "id": "recipient_identifier",
+                                    "name": "Recipient identifier",
+                                    "localizedName": "Recipient identifier",
+                                    "rmType": "DV_TEXT",
+                                    "nodeId": "at0010",
+                                    "min": 0,
+                                    "max": 1,
+                                    "localizedNames": {
+                                      "en": "Recipient identifier"
+                                    },
+                                    "localizedDescriptions": {
+                                      "en": "Unique identifier for an individual recipient."
+                                    },
+                                    "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-ACTION.procedure-zn.v1]/protocol[at0053]/items[openEHR-EHR-CLUSTER.nursing_process_action_zn.v1]/items[openEHR-EHR-CLUSTER.distribution.v1]/items[at0011]/items[at0010]/value",
+                                    "inputs": [
+                                      {
+                                        "type": "TEXT"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "time",
+                        "name": "Time",
+                        "rmType": "DV_DATE_TIME",
+                        "min": 1,
+                        "max": 1,
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-ACTION.procedure-zn.v1]/time",
+                        "inputs": [
+                          {
+                            "type": "DATETIME"
+                          }
+                        ],
+                        "inContext": true
+                      },
+                      {
+                        "id": "language",
+                        "name": "Language",
+                        "rmType": "CODE_PHRASE",
+                        "min": 1,
+                        "max": 1,
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-ACTION.procedure-zn.v1]/language",
+                        "inContext": true
+                      },
+                      {
+                        "id": "encoding",
+                        "name": "Encoding",
+                        "rmType": "CODE_PHRASE",
+                        "min": 1,
+                        "max": 1,
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-ACTION.procedure-zn.v1]/encoding",
+                        "inContext": true
+                      },
+                      {
+                        "id": "subject",
+                        "name": "Subject",
+                        "rmType": "PARTY_PROXY",
+                        "min": 1,
+                        "max": 1,
+                        "aqlPath": "/content[openEHR-EHR-SECTION.care_plan_zn.v1]/items[at0009]/items[at0004]/items[openEHR-EHR-ACTION.procedure-zn.v1]/subject",
+                        "inputs": [
+                          {
+                            "suffix": "id",
+                            "type": "TEXT"
+                          },
+                          {
+                            "suffix": "id_scheme",
+                            "type": "TEXT"
+                          },
+                          {
+                            "suffix": "id_namespace",
+                            "type": "TEXT"
+                          },
+                          {
+                            "suffix": "name",
+                            "type": "TEXT"
+                          }
+                        ],
+                        "inContext": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "category",
+        "rmType": "DV_CODED_TEXT",
+        "nodeId": "",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/category",
+        "inputs": [
+          {
+            "suffix": "code",
+            "type": "CODED_TEXT",
+            "list": [
+              {
+                "value": "433",
+                "label": "event",
+                "localizedLabels": {
+                  "en": "event"
+                }
+              }
+            ],
+            "terminology": "openehr"
+          }
+        ],
+        "inContext": true
+      },
+      {
+        "id": "language",
+        "name": "Language",
+        "rmType": "CODE_PHRASE",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/language",
+        "inContext": true
+      },
+      {
+        "id": "territory",
+        "name": "Territory",
+        "rmType": "CODE_PHRASE",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/territory",
+        "inContext": true
+      },
+      {
+        "id": "composer",
+        "name": "Composer",
+        "rmType": "PARTY_PROXY",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/composer",
+        "inputs": [
+          {
+            "suffix": "id",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "id_scheme",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "id_namespace",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "name",
+            "type": "TEXT"
+          }
+        ],
+        "inContext": true
+      }
+    ]
+  }
+}

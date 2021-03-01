@@ -42,7 +42,7 @@ class PartialTimeTest {
     }
 
     @Test
-    fun invalidPartialTime() {
+    fun testInvalidPartialTime() {
         assertThatThrownBy { PartialTime(12, null, 1) }.isInstanceOf(IllegalArgumentException::class.java)
         assertThatThrownBy { PartialTime.from("12:61:15") }.isInstanceOf(IllegalArgumentException::class.java)
         assertThatThrownBy { PartialTime.from("12:61") }.isInstanceOf(IllegalArgumentException::class.java)

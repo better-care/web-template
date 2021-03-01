@@ -18,8 +18,8 @@ package care.better.platform.web.template.converter
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.google.common.collect.ImmutableMap
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
 import org.junit.jupiter.api.Test
@@ -35,7 +35,7 @@ class LinksTests : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testLinks() {
-        val webTemplate = WTBuilder.build(getTemplate("/convert/templates/Demo Vitals.opt"), WebTemplateBuilderContext("sl"))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), WebTemplateBuilderContext("sl"))
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")
@@ -69,7 +69,7 @@ class LinksTests : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testLinksFromCtx() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate = WTBuilder.build(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")
@@ -94,7 +94,7 @@ class LinksTests : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testLinksFromCtxMulti() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate = WTBuilder.build(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")

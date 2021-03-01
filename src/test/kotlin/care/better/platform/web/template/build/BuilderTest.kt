@@ -17,10 +17,10 @@ package care.better.platform.web.template.build
 
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import com.google.common.collect.ImmutableList
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
-import com.marand.thinkehr.web.build.WebTemplateNode
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.io.IOException
@@ -38,7 +38,7 @@ class BuilderTest : AbstractWebTemplateTest() {
         val templateName = "/build/CheckList.opt"
         val template = getTemplate(templateName)
 
-        val webTemplate: WebTemplate = WTBuilder.build(template, WebTemplateBuilderContext("en"))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en"))
         assertThat(webTemplate).isNotNull
     }
 
@@ -46,7 +46,7 @@ class BuilderTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testWebTemplateNodesAreNotEquals() {
         val template = getTemplate("/build/ICU - Ventilator device Report3.opt")
-        val webTemplate = WTBuilder.build(template, WebTemplateBuilderContext("en", ImmutableList.of("en")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", ImmutableList.of("en")))
         val firstNode: WebTemplateNode = webTemplate.findWebTemplateNode("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/peak_airway_pressure_p_peak")
         val secondNode: WebTemplateNode = webTemplate.findWebTemplateNode("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/plateau_airway_pressure_p_plateau")
         assertThat(firstNode.path).isNotEqualTo(secondNode.path)
@@ -56,7 +56,7 @@ class BuilderTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testCardinalities() {
         val builderContext = WebTemplateBuilderContext("ru")
-        val webTemplate = WTBuilder.build(getTemplate("/build/openEHR-EHR-COMPOSITION.t_otolaryngologist_examination_lanit.v1.opt"), builderContext)
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/build/openEHR-EHR-COMPOSITION.t_otolaryngologist_examination_lanit.v1.opt"), builderContext)
         assertThat(webTemplate.tree.children[0].cardinalities).isNotNull
     }
 
@@ -64,7 +64,7 @@ class BuilderTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testLocalizedNames() {
         val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
-        val webTemplate = WTBuilder.build(getTemplate("/build/ZN - Assessment Scales Encounter.opt"), builderContext)
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/build/ZN - Assessment Scales Encounter.opt"), builderContext)
         val firstNode: WebTemplateNode = webTemplate.findWebTemplateNode("assessment_scales/pain_assessment/story/pain/relieving_factor")
         val secondNode: WebTemplateNode = webTemplate.findWebTemplateNode("assessment_scales/pain_assessment/story/pain/exascerbating_factor")
         assertThat(firstNode.localizedNames["sl"]).isEqualTo("Bolečino ublaži")
@@ -75,8 +75,8 @@ class BuilderTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testOccurrences() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate = WTBuilder.build(getTemplate("/build/template-selenium-all-fields.opt"), builderContext)
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/build/template-selenium-all-fields.opt"), builderContext)
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("encounter/all_fields/any_event/navaden_text")
-        assertThat(node.occurences.min).isEqualTo(10)
+        assertThat(node.occurences?.min).isEqualTo(10)
     }
 }

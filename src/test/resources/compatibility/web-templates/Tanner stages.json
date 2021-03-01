@@ -1,0 +1,934 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "templateId": "Tanner stages",
+  "version": "2.3",
+  "defaultLanguage": "en",
+  "languages": [
+    "en"
+  ],
+  "tree": {
+    "id": "tanner_stages",
+    "name": "Tanner stages",
+    "localizedName": "Tanner stages",
+    "rmType": "COMPOSITION",
+    "nodeId": "openEHR-EHR-COMPOSITION.report.v1",
+    "min": 1,
+    "max": 1,
+    "localizedNames": {
+      "en": "Tanner stages"
+    },
+    "localizedDescriptions": {
+      "en": "Document to communicate information to others, commonly in response to a request from another party."
+    },
+    "aqlPath": "",
+    "children": [
+      {
+        "id": "context",
+        "rmType": "EVENT_CONTEXT",
+        "nodeId": "",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/context",
+        "children": [
+          {
+            "id": "report_id",
+            "name": "Report ID",
+            "localizedName": "Report ID",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0002",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Report ID"
+            },
+            "localizedDescriptions": {
+              "en": "Identification information about the report."
+            },
+            "aqlPath": "/context/other_context[at0001]/items[at0002]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "status",
+            "name": "Status",
+            "localizedName": "Status",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0005",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Status"
+            },
+            "localizedDescriptions": {
+              "en": "The status of the entire report. Note: This is not the status of any of the report components."
+            },
+            "aqlPath": "/context/other_context[at0001]/items[at0005]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "start_time",
+            "name": "Start_time",
+            "rmType": "DV_DATE_TIME",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/context/start_time",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "setting",
+            "name": "Setting",
+            "rmType": "DV_CODED_TEXT",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/context/setting",
+            "inputs": [
+              {
+                "suffix": "code",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "value",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "tanner_stages",
+        "name": "Tanner stages",
+        "localizedName": "Tanner stages",
+        "rmType": "OBSERVATION",
+        "nodeId": "openEHR-EHR-OBSERVATION.tanner.v1",
+        "min": 1,
+        "max": 1,
+        "localizedNames": {
+          "en": "Tanner stages"
+        },
+        "localizedDescriptions": {
+          "en": "A scale to describe the onset and progression of pubertal changes."
+        },
+        "aqlPath": "/content[openEHR-EHR-OBSERVATION.tanner.v1]",
+        "children": [
+          {
+            "id": "any_point_in_time_event",
+            "name": "Any point in time event",
+            "localizedName": "Any point in time event",
+            "rmType": "POINT_EVENT",
+            "nodeId": "at0002",
+            "min": 1,
+            "max": -1,
+            "localizedNames": {
+              "en": "Any point in time event"
+            },
+            "localizedDescriptions": {
+              "en": "Default, unspecified point in time event which may be explicitly defined in a template or at run-time."
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.tanner.v1]/data[at0001]/events[at0002]",
+            "children": [
+              {
+                "id": "genitals",
+                "name": "Genitals",
+                "localizedName": "Genitals",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0004",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Genitals"
+                },
+                "localizedDescriptions": {
+                  "en": "The stages for development in male genitals."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.tanner.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0007",
+                        "label": "Stage 1",
+                        "localizedLabels": {
+                          "en": "Stage 1"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Prepubertal."
+                        }
+                      },
+                      {
+                        "value": "at0008",
+                        "label": "Stage 2",
+                        "localizedLabels": {
+                          "en": "Stage 2"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Enlargement of scrotum and testes; scrotal skin reddens and changes in texture."
+                        }
+                      },
+                      {
+                        "value": "at0009",
+                        "label": "Stage 3",
+                        "localizedLabels": {
+                          "en": "Stage 3"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Enlargement of penis (length at first); further growth of testes."
+                        }
+                      },
+                      {
+                        "value": "at0010",
+                        "label": "Stage 4",
+                        "localizedLabels": {
+                          "en": "Stage 4"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Increased size of penis with growth in breadth and development of glans; testes and scrotum larger, scrotal skin darker."
+                        }
+                      },
+                      {
+                        "value": "at0011",
+                        "label": "Stage 5",
+                        "localizedLabels": {
+                          "en": "Stage 5"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Adult genitalia."
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "breasts",
+                "name": "Breasts",
+                "localizedName": "Breasts",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0005",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Breasts"
+                },
+                "localizedDescriptions": {
+                  "en": "The stages for breast development in young women."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.tanner.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0005]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0012",
+                        "label": "Stage 1",
+                        "localizedLabels": {
+                          "en": "Stage 1"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Prepubertal."
+                        }
+                      },
+                      {
+                        "value": "at0013",
+                        "label": "Stage 2",
+                        "localizedLabels": {
+                          "en": "Stage 2"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Breast bud stage with elevation of breast and papilla; enlargement of areola."
+                        }
+                      },
+                      {
+                        "value": "at0014",
+                        "label": "Stage 3",
+                        "localizedLabels": {
+                          "en": "Stage 3"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Further enlargement of breast and areola; no separation of their contour."
+                        }
+                      },
+                      {
+                        "value": "at0015",
+                        "label": "Stage 4",
+                        "localizedLabels": {
+                          "en": "Stage 4"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Areola and papilla form a secondary mound above level of breast."
+                        }
+                      },
+                      {
+                        "value": "at0016",
+                        "label": "Stage 5",
+                        "localizedLabels": {
+                          "en": "Stage 5"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Mature stage: projection of papilla only, related to recession of areola."
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "pubic_hair",
+                "name": "Pubic hair",
+                "localizedName": "Pubic hair",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0006",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Pubic hair"
+                },
+                "localizedDescriptions": {
+                  "en": "The stages for pubic hair development in females and males."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.tanner.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0006]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0017",
+                        "label": "Stage 1",
+                        "localizedLabels": {
+                          "en": "Stage 1"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Prepubertal (the pubic area may have vellus hair, similar to that of forearms)."
+                        }
+                      },
+                      {
+                        "value": "at0018",
+                        "label": "Stage 2",
+                        "localizedLabels": {
+                          "en": "Stage 2"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Sparse growth of long, slightly pigmented hair, straight or curled, at base of penis or along labia."
+                        }
+                      },
+                      {
+                        "value": "at0019",
+                        "label": "Stage 3",
+                        "localizedLabels": {
+                          "en": "Stage 3"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Darker, coarser and more curled hair, spreading sparsely over junction of pubes."
+                        }
+                      },
+                      {
+                        "value": "at0020",
+                        "label": "Stage 4",
+                        "localizedLabels": {
+                          "en": "Stage 4"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Hair adult in type, but covering smaller area than in adult; no spread to medial surface of thighs."
+                        }
+                      },
+                      {
+                        "value": "at0021",
+                        "label": "Stage 5",
+                        "localizedLabels": {
+                          "en": "Stage 5"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Adult in type and quantity, with horizontal upper border."
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "comment",
+                "name": "Comment",
+                "localizedName": "Comment",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0027",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Comment"
+                },
+                "localizedDescriptions": {
+                  "en": "Additional narrative about the pubertal examination findings not captured in other fields."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.tanner.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0027]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "time",
+                "name": "Time",
+                "rmType": "DV_DATE_TIME",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.tanner.v1]/data[at0001]/events[at0002]/time",
+                "inputs": [
+                  {
+                    "type": "DATETIME"
+                  }
+                ],
+                "inContext": true
+              }
+            ]
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.tanner.v1]/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.tanner.v1]/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.tanner.v1]/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "care_plan",
+        "name": "Care Plan",
+        "localizedName": "Care Plan",
+        "rmType": "ACTION",
+        "nodeId": "openEHR-EHR-ACTION.care_plan.v0",
+        "min": 0,
+        "max": 1,
+        "localizedNames": {
+          "en": "Care Plan"
+        },
+        "localizedDescriptions": {
+          "en": "Plan or sequence of discrete activities developed to achieve a specified management goal or treatment outcome, carried out by health professionals and/or the patient."
+        },
+        "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]",
+        "children": [
+          {
+            "id": "ism_transition",
+            "name": "Ism_transition",
+            "rmType": "ISM_TRANSITION",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/ism_transition",
+            "children": [
+              {
+                "id": "current_state",
+                "name": "Current_state",
+                "rmType": "DV_CODED_TEXT",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/ism_transition/current_state",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "530",
+                        "label": "suspended"
+                      },
+                      {
+                        "value": "245",
+                        "label": "active"
+                      },
+                      {
+                        "value": "531",
+                        "label": "aborted"
+                      },
+                      {
+                        "value": "532",
+                        "label": "completed"
+                      },
+                      {
+                        "value": "526",
+                        "label": "planned"
+                      },
+                      {
+                        "value": "527",
+                        "label": "postponed"
+                      },
+                      {
+                        "value": "528",
+                        "label": "cancelled"
+                      },
+                      {
+                        "value": "529",
+                        "label": "scheduled"
+                      }
+                    ]
+                  }
+                ],
+                "inContext": true
+              },
+              {
+                "id": "transition",
+                "name": "Transition",
+                "rmType": "DV_CODED_TEXT",
+                "min": 0,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/ism_transition/transition",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "value",
+                    "type": "TEXT"
+                  }
+                ],
+                "inContext": true
+              },
+              {
+                "id": "careflow_step",
+                "name": "Careflow_step",
+                "rmType": "DV_CODED_TEXT",
+                "min": 0,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/ism_transition/careflow_step",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0003",
+                        "label": "Care plan Need Identified",
+                        "localizedLabels": {
+                          "en": "Care plan Need Identified"
+                        },
+                        "currentStates": [
+                          "526"
+                        ]
+                      },
+                      {
+                        "value": "at0008",
+                        "label": "Care Plan Developed",
+                        "localizedLabels": {
+                          "en": "Care Plan Developed"
+                        },
+                        "currentStates": [
+                          "526"
+                        ]
+                      },
+                      {
+                        "value": "at0034",
+                        "label": "Care Plan Postponed",
+                        "localizedLabels": {
+                          "en": "Care Plan Postponed"
+                        },
+                        "currentStates": [
+                          "527"
+                        ]
+                      },
+                      {
+                        "value": "at0033",
+                        "label": "Care Plan Cancelled",
+                        "localizedLabels": {
+                          "en": "Care Plan Cancelled"
+                        },
+                        "currentStates": [
+                          "528"
+                        ]
+                      },
+                      {
+                        "value": "at0018",
+                        "label": "Care Plan Scheduled",
+                        "localizedLabels": {
+                          "en": "Care Plan Scheduled"
+                        },
+                        "currentStates": [
+                          "529"
+                        ]
+                      },
+                      {
+                        "value": "at0006",
+                        "label": "Care Plan Commenced",
+                        "localizedLabels": {
+                          "en": "Care Plan Commenced"
+                        },
+                        "currentStates": [
+                          "245"
+                        ]
+                      },
+                      {
+                        "value": "at0020",
+                        "label": "Care Plan Reviewed",
+                        "localizedLabels": {
+                          "en": "Care Plan Reviewed"
+                        },
+                        "currentStates": [
+                          "245"
+                        ]
+                      },
+                      {
+                        "value": "at0035",
+                        "label": "Care Plan Suspended",
+                        "localizedLabels": {
+                          "en": "Care Plan Suspended"
+                        },
+                        "currentStates": [
+                          "530"
+                        ]
+                      },
+                      {
+                        "value": "at0032",
+                        "label": "Care Plan Aborted",
+                        "localizedLabels": {
+                          "en": "Care Plan Aborted"
+                        },
+                        "currentStates": [
+                          "531"
+                        ]
+                      },
+                      {
+                        "value": "at0010",
+                        "label": "Care Plan Expired",
+                        "localizedLabels": {
+                          "en": "Care Plan Expired"
+                        },
+                        "currentStates": [
+                          "531"
+                        ]
+                      },
+                      {
+                        "value": "at0013",
+                        "label": "Care Plan Completed",
+                        "localizedLabels": {
+                          "en": "Care Plan Completed"
+                        },
+                        "currentStates": [
+                          "532"
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "inContext": true
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "care_plan_name",
+            "name": "Care Plan Name",
+            "localizedName": "Care Plan Name",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0002",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Care Plan Name"
+            },
+            "localizedDescriptions": {
+              "en": "Name of care plan."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/description[at0019]/items[at0002]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "description",
+            "name": "Description",
+            "localizedName": "Description",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0021",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Description"
+            },
+            "localizedDescriptions": {
+              "en": "Description of activity performed/enacted against the plan."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/description[at0019]/items[at0021]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "reason",
+            "name": "Reason",
+            "localizedName": "Reason",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0025",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Reason"
+            },
+            "localizedDescriptions": {
+              "en": "Reason for activity being performed /enacted against the plan."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/description[at0019]/items[at0025]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "care_plan_id",
+            "name": "Care Plan ID",
+            "localizedName": "Care Plan ID",
+            "rmType": "DV_IDENTIFIER",
+            "nodeId": "at0016",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Care Plan ID"
+            },
+            "localizedDescriptions": {
+              "en": "Identification of care plan."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/protocol[at0015]/items[at0016]/value",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "type",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "issuer",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "assigner",
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "expiry_date",
+            "name": "Expiry Date",
+            "localizedName": "Expiry Date",
+            "rmType": "DV_DATE_TIME",
+            "nodeId": "at0017",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Expiry Date"
+            },
+            "localizedDescriptions": {
+              "en": "Anticipated date beyond which the care plan can be deemed 'expired'."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/protocol[at0015]/items[at0017]/value",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ]
+          },
+          {
+            "id": "time",
+            "name": "Time",
+            "rmType": "DV_DATE_TIME",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/time",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "category",
+        "rmType": "DV_CODED_TEXT",
+        "nodeId": "",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/category",
+        "inputs": [
+          {
+            "suffix": "code",
+            "type": "CODED_TEXT",
+            "list": [
+              {
+                "value": "433",
+                "label": "event",
+                "localizedLabels": {
+                  "en": "event"
+                }
+              }
+            ],
+            "terminology": "openehr"
+          }
+        ],
+        "inContext": true
+      },
+      {
+        "id": "language",
+        "name": "Language",
+        "rmType": "CODE_PHRASE",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/language",
+        "inContext": true
+      },
+      {
+        "id": "territory",
+        "name": "Territory",
+        "rmType": "CODE_PHRASE",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/territory",
+        "inContext": true
+      },
+      {
+        "id": "composer",
+        "name": "Composer",
+        "rmType": "PARTY_PROXY",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/composer",
+        "inputs": [
+          {
+            "suffix": "id",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "id_scheme",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "id_namespace",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "name",
+            "type": "TEXT"
+          }
+        ],
+        "inContext": true
+      }
+    ]
+  }
+}

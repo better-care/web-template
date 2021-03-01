@@ -15,7 +15,7 @@
 
 package care.better.platform.web.template.build
 
-import com.marand.thinkehr.web.build.WebTemplateUtils
+import care.better.platform.web.template.builder.utils.WebTemplateBuilderUtils
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
 import org.junit.jupiter.api.Test
@@ -27,8 +27,8 @@ import org.junit.jupiter.api.Test
 class TranslationsInAnnotationsTest {
     @Test
     fun testTranslations() {
-        val translations: MutableMap<String, String> = mutableMapOf()
-        WebTemplateUtils.parseTranslations("gagag a L10n={sl=abc def\\{\\}hello|de=Deutsch} xxzxx", translations)
+        val translations: MutableMap<String, String?> = mutableMapOf()
+        WebTemplateBuilderUtils.parseTranslations("gagag a L10n={sl=abc def\\{\\}hello|de=Deutsch} xxzxx", translations)
         assertThat(translations).contains(entry("sl", "abc def{}hello"), entry("de", "Deutsch"))
     }
 }

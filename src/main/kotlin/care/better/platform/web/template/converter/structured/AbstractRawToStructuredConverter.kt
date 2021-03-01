@@ -27,7 +27,7 @@ import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ArrayNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import com.marand.thinkehr.web.build.WebTemplateNode
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.common.Locatable
 import org.openehr.rm.composition.Composition
 import org.openehr.rm.datatypes.*
@@ -273,7 +273,7 @@ internal abstract class AbstractRawToStructuredConverter {
      * @return [Boolean] indicating if RM object in RAW format was created for [DvCodedText] with |other attribute
      */
     private fun isCodedTextForOtherAttribute(rmObject: RmObject, rmClass: Class<out RmObject>, webTemplateNode: WebTemplateNode?): Boolean =
-        rmClass == DvCodedText::class.java && rmObject is DvText && true == webTemplateNode?.hasInput() && true == webTemplateNode.input?.listOpen
+        rmClass == DvCodedText::class.java && rmObject is DvText && true == webTemplateNode?.hasInput() && true == webTemplateNode.getInput()?.listOpen
 
     /**
      * Returns [List] of RM objects in RAW format that match with [AmNode].

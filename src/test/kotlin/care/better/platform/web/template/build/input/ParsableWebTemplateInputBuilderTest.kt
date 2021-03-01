@@ -17,11 +17,11 @@ package care.better.platform.web.template.build.input
 
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
-import com.marand.thinkehr.web.build.WebTemplateInputType
-import com.marand.thinkehr.web.build.WebTemplateNode
-import com.marand.thinkehr.web.build.input.WebTemplateInput
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.model.WebTemplateInputType
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.io.IOException
@@ -38,7 +38,7 @@ class ParsableWebTemplateInputBuilderTest : AbstractWebTemplateTest() {
         val webTemplateBuilderContext = WebTemplateBuilderContext("en")
         val template = getTemplate("/build/input/Testing.opt")
 
-        val webTemplate: WebTemplate = WTBuilder.build(template, webTemplateBuilderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, webTemplateBuilderContext)
         val webTemplateNode: WebTemplateNode = webTemplate.findWebTemplateNode("encounter/testing/parsable")
 
         assertThat(webTemplateNode.inputs).hasSize(2)
@@ -52,7 +52,7 @@ class ParsableWebTemplateInputBuilderTest : AbstractWebTemplateTest() {
         val webTemplateBuilderContext = WebTemplateBuilderContext("en")
         val template = getTemplate("/build/input/TestingParsable.opt")
 
-        val webTemplate = WTBuilder.build(template, webTemplateBuilderContext)
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, webTemplateBuilderContext)
         val webTemplateNode: WebTemplateNode = webTemplate.findWebTemplateNode("encounter/testing/parsable")
 
         assertThat(webTemplateNode.inputs).hasSize(2)
@@ -66,7 +66,7 @@ class ParsableWebTemplateInputBuilderTest : AbstractWebTemplateTest() {
         val webTemplateBuilderContext = WebTemplateBuilderContext("en")
         val template = getTemplate("/build/input/TestingParsable.opt")
 
-        val webTemplate = WTBuilder.build(template, webTemplateBuilderContext)
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, webTemplateBuilderContext)
         val webTemplateNode: WebTemplateNode = webTemplate.findWebTemplateNode("encounter/testing/parsable")
 
         assertThat(webTemplateNode.inputs).hasSize(2)

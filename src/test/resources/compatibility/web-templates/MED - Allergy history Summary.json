@@ -1,0 +1,1552 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "templateId": "ISPEK - MED - Allergy history Summary",
+  "version": "2.3",
+  "defaultLanguage": "en",
+  "languages": [
+    "en"
+  ],
+  "tree": {
+    "id": "allergy_history",
+    "name": "Allergy history",
+    "localizedName": "Allergy history",
+    "rmType": "COMPOSITION",
+    "nodeId": "openEHR-EHR-COMPOSITION.summary.v1",
+    "min": 1,
+    "max": 1,
+    "localizedNames": {
+      "en": "Allergy history"
+    },
+    "localizedDescriptions": {
+      "en": "A snapshot summary of the vaccination record."
+    },
+    "aqlPath": "",
+    "children": [
+      {
+        "id": "summary_context",
+        "name": "Summary context",
+        "localizedName": "Summary context",
+        "rmType": "EVALUATION",
+        "nodeId": "openEHR-EHR-EVALUATION.summary_context.v1",
+        "min": 0,
+        "max": 1,
+        "localizedNames": {
+          "en": "Summary context"
+        },
+        "localizedDescriptions": {
+          "en": "Contextual information regarding a persistent ' summary-style' composition e.g."
+        },
+        "aqlPath": "/content[openEHR-EHR-EVALUATION.summary_context.v1]",
+        "children": [
+          {
+            "id": "date_last_reviewed",
+            "name": "Date last reviewed",
+            "localizedName": "Date last reviewed",
+            "rmType": "DV_DATE_TIME",
+            "nodeId": "at0003",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Date last reviewed"
+            },
+            "localizedDescriptions": {
+              "en": "The date at which the summary was last clinically assessed or reviewed."
+            },
+            "aqlPath": "/content[openEHR-EHR-EVALUATION.summary_context.v1]/data[at0001]/items[at0003]/value",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ]
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-EVALUATION.summary_context.v1]/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-EVALUATION.summary_context.v1]/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-EVALUATION.summary_context.v1]/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "allergies",
+        "name": "Allergies",
+        "localizedName": "Allergies",
+        "rmType": "SECTION",
+        "nodeId": "openEHR-EHR-SECTION.ispek_dialog.v1",
+        "min": 0,
+        "max": 1,
+        "localizedNames": {
+          "en": "Allergies"
+        },
+        "localizedDescriptions": {
+          "en": "Acts as a container for a set of archetype which represent a single date-capture screen."
+        },
+        "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']",
+        "children": [
+          {
+            "id": "clinical_synopses_-_allergies",
+            "name": "Clinical Synopses - allergies",
+            "localizedName": "Clinical Synopses - allergies",
+            "rmType": "EVALUATION",
+            "nodeId": "openEHR-EHR-EVALUATION.clinical_synopsis-allergies_mnd.v1",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Clinical Synopses - allergies"
+            },
+            "localizedDescriptions": {
+              "en": "Narrative summary or overview about a patient, specifically from the perspective of a healthcare provider, and with or without associated interpretations.!"
+            },
+            "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.clinical_synopsis-allergies_mnd.v1,'Clinical Synopses - allergies']",
+            "children": [
+              {
+                "id": "allergies_in_general",
+                "name": "Allergies in general",
+                "localizedName": "Allergies in general",
+                "rmType": "DV_BOOLEAN",
+                "nodeId": "at0.3",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Allergies in general"
+                },
+                "localizedDescriptions": {
+                  "en": "Does the patient in general has any allergies?"
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.clinical_synopsis-allergies_mnd.v1,'Clinical Synopses - allergies']/data[at0001]/items[at0.3]/value",
+                "inputs": [
+                  {
+                    "type": "BOOLEAN"
+                  }
+                ]
+              },
+              {
+                "id": "not_important",
+                "name": "Not important",
+                "localizedName": "Not important",
+                "rmType": "DV_BOOLEAN",
+                "nodeId": "at0.6",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Not important"
+                },
+                "localizedDescriptions": {
+                  "en": "Information about allergies are not important for this patient in this hospital case."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.clinical_synopsis-allergies_mnd.v1,'Clinical Synopses - allergies']/data[at0001]/items[at0.6]/value",
+                "inputs": [
+                  {
+                    "type": "BOOLEAN"
+                  }
+                ]
+              },
+              {
+                "id": "additional_comments",
+                "name": "Additional comments",
+                "localizedName": "Additional comments",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0.4",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Additional comments"
+                },
+                "localizedDescriptions": {
+                  "en": "Additional comment about allergies."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.clinical_synopsis-allergies_mnd.v1,'Clinical Synopses - allergies']/data[at0001]/items[at0.4]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "presence_of_allergies",
+                "name": "Presence of allergies",
+                "localizedName": "Presence of allergies",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0.7",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Presence of allergies"
+                },
+                "localizedDescriptions": {
+                  "en": "Additional information about presence of allergies"
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.clinical_synopsis-allergies_mnd.v1,'Clinical Synopses - allergies']/data[at0001]/items[at0.7]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0.11",
+                        "label": "Allergies are present",
+                        "localizedLabels": {
+                          "en": "Allergies are present"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Allergies are present"
+                        }
+                      },
+                      {
+                        "value": "at0.9",
+                        "label": "Presence not known",
+                        "localizedLabels": {
+                          "en": "Presence not known"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The presence of allergies is not known"
+                        }
+                      },
+                      {
+                        "value": "at0.10",
+                        "label": "No information",
+                        "localizedLabels": {
+                          "en": "No information"
+                        },
+                        "localizedDescriptions": {
+                          "en": "There is no information about presence of allergies"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "language",
+                "name": "Language",
+                "rmType": "CODE_PHRASE",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.clinical_synopsis-allergies_mnd.v1,'Clinical Synopses - allergies']/language",
+                "inContext": true
+              },
+              {
+                "id": "encoding",
+                "name": "Encoding",
+                "rmType": "CODE_PHRASE",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.clinical_synopsis-allergies_mnd.v1,'Clinical Synopses - allergies']/encoding",
+                "inContext": true
+              },
+              {
+                "id": "subject",
+                "name": "Subject",
+                "rmType": "PARTY_PROXY",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.clinical_synopsis-allergies_mnd.v1,'Clinical Synopses - allergies']/subject",
+                "inputs": [
+                  {
+                    "suffix": "id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "id_scheme",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "id_namespace",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "name",
+                    "type": "TEXT"
+                  }
+                ],
+                "inContext": true
+              }
+            ]
+          },
+          {
+            "id": "adverse_reaction",
+            "name": "Adverse reaction",
+            "localizedName": "Adverse reaction",
+            "rmType": "EVALUATION",
+            "nodeId": "openEHR-EHR-EVALUATION.adverse_reaction-md.v1",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "Adverse reaction"
+            },
+            "localizedDescriptions": {
+              "en": "A harmful or undesirable effect associated with exposure to any substance or agent, including food, plants, animals, insect stings or a medication at therapeutic doses. The range of Adverse Reactions includes both Immune mediated reactions Types I-IV (including allergies and hypersensitivities) and Non-immune mediated reactions (including pseudoallergic reactions, side effects, intolerances, drug toxicities (eg Gentamycin), drug-drug interactions, food-drug interactions, drug-disease interactions and idiosyncratic reactions).!"
+            },
+            "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]",
+            "children": [
+              {
+                "id": "type_of_allergen",
+                "name": "Type of allergen",
+                "localizedName": "Type of allergen",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0002.1",
+                "min": 1,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Type of allergen"
+                },
+                "localizedDescriptions": {
+                  "en": "Identification of a substance, agent, or a class of substance, that is considered to be responsible for the adverse reaction. Coding of the substance with a terminology is desirable, where possible."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/data[at0001]/items[at0002.1]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0.54",
+                        "label": "Cows milk",
+                        "localizedLabels": {
+                          "en": "Cows milk"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0.55",
+                        "label": "Egg white",
+                        "localizedLabels": {
+                          "en": "Egg white"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0.56",
+                        "label": "Egg yolks",
+                        "localizedLabels": {
+                          "en": "Egg yolks"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0.57",
+                        "label": "Wheat flour",
+                        "localizedLabels": {
+                          "en": "Wheat flour"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0.58",
+                        "label": "Soya beans",
+                        "localizedLabels": {
+                          "en": "Soya beans"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0.59",
+                        "label": "Groundnuts",
+                        "localizedLabels": {
+                          "en": "Groundnuts"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0.60",
+                        "label": "Hazelnuts",
+                        "localizedLabels": {
+                          "en": "Hazelnuts"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0.61",
+                        "label": "Mites",
+                        "localizedLabels": {
+                          "en": "Mites"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0.62",
+                        "label": "Cat fur/hair",
+                        "localizedLabels": {
+                          "en": "Cat fur/hair"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0.63",
+                        "label": "Dog fur/hair",
+                        "localizedLabels": {
+                          "en": "Dog fur/hair"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0.64",
+                        "label": "Grass pollen",
+                        "localizedLabels": {
+                          "en": "Grass pollen"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0.65",
+                        "label": "Tree pollen",
+                        "localizedLabels": {
+                          "en": "Tree pollen"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0.66",
+                        "label": "Weeds",
+                        "localizedLabels": {
+                          "en": "Weeds"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0.67",
+                        "label": "Mould",
+                        "localizedLabels": {
+                          "en": "Mould"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0.68",
+                        "label": "Penicillin",
+                        "localizedLabels": {
+                          "en": "Penicillin"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0.69",
+                        "label": "Amoxicillin",
+                        "localizedLabels": {
+                          "en": "Amoxicillin"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0.70",
+                        "label": "Paracetamol",
+                        "localizedLabels": {
+                          "en": "Paracetamol"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0.82",
+                        "label": "Latex",
+                        "localizedLabels": {
+                          "en": "Latex"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Latex"
+                        }
+                      },
+                      {
+                        "value": "at0.83",
+                        "label": "Nuts",
+                        "localizedLabels": {
+                          "en": "Nuts"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Nuts"
+                        }
+                      },
+                      {
+                        "value": "at0.84",
+                        "label": "Honey",
+                        "localizedLabels": {
+                          "en": "Honey"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Honey"
+                        }
+                      },
+                      {
+                        "value": "at0.85",
+                        "label": "Bee",
+                        "localizedLabels": {
+                          "en": "Bee"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Bee"
+                        }
+                      },
+                      {
+                        "value": "at0.86",
+                        "label": "Wasp",
+                        "localizedLabels": {
+                          "en": "Wasp"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Wasp"
+                        }
+                      },
+                      {
+                        "value": "at0.87",
+                        "label": "Strawberry",
+                        "localizedLabels": {
+                          "en": "Strawberry"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Strawberry"
+                        }
+                      },
+                      {
+                        "value": "at0.88",
+                        "label": "Citrus fruit",
+                        "localizedLabels": {
+                          "en": "Citrus fruit"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Citrus fruit"
+                        }
+                      }
+                    ],
+                    "listOpen": true
+                  },
+                  {
+                    "suffix": "other",
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "comment",
+                "name": "Comment",
+                "localizedName": "Comment",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0006",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Comment"
+                },
+                "localizedDescriptions": {
+                  "en": "Record any additional comments about the adverse reaction, including instructions related to future exposure or administration of the substance/agent."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/data[at0001]/items[at0006]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "date_disproved",
+                "name": "Date disproved",
+                "localizedName": "Date disproved",
+                "rmType": "DV_DATE_TIME",
+                "nodeId": "at0.81",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Date disproved"
+                },
+                "localizedDescriptions": {
+                  "en": "Date that this reaction was disproved."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/data[at0001]/items[at0.81]/value",
+                "inputs": [
+                  {
+                    "type": "DATETIME"
+                  }
+                ]
+              },
+              {
+                "id": "reaction_event_summary",
+                "name": "Reaction event summary",
+                "localizedName": "Reaction event summary",
+                "rmType": "CLUSTER",
+                "nodeId": "at0009",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Reaction event summary"
+                },
+                "localizedDescriptions": {
+                  "en": "Summary about each reaction event, on a per exposure basis."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/data[at0001]/items[at0009]",
+                "children": [
+                  {
+                    "id": "specific_substance_agent",
+                    "name": "Specific substance/agent",
+                    "localizedName": "Specific substance/agent",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0010",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Specific substance/agent"
+                    },
+                    "localizedDescriptions": {
+                      "en": "More specific identification of the substance/agent or medication trade name that is considered to be responsible for this adverse reaction event. Coding of the specific substance with a terminology is desirable, where possible."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/data[at0001]/items[at0009]/items[at0010]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "manifestation",
+                    "name": "Manifestation",
+                    "localizedName": "Manifestation",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0011",
+                    "min": 0,
+                    "max": -1,
+                    "localizedNames": {
+                      "en": "Manifestation"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Single word, phrase or brief description of the clinical manifestation of the adverse reaction. The values entered here can be displayed as part of the Adverse Reaction List. For example: nausea, rash. Coding with a terminology is desirable, where possible."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/data[at0001]/items[at0009]/items[at0011]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "reaction_type",
+                    "name": "Reaction Type",
+                    "localizedName": "Reaction Type",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0016",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Reaction Type"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The type of reaction, as determined by the clinician. Coding of the reaction type is desirable, where possible. Examples: Immune mediated - Types I-IV (including allergy and hypersensitivity); Non-immune mediated - including pseudoallergic reaction, side effect, intolerance, drug toxicity, drug-drug interaction, food-drug interaction, drug-disease interaction and idiosyncratic reaction."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/data[at0001]/items[at0009]/items[at0016]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "clinical_impact",
+                    "name": "Clinical Impact",
+                    "localizedName": "Clinical Impact",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0017",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Clinical Impact"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Assessment of the clinical impact of the adverse reaction on the patient."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/data[at0001]/items[at0009]/items[at0017]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0035",
+                            "label": "None",
+                            "localizedLabels": {
+                              "en": "None"
+                            },
+                            "localizedDescriptions": {
+                              "en": "No clinical effect observed."
+                            }
+                          },
+                          {
+                            "value": "at0036",
+                            "label": "Insignificant",
+                            "localizedLabels": {
+                              "en": "Insignificant"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Little noticeable clinical effect observed."
+                            }
+                          },
+                          {
+                            "value": "at0037",
+                            "label": "Significant",
+                            "localizedLabels": {
+                              "en": "Significant"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Obvious clinical effect observed."
+                            }
+                          },
+                          {
+                            "value": "at0038",
+                            "label": "Life-threatening",
+                            "localizedLabels": {
+                              "en": "Life-threatening"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Life-threatening effect observed."
+                            }
+                          },
+                          {
+                            "value": "at0039",
+                            "label": "Death",
+                            "localizedLabels": {
+                              "en": "Death"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Individual died."
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "reaction_detail",
+                    "name": "Reaction detail",
+                    "localizedName": "Reaction detail",
+                    "rmType": "CLUSTER",
+                    "nodeId": "at0026",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Reaction detail"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Details about the reaction to the substance."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/data[at0001]/items[at0009]/items[at0026]",
+                    "children": [
+                      {
+                        "id": "reaction_description",
+                        "name": "Reaction description",
+                        "localizedName": "Reaction description",
+                        "rmType": "DV_TEXT",
+                        "nodeId": "at0012",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Reaction description"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Detailed, narrative description of the reaction, if not captured elsewhere in the patient record."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/data[at0001]/items[at0009]/items[at0026]/items[at0012]/value",
+                        "inputs": [
+                          {
+                            "type": "TEXT"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "onset_of_reaction",
+                        "name": "Onset of reaction",
+                        "localizedName": "Onset of reaction",
+                        "rmType": "DV_DATE_TIME",
+                        "nodeId": "at0027",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Onset of reaction"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Record of the date and/or time of the onset of the reaction."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/data[at0001]/items[at0009]/items[at0026]/items[at0027]/value",
+                        "inputs": [
+                          {
+                            "type": "DATETIME"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "duration_of_reaction",
+                        "name": "Duration of reaction",
+                        "localizedName": "Duration of reaction",
+                        "rmType": "DV_DURATION",
+                        "nodeId": "at0028",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Duration of reaction"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Length of duration of the reaction."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/data[at0001]/items[at0009]/items[at0026]/items[at0028]/value",
+                        "inputs": [
+                          {
+                            "suffix": "year",
+                            "type": "INTEGER",
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0
+                              }
+                            }
+                          },
+                          {
+                            "suffix": "month",
+                            "type": "INTEGER",
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0
+                              }
+                            }
+                          },
+                          {
+                            "suffix": "day",
+                            "type": "INTEGER",
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0
+                              }
+                            }
+                          },
+                          {
+                            "suffix": "week",
+                            "type": "INTEGER",
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0
+                              }
+                            }
+                          },
+                          {
+                            "suffix": "hour",
+                            "type": "INTEGER",
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0
+                              }
+                            }
+                          },
+                          {
+                            "suffix": "minute",
+                            "type": "INTEGER",
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0
+                              }
+                            }
+                          },
+                          {
+                            "suffix": "second",
+                            "type": "INTEGER",
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "exposure_summary",
+                    "name": "Exposure summary",
+                    "localizedName": "Exposure summary",
+                    "rmType": "CLUSTER",
+                    "nodeId": "at0013",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Exposure summary"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Details about the exposure to the substance/agent."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/data[at0001]/items[at0009]/items[at0013]",
+                    "children": [
+                      {
+                        "id": "description_of_exposure",
+                        "name": "Description of exposure",
+                        "localizedName": "Description of exposure",
+                        "rmType": "DV_TEXT",
+                        "nodeId": "at0018",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Description of exposure"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Narrative description about exposure to the substance/agent."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/data[at0001]/items[at0009]/items[at0013]/items[at0018]/value",
+                        "inputs": [
+                          {
+                            "type": "TEXT"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "earliest_exposure",
+                        "name": "Earliest exposure",
+                        "localizedName": "Earliest exposure",
+                        "rmType": "DV_DATE_TIME",
+                        "nodeId": "at0020",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Earliest exposure"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Record of the date and/or time of the earliest or initial exposure to the substance/agent."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/data[at0001]/items[at0009]/items[at0013]/items[at0020]/value",
+                        "inputs": [
+                          {
+                            "type": "DATETIME"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "duration_of_exposure",
+                        "name": "Duration of exposure",
+                        "localizedName": "Duration of exposure",
+                        "rmType": "DV_DURATION",
+                        "nodeId": "at0025",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Duration of exposure"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Length of duration of exposure."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/data[at0001]/items[at0009]/items[at0013]/items[at0025]/value",
+                        "inputs": [
+                          {
+                            "suffix": "year",
+                            "type": "INTEGER",
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0
+                              }
+                            }
+                          },
+                          {
+                            "suffix": "month",
+                            "type": "INTEGER",
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0
+                              }
+                            }
+                          },
+                          {
+                            "suffix": "day",
+                            "type": "INTEGER",
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0
+                              }
+                            }
+                          },
+                          {
+                            "suffix": "week",
+                            "type": "INTEGER",
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0
+                              }
+                            }
+                          },
+                          {
+                            "suffix": "hour",
+                            "type": "INTEGER",
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0
+                              }
+                            }
+                          },
+                          {
+                            "suffix": "minute",
+                            "type": "INTEGER",
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0
+                              }
+                            }
+                          },
+                          {
+                            "suffix": "second",
+                            "type": "INTEGER",
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "description_of_clinical_management",
+                    "name": "Description of clinical management",
+                    "localizedName": "Description of clinical management",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0040",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Description of clinical management"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Narrative description about the clinical management provided."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/data[at0001]/items[at0009]/items[at0040]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "multimedia",
+                    "name": "Multimedia",
+                    "localizedName": "Multimedia",
+                    "rmType": "DV_MULTIMEDIA",
+                    "nodeId": "at0031",
+                    "min": 0,
+                    "max": -1,
+                    "localizedNames": {
+                      "en": "Multimedia"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Inclusion of any multimedia file to support the recording of the reaction event, for example, a photo of a rash or presentation with angioneurotic oedema."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/data[at0001]/items[at0009]/items[at0031]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "comment",
+                    "name": "Comment",
+                    "localizedName": "Comment",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0032",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Comment"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Further comment about the reaction event."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/data[at0001]/items[at0009]/items[at0032]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "language",
+                "name": "Language",
+                "rmType": "CODE_PHRASE",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/language",
+                "inContext": true
+              },
+              {
+                "id": "encoding",
+                "name": "Encoding",
+                "rmType": "CODE_PHRASE",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/encoding",
+                "inContext": true
+              },
+              {
+                "id": "subject",
+                "name": "Subject",
+                "rmType": "PARTY_PROXY",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Allergies']/items[openEHR-EHR-EVALUATION.adverse_reaction-md.v1]/subject",
+                "inputs": [
+                  {
+                    "suffix": "id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "id_scheme",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "id_namespace",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "name",
+                    "type": "TEXT"
+                  }
+                ],
+                "inContext": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "body_weight",
+        "name": "Body weight",
+        "localizedName": "Body weight",
+        "rmType": "OBSERVATION",
+        "nodeId": "openEHR-EHR-OBSERVATION.body_weight.v1",
+        "min": 0,
+        "max": -1,
+        "localizedNames": {
+          "en": "Body weight"
+        },
+        "localizedDescriptions": {
+          "en": "Measurement of the body weight of an individual."
+        },
+        "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v1]",
+        "children": [
+          {
+            "id": "any_event",
+            "name": "Any event",
+            "localizedName": "Any event",
+            "rmType": "EVENT",
+            "nodeId": "at0003",
+            "min": 0,
+            "max": -1,
+            "cardinalities": [
+              {
+                "min": 1,
+                "max": 1,
+                "ids": [
+                  "weight",
+                  "comment"
+                ]
+              }
+            ],
+            "localizedNames": {
+              "en": "Any event"
+            },
+            "localizedDescriptions": {
+              "en": "Any event"
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v1]/data[at0002]/events[at0003]",
+            "children": [
+              {
+                "id": "weight",
+                "name": "Weight",
+                "localizedName": "Weight",
+                "rmType": "DV_QUANTITY",
+                "nodeId": "at0004",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Weight"
+                },
+                "localizedDescriptions": {
+                  "en": "The weight of the individual."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v1]/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value",
+                "inputs": [
+                  {
+                    "suffix": "magnitude",
+                    "type": "DECIMAL"
+                  },
+                  {
+                    "suffix": "unit",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "kg",
+                        "label": "kg",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 0.0,
+                            "maxOp": "<=",
+                            "max": 1000.0
+                          }
+                        }
+                      },
+                      {
+                        "value": "lb",
+                        "label": "lb",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 0.0,
+                            "maxOp": "<=",
+                            "max": 2000.0
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "comment",
+                "name": "Comment",
+                "localizedName": "Comment",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0024",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Comment"
+                },
+                "localizedDescriptions": {
+                  "en": "Comment about the measurement of weight."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v1]/data[at0002]/events[at0003]/data[at0001]/items[at0024]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "state_of_dress",
+                "name": "State of Dress",
+                "localizedName": "State of Dress",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0009",
+                "min": 0,
+                "max": 1,
+                "dependsOn": [
+                  "weight",
+                  "comment"
+                ],
+                "localizedNames": {
+                  "en": "State of Dress"
+                },
+                "localizedDescriptions": {
+                  "en": "Description of the state of dress of the person at the time of weighing."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v1]/data[at0002]/events[at0003]/state[at0008]/items[at0009]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0011",
+                        "label": "Lightly clothed/underwear",
+                        "localizedLabels": {
+                          "en": "Lightly clothed/underwear"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Clothing which will not add to weight significantly."
+                        }
+                      },
+                      {
+                        "value": "at0013",
+                        "label": "Naked",
+                        "localizedLabels": {
+                          "en": "Naked"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Without any clothes"
+                        }
+                      },
+                      {
+                        "value": "at0010",
+                        "label": "Fully clothed, including shoes",
+                        "localizedLabels": {
+                          "en": "Fully clothed, including shoes"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Clothing which may add significantly to weight, including shoes."
+                        }
+                      },
+                      {
+                        "value": "at0017",
+                        "label": "Nappy/diaper",
+                        "localizedLabels": {
+                          "en": "Nappy/diaper"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Wearing only a nappy - can add significant weight."
+                        }
+                      }
+                    ],
+                    "defaultValue": "at0011"
+                  }
+                ]
+              },
+              {
+                "id": "confounding_factors",
+                "name": "Confounding Factors",
+                "localizedName": "Confounding Factors",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0025",
+                "min": 0,
+                "max": 1,
+                "dependsOn": [
+                  "weight",
+                  "comment"
+                ],
+                "localizedNames": {
+                  "en": "Confounding Factors"
+                },
+                "localizedDescriptions": {
+                  "en": "Record any issues or factors that may impact on the measurement of body weight eg timing in menstrual cycle, timing of recent bowel motion or noting of amputation."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v1]/data[at0002]/events[at0003]/state[at0008]/items[at0025]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "time",
+                "name": "Time",
+                "rmType": "DV_DATE_TIME",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v1]/data[at0002]/events[at0003]/time",
+                "inputs": [
+                  {
+                    "type": "DATETIME"
+                  }
+                ],
+                "inContext": true
+              }
+            ]
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v1]/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v1]/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v1]/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "category",
+        "rmType": "DV_CODED_TEXT",
+        "nodeId": "",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/category",
+        "inputs": [
+          {
+            "suffix": "code",
+            "type": "CODED_TEXT",
+            "list": [
+              {
+                "value": "431",
+                "label": "persistent",
+                "localizedLabels": {
+                  "en": "persistent"
+                }
+              }
+            ],
+            "terminology": "openehr"
+          }
+        ],
+        "inContext": true
+      },
+      {
+        "id": "language",
+        "name": "Language",
+        "rmType": "CODE_PHRASE",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/language",
+        "inContext": true
+      },
+      {
+        "id": "territory",
+        "name": "Territory",
+        "rmType": "CODE_PHRASE",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/territory",
+        "inContext": true
+      },
+      {
+        "id": "composer",
+        "name": "Composer",
+        "rmType": "PARTY_PROXY",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/composer",
+        "inputs": [
+          {
+            "suffix": "id",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "id_scheme",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "id_namespace",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "name",
+            "type": "TEXT"
+          }
+        ],
+        "inContext": true
+      }
+    ]
+  }
+}

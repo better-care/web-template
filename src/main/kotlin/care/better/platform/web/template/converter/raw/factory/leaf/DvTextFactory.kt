@@ -19,7 +19,7 @@ import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
-import com.marand.thinkehr.web.build.input.WebTemplateInput
+import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import org.openehr.rm.datatypes.DvCodedText
 import org.openehr.rm.datatypes.DvText
 

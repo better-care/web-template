@@ -20,9 +20,9 @@ import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.google.common.collect.ImmutableList
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
-import com.marand.thinkehr.web.build.WebTemplateNode
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
@@ -38,7 +38,7 @@ class AdlDesignerTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testMissingCategory() {
         val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Request_for_Pancreas_Special_Urgency_Listing.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Request_for_Pancreas_Special_Urgency_Listing.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("en").withTerritory("GB").withComposerName("Test").build()
 
         val root: ObjectNode = getObjectMapper().readTree(getJson("/convert/compositions/pancreas.json")) as ObjectNode
@@ -49,7 +49,7 @@ class AdlDesignerTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCreationFailure() {
         val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/recursivecomposition.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/recursivecomposition.opt"), builderContext)
         assertThat(webTemplate).isNotNull
     }
 
@@ -57,7 +57,7 @@ class AdlDesignerTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCategoryInContextTest() {
         val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/DRP Report.xml"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/DRP Report.xml"), builderContext)
         assertThat(webTemplate).isNotNull
         val category: WebTemplateNode? = webTemplate.tree.children.firstOrNull { node -> "category" == node.jsonId }
         assertThat(category!!.inContext).isTrue

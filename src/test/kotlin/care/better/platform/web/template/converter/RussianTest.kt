@@ -26,10 +26,10 @@ import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.google.common.collect.ImmutableMap
 import com.google.common.collect.ImmutableSet
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
-import com.marand.thinkehr.web.build.WebTemplateNode
-import com.marand.thinkehr.web.build.input.WebTemplateInput
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
 import org.junit.jupiter.api.Test
@@ -55,10 +55,10 @@ import javax.xml.bind.JAXBException
 class RussianTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
-    fun externalTerminology() {
+    fun testExternalTerminology() {
         val template = getTemplate("/convert/templates/NSI_test_information.opt")
         val context = ConversionContext.create().withLanguage("ru").withTerritory("RU").withComposerName("composer").build()
-        val webTemplate = WTBuilder.build(template, WebTemplateBuilderContext("ru"))
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("ru"))
         val values: Map<String, Any> = ImmutableMap.builder<String, Any>()
                 .put("информация/справочная_информация/из_справочника", "123")
                 .put("информация/справочная_информация/из_справочника|value", "Первая категория")
@@ -76,10 +76,10 @@ class RussianTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testOccurrences() {
         val builderContext = WebTemplateBuilderContext("ru")
-        val webTemplate = WTBuilder.build(getTemplate("/convert/templates/Test_repeat_5_times.opt"), builderContext)
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Test_repeat_5_times.opt"), builderContext)
         val webTemplateNode: WebTemplateNode = webTemplate.tree.children[0]
-        assertThat(webTemplateNode.occurences.jsonMax).isEqualTo(-1)
-        assertThat(webTemplateNode.children[0].occurences.jsonMax).isEqualTo(5)
+        assertThat(webTemplateNode.occurences?.getJsonMax()).isEqualTo(-1)
+        assertThat(webTemplateNode.children[0].occurences?.getJsonMax()).isEqualTo(5)
         buildAndExport("/convert/templates/Test_repeat_5_times.opt", "test5", "ru", ImmutableSet.of("ru", "en"))
     }
 
@@ -87,10 +87,10 @@ class RussianTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testOccurrencesUnbounded() {
         val builderContext = WebTemplateBuilderContext("ru")
-        val webTemplate = WTBuilder.build(getTemplate("/convert/templates/Test_repeat_unbounded.opt"), builderContext)
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Test_repeat_unbounded.opt"), builderContext)
         val webTemplateNode: WebTemplateNode = webTemplate.tree.children[0]
-        assertThat(webTemplateNode.occurences.jsonMax).isEqualTo(-1)
-        assertThat(webTemplateNode.children[0].occurences.jsonMax).isEqualTo(-1)
+        assertThat(webTemplateNode.occurences?.getJsonMax()).isEqualTo(-1)
+        assertThat(webTemplateNode.children[0].occurences?.getJsonMax()).isEqualTo(-1)
         buildAndExport("/convert/templates/Test_repeat_unbounded.opt", "unbounded", "ru", ImmutableSet.of("ru", "en"))
     }
 
@@ -99,7 +99,7 @@ class RussianTest : AbstractWebTemplateTest() {
     fun testInvalidOccurrences() {
         val template = getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_gynecologist_anamnesis_pregnant .v1.xml")
         val context = ConversionContext.create().withLanguage("ru").withTerritory("RU").withComposerName("composer").build()
-        val compositionBuilder = WTBuilder.build(template, WebTemplateBuilderContext("ru"))
+        val compositionBuilder = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("ru"))
         val compositionFlatMap: Map<String, Any> = ImmutableMap.builder<String, Any>()
                 .put("прием_пациента/метаданные/идентификатор_специалиста", "ва")
                 .put("прием_пациента/метаданные/должность|code", "123")
@@ -173,7 +173,7 @@ class RussianTest : AbstractWebTemplateTest() {
         val templateName = "/convert/templates/openEHR-EHR-COMPOSITION.t_gynecologist_prophylactic_examination.v1.xml"
         val template = getTemplate(templateName)
         val context = ConversionContext.create().withLanguage("ru").withTerritory("RU").withComposerName("composer").build()
-        val compositionBuilder = WTBuilder.build(template, WebTemplateBuilderContext("ru"))
+        val compositionBuilder = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("ru"))
         val compositionFlatMap: Map<String, Any> = ImmutableMap.builder<String, Any>()
                 .put("прием_пациента/метаданные/идентификатор_специалиста", "j")
                 .put("прием_пациента/метаданные/должность|code", "123")
@@ -249,7 +249,7 @@ class RussianTest : AbstractWebTemplateTest() {
         val templateName = "/convert/templates/openEHR-EHR-COMPOSITION.t_new_rheumatologist_examination.opt"
         val template = getTemplate(templateName)
         val builderContext = WebTemplateBuilderContext("ru")
-        val webTemplate = WTBuilder.build(template, builderContext)
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, builderContext)
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("прием_пациента/общий_осмотр/общий_осмотр_больного/простые_неврологические_тесты/поза_ромберга")
         assertThat(node.rmType).isEqualTo("DV_CODED_TEXT")
         buildAndExport(templateName, "medium", "ru", ImmutableSet.of("ru", "en"))
@@ -261,7 +261,7 @@ class RussianTest : AbstractWebTemplateTest() {
         val templateName = "/convert/templates/openEHR-EHR-COMPOSITION.t_anamnesis_gynecologist.opt"
         val template = getTemplate(templateName)
         val builderContext = WebTemplateBuilderContext("ru")
-        val webTemplate = WTBuilder.build(template, builderContext)
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, builderContext)
         val node: WebTemplateNode = webTemplate.tree.children[1].children[5]
         assertThat(node.annotations).contains(entry("default", "hideOnForm"))
     }
@@ -272,7 +272,7 @@ class RussianTest : AbstractWebTemplateTest() {
         val templateName = "/convert/templates/openEHR-EHR-COMPOSITION.t_new_physiatrist_examination.v1.xml"
         val template = getTemplate(templateName)
         val builderContext = WebTemplateBuilderContext("ru")
-        val webTemplate = WTBuilder.build(template, builderContext)
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, builderContext)
         val compositionFlatMap: Map<String, Any> = ImmutableMap.builder<String, Any>()
                 .put("прием_пациента/административная_информация/автор_документа", "user")
                 .put("прием_пациента/административная_информация/вид_медпомощи|code", "at0024")
@@ -326,7 +326,7 @@ class RussianTest : AbstractWebTemplateTest() {
         val templateName = "/convert/templates/openEHR-EHR-COMPOSITION.t_new_physiatrist_examination.v1.xml"
         val template = getTemplate(templateName)
         val builderContext = WebTemplateBuilderContext("ru")
-        val webTemplate = WTBuilder.build(template, builderContext)
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, builderContext)
         val compositionFlatMap: Map<String, Any> = ImmutableMap.builder<String, Any>()
                 .put("прием_пациента/административная_информация/автор_документа", "user")
                 .put("прием_пациента/административная_информация/вид_медпомощи|code", "at0024")
@@ -388,7 +388,7 @@ class RussianTest : AbstractWebTemplateTest() {
         val templateName = "/convert/templates/openEHR-EHR-COMPOSITION.t_dental_formule.v1.xml"
         val template = getTemplate(templateName)
         val builderContext = WebTemplateBuilderContext("ru")
-        val webTemplate = WTBuilder.build(template, builderContext)
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, builderContext)
         val parameters: Map<String, String> = mapOf(
             Pair("прием_пациента_врачом-стоматологом-хирургом/административная_информация/название_документа", "Прием пациента врачом-стоматологом-хирургом 23.04.2013"),
             Pair("прием_пациента_врачом-стоматологом-хирургом/административная_информация/дата_приема", "2013-04-26T00:00:00"),
@@ -422,7 +422,7 @@ class RussianTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testLinks() {
-        val webTemplate = WTBuilder.build(
+        val webTemplate = WebTemplateBuilder.buildNonNull(
                 getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_dermatologist_examination.v1.xml"),
                 WebTemplateBuilderContext("ru"))
 
@@ -456,7 +456,7 @@ class RussianTest : AbstractWebTemplateTest() {
         val templateName = "/convert/templates/openEHR-EHR-COMPOSITION.t_interval_quantity_test.v1.xml"
         val template = getTemplate(templateName)
         val builderContext = WebTemplateBuilderContext("ru")
-        val webTemplate = WTBuilder.build(template, builderContext)
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, builderContext)
         val compositionFlatMap: Map<String, Any> = mapOf(
             Pair("test/административная_информация/автор_документа", "User"),
             Pair("test/административная_информация/вид_медпомощи|code", "at0024"),
@@ -499,7 +499,7 @@ class RussianTest : AbstractWebTemplateTest() {
     fun testNPE() {
         val template = getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_pediatrist_examination (0-12)_lanit.opt")
         val context = WebTemplateBuilderContext(template.language!!.codeString)
-        WTBuilder.build(template, context)
+        WebTemplateBuilder.buildNonNull(template, context)
     }
 
     @Test
@@ -507,7 +507,7 @@ class RussianTest : AbstractWebTemplateTest() {
     fun testMultipleExternalTerminologies() {
         val template = getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_allergist_examination_child_lanit.opt")
         val context = WebTemplateBuilderContext(template.language!!.codeString)
-        val webTemplate = WTBuilder.build(template, context)
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, context)
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("осмотр_аллерголога-иммунолога/интерпретация_результатов_обследования/интерпретация_результатов_обследования/фвд_-_спирометрия/интерпретация_результатов/препарат/мнн")
         assertThat(node.inputs[0].terminology).isEqualTo("NSI?subset=DRUGS_EXT_MNN_ALLERG_CH&language=GB")
         assertThat(node.inputs[0].otherTerminologies).containsOnly("NSI?subset=DRUGS_EXT_MNN_V")
@@ -518,15 +518,15 @@ class RussianTest : AbstractWebTemplateTest() {
     fun testUntypedInterval() {
         val template = getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_anamnesis_vitae_pediatrist.opt")
         val context = WebTemplateBuilderContext("ru", ImmutableSet.of("en", "ru"))
-        assertThat(WTBuilder.build(template, context)).isNotNull
+        assertThat(WebTemplateBuilder.buildNonNull(template, context)).isNotNull
     }
 
     @Test
     @Throws(JAXBException::class, IOException::class)
-    fun missingInstruction() {
+    fun testMissingInstruction() {
         val template = getTemplate("/convert/templates/opt referral.xml")
         val context = WebTemplateBuilderContext("ru", ImmutableSet.of("en", "ru"))
-        val webTemplate = WTBuilder.build(template, context)
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, context)
         assertThat(webTemplate).isNotNull
 
         val structuredComposition: ObjectNode = getObjectMapper().readTree(getJson("/convert/compositions/missingInstruction.json")) as ObjectNode
@@ -545,21 +545,21 @@ class RussianTest : AbstractWebTemplateTest() {
         val template = getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_laboratory_test_result_report.opt")
         val context = WebTemplateBuilderContext("ru", ImmutableSet.of("en", "ru"))
 
-        val webTemplate = WTBuilder.build(template, context)
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, context)
         assertThat(webTemplate).isNotNull
 
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("результат_лабораторного_исследования/результат_исследования/лабораторное_исследование/любое_событие/статус")
-        val input: WebTemplateInput = node.input
+        val input: WebTemplateInput = node.getInput()!!
         assertThat(input.list).hasSize(9)
         assertThat(input.otherTerminologies).hasSize(1)
     }
 
     @Test
     @Throws(JAXBException::class, IOException::class)
-    fun ruTherapistExamination() {
+    fun testRuTherapistExamination() {
         val template = getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_therapist_examination.opt")
         val context = WebTemplateBuilderContext("ru", ImmutableSet.of("en", "ru"))
-        val webTemplate = WTBuilder.build(template, context)
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, context)
         assertThat(webTemplate).isNotNull
 
         val builderContext = ConversionContext.create().withLanguage("ru").withTerritory("RU").build()
@@ -578,7 +578,7 @@ class RussianTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testCardiologistExamination() {
-        val webTemplate = WTBuilder.build(
+        val webTemplate = WebTemplateBuilder.buildNonNull(
                 getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_cardiologist_examination.v3.xml"),
                 WebTemplateBuilderContext("ru", ImmutableSet.of("en", "ru")))
         assertThat(webTemplate).isNotNull
@@ -589,7 +589,7 @@ class RussianTest : AbstractWebTemplateTest() {
         val firstComposition: Composition? = webTemplate.convertFromStructuredToRaw(firstStructuredComposition, builderContext)
         assertThat(firstComposition).isNotNull
 
-        val secondWebTemplate = WTBuilder.build(
+        val secondWebTemplate = WebTemplateBuilder.buildNonNull(
                 getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_cardiologist_examination.v3-fix.xml"),
                 WebTemplateBuilderContext("ru", ImmutableSet.of("en", "ru")))
         assertThat(secondWebTemplate).isNotNull
@@ -603,7 +603,7 @@ class RussianTest : AbstractWebTemplateTest() {
     fun testPrevaccinalExamination() {
         val template = getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.prevaccinal_examination.opt")
         val context = WebTemplateBuilderContext("ru", ImmutableSet.of("en", "ru"))
-        val webTemplate = WTBuilder.build(template, context)
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, context)
         assertThat(webTemplate).isNotNull
 
         val builderContext = ConversionContext.create().withLanguage("ru").withTerritory("RU").build()
@@ -618,7 +618,7 @@ class RussianTest : AbstractWebTemplateTest() {
     fun testVaccinationCard() {
         val template = getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.vaccination_card.opt")
         val context = WebTemplateBuilderContext("ru", ImmutableSet.of("en", "ru"))
-        val webTemplate = WTBuilder.build(template, context)
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, context)
         assertThat(webTemplate).isNotNull
 
         val builderContext = ConversionContext.create()
@@ -643,7 +643,7 @@ class RussianTest : AbstractWebTemplateTest() {
         val template = getTemplate("/convert/templates/Demo Vitals.opt")
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
 
-        val webTemplate = WTBuilder.build(template, WebTemplateBuilderContext("sl"))
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("sl"))
         val flatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
                 .put("ctx/time", "2015-01-01T10:00:00.000+05:00")
                 .put("vitals/vitals/body_temperature:0/any_event:0/temperature|magnitude", "37.7")
@@ -671,7 +671,7 @@ class RussianTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testAssesmentReferral() {
         val template = getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_sociomedical_assessment_referral.v1.xml")
-        val webTemplate = WTBuilder.build(template, WebTemplateBuilderContext("ru"))
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("ru"))
 
         val json: String = getJson("/convert/compositions/openEHR-EHR-COMPOSITION.t_sociomedical_assessment_referral.v1.json").replace("\r\n", "\n")
 
@@ -690,7 +690,7 @@ class RussianTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testReferenceForm() {
         val template = getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_outpatient_reference_form_025_1.v4.xml")
-        val webTemplate = WTBuilder.build(template, WebTemplateBuilderContext("ru"))
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("ru"))
         val json: String = getJson("/convert/compositions/openEHR-EHR-COMPOSITION.t_outpatient_reference_form_025_1.v4-composition.json").replace("\r\n", "\n")
 
         val context = ConversionContext.create()

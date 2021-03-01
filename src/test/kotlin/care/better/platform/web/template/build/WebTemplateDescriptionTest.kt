@@ -18,9 +18,9 @@ package care.better.platform.web.template.build
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import com.google.common.collect.ImmutableList
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
-import com.marand.thinkehr.web.build.WebTemplateNode
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
@@ -34,22 +34,22 @@ class WebTemplateDescriptionTest : AbstractWebTemplateTest() {
     fun testWebTemplateHasDescriptions() {
         val template = getTemplate("/build/Demo Vitals.opt")
 
-        val webTemplate: WebTemplate = WTBuilder.build(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
 
         assertThat(webTemplate.tree.localizedDescriptions["en"]).isEqualTo("Generic encounter or progress note composition")
 
         val siteOfMeasurement: WebTemplateNode = webTemplate.findWebTemplateNode("vitals/vitals/body_temperature/site_of_measurement")
-        assertThat(siteOfMeasurement.input.list[0].localizedDescriptions["en"]).isEqualTo("The temperature was measured at the buccal mucosa.")
+        assertThat(siteOfMeasurement.getInput()!!.list[0].localizedDescriptions["en"]).isEqualTo("The temperature was measured at the buccal mucosa.")
     }
 
     @Test
     fun testWebTemplateNotHasDescriptions() {
         val template = getTemplate("/build/Demo Vitals.opt")
-        val webTemplate = WTBuilder.build(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")).apply { this.isAddDescriptions = false })
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"), false))
 
         assertThat(webTemplate.tree.localizedDescriptions).isEmpty()
 
         val siteOfMeasurement: WebTemplateNode = webTemplate.findWebTemplateNode("vitals/vitals/body_temperature/site_of_measurement")
-        assertThat(siteOfMeasurement.input.list[0].localizedDescriptions).isEmpty()
+        assertThat(siteOfMeasurement.getInput()!!.list[0].localizedDescriptions).isEmpty()
     }
 }

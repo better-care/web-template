@@ -19,8 +19,8 @@ import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.google.common.collect.ImmutableMap
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
 import org.junit.jupiter.api.Test
@@ -39,7 +39,7 @@ class ProviderTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testEntryProvider() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")
@@ -75,7 +75,7 @@ class ProviderTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testEntryProviderWithIdentifiers() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")
@@ -127,7 +127,7 @@ class ProviderTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testHealthCareFacility() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")

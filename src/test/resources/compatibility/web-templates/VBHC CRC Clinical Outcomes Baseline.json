@@ -1,0 +1,3344 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "templateId": "MEDTRONIC VBHC CRC Clinical Outcomes Baseline",
+  "version": "2.3",
+  "defaultLanguage": "en",
+  "languages": [
+    "en"
+  ],
+  "tree": {
+    "id": "medtronic_vbhc_crc_clinical_outcomes_baseline",
+    "name": "MEDTRONIC VBHC CRC Clinical Outcomes Baseline",
+    "localizedName": "MEDTRONIC VBHC CRC Clinical Outcomes Baseline",
+    "rmType": "COMPOSITION",
+    "nodeId": "openEHR-EHR-COMPOSITION.encounter.v1",
+    "min": 1,
+    "max": 1,
+    "localizedNames": {
+      "en": "MEDTRONIC VBHC CRC Clinical Outcomes Baseline"
+    },
+    "localizedDescriptions": {
+      "en": "Interaction, contact or care event between a subject of care and healthcare provider(s)."
+    },
+    "aqlPath": "",
+    "children": [
+      {
+        "id": "context",
+        "rmType": "EVENT_CONTEXT",
+        "nodeId": "",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/context",
+        "children": [
+          {
+            "id": "encounter_context",
+            "name": "Encounter Context",
+            "localizedName": "Encounter Context",
+            "rmType": "CLUSTER",
+            "nodeId": "openEHR-EHR-CLUSTER.encounter_context.v0",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Encounter Context"
+            },
+            "localizedDescriptions": {
+              "en": "Provides extra information about the encounter context, regarding the internal cases used at Pathfinder for encounter types and reasons, along with an appointment and encounter id. Terminology should be loaded from the Think!EHR terminology adapter."
+            },
+            "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.encounter_context.v0]",
+            "children": [
+              {
+                "id": "encounter_id",
+                "name": "Encounter id",
+                "localizedName": "Encounter id",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0002",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Encounter id"
+                },
+                "localizedDescriptions": {
+                  "en": "Unique identifier for each encounter process."
+                },
+                "annotations": {
+                  "FHIR_mapping": "Encounter.identifier",
+                  "HL7v2_mapping": "PV1.19"
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.encounter_context.v0]/items[at0002]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "encounter_type",
+                "name": "Encounter type",
+                "localizedName": "Encounter type",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0003",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Encounter type"
+                },
+                "localizedDescriptions": {
+                  "en": "Type of encounter, should be provided by terminology server."
+                },
+                "annotations": {
+                  "FHIR_mapping": "Encounter.type",
+                  "HL7v2_mapping": "PV1.4 / PV1.18"
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.encounter_context.v0]/items[at0003]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "encounter_reason",
+                "name": "Encounter reason",
+                "localizedName": "Encounter reason",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0004",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Encounter reason"
+                },
+                "localizedDescriptions": {
+                  "en": "Reason for encounter, should be provided by terminology server."
+                },
+                "annotations": {
+                  "FHIR_mapping": "Encounter.reason",
+                  "HL7v2_mapping": "EVN.4 / PV2.3"
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.encounter_context.v0]/items[at0004]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "appointment_id",
+                "name": "Appointment id",
+                "localizedName": "Appointment id",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0001",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Appointment id"
+                },
+                "localizedDescriptions": {
+                  "en": "Unique identifier for each appointment process."
+                },
+                "annotations": {
+                  "FHIR_mapping": "Appointment.identifier",
+                  "HL7v2_mapping": "SCH-1 / SCH-2"
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.encounter_context.v0]/items[at0001]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "xds_metadata",
+            "name": "XDS Metadata",
+            "localizedName": "XDS Metadata",
+            "rmType": "CLUSTER",
+            "nodeId": "openEHR-EHR-CLUSTER.xds_metadata.v0",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "XDS Metadata"
+            },
+            "localizedDescriptions": {
+              "en": "Additional composition metadata aligned with IHE-XDS which is not already available from the Reference Model COMPOSITION class."
+            },
+            "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]",
+            "children": [
+              {
+                "id": "author_specialty",
+                "name": "Author specialty",
+                "localizedName": "Author specialty",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0001",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Author specialty"
+                },
+                "localizedDescriptions": {
+                  "en": "The speciality of the author/composer of the document."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0001]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "class_code",
+                "name": "Class code",
+                "localizedName": "Class code",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0002",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Class code"
+                },
+                "localizedDescriptions": {
+                  "en": "A high-level document class code, normally selected from a valueset provided by the IHE-XDS Affinity Domain."
+                },
+                "annotations": {
+                  "comment": "For example: Report, Summary, Images, Plan, Patient Preferences, Workflow.\n                                        These codes are specific to an XDS Affinity Domain.\n                                    "
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0002]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "document_type",
+                "name": "Document type",
+                "localizedName": "Document type",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0003",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Document type"
+                },
+                "localizedDescriptions": {
+                  "en": "The code specifying the precise type of document from the user perspective. Normally selected from a valueset provided by the local IHE-XDS Affinity Domain or national standard."
+                },
+                "annotations": {
+                  "comment": "for example: Pulmonary History and Physical, Discharge Summary, Ultrasound Report.\n                                        These codes are specific to an XDS Affinity Domain.\n                                    "
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0003]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "confidentiality_code",
+                "name": "Confidentiality code",
+                "localizedName": "Confidentiality code",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0004",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Confidentiality code"
+                },
+                "localizedDescriptions": {
+                  "en": "A term specifying the level of confidentiality of the XDS Document."
+                },
+                "annotations": {
+                  "comment": "Coded text is preferred, normally specific to an XDS Affinity Domain."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0004]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "health_care_facility_type",
+                "name": "Health care facility type",
+                "localizedName": "Health care facility type",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0007",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Health care facility type"
+                },
+                "localizedDescriptions": {
+                  "en": "A term defining the healthcare facility type."
+                },
+                "annotations": {
+                  "comment": "Coded text is preferred. The codes are specific to an XDS Affinity Domain."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0007]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "practice_setting_code",
+                "name": "Practice setting code",
+                "localizedName": "Practice setting code",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0009",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Practice setting code"
+                },
+                "localizedDescriptions": {
+                  "en": "The code specifying the clinical specialty where the act that resulted in the document was performed."
+                },
+                "annotations": {
+                  "comment": "For example: Family Practice, Laboratory, Radiology.\n                                        Coded text is preferred, normally specific to an XDS Affinity Domain.\n                                    "
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0009]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "event_code",
+                "name": "Event code",
+                "localizedName": "Event code",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0011",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Event code"
+                },
+                "localizedDescriptions": {
+                  "en": "This list of codes represents the main clinical acts."
+                },
+                "annotations": {
+                  "comment": "For example: Colonoscopy or appendicectomy."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0011]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "document_media",
+                "name": "Document_media",
+                "localizedName": "Document_media",
+                "rmType": "DV_MULTIMEDIA",
+                "nodeId": "at0010",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Document_media"
+                },
+                "localizedDescriptions": {
+                  "en": "Additional metadata about the document itself, including size, url."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0010]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "research_information",
+            "name": "Research information",
+            "localizedName": "Research information",
+            "rmType": "CLUSTER",
+            "nodeId": "openEHR-EHR-CLUSTER.research_information.v0",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Research information"
+            },
+            "localizedDescriptions": {
+              "en": "Research information for the cancer registries from Medtronic VBHC IHU."
+            },
+            "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.research_information.v0]",
+            "children": [
+              {
+                "id": "cohort_study_name",
+                "name": "Cohort study name",
+                "localizedName": "Cohort study name",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0001",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Cohort study name"
+                },
+                "localizedDescriptions": {
+                  "en": "Name of the cohort/study for the registry."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.research_information.v0]/items[at0001]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "value",
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "assessment_timeline",
+                "name": "Assessment timeline",
+                "localizedName": "Assessment timeline",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0002",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Assessment timeline"
+                },
+                "localizedDescriptions": {
+                  "en": "Moment of the assessment, baseline, follow up."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.research_information.v0]/items[at0002]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "value",
+                    "type": "TEXT"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "start_time",
+            "name": "Start_time",
+            "rmType": "DV_DATE_TIME",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/context/start_time",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "setting",
+            "name": "Setting",
+            "rmType": "DV_CODED_TEXT",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/context/setting",
+            "inputs": [
+              {
+                "suffix": "code",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "value",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "care_plan",
+        "name": "Care Plan",
+        "localizedName": "Care Plan",
+        "rmType": "ACTION",
+        "nodeId": "openEHR-EHR-ACTION.care_plan.v0",
+        "min": 0,
+        "max": 1,
+        "localizedNames": {
+          "en": "Care Plan"
+        },
+        "localizedDescriptions": {
+          "en": "Plan or sequence of discrete activities developed to achieve a specified management goal or treatment outcome, carried out by health professionals and/or the patient."
+        },
+        "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]",
+        "children": [
+          {
+            "id": "ism_transition",
+            "name": "Ism_transition",
+            "rmType": "ISM_TRANSITION",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/ism_transition",
+            "children": [
+              {
+                "id": "current_state",
+                "name": "Current_state",
+                "rmType": "DV_CODED_TEXT",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/ism_transition/current_state",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "530",
+                        "label": "suspended"
+                      },
+                      {
+                        "value": "245",
+                        "label": "active"
+                      },
+                      {
+                        "value": "531",
+                        "label": "aborted"
+                      },
+                      {
+                        "value": "532",
+                        "label": "completed"
+                      },
+                      {
+                        "value": "526",
+                        "label": "planned"
+                      },
+                      {
+                        "value": "527",
+                        "label": "postponed"
+                      },
+                      {
+                        "value": "528",
+                        "label": "cancelled"
+                      },
+                      {
+                        "value": "529",
+                        "label": "scheduled"
+                      }
+                    ]
+                  }
+                ],
+                "inContext": true
+              },
+              {
+                "id": "transition",
+                "name": "Transition",
+                "rmType": "DV_CODED_TEXT",
+                "min": 0,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/ism_transition/transition",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "value",
+                    "type": "TEXT"
+                  }
+                ],
+                "inContext": true
+              },
+              {
+                "id": "careflow_step",
+                "name": "Careflow_step",
+                "rmType": "DV_CODED_TEXT",
+                "min": 0,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/ism_transition/careflow_step",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0003",
+                        "label": "Care plan Need Identified",
+                        "localizedLabels": {
+                          "en": "Care plan Need Identified"
+                        },
+                        "currentStates": [
+                          "526"
+                        ]
+                      },
+                      {
+                        "value": "at0008",
+                        "label": "Care Plan Developed",
+                        "localizedLabels": {
+                          "en": "Care Plan Developed"
+                        },
+                        "currentStates": [
+                          "526"
+                        ]
+                      },
+                      {
+                        "value": "at0034",
+                        "label": "Care Plan Postponed",
+                        "localizedLabels": {
+                          "en": "Care Plan Postponed"
+                        },
+                        "currentStates": [
+                          "527"
+                        ]
+                      },
+                      {
+                        "value": "at0033",
+                        "label": "Care Plan Cancelled",
+                        "localizedLabels": {
+                          "en": "Care Plan Cancelled"
+                        },
+                        "currentStates": [
+                          "528"
+                        ]
+                      },
+                      {
+                        "value": "at0018",
+                        "label": "Care Plan Scheduled",
+                        "localizedLabels": {
+                          "en": "Care Plan Scheduled"
+                        },
+                        "currentStates": [
+                          "529"
+                        ]
+                      },
+                      {
+                        "value": "at0006",
+                        "label": "Care Plan Commenced",
+                        "localizedLabels": {
+                          "en": "Care Plan Commenced"
+                        },
+                        "currentStates": [
+                          "245"
+                        ]
+                      },
+                      {
+                        "value": "at0020",
+                        "label": "Care Plan Reviewed",
+                        "localizedLabels": {
+                          "en": "Care Plan Reviewed"
+                        },
+                        "currentStates": [
+                          "245"
+                        ]
+                      },
+                      {
+                        "value": "at0035",
+                        "label": "Care Plan Suspended",
+                        "localizedLabels": {
+                          "en": "Care Plan Suspended"
+                        },
+                        "currentStates": [
+                          "530"
+                        ]
+                      },
+                      {
+                        "value": "at0032",
+                        "label": "Care Plan Aborted",
+                        "localizedLabels": {
+                          "en": "Care Plan Aborted"
+                        },
+                        "currentStates": [
+                          "531"
+                        ]
+                      },
+                      {
+                        "value": "at0010",
+                        "label": "Care Plan Expired",
+                        "localizedLabels": {
+                          "en": "Care Plan Expired"
+                        },
+                        "currentStates": [
+                          "531"
+                        ]
+                      },
+                      {
+                        "value": "at0013",
+                        "label": "Care Plan Completed",
+                        "localizedLabels": {
+                          "en": "Care Plan Completed"
+                        },
+                        "currentStates": [
+                          "532"
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "inContext": true
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "care_plan_name",
+            "name": "Care Plan Name",
+            "localizedName": "Care Plan Name",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0002",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Care Plan Name"
+            },
+            "localizedDescriptions": {
+              "en": "Name of care plan."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/description[at0019]/items[at0002]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "description",
+            "name": "Description",
+            "localizedName": "Description",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0021",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Description"
+            },
+            "localizedDescriptions": {
+              "en": "Description of activity performed/enacted against the plan."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/description[at0019]/items[at0021]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "reason",
+            "name": "Reason",
+            "localizedName": "Reason",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0025",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Reason"
+            },
+            "localizedDescriptions": {
+              "en": "Reason for activity being performed /enacted against the plan."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/description[at0019]/items[at0025]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "care_plan_id",
+            "name": "Care Plan ID",
+            "localizedName": "Care Plan ID",
+            "rmType": "DV_IDENTIFIER",
+            "nodeId": "at0016",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Care Plan ID"
+            },
+            "localizedDescriptions": {
+              "en": "Identification of care plan."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/protocol[at0015]/items[at0016]/value",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "type",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "issuer",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "assigner",
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "expiry_date",
+            "name": "Expiry Date",
+            "localizedName": "Expiry Date",
+            "rmType": "DV_DATE_TIME",
+            "nodeId": "at0017",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Expiry Date"
+            },
+            "localizedDescriptions": {
+              "en": "Anticipated date beyond which the care plan can be deemed 'expired'."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/protocol[at0015]/items[at0017]/value",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ]
+          },
+          {
+            "id": "time",
+            "name": "Time",
+            "rmType": "DV_DATE_TIME",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/time",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "baseline_clinical_factors",
+        "name": "Baseline clinical factors",
+        "localizedName": "Baseline clinical factors",
+        "rmType": "SECTION",
+        "nodeId": "openEHR-EHR-SECTION.adhoc.v1",
+        "min": 0,
+        "max": 1,
+        "localizedNames": {
+          "en": "Baseline clinical factors"
+        },
+        "localizedDescriptions": {
+          "en": "A generic section header which should be renamed in a template to suit a specific clinical context."
+        },
+        "annotations": {
+          "L10n.fr": "Baseline clinical factors"
+        },
+        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']",
+        "children": [
+          {
+            "id": "treatment",
+            "name": "Treatment",
+            "localizedName": "Treatment",
+            "rmType": "ACTION",
+            "nodeId": "openEHR-EHR-ACTION.procedure.v1",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Treatment"
+            },
+            "localizedDescriptions": {
+              "en": "A clinical activity carried out for screening, investigative, diagnostic, curative, therapeutic, evaluative or palliative purposes."
+            },
+            "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-ACTION.procedure.v1,'Treatment']",
+            "children": [
+              {
+                "id": "ism_transition",
+                "name": "Ism_transition",
+                "rmType": "ISM_TRANSITION",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-ACTION.procedure.v1,'Treatment']/ism_transition",
+                "children": [
+                  {
+                    "id": "current_state",
+                    "name": "Current_state",
+                    "rmType": "DV_CODED_TEXT",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-ACTION.procedure.v1,'Treatment']/ism_transition/current_state",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "530",
+                            "label": "suspended"
+                          },
+                          {
+                            "value": "245",
+                            "label": "active"
+                          },
+                          {
+                            "value": "531",
+                            "label": "aborted"
+                          },
+                          {
+                            "value": "532",
+                            "label": "completed"
+                          },
+                          {
+                            "value": "524",
+                            "label": "initial"
+                          },
+                          {
+                            "value": "526",
+                            "label": "planned"
+                          },
+                          {
+                            "value": "527",
+                            "label": "postponed"
+                          },
+                          {
+                            "value": "528",
+                            "label": "cancelled"
+                          },
+                          {
+                            "value": "529",
+                            "label": "scheduled"
+                          }
+                        ]
+                      }
+                    ],
+                    "inContext": true
+                  },
+                  {
+                    "id": "transition",
+                    "name": "Transition",
+                    "rmType": "DV_CODED_TEXT",
+                    "min": 0,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-ACTION.procedure.v1,'Treatment']/ism_transition/transition",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "value",
+                        "type": "TEXT"
+                      }
+                    ],
+                    "inContext": true
+                  },
+                  {
+                    "id": "careflow_step",
+                    "name": "Careflow_step",
+                    "rmType": "DV_CODED_TEXT",
+                    "min": 0,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-ACTION.procedure.v1,'Treatment']/ism_transition/careflow_step",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0004",
+                            "label": "Procedure planned",
+                            "localizedLabels": {
+                              "en": "Procedure planned"
+                            },
+                            "currentStates": [
+                              "526"
+                            ]
+                          },
+                          {
+                            "value": "at0034",
+                            "label": "X - Procedure planned",
+                            "localizedLabels": {
+                              "en": "X - Procedure planned"
+                            },
+                            "currentStates": [
+                              "524"
+                            ]
+                          },
+                          {
+                            "value": "at0007",
+                            "label": "Procedure request sent",
+                            "localizedLabels": {
+                              "en": "Procedure request sent"
+                            },
+                            "currentStates": [
+                              "526"
+                            ]
+                          },
+                          {
+                            "value": "at0035",
+                            "label": "X - Procedure request sent",
+                            "localizedLabels": {
+                              "en": "X - Procedure request sent"
+                            },
+                            "currentStates": [
+                              "524"
+                            ]
+                          },
+                          {
+                            "value": "at0038",
+                            "label": "Procedure postponed",
+                            "localizedLabels": {
+                              "en": "Procedure postponed"
+                            },
+                            "currentStates": [
+                              "527"
+                            ]
+                          },
+                          {
+                            "value": "at0039",
+                            "label": "Procedure cancelled",
+                            "localizedLabels": {
+                              "en": "Procedure cancelled"
+                            },
+                            "currentStates": [
+                              "528"
+                            ]
+                          },
+                          {
+                            "value": "at0036",
+                            "label": "Procedure scheduled",
+                            "localizedLabels": {
+                              "en": "Procedure scheduled"
+                            },
+                            "currentStates": [
+                              "529"
+                            ]
+                          },
+                          {
+                            "value": "at0068",
+                            "label": "Procedure commenced",
+                            "localizedLabels": {
+                              "en": "Procedure commenced"
+                            },
+                            "currentStates": [
+                              "245"
+                            ]
+                          },
+                          {
+                            "value": "at0047",
+                            "label": "Procedure performed",
+                            "localizedLabels": {
+                              "en": "Procedure performed"
+                            },
+                            "currentStates": [
+                              "245"
+                            ]
+                          },
+                          {
+                            "value": "at0040",
+                            "label": "Procedure suspended",
+                            "localizedLabels": {
+                              "en": "Procedure suspended"
+                            },
+                            "currentStates": [
+                              "530"
+                            ]
+                          },
+                          {
+                            "value": "at0041",
+                            "label": "Procedure aborted",
+                            "localizedLabels": {
+                              "en": "Procedure aborted"
+                            },
+                            "currentStates": [
+                              "531"
+                            ]
+                          },
+                          {
+                            "value": "at0043",
+                            "label": "Procedure completed",
+                            "localizedLabels": {
+                              "en": "Procedure completed"
+                            },
+                            "currentStates": [
+                              "532"
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "inContext": true
+                  }
+                ],
+                "inContext": true
+              },
+              {
+                "id": "treatment_name",
+                "name": "Treatment name",
+                "localizedName": "Treatment name",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0002",
+                "min": 1,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Treatment name"
+                },
+                "localizedDescriptions": {
+                  "en": "Identification of the procedure by name."
+                },
+                "annotations": {
+                  "comment": "Coding of the specific procedure with a terminology is preferred, where possible."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-ACTION.procedure.v1,'Treatment']/description[at0001]/items[at0002,'Treatment name']/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "value",
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "date_of_treatment",
+                "name": "Date of treatment",
+                "localizedName": "Date of treatment",
+                "rmType": "DV_DATE_TIME",
+                "nodeId": "at0060",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Date of treatment"
+                },
+                "localizedDescriptions": {
+                  "en": "The date and/or time when the entire procedure, or the last component of a multicomponent procedure, was finished."
+                },
+                "annotations": {
+                  "comment": "Only for use in association with the 'Procedure performed' pathway step, and in situations where the procedure is repeated on multiple occasions before being completed or there are multiple components to the whole procedure. This may be the same as the RM time attribute for the 'Procedure completed' pathway step."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-ACTION.procedure.v1,'Treatment']/description[at0001]/items[at0060,'Date of treatment']/value",
+                "inputs": [
+                  {
+                    "type": "DATETIME"
+                  }
+                ]
+              },
+              {
+                "id": "time",
+                "name": "Time",
+                "rmType": "DV_DATE_TIME",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-ACTION.procedure.v1,'Treatment']/time",
+                "inputs": [
+                  {
+                    "type": "DATETIME"
+                  }
+                ],
+                "inContext": true
+              },
+              {
+                "id": "language",
+                "name": "Language",
+                "rmType": "CODE_PHRASE",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-ACTION.procedure.v1,'Treatment']/language",
+                "inContext": true
+              },
+              {
+                "id": "encoding",
+                "name": "Encoding",
+                "rmType": "CODE_PHRASE",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-ACTION.procedure.v1,'Treatment']/encoding",
+                "inContext": true
+              },
+              {
+                "id": "subject",
+                "name": "Subject",
+                "rmType": "PARTY_PROXY",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-ACTION.procedure.v1,'Treatment']/subject",
+                "inputs": [
+                  {
+                    "suffix": "id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "id_scheme",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "id_namespace",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "name",
+                    "type": "TEXT"
+                  }
+                ],
+                "inContext": true
+              }
+            ]
+          },
+          {
+            "id": "height_length",
+            "name": "Height/Length",
+            "localizedName": "Height/Length",
+            "rmType": "OBSERVATION",
+            "nodeId": "openEHR-EHR-OBSERVATION.height.v2",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Height/Length"
+            },
+            "localizedDescriptions": {
+              "en": "Height, or body length, is measured from crown of head to sole of foot."
+            },
+            "annotations": {
+              "comment": "Height is measured with the individual in a standing position and body length in a recumbent position."
+            },
+            "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.height.v2]",
+            "children": [
+              {
+                "id": "any_event",
+                "name": "Any event",
+                "localizedName": "Any event",
+                "rmType": "EVENT",
+                "nodeId": "at0002",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Any event"
+                },
+                "localizedDescriptions": {
+                  "en": "Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.height.v2]/data[at0001]/events[at0002]",
+                "children": [
+                  {
+                    "id": "height_length",
+                    "name": "Height/Length",
+                    "localizedName": "Height/Length",
+                    "rmType": "DV_QUANTITY",
+                    "nodeId": "at0004",
+                    "min": 1,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Height/Length"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The length of the body from crown of head to sole of foot."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.height.v2]/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value",
+                    "inputs": [
+                      {
+                        "suffix": "magnitude",
+                        "type": "DECIMAL"
+                      },
+                      {
+                        "suffix": "unit",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "cm",
+                            "label": "cm",
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0.0,
+                                "maxOp": "<=",
+                                "max": 1000.0
+                              }
+                            }
+                          },
+                          {
+                            "value": "[in_i]",
+                            "label": "[in_i]",
+                            "localizedLabels": {
+                              "en": "in"
+                            },
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0.0,
+                                "maxOp": "<=",
+                                "max": 250.0
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "time",
+                    "name": "Time",
+                    "rmType": "DV_DATE_TIME",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.height.v2]/data[at0001]/events[at0002]/time",
+                    "inputs": [
+                      {
+                        "type": "DATETIME"
+                      }
+                    ],
+                    "inContext": true
+                  }
+                ]
+              },
+              {
+                "id": "language",
+                "name": "Language",
+                "rmType": "CODE_PHRASE",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.height.v2]/language",
+                "inContext": true
+              },
+              {
+                "id": "encoding",
+                "name": "Encoding",
+                "rmType": "CODE_PHRASE",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.height.v2]/encoding",
+                "inContext": true
+              },
+              {
+                "id": "subject",
+                "name": "Subject",
+                "rmType": "PARTY_PROXY",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.height.v2]/subject",
+                "inputs": [
+                  {
+                    "suffix": "id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "id_scheme",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "id_namespace",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "name",
+                    "type": "TEXT"
+                  }
+                ],
+                "inContext": true
+              }
+            ]
+          },
+          {
+            "id": "body_weight",
+            "name": "Body weight",
+            "localizedName": "Body weight",
+            "rmType": "OBSERVATION",
+            "nodeId": "openEHR-EHR-OBSERVATION.body_weight.v2",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Body weight"
+            },
+            "localizedDescriptions": {
+              "en": "Measurement of the body weight of an individual."
+            },
+            "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.body_weight.v2]",
+            "children": [
+              {
+                "id": "any_event",
+                "name": "Any event",
+                "localizedName": "Any event",
+                "rmType": "EVENT",
+                "nodeId": "at0003",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Any event"
+                },
+                "localizedDescriptions": {
+                  "en": "Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.body_weight.v2]/data[at0002]/events[at0003]",
+                "children": [
+                  {
+                    "id": "weight",
+                    "name": "Weight",
+                    "localizedName": "Weight",
+                    "rmType": "DV_QUANTITY",
+                    "nodeId": "at0004",
+                    "min": 1,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Weight"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The weight of the individual."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.body_weight.v2]/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value",
+                    "inputs": [
+                      {
+                        "suffix": "magnitude",
+                        "type": "DECIMAL"
+                      },
+                      {
+                        "suffix": "unit",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "kg",
+                            "label": "kg",
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0.0,
+                                "maxOp": "<=",
+                                "max": 1000.0
+                              }
+                            }
+                          },
+                          {
+                            "value": "[lb_av]",
+                            "label": "[lb_av]",
+                            "localizedLabels": {
+                              "en": "lb"
+                            },
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0.0,
+                                "maxOp": "<=",
+                                "max": 2000.0
+                              }
+                            }
+                          },
+                          {
+                            "value": "g",
+                            "label": "g",
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0.0,
+                                "maxOp": "<=",
+                                "max": 1000000.0
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "time",
+                    "name": "Time",
+                    "rmType": "DV_DATE_TIME",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.body_weight.v2]/data[at0002]/events[at0003]/time",
+                    "inputs": [
+                      {
+                        "type": "DATETIME"
+                      }
+                    ],
+                    "inContext": true
+                  }
+                ]
+              },
+              {
+                "id": "language",
+                "name": "Language",
+                "rmType": "CODE_PHRASE",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.body_weight.v2]/language",
+                "inContext": true
+              },
+              {
+                "id": "encoding",
+                "name": "Encoding",
+                "rmType": "CODE_PHRASE",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.body_weight.v2]/encoding",
+                "inContext": true
+              },
+              {
+                "id": "subject",
+                "name": "Subject",
+                "rmType": "PARTY_PROXY",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.body_weight.v2]/subject",
+                "inputs": [
+                  {
+                    "suffix": "id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "id_scheme",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "id_namespace",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "name",
+                    "type": "TEXT"
+                  }
+                ],
+                "inContext": true
+              }
+            ]
+          },
+          {
+            "id": "ecog_performance_status",
+            "name": "ECOG performance status",
+            "localizedName": "ECOG performance status",
+            "rmType": "OBSERVATION",
+            "nodeId": "openEHR-EHR-OBSERVATION.ecog-mdt.v1",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "ECOG performance status"
+            },
+            "localizedDescriptions": {
+              "en": "A scale used by clinicians to assess the functional performance status of a patient with a diagnosis of cancer. Also known as the WHO performance status or Zubrod performance status."
+            },
+            "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.ecog-mdt.v1]",
+            "children": [
+              {
+                "id": "any_event",
+                "name": "Any event",
+                "localizedName": "Any event",
+                "rmType": "EVENT",
+                "nodeId": "at0002",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Any event"
+                },
+                "localizedDescriptions": {
+                  "en": "Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.ecog-mdt.v1]/data[at0001]/events[at0002]",
+                "children": [
+                  {
+                    "id": "ecog_performance_status",
+                    "name": "ECOG performance status",
+                    "localizedName": "ECOG performance status",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0004.1",
+                    "min": 1,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "ECOG performance status"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The functional performance status of a patient with a diagnosis of cancer."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.ecog-mdt.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0004.1]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0005",
+                            "label": "Asymptomatic",
+                            "localizedLabels": {
+                              "en": "Asymptomatic"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Fully active, able to carry on all pre-disease performance without restriction."
+                            },
+                            "ordinal": 0
+                          },
+                          {
+                            "value": "at0006",
+                            "label": "Symptomatic, fully ambulatory",
+                            "localizedLabels": {
+                              "en": "Symptomatic, fully ambulatory"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature, e.g., light house work, office work."
+                            },
+                            "ordinal": 1
+                          },
+                          {
+                            "value": "at0007",
+                            "label": "Symptomatic, in bed <50% of the day",
+                            "localizedLabels": {
+                              "en": "Symptomatic, in bed <50% of the day"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Ambulatory and capable of all selfcare but unable to carry out any work activities; up and about more than 50% of waking hours."
+                            },
+                            "ordinal": 2
+                          },
+                          {
+                            "value": "at0008",
+                            "label": "Symptomatic, in bed >50% of the day (but not bedridden)",
+                            "localizedLabels": {
+                              "en": "Symptomatic, in bed >50% of the day (but not bedridden)"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Capable of only limited selfcare; confined to bed or chair more than 50% of waking hours."
+                            },
+                            "ordinal": 3
+                          },
+                          {
+                            "value": "at0009",
+                            "label": "Bedridden",
+                            "localizedLabels": {
+                              "en": "Bedridden"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Completely disabled; cannot carry on any selfcare; totally confined to bed or chair."
+                            },
+                            "ordinal": 4
+                          },
+                          {
+                            "value": "at0010",
+                            "label": "Dead",
+                            "localizedLabels": {
+                              "en": "Dead"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Patient has died."
+                            },
+                            "ordinal": 5
+                          },
+                          {
+                            "value": "at0.1",
+                            "label": "Unknown",
+                            "localizedLabels": {
+                              "en": "Unknown"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Unknown"
+                            },
+                            "ordinal": 999
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "time",
+                    "name": "Time",
+                    "rmType": "DV_DATE_TIME",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.ecog-mdt.v1]/data[at0001]/events[at0002]/time",
+                    "inputs": [
+                      {
+                        "type": "DATETIME"
+                      }
+                    ],
+                    "inContext": true
+                  }
+                ]
+              },
+              {
+                "id": "language",
+                "name": "Language",
+                "rmType": "CODE_PHRASE",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.ecog-mdt.v1]/language",
+                "inContext": true
+              },
+              {
+                "id": "encoding",
+                "name": "Encoding",
+                "rmType": "CODE_PHRASE",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.ecog-mdt.v1]/encoding",
+                "inContext": true
+              },
+              {
+                "id": "subject",
+                "name": "Subject",
+                "rmType": "PARTY_PROXY",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-OBSERVATION.ecog-mdt.v1]/subject",
+                "inputs": [
+                  {
+                    "suffix": "id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "id_scheme",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "id_namespace",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "name",
+                    "type": "TEXT"
+                  }
+                ],
+                "inContext": true
+              }
+            ]
+          },
+          {
+            "id": "cognitive_status",
+            "name": "Cognitive status",
+            "localizedName": "Cognitive status",
+            "rmType": "SECTION",
+            "nodeId": "openEHR-EHR-SECTION.adhoc.v1",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Cognitive status"
+            },
+            "localizedDescriptions": {
+              "en": "A generic section header which should be renamed in a template to suit a specific clinical context."
+            },
+            "annotations": {
+              "L10n.fr": "Statut cognitif"
+            },
+            "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Cognitive status']",
+            "children": [
+              {
+                "id": "problem_diagnosis",
+                "name": "Problem/Diagnosis",
+                "localizedName": "Problem/Diagnosis",
+                "rmType": "EVALUATION",
+                "nodeId": "openEHR-EHR-EVALUATION.problem_diagnosis-cog.v1",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Problem/Diagnosis"
+                },
+                "localizedDescriptions": {
+                  "en": "Details about a single identified health condition, injury, disability or any other issue which impacts on the physical, mental and/or social well-being of an individual."
+                },
+                "annotations": {
+                  "comment": "Clear delineation between the scope of a problem versus a diagnosis is not easy to achieve in practice. For the purposes of clinical documentation with this archetype, problem and diagnosis are regarded as a continuum, with increasing levels of detail and supportive evidence usually providing weight towards the label of 'diagnosis'."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Cognitive status']/items[openEHR-EHR-EVALUATION.problem_diagnosis-cog.v1]",
+                "children": [
+                  {
+                    "id": "cognitive_status",
+                    "name": "Cognitive status",
+                    "localizedName": "Cognitive status",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0002",
+                    "min": 1,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Cognitive status"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Identification of the problem or diagnosis, by name."
+                    },
+                    "annotations": {
+                      "comment": "Coding of the name of the problem or diagnosis with a terminology is preferred, where possible."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Cognitive status']/items[openEHR-EHR-EVALUATION.problem_diagnosis-cog.v1]/data[at0001]/items[at0002,'Cognitive status']/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "value",
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "language",
+                    "name": "Language",
+                    "rmType": "CODE_PHRASE",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Cognitive status']/items[openEHR-EHR-EVALUATION.problem_diagnosis-cog.v1]/language",
+                    "inContext": true
+                  },
+                  {
+                    "id": "encoding",
+                    "name": "Encoding",
+                    "rmType": "CODE_PHRASE",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Cognitive status']/items[openEHR-EHR-EVALUATION.problem_diagnosis-cog.v1]/encoding",
+                    "inContext": true
+                  },
+                  {
+                    "id": "subject",
+                    "name": "Subject",
+                    "rmType": "PARTY_PROXY",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Cognitive status']/items[openEHR-EHR-EVALUATION.problem_diagnosis-cog.v1]/subject",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "id_scheme",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "id_namespace",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "name",
+                        "type": "TEXT"
+                      }
+                    ],
+                    "inContext": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "inflammatory_bowel_disease",
+            "name": "Inflammatory bowel disease",
+            "localizedName": "Inflammatory bowel disease",
+            "rmType": "SECTION",
+            "nodeId": "openEHR-EHR-SECTION.adhoc.v1",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Inflammatory bowel disease"
+            },
+            "localizedDescriptions": {
+              "en": "A generic section header which should be renamed in a template to suit a specific clinical context."
+            },
+            "annotations": {
+              "L10n.fr": "Diagnostic d'une maladie inflammatoire intestinale"
+            },
+            "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Inflammatory bowel disease']",
+            "children": [
+              {
+                "id": "problem_diagnosis",
+                "name": "Problem/Diagnosis",
+                "localizedName": "Problem/Diagnosis",
+                "rmType": "EVALUATION",
+                "nodeId": "openEHR-EHR-EVALUATION.problem_diagnosis-ibd.v1",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Problem/Diagnosis"
+                },
+                "localizedDescriptions": {
+                  "en": "Details about a single identified health condition, injury, disability or any other issue which impacts on the physical, mental and/or social well-being of an individual."
+                },
+                "annotations": {
+                  "comment": "Clear delineation between the scope of a problem versus a diagnosis is not easy to achieve in practice. For the purposes of clinical documentation with this archetype, problem and diagnosis are regarded as a continuum, with increasing levels of detail and supportive evidence usually providing weight towards the label of 'diagnosis'."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Inflammatory bowel disease']/items[openEHR-EHR-EVALUATION.problem_diagnosis-ibd.v1]",
+                "children": [
+                  {
+                    "id": "inflammatory_bowel_disease",
+                    "name": "Inflammatory bowel disease",
+                    "localizedName": "Inflammatory bowel disease",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0002",
+                    "min": 1,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Inflammatory bowel disease"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Identification of the problem or diagnosis, by name."
+                    },
+                    "annotations": {
+                      "comment": "Coding of the name of the problem or diagnosis with a terminology is preferred, where possible."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Inflammatory bowel disease']/items[openEHR-EHR-EVALUATION.problem_diagnosis-ibd.v1]/data[at0001]/items[at0002,'Inflammatory bowel disease']/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "value",
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "language",
+                    "name": "Language",
+                    "rmType": "CODE_PHRASE",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Inflammatory bowel disease']/items[openEHR-EHR-EVALUATION.problem_diagnosis-ibd.v1]/language",
+                    "inContext": true
+                  },
+                  {
+                    "id": "encoding",
+                    "name": "Encoding",
+                    "rmType": "CODE_PHRASE",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Inflammatory bowel disease']/items[openEHR-EHR-EVALUATION.problem_diagnosis-ibd.v1]/encoding",
+                    "inContext": true
+                  },
+                  {
+                    "id": "subject",
+                    "name": "Subject",
+                    "rmType": "PARTY_PROXY",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Inflammatory bowel disease']/items[openEHR-EHR-EVALUATION.problem_diagnosis-ibd.v1]/subject",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "id_scheme",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "id_namespace",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "name",
+                        "type": "TEXT"
+                      }
+                    ],
+                    "inContext": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "tumor_information",
+            "name": "Tumor information",
+            "localizedName": "Tumor information",
+            "rmType": "SECTION",
+            "nodeId": "openEHR-EHR-SECTION.adhoc.v1",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Tumor information"
+            },
+            "localizedDescriptions": {
+              "en": "A generic section header which should be renamed in a template to suit a specific clinical context."
+            },
+            "annotations": {
+              "L10n.fr": "Informations sur la tumeur"
+            },
+            "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']",
+            "children": [
+              {
+                "id": "problem_diagnosis",
+                "name": "Problem/Diagnosis",
+                "localizedName": "Problem/Diagnosis",
+                "rmType": "EVALUATION",
+                "nodeId": "openEHR-EHR-EVALUATION.problem_diagnosis.v1",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Problem/Diagnosis"
+                },
+                "localizedDescriptions": {
+                  "en": "Details about a single identified health condition, injury, disability or any other issue which impacts on the physical, mental and/or social well-being of an individual."
+                },
+                "annotations": {
+                  "comment": "Clear delineation between the scope of a problem versus a diagnosis is not easy to achieve in practice. For the purposes of clinical documentation with this archetype, problem and diagnosis are regarded as a continuum, with increasing levels of detail and supportive evidence usually providing weight towards the label of 'diagnosis'."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]",
+                "children": [
+                  {
+                    "id": "problem_diagnosis_name",
+                    "name": "Problem/Diagnosis name",
+                    "localizedName": "Problem/Diagnosis name",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0002",
+                    "min": 1,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Problem/Diagnosis name"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Identification of the problem or diagnosis, by name."
+                    },
+                    "annotations": {
+                      "comment": "Coding of the name of the problem or diagnosis with a terminology is preferred, where possible."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[at0002]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "value",
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "histological_diagnosis",
+                    "name": "Histological diagnosis",
+                    "localizedName": "Histological diagnosis",
+                    "rmType": "DV_DATE_TIME",
+                    "nodeId": "at0003",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Histological diagnosis"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Estimated or actual date/time the diagnosis or problem was recognised by a healthcare professional."
+                    },
+                    "annotations": {
+                      "comment": "Partial dates are acceptable. If the subject of care is under the age of one year, then the complete date or a minimum of the month and year is necessary to enable accurate age calculations - for example, if used to drive decision support. Data captured/imported as \"Age at time of clinical recognition\" should be converted to a date using the subject's date of birth."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[at0003,'Histological diagnosis']/value",
+                    "inputs": [
+                      {
+                        "type": "DATETIME"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "relative_anatomical_location",
+                    "name": "Relative anatomical location",
+                    "localizedName": "Relative anatomical location",
+                    "rmType": "CLUSTER",
+                    "nodeId": "openEHR-EHR-CLUSTER.anatomical_location_relative.v1",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Relative anatomical location"
+                    },
+                    "localizedDescriptions": {
+                      "en": "A physical site on or within the human body that is described in terms of its relationship to other body parts."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.anatomical_location_relative.v1]",
+                    "children": [
+                      {
+                        "id": "relative_location",
+                        "name": "Relative location",
+                        "localizedName": "Relative location",
+                        "rmType": "CLUSTER",
+                        "nodeId": "at0020",
+                        "min": 0,
+                        "max": -1,
+                        "localizedNames": {
+                          "en": "Relative location"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Detail to identify a single physical site either on, or within, the human body in terms of its relationship to other macroscopic anatomical landmarks."
+                        },
+                        "annotations": {
+                          "comment": "More than one relative location may be required to provide an accurate cross reference."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.anatomical_location_relative.v1]/items[at0020]",
+                        "children": [
+                          {
+                            "id": "landmark_name",
+                            "name": "Landmark name",
+                            "localizedName": "Landmark name",
+                            "rmType": "DV_CODED_TEXT",
+                            "nodeId": "at0021",
+                            "min": 1,
+                            "max": 1,
+                            "localizedNames": {
+                              "en": "Landmark name"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Identified body site used as a reference point for the actual body site."
+                            },
+                            "annotations": {
+                              "comment": "'Landmark name' can identify an anatomical structure (such as the umbilicus), an anatomical line (such as the mid-clavicular line), a well defined anatomical point (such as McBurney's point). This data element should be coded with a terminology capable of triggering decision support, where possible - an appropriate termset for use here could comprise individual concepts or a list of precoordinated terms. Free text should be used only if there is no appropriate terminology available. It is strongly recommended that 'Landmark name' be recorded as specifically as is anatomically possible. For example: record 'upper eyelid' rather than recording 'eyelid' with 'upper' as a qualifier; 'fifth rib' rather than 'rib' with a numeric qualifier."
+                            },
+                            "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.anatomical_location_relative.v1]/items[at0020]/items[at0021]/value",
+                            "inputs": [
+                              {
+                                "suffix": "code",
+                                "type": "TEXT"
+                              },
+                              {
+                                "suffix": "value",
+                                "type": "TEXT"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "location_of_rectum_tumour",
+                            "name": "Location of rectum tumour",
+                            "localizedName": "Location of rectum tumour",
+                            "rmType": "DV_QUANTITY",
+                            "nodeId": "at0022",
+                            "min": 0,
+                            "max": 1,
+                            "localizedNames": {
+                              "en": "Location of rectum tumour"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Distance of location from the identified landmark."
+                            },
+                            "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.anatomical_location_relative.v1]/items[at0020]/items[at0022,'Location of rectum tumour']/value",
+                            "inputs": [
+                              {
+                                "suffix": "magnitude",
+                                "type": "DECIMAL"
+                              },
+                              {
+                                "suffix": "unit",
+                                "type": "CODED_TEXT",
+                                "list": [
+                                  {
+                                    "value": "cm",
+                                    "label": "cm",
+                                    "validation": {
+                                      "range": {
+                                        "minOp": ">=",
+                                        "min": 0.0
+                                      },
+                                      "precision": {
+                                        "minOp": ">=",
+                                        "min": 1,
+                                        "maxOp": "<=",
+                                        "max": 1
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "value": "[in_i]",
+                                    "label": "[in_i]",
+                                    "localizedLabels": {
+                                      "en": "in"
+                                    },
+                                    "validation": {
+                                      "range": {
+                                        "minOp": ">=",
+                                        "min": 0.0
+                                      },
+                                      "precision": {
+                                        "minOp": ">=",
+                                        "min": 1,
+                                        "maxOp": "<=",
+                                        "max": 1
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "value": "mm",
+                                    "label": "mm",
+                                    "validation": {
+                                      "range": {
+                                        "minOp": ">=",
+                                        "min": 0.0
+                                      },
+                                      "precision": {
+                                        "minOp": ">=",
+                                        "min": 1,
+                                        "maxOp": "<=",
+                                        "max": 1
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "tnm_clinical_classification",
+                    "name": "TNM clinical classification",
+                    "localizedName": "TNM clinical classification",
+                    "rmType": "CLUSTER",
+                    "nodeId": "openEHR-EHR-CLUSTER.tnm.v0",
+                    "min": 0,
+                    "max": -1,
+                    "localizedNames": {
+                      "en": "TNM clinical classification"
+                    },
+                    "localizedDescriptions": {
+                      "en": "A framework for the clinical classification and stage grouping of malignancies using the TNM system."
+                    },
+                    "annotations": {
+                      "comment": "Designated as TNM or cTNM."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.tnm.v0]",
+                    "children": [
+                      {
+                        "id": "tumour_location",
+                        "name": "Tumour location",
+                        "localizedName": "Tumour location",
+                        "rmType": "DV_CODED_TEXT",
+                        "nodeId": "at0001",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Tumour location"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The anatomical site where the assessed tumour is situated."
+                        },
+                        "annotations": {
+                          "comment": "For example: stomach; or small intestine."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.tnm.v0]/items[at0001,'Tumour location']/value",
+                        "inputs": [
+                          {
+                            "suffix": "code",
+                            "type": "TEXT"
+                          },
+                          {
+                            "suffix": "value",
+                            "type": "TEXT"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "clinical_tumour_stage",
+                        "name": "Clinical tumour stage",
+                        "localizedName": "Clinical tumour stage",
+                        "rmType": "DV_CODED_TEXT",
+                        "nodeId": "at0003",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Clinical tumour stage"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Assessment of the primary tumour."
+                        },
+                        "annotations": {
+                          "comment": "Designated as 'T' or 'cT'. Coding with a T code appropriate for the tumour type and anatomical site is expected. For example: 'T1'; or 'T3'."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.tnm.v0]/items[at0003,'Clinical tumour stage']/value",
+                        "inputs": [
+                          {
+                            "suffix": "code",
+                            "type": "TEXT"
+                          },
+                          {
+                            "suffix": "value",
+                            "type": "TEXT"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "clinical_nodal_stage",
+                        "name": "Clinical nodal stage",
+                        "localizedName": "Clinical nodal stage",
+                        "rmType": "DV_CODED_TEXT",
+                        "nodeId": "at0004",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Clinical nodal stage"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Assessment of the regional lymph nodes."
+                        },
+                        "annotations": {
+                          "comment": "Designated as 'N' or 'cN'. Coding with an N code appropriate for the tumour type and anatomical site is expected. For example: 'NX'; or 'N2'."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.tnm.v0]/items[at0004,'Clinical nodal stage']/value",
+                        "inputs": [
+                          {
+                            "suffix": "code",
+                            "type": "TEXT"
+                          },
+                          {
+                            "suffix": "value",
+                            "type": "TEXT"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "clinical_distant_metastasis",
+                        "name": "Clinical distant metastasis",
+                        "localizedName": "Clinical distant metastasis",
+                        "rmType": "DV_CODED_TEXT",
+                        "nodeId": "at0005",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Clinical distant metastasis"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Assessment of distant metastasis."
+                        },
+                        "annotations": {
+                          "comment": "Designated as 'M' or 'cM'. Coding with an M code appropriate for the tumour type and anatomical site is expected. For example: 'M1'; 'M1a'; 'M1 PUL'; or 'M0'."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.tnm.v0]/items[at0005,'Clinical distant metastasis']/value",
+                        "inputs": [
+                          {
+                            "suffix": "code",
+                            "type": "TEXT"
+                          },
+                          {
+                            "suffix": "value",
+                            "type": "TEXT"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "synchronous_primary_tumour",
+                        "name": "Synchronous primary tumour",
+                        "localizedName": "Synchronous primary tumour",
+                        "rmType": "DV_CODED_TEXT",
+                        "nodeId": "at0025",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Synchronous primary tumour"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Presence of multiple simultaneous primary tumours at a single site."
+                        },
+                        "annotations": {
+                          "comment": "Designated as a suffix, either as the letter 'm' or the number of primary tumours. For example: 'T2(m)' or 'T2(4)'."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.tnm.v0]/items[at0025,'Synchronous primary tumour']/value",
+                        "inputs": [
+                          {
+                            "suffix": "code",
+                            "type": "TEXT"
+                          },
+                          {
+                            "suffix": "value",
+                            "type": "TEXT"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "tnm_edition",
+                        "name": "TNM Edition",
+                        "localizedName": "TNM Edition",
+                        "rmType": "DV_TEXT",
+                        "nodeId": "at0032",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "TNM Edition"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The edition of the TNM classification system used for the assessment."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.tnm.v0]/items[at0032]/value",
+                        "inputs": [
+                          {
+                            "type": "TEXT"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "tnm_pathological_classification",
+                    "name": "TNM pathological classification",
+                    "localizedName": "TNM pathological classification",
+                    "rmType": "CLUSTER",
+                    "nodeId": "openEHR-EHR-CLUSTER.tnm-pathological.v0",
+                    "min": 0,
+                    "max": -1,
+                    "localizedNames": {
+                      "en": "TNM pathological classification"
+                    },
+                    "localizedDescriptions": {
+                      "en": "A framework for the pathological classification and stage grouping of malignancies using the TNM system."
+                    },
+                    "annotations": {
+                      "comment": "Designated as pTNM."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.tnm-pathological.v0]",
+                    "children": [
+                      {
+                        "id": "pathological_tumour_stage",
+                        "name": "Pathological tumour stage",
+                        "localizedName": "Pathological tumour stage",
+                        "rmType": "DV_CODED_TEXT",
+                        "nodeId": "at0003.1",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Pathological tumour stage"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Assessment of the primary tumour."
+                        },
+                        "annotations": {
+                          "comment": "Designated as 'pT'. Coding with a T code appropriate for the tumour type and anatomical site is expected. For example: 'pT1'; or 'pT3'."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.tnm-pathological.v0]/items[at0003.1,'Pathological tumour stage']/value",
+                        "inputs": [
+                          {
+                            "suffix": "code",
+                            "type": "TEXT"
+                          },
+                          {
+                            "suffix": "value",
+                            "type": "TEXT"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "pathological_nodal_stage",
+                        "name": "Pathological nodal stage",
+                        "localizedName": "Pathological nodal stage",
+                        "rmType": "DV_CODED_TEXT",
+                        "nodeId": "at0004.1",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Pathological nodal stage"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Assessment of the regional lymph nodes."
+                        },
+                        "annotations": {
+                          "comment": "Designated as 'pN'. Coding with an N code appropriate for the tumour type and anatomical site is expected. For example: 'pNX'; or 'pN2'."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.tnm-pathological.v0]/items[at0004.1,'Pathological nodal stage']/value",
+                        "inputs": [
+                          {
+                            "suffix": "code",
+                            "type": "TEXT"
+                          },
+                          {
+                            "suffix": "value",
+                            "type": "TEXT"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "pathological_distant_metastasis",
+                        "name": "Pathological distant metastasis",
+                        "localizedName": "Pathological distant metastasis",
+                        "rmType": "DV_CODED_TEXT",
+                        "nodeId": "at0005.1",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Pathological distant metastasis"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Assessment of distant metastasis."
+                        },
+                        "annotations": {
+                          "comment": "Designated as 'pM'. Coding with an M code appropriate for the tumour type and anatomical site is expected. For example: 'pM1'."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.tnm-pathological.v0]/items[at0005.1,'Pathological distant metastasis']/value",
+                        "inputs": [
+                          {
+                            "suffix": "code",
+                            "type": "TEXT"
+                          },
+                          {
+                            "suffix": "value",
+                            "type": "TEXT"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "tumour_grade",
+                        "name": "Tumour grade",
+                        "localizedName": "Tumour grade",
+                        "rmType": "DV_CODED_TEXT",
+                        "nodeId": "at0006",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Tumour grade"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Histopathological grading of the tumour."
+                        },
+                        "annotations": {
+                          "comment": "Pretreatment histopathological assessment may be determined from a limited biopsy prior to formal resection. Coding with a G code appropriate for the identified tumour type and anatomical site is expected. For example: 'G2'; 'GX'; or 'low grade' for bone and soft tissue sarcoma classification."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.tnm-pathological.v0]/items[at0006,'Tumour grade']/value",
+                        "inputs": [
+                          {
+                            "suffix": "code",
+                            "type": "TEXT"
+                          },
+                          {
+                            "suffix": "value",
+                            "type": "TEXT"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "completeness_of_surgical_resection",
+                        "name": "Completeness of surgical resection",
+                        "localizedName": "Completeness of surgical resection",
+                        "rmType": "DV_CODED_TEXT",
+                        "nodeId": "at0007",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Completeness of surgical resection"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Assessment of the presence of residual tumour after treatment."
+                        },
+                        "annotations": {
+                          "comment": "For example: 'R2 (Macroscopic residual tumour)'."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.tnm-pathological.v0]/items[at0007,'Completeness of surgical resection']/value",
+                        "inputs": [
+                          {
+                            "suffix": "code",
+                            "type": "TEXT"
+                          },
+                          {
+                            "suffix": "value",
+                            "type": "TEXT"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "lymphovascular_invasion",
+                        "name": "Lymphovascular invasion",
+                        "localizedName": "Lymphovascular invasion",
+                        "rmType": "DV_CODED_TEXT",
+                        "nodeId": "at0012.1",
+                        "min": 0,
+                        "max": -1,
+                        "localizedNames": {
+                          "en": "Lymphovascular invasion"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Assessment of invasion into the lymphatic system."
+                        },
+                        "annotations": {
+                          "comment": "For example: 'L0 (No lymphatic invasion)'."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.tnm-pathological.v0]/items[at0012.1,'Lymphovascular invasion']/value",
+                        "inputs": [
+                          {
+                            "suffix": "code",
+                            "type": "TEXT"
+                          },
+                          {
+                            "suffix": "value",
+                            "type": "TEXT"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "perineural_invasion",
+                        "name": "Perineural invasion",
+                        "localizedName": "Perineural invasion",
+                        "rmType": "DV_CODED_TEXT",
+                        "nodeId": "at0021",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Perineural invasion"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Assessment of invasion into the space surrounding nerves."
+                        },
+                        "annotations": {
+                          "comment": "For example: 'Pn0 (No perineural invasion)'."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.tnm-pathological.v0]/items[at0021,'Perineural invasion']/value",
+                        "inputs": [
+                          {
+                            "suffix": "code",
+                            "type": "TEXT"
+                          },
+                          {
+                            "suffix": "value",
+                            "type": "TEXT"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "tnm_edition",
+                        "name": "TNM Edition",
+                        "localizedName": "TNM Edition",
+                        "rmType": "DV_TEXT",
+                        "nodeId": "at0032",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "TNM Edition"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The edition of the TNM classification system used for the assessment."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.tnm-pathological.v0]/items[at0032]/value",
+                        "inputs": [
+                          {
+                            "type": "TEXT"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "macroscopic_findings_-_colorectal_cancer",
+                    "name": "Macroscopic findings - Colorectal cancer",
+                    "localizedName": "Macroscopic findings - Colorectal cancer",
+                    "rmType": "CLUSTER",
+                    "nodeId": "openEHR-EHR-CLUSTER.macroscopy_colorectal_carcinoma.v0",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Macroscopic findings - Colorectal cancer"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Macroscopic anatomical pathology findings related to colorectal cancer."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.macroscopy_colorectal_carcinoma.v0]",
+                    "children": [
+                      {
+                        "id": "tumour_perforation",
+                        "name": "Tumour perforation",
+                        "localizedName": "Tumour perforation",
+                        "rmType": "CLUSTER",
+                        "nodeId": "at0349",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Tumour perforation"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Findings related to tumour perforation."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.macroscopy_colorectal_carcinoma.v0]/items[at0349]",
+                        "children": [
+                          {
+                            "id": "bowel_perforation",
+                            "name": "Bowel perforation",
+                            "localizedName": "Bowel perforation",
+                            "rmType": "DV_CODED_TEXT",
+                            "nodeId": "at0334",
+                            "min": 0,
+                            "max": 1,
+                            "localizedNames": {
+                              "en": "Bowel perforation"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Finding of tumour perforation."
+                            },
+                            "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.macroscopy_colorectal_carcinoma.v0]/items[at0349]/items[at0334,'Bowel perforation']/value",
+                            "inputs": [
+                              {
+                                "suffix": "code",
+                                "type": "TEXT"
+                              },
+                              {
+                                "suffix": "value",
+                                "type": "TEXT"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "lymph_node_metastases",
+                    "name": "Lymph node metastases",
+                    "localizedName": "Lymph node metastases",
+                    "rmType": "CLUSTER",
+                    "nodeId": "openEHR-EHR-CLUSTER.lymph_node_metastases.v0",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Lymph node metastases"
+                    },
+                    "localizedDescriptions": {
+                      "en": "To record findings of tumour metastases in lymph nodes."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.lymph_node_metastases.v0]",
+                    "children": [
+                      {
+                        "id": "lymph_nodes_resected",
+                        "name": "Lymph nodes resected",
+                        "localizedName": "Lymph nodes resected",
+                        "rmType": "DV_COUNT",
+                        "nodeId": "at0001",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Lymph nodes resected"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Number of nodes examined."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.lymph_node_metastases.v0]/items[at0001,'Lymph nodes resected']/value",
+                        "inputs": [
+                          {
+                            "type": "INTEGER",
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "id": "lymph_nodes_involved",
+                        "name": "Lymph nodes involved",
+                        "localizedName": "Lymph nodes involved",
+                        "rmType": "DV_COUNT",
+                        "nodeId": "at0002",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Lymph nodes involved"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Number of nodes which show tumour involvement."
+                        },
+                        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/data[at0001]/items[openEHR-EHR-CLUSTER.lymph_node_metastases.v0]/items[at0002,'Lymph nodes involved']/value",
+                        "inputs": [
+                          {
+                            "type": "INTEGER",
+                            "validation": {
+                              "range": {
+                                "minOp": ">=",
+                                "min": 0
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "language",
+                    "name": "Language",
+                    "rmType": "CODE_PHRASE",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/language",
+                    "inContext": true
+                  },
+                  {
+                    "id": "encoding",
+                    "name": "Encoding",
+                    "rmType": "CODE_PHRASE",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/encoding",
+                    "inContext": true
+                  },
+                  {
+                    "id": "subject",
+                    "name": "Subject",
+                    "rmType": "PARTY_PROXY",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]/subject",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "id_scheme",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "id_namespace",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "name",
+                        "type": "TEXT"
+                      }
+                    ],
+                    "inContext": true
+                  }
+                ]
+              },
+              {
+                "id": "ichom_genetic_report_for_colorectal_cancer",
+                "name": "ICHOM genetic report for colorectal cancer",
+                "localizedName": "ICHOM genetic report for colorectal cancer",
+                "rmType": "EVALUATION",
+                "nodeId": "openEHR-EHR-EVALUATION.ichom_crc_genetic_report.v0",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "ICHOM genetic report for colorectal cancer"
+                },
+                "localizedDescriptions": {
+                  "en": "medtronic genetic report crc"
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.ichom_crc_genetic_report.v0]",
+                "children": [
+                  {
+                    "id": "mmr_or_epcam_gene_mutation",
+                    "name": "MMR or EPCAM gene mutation",
+                    "localizedName": "MMR or EPCAM gene mutation",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0002",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "MMR or EPCAM gene mutation"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.ichom_crc_genetic_report.v0]/data[at0001]/items[at0002]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "value",
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "braf_mutation",
+                    "name": "BRAF mutation",
+                    "localizedName": "BRAF mutation",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0006",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "BRAF mutation"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.ichom_crc_genetic_report.v0]/data[at0001]/items[at0006]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "value",
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "kras_mutation",
+                    "name": "KRAS mutation",
+                    "localizedName": "KRAS mutation",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0010",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "KRAS mutation"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.ichom_crc_genetic_report.v0]/data[at0001]/items[at0010]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "value",
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "msi_mutation",
+                    "name": "MSI mutation",
+                    "localizedName": "MSI mutation",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0015",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "MSI mutation"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.ichom_crc_genetic_report.v0]/data[at0001]/items[at0015]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "value",
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "adenomatous_polyposis_coli_apc_status",
+                    "name": "Adenomatous polyposis coli (APC) status",
+                    "localizedName": "Adenomatous polyposis coli (APC) status",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0020",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Adenomatous polyposis coli (APC) status"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Presence of germline APC (Adenomatous polyposis coli) gene mutation"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.ichom_crc_genetic_report.v0]/data[at0001]/items[at0020]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "value",
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "language",
+                    "name": "Language",
+                    "rmType": "CODE_PHRASE",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.ichom_crc_genetic_report.v0]/language",
+                    "inContext": true
+                  },
+                  {
+                    "id": "encoding",
+                    "name": "Encoding",
+                    "rmType": "CODE_PHRASE",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.ichom_crc_genetic_report.v0]/encoding",
+                    "inContext": true
+                  },
+                  {
+                    "id": "subject",
+                    "name": "Subject",
+                    "rmType": "PARTY_PROXY",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline clinical factors']/items[openEHR-EHR-SECTION.adhoc.v1,'Tumor information']/items[openEHR-EHR-EVALUATION.ichom_crc_genetic_report.v0]/subject",
+                    "inputs": [
+                      {
+                        "suffix": "id",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "id_scheme",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "id_namespace",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "name",
+                        "type": "TEXT"
+                      }
+                    ],
+                    "inContext": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "baseline_treatment_factors",
+        "name": "Baseline treatment factors",
+        "localizedName": "Baseline treatment factors",
+        "rmType": "SECTION",
+        "nodeId": "openEHR-EHR-SECTION.adhoc.v1",
+        "min": 0,
+        "max": 1,
+        "localizedNames": {
+          "en": "Baseline treatment factors"
+        },
+        "localizedDescriptions": {
+          "en": "A generic section header which should be renamed in a template to suit a specific clinical context."
+        },
+        "annotations": {
+          "L10n.fr": "Baseline treatment factors"
+        },
+        "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline treatment factors']",
+        "children": [
+          {
+            "id": "treatment",
+            "name": "Treatment",
+            "localizedName": "Treatment",
+            "rmType": "INSTRUCTION",
+            "nodeId": "openEHR-EHR-INSTRUCTION.service_request.v1",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Treatment"
+            },
+            "localizedDescriptions": {
+              "en": "Request for a health-related service or activity to be delivered by a clinician, organisation or agency."
+            },
+            "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline treatment factors']/items[openEHR-EHR-INSTRUCTION.service_request.v1,'Treatment']",
+            "children": [
+              {
+                "id": "current_activity",
+                "name": "Current Activity",
+                "localizedName": "Current Activity",
+                "rmType": "ACTIVITY",
+                "nodeId": "at0001",
+                "min": 1,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Current Activity"
+                },
+                "localizedDescriptions": {
+                  "en": "Current Activity."
+                },
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline treatment factors']/items[openEHR-EHR-INSTRUCTION.service_request.v1,'Treatment']/activities[at0001]",
+                "children": [
+                  {
+                    "id": "treatment_name",
+                    "name": "Treatment name",
+                    "localizedName": "Treatment name",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0121",
+                    "min": 1,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Treatment name"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The name of the single service or activity requested."
+                    },
+                    "annotations": {
+                      "comment": "Coding of the 'Service name' with a coding system is desirable, if available. For example: 'referral' to an endocrinologist for diabetes management."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline treatment factors']/items[openEHR-EHR-INSTRUCTION.service_request.v1,'Treatment']/activities[at0001]/description[at0009]/items[at0121,'Treatment name']/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "value",
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "treatment_intent",
+                    "name": "Treatment Intent",
+                    "localizedName": "Treatment Intent",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0065",
+                    "min": 0,
+                    "max": -1,
+                    "localizedNames": {
+                      "en": "Treatment Intent"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Description of the intent for the request."
+                    },
+                    "annotations": {
+                      "comment": "For example: a referral to a specialist may have the intent of the specialist taking over responsibility for care of the patient, or it may be to provide a second opinion on treatment options. Coding of the 'Intent' with a coding system is desirable, if available. This data element allows multiple occurrences to enable the user to record a multiple responses, if required."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline treatment factors']/items[openEHR-EHR-INSTRUCTION.service_request.v1,'Treatment']/activities[at0001]/description[at0009]/items[at0065,'Treatment Intent']/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "value",
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "urgency",
+                    "name": "Urgency",
+                    "localizedName": "Urgency",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0068",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Urgency"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Urgency of the request for service."
+                    },
+                    "annotations": {
+                      "comment": "Specific definitions of emergency and urgent will vary between clinical contexts, clinical systems and the nature of the request itself, so have not been defined in this archetype. If explicit timing is required then the Service period should be clearly stated."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline treatment factors']/items[openEHR-EHR-INSTRUCTION.service_request.v1,'Treatment']/activities[at0001]/description[at0009]/items[at0068]/value"
+                  },
+                  {
+                    "id": "timing",
+                    "name": "Timing",
+                    "rmType": "DV_PARSABLE",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline treatment factors']/items[openEHR-EHR-INSTRUCTION.service_request.v1,'Treatment']/activities[at0001]/timing",
+                    "inputs": [
+                      {
+                        "suffix": "value",
+                        "type": "TEXT"
+                      },
+                      {
+                        "suffix": "formalism",
+                        "type": "TEXT"
+                      }
+                    ],
+                    "inContext": true
+                  },
+                  {
+                    "id": "action_archetype_id",
+                    "name": "Action_archetype_id",
+                    "rmType": "STRING",
+                    "min": 1,
+                    "max": 1,
+                    "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline treatment factors']/items[openEHR-EHR-INSTRUCTION.service_request.v1,'Treatment']/activities[at0001]/action_archetype_id",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ],
+                    "inContext": true
+                  }
+                ]
+              },
+              {
+                "id": "expiry_time",
+                "name": "expiry_time",
+                "rmType": "DV_DATE_TIME",
+                "min": 0,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline treatment factors']/items[openEHR-EHR-INSTRUCTION.service_request.v1,'Treatment']/expiry_time",
+                "inputs": [
+                  {
+                    "type": "DATETIME"
+                  }
+                ]
+              },
+              {
+                "id": "narrative",
+                "name": "Narrative",
+                "rmType": "DV_TEXT",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline treatment factors']/items[openEHR-EHR-INSTRUCTION.service_request.v1,'Treatment']/narrative",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ],
+                "inContext": true
+              },
+              {
+                "id": "language",
+                "name": "Language",
+                "rmType": "CODE_PHRASE",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline treatment factors']/items[openEHR-EHR-INSTRUCTION.service_request.v1,'Treatment']/language",
+                "inContext": true
+              },
+              {
+                "id": "encoding",
+                "name": "Encoding",
+                "rmType": "CODE_PHRASE",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline treatment factors']/items[openEHR-EHR-INSTRUCTION.service_request.v1,'Treatment']/encoding",
+                "inContext": true
+              },
+              {
+                "id": "subject",
+                "name": "Subject",
+                "rmType": "PARTY_PROXY",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-SECTION.adhoc.v1,'Baseline treatment factors']/items[openEHR-EHR-INSTRUCTION.service_request.v1,'Treatment']/subject",
+                "inputs": [
+                  {
+                    "suffix": "id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "id_scheme",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "id_namespace",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "name",
+                    "type": "TEXT"
+                  }
+                ],
+                "inContext": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "category",
+        "rmType": "DV_CODED_TEXT",
+        "nodeId": "",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/category",
+        "inputs": [
+          {
+            "suffix": "code",
+            "type": "CODED_TEXT",
+            "list": [
+              {
+                "value": "433",
+                "label": "event",
+                "localizedLabels": {
+                  "en": "event"
+                }
+              }
+            ],
+            "terminology": "openehr"
+          }
+        ],
+        "inContext": true
+      },
+      {
+        "id": "language",
+        "name": "Language",
+        "rmType": "CODE_PHRASE",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/language",
+        "inContext": true
+      },
+      {
+        "id": "territory",
+        "name": "Territory",
+        "rmType": "CODE_PHRASE",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/territory",
+        "inContext": true
+      },
+      {
+        "id": "composer",
+        "name": "Composer",
+        "rmType": "PARTY_PROXY",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/composer",
+        "inputs": [
+          {
+            "suffix": "id",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "id_scheme",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "id_namespace",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "name",
+            "type": "TEXT"
+          }
+        ],
+        "inContext": true
+      }
+    ]
+  }
+}

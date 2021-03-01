@@ -21,7 +21,7 @@ import care.better.platform.web.template.converter.exceptions.ConversionExceptio
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ValueNode
-import com.marand.thinkehr.web.build.input.WebTemplateInput
+import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import org.openehr.rm.common.FeederAudit
 import org.openehr.rm.datatypes.DvCodedText
 

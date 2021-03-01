@@ -24,8 +24,8 @@ import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.google.common.collect.ImmutableList
 import com.google.common.collect.ImmutableMap
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
 import org.junit.jupiter.api.Test
@@ -45,7 +45,7 @@ import javax.xml.bind.JAXBException
  */
 class FeederAuditTest : AbstractWebTemplateTest() {
 
-    private val webTemplate: WebTemplate = WTBuilder.build(
+    private val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(
         getTemplate("/convert/templates/older/Demo Vitals.xml"),
         WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
 
@@ -159,7 +159,7 @@ class FeederAuditTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testFeederAuditBroken() {
         val flatMap = getObjectMapper().readValue(getJson("/convert/compositions/gel_data.json"), object : TypeReference<Map<String, Any>>(){})
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/GEL Cancer diagnosis input.opt"), WebTemplateBuilderContext("en"))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/GEL Cancer diagnosis input.opt"), WebTemplateBuilderContext("en"))
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(flatMap, ConversionContext.create().build())
         assertThat(composition).isNotNull

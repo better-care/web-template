@@ -23,7 +23,7 @@ import care.better.platform.web.template.converter.mapper.resolve
 import care.better.platform.web.template.converter.value.ValueConverter
 import care.better.platform.web.template.date.partial.PartialDateTime
 import com.fasterxml.jackson.databind.JsonNode
-import com.marand.thinkehr.web.build.WebTemplateNode
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvDateTime
 import java.time.DateTimeException
 

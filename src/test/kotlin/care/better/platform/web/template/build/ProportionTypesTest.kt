@@ -17,9 +17,9 @@ package care.better.platform.web.template.build
 
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
-import com.marand.thinkehr.web.build.WebTemplateNode
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.io.IOException
@@ -35,7 +35,7 @@ class ProportionTypesTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testProportionTypes() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/build/test_proportions.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/build/test_proportions.opt"), builderContext)
         val all: WebTemplateNode = webTemplate.findWebTemplateNode("test_statuses/test_statuses:0/proportion_all")
         assertThat(all.proportionTypes).containsOnly("ratio", "unitary", "percent", "fraction", "integer_fraction")
         val one: WebTemplateNode = webTemplate.findWebTemplateNode("test_statuses/test_statuses:0/proportion_percent")

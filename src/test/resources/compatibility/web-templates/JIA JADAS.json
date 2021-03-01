@@ -1,0 +1,1688 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "templateId": "JIA JADAS",
+  "version": "2.3",
+  "defaultLanguage": "en",
+  "languages": [
+    "en"
+  ],
+  "tree": {
+    "id": "jia_jadas",
+    "name": "JIA JADAS",
+    "localizedName": "JIA JADAS",
+    "rmType": "COMPOSITION",
+    "nodeId": "openEHR-EHR-COMPOSITION.report.v1",
+    "min": 1,
+    "max": 1,
+    "localizedNames": {
+      "en": "JIA JADAS"
+    },
+    "localizedDescriptions": {
+      "en": "Document to communicate information to others, commonly in response to a request from another party."
+    },
+    "aqlPath": "",
+    "children": [
+      {
+        "id": "context",
+        "rmType": "EVENT_CONTEXT",
+        "nodeId": "",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/context",
+        "children": [
+          {
+            "id": "report_id",
+            "name": "Report ID",
+            "localizedName": "Report ID",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0002",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Report ID"
+            },
+            "localizedDescriptions": {
+              "en": "Identification information about the report."
+            },
+            "aqlPath": "/context/other_context[at0001]/items[at0002]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "status",
+            "name": "Status",
+            "localizedName": "Status",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0005",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Status"
+            },
+            "localizedDescriptions": {
+              "en": "The status of the entire report. Note: This is not the status of any of the report components."
+            },
+            "aqlPath": "/context/other_context[at0001]/items[at0005]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "start_time",
+            "name": "Start_time",
+            "rmType": "DV_DATE_TIME",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/context/start_time",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "setting",
+            "name": "Setting",
+            "rmType": "DV_CODED_TEXT",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/context/setting",
+            "inputs": [
+              {
+                "suffix": "code",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "value",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "care_plan",
+        "name": "Care Plan",
+        "localizedName": "Care Plan",
+        "rmType": "ACTION",
+        "nodeId": "openEHR-EHR-ACTION.care_plan.v0",
+        "min": 0,
+        "max": 1,
+        "localizedNames": {
+          "en": "Care Plan"
+        },
+        "localizedDescriptions": {
+          "en": "Plan or sequence of discrete activities developed to achieve a specified management goal or treatment outcome, carried out by health professionals and/or the patient."
+        },
+        "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]",
+        "children": [
+          {
+            "id": "ism_transition",
+            "name": "Ism_transition",
+            "rmType": "ISM_TRANSITION",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/ism_transition",
+            "children": [
+              {
+                "id": "current_state",
+                "name": "Current_state",
+                "rmType": "DV_CODED_TEXT",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/ism_transition/current_state",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "530",
+                        "label": "suspended"
+                      },
+                      {
+                        "value": "245",
+                        "label": "active"
+                      },
+                      {
+                        "value": "531",
+                        "label": "aborted"
+                      },
+                      {
+                        "value": "532",
+                        "label": "completed"
+                      },
+                      {
+                        "value": "526",
+                        "label": "planned"
+                      },
+                      {
+                        "value": "527",
+                        "label": "postponed"
+                      },
+                      {
+                        "value": "528",
+                        "label": "cancelled"
+                      },
+                      {
+                        "value": "529",
+                        "label": "scheduled"
+                      }
+                    ]
+                  }
+                ],
+                "inContext": true
+              },
+              {
+                "id": "transition",
+                "name": "Transition",
+                "rmType": "DV_CODED_TEXT",
+                "min": 0,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/ism_transition/transition",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "TEXT"
+                  },
+                  {
+                    "suffix": "value",
+                    "type": "TEXT"
+                  }
+                ],
+                "inContext": true
+              },
+              {
+                "id": "careflow_step",
+                "name": "Careflow_step",
+                "rmType": "DV_CODED_TEXT",
+                "min": 0,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/ism_transition/careflow_step",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0003",
+                        "label": "Care plan Need Identified",
+                        "localizedLabels": {
+                          "en": "Care plan Need Identified"
+                        },
+                        "currentStates": [
+                          "526"
+                        ]
+                      },
+                      {
+                        "value": "at0008",
+                        "label": "Care Plan Developed",
+                        "localizedLabels": {
+                          "en": "Care Plan Developed"
+                        },
+                        "currentStates": [
+                          "526"
+                        ]
+                      },
+                      {
+                        "value": "at0034",
+                        "label": "Care Plan Postponed",
+                        "localizedLabels": {
+                          "en": "Care Plan Postponed"
+                        },
+                        "currentStates": [
+                          "527"
+                        ]
+                      },
+                      {
+                        "value": "at0033",
+                        "label": "Care Plan Cancelled",
+                        "localizedLabels": {
+                          "en": "Care Plan Cancelled"
+                        },
+                        "currentStates": [
+                          "528"
+                        ]
+                      },
+                      {
+                        "value": "at0018",
+                        "label": "Care Plan Scheduled",
+                        "localizedLabels": {
+                          "en": "Care Plan Scheduled"
+                        },
+                        "currentStates": [
+                          "529"
+                        ]
+                      },
+                      {
+                        "value": "at0006",
+                        "label": "Care Plan Commenced",
+                        "localizedLabels": {
+                          "en": "Care Plan Commenced"
+                        },
+                        "currentStates": [
+                          "245"
+                        ]
+                      },
+                      {
+                        "value": "at0020",
+                        "label": "Care Plan Reviewed",
+                        "localizedLabels": {
+                          "en": "Care Plan Reviewed"
+                        },
+                        "currentStates": [
+                          "245"
+                        ]
+                      },
+                      {
+                        "value": "at0035",
+                        "label": "Care Plan Suspended",
+                        "localizedLabels": {
+                          "en": "Care Plan Suspended"
+                        },
+                        "currentStates": [
+                          "530"
+                        ]
+                      },
+                      {
+                        "value": "at0032",
+                        "label": "Care Plan Aborted",
+                        "localizedLabels": {
+                          "en": "Care Plan Aborted"
+                        },
+                        "currentStates": [
+                          "531"
+                        ]
+                      },
+                      {
+                        "value": "at0010",
+                        "label": "Care Plan Expired",
+                        "localizedLabels": {
+                          "en": "Care Plan Expired"
+                        },
+                        "currentStates": [
+                          "531"
+                        ]
+                      },
+                      {
+                        "value": "at0013",
+                        "label": "Care Plan Completed",
+                        "localizedLabels": {
+                          "en": "Care Plan Completed"
+                        },
+                        "currentStates": [
+                          "532"
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "inContext": true
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "care_plan_name",
+            "name": "Care Plan Name",
+            "localizedName": "Care Plan Name",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0002",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Care Plan Name"
+            },
+            "localizedDescriptions": {
+              "en": "Name of care plan."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/description[at0019]/items[at0002]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "description",
+            "name": "Description",
+            "localizedName": "Description",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0021",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Description"
+            },
+            "localizedDescriptions": {
+              "en": "Description of activity performed/enacted against the plan."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/description[at0019]/items[at0021]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "reason",
+            "name": "Reason",
+            "localizedName": "Reason",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0025",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Reason"
+            },
+            "localizedDescriptions": {
+              "en": "Reason for activity being performed /enacted against the plan."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/description[at0019]/items[at0025]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "care_plan_id",
+            "name": "Care Plan ID",
+            "localizedName": "Care Plan ID",
+            "rmType": "DV_IDENTIFIER",
+            "nodeId": "at0016",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Care Plan ID"
+            },
+            "localizedDescriptions": {
+              "en": "Identification of care plan."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/protocol[at0015]/items[at0016]/value",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "type",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "issuer",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "assigner",
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "expiry_date",
+            "name": "Expiry Date",
+            "localizedName": "Expiry Date",
+            "rmType": "DV_DATE_TIME",
+            "nodeId": "at0017",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Expiry Date"
+            },
+            "localizedDescriptions": {
+              "en": "Anticipated date beyond which the care plan can be deemed 'expired'."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/protocol[at0015]/items[at0017]/value",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ]
+          },
+          {
+            "id": "time",
+            "name": "Time",
+            "rmType": "DV_DATE_TIME",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/time",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.care_plan.v0]/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "jadas",
+        "name": "JADAS",
+        "localizedName": "JADAS",
+        "rmType": "OBSERVATION",
+        "nodeId": "openEHR-EHR-OBSERVATION.jadas.v0",
+        "min": 0,
+        "max": 1,
+        "localizedNames": {
+          "en": "JADAS"
+        },
+        "localizedDescriptions": {
+          "en": "JADAS"
+        },
+        "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]",
+        "children": [
+          {
+            "id": "any_event",
+            "name": "Any event",
+            "localizedName": "Any event",
+            "rmType": "EVENT",
+            "nodeId": "at0002",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "Any event"
+            },
+            "localizedDescriptions": {
+              "en": ""
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]",
+            "children": [
+              {
+                "id": "physician_global_assessment_of_disease_activity",
+                "name": "Physician global assessment of disease activity",
+                "localizedName": "Physician global assessment of disease activity",
+                "rmType": "DV_QUANTITY",
+                "nodeId": "at0008",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Physician global assessment of disease activity"
+                },
+                "localizedDescriptions": {
+                  "en": "Disease activity is defined as potentially reversible pathology or physiology resulting from the myositis. Clinical findings known or suspected to be due to another disease process should not be considered in this evaluation. The global assessment of disease activity is to be judged from all the information available to you today including the subject’s\n                        appearance, history, physical examination, diagnostic laboratory testing and your resultant medical therapy.\n                    "
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0008]/value",
+                "inputs": [
+                  {
+                    "suffix": "magnitude",
+                    "type": "DECIMAL",
+                    "validation": {
+                      "range": {
+                        "minOp": ">=",
+                        "min": 0.0,
+                        "maxOp": "<=",
+                        "max": 10.0
+                      }
+                    }
+                  },
+                  {
+                    "suffix": "unit",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "cm",
+                        "label": "cm",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 0.0,
+                            "maxOp": "<=",
+                            "max": 10.0
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "parent_child_global_assessment_of_well-being_and_pain",
+                "name": "Parent/child global assessment of well-being and pain",
+                "localizedName": "Parent/child global assessment of well-being and pain",
+                "rmType": "DV_QUANTITY",
+                "nodeId": "at0009",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Parent/child global assessment of well-being and pain"
+                },
+                "localizedDescriptions": {
+                  "en": "Your myositis is the result of the combined effects of many disease processes. One of these is disease activity, which is active inflammation in your muscles, skin, joints, intestines, heart, lungs or other parts of your body, which can improve when treated with medicines. Considering all the ways that myositis affects you, please rate the overall activity of your’s disease today."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0009]/value",
+                "inputs": [
+                  {
+                    "suffix": "magnitude",
+                    "type": "DECIMAL",
+                    "validation": {
+                      "range": {
+                        "minOp": ">=",
+                        "min": 0.0,
+                        "maxOp": "<=",
+                        "max": 10.0
+                      }
+                    }
+                  },
+                  {
+                    "suffix": "unit",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "cm",
+                        "label": "cm",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 0.0,
+                            "maxOp": "<=",
+                            "max": 10.0
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "number_of_active_joints",
+                "name": "Number of active joints",
+                "localizedName": "Number of active joints",
+                "rmType": "DV_COUNT",
+                "nodeId": "at0010",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Number of active joints"
+                },
+                "localizedDescriptions": {
+                  "en": "Number of active joints. Active joint describes conditions characterized by pain, swelling, tenderness and warmth in the joints, as well as morning stiffness that lasts for more than an hour."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0010]/value",
+                "inputs": [
+                  {
+                    "type": "INTEGER",
+                    "validation": {
+                      "range": {
+                        "minOp": ">=",
+                        "min": 0,
+                        "maxOp": "<=",
+                        "max": 71
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "arthritis_subtype",
+                "name": "Arthritis subtype",
+                "localizedName": "Arthritis subtype",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0038",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Arthritis subtype"
+                },
+                "localizedDescriptions": {
+                  "en": ""
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0038]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "erythrocyte_sedimentation_rate_esr",
+                "name": "Erythrocyte sedimentation rate (ESR)",
+                "localizedName": "Erythrocyte sedimentation rate (ESR)",
+                "rmType": "DV_QUANTITY",
+                "nodeId": "at0011",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Erythrocyte sedimentation rate (ESR)"
+                },
+                "localizedDescriptions": {
+                  "en": "The erythrocyte sedimentation rate is the rate at which red blood cells in anticoagulated whole blood descend in a standardized tube over a period of one hour."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0011]/value",
+                "inputs": [
+                  {
+                    "suffix": "magnitude",
+                    "type": "DECIMAL",
+                    "validation": {
+                      "range": {
+                        "minOp": ">=",
+                        "min": 0.0,
+                        "maxOp": "<=",
+                        "max": 500.0
+                      }
+                    }
+                  },
+                  {
+                    "suffix": "unit",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "mm/h",
+                        "label": "mm/h",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 0.0,
+                            "maxOp": "<=",
+                            "max": 500.0
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "normalized_esr_value",
+                "name": "Normalized ESR value",
+                "localizedName": "Normalized ESR value",
+                "rmType": "DV_PROPORTION",
+                "nodeId": "at0013",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Normalized ESR value"
+                },
+                "localizedDescriptions": {
+                  "en": "Normalized ESR value for JADAS resaults calculated by formula: (ESR (mm/h)-20)/10. ESR values <20mm/h are given 0 points, ESR values >120mm/h are given 10 points."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0013]/value",
+                "proportionTypes": [
+                  "unitary"
+                ],
+                "inputs": [
+                  {
+                    "suffix": "numerator",
+                    "type": "DECIMAL"
+                  },
+                  {
+                    "suffix": "denominator",
+                    "type": "DECIMAL",
+                    "validation": {
+                      "range": {
+                        "minOp": ">=",
+                        "min": 1.0,
+                        "maxOp": "<=",
+                        "max": 1.0
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "c-reactive_protein_crp",
+                "name": "C-reactive protein (CRP)",
+                "localizedName": "C-reactive protein (CRP)",
+                "rmType": "DV_QUANTITY",
+                "nodeId": "at0012",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "C-reactive protein (CRP)"
+                },
+                "localizedDescriptions": {
+                  "en": "A c-reactive protein test measures the level of c-reactive protein (CRP) in your blood. CRP is a protein made by your liver. It's sent into your bloodstream in response to inflammation."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0012]/value",
+                "inputs": [
+                  {
+                    "suffix": "magnitude",
+                    "type": "DECIMAL",
+                    "validation": {
+                      "range": {
+                        "minOp": ">=",
+                        "min": 0.0,
+                        "maxOp": "<=",
+                        "max": 1000.0
+                      }
+                    }
+                  },
+                  {
+                    "suffix": "unit",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "mg/L",
+                        "label": "mg/L",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 0.0,
+                            "maxOp": "<=",
+                            "max": 1000.0
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "normalized_crp_value",
+                "name": "Normalized CRP value",
+                "localizedName": "Normalized CRP value",
+                "rmType": "DV_PROPORTION",
+                "nodeId": "at0014",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Normalized CRP value"
+                },
+                "localizedDescriptions": {
+                  "en": "Normalized CRP value for JADAS resaults calculated by formula: (CRP (mm/h)-10)/10. CRP values <10mm/h are given 0 points, CRP values >110mm/h are given 10 points."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0014]/value",
+                "proportionTypes": [
+                  "unitary"
+                ],
+                "inputs": [
+                  {
+                    "suffix": "numerator",
+                    "type": "DECIMAL"
+                  },
+                  {
+                    "suffix": "denominator",
+                    "type": "DECIMAL",
+                    "validation": {
+                      "range": {
+                        "minOp": ">=",
+                        "min": 1.0,
+                        "maxOp": "<=",
+                        "max": 1.0
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "jadas10",
+                "name": "JADAS10",
+                "localizedName": "JADAS10",
+                "rmType": "CLUSTER",
+                "nodeId": "at0048",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "JADAS10"
+                },
+                "localizedDescriptions": {
+                  "en": ""
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0048]",
+                "children": [
+                  {
+                    "id": "jadas10-esr_score",
+                    "name": "JADAS10-ESR score",
+                    "localizedName": "JADAS10-ESR score",
+                    "rmType": "DV_PROPORTION",
+                    "nodeId": "at0015",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "JADAS10-ESR score"
+                    },
+                    "localizedDescriptions": {
+                      "en": "JADAS 10 score based on ESR value."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0015]/value",
+                    "proportionTypes": [
+                      "unitary"
+                    ],
+                    "inputs": [
+                      {
+                        "suffix": "numerator",
+                        "type": "DECIMAL"
+                      },
+                      {
+                        "suffix": "denominator",
+                        "type": "DECIMAL",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 1.0,
+                            "maxOp": "<=",
+                            "max": 1.0
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "jadas10-crp_score",
+                    "name": "JADAS10-CRP score",
+                    "localizedName": "JADAS10-CRP score",
+                    "rmType": "DV_PROPORTION",
+                    "nodeId": "at0043",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "JADAS10-CRP score"
+                    },
+                    "localizedDescriptions": {
+                      "en": "JADAS 10 score based on CRP value."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0043]/value",
+                    "proportionTypes": [
+                      "unitary"
+                    ],
+                    "inputs": [
+                      {
+                        "suffix": "numerator",
+                        "type": "DECIMAL"
+                      },
+                      {
+                        "suffix": "denominator",
+                        "type": "DECIMAL",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 1.0,
+                            "maxOp": "<=",
+                            "max": 1.0
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "cjadas10_score",
+                    "name": "cJADAS10 score",
+                    "localizedName": "cJADAS10 score",
+                    "rmType": "DV_PROPORTION",
+                    "nodeId": "at0044",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "cJADAS10 score"
+                    },
+                    "localizedDescriptions": {
+                      "en": "JADAS 10 based on only clinical examination."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0044]/value",
+                    "proportionTypes": [
+                      "unitary"
+                    ],
+                    "inputs": [
+                      {
+                        "suffix": "numerator",
+                        "type": "DECIMAL"
+                      },
+                      {
+                        "suffix": "denominator",
+                        "type": "DECIMAL",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 1.0,
+                            "maxOp": "<=",
+                            "max": 1.0
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "jia_status_jadas10",
+                    "name": "JIA status JADAS10",
+                    "localizedName": "JIA status JADAS10",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0058",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "JIA status JADAS10"
+                    },
+                    "localizedDescriptions": {
+                      "en": "JIA status according to JADAS 10 score."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0048]/items[at0058]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0059",
+                            "label": "Inactive disease",
+                            "localizedLabels": {
+                              "en": "Inactive disease"
+                            },
+                            "localizedDescriptions": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "at0060",
+                            "label": "Low disease activity",
+                            "localizedLabels": {
+                              "en": "Low disease activity"
+                            },
+                            "localizedDescriptions": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "at0061",
+                            "label": "Moderate disease activity",
+                            "localizedLabels": {
+                              "en": "Moderate disease activity"
+                            },
+                            "localizedDescriptions": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "at0062",
+                            "label": "High disease activity",
+                            "localizedLabels": {
+                              "en": "High disease activity"
+                            },
+                            "localizedDescriptions": {
+                              "en": ""
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "jadas27",
+                "name": "JADAS27",
+                "localizedName": "JADAS27",
+                "rmType": "CLUSTER",
+                "nodeId": "at0051",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "JADAS27"
+                },
+                "localizedDescriptions": {
+                  "en": ""
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0051]",
+                "children": [
+                  {
+                    "id": "jadas27-esr_score",
+                    "name": "JADAS27-ESR score",
+                    "localizedName": "JADAS27-ESR score",
+                    "rmType": "DV_PROPORTION",
+                    "nodeId": "at0045",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "JADAS27-ESR score"
+                    },
+                    "localizedDescriptions": {
+                      "en": "JADAS 27 score based on ESR value."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0051]/items[at0045]/value",
+                    "proportionTypes": [
+                      "unitary"
+                    ],
+                    "inputs": [
+                      {
+                        "suffix": "numerator",
+                        "type": "DECIMAL"
+                      },
+                      {
+                        "suffix": "denominator",
+                        "type": "DECIMAL",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 1.0,
+                            "maxOp": "<=",
+                            "max": 1.0
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "jadas27-crp_score",
+                    "name": "JADAS27-CRP score",
+                    "localizedName": "JADAS27-CRP score",
+                    "rmType": "DV_PROPORTION",
+                    "nodeId": "at0046",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "JADAS27-CRP score"
+                    },
+                    "localizedDescriptions": {
+                      "en": "JADAS 27 score based on CRP value."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0051]/items[at0046]/value",
+                    "proportionTypes": [
+                      "unitary"
+                    ],
+                    "inputs": [
+                      {
+                        "suffix": "numerator",
+                        "type": "DECIMAL"
+                      },
+                      {
+                        "suffix": "denominator",
+                        "type": "DECIMAL",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 1.0,
+                            "maxOp": "<=",
+                            "max": 1.0
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "cjadas27_score",
+                    "name": "cJADAS27 score",
+                    "localizedName": "cJADAS27 score",
+                    "rmType": "DV_PROPORTION",
+                    "nodeId": "at0047",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "cJADAS27 score"
+                    },
+                    "localizedDescriptions": {
+                      "en": "JADAS 27 based on only clinical examination."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0051]/items[at0047]/value",
+                    "proportionTypes": [
+                      "unitary"
+                    ],
+                    "inputs": [
+                      {
+                        "suffix": "numerator",
+                        "type": "DECIMAL"
+                      },
+                      {
+                        "suffix": "denominator",
+                        "type": "DECIMAL",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 1.0,
+                            "maxOp": "<=",
+                            "max": 1.0
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "jia_status_jadas27",
+                    "name": "JIA status JADAS27",
+                    "localizedName": "JIA status JADAS27",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0063",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "JIA status JADAS27"
+                    },
+                    "localizedDescriptions": {
+                      "en": "JIA status according to JADAS 27 score."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0051]/items[at0063]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0064",
+                            "label": "Inactive disease",
+                            "localizedLabels": {
+                              "en": "Inactive disease"
+                            },
+                            "localizedDescriptions": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "at0065",
+                            "label": "Low disease activity",
+                            "localizedLabels": {
+                              "en": "Low disease activity"
+                            },
+                            "localizedDescriptions": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "at0066",
+                            "label": "Moderate disease activity",
+                            "localizedLabels": {
+                              "en": "Moderate disease activity"
+                            },
+                            "localizedDescriptions": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "at0067",
+                            "label": "High disease activity",
+                            "localizedLabels": {
+                              "en": "High disease activity"
+                            },
+                            "localizedDescriptions": {
+                              "en": ""
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "jadas71",
+                "name": "JADAS71",
+                "localizedName": "JADAS71",
+                "rmType": "CLUSTER",
+                "nodeId": "at0053",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "JADAS71"
+                },
+                "localizedDescriptions": {
+                  "en": ""
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0053]",
+                "children": [
+                  {
+                    "id": "jadas71-esr_score",
+                    "name": "JADAS71-ESR score",
+                    "localizedName": "JADAS71-ESR score",
+                    "rmType": "DV_PROPORTION",
+                    "nodeId": "at0054",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "JADAS71-ESR score"
+                    },
+                    "localizedDescriptions": {
+                      "en": "JADAS 71 score based on ESR value."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0053]/items[at0054]/value",
+                    "proportionTypes": [
+                      "unitary"
+                    ],
+                    "inputs": [
+                      {
+                        "suffix": "numerator",
+                        "type": "DECIMAL"
+                      },
+                      {
+                        "suffix": "denominator",
+                        "type": "DECIMAL",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 1.0,
+                            "maxOp": "<=",
+                            "max": 1.0
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "jadas71-crp_score",
+                    "name": "JADAS71-CRP score",
+                    "localizedName": "JADAS71-CRP score",
+                    "rmType": "DV_PROPORTION",
+                    "nodeId": "at0055",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "JADAS71-CRP score"
+                    },
+                    "localizedDescriptions": {
+                      "en": "JADAS 71 score based on CRP value."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0053]/items[at0055]/value",
+                    "proportionTypes": [
+                      "unitary"
+                    ],
+                    "inputs": [
+                      {
+                        "suffix": "numerator",
+                        "type": "DECIMAL"
+                      },
+                      {
+                        "suffix": "denominator",
+                        "type": "DECIMAL",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 1.0,
+                            "maxOp": "<=",
+                            "max": 1.0
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "cjadas_score",
+                    "name": "cJADAS score",
+                    "localizedName": "cJADAS score",
+                    "rmType": "DV_PROPORTION",
+                    "nodeId": "at0056",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "cJADAS score"
+                    },
+                    "localizedDescriptions": {
+                      "en": "JADAS 71 based on only clinical examination."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0053]/items[at0056]/value",
+                    "proportionTypes": [
+                      "unitary"
+                    ],
+                    "inputs": [
+                      {
+                        "suffix": "numerator",
+                        "type": "DECIMAL"
+                      },
+                      {
+                        "suffix": "denominator",
+                        "type": "DECIMAL",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 1.0,
+                            "maxOp": "<=",
+                            "max": 1.0
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "jia_status_jadas71",
+                    "name": "JIA status JADAS71",
+                    "localizedName": "JIA status JADAS71",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0068",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "JIA status JADAS71"
+                    },
+                    "localizedDescriptions": {
+                      "en": "JIA status according to JADAS 71 score."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0053]/items[at0068]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0069",
+                            "label": "Inactive disease",
+                            "localizedLabels": {
+                              "en": "Inactive disease"
+                            },
+                            "localizedDescriptions": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "at0070",
+                            "label": "Low disease activity",
+                            "localizedLabels": {
+                              "en": "Low disease activity"
+                            },
+                            "localizedDescriptions": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "at0071",
+                            "label": "Moderate disease activity",
+                            "localizedLabels": {
+                              "en": "Moderate disease activity"
+                            },
+                            "localizedDescriptions": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "at0072",
+                            "label": "High disease activity",
+                            "localizedLabels": {
+                              "en": "High disease activity"
+                            },
+                            "localizedDescriptions": {
+                              "en": ""
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "jia_status",
+                "name": "JIA status",
+                "localizedName": "JIA status",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0016",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "JIA status"
+                },
+                "localizedDescriptions": {
+                  "en": ""
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0016]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0018",
+                        "label": "Inactive disease",
+                        "localizedLabels": {
+                          "en": "Inactive disease"
+                        },
+                        "localizedDescriptions": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "at0019",
+                        "label": "Low disease activity",
+                        "localizedLabels": {
+                          "en": "Low disease activity"
+                        },
+                        "localizedDescriptions": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "at0020",
+                        "label": "Moderate disease activity",
+                        "localizedLabels": {
+                          "en": "Moderate disease activity"
+                        },
+                        "localizedDescriptions": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "at0057",
+                        "label": "High disease activity",
+                        "localizedLabels": {
+                          "en": "High disease activity"
+                        },
+                        "localizedDescriptions": {
+                          "en": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "confounding_factors",
+                "name": "Confounding factors",
+                "localizedName": "Confounding factors",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0005",
+                "min": 0,
+                "max": 1,
+                "dependsOn": [
+                  "jadas71",
+                  "erythrocyte_sedimentation_rate_esr",
+                  "jia_status",
+                  "c-reactive_protein_crp",
+                  "parent_child_global_assessment_of_well-being_and_pain",
+                  "arthritis_subtype",
+                  "jadas10",
+                  "normalized_esr_value",
+                  "normalized_crp_value",
+                  "jadas27",
+                  "number_of_active_joints",
+                  "physician_global_assessment_of_disease_activity"
+                ],
+                "localizedNames": {
+                  "en": "Confounding factors"
+                },
+                "localizedDescriptions": {
+                  "en": "Narrative description of any issues or factors that may impact on the calculation."
+                },
+                "annotations": {
+                  "comment": "For example: the calculation was made using adjusted weight or height."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/state[at0004]/items[at0005]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "time",
+                "name": "Time",
+                "rmType": "DV_DATE_TIME",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/data[at0001]/events[at0002]/time",
+                "inputs": [
+                  {
+                    "type": "DATETIME"
+                  }
+                ],
+                "inContext": true
+              }
+            ]
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.jadas.v0]/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "category",
+        "rmType": "DV_CODED_TEXT",
+        "nodeId": "",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/category",
+        "inputs": [
+          {
+            "suffix": "code",
+            "type": "CODED_TEXT",
+            "list": [
+              {
+                "value": "433",
+                "label": "event",
+                "localizedLabels": {
+                  "en": "event"
+                }
+              }
+            ],
+            "terminology": "openehr"
+          }
+        ],
+        "inContext": true
+      },
+      {
+        "id": "language",
+        "name": "Language",
+        "rmType": "CODE_PHRASE",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/language",
+        "inContext": true
+      },
+      {
+        "id": "territory",
+        "name": "Territory",
+        "rmType": "CODE_PHRASE",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/territory",
+        "inContext": true
+      },
+      {
+        "id": "composer",
+        "name": "Composer",
+        "rmType": "PARTY_PROXY",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/composer",
+        "inputs": [
+          {
+            "suffix": "id",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "id_scheme",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "id_namespace",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "name",
+            "type": "TEXT"
+          }
+        ],
+        "inContext": true
+      }
+    ]
+  }
+}

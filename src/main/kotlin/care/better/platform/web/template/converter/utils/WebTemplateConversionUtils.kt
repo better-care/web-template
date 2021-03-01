@@ -15,9 +15,14 @@
 
 package care.better.platform.web.template.converter.utils
 
+import care.better.platform.template.AmNode
+import care.better.platform.template.AmUtils
+import care.better.platform.web.template.builder.model.input.range.WebTemplateDecimalRange
+import care.better.platform.web.template.builder.utils.CodePhraseUtils
 import org.joda.time.DateTime
 import org.joda.time.LocalDate
 import org.joda.time.LocalTime
+import org.openehr.base.foundationtypes.IntervalOfReal
 import java.time.OffsetDateTime
 import java.time.OffsetTime
 import java.time.ZoneId
@@ -101,4 +106,27 @@ internal object WebTemplateConversionUtils {
      */
     @JvmStatic
     fun convert(dateTime: DateTime): OffsetDateTime = OffsetDateTime.ofInstant(dateTime.toDate().toInstant(), ZoneId.of(dateTime.zone.id))
+
+    @JvmStatic
+    fun getTermText(amNode: AmNode, terminologyId: String?, codeString: String?, language: String?): String? =
+        if ("openehr" == terminologyId) {
+            CodePhraseUtils.getOpenEhrTerminologyText(codeString!!, language)
+        } else {
+            val term = if (amNode.termDefinitions.containsKey(language))
+                AmUtils.findTerm(amNode.termDefinitions[language] ?: emptyList(), codeString, "text")
+            else
+                null
+
+            term ?: AmUtils.findTerm(amNode.terms, codeString, "text")
+        }
+
+    @JvmStatic
+    fun getFixedValue(interval: IntervalOfReal?): Float? =
+        interval?.let {
+            val range = WebTemplateDecimalRange(interval)
+            if (range.isFixed())
+                range.min
+            else
+                null
+        }
 }

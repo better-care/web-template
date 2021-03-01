@@ -25,10 +25,10 @@ import care.better.platform.web.template.converter.raw.extensions.isForElement
 import care.better.platform.web.template.converter.raw.extensions.isNotEmpty
 import care.better.platform.web.template.converter.raw.factory.node.RmObjectNodeFactoryProvider
 import care.better.platform.web.template.converter.raw.postprocessor.PostProcessDelegator
+import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import com.marand.thinkehr.web.build.WebTemplateUtils
-import com.marand.thinkehr.web.build.input.WebTemplateInput
+import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import org.openehr.am.aom.CCodePhrase
 import org.openehr.am.aom.CCodeReference
 import org.openehr.base.basetypes.TerminologyId
@@ -269,7 +269,7 @@ internal open class DvCodedTextFactory : RmObjectLeafNodeFactory<DvCodedText>() 
 
         if (rmObject.value == null) {
             rmObject.value = value
-                ?: WebTemplateUtils.getTermText(
+                ?: WebTemplateConversionUtils.getTermText(
                     amNode,
                     codePhrase.terminologyId?.value,
                     rmObject.definingCode?.codeString,

@@ -27,8 +27,8 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.datatype.joda.JodaModule
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
@@ -48,7 +48,7 @@ class RmObjectTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCreateActionFlat() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/rmobject/OPENeP - Medication Administration.xml"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/rmobject/OPENeP - Medication Administration.xml"), builderContext)
 
         val mapper = createObjectMapper().apply {
             this.registerModule(JodaModule())
@@ -75,7 +75,7 @@ class RmObjectTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCreateActionStructured() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/rmobject/OPENeP - Medication Administration.xml"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/rmobject/OPENeP - Medication Administration.xml"), builderContext)
 
         val mapper = createObjectMapper().apply {
             this.registerModule(JodaModule())
@@ -102,7 +102,7 @@ class RmObjectTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCreateObservationFlat() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/rmobject/LAB - Laboratory Test Report.xml"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/rmobject/LAB - Laboratory Test Report.xml"), builderContext)
 
         val mapper = createObjectMapper().apply {
             this.registerModule(JodaModule())
@@ -128,7 +128,7 @@ class RmObjectTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCreateObservationStructured() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/rmobject/LAB - Laboratory Test Report.xml"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/rmobject/LAB - Laboratory Test Report.xml"), builderContext)
 
         val mapper = createObjectMapper().apply {
             this.registerModule(JodaModule())
@@ -154,7 +154,7 @@ class RmObjectTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCreateObservationFlatFromRoot() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/rmobject/LAB - Laboratory Test Report.xml"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/rmobject/LAB - Laboratory Test Report.xml"), builderContext)
 
         val mapper = ObjectMapper().apply {
             this.registerModule(JodaModule())
@@ -181,7 +181,7 @@ class RmObjectTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCreateObservationStructuredFromRoot() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/rmobject/LAB - Laboratory Test Report.xml"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/rmobject/LAB - Laboratory Test Report.xml"), builderContext)
 
         val mapper = createObjectMapper().apply {
             this.registerModule(JodaModule())
@@ -208,7 +208,7 @@ class RmObjectTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCreateClusterFlat() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/rmobject/LAB - Laboratory Test Report.xml"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/rmobject/LAB - Laboratory Test Report.xml"), builderContext)
 
         val mapper = createObjectMapper().apply {
             this.registerModule(JodaModule())
@@ -239,7 +239,7 @@ class RmObjectTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCreateClusterStructured() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/rmobject/LAB - Laboratory Test Report.xml"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/rmobject/LAB - Laboratory Test Report.xml"), builderContext)
 
         val mapper = createObjectMapper().apply {
             this.registerModule(JodaModule())
@@ -270,7 +270,7 @@ class RmObjectTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCreateObservationCollection() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/rmobject/LAB - Laboratory Test Report.xml"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/rmobject/LAB - Laboratory Test Report.xml"), builderContext)
 
         val mapper = createObjectMapper().apply {
             this.registerModule(JodaModule())
@@ -290,7 +290,7 @@ class RmObjectTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCreateObservationPrefixedCollection() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/rmobject/LAB - Laboratory Test Report.xml"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/rmobject/LAB - Laboratory Test Report.xml"), builderContext)
 
         val mapper = createObjectMapper().apply {
             this.registerModule(JodaModule())
@@ -310,7 +310,7 @@ class RmObjectTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testFlatToStructuredConversion() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/rmobject/NEWS2.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/rmobject/NEWS2.opt"), builderContext)
 
         val compositionMap: MutableMap<String, Any> = linkedMapOf()
         compositionMap["news2_uk/news2_score/total_score"] = 8

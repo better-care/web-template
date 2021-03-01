@@ -19,6 +19,7 @@ import care.better.openehr.rm.RmObject
 import care.better.platform.template.AmAttribute
 import care.better.platform.template.AmNode
 import care.better.platform.utils.RmUtils
+import care.better.platform.web.template.builder.model.WebTemplateInputType
 import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
@@ -36,9 +37,8 @@ import care.better.platform.web.template.converter.raw.special.SpecialCaseRmObje
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ArrayNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import com.marand.thinkehr.web.build.WebTemplateInputType
-import com.marand.thinkehr.web.build.WebTemplateNode
-import com.marand.thinkehr.web.build.input.WebTemplateInput
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import org.openehr.base.basetypes.TemplateId
 import org.openehr.rm.common.Archetyped
 import org.openehr.rm.common.Locatable
@@ -629,10 +629,10 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
      * @return [WebTemplateInput] if found, otherwise, return null
      */
     private fun getMandatoryFields(webTemplateNode: WebTemplateNode): WebTemplateInput? =
-        with(webTemplateNode.children.isEmpty() && webTemplateNode.input != null && webTemplateNode.occurences.min != null && webTemplateNode.occurences.min == 1) {
+        with(webTemplateNode.children.isEmpty() && webTemplateNode.getInput() != null && webTemplateNode.occurences?.min != null && webTemplateNode.occurences?.min == 1) {
             when {
-                this && webTemplateNode.input.isFixed && FIXED_WEB_TEMPLATE_INPUT_TYPES.contains(webTemplateNode.input.type) -> webTemplateNode.input
-                this && !webTemplateNode.input.isFixed && WebTemplateInputType.BOOLEAN == webTemplateNode.input.type -> webTemplateNode.input
+                this && webTemplateNode.getInput()!!.fixed && FIXED_WEB_TEMPLATE_INPUT_TYPES.contains(webTemplateNode.getInput()!!.type) -> webTemplateNode.getInput()!!
+                this && !webTemplateNode.getInput()!!.fixed && WebTemplateInputType.BOOLEAN == webTemplateNode.getInput()!!.type -> webTemplateNode.getInput()!!
                 else -> null
             }
         }

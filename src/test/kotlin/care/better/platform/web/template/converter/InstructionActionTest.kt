@@ -24,9 +24,9 @@ import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.google.common.collect.ImmutableMap
 import com.google.common.collect.ImmutableSet
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
-import com.marand.thinkehr.web.build.WebTemplateNode
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
 import org.junit.jupiter.api.Test
@@ -44,7 +44,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testInstructionDetailsWithUUID() {
         val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")
@@ -81,7 +81,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testSingleInstructionDetails() {
         val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")
@@ -116,7 +116,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testMultipleActivities() {
         val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")
@@ -169,7 +169,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testMultipleActivitiesPathAndIndex() {
         val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val context = ConversionContext.create()
             .withActionToInstructionHandler(InCompositionActionToInstructionHandler())
             .build()
@@ -230,7 +230,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testAction() {
         val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")
@@ -273,7 +273,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testInstructionDetailsWithUUIDOnRmPath() {
         val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")
@@ -313,7 +313,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testInstructionDetailsWithIndex() {
         val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")
@@ -350,7 +350,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testInstructionDetailsWithIndexOnRmPath() {
         val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")
@@ -389,7 +389,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testInstructionDetailsWithExistingUidPath() {
         val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")
@@ -428,7 +428,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testInstructionDetailsWithExistingIndexedPath() {
         val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")
@@ -467,7 +467,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testInstructionDetailsWithExistingInstructionUid() {
         val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")
@@ -508,18 +508,18 @@ class InstructionActionTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testInstructionExpiryTime() {
         val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Vaccination Encounter.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Vaccination Encounter.opt"), builderContext)
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("vaccination_encounter/vaccination_instruction/expiry_time")
         assertThat(node).isNotNull
-        assertThat(node.occurences.min).isEqualTo(0)
-        assertThat(node.occurences.max).isEqualTo(1)
+        assertThat(node.occurences?.min).isEqualTo(0)
+        assertThat(node.occurences?.max).isEqualTo(1)
     }
 
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testSpeed() {
         val webTemplateBuilderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), webTemplateBuilderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), webTemplateBuilderContext)
         val map = ImmutableMap.builder<String, String>()
             .put("ctx/language", "sl")
             .put("ctx/territory", "SI")
@@ -548,7 +548,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testInstructionNoTimingNarrative() {
         val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")
@@ -569,7 +569,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testInstructionNoTimingNarrativeCtx() {
         val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")
@@ -592,7 +592,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testActionNoISMCurrentState() {
         val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")
@@ -612,9 +612,9 @@ class InstructionActionTest : AbstractWebTemplateTest() {
 
     @Test
     @Throws(IOException::class, JAXBException::class)
-    fun actionNoISMCurrentStateCtx() {
+    fun testActionNoISMCurrentStateCtx() {
         val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")
@@ -637,7 +637,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testEmptyActivity() {
         val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/ZN - Restraint.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/ZN - Restraint.opt"), builderContext)
         val jsonNode = getObjectMapper().readTree(getJson("/convert/compositions/restraint.json")) as ObjectNode
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(jsonNode, ConversionContext.create().build())
 
@@ -648,7 +648,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testEmptyInstruction() {
         val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Melanoma ST.xml"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Melanoma ST.xml"), builderContext)
         val jsonNode = getObjectMapper().readTree(getJson("/convert/compositions/melanoma.json")) as ObjectNode
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(jsonNode, ConversionContext.create().build())
 
@@ -679,7 +679,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
             }
         """.trimIndent()
 
-        val webTemplateAct: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Service.xml"), builderContext)
+        val webTemplateAct: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Service.xml"), builderContext)
         val compositionAct: Composition? = webTemplateAct.convertFromFlatToRaw(
             getObjectMapper().readValue(json, object : TypeReference<Map<String, Any?>>(){}),
             ConversionContext.create().build())
@@ -695,7 +695,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
     fun testInvalidState() {
         val builderContext = WebTemplateBuilderContext("ru", ImmutableSet.of("ru", "en"))
         val template = getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_suspension_drug_therapy.v1.xml")
-        val webTemplate: WebTemplate = WTBuilder.build(template, builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             getObjectMapper().readValue(getJson("/convert/compositions/t_suspension_drug_therapy.json"), object : TypeReference<Map<String, Any?>>(){}),
             ConversionContext.create().build())
@@ -707,7 +707,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testWfDefinition() {
         val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Service Request.xml"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Service Request.xml"), builderContext)
         val firstFlatComposition: Map<String, Any> = ImmutableMap.Builder<String, Any>()
             .put("ctx/language", "en")
             .put("ctx/territory", "US")

@@ -18,8 +18,8 @@ package care.better.platform.web.template.converter
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.google.common.collect.ImmutableMap
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
@@ -38,7 +38,7 @@ class VisitorTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testVisitCdaDocument() {
         val template = getTemplate("/convert/templates/CDA Document.opt")
-        val webTemplate = WTBuilder.build(template, WebTemplateBuilderContext("sl"))
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("sl"))
 
         val visited: MutableList<String> = ArrayList()
         val names: MutableList<String> = ArrayList()

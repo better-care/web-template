@@ -16,10 +16,10 @@
 package care.better.platform.web.template
 
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
-import com.marand.thinkehr.web.build.WebTemplateNode
-import com.marand.thinkehr.web.composition.exception.UnknownPathBuilderException
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.exception.UnknownPathBuilderException
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
@@ -35,17 +35,17 @@ class FindNodeTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCdaDocument() {
         val templateName = "/CDA Document.opt"
-        val webTemplate = WTBuilder.build(getTemplate(templateName), WebTemplateBuilderContext("sl"))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate(templateName), WebTemplateBuilderContext("sl"))
         assertThat(webTemplate.findWebTemplateNode("cda_document/cda_component:0")).isNotNull
         assertThat(webTemplate.findWebTemplateNode("cda_document/cda_component:199")).isNotNull
     }
 
     @Test
     @Throws(JAXBException::class, IOException::class)
-    fun findNodeByAqlPath() {
+    fun testFindNodeByAqlPath() {
         val template = getTemplate("/DogAPTrace-annot.opt")
         assertThat(template).isNotNull
-        val webTemplate = WTBuilder.build(template, WebTemplateBuilderContext("en"))
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en"))
         assertThat(webTemplate).isNotNull
         val firstNode: WebTemplateNode = webTemplate.findWebTemplateNodeByAqlPath("/content[openEHR-EHR-OBSERVATION.ap_clamp.v9]/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value")
         assertThat(firstNode).isNotNull
@@ -63,9 +63,9 @@ class FindNodeTest : AbstractWebTemplateTest() {
 
     @Test
     @Throws(JAXBException::class, IOException::class)
-    fun findNodeById() {
+    fun testFindNodeById() {
         val template = getTemplate("/DogAPTrace-annot.opt")
-        val webTemplate = WTBuilder.build(template, WebTemplateBuilderContext("en"))
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en"))
         val webTemplateNode: WebTemplateNode = webTemplate.findWebTemplateNode("experiment/ap_clamp/any_event/measurement_time")
         assertThat(webTemplateNode).isNotNull
         assertThat(webTemplateNode.nodeId).isEqualTo("at0005")
@@ -75,9 +75,9 @@ class FindNodeTest : AbstractWebTemplateTest() {
 
     @Test
     @Throws(JAXBException::class, IOException::class)
-    fun findNodeByAqlPathRelative() {
+    fun testFindNodeByAqlPathRelative() {
         val template = getTemplate("/Vital Signs.xml")
-        val webTemplate = WTBuilder.build(template, WebTemplateBuilderContext("en"))
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en"))
         val hits: List<WebTemplateNode> = webTemplate.findWebTemplateNodesByAqlPath(
             "openEHR-EHR-OBSERVATION.blood_pressure.v1",
             "/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value")
@@ -86,9 +86,9 @@ class FindNodeTest : AbstractWebTemplateTest() {
 
     @Test
     @Throws(JAXBException::class, IOException::class)
-    fun findNodeByIdNonExisting() {
+    fun testFindNodeByIdNonExisting() {
         val template = getTemplate("/DogAPTrace-annot.opt")
-        val webTemplate = WTBuilder.build(template, WebTemplateBuilderContext("en"))
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en"))
         assertThatThrownBy { webTemplate.findWebTemplateNode("experiment/ap_clamp/any_event/non_existing") }
             .isInstanceOf(UnknownPathBuilderException::class.java)
     }

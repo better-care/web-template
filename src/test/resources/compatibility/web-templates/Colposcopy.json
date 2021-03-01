@@ -1,0 +1,3360 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "templateId": "Colposcopy",
+  "version": "2.3",
+  "defaultLanguage": "en",
+  "languages": [
+    "en"
+  ],
+  "tree": {
+    "id": "colposcopy",
+    "name": "Colposcopy",
+    "localizedName": "Colposcopy",
+    "rmType": "COMPOSITION",
+    "nodeId": "openEHR-EHR-COMPOSITION.report.v1",
+    "min": 1,
+    "max": 1,
+    "localizedNames": {
+      "en": "Colposcopy"
+    },
+    "localizedDescriptions": {
+      "en": "Document to communicate information to others, commonly in response to a request from another party."
+    },
+    "aqlPath": "",
+    "children": [
+      {
+        "id": "context",
+        "rmType": "EVENT_CONTEXT",
+        "nodeId": "",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/context",
+        "children": [
+          {
+            "id": "report_id",
+            "name": "Report ID",
+            "localizedName": "Report ID",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0002",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Report ID"
+            },
+            "localizedDescriptions": {
+              "en": "Identification information about the report."
+            },
+            "aqlPath": "/context/other_context[at0001]/items[at0002]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "context_detail",
+            "name": "Context detail",
+            "localizedName": "Context detail",
+            "rmType": "CLUSTER",
+            "nodeId": "openEHR-EHR-CLUSTER.composition_context_detail.v1",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "Context detail"
+            },
+            "localizedDescriptions": {
+              "en": "Additional contextual detail to be applied to all compositions."
+            },
+            "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.composition_context_detail.v1]",
+            "children": [
+              {
+                "id": "guideline_id",
+                "name": "Guideline ID",
+                "localizedName": "Guideline ID",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0003",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Guideline ID"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.composition_context_detail.v1]/items[at0003]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "request_id",
+                "name": "Request ID",
+                "localizedName": "Request ID",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0015",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Request ID"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.composition_context_detail.v1]/items[at0015]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "date_and_time",
+                "name": "Date and time",
+                "localizedName": "Date and time",
+                "rmType": "DV_DATE_TIME",
+                "nodeId": "at0007",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Date and time"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.composition_context_detail.v1]/items[at0007]/value",
+                "inputs": [
+                  {
+                    "type": "DATETIME"
+                  }
+                ]
+              },
+              {
+                "id": "selfpaying_patient",
+                "name": "Selfpaying patient",
+                "localizedName": "Selfpaying patient",
+                "rmType": "DV_BOOLEAN",
+                "nodeId": "at0016",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Selfpaying patient"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.composition_context_detail.v1]/items[at0016]/value",
+                "inputs": [
+                  {
+                    "type": "BOOLEAN"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "organisation",
+            "name": "Organisation",
+            "localizedName": "Organisation",
+            "rmType": "CLUSTER",
+            "nodeId": "openEHR-EHR-CLUSTER.organisation.v0",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "Organisation"
+            },
+            "localizedDescriptions": {
+              "en": "Details of an organisation."
+            },
+            "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.organisation.v0]",
+            "children": [
+              {
+                "id": "organisation_name",
+                "name": "Organisation name",
+                "localizedName": "Organisation name",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0001",
+                "min": 1,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Organisation name"
+                },
+                "localizedDescriptions": {
+                  "en": "Name of the organisation."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.organisation.v0]/items[at0001]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "identifier",
+                "name": "Identifier",
+                "localizedName": "Identifier",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0011",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Identifier"
+                },
+                "localizedDescriptions": {
+                  "en": "Identifier of organisation."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.organisation.v0]/items[at0011]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "contact_details",
+                "name": "Contact details",
+                "localizedName": "Contact details",
+                "rmType": "CLUSTER",
+                "nodeId": "at0005",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Contact details"
+                },
+                "localizedDescriptions": {
+                  "en": "Details about a contact person within organisation."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.organisation.v0]/items[at0005]",
+                "children": [
+                  {
+                    "id": "professional_individual_demographics",
+                    "name": "Professional Individual demographics",
+                    "localizedName": "Professional Individual demographics",
+                    "rmType": "CLUSTER",
+                    "nodeId": "openEHR-EHR-CLUSTER.individual_professional.v0",
+                    "min": 0,
+                    "max": -1,
+                    "localizedNames": {
+                      "en": "Professional Individual demographics"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Professional demographics details including name(s) , addresse(s) and telecommunication contact details."
+                    },
+                    "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.organisation.v0]/items[at0005]/items[openEHR-EHR-CLUSTER.individual_professional.v0]",
+                    "children": [
+                      {
+                        "id": "person_name",
+                        "name": "Person name",
+                        "localizedName": "Person name",
+                        "rmType": "CLUSTER",
+                        "nodeId": "openEHR-EHR-CLUSTER.person_name.v0",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Person name"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Details of personal name of an individual, provider or third party."
+                        },
+                        "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.organisation.v0]/items[at0005]/items[openEHR-EHR-CLUSTER.individual_professional.v0]/items[openEHR-EHR-CLUSTER.person_name.v0]",
+                        "children": [
+                          {
+                            "id": "structured_name",
+                            "name": "Structured name",
+                            "localizedName": "Structured name",
+                            "rmType": "CLUSTER",
+                            "nodeId": "at0002",
+                            "min": 0,
+                            "max": 1,
+                            "cardinalities": [
+                              {
+                                "min": 2,
+                                "max": -1,
+                                "ids": [
+                                  "given_name",
+                                  "family_name"
+                                ]
+                              }
+                            ],
+                            "localizedNames": {
+                              "en": "Structured name"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Name in structured format."
+                            },
+                            "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.organisation.v0]/items[at0005]/items[openEHR-EHR-CLUSTER.individual_professional.v0]/items[openEHR-EHR-CLUSTER.person_name.v0]/items[at0002]",
+                            "children": [
+                              {
+                                "id": "given_name",
+                                "name": "Given name",
+                                "localizedName": "Given name",
+                                "rmType": "DV_TEXT",
+                                "nodeId": "at0003",
+                                "min": 1,
+                                "max": 1,
+                                "localizedNames": {
+                                  "en": "Given name"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "Given / personal / first name."
+                                },
+                                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.organisation.v0]/items[at0005]/items[openEHR-EHR-CLUSTER.individual_professional.v0]/items[openEHR-EHR-CLUSTER.person_name.v0]/items[at0002]/items[at0003]/value",
+                                "inputs": [
+                                  {
+                                    "type": "TEXT"
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "family_name",
+                                "name": "Family name",
+                                "localizedName": "Family name",
+                                "rmType": "DV_TEXT",
+                                "nodeId": "at0005",
+                                "min": 1,
+                                "max": 1,
+                                "localizedNames": {
+                                  "en": "Family name"
+                                },
+                                "localizedDescriptions": {
+                                  "en": "Family name or Surname."
+                                },
+                                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.organisation.v0]/items[at0005]/items[openEHR-EHR-CLUSTER.individual_professional.v0]/items[openEHR-EHR-CLUSTER.person_name.v0]/items[at0002]/items[at0005]/value",
+                                "inputs": [
+                                  {
+                                    "type": "TEXT"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "professional_details",
+                        "name": "Professional details",
+                        "localizedName": "Professional details",
+                        "rmType": "CLUSTER",
+                        "nodeId": "at0003",
+                        "min": 0,
+                        "max": 1,
+                        "localizedNames": {
+                          "en": "Professional details"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Details of a professional carer."
+                        },
+                        "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.organisation.v0]/items[at0005]/items[openEHR-EHR-CLUSTER.individual_professional.v0]/items[at0003]",
+                        "children": [
+                          {
+                            "id": "professional_identifier",
+                            "name": "Professional Identifier",
+                            "localizedName": "Professional Identifier",
+                            "rmType": "DV_TEXT",
+                            "nodeId": "at0011",
+                            "min": 0,
+                            "max": 1,
+                            "localizedNames": {
+                              "en": "Professional Identifier"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Professional identifier of the individual."
+                            },
+                            "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.organisation.v0]/items[at0005]/items[openEHR-EHR-CLUSTER.individual_professional.v0]/items[at0003]/items[at0011]/value",
+                            "inputs": [
+                              {
+                                "type": "TEXT"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "start_time",
+            "name": "Start_time",
+            "rmType": "DV_DATE_TIME",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/context/start_time",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "setting",
+            "name": "Setting",
+            "rmType": "DV_CODED_TEXT",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/context/setting",
+            "inputs": [
+              {
+                "suffix": "code",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "value",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "colposcopy_of_cervix",
+        "name": "Colposcopy of cervix",
+        "localizedName": "Colposcopy of cervix",
+        "rmType": "ACTION",
+        "nodeId": "openEHR-EHR-ACTION.procedure.v1",
+        "min": 0,
+        "max": 1,
+        "localizedNames": {
+          "en": "Colposcopy of cervix"
+        },
+        "localizedDescriptions": {
+          "en": "A clinical activity carried out for screening, investigative, diagnostic, curative, therapeutic, evaluative or palliative purposes."
+        },
+        "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']",
+        "children": [
+          {
+            "id": "procedure_name",
+            "name": "Procedure name",
+            "localizedName": "Procedure name",
+            "rmType": "DV_CODED_TEXT",
+            "nodeId": "at0002",
+            "min": 1,
+            "max": 1,
+            "localizedNames": {
+              "en": "Procedure name"
+            },
+            "localizedDescriptions": {
+              "en": "Identification of the procedure by name."
+            },
+            "annotations": {
+              "comment": "Coding of the specific procedure with a terminology is preferred, where possible."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[at0002]/value"
+          },
+          {
+            "id": "site_of_procedure",
+            "name": "Site of procedure",
+            "localizedName": "Site of procedure",
+            "rmType": "DV_CODED_TEXT",
+            "nodeId": "at0063",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Site of procedure"
+            },
+            "localizedDescriptions": {
+              "en": "Identification of the body site for the procedure."
+            },
+            "annotations": {
+              "comment": "Occurrences for this data element are unbounded to allow for clinical scenarios such as removing multiple skin lesions in different places, but where all of the other attributes are identical. Use this data element to record simple terms or precoordinated anatomical locations. If the requirements for recording the anatomical location are determined at run-time by the application or require more complex modelling such as relative locations then use the CLUSTER.anatomical_location or CLUSTER.relative_location within the 'Procedure detail' SLOT in this archetype. If the anatomical location is included in the 'Procedure name' via precoordinated codes, this data element becomes redundant."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[at0063,'Site of procedure']/value",
+            "inputs": [
+              {
+                "suffix": "code",
+                "type": "TEXT",
+                "terminology": "F_site_procedure"
+              },
+              {
+                "suffix": "value",
+                "type": "TEXT",
+                "terminology": "F_site_procedure"
+              }
+            ]
+          },
+          {
+            "id": "inspection_of_cervix",
+            "name": "Inspection of cervix",
+            "localizedName": "Inspection of cervix",
+            "rmType": "CLUSTER",
+            "nodeId": "openEHR-EHR-CLUSTER.inspection_cervix.v0",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "Inspection of cervix"
+            },
+            "localizedDescriptions": {
+              "en": "Findings observed during the inspection of the cervix."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.inspection_cervix.v0]",
+            "children": [
+              {
+                "id": "no_abnormality_detected",
+                "name": "No abnormality detected",
+                "localizedName": "No abnormality detected",
+                "rmType": "DV_BOOLEAN",
+                "nodeId": "at0002",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "No abnormality detected"
+                },
+                "localizedDescriptions": {
+                  "en": "Statement that no abnormality was detected (NAD) on physical examination."
+                },
+                "annotations": {
+                  "comment": "Record as True if no abnormality was detected on examination. Specific statements about the examination can be included in the 'Clinical Interpretation' data element."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.inspection_cervix.v0]/items[at0002]/value",
+                "inputs": [
+                  {
+                    "type": "BOOLEAN",
+                    "list": [
+                      {
+                        "value": "true",
+                        "label": "true"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "clinical_description",
+                "name": "Clinical description",
+                "localizedName": "Clinical description",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0003",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Clinical description"
+                },
+                "localizedDescriptions": {
+                  "en": "Narrative description of the overall findings observed during the physical examination."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.inspection_cervix.v0]/items[at0003]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "discharge_category",
+                "name": "Discharge category",
+                "localizedName": "Discharge category",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0013",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Discharge category"
+                },
+                "localizedDescriptions": {
+                  "en": "Type of cervical discharge."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.inspection_cervix.v0]/items[at0013]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0015",
+                        "label": "Clear",
+                        "localizedLabels": {
+                          "en": "Clear"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The cervical discharge is clear in appearance."
+                        }
+                      },
+                      {
+                        "value": "at0016",
+                        "label": "Mucopurulent",
+                        "localizedLabels": {
+                          "en": "Mucopurulent"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The cervical discharge is mucopurulent in appearance."
+                        }
+                      },
+                      {
+                        "value": "at0017",
+                        "label": "Brick-coloured",
+                        "localizedLabels": {
+                          "en": "Brick-coloured"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The cervical discharge is brick-coloured in appearance."
+                        }
+                      },
+                      {
+                        "value": "at0018",
+                        "label": "Fresh bleeding",
+                        "localizedLabels": {
+                          "en": "Fresh bleeding"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The cervical discharge is fresh blood."
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "discharge_present",
+                "name": "Discharge present",
+                "localizedName": "Discharge present",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0014",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Discharge present"
+                },
+                "localizedDescriptions": {
+                  "en": "The presence of cervical discharge."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.inspection_cervix.v0]/items[at0014]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0033",
+                        "label": "Present",
+                        "localizedLabels": {
+                          "en": "Present"
+                        },
+                        "localizedDescriptions": {
+                          "en": "A cervical discharge was present."
+                        }
+                      },
+                      {
+                        "value": "at0034",
+                        "label": "Absent",
+                        "localizedLabels": {
+                          "en": "Absent"
+                        },
+                        "localizedDescriptions": {
+                          "en": "A cervical discharge was not present."
+                        }
+                      },
+                      {
+                        "value": "at0035",
+                        "label": "Indeterminate",
+                        "localizedLabels": {
+                          "en": "Indeterminate"
+                        },
+                        "localizedDescriptions": {
+                          "en": "It was not possible to determine if a cervical discharge was present or absent."
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "discharge_description",
+                "name": "Discharge description",
+                "localizedName": "Discharge description",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0036",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Discharge description"
+                },
+                "localizedDescriptions": {
+                  "en": "Narrative description about the cervical discharge."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.inspection_cervix.v0]/items[at0036]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "ectropion_present",
+                "name": "Ectropion present",
+                "localizedName": "Ectropion present",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0020",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Ectropion present"
+                },
+                "localizedDescriptions": {
+                  "en": "The presence or absence of cervical ectopia."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.inspection_cervix.v0]/items[at0020]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0037",
+                        "label": "Present",
+                        "localizedLabels": {
+                          "en": "Present"
+                        },
+                        "localizedDescriptions": {
+                          "en": "An ectropion was present."
+                        }
+                      },
+                      {
+                        "value": "at0038",
+                        "label": "Absent",
+                        "localizedLabels": {
+                          "en": "Absent"
+                        },
+                        "localizedDescriptions": {
+                          "en": "An ectropion was not present."
+                        }
+                      },
+                      {
+                        "value": "at0039",
+                        "label": "Indeterminate",
+                        "localizedLabels": {
+                          "en": "Indeterminate"
+                        },
+                        "localizedDescriptions": {
+                          "en": "It was not possible to determine if an ectropion was present or absent."
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "ectropion_description",
+                "name": "Ectropion description",
+                "localizedName": "Ectropion description",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0021",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Ectropion description"
+                },
+                "localizedDescriptions": {
+                  "en": "Narrative description about the cervical ectropion."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.inspection_cervix.v0]/items[at0021]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "clinical_interpretation",
+                "name": "Clinical interpretation",
+                "localizedName": "Clinical interpretation",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0006",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Clinical interpretation"
+                },
+                "localizedDescriptions": {
+                  "en": "Single word, phrase or brief description that represents the clinical meaning and significance of the physical examination findings."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.inspection_cervix.v0]/items[at0006]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "colposcopy_findings",
+            "name": "Colposcopy findings",
+            "localizedName": "Colposcopy findings",
+            "rmType": "CLUSTER",
+            "nodeId": "openEHR-EHR-CLUSTER.colposcopy_findings.v0",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "Colposcopy findings"
+            },
+            "localizedDescriptions": {
+              "en": "colposcopy_findings"
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]",
+            "children": [
+              {
+                "id": "colposcopy_evaluation",
+                "name": "Colposcopy evaluation",
+                "localizedName": "Colposcopy evaluation",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0005",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Colposcopy evaluation"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]/items[at0005]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "TEXT",
+                    "terminology": "AT_colposcopy_evaluation"
+                  },
+                  {
+                    "suffix": "value",
+                    "type": "TEXT",
+                    "terminology": "AT_colposcopy_evaluation"
+                  }
+                ]
+              },
+              {
+                "id": "tz_type",
+                "name": "TZ Type",
+                "localizedName": "TZ Type",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0001",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "TZ Type"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]/items[at0001]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "TEXT",
+                    "terminology": "AZ_tz_type"
+                  },
+                  {
+                    "suffix": "value",
+                    "type": "TEXT",
+                    "terminology": "AZ_tz_type"
+                  }
+                ]
+              },
+              {
+                "id": "atypical_transformation_zone_atz",
+                "name": "Atypical transformation zone (ATZ)",
+                "localizedName": "Atypical transformation zone (ATZ)",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0008",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Atypical transformation zone (ATZ)"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]/items[at0008]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "TEXT",
+                    "terminology": "AX_atz_type"
+                  },
+                  {
+                    "suffix": "value",
+                    "type": "TEXT",
+                    "terminology": "AX_atz_type"
+                  }
+                ]
+              },
+              {
+                "id": "findings",
+                "name": "Findings",
+                "localizedName": "Findings",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0026",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Findings"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]/items[at0026]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "TEXT",
+                    "terminology": "BB_findings"
+                  },
+                  {
+                    "suffix": "value",
+                    "type": "TEXT",
+                    "terminology": "BB_findings"
+                  }
+                ]
+              },
+              {
+                "id": "lesion_surface_area",
+                "name": "Lesion surface area",
+                "localizedName": "Lesion surface area",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0028",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Lesion surface area"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]/items[at0028]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "structured_location",
+                "name": "Structured location",
+                "localizedName": "Structured location",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0030",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Structured location"
+                },
+                "localizedDescriptions": {
+                  "en": "Image which enables a structured organ location entry."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]/items[at0030]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "1",
+                        "label": "A1",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "2",
+                        "label": "A2",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "3",
+                        "label": "A3",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "4",
+                        "label": "A4",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "5",
+                        "label": "A5",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "6",
+                        "label": "A6",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "7",
+                        "label": "A7",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "8",
+                        "label": "A8",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "9",
+                        "label": "A9",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "10",
+                        "label": "A10",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "11",
+                        "label": "A11",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "12",
+                        "label": "A12",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "13",
+                        "label": "B1",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "14",
+                        "label": "B2",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "15",
+                        "label": "B3",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "16",
+                        "label": "B4",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "17",
+                        "label": "B5",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "18",
+                        "label": "B6",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "19",
+                        "label": "B7",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "20",
+                        "label": "B8",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "21",
+                        "label": "B9",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "22",
+                        "label": "B10",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "23",
+                        "label": "B11",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "24",
+                        "label": "B12",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "25",
+                        "label": "C1",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "26",
+                        "label": "C2",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "27",
+                        "label": "C3",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "28",
+                        "label": "C4",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "29",
+                        "label": "C5",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "30",
+                        "label": "C6",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "31",
+                        "label": "C7",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "32",
+                        "label": "C8",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "33",
+                        "label": "C9",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "34",
+                        "label": "C10",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "35",
+                        "label": "C11",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "36",
+                        "label": "C12",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "37",
+                        "label": "D1",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "38",
+                        "label": "D2",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "39",
+                        "label": "D3",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "40",
+                        "label": "D4",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "41",
+                        "label": "D5",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "42",
+                        "label": "D6",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "43",
+                        "label": "D7",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "44",
+                        "label": "D8",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "45",
+                        "label": "D9",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "46",
+                        "label": "D10",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "47",
+                        "label": "D11",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "48",
+                        "label": "D12",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      }
+                    ],
+                    "terminology": "local_terms"
+                  }
+                ]
+              },
+              {
+                "id": "examination_of_a_lesion",
+                "name": "Examination of a lesion",
+                "localizedName": "Examination of a lesion",
+                "rmType": "CLUSTER",
+                "nodeId": "openEHR-EHR-CLUSTER.exam_lesion.v0",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Examination of a lesion"
+                },
+                "localizedDescriptions": {
+                  "en": "Findings observed during the physical examination of an identified lesion."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]/items[openEHR-EHR-CLUSTER.exam_lesion.v0]",
+                "children": [
+                  {
+                    "id": "lesion_type",
+                    "name": "Lesion type",
+                    "localizedName": "Lesion type",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0002",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Lesion type"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Identification of the type of lesion found on physical examination."
+                    },
+                    "annotations": {
+                      "comment": "'Lesion type' should be coded with a terminology, where possible. For example, mole, papilloma or depigmented area. "
+                    },
+                    "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]/items[openEHR-EHR-CLUSTER.exam_lesion.v0]/items[at0002]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "TEXT",
+                        "terminology": "AB_lesion_type"
+                      },
+                      {
+                        "suffix": "value",
+                        "type": "TEXT",
+                        "terminology": "AB_lesion_type"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "body_site",
+                    "name": "Body site",
+                    "localizedName": "Body site",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0001",
+                    "min": 0,
+                    "max": -1,
+                    "localizedNames": {
+                      "en": "Body site"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Identification of the body site under examination."
+                    },
+                    "annotations": {
+                      "comment": "The body site could be on an area of skin or a mucous membrane, for example the right knee, palate or duodenum. If the body site has previously been identified in another archetype in which this archetype is nested, this data element becomes redundant."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]/items[openEHR-EHR-CLUSTER.exam_lesion.v0]/items[at0001]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "1",
+                            "label": "A1",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "2",
+                            "label": "A2",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "3",
+                            "label": "A3",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "4",
+                            "label": "A4",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "5",
+                            "label": "A5",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "6",
+                            "label": "A6",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "7",
+                            "label": "A7",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "8",
+                            "label": "A8",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "9",
+                            "label": "A9",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "10",
+                            "label": "A10",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "11",
+                            "label": "A11",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "12",
+                            "label": "A12",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "13",
+                            "label": "B1",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "14",
+                            "label": "B2",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "15",
+                            "label": "B3",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "16",
+                            "label": "B4",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "17",
+                            "label": "B5",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "18",
+                            "label": "B6",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "19",
+                            "label": "B7",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "20",
+                            "label": "B8",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "21",
+                            "label": "B9",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "22",
+                            "label": "B10",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "23",
+                            "label": "B11",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "24",
+                            "label": "B12",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "25",
+                            "label": "C1",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "26",
+                            "label": "C2",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "27",
+                            "label": "C3",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "28",
+                            "label": "C4",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "29",
+                            "label": "C5",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "30",
+                            "label": "C6",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "31",
+                            "label": "C7",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "32",
+                            "label": "C8",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "33",
+                            "label": "C9",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "34",
+                            "label": "C10",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "35",
+                            "label": "C11",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "36",
+                            "label": "C12",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "37",
+                            "label": "D1",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "38",
+                            "label": "D2",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "39",
+                            "label": "D3",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "40",
+                            "label": "D4",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "41",
+                            "label": "D5",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "42",
+                            "label": "D6",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "43",
+                            "label": "D7",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "44",
+                            "label": "D8",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "45",
+                            "label": "D9",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "46",
+                            "label": "D10",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "47",
+                            "label": "D11",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "48",
+                            "label": "D12",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          }
+                        ],
+                        "terminology": "local_terms"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "atypical_figures",
+                    "name": "Atypical figures",
+                    "localizedName": "Atypical figures",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0006",
+                    "min": 0,
+                    "max": -1,
+                    "localizedNames": {
+                      "en": "Atypical figures"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Single word, phrase or brief description that represents the clinical meaning and significance of the physical examination findings."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]/items[openEHR-EHR-CLUSTER.exam_lesion.v0]/items[at0006,'Atypical figures']/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "TEXT",
+                        "terminology": "AV_atypical_figures"
+                      },
+                      {
+                        "suffix": "value",
+                        "type": "TEXT",
+                        "terminology": "AV_atypical_figures"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "multimedia_resource",
+            "name": "Multimedia Resource",
+            "localizedName": "Multimedia Resource",
+            "rmType": "CLUSTER",
+            "nodeId": "openEHR-EHR-CLUSTER.multimedia.v0",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "Multimedia Resource"
+            },
+            "localizedDescriptions": {
+              "en": "Details about an multimedia representation of the clinical data."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.multimedia.v0]",
+            "children": [
+              {
+                "id": "name",
+                "name": "Name",
+                "localizedName": "Name",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0002",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Name"
+                },
+                "localizedDescriptions": {
+                  "en": "Title or identification of the multimedia resource."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.multimedia.v0]/items[at0002]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "multimedia",
+                "name": "Multimedia",
+                "localizedName": "Multimedia",
+                "rmType": "DV_MULTIMEDIA",
+                "nodeId": "at0001",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Multimedia"
+                },
+                "localizedDescriptions": {
+                  "en": "Multimedia representation of the clinical observation or finding."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.multimedia.v0]/items[at0001]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "url",
+                "name": "URL",
+                "localizedName": "URL",
+                "rmType": "DV_URI",
+                "nodeId": "at0008",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "URL"
+                },
+                "localizedDescriptions": {
+                  "en": "Internet link to the multimedia resource."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[openEHR-EHR-CLUSTER.multimedia.v0]/items[at0008]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "comment",
+            "name": "Comment",
+            "localizedName": "Comment",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0005",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Comment"
+            },
+            "localizedDescriptions": {
+              "en": "Additional narrative about the activity or care pathway step not captured in other fields."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/description[at0001]/items[at0005]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "time",
+            "name": "Time",
+            "rmType": "DV_DATE_TIME",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/time",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "ism_transition",
+            "name": "Ism_transition",
+            "rmType": "ISM_TRANSITION",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/ism_transition",
+            "inContext": true
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of cervix']/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "colposcopy_of_vulva",
+        "name": "Colposcopy of vulva",
+        "localizedName": "Colposcopy of vulva",
+        "rmType": "ACTION",
+        "nodeId": "openEHR-EHR-ACTION.procedure.v1",
+        "min": 0,
+        "max": 1,
+        "localizedNames": {
+          "en": "Colposcopy of vulva"
+        },
+        "localizedDescriptions": {
+          "en": "A clinical activity carried out for screening, investigative, diagnostic, curative, therapeutic, evaluative or palliative purposes."
+        },
+        "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']",
+        "children": [
+          {
+            "id": "procedure_name",
+            "name": "Procedure name",
+            "localizedName": "Procedure name",
+            "rmType": "DV_CODED_TEXT",
+            "nodeId": "at0002",
+            "min": 1,
+            "max": 1,
+            "localizedNames": {
+              "en": "Procedure name"
+            },
+            "localizedDescriptions": {
+              "en": "Identification of the procedure by name."
+            },
+            "annotations": {
+              "comment": "Coding of the specific procedure with a terminology is preferred, where possible."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/description[at0001]/items[at0002]/value",
+            "inputs": [
+              {
+                "suffix": "code",
+                "type": "TEXT",
+                "terminology": "BO_SNOMEDCT"
+              },
+              {
+                "suffix": "value",
+                "type": "TEXT",
+                "terminology": "BO_SNOMEDCT"
+              }
+            ]
+          },
+          {
+            "id": "site_of_procedure",
+            "name": "Site of procedure",
+            "localizedName": "Site of procedure",
+            "rmType": "DV_CODED_TEXT",
+            "nodeId": "at0063",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Site of procedure"
+            },
+            "localizedDescriptions": {
+              "en": "Identification of the body site for the procedure."
+            },
+            "annotations": {
+              "comment": "Occurrences for this data element are unbounded to allow for clinical scenarios such as removing multiple skin lesions in different places, but where all of the other attributes are identical. Use this data element to record simple terms or precoordinated anatomical locations. If the requirements for recording the anatomical location are determined at run-time by the application or require more complex modelling such as relative locations then use the CLUSTER.anatomical_location or CLUSTER.relative_location within the 'Procedure detail' SLOT in this archetype. If the anatomical location is included in the 'Procedure name' via precoordinated codes, this data element becomes redundant."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/description[at0001]/items[at0063,'Site of procedure']/value",
+            "inputs": [
+              {
+                "suffix": "code",
+                "type": "TEXT",
+                "terminology": "F_site_procedure"
+              },
+              {
+                "suffix": "value",
+                "type": "TEXT",
+                "terminology": "F_site_procedure"
+              }
+            ]
+          },
+          {
+            "id": "examination_of_vulva",
+            "name": "Examination of vulva",
+            "localizedName": "Examination of vulva",
+            "rmType": "CLUSTER",
+            "nodeId": "openEHR-EHR-CLUSTER.exam_vulva.v0",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "Examination of vulva"
+            },
+            "localizedDescriptions": {
+              "en": "Findings observed during the physical examination of the vulva."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/description[at0001]/items[openEHR-EHR-CLUSTER.exam_vulva.v0]",
+            "children": [
+              {
+                "id": "no_abnormality_detected",
+                "name": "No abnormality detected",
+                "localizedName": "No abnormality detected",
+                "rmType": "DV_BOOLEAN",
+                "nodeId": "at0002",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "No abnormality detected"
+                },
+                "localizedDescriptions": {
+                  "en": "Statement that no abnormality was detected (NAD) on physical examination."
+                },
+                "annotations": {
+                  "comment": "Record as True if no abnormality was detected on examination. Specific statements about the examination can be included in the 'Clinical Interpretation' data element."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/description[at0001]/items[openEHR-EHR-CLUSTER.exam_vulva.v0]/items[at0002]/value",
+                "inputs": [
+                  {
+                    "type": "BOOLEAN",
+                    "list": [
+                      {
+                        "value": "true",
+                        "label": "true"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "clinical_description",
+                "name": "Clinical description",
+                "localizedName": "Clinical description",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0003",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Clinical description"
+                },
+                "localizedDescriptions": {
+                  "en": "Narrative description of the overall findings observed during the physical examination."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/description[at0001]/items[openEHR-EHR-CLUSTER.exam_vulva.v0]/items[at0003]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "detailed_examination",
+                "name": "Detailed examination",
+                "localizedName": "Detailed examination",
+                "rmType": "CLUSTER",
+                "nodeId": "at0011",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Detailed examination"
+                },
+                "localizedDescriptions": {
+                  "en": "A detailed examination of a specific part of the vulva."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/description[at0001]/items[openEHR-EHR-CLUSTER.exam_vulva.v0]/items[at0011]",
+                "children": [
+                  {
+                    "id": "tenderness",
+                    "name": "Tenderness",
+                    "localizedName": "Tenderness",
+                    "rmType": "DV_BOOLEAN",
+                    "nodeId": "at0019",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Tenderness"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Presence or absence of tenderness."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/description[at0001]/items[openEHR-EHR-CLUSTER.exam_vulva.v0]/items[at0011]/items[at0019]/value",
+                    "inputs": [
+                      {
+                        "type": "BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "swelling",
+                    "name": "Swelling",
+                    "localizedName": "Swelling",
+                    "rmType": "DV_BOOLEAN",
+                    "nodeId": "at0020",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Swelling"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Presence or absence of swelling."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/description[at0001]/items[openEHR-EHR-CLUSTER.exam_vulva.v0]/items[at0011]/items[at0020]/value",
+                    "inputs": [
+                      {
+                        "type": "BOOLEAN"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "colposcopy_findings",
+            "name": "Colposcopy findings",
+            "localizedName": "Colposcopy findings",
+            "rmType": "CLUSTER",
+            "nodeId": "openEHR-EHR-CLUSTER.colposcopy_findings.v0",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "Colposcopy findings"
+            },
+            "localizedDescriptions": {
+              "en": "colposcopy_findings"
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]",
+            "children": [
+              {
+                "id": "structured_location",
+                "name": "Structured location",
+                "localizedName": "Structured location",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0030",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Structured location"
+                },
+                "localizedDescriptions": {
+                  "en": "Image which enables a structured organ location entry."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]/items[at0030]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "1",
+                        "label": "Mons pubis",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "2",
+                        "label": "Labia majora left",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "3",
+                        "label": "Labia majora right",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "4",
+                        "label": "Labia minora left",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "5",
+                        "label": "Labia minora right",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "6",
+                        "label": "Prepuce of clitoris",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "7",
+                        "label": "Clitoris",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "8",
+                        "label": "Vestibule",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "9",
+                        "label": "Urethral orifice",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "10",
+                        "label": "Hymen",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "11",
+                        "label": "Introitus",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "12",
+                        "label": "Perineum",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "13",
+                        "label": "Anus",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      }
+                    ],
+                    "terminology": "local_terms"
+                  }
+                ]
+              },
+              {
+                "id": "anomalies",
+                "name": "Anomalies",
+                "localizedName": "Anomalies",
+                "rmType": "CLUSTER",
+                "nodeId": "at0031",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Anomalies"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]/items[at0031]",
+                "children": [
+                  {
+                    "id": "anomaly_type",
+                    "name": "Anomaly type",
+                    "localizedName": "Anomaly type",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0032",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Anomaly type"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]/items[at0031]/items[at0032]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "TEXT",
+                        "terminology": "AY_vulva_anomalies"
+                      },
+                      {
+                        "suffix": "value",
+                        "type": "TEXT",
+                        "terminology": "AY_vulva_anomalies"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "location",
+                    "name": "Location",
+                    "localizedName": "Location",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0033",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Location"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]/items[at0031]/items[at0033]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "1",
+                            "label": "Mons pubis",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "2",
+                            "label": "Labia majora left",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "3",
+                            "label": "Labia majora right",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "4",
+                            "label": "Labia minora left",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "5",
+                            "label": "Labia minora right",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "6",
+                            "label": "Prepuce of clitoris",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "7",
+                            "label": "Clitoris",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "8",
+                            "label": "Vestibule",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "9",
+                            "label": "Urethral orifice",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "10",
+                            "label": "Hymen",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "11",
+                            "label": "Introitus",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "12",
+                            "label": "Perineum",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          },
+                          {
+                            "value": "13",
+                            "label": "Anus",
+                            "localizedLabels": {
+                              "en": ""
+                            }
+                          }
+                        ],
+                        "terminology": "local_terms"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "description",
+                    "name": "Description",
+                    "localizedName": "Description",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0034",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Description"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]/items[at0031]/items[at0034]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "multimedia_resource",
+            "name": "Multimedia Resource",
+            "localizedName": "Multimedia Resource",
+            "rmType": "CLUSTER",
+            "nodeId": "openEHR-EHR-CLUSTER.multimedia.v0",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "Multimedia Resource"
+            },
+            "localizedDescriptions": {
+              "en": "Details about an multimedia representation of the clinical data."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/description[at0001]/items[openEHR-EHR-CLUSTER.multimedia.v0]",
+            "children": [
+              {
+                "id": "name",
+                "name": "Name",
+                "localizedName": "Name",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0002",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Name"
+                },
+                "localizedDescriptions": {
+                  "en": "Title or identification of the multimedia resource."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/description[at0001]/items[openEHR-EHR-CLUSTER.multimedia.v0]/items[at0002]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "multimedia",
+                "name": "Multimedia",
+                "localizedName": "Multimedia",
+                "rmType": "DV_MULTIMEDIA",
+                "nodeId": "at0001",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Multimedia"
+                },
+                "localizedDescriptions": {
+                  "en": "Multimedia representation of the clinical observation or finding."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/description[at0001]/items[openEHR-EHR-CLUSTER.multimedia.v0]/items[at0001]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "url",
+                "name": "URL",
+                "localizedName": "URL",
+                "rmType": "DV_URI",
+                "nodeId": "at0008",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "URL"
+                },
+                "localizedDescriptions": {
+                  "en": "Internet link to the multimedia resource."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/description[at0001]/items[openEHR-EHR-CLUSTER.multimedia.v0]/items[at0008]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "time",
+            "name": "Time",
+            "rmType": "DV_DATE_TIME",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/time",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "ism_transition",
+            "name": "Ism_transition",
+            "rmType": "ISM_TRANSITION",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/ism_transition",
+            "inContext": true
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Colposcopy of vulva']/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "inspection_of_vagina",
+        "name": "Inspection of vagina",
+        "localizedName": "Inspection of vagina",
+        "rmType": "ACTION",
+        "nodeId": "openEHR-EHR-ACTION.procedure.v1",
+        "min": 0,
+        "max": 1,
+        "localizedNames": {
+          "en": "Inspection of vagina"
+        },
+        "localizedDescriptions": {
+          "en": "A clinical activity carried out for screening, investigative, diagnostic, curative, therapeutic, evaluative or palliative purposes."
+        },
+        "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Inspection of vagina']",
+        "children": [
+          {
+            "id": "procedure_name",
+            "name": "Procedure name",
+            "localizedName": "Procedure name",
+            "rmType": "DV_CODED_TEXT",
+            "nodeId": "at0002",
+            "min": 1,
+            "max": 1,
+            "localizedNames": {
+              "en": "Procedure name"
+            },
+            "localizedDescriptions": {
+              "en": "Identification of the procedure by name."
+            },
+            "annotations": {
+              "comment": "Coding of the specific procedure with a terminology is preferred, where possible."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Inspection of vagina']/description[at0001]/items[at0002]/value",
+            "inputs": [
+              {
+                "suffix": "code",
+                "type": "TEXT",
+                "terminology": "BO_SNOMEDCT"
+              },
+              {
+                "suffix": "value",
+                "type": "TEXT",
+                "terminology": "BO_SNOMEDCT"
+              }
+            ]
+          },
+          {
+            "id": "site_of_procedure",
+            "name": "Site of procedure",
+            "localizedName": "Site of procedure",
+            "rmType": "DV_CODED_TEXT",
+            "nodeId": "at0063",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Site of procedure"
+            },
+            "localizedDescriptions": {
+              "en": "Identification of the body site for the procedure."
+            },
+            "annotations": {
+              "comment": "Occurrences for this data element are unbounded to allow for clinical scenarios such as removing multiple skin lesions in different places, but where all of the other attributes are identical. Use this data element to record simple terms or precoordinated anatomical locations. If the requirements for recording the anatomical location are determined at run-time by the application or require more complex modelling such as relative locations then use the CLUSTER.anatomical_location or CLUSTER.relative_location within the 'Procedure detail' SLOT in this archetype. If the anatomical location is included in the 'Procedure name' via precoordinated codes, this data element becomes redundant."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Inspection of vagina']/description[at0001]/items[at0063,'Site of procedure']/value",
+            "inputs": [
+              {
+                "suffix": "code",
+                "type": "TEXT",
+                "terminology": "F_site_procedure"
+              },
+              {
+                "suffix": "value",
+                "type": "TEXT",
+                "terminology": "F_site_procedure"
+              }
+            ]
+          },
+          {
+            "id": "inspection_of_vagina",
+            "name": "Inspection of vagina",
+            "localizedName": "Inspection of vagina",
+            "rmType": "CLUSTER",
+            "nodeId": "openEHR-EHR-CLUSTER.inspection_vagina.v0",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "Inspection of vagina"
+            },
+            "localizedDescriptions": {
+              "en": "Findings observed during the inspection of the vagina."
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Inspection of vagina']/description[at0001]/items[openEHR-EHR-CLUSTER.inspection_vagina.v0]",
+            "children": [
+              {
+                "id": "no_abnormality_detected",
+                "name": "No abnormality detected",
+                "localizedName": "No abnormality detected",
+                "rmType": "DV_BOOLEAN",
+                "nodeId": "at0002",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "No abnormality detected"
+                },
+                "localizedDescriptions": {
+                  "en": "Statement that no abnormality was detected (NAD) on physical examination."
+                },
+                "annotations": {
+                  "comment": "Record as True if no abnormality was detected on examination. Specific statements about the examination can be included in the 'Clinical Interpretation' data element."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Inspection of vagina']/description[at0001]/items[openEHR-EHR-CLUSTER.inspection_vagina.v0]/items[at0002]/value",
+                "inputs": [
+                  {
+                    "type": "BOOLEAN",
+                    "list": [
+                      {
+                        "value": "true",
+                        "label": "true"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "clinical_description",
+                "name": "Clinical description",
+                "localizedName": "Clinical description",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0003",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Clinical description"
+                },
+                "localizedDescriptions": {
+                  "en": "Narrative description of the overall findings observed during the physical examination."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Inspection of vagina']/description[at0001]/items[openEHR-EHR-CLUSTER.inspection_vagina.v0]/items[at0003]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "colposcopy_findings",
+            "name": "Colposcopy findings",
+            "localizedName": "Colposcopy findings",
+            "rmType": "CLUSTER",
+            "nodeId": "openEHR-EHR-CLUSTER.colposcopy_findings.v0",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "Colposcopy findings"
+            },
+            "localizedDescriptions": {
+              "en": "colposcopy_findings"
+            },
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Inspection of vagina']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]",
+            "children": [
+              {
+                "id": "structured_location",
+                "name": "Structured location",
+                "localizedName": "Structured location",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0030",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Structured location"
+                },
+                "localizedDescriptions": {
+                  "en": "Image which enables a structured organ location entry."
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Inspection of vagina']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]/items[at0030]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "1",
+                        "label": "portion vagina at 1 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "2",
+                        "label": "portion vagina at 2 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "3",
+                        "label": "portion vagina at 3 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "4",
+                        "label": "portion vagina at 4 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "5",
+                        "label": "portion vagina at 5 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "6",
+                        "label": "portion vagina at 6 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "7",
+                        "label": "portion vagina at 7 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "8",
+                        "label": "portion vagina at 8 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "9",
+                        "label": "portion vagina at 9 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "10",
+                        "label": "portion vagina at 10 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "11",
+                        "label": "portion vagina at 11 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "12",
+                        "label": "portion vagina at 12 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "13",
+                        "label": "upper half vagina at 1 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "14",
+                        "label": "upper half vagina at 2 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "15",
+                        "label": "upper half vagina at 3 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "16",
+                        "label": "upper half vagina at 4 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "17",
+                        "label": "upper half vagina at 5 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "18",
+                        "label": "upper half vagina at 6 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "19",
+                        "label": "upper half vagina at 7 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "20",
+                        "label": "upper half vagina at 8 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "21",
+                        "label": "upper half vagina at 9 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "22",
+                        "label": "upper half vagina at 10 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "23",
+                        "label": "upper half vagina at 11 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "24",
+                        "label": "upper half vagina at 12 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "25",
+                        "label": "lower half vagina at 1 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "26",
+                        "label": "lower half vagina at 2 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "27",
+                        "label": "lower half vagina at 3 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "28",
+                        "label": "lower half vagina at 4 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "29",
+                        "label": "lower half vagina at 5 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "30",
+                        "label": "lower half vagina at 6 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "31",
+                        "label": "lower half vagina at 7 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "32",
+                        "label": "lower half vagina at 8 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "33",
+                        "label": "lower half vagina at 9 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "34",
+                        "label": "lower half vagina at 10 0o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "35",
+                        "label": "lower half vagina at 11 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "36",
+                        "label": "lower half vagina at 12 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "37",
+                        "label": "vaginal introitus at 1 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "38",
+                        "label": "vaginal introitus at 2 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "39",
+                        "label": "vaginal introitus at 3 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "40",
+                        "label": "vaginal introitus at 4 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "41",
+                        "label": "vaginal introitus at 5 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "42",
+                        "label": "vaginal introitus at 6 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "43",
+                        "label": "vaginal introitus at 7 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "44",
+                        "label": "vaginal introitus at 8 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "45",
+                        "label": "vaginal introitus at 9 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "46",
+                        "label": "vaginal introitus at 10 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "47",
+                        "label": "vaginal introitus at 11 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "48",
+                        "label": "vaginal introitus at 12 o'clock",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      },
+                      {
+                        "value": "49",
+                        "label": "urethral meatus",
+                        "localizedLabels": {
+                          "en": ""
+                        }
+                      }
+                    ],
+                    "terminology": "local_terms"
+                  }
+                ]
+              },
+              {
+                "id": "anomalies",
+                "name": "Anomalies",
+                "localizedName": "Anomalies",
+                "rmType": "CLUSTER",
+                "nodeId": "at0031",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Anomalies"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Inspection of vagina']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]/items[at0031]",
+                "children": [
+                  {
+                    "id": "anomaly_type",
+                    "name": "Anomaly type",
+                    "localizedName": "Anomaly type",
+                    "rmType": "DV_CODED_TEXT",
+                    "nodeId": "at0032",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Anomaly type"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Inspection of vagina']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]/items[at0031]/items[at0032]/value",
+                    "inputs": [
+                      {
+                        "suffix": "code",
+                        "type": "TEXT",
+                        "terminology": "BA_vagina_anomalies"
+                      },
+                      {
+                        "suffix": "value",
+                        "type": "TEXT",
+                        "terminology": "BA_vagina_anomalies"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "location",
+                    "name": "Location",
+                    "localizedName": "Location",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0033",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Location"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Inspection of vagina']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]/items[at0031]/items[at0033]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "description",
+                    "name": "Description",
+                    "localizedName": "Description",
+                    "rmType": "DV_TEXT",
+                    "nodeId": "at0034",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Description"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Inspection of vagina']/description[at0001]/items[openEHR-EHR-CLUSTER.colposcopy_findings.v0]/items[at0031]/items[at0034]/value",
+                    "inputs": [
+                      {
+                        "type": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "time",
+            "name": "Time",
+            "rmType": "DV_DATE_TIME",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Inspection of vagina']/time",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "ism_transition",
+            "name": "Ism_transition",
+            "rmType": "ISM_TRANSITION",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Inspection of vagina']/ism_transition",
+            "inContext": true
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Inspection of vagina']/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Inspection of vagina']/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-ACTION.procedure.v1,'Inspection of vagina']/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "category",
+        "rmType": "DV_CODED_TEXT",
+        "nodeId": "",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/category",
+        "inputs": [
+          {
+            "suffix": "code",
+            "type": "CODED_TEXT",
+            "list": [
+              {
+                "value": "433",
+                "label": "event",
+                "localizedLabels": {
+                  "en": "event"
+                }
+              }
+            ],
+            "terminology": "openehr"
+          }
+        ],
+        "inContext": true
+      },
+      {
+        "id": "language",
+        "name": "Language",
+        "rmType": "CODE_PHRASE",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/language",
+        "inContext": true
+      },
+      {
+        "id": "territory",
+        "name": "Territory",
+        "rmType": "CODE_PHRASE",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/territory",
+        "inContext": true
+      },
+      {
+        "id": "composer",
+        "name": "Composer",
+        "rmType": "PARTY_PROXY",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/composer",
+        "inputs": [
+          {
+            "suffix": "id",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "id_scheme",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "id_namespace",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "name",
+            "type": "TEXT"
+          }
+        ],
+        "inContext": true
+      }
+    ]
+  }
+}

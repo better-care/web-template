@@ -19,7 +19,7 @@ import care.better.openehr.rm.RmObject
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import com.marand.thinkehr.web.build.WebTemplateNode
+import care.better.platform.web.template.builder.model.WebTemplateNode
 
 /**
  * @author Primoz Delopst

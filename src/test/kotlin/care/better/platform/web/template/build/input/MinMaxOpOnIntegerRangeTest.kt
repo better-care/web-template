@@ -17,11 +17,11 @@ package care.better.platform.web.template.build.input
 
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
-import com.marand.thinkehr.web.build.WebTemplateNode
-import com.marand.thinkehr.web.build.input.range.WebTemplateRange
-import com.marand.thinkehr.web.build.input.range.WebTemplateValidationIntegerRange
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.builder.model.input.range.WebTemplateRange
+import care.better.platform.web.template.builder.model.input.range.WebTemplateValidationIntegerRange
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.io.IOException
@@ -36,9 +36,9 @@ class MinMaxOpOnIntegerRangeTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testOps() {
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/build/input/Testing Template N2.opt"), WebTemplateBuilderContext("en"))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/build/input/Testing Template N2.opt"), WebTemplateBuilderContext("en"))
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("test_encounter/testing/testing/count1")
-        val range: WebTemplateRange<*> = node.inputs[0].validation.range
+        val range: WebTemplateRange<*> = node.inputs[0].validation?.range!!
         assertThat(range).isInstanceOf(WebTemplateValidationIntegerRange::class.java)
         val integerRange: WebTemplateValidationIntegerRange = range as WebTemplateValidationIntegerRange
         assertThat(integerRange.minOp).isEqualTo(">=")

@@ -20,8 +20,8 @@ import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.google.common.collect.ImmutableList
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
@@ -38,7 +38,7 @@ class ParentTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testConvertToFlat() {
         val template = getTemplate("/convert/templates/RES Primary Hip Arthroplasty Report.xml")
-        val webTemplate: WebTemplate = WTBuilder.build(template, WebTemplateBuilderContext("en", ImmutableList.of("en")))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", ImmutableList.of("en")))
 
         val context = ConversionContext.create().withLanguage("pt").withTerritory("US").withComposerName("Compoeser").build()
 

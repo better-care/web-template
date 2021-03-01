@@ -17,8 +17,8 @@ package care.better.platform.web.template.build
 
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
-import com.marand.thinkehr.web.build.WebTemplateNode
-import com.marand.thinkehr.web.build.input.WebTemplateCodedValue
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.builder.model.input.WebTemplateCodedValue
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.io.IOException
@@ -64,7 +64,7 @@ class TermBindingsTest : AbstractWebTemplateTest() {
     fun testTermBindingMissing() {
         val webTemplate: WebTemplate = getWebTemplate("/build/KorayClinical3.opt")
         val node: WebTemplateNode = webTemplate.findWebTemplateNodeByAqlPath("/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/data[at0001]/events[at0006]/state[at0007]/items[openEHR-EHR-CLUSTER.level_of_exertion.v1]/items[at0009]/value")
-        val codedValues: List<WebTemplateCodedValue> = node.input.list
+        val codedValues: List<WebTemplateCodedValue> = node.getInput()?.list ?: emptyList()
         assertThat(codedValues[0].termBindings).hasSize(1)
         assertThat(codedValues[0].termBindings["SNOMED-CT"]?.terminologyId).isEqualTo("SNOMED-CT")
         assertThat(codedValues[0].termBindings["SNOMED-CT"]?.value).isEqualTo("128975004")

@@ -23,7 +23,7 @@ import care.better.platform.utils.exception.RmClassCastException
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.converter.FromRawConversion
 import care.better.platform.web.template.converter.exceptions.ConversionException
-import com.marand.thinkehr.web.build.WebTemplateNode
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.common.Locatable
 import org.openehr.rm.composition.Composition
 import org.openehr.rm.datatypes.DataValue
@@ -154,7 +154,7 @@ internal abstract class AbstractRawToFlatConverter<T> {
      */
     private fun mapOmittedRmObjects(webTemplateNode: WebTemplateNode, rmObjects: List<RmObject>, webTemplatePath: String) {
         rmObjects.forEachIndexed { index, rmObject ->
-            mapRmObject(webTemplateNode, rmObject, "$webTemplatePath${if (webTemplateNode.isRepeating) ":$index" else ""}")
+            mapRmObject(webTemplateNode, rmObject, "$webTemplatePath${if (webTemplateNode.isRepeating()) ":$index" else ""}")
         }
     }
 
@@ -167,7 +167,7 @@ internal abstract class AbstractRawToFlatConverter<T> {
      */
     private fun mapRmObjects(webTemplateNode: WebTemplateNode, rmObjects: List<RmObject>, webTemplatePath: String) {
         rmObjects.forEachIndexed { index, rmObject ->
-            map(webTemplateNode, rmObject, "$webTemplatePath${if (webTemplateNode.isRepeating) ":$index" else ""}")
+            map(webTemplateNode, rmObject, "$webTemplatePath${if (webTemplateNode.isRepeating()) ":$index" else ""}")
         }
     }
 
@@ -224,7 +224,7 @@ internal abstract class AbstractRawToFlatConverter<T> {
      * @return [Boolean] indicating if RM object in RAW format was created for [DvCodedText] with "|other" attribute
      */
     private fun isCodedTextForOtherAttribute(rmObject: RmObject, rmClass: Class<out RmObject>, webTemplateNode: WebTemplateNode?): Boolean =
-        rmClass == DvCodedText::class.java && rmObject is DvText && true == webTemplateNode?.hasInput() && true == webTemplateNode.input?.listOpen
+        rmClass == DvCodedText::class.java && rmObject is DvText && true == webTemplateNode?.hasInput() && true == webTemplateNode.getInput()?.listOpen
 
     /**
      * Returns [Sequence] of RM objects in RAW format that match with [AmNode].

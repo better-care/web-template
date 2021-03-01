@@ -17,12 +17,12 @@ package care.better.platform.web.template.abstraction
 
 import care.better.platform.jaxb.JaxbRegistry
 import care.better.platform.web.template.WebTemplate
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.common.collect.Lists
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
-import com.marand.thinkehr.web.build.WebTemplateNode
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.apache.commons.io.IOUtils
 import org.openehr.am.aom.Template
 import org.openehr.rm.composition.Composition
@@ -102,7 +102,7 @@ abstract class AbstractWebTemplateTest {
     @Throws(JAXBException::class, IOException::class)
     protected open fun getWebTemplate(templateFile: String): WebTemplate {
         val template = getTemplate(templateFile)
-        return WTBuilder.build(template, WebTemplateBuilderContext("en", Lists.newArrayList("en")))
+        return WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", Lists.newArrayList("en")))
     }
 
     /**
@@ -115,7 +115,7 @@ abstract class AbstractWebTemplateTest {
      */
     @Throws(JAXBException::class, IOException::class)
     protected open fun buildAndExport(templateFile: String, prefix: String, defaultLanguage: String, languages: Set<String>) {
-        val webTemplate = WTBuilder.build(getTemplate(templateFile), WebTemplateBuilderContext(defaultLanguage, languages))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate(templateFile), WebTemplateBuilderContext(defaultLanguage, languages))
         writeOut(prefix, webTemplate)
     }
 
@@ -140,7 +140,7 @@ abstract class AbstractWebTemplateTest {
      */
     protected open fun getJson(jsonFile: String): String =
             AbstractWebTemplateTest::class.java.getResourceAsStream(jsonFile).use { stream ->
-                objectMapper.writeValueAsString(objectMapper.readTree(IOUtils.toString(stream, StandardCharsets.UTF_8)));
+                objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(objectMapper.readTree(IOUtils.toString(stream, StandardCharsets.UTF_8)))
             }
 
     /**
@@ -153,7 +153,7 @@ abstract class AbstractWebTemplateTest {
      */
     protected open fun getJson(jsonFile: String, objectMapper: ObjectMapper): String =
             AbstractWebTemplateTest::class.java.getResourceAsStream(jsonFile).use { stream ->
-                objectMapper.writeValueAsString(objectMapper.readTree(IOUtils.toString(stream, StandardCharsets.UTF_8)));
+                objectMapper.writeValueAsString(objectMapper.readTree(IOUtils.toString(stream, StandardCharsets.UTF_8)))
             }
 
     protected open fun getWebTemplateNodes(webTemplateNode: WebTemplateNode, webTemplateNodePredicate: (WebTemplateNode) -> Boolean): List<WebTemplateNode> {

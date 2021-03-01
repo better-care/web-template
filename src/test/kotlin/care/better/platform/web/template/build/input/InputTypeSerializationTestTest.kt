@@ -19,8 +19,9 @@ import care.better.platform.template.AmNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.ObjectWriter
 import com.fasterxml.jackson.databind.SerializationFeature
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.input.*
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.input.*
+import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import org.joda.time.DateTime
 import org.joda.time.format.ISODateTimeFormat
 import org.junit.jupiter.api.Test
@@ -50,7 +51,7 @@ class InputTypeSerializationTestTest {
     @Test
     @Throws(IOException::class)
     fun testBoolean() {
-        val inputBuilder = BooleanWebTemplateInputBuilder()
+        val inputBuilder = BooleanWebTemplateInputBuilder
         val node = AmNode(null, "DV_BOOLEAN")
         write(inputBuilder.build(node, CBoolean(), webTemplateBuilderContext), 0)
     }
@@ -58,7 +59,7 @@ class InputTypeSerializationTestTest {
     @Test
     @Throws(IOException::class)
     fun testDate() {
-        val inputBuilder = DateWebTemplateInputBuilder()
+        val inputBuilder = DateWebTemplateInputBuilder
         val node = AmNode(null, "DV_DATE")
         val range = IntervalOfDate().apply {
             this.lower = ISODateTimeFormat.date().print(DateTime.now().minusYears(30))
@@ -74,7 +75,7 @@ class InputTypeSerializationTestTest {
     @Test
     @Throws(IOException::class)
     fun testDateTime() {
-        val inputBuilder = DateTimeWebTemplateInputBuilder()
+        val inputBuilder = DateTimeWebTemplateInputBuilder
         val node = AmNode(null, "DV_DATE_TIME")
 
         val range = IntervalOfDateTime().apply {
@@ -90,7 +91,7 @@ class InputTypeSerializationTestTest {
     @Test
     @Throws(IOException::class)
     fun testDecimal() {
-        val inputBuilder = DecimalWebTemplateInputBuilder()
+        val inputBuilder = DecimalWebTemplateInputBuilder
         val node = AmNode(null as AmNode?, "REAL")
         val range = IntervalOfReal().apply {
             this.lower = -1.1f
@@ -107,7 +108,7 @@ class InputTypeSerializationTestTest {
     @Test
     @Throws(IOException::class)
     fun testDuration() {
-        val inputBuilder = DurationWebTemplateInputBuilder()
+        val inputBuilder = DurationWebTemplateInputBuilder
         val node = AmNode(null as AmNode?, "DURATION")
         val intervalOfDuration = IntervalOfDuration().apply {
             this.lower = "P0Y"
@@ -123,7 +124,7 @@ class InputTypeSerializationTestTest {
     @Test
     @Throws(IOException::class)
     fun testInteger() {
-        val inputBuilder = DurationWebTemplateInputBuilder()
+        val inputBuilder = DurationWebTemplateInputBuilder
         val node = AmNode(null as AmNode?, "INTEGER")
         val intervalOfDuration = IntervalOfDuration().apply {
             this.lower = "P0Y"
@@ -139,7 +140,7 @@ class InputTypeSerializationTestTest {
     @Test
     @Throws(IOException::class)
     fun testQuantity() {
-        val inputBuilder = QuantityWebTemplateInputBuilder()
+        val inputBuilder = QuantityWebTemplateInputBuilder
         val node = AmNode(null as AmNode?, "RANGE")
         val firstRange = IntervalOfReal().apply {
             this.lower = -3.0f

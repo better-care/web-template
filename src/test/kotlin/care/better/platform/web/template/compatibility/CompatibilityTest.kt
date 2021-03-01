@@ -19,6 +19,9 @@ import care.better.platform.jaxb.JaxbRegistry
 import care.better.platform.json.jackson.better.BetterObjectMapper
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.mapper.WebTemplateObjectMapper
 import care.better.platform.web.template.converter.FromRawConversion
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.annotation.JsonInclude
@@ -30,8 +33,6 @@ import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.datatype.joda.JodaModule
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
@@ -98,7 +99,7 @@ class CompatibilityTest : AbstractWebTemplateTest() {
     @Test
     fun testCompatibilityFromServer() {
         serverResources.forEach {
-            val webTemplate: WebTemplate = WTBuilder.build(
+            val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(
                 getTemplate("/compatibility/templates/${it.name}.xml"),
                 WebTemplateBuilderContext(it.language, it.languages))
 
@@ -122,7 +123,7 @@ class CompatibilityTest : AbstractWebTemplateTest() {
     @Test
     fun testCompatibilityFromInput() {
         inputResources.forEach {
-            val webTemplate: WebTemplate = WTBuilder.build(
+            val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(
                 getTemplate("/compatibility/templates/${it.name}.xml"),
                 WebTemplateBuilderContext(it.language, it.languages))
 
@@ -155,6 +156,28 @@ class CompatibilityTest : AbstractWebTemplateTest() {
                     testRawToStructured(webTemplate, convertedComposition, structuredComposition)
                 }
             }
+        }
+    }
+
+    @Test
+    fun testWebTemplateCompatibility() {
+        serverResources.forEach {
+            val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(
+                getTemplate("/compatibility/templates/${it.name}.xml"),
+                WebTemplateBuilderContext("en", setOf("en")))
+
+            assertThat(WebTemplateObjectMapper.getWriter(true).writeValueAsString(webTemplate))
+                .isEqualTo(getJson("/compatibility/web-templates/${it.name}.json"))
+
+        }
+
+        inputResources.forEach {
+            val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(
+                getTemplate("/compatibility/templates/${it.name}.xml"),
+                WebTemplateBuilderContext("en", setOf("en")))
+
+            assertThat(WebTemplateObjectMapper.getWriter(true).writeValueAsString(webTemplate))
+                .isEqualTo(getJson("/compatibility/web-templates/${it.name}.json"))
         }
     }
 

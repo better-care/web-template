@@ -20,11 +20,11 @@ import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.google.common.collect.ImmutableList
 import com.google.common.collect.ImmutableMap
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
-import com.marand.thinkehr.web.build.WebTemplateNode
-import com.marand.thinkehr.web.build.input.CareflowStepWebTemplateCodedValue
-import com.marand.thinkehr.web.build.input.WebTemplateCodedValue
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.builder.model.input.CareflowStepWebTemplateCodedValue
+import care.better.platform.web.template.builder.model.input.WebTemplateCodedValue
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Action
@@ -42,7 +42,7 @@ class IsmTransitionTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCareflowStepAqlPath() {
         val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("medication_order/medication_detail/medication_action/ism_transition/careflow_step")
         assertThat(node.path).contains("/ism_transition/careflow_step")
     }
@@ -51,7 +51,7 @@ class IsmTransitionTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCareflowStepCurrentState() {
         val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
 
         val nodes = getWebTemplateNodes(webTemplate.tree) { it.jsonId == "careflow_step" }
         assertThat(nodes).hasSize(1)
@@ -62,7 +62,7 @@ class IsmTransitionTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCurrentState() {
         val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
 
         val nodes = getWebTemplateNodes(webTemplate.tree) { it.jsonId == "current_state" }
         val inputs = nodes[0].inputs[0].list
@@ -75,7 +75,7 @@ class IsmTransitionTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCareflowStepWT() {
         val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
 
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("medication_order/medication_detail/medication_action/ism_transition/careflow_step")
 
@@ -91,7 +91,7 @@ class IsmTransitionTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCareflowStepBuilder() {
         val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.of<String, Any>(
@@ -116,7 +116,7 @@ class IsmTransitionTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCareflowStepBuilderMultipleCurrentState() {
         val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.of<String, Any>(
@@ -141,7 +141,7 @@ class IsmTransitionTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCareflowStepBuilderMultipleCurrentStateOverride() {
         val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.of<String, Any>(

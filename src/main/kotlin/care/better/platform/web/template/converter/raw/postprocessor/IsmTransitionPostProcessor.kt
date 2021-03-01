@@ -20,7 +20,7 @@ import care.better.platform.template.AmUtils
 import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.extensions.createFromOpenEhrTerminology
-import com.marand.thinkehr.web.build.WebTemplateUtils
+import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils
 import org.openehr.am.aom.CCodePhrase
 import org.openehr.rm.composition.IsmTransition
 import org.openehr.rm.datatypes.DvCodedText
@@ -74,7 +74,7 @@ internal object IsmTransitionPostProcessor : PostProcessor<IsmTransition> {
         return DvCodedText.create(
             terminologyId,
             currentStateCCodePhrase.codeList[0],
-            WebTemplateUtils.getTermText(amNode, terminologyId, code, conversionContext.language))
+            WebTemplateConversionUtils.getTermText(amNode, terminologyId, code, conversionContext.language)!!)
     }
 
     override fun getType(): Class<*> = supportedClass

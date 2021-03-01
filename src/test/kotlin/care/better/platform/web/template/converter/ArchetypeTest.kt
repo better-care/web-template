@@ -21,8 +21,8 @@ import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.structured.exceptions.PathFormatException
 import com.fasterxml.jackson.core.type.TypeReference
 import com.google.common.collect.ImmutableList
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
@@ -40,7 +40,7 @@ class ArchetypeTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testOrderedFailed() {
         val context = ConversionContext.create().withLanguage("en").withTerritory("IE").withComposerName("composer").build()
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate( "/convert/templates/IDCR - Cancer MDT Output Report.v0 ordered.xml"), WebTemplateBuilderContext("en"))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate( "/convert/templates/IDCR - Cancer MDT Output Report.v0 ordered.xml"), WebTemplateBuilderContext("en"))
         val flatMap: Map<String, Any?> = getObjectMapper().readValue(getJson("/convert/compositions/Cancer Output Report(1).json"), object : TypeReference<Map<String, Any?>>() {})
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(flatMap, context) }
@@ -52,7 +52,7 @@ class ArchetypeTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testOrderedOK() {
         val context = ConversionContext.create().withLanguage("en").withTerritory("IE").withComposerName("composer").build()
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate( "/convert/templates/IDCR - Cancer MDT Output Report.v0 ordered.xml"), WebTemplateBuilderContext("en"))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate( "/convert/templates/IDCR - Cancer MDT Output Report.v0 ordered.xml"), WebTemplateBuilderContext("en"))
         val flatMap: Map<String, Any?> = getObjectMapper().readValue(getJson("/convert/compositions/Cancer Output Report(2).json"), object : TypeReference<Map<String, Any?>>() {})
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(flatMap, context)
@@ -63,7 +63,7 @@ class ArchetypeTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testNoArchetype() {
         val composition = getComposition("/convert/compositions/privantis.xml")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/DRS Fundus Severity for od form.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en")))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/DRS Fundus Severity for od form.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en")))
         val flatMap: Map<String, Any?> = webTemplate.convertFromRawToFlat(composition, FromRawConversion.create())
         assertThat(flatMap.size).isGreaterThan(2)
     }

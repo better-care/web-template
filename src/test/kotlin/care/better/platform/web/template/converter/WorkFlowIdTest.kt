@@ -19,8 +19,8 @@ import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.google.common.collect.ImmutableMap
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.openehr.base.basetypes.GenericId
@@ -42,7 +42,7 @@ class WorkFlowIdTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testWorkflowIdDirect() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val dateTime = ZonedDateTime.of(2015, 1, 1, 10, 31, 16, 0, ZoneId.systemDefault()).toOffsetDateTime()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
@@ -73,7 +73,7 @@ class WorkFlowIdTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testWorkflowIdInCtx() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")
@@ -104,7 +104,7 @@ class WorkFlowIdTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testWorkflowIdInCtxAndDirect() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")

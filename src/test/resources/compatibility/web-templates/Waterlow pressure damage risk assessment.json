@@ -1,0 +1,3531 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "templateId": "Waterlow pressure damage risk assessment",
+  "version": "2.3",
+  "defaultLanguage": "en",
+  "languages": [
+    "en"
+  ],
+  "tree": {
+    "id": "waterlow_pressure_damage_risk_assessment",
+    "name": "Waterlow pressure damage risk assessment",
+    "localizedName": "Waterlow pressure damage risk assessment",
+    "rmType": "COMPOSITION",
+    "nodeId": "openEHR-EHR-COMPOSITION.encounter.v1",
+    "min": 1,
+    "max": 1,
+    "localizedNames": {
+      "en": "Waterlow pressure damage risk assessment"
+    },
+    "localizedDescriptions": {
+      "en": "Interaction, contact or care event between a subject of care and healthcare provider(s)."
+    },
+    "aqlPath": "",
+    "children": [
+      {
+        "id": "context",
+        "rmType": "EVENT_CONTEXT",
+        "nodeId": "",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/context",
+        "children": [
+          {
+            "id": "xds_metadata",
+            "name": "XDS Metadata",
+            "localizedName": "XDS Metadata",
+            "rmType": "CLUSTER",
+            "nodeId": "openEHR-EHR-CLUSTER.xds_metadata.v0",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "XDS Metadata"
+            },
+            "localizedDescriptions": {
+              "en": "Additional composition metadata aligned with IHE-XDS which is not already available from the Reference Model COMPOSITION class."
+            },
+            "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]",
+            "children": [
+              {
+                "id": "author_specialty",
+                "name": "Author specialty",
+                "localizedName": "Author specialty",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0001",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Author specialty"
+                },
+                "localizedDescriptions": {
+                  "en": "The speciality of the author/composer of the document."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0001]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "class_code",
+                "name": "Class code",
+                "localizedName": "Class code",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0002",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Class code"
+                },
+                "localizedDescriptions": {
+                  "en": "A high-level document class code, normally selected from a valueset provided by the IHE-XDS Affinity Domain."
+                },
+                "annotations": {
+                  "comment": "For example: Report, Summary, Images, Plan, Patient Preferences, Workflow.\r\n                                        These codes are specific to an XDS Affinity Domain.\n                                    "
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0002]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "document_type",
+                "name": "Document type",
+                "localizedName": "Document type",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0003",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Document type"
+                },
+                "localizedDescriptions": {
+                  "en": "The code specifying the precise type of document from the user perspective. Normally selected from a valueset provided by the local IHE-XDS Affinity Domain or national standard."
+                },
+                "annotations": {
+                  "comment": "for example: Pulmonary History and Physical, Discharge Summary, Ultrasound Report.\r\n                                        These codes are specific to an XDS Affinity Domain.\n                                    "
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0003]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT",
+                    "list": [
+                      {
+                        "value": "SNOMED-CT::445302003::Assessment using Waterlow pressure ulcer risk scale (procedure)",
+                        "label": "SNOMED-CT::445302003::Assessment using Waterlow pressure ulcer risk scale (procedure)"
+                      }
+                    ],
+                    "listOpen": false,
+                    "defaultValue": "SNOMED-CT::445302003::Assessment using Waterlow pressure ulcer risk scale (procedure)"
+                  }
+                ]
+              },
+              {
+                "id": "confidentiality_code",
+                "name": "Confidentiality code",
+                "localizedName": "Confidentiality code",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0004",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Confidentiality code"
+                },
+                "localizedDescriptions": {
+                  "en": "A term specifying the level of confidentiality of the XDS Document."
+                },
+                "annotations": {
+                  "comment": "Coded text is preferred, normally specific to an XDS Affinity Domain."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0004]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "health_care_facility_type",
+                "name": "Health care facility type",
+                "localizedName": "Health care facility type",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0007",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Health care facility type"
+                },
+                "localizedDescriptions": {
+                  "en": "A term defining the healthcare facility type."
+                },
+                "annotations": {
+                  "comment": "Coded text is preferred. The codes are specific to an XDS Affinity Domain."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0007]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "practice_setting_code",
+                "name": "Practice setting code",
+                "localizedName": "Practice setting code",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0009",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Practice setting code"
+                },
+                "localizedDescriptions": {
+                  "en": "The code specifying the clinical specialty where the act that resulted in the document was performed."
+                },
+                "annotations": {
+                  "comment": "For example: Family Practice, Laboratory, Radiology.\r\n                                        Coded text is preferred, normally specific to an XDS Affinity Domain.\n                                    "
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0009]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "event_code",
+                "name": "Event code",
+                "localizedName": "Event code",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0011",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Event code"
+                },
+                "localizedDescriptions": {
+                  "en": "This list of codes represents the main clinical acts."
+                },
+                "annotations": {
+                  "comment": "For example: Colonoscopy or appendicectomy."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0011]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "document_media",
+                "name": "Document_media",
+                "localizedName": "Document_media",
+                "rmType": "DV_MULTIMEDIA",
+                "nodeId": "at0010",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Document_media"
+                },
+                "localizedDescriptions": {
+                  "en": "Additional metadata about the document itself, including size, url."
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.xds_metadata.v0]/items[at0010]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "encounter_context",
+            "name": "Encounter Context",
+            "localizedName": "Encounter Context",
+            "rmType": "CLUSTER",
+            "nodeId": "openEHR-EHR-CLUSTER.encounter_context.v0",
+            "min": 0,
+            "max": 1,
+            "localizedNames": {
+              "en": "Encounter Context"
+            },
+            "localizedDescriptions": {
+              "en": "Provides extra information about the encounter context, regarding the internal cases used at Pathfinder for encounter types and reasons, along with an appointment and encounter id. Terminology should be loaded from the Think!EHR terminology adapter."
+            },
+            "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.encounter_context.v0]",
+            "children": [
+              {
+                "id": "encounter_id",
+                "name": "Encounter id",
+                "localizedName": "Encounter id",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0002",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Encounter id"
+                },
+                "localizedDescriptions": {
+                  "en": "Unique identifier for each encounter process."
+                },
+                "annotations": {
+                  "FHIR_mapping": "Encounter.identifier",
+                  "HL7v2_mapping": "PV1.19"
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.encounter_context.v0]/items[at0002]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "encounter_type",
+                "name": "Encounter type",
+                "localizedName": "Encounter type",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0003",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Encounter type"
+                },
+                "localizedDescriptions": {
+                  "en": "Type of encounter, should be provided by terminology server."
+                },
+                "annotations": {
+                  "FHIR_mapping": "Encounter.type",
+                  "HL7v2_mapping": "PV1.4 / PV1.18"
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.encounter_context.v0]/items[at0003]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "encounter_reason",
+                "name": "Encounter reason",
+                "localizedName": "Encounter reason",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0004",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Encounter reason"
+                },
+                "localizedDescriptions": {
+                  "en": "Reason for encounter, should be provided by terminology server."
+                },
+                "annotations": {
+                  "FHIR_mapping": "Encounter.reason",
+                  "HL7v2_mapping": "EVN.4 / PV2.3"
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.encounter_context.v0]/items[at0004]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "appointment_id",
+                "name": "Appointment id",
+                "localizedName": "Appointment id",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0001",
+                "min": 0,
+                "max": -1,
+                "localizedNames": {
+                  "en": "Appointment id"
+                },
+                "localizedDescriptions": {
+                  "en": "Unique identifier for each appointment process."
+                },
+                "annotations": {
+                  "FHIR_mapping": "Appointment.identifier",
+                  "HL7v2_mapping": "SCH-1 / SCH-2"
+                },
+                "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.encounter_context.v0]/items[at0001]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "start_time",
+            "name": "Start_time",
+            "rmType": "DV_DATE_TIME",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/context/start_time",
+            "inputs": [
+              {
+                "type": "DATETIME"
+              }
+            ],
+            "inContext": true
+          },
+          {
+            "id": "setting",
+            "name": "Setting",
+            "rmType": "DV_CODED_TEXT",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/context/setting",
+            "inputs": [
+              {
+                "suffix": "code",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "value",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "waterlow_score",
+        "name": "Waterlow score",
+        "localizedName": "Waterlow score",
+        "rmType": "OBSERVATION",
+        "nodeId": "openEHR-EHR-OBSERVATION.waterlow_score.v0",
+        "min": 0,
+        "max": -1,
+        "localizedNames": {
+          "en": "Waterlow score"
+        },
+        "localizedDescriptions": {
+          "en": "The Waterlow Score, Pressure Ulcer Risk Assessment Tool."
+        },
+        "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]",
+        "children": [
+          {
+            "id": "any_point_in_time_event",
+            "name": "Any point in time event",
+            "localizedName": "Any point in time event",
+            "rmType": "POINT_EVENT",
+            "nodeId": "at0002",
+            "min": 0,
+            "max": 8,
+            "localizedNames": {
+              "en": "Any point in time event"
+            },
+            "localizedDescriptions": {
+              "en": "Unspecified point in time event which may be explicitly defined in a template or at run-time."
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]",
+            "children": [
+              {
+                "id": "waterlow_score",
+                "name": "Waterlow score",
+                "localizedName": "Waterlow score",
+                "rmType": "DV_COUNT",
+                "nodeId": "at0014",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Waterlow score"
+                },
+                "localizedDescriptions": {
+                  "en": "The total summed score of all recorded individual risks."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0014]/value",
+                "inputs": [
+                  {
+                    "type": "INTEGER",
+                    "validation": {
+                      "range": {
+                        "minOp": ">=",
+                        "min": 1
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "overall_risk_grade",
+                "name": "Overall risk grade",
+                "localizedName": "Overall risk grade",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0015",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Overall risk grade"
+                },
+                "localizedDescriptions": {
+                  "en": "Overall Waterlow Score."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0015]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0161",
+                        "label": "At risk",
+                        "localizedLabels": {
+                          "en": "At risk"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0162",
+                        "label": "High risk",
+                        "localizedLabels": {
+                          "en": "High risk"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      },
+                      {
+                        "value": "at0163",
+                        "label": "Very high risk",
+                        "localizedLabels": {
+                          "en": "Very high risk"
+                        },
+                        "localizedDescriptions": {
+                          "en": "*"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "comment",
+                "name": "Comment",
+                "localizedName": "Comment",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0019",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Comment"
+                },
+                "localizedDescriptions": {
+                  "en": "Additional narrative comment about the Score."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0019]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "sex",
+                "name": "Sex",
+                "localizedName": "Sex",
+                "rmType": "DV_ORDINAL",
+                "nodeId": "at0008",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Sex"
+                },
+                "localizedDescriptions": {
+                  "en": "Risk conferred by the sex of the subject."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0008]/value",
+                "inputs": [
+                  {
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0028",
+                        "label": "Male",
+                        "localizedLabels": {
+                          "en": "Male"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject is male."
+                        },
+                        "ordinal": 1
+                      },
+                      {
+                        "value": "at0029",
+                        "label": "Female",
+                        "localizedLabels": {
+                          "en": "Female"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject is female."
+                        },
+                        "ordinal": 2
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "age_group",
+                "name": "Age group",
+                "localizedName": "Age group",
+                "rmType": "DV_ORDINAL",
+                "nodeId": "at0009",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Age group"
+                },
+                "localizedDescriptions": {
+                  "en": "Risk conferred by the age range of the subject."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0009]/value",
+                "inputs": [
+                  {
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0134",
+                        "label": "Less than 14 years",
+                        "localizedLabels": {
+                          "en": "Less than 14 years"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject is under 14 years old."
+                        },
+                        "ordinal": 0
+                      },
+                      {
+                        "value": "at0030",
+                        "label": "14-49",
+                        "localizedLabels": {
+                          "en": "14-49"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject is aged between 14-49."
+                        },
+                        "ordinal": 1
+                      },
+                      {
+                        "value": "at0031",
+                        "label": "50-64",
+                        "localizedLabels": {
+                          "en": "50-64"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject is aged between 50-64."
+                        },
+                        "ordinal": 2
+                      },
+                      {
+                        "value": "at0032",
+                        "label": "65-74",
+                        "localizedLabels": {
+                          "en": "65-74"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject is aged between 65-74."
+                        },
+                        "ordinal": 3
+                      },
+                      {
+                        "value": "at0033",
+                        "label": "75-80",
+                        "localizedLabels": {
+                          "en": "75-80"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject is aged between 75-80."
+                        },
+                        "ordinal": 4
+                      },
+                      {
+                        "value": "at0034",
+                        "label": "81+",
+                        "localizedLabels": {
+                          "en": "81+"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject is aged over 80."
+                        },
+                        "ordinal": 5
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "build_weight_for_height",
+                "name": "Build/weight for height",
+                "localizedName": "Build/weight for height",
+                "rmType": "DV_ORDINAL",
+                "nodeId": "at0004",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Build/weight for height"
+                },
+                "localizedDescriptions": {
+                  "en": "Risk conferred by the subject's build, based on a BMI calculation."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value",
+                "inputs": [
+                  {
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0020",
+                        "label": "Average",
+                        "localizedLabels": {
+                          "en": "Average"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject's build is average : BMI 20-24.9 ."
+                        },
+                        "ordinal": 0
+                      },
+                      {
+                        "value": "at0021",
+                        "label": "Above average",
+                        "localizedLabels": {
+                          "en": "Above average"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject's build is above average : BMI 25-29.9 ."
+                        },
+                        "ordinal": 1
+                      },
+                      {
+                        "value": "at0022",
+                        "label": "Obese",
+                        "localizedLabels": {
+                          "en": "Obese"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject is obese : BMI over 30 ."
+                        },
+                        "ordinal": 2
+                      },
+                      {
+                        "value": "at0023",
+                        "label": "Below average",
+                        "localizedLabels": {
+                          "en": "Below average"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject's build is below average : BMI below 20 ."
+                        },
+                        "ordinal": 3
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "continence",
+                "name": "Continence",
+                "localizedName": "Continence",
+                "rmType": "DV_ORDINAL",
+                "nodeId": "at0005",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Continence"
+                },
+                "localizedDescriptions": {
+                  "en": "Risk conferred by the subject's degree of continence."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0005]/value",
+                "inputs": [
+                  {
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0024",
+                        "label": "Complete / catheterised",
+                        "localizedLabels": {
+                          "en": "Complete / catheterised"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject is completely continent or catheterised."
+                        },
+                        "ordinal": 0
+                      },
+                      {
+                        "value": "at0025",
+                        "label": "Urinary incontinence",
+                        "localizedLabels": {
+                          "en": "Urinary incontinence"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject is incontinent of urine."
+                        },
+                        "ordinal": 1
+                      },
+                      {
+                        "value": "at0026",
+                        "label": "Faecal incontinence",
+                        "localizedLabels": {
+                          "en": "Faecal incontinence"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject is incontinent of faeces."
+                        },
+                        "ordinal": 2
+                      },
+                      {
+                        "value": "at0027",
+                        "label": "Urinary and faecal incontinence",
+                        "localizedLabels": {
+                          "en": "Urinary and faecal incontinence"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject is incontinent of urine and faeces."
+                        },
+                        "ordinal": 3
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "mobility",
+                "name": "Mobility",
+                "localizedName": "Mobility",
+                "rmType": "DV_ORDINAL",
+                "nodeId": "at0007",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Mobility"
+                },
+                "localizedDescriptions": {
+                  "en": "Risk conferred by the mobility level of the subject."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0007]/value",
+                "inputs": [
+                  {
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0035",
+                        "label": "Fully mobile",
+                        "localizedLabels": {
+                          "en": "Fully mobile"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject is fully mobile."
+                        },
+                        "ordinal": 0
+                      },
+                      {
+                        "value": "at0036",
+                        "label": "Restless/ fidgety",
+                        "localizedLabels": {
+                          "en": "Restless/ fidgety"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject is restless and fidgety."
+                        },
+                        "ordinal": 1
+                      },
+                      {
+                        "value": "at0037",
+                        "label": "Apathetic",
+                        "localizedLabels": {
+                          "en": "Apathetic"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject is apathetic."
+                        },
+                        "ordinal": 2
+                      },
+                      {
+                        "value": "at0038",
+                        "label": "Restricted",
+                        "localizedLabels": {
+                          "en": "Restricted"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject's mobility is restricted."
+                        },
+                        "ordinal": 3
+                      },
+                      {
+                        "value": "at0039",
+                        "label": "Bedbound",
+                        "localizedLabels": {
+                          "en": "Bedbound"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject is confined to bed e.g by traction."
+                        },
+                        "ordinal": 4
+                      },
+                      {
+                        "value": "at0040",
+                        "label": "Chairbound/Wheelchair",
+                        "localizedLabels": {
+                          "en": "Chairbound/Wheelchair"
+                        },
+                        "localizedDescriptions": {
+                          "en": "The subject is confined to a chair or wheelchair."
+                        },
+                        "ordinal": 5
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "nutritional_risk",
+                "name": "Nutritional risk",
+                "localizedName": "Nutritional risk",
+                "rmType": "CLUSTER",
+                "nodeId": "at0129",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Nutritional risk"
+                },
+                "localizedDescriptions": {
+                  "en": "An estimate of nutritional risk based on the MST nutritional score but can make use of another compatible nutritional score."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0129]",
+                "children": [
+                  {
+                    "id": "weight_loss",
+                    "name": "Weight loss",
+                    "localizedName": "Weight loss",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0054",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Weight loss"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Risk conferred by recent weight loss."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0129]/items[at0054]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0131",
+                            "label": "No recent weight loss",
+                            "localizedLabels": {
+                              "en": "No recent weight loss"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has not recently lost weight."
+                            },
+                            "ordinal": 0
+                          },
+                          {
+                            "value": "at0055",
+                            "label": "0.5-5kg",
+                            "localizedLabels": {
+                              "en": "0.5-5kg"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has recently lost 0.5-5kg in weight."
+                            },
+                            "ordinal": 1
+                          },
+                          {
+                            "value": "at0056",
+                            "label": "5-10kg (or Amount unsure)",
+                            "localizedLabels": {
+                              "en": "5-10kg (or Amount unsure)"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has recently lost 5-10kg in weight."
+                            },
+                            "ordinal": 2
+                          },
+                          {
+                            "value": "at0057",
+                            "label": "10-15kg",
+                            "localizedLabels": {
+                              "en": "10-15kg"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has recently lost 10-15kg in weight or the amount of weight loss is unknown."
+                            },
+                            "ordinal": 3
+                          },
+                          {
+                            "value": "at0058",
+                            "label": "Over 15kg",
+                            "localizedLabels": {
+                              "en": "Over 15kg"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has recently lost over 15kg in weight."
+                            },
+                            "ordinal": 4
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "appetite",
+                    "name": "Appetite",
+                    "localizedName": "Appetite",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0044",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Appetite"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Risk conferred by the subject's appetite and eating habit."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0129]/items[at0044]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0045",
+                            "label": "Average",
+                            "localizedLabels": {
+                              "en": "Average"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject is eating normally and has a normal appetite."
+                            },
+                            "ordinal": 0
+                          },
+                          {
+                            "value": "at0046",
+                            "label": "Poor",
+                            "localizedLabels": {
+                              "en": "Poor"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject is eating poorly or has a poor appetite."
+                            },
+                            "ordinal": 1
+                          },
+                          {
+                            "value": "at0166",
+                            "label": "NG tube/fluids only",
+                            "localizedLabels": {
+                              "en": "NG tube/fluids only"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has an NG tube or is consuming only fluids."
+                            },
+                            "ordinal": 2
+                          },
+                          {
+                            "value": "at0167",
+                            "label": "NBM/anorexic",
+                            "localizedLabels": {
+                              "en": "NBM/anorexic"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject is Nil By Mouth or is Anorexic."
+                            },
+                            "ordinal": 3
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "nutritional_score",
+                    "name": "Nutritional score",
+                    "localizedName": "Nutritional score",
+                    "rmType": "DV_COUNT",
+                    "nodeId": "at0130",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Nutritional score"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The nutritional score total, derived from Appetite and Weight loss scores or recorded directly from another compatible nutritional scoring system."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0129]/items[at0130]/value",
+                    "inputs": [
+                      {
+                        "type": "INTEGER",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 0,
+                            "maxOp": "<=",
+                            "max": 5
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "skin_type_visual_risk_areas",
+                "name": "Skin type visual risk areas",
+                "localizedName": "Skin type visual risk areas",
+                "rmType": "CLUSTER",
+                "nodeId": "at0066",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Skin type visual risk areas"
+                },
+                "localizedDescriptions": {
+                  "en": "Category of risks assessed by skin inspection."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0066]",
+                "children": [
+                  {
+                    "id": "healthy",
+                    "name": "Healthy",
+                    "localizedName": "Healthy",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0116",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Healthy"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The skin appears healthy."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0066]/items[at0116]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0116",
+                            "label": "Healthy",
+                            "localizedLabels": {
+                              "en": "Healthy"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The skin appears healthy."
+                            },
+                            "ordinal": 0
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "tissue-paper",
+                    "name": "Tissue-paper",
+                    "localizedName": "Tissue-paper",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0117",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Tissue-paper"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The skin has a tissue-paper quality."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0066]/items[at0117]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0117",
+                            "label": "Tissue-paper",
+                            "localizedLabels": {
+                              "en": "Tissue-paper"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The skin has a tissue-paper quality."
+                            },
+                            "ordinal": 1
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "dry",
+                    "name": "Dry",
+                    "localizedName": "Dry",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0118",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Dry"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The skin is dry."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0066]/items[at0118]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0118",
+                            "label": "Dry",
+                            "localizedLabels": {
+                              "en": "Dry"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The skin is dry."
+                            },
+                            "ordinal": 1
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "oedematous",
+                    "name": "Oedematous",
+                    "localizedName": "Oedematous",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0119",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Oedematous"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The skin is oedematous."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0066]/items[at0119]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0119",
+                            "label": "Oedematous",
+                            "localizedLabels": {
+                              "en": "Oedematous"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The skin is oedematous."
+                            },
+                            "ordinal": 1
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "clammy_pyrexia",
+                    "name": "Clammy, pyrexia",
+                    "localizedName": "Clammy, pyrexia",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0120",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Clammy, pyrexia"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The aptient appears clammy or pyrexic."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0066]/items[at0120]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0120",
+                            "label": "Clammy, pyrexia",
+                            "localizedLabels": {
+                              "en": "Clammy, pyrexia"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The aptient appears clammy or pyrexic."
+                            },
+                            "ordinal": 1
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "discoloured_-_category_1",
+                    "name": "Discoloured - Category 1",
+                    "localizedName": "Discoloured - Category 1",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0121",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Discoloured - Category 1"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The skin is dicoloured - Pressure sore - Grade 1."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0066]/items[at0121]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0121",
+                            "label": "Discoloured - Category 1",
+                            "localizedLabels": {
+                              "en": "Discoloured - Category 1"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The skin is dicoloured - Pressure sore - Grade 1."
+                            },
+                            "ordinal": 2
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "pressure_ulcer_-_stage_2-4",
+                    "name": "Pressure ulcer - Stage 2-4",
+                    "localizedName": "Pressure ulcer - Stage 2-4",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0122",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Pressure ulcer - Stage 2-4"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The skin has a frank pressure sore - Stage 2-4."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0066]/items[at0122]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0122",
+                            "label": "Pressure ulcer - Stage 2-4",
+                            "localizedLabels": {
+                              "en": "Pressure ulcer - Stage 2-4"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The skin has a frank pressure sore - Stage 2-4."
+                            },
+                            "ordinal": 2
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "broken_spots_-_category_2-4",
+                    "name": "Broken spots - Category 2-4",
+                    "localizedName": "Broken spots - Category 2-4",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0164",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Broken spots - Category 2-4"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0066]/items[at0164]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0165",
+                            "label": "Broken spots - Category 2-4",
+                            "localizedLabels": {
+                              "en": "Broken spots - Category 2-4"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            },
+                            "ordinal": 3
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "tissue_malnutrition",
+                "name": "Tissue malnutrition",
+                "localizedName": "Tissue malnutrition",
+                "rmType": "CLUSTER",
+                "nodeId": "at0070",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Tissue malnutrition"
+                },
+                "localizedDescriptions": {
+                  "en": "Category of risks conferred by tissue malnutrition."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0070]",
+                "children": [
+                  {
+                    "id": "terminal_cachexia",
+                    "name": "Terminal cachexia",
+                    "localizedName": "Terminal cachexia",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0123",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Terminal cachexia"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The subject is terminally-ill and shows significant weight-loss."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0070]/items[at0123]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0123",
+                            "label": "Terminal cachexia",
+                            "localizedLabels": {
+                              "en": "Terminal cachexia"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject is terminally-ill and shows significant weight-loss."
+                            },
+                            "ordinal": 8
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "single_organ_failure_respiratory_renal_cardiac_liver",
+                    "name": "Single organ failure (respiratory, renal, cardiac, liver)",
+                    "localizedName": "Single organ failure (respiratory, renal, cardiac, liver)",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0124",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Single organ failure (respiratory, renal, cardiac, liver)"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The patent has single organ/system failure e.g. respiratory, cardiac, liver, renal."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0070]/items[at0124]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0124",
+                            "label": "Single organ failure (respiratory, renal, cardiac, liver)",
+                            "localizedLabels": {
+                              "en": "Single organ failure (respiratory, renal, cardiac, liver)"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The patent has single organ/system failure e.g. respiratory, cardiac, liver, renal."
+                            },
+                            "ordinal": 5
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "multiple_organ_failure",
+                    "name": "Multiple organ failure",
+                    "localizedName": "Multiple organ failure",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0125",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Multiple organ failure"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The subject has multiple organ/system failure."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0070]/items[at0125]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0125",
+                            "label": "Multiple organ failure",
+                            "localizedLabels": {
+                              "en": "Multiple organ failure"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has multiple organ/system failure."
+                            },
+                            "ordinal": 8
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "peripheral_vascular_disease",
+                    "name": "Peripheral vascular disease",
+                    "localizedName": "Peripheral vascular disease",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0126",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Peripheral vascular disease"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The subject has peripheral vascular disease."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0070]/items[at0126]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0126",
+                            "label": "Peripheral vascular disease",
+                            "localizedLabels": {
+                              "en": "Peripheral vascular disease"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has peripheral vascular disease."
+                            },
+                            "ordinal": 5
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "anaemia",
+                    "name": "Anaemia",
+                    "localizedName": "Anaemia",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0127",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Anaemia"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The subject is significantly anaemic. Hb less than 8 mg/dl."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0070]/items[at0127]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0127",
+                            "label": "Anaemia",
+                            "localizedLabels": {
+                              "en": "Anaemia"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject is significantly anaemic. Hb less than 8 mg/dl."
+                            },
+                            "ordinal": 2
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "smoking",
+                    "name": "Smoking",
+                    "localizedName": "Smoking",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0128",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Smoking"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The subject is a smoker."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0070]/items[at0128]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0128",
+                            "label": "Smoking",
+                            "localizedLabels": {
+                              "en": "Smoking"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject is a smoker."
+                            },
+                            "ordinal": 1
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "neurological_deficit",
+                "name": "Neurological deficit",
+                "localizedName": "Neurological deficit",
+                "rmType": "CLUSTER",
+                "nodeId": "at0073",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Neurological deficit"
+                },
+                "localizedDescriptions": {
+                  "en": "Risk conferred by neurological deficit. Each identified risk can be scored between 4-6 but a maximum of 6 only can be given for the whole neurological deficit category."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0073]",
+                "children": [
+                  {
+                    "id": "diabetes_ms_cva",
+                    "name": "Diabetes, MS, CVA",
+                    "localizedName": "Diabetes, MS, CVA",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0150",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Diabetes, MS, CVA"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The subject has diabetes, multiple sclerosis or has had a stroke."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0073]/items[at0150]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0136",
+                            "label": "No neurological deficit",
+                            "localizedLabels": {
+                              "en": "No neurological deficit"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has no overall neurological deficit."
+                            },
+                            "ordinal": 0
+                          },
+                          {
+                            "value": "at0137",
+                            "label": "Mild neurological deficit",
+                            "localizedLabels": {
+                              "en": "Mild neurological deficit"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has a mild overall neurological deficit."
+                            },
+                            "ordinal": 4
+                          },
+                          {
+                            "value": "at0138",
+                            "label": "Moderate neurological deficit",
+                            "localizedLabels": {
+                              "en": "Moderate neurological deficit"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has a moderate overall neurological deficit."
+                            },
+                            "ordinal": 5
+                          },
+                          {
+                            "value": "at0139",
+                            "label": "Severe neurological deficit",
+                            "localizedLabels": {
+                              "en": "Severe neurological deficit"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has a severe overall neurological deficit."
+                            },
+                            "ordinal": 6
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "motor_sensory_deficit",
+                    "name": "Motor / sensory deficit",
+                    "localizedName": "Motor / sensory deficit",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0151",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Motor / sensory deficit"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The subject has a motor or sensory deficit."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0073]/items[at0151]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0136",
+                            "label": "No neurological deficit",
+                            "localizedLabels": {
+                              "en": "No neurological deficit"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has no overall neurological deficit."
+                            },
+                            "ordinal": 0
+                          },
+                          {
+                            "value": "at0137",
+                            "label": "Mild neurological deficit",
+                            "localizedLabels": {
+                              "en": "Mild neurological deficit"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has a mild overall neurological deficit."
+                            },
+                            "ordinal": 4
+                          },
+                          {
+                            "value": "at0138",
+                            "label": "Moderate neurological deficit",
+                            "localizedLabels": {
+                              "en": "Moderate neurological deficit"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has a moderate overall neurological deficit."
+                            },
+                            "ordinal": 5
+                          },
+                          {
+                            "value": "at0139",
+                            "label": "Severe neurological deficit",
+                            "localizedLabels": {
+                              "en": "Severe neurological deficit"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has a severe overall neurological deficit."
+                            },
+                            "ordinal": 6
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "paraplegia",
+                    "name": "Paraplegia",
+                    "localizedName": "Paraplegia",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0152",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Paraplegia"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The subject has a paraplegia."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0073]/items[at0152]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0136",
+                            "label": "No neurological deficit",
+                            "localizedLabels": {
+                              "en": "No neurological deficit"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has no overall neurological deficit."
+                            },
+                            "ordinal": 0
+                          },
+                          {
+                            "value": "at0137",
+                            "label": "Mild neurological deficit",
+                            "localizedLabels": {
+                              "en": "Mild neurological deficit"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has a mild overall neurological deficit."
+                            },
+                            "ordinal": 4
+                          },
+                          {
+                            "value": "at0138",
+                            "label": "Moderate neurological deficit",
+                            "localizedLabels": {
+                              "en": "Moderate neurological deficit"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has a moderate overall neurological deficit."
+                            },
+                            "ordinal": 5
+                          },
+                          {
+                            "value": "at0139",
+                            "label": "Severe neurological deficit",
+                            "localizedLabels": {
+                              "en": "Severe neurological deficit"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has a severe overall neurological deficit."
+                            },
+                            "ordinal": 6
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "combined_neurological_deficit",
+                    "name": "Combined neurological deficit",
+                    "localizedName": "Combined neurological deficit",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0135",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Combined neurological deficit"
+                    },
+                    "localizedDescriptions": {
+                      "en": "An overall estimate of neurological deficit. Should not be used if individual neurological deficit risks are recorded."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0073]/items[at0135]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0136",
+                            "label": "No neurological deficit",
+                            "localizedLabels": {
+                              "en": "No neurological deficit"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has no overall neurological deficit."
+                            },
+                            "ordinal": 0
+                          },
+                          {
+                            "value": "at0137",
+                            "label": "Mild neurological deficit",
+                            "localizedLabels": {
+                              "en": "Mild neurological deficit"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has a mild overall neurological deficit."
+                            },
+                            "ordinal": 4
+                          },
+                          {
+                            "value": "at0138",
+                            "label": "Moderate neurological deficit",
+                            "localizedLabels": {
+                              "en": "Moderate neurological deficit"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has a moderate overall neurological deficit."
+                            },
+                            "ordinal": 5
+                          },
+                          {
+                            "value": "at0139",
+                            "label": "Severe neurological deficit",
+                            "localizedLabels": {
+                              "en": "Severe neurological deficit"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has a severe overall neurological deficit."
+                            },
+                            "ordinal": 6
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "major_surgery_or_trauma",
+                "name": "Major surgery or trauma",
+                "localizedName": "Major surgery or trauma",
+                "rmType": "CLUSTER",
+                "nodeId": "at0068",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Major surgery or trauma"
+                },
+                "localizedDescriptions": {
+                  "en": "Risk associated with major surgery or trauma."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0068]",
+                "children": [
+                  {
+                    "id": "orthopaedic_spinal",
+                    "name": "Orthopaedic /spinal",
+                    "localizedName": "Orthopaedic /spinal",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0114",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Orthopaedic /spinal"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Risks related to orthopaedic or spinal surgery."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0068]/items[at0114]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0153",
+                            "label": "No orthopaedic / spinal surgery",
+                            "localizedLabels": {
+                              "en": "No orthopaedic / spinal surgery"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has no risk related to spinal / orthopaedic surgery."
+                            },
+                            "ordinal": 0
+                          },
+                          {
+                            "value": "at0143",
+                            "label": "Orthopaedic /spinal surgery",
+                            "localizedLabels": {
+                              "en": "Orthopaedic /spinal surgery"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has undergone orthopaedic or spinal surgery."
+                            },
+                            "ordinal": 5
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "duration_of_surgery",
+                    "name": "Duration of surgery",
+                    "localizedName": "Duration of surgery",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0144",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Duration of surgery"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Risks imparted by length of surgery."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0068]/items[at0144]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0154",
+                            "label": "On table < 2 hrs or not in past 48 hrs",
+                            "localizedLabels": {
+                              "en": "On table < 2 hrs or not in past 48 hrs"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has had surgery more than 48 hrs ago or lasting for less than 2 hours."
+                            },
+                            "ordinal": 0
+                          },
+                          {
+                            "value": "at0145",
+                            "label": "On table > 2 hrs (Past 48 hrs)",
+                            "localizedLabels": {
+                              "en": "On table > 2 hrs (Past 48 hrs)"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has had surgery within the past 48 hours lasting over 2 hours."
+                            },
+                            "ordinal": 5
+                          },
+                          {
+                            "value": "at0146",
+                            "label": "On table > 6 hrs (Past 48 hrs)",
+                            "localizedLabels": {
+                              "en": "On table > 6 hrs (Past 48 hrs)"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has had surgery within the past 48 hours lasting over 6 hours."
+                            },
+                            "ordinal": 8
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "major_surgery_or_trauma_in_the_last_48_hours",
+                    "name": "Major Surgery Or Trauma In The Last 48 Hours",
+                    "localizedName": "Major Surgery Or Trauma In The Last 48 Hours",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0156",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Major Surgery Or Trauma In The Last 48 Hours"
+                    },
+                    "localizedDescriptions": {
+                      "en": "*"
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0068]/items[at0156]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0157",
+                            "label": "No major surgery or trauma",
+                            "localizedLabels": {
+                              "en": "No major surgery or trauma"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            },
+                            "ordinal": 0
+                          },
+                          {
+                            "value": "at0158",
+                            "label": "Orthopaedic / spinal surgery",
+                            "localizedLabels": {
+                              "en": "Orthopaedic / spinal surgery"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            },
+                            "ordinal": 5
+                          },
+                          {
+                            "value": "at0159",
+                            "label": "On table for more than 2 hours",
+                            "localizedLabels": {
+                              "en": "On table for more than 2 hours"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            },
+                            "ordinal": 5
+                          },
+                          {
+                            "value": "at0160",
+                            "label": "On table for more than 6 hours",
+                            "localizedLabels": {
+                              "en": "On table for more than 6 hours"
+                            },
+                            "localizedDescriptions": {
+                              "en": "*"
+                            },
+                            "ordinal": 8
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "medication",
+                "name": "Medication",
+                "localizedName": "Medication",
+                "rmType": "CLUSTER",
+                "nodeId": "at0067",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Medication"
+                },
+                "localizedDescriptions": {
+                  "en": "Risk associated with medication. Each medication can be scored between 0-4 but a total of 4 only can be given by all risks in the Medication category."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0067]",
+                "children": [
+                  {
+                    "id": "cytotoxics",
+                    "name": "Cytotoxics",
+                    "localizedName": "Cytotoxics",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0106",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Cytotoxics"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The subject is receiving cytotoxic medication."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0067]/items[at0106]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0141",
+                            "label": "No medication risk",
+                            "localizedLabels": {
+                              "en": "No medication risk"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has no risk related to medication."
+                            },
+                            "ordinal": 0
+                          },
+                          {
+                            "value": "at0142",
+                            "label": "Significant medication risk",
+                            "localizedLabels": {
+                              "en": "Significant medication risk"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has significant risk related to medication."
+                            },
+                            "ordinal": 4
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "steroids",
+                    "name": "Steroids",
+                    "localizedName": "Steroids",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0107",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Steroids"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The subject is receiving high-dose or long-term steroid medication."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0067]/items[at0107]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0141",
+                            "label": "No medication risk",
+                            "localizedLabels": {
+                              "en": "No medication risk"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has no risk related to medication."
+                            },
+                            "ordinal": 0
+                          },
+                          {
+                            "value": "at0142",
+                            "label": "Significant medication risk",
+                            "localizedLabels": {
+                              "en": "Significant medication risk"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has significant risk related to medication."
+                            },
+                            "ordinal": 4
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "anti-inflammatories",
+                    "name": "Anti-inflammatories",
+                    "localizedName": "Anti-inflammatories",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0108",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Anti-inflammatories"
+                    },
+                    "localizedDescriptions": {
+                      "en": "The subject is receiving anti-inflammatory medication."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0067]/items[at0108]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0141",
+                            "label": "No medication risk",
+                            "localizedLabels": {
+                              "en": "No medication risk"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has no risk related to medication."
+                            },
+                            "ordinal": 0
+                          },
+                          {
+                            "value": "at0142",
+                            "label": "Significant medication risk",
+                            "localizedLabels": {
+                              "en": "Significant medication risk"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has significant risk related to medication."
+                            },
+                            "ordinal": 4
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "combined_medication_risk",
+                    "name": "Combined medication risk",
+                    "localizedName": "Combined medication risk",
+                    "rmType": "DV_ORDINAL",
+                    "nodeId": "at0140",
+                    "min": 0,
+                    "max": 1,
+                    "localizedNames": {
+                      "en": "Combined medication risk"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Overall pressure ulcer risk related to medication. Should not be recorded if individual medication risks are used."
+                    },
+                    "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0067]/items[at0140]/value",
+                    "inputs": [
+                      {
+                        "type": "CODED_TEXT",
+                        "list": [
+                          {
+                            "value": "at0141",
+                            "label": "No medication risk",
+                            "localizedLabels": {
+                              "en": "No medication risk"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has no risk related to medication."
+                            },
+                            "ordinal": 0
+                          },
+                          {
+                            "value": "at0142",
+                            "label": "Significant medication risk",
+                            "localizedLabels": {
+                              "en": "Significant medication risk"
+                            },
+                            "localizedDescriptions": {
+                              "en": "The subject has significant risk related to medication."
+                            },
+                            "ordinal": 4
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "confounding_factors",
+                "name": "Confounding factors",
+                "localizedName": "Confounding factors",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0072",
+                "min": 0,
+                "max": -1,
+                "dependsOn": [
+                  "waterlow_score",
+                  "mobility",
+                  "tissue_malnutrition",
+                  "nutritional_risk",
+                  "age_group",
+                  "sex",
+                  "medication",
+                  "overall_risk_grade",
+                  "build_weight_for_height",
+                  "continence",
+                  "neurological_deficit",
+                  "major_surgery_or_trauma",
+                  "skin_type_visual_risk_areas",
+                  "comment"
+                ],
+                "localizedNames": {
+                  "en": "Confounding factors"
+                },
+                "localizedDescriptions": {
+                  "en": "Issues that may affect interpretation of the score."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/state[at0071]/items[at0072]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "time",
+                "name": "Time",
+                "rmType": "DV_DATE_TIME",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/data[at0001]/events[at0002]/time",
+                "inputs": [
+                  {
+                    "type": "DATETIME"
+                  }
+                ],
+                "inContext": true
+              }
+            ]
+          },
+          {
+            "id": "score_version",
+            "name": "Score version",
+            "localizedName": "Score version",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0133",
+            "min": 0,
+            "max": 1,
+            "dependsOn": [
+              "any_point_in_time_event"
+            ],
+            "localizedNames": {
+              "en": "Score version"
+            },
+            "localizedDescriptions": {
+              "en": "The version of the score used, normally recorded as the year."
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/protocol[at0132]/items[at0133]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.waterlow_score.v0]/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "body_weight",
+        "name": "Body weight",
+        "localizedName": "Body weight",
+        "rmType": "OBSERVATION",
+        "nodeId": "openEHR-EHR-OBSERVATION.body_weight.v2",
+        "min": 0,
+        "max": -1,
+        "localizedNames": {
+          "en": "Body weight"
+        },
+        "localizedDescriptions": {
+          "en": "Measurement of the body weight of an individual."
+        },
+        "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v2]",
+        "children": [
+          {
+            "id": "any_event",
+            "name": "Any event",
+            "localizedName": "Any event",
+            "rmType": "EVENT",
+            "nodeId": "at0003",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "Any event"
+            },
+            "localizedDescriptions": {
+              "en": "Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time."
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v2]/data[at0002]/events[at0003]",
+            "children": [
+              {
+                "id": "weight",
+                "name": "Weight",
+                "localizedName": "Weight",
+                "rmType": "DV_QUANTITY",
+                "nodeId": "at0004",
+                "min": 1,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Weight"
+                },
+                "localizedDescriptions": {
+                  "en": "The weight of the individual."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v2]/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value",
+                "inputs": [
+                  {
+                    "suffix": "magnitude",
+                    "type": "DECIMAL"
+                  },
+                  {
+                    "suffix": "unit",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "kg",
+                        "label": "kg",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 0.0,
+                            "maxOp": "<=",
+                            "max": 1000.0
+                          }
+                        }
+                      },
+                      {
+                        "value": "[lb_av]",
+                        "label": "[lb_av]",
+                        "localizedLabels": {
+                          "en": "lbm"
+                        },
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 0.0,
+                            "maxOp": "<=",
+                            "max": 2000.0
+                          }
+                        }
+                      },
+                      {
+                        "value": "g",
+                        "label": "g",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 0.0,
+                            "maxOp": "<=",
+                            "max": 1000000.0
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "comment",
+                "name": "Comment",
+                "localizedName": "Comment",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0024",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Comment"
+                },
+                "localizedDescriptions": {
+                  "en": "Additional narrative about the measurement of Body weight, not captured in other fields."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v2]/data[at0002]/events[at0003]/data[at0001]/items[at0024]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "state_of_dress",
+                "name": "State of dress",
+                "localizedName": "State of dress",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0009",
+                "min": 0,
+                "max": 1,
+                "dependsOn": [
+                  "weight",
+                  "comment"
+                ],
+                "localizedNames": {
+                  "en": "State of dress"
+                },
+                "localizedDescriptions": {
+                  "en": "Description of the state of dress of the person at the time of weighing."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v2]/data[at0002]/events[at0003]/state[at0008]/items[at0009]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0013",
+                        "label": "Naked",
+                        "localizedLabels": {
+                          "en": "Naked"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Without any clothes."
+                        }
+                      },
+                      {
+                        "value": "at0017",
+                        "label": "Nappy/diaper",
+                        "localizedLabels": {
+                          "en": "Nappy/diaper"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Wearing only a nappy - which may add significantly to weight."
+                        }
+                      },
+                      {
+                        "value": "at0011",
+                        "label": "Lightly clothed/underwear",
+                        "localizedLabels": {
+                          "en": "Lightly clothed/underwear"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Clothing which will not add to weight significantly."
+                        }
+                      },
+                      {
+                        "value": "at0028",
+                        "label": "Fully clothed, without shoes",
+                        "localizedLabels": {
+                          "en": "Fully clothed, without shoes"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Clothing which may add significantly to weight."
+                        }
+                      },
+                      {
+                        "value": "at0010",
+                        "label": "Fully clothed, including shoes",
+                        "localizedLabels": {
+                          "en": "Fully clothed, including shoes"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Clothing which may add significantly to weight, including shoes."
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "confounding_factors",
+                "name": "Confounding factors",
+                "localizedName": "Confounding factors",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0025",
+                "min": 0,
+                "max": -1,
+                "dependsOn": [
+                  "weight",
+                  "comment"
+                ],
+                "localizedNames": {
+                  "en": "Confounding factors"
+                },
+                "localizedDescriptions": {
+                  "en": "Record any issues or factors that may impact on the measurement of body weight eg timing in menstrual cycle, timing of recent bowel motion or noting of amputation."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v2]/data[at0002]/events[at0003]/state[at0008]/items[at0025]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "time",
+                "name": "Time",
+                "rmType": "DV_DATE_TIME",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v2]/data[at0002]/events[at0003]/time",
+                "inputs": [
+                  {
+                    "type": "DATETIME"
+                  }
+                ],
+                "inContext": true
+              }
+            ]
+          },
+          {
+            "id": "reporting_status",
+            "name": "Reporting status",
+            "localizedName": "Reporting status",
+            "rmType": "CLUSTER",
+            "nodeId": "openEHR-EHR-CLUSTER.reporting_status.v0",
+            "min": 0,
+            "max": 1,
+            "dependsOn": [
+              "any_event"
+            ],
+            "localizedNames": {
+              "en": "Reporting status"
+            },
+            "localizedDescriptions": {
+              "en": "reporting status"
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v2]/protocol[at0015]/items[openEHR-EHR-CLUSTER.reporting_status.v0]",
+            "children": [
+              {
+                "id": "measurement_input",
+                "name": "Measurement input",
+                "localizedName": "Measurement input",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0001",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Measurement input"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v2]/protocol[at0015]/items[openEHR-EHR-CLUSTER.reporting_status.v0]/items[at0001]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT",
+                    "list": [
+                      {
+                        "value": "Actual",
+                        "label": "Actual"
+                      },
+                      {
+                        "value": "Reported",
+                        "label": "Reported"
+                      },
+                      {
+                        "value": "Estimated",
+                        "label": "Estimated"
+                      },
+                      {
+                        "value": "Other",
+                        "label": "Other"
+                      }
+                    ],
+                    "listOpen": false
+                  }
+                ]
+              },
+              {
+                "id": "estimated_date",
+                "name": "Estimated date",
+                "localizedName": "Estimated date",
+                "rmType": "DV_DATE",
+                "nodeId": "at0003",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Estimated date"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v2]/protocol[at0015]/items[openEHR-EHR-CLUSTER.reporting_status.v0]/items[at0003]/value",
+                "inputs": [
+                  {
+                    "type": "DATE"
+                  }
+                ]
+              },
+              {
+                "id": "comment",
+                "name": "Comment",
+                "localizedName": "Comment",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0002",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Comment"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v2]/protocol[at0015]/items[openEHR-EHR-CLUSTER.reporting_status.v0]/items[at0002]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v2]/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v2]/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v2]/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "height_length",
+        "name": "Height/Length",
+        "localizedName": "Height/Length",
+        "rmType": "OBSERVATION",
+        "nodeId": "openEHR-EHR-OBSERVATION.height.v2",
+        "min": 0,
+        "max": -1,
+        "localizedNames": {
+          "en": "Height/Length"
+        },
+        "localizedDescriptions": {
+          "en": "Height, or body length, is measured from crown of head to sole of foot."
+        },
+        "annotations": {
+          "comment": "Height is measured with the individual in a standing position and body length in a recumbent position."
+        },
+        "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v2]",
+        "children": [
+          {
+            "id": "any_event",
+            "name": "Any event",
+            "localizedName": "Any event",
+            "rmType": "EVENT",
+            "nodeId": "at0002",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "Any event"
+            },
+            "localizedDescriptions": {
+              "en": "Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time."
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v2]/data[at0001]/events[at0002]",
+            "children": [
+              {
+                "id": "height_length",
+                "name": "Height/Length",
+                "localizedName": "Height/Length",
+                "rmType": "DV_QUANTITY",
+                "nodeId": "at0004",
+                "min": 1,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Height/Length"
+                },
+                "localizedDescriptions": {
+                  "en": "The length of the body from crown of head to sole of foot."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v2]/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value",
+                "inputs": [
+                  {
+                    "suffix": "magnitude",
+                    "type": "DECIMAL"
+                  },
+                  {
+                    "suffix": "unit",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "cm",
+                        "label": "cm",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 0.0,
+                            "maxOp": "<=",
+                            "max": 1000.0
+                          }
+                        }
+                      },
+                      {
+                        "value": "[in_i]",
+                        "label": "[in_i]",
+                        "localizedLabels": {
+                          "en": "in"
+                        },
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 0.0,
+                            "maxOp": "<=",
+                            "max": 250.0
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "comment",
+                "name": "Comment",
+                "localizedName": "Comment",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0018",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Comment"
+                },
+                "localizedDescriptions": {
+                  "en": "Additional narrative about the measurement, not captured in other fields."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v2]/data[at0001]/events[at0002]/data[at0003]/items[at0018]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "position",
+                "name": "Position",
+                "localizedName": "Position",
+                "rmType": "DV_CODED_TEXT",
+                "nodeId": "at0014",
+                "min": 0,
+                "max": 1,
+                "dependsOn": [
+                  "height_length",
+                  "comment"
+                ],
+                "localizedNames": {
+                  "en": "Position"
+                },
+                "localizedDescriptions": {
+                  "en": "Position of individual when measured."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v2]/data[at0001]/events[at0002]/state[at0013]/items[at0014]/value",
+                "inputs": [
+                  {
+                    "suffix": "code",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "at0016",
+                        "label": "Standing",
+                        "localizedLabels": {
+                          "en": "Standing"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Height is measured standing on both feet with weight distributed evenly, heels together and both buttocks and heels in contact with a vertical back board."
+                        }
+                      },
+                      {
+                        "value": "at0020",
+                        "label": "Lying",
+                        "localizedLabels": {
+                          "en": "Lying"
+                        },
+                        "localizedDescriptions": {
+                          "en": "Length is measured in a fully extended, recumbent position with the pelvis flat, legs extended and feet flexed."
+                        }
+                      }
+                    ],
+                    "defaultValue": "at0016"
+                  }
+                ]
+              },
+              {
+                "id": "confounding_factors",
+                "name": "Confounding factors",
+                "localizedName": "Confounding factors",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0019",
+                "min": 0,
+                "max": 1,
+                "dependsOn": [
+                  "height_length",
+                  "comment"
+                ],
+                "localizedNames": {
+                  "en": "Confounding factors"
+                },
+                "localizedDescriptions": {
+                  "en": "Narrative description of any issues or factors that may impact on the measurement."
+                },
+                "annotations": {
+                  "comment": "For example: noting of amputation."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v2]/data[at0001]/events[at0002]/state[at0013]/items[at0019]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "time",
+                "name": "Time",
+                "rmType": "DV_DATE_TIME",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v2]/data[at0001]/events[at0002]/time",
+                "inputs": [
+                  {
+                    "type": "DATETIME"
+                  }
+                ],
+                "inContext": true
+              }
+            ]
+          },
+          {
+            "id": "reporting_status",
+            "name": "Reporting status",
+            "localizedName": "Reporting status",
+            "rmType": "CLUSTER",
+            "nodeId": "openEHR-EHR-CLUSTER.reporting_status.v0",
+            "min": 0,
+            "max": 1,
+            "dependsOn": [
+              "any_event"
+            ],
+            "localizedNames": {
+              "en": "Reporting status"
+            },
+            "localizedDescriptions": {
+              "en": "reporting status"
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v2]/protocol[at0007]/items[openEHR-EHR-CLUSTER.reporting_status.v0]",
+            "children": [
+              {
+                "id": "measurement_input",
+                "name": "Measurement input",
+                "localizedName": "Measurement input",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0001",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Measurement input"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v2]/protocol[at0007]/items[openEHR-EHR-CLUSTER.reporting_status.v0]/items[at0001]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT",
+                    "list": [
+                      {
+                        "value": "Actual",
+                        "label": "Actual"
+                      },
+                      {
+                        "value": "Reported",
+                        "label": "Reported"
+                      },
+                      {
+                        "value": "Estimated",
+                        "label": "Estimated"
+                      }
+                    ],
+                    "listOpen": false
+                  }
+                ]
+              },
+              {
+                "id": "estimated_date",
+                "name": "Estimated date",
+                "localizedName": "Estimated date",
+                "rmType": "DV_DATE",
+                "nodeId": "at0003",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Estimated date"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v2]/protocol[at0007]/items[openEHR-EHR-CLUSTER.reporting_status.v0]/items[at0003]/value",
+                "inputs": [
+                  {
+                    "type": "DATE"
+                  }
+                ]
+              },
+              {
+                "id": "comment",
+                "name": "Comment",
+                "localizedName": "Comment",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0002",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Comment"
+                },
+                "localizedDescriptions": {
+                  "en": "*"
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v2]/protocol[at0007]/items[openEHR-EHR-CLUSTER.reporting_status.v0]/items[at0002]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v2]/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v2]/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v2]/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "body_mass_index",
+        "name": "Body mass index",
+        "localizedName": "Body mass index",
+        "rmType": "OBSERVATION",
+        "nodeId": "openEHR-EHR-OBSERVATION.body_mass_index.v2",
+        "min": 0,
+        "max": -1,
+        "localizedNames": {
+          "en": "Body mass index"
+        },
+        "localizedDescriptions": {
+          "en": "Calculated measurement which compares a person's weight and height."
+        },
+        "annotations": {
+          "comment": "Body Mass Index is a calculated ratio describing how an individual's body weight relates to the weight that is regarded as normal, or desirable, for the individual's height."
+        },
+        "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_mass_index.v2]",
+        "children": [
+          {
+            "id": "any_event",
+            "name": "Any event",
+            "localizedName": "Any event",
+            "rmType": "EVENT",
+            "nodeId": "at0002",
+            "min": 0,
+            "max": -1,
+            "localizedNames": {
+              "en": "Any event"
+            },
+            "localizedDescriptions": {
+              "en": "Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time."
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_mass_index.v2]/data[at0001]/events[at0002]",
+            "children": [
+              {
+                "id": "body_mass_index",
+                "name": "Body mass index",
+                "localizedName": "Body mass index",
+                "rmType": "DV_QUANTITY",
+                "nodeId": "at0004",
+                "min": 1,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Body mass index"
+                },
+                "localizedDescriptions": {
+                  "en": "Index describing ratio of weight to height."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_mass_index.v2]/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value",
+                "inputs": [
+                  {
+                    "suffix": "magnitude",
+                    "type": "DECIMAL"
+                  },
+                  {
+                    "suffix": "unit",
+                    "type": "CODED_TEXT",
+                    "list": [
+                      {
+                        "value": "kg/m2",
+                        "label": "kg/m2",
+                        "localizedLabels": {
+                          "en": "kg/m²"
+                        },
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 0.0,
+                            "maxOp": "<",
+                            "max": 1000.0
+                          },
+                          "precision": {
+                            "minOp": ">=",
+                            "min": 1,
+                            "maxOp": "<=",
+                            "max": 1
+                          }
+                        }
+                      },
+                      {
+                        "value": "[lb_av]/[in_i]2",
+                        "label": "[lb_av]/[in_i]2",
+                        "validation": {
+                          "range": {
+                            "minOp": ">=",
+                            "min": 0.0,
+                            "maxOp": "<",
+                            "max": 1000.0
+                          },
+                          "precision": {
+                            "minOp": ">=",
+                            "min": 1,
+                            "maxOp": "<=",
+                            "max": 1
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "termBindings": {
+                  "SNOMED-CT": {
+                    "value": "[SNOMED-CT::60621009]",
+                    "terminologyId": "SNOMED-CT"
+                  },
+                  "LOINC": {
+                    "value": "[LOINC::39156-5]",
+                    "terminologyId": "LOINC"
+                  }
+                }
+              },
+              {
+                "id": "clinical_interpretation",
+                "name": "Clinical interpretation",
+                "localizedName": "Clinical interpretation",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0013",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Clinical interpretation"
+                },
+                "localizedDescriptions": {
+                  "en": "Single word, phrase or brief description that represents the clinical meaning and significance of the body mass index."
+                },
+                "annotations": {
+                  "comment": "For example: underweight, normal, overweight or obese."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_mass_index.v2]/data[at0001]/events[at0002]/data[at0003]/items[at0013]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "comment",
+                "name": "Comment",
+                "localizedName": "Comment",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0012",
+                "min": 0,
+                "max": 1,
+                "localizedNames": {
+                  "en": "Comment"
+                },
+                "localizedDescriptions": {
+                  "en": "Additional narrative about the calculation, not captured in other fields."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_mass_index.v2]/data[at0001]/events[at0002]/data[at0003]/items[at0012]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "confounding_factors",
+                "name": "Confounding factors",
+                "localizedName": "Confounding factors",
+                "rmType": "DV_TEXT",
+                "nodeId": "at0011",
+                "min": 0,
+                "max": 1,
+                "dependsOn": [
+                  "clinical_interpretation",
+                  "comment",
+                  "body_mass_index"
+                ],
+                "localizedNames": {
+                  "en": "Confounding factors"
+                },
+                "localizedDescriptions": {
+                  "en": "Narrative description of any issues or factors that may impact on the calculation."
+                },
+                "annotations": {
+                  "comment": "For example: the calculation was made using adjusted weight or height."
+                },
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_mass_index.v2]/data[at0001]/events[at0002]/state[at0014]/items[at0011]/value",
+                "inputs": [
+                  {
+                    "type": "TEXT"
+                  }
+                ]
+              },
+              {
+                "id": "time",
+                "name": "Time",
+                "rmType": "DV_DATE_TIME",
+                "min": 1,
+                "max": 1,
+                "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_mass_index.v2]/data[at0001]/events[at0002]/time",
+                "inputs": [
+                  {
+                    "type": "DATETIME"
+                  }
+                ],
+                "inContext": true
+              }
+            ]
+          },
+          {
+            "id": "method",
+            "name": "Method",
+            "localizedName": "Method",
+            "rmType": "DV_CODED_TEXT",
+            "nodeId": "at0006",
+            "min": 0,
+            "max": 1,
+            "dependsOn": [
+              "any_event"
+            ],
+            "localizedNames": {
+              "en": "Method"
+            },
+            "localizedDescriptions": {
+              "en": "The method of entering the body mass index."
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_mass_index.v2]/protocol[at0005]/items[at0006]/value",
+            "inputs": [
+              {
+                "suffix": "code",
+                "type": "CODED_TEXT",
+                "list": [
+                  {
+                    "value": "at0007",
+                    "label": "Automatic entry",
+                    "localizedLabels": {
+                      "en": "Automatic entry"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Body Mass Index calculated and entered automatically without user intervention."
+                    }
+                  },
+                  {
+                    "value": "at0008",
+                    "label": "Direct entry",
+                    "localizedLabels": {
+                      "en": "Direct entry"
+                    },
+                    "localizedDescriptions": {
+                      "en": "Body Mass Index calculated and entered directly by user."
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "formula",
+            "name": "Formula",
+            "localizedName": "Formula",
+            "rmType": "DV_TEXT",
+            "nodeId": "at0010",
+            "min": 0,
+            "max": 1,
+            "dependsOn": [
+              "any_event"
+            ],
+            "localizedNames": {
+              "en": "Formula"
+            },
+            "localizedDescriptions": {
+              "en": "Formula used to derive the body mass index."
+            },
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_mass_index.v2]/protocol[at0005]/items[at0010]/value",
+            "inputs": [
+              {
+                "type": "TEXT"
+              }
+            ]
+          },
+          {
+            "id": "language",
+            "name": "Language",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_mass_index.v2]/language",
+            "inContext": true
+          },
+          {
+            "id": "encoding",
+            "name": "Encoding",
+            "rmType": "CODE_PHRASE",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_mass_index.v2]/encoding",
+            "inContext": true
+          },
+          {
+            "id": "subject",
+            "name": "Subject",
+            "rmType": "PARTY_PROXY",
+            "min": 1,
+            "max": 1,
+            "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_mass_index.v2]/subject",
+            "inputs": [
+              {
+                "suffix": "id",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_scheme",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "id_namespace",
+                "type": "TEXT"
+              },
+              {
+                "suffix": "name",
+                "type": "TEXT"
+              }
+            ],
+            "inContext": true
+          }
+        ]
+      },
+      {
+        "id": "category",
+        "rmType": "DV_CODED_TEXT",
+        "nodeId": "",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/category",
+        "inputs": [
+          {
+            "suffix": "code",
+            "type": "CODED_TEXT",
+            "list": [
+              {
+                "value": "433",
+                "label": "event",
+                "localizedLabels": {
+                  "en": "event"
+                }
+              }
+            ],
+            "terminology": "openehr"
+          }
+        ],
+        "inContext": true
+      },
+      {
+        "id": "language",
+        "name": "Language",
+        "rmType": "CODE_PHRASE",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/language",
+        "inContext": true
+      },
+      {
+        "id": "territory",
+        "name": "Territory",
+        "rmType": "CODE_PHRASE",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/territory",
+        "inContext": true
+      },
+      {
+        "id": "composer",
+        "name": "Composer",
+        "rmType": "PARTY_PROXY",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/composer",
+        "inputs": [
+          {
+            "suffix": "id",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "id_scheme",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "id_namespace",
+            "type": "TEXT"
+          },
+          {
+            "suffix": "name",
+            "type": "TEXT"
+          }
+        ],
+        "inContext": true
+      }
+    ]
+  }
+}

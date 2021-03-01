@@ -21,8 +21,8 @@ import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.value.SimpleValueConverter
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.google.common.collect.ImmutableMap
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
@@ -49,7 +49,7 @@ class TimeZoneTest : AbstractWebTemplateTest() {
             .withValueConvert(TimeZoneTestValueConverter)
             .build()
 
-        val webTemplate: WebTemplate = WTBuilder.build(template, WebTemplateBuilderContext("sl"))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("sl"))
         val values: Map<String, String> = ImmutableMap.builder<String, String>()
             .put("ctx/time", "2015-01-01T10:00:00.000+05:00")
             .put("vitals/vitals/body_temperature:0/any_event:0/temperature|magnitude", "37.7")

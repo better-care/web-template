@@ -19,7 +19,7 @@ import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
-import com.marand.thinkehr.web.build.input.WebTemplateInput
+import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import org.openehr.rm.datatypes.DvCount
 
 /**
@@ -31,11 +31,11 @@ import org.openehr.rm.datatypes.DvCount
 internal object DvCountFactory : DvQuantifiedFactory<DvCount>() {
 
     override fun handleWebTemplateInput(conversionContext: ConversionContext, amNode: AmNode, rmObject: DvCount, webTemplateInput: WebTemplateInput) {
-        if (webTemplateInput.isFixed) {
+        if (webTemplateInput.fixed) {
             if (webTemplateInput.list.isNotEmpty()) {
                 rmObject.magnitude = webTemplateInput.list[0].value.toLong()
             } else if (webTemplateInput.validation?.range != null) {
-                val min = webTemplateInput.validation.range.min
+                val min = webTemplateInput.validation?.range?.getMinimal()
                 if (min is Number) {
                     rmObject.magnitude = min.toLong()
                 }

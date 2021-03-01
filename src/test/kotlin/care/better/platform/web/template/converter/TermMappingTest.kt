@@ -21,8 +21,8 @@ import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.google.common.collect.ImmutableList
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.openehr.base.basetypes.TerminologyId
@@ -45,7 +45,7 @@ import javax.xml.bind.JAXBException
  */
 class TermMappingTest : AbstractWebTemplateTest() {
 
-    private val webTemplate = WTBuilder.build(
+    private val webTemplate = WebTemplateBuilder.buildNonNull(
             getTemplate("/convert/templates/older/Demo Vitals.xml"),
             WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
 

@@ -21,8 +21,8 @@ import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.datatype.joda.JodaModule
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Action
@@ -42,7 +42,7 @@ class DvIdentifierWithIdAttributeTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testDvIdentifierId() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Generic service request.v0.xml"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Generic service request.v0.xml"), builderContext)
 
         val mapper = createObjectMapper().apply {
             this.registerModule(JodaModule())

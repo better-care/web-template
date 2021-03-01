@@ -21,9 +21,9 @@ import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.value.LocaleBasedValueConverter
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.google.common.collect.ImmutableSet
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
-import com.marand.thinkehr.web.build.WebTemplateNode
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
@@ -43,7 +43,7 @@ class InfinityTest : AbstractWebTemplateTest() {
         val templateName = "/convert/templates/openEHR-EHR-COMPOSITION.t_endocrinologist_examination (0-12).opt"
         val template = getTemplate(templateName)
 
-        val webTemplate: WebTemplate = WTBuilder.build(template, WebTemplateBuilderContext("ru"))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("ru"))
         val locale = Locale(webTemplate.defaultLanguage, webTemplate.defaultLanguage.toUpperCase())
 
         val conversionContext = ConversionContext.create()
@@ -66,7 +66,7 @@ class InfinityTest : AbstractWebTemplateTest() {
         val templateName = "/convert/templates/openEHR-EHR-COMPOSITION.t_endocrinologist_examination (1-17).opt"
         val template = getTemplate(templateName)
 
-        val webTemplate: WebTemplate = WTBuilder.build(template, WebTemplateBuilderContext("ru"))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("ru"))
         val locale = Locale(webTemplate.defaultLanguage, webTemplate.defaultLanguage.toUpperCase())
 
         val conversionContext = ConversionContext.create()
@@ -88,20 +88,20 @@ class InfinityTest : AbstractWebTemplateTest() {
     fun testOccurrences() {
         val template = getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_oncology_reference_form_027_1.v1.opt")
         val context = WebTemplateBuilderContext("ru", ImmutableSet.of("en", "ru"))
-        val webTemplate: WebTemplate = WTBuilder.build(template, context)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, context)
         assertThat(webTemplate).isNotNull
 
         val firstNode: WebTemplateNode =
             webTemplate.findWebTemplateNodeByAqlPath("/content[openEHR-EHR-SECTION.adhoc.v1,'Форма N 027-1У']/items[openEHR-EHR-ADMIN_ENTRY.oncology_reference_form_027_1_simi.v0,'Форма N 027-1У']/data[at0001]/items[at0012]/items[openEHR-EHR-CLUSTER.cancer_diagnosis_gel-simi.v0,'Опухоль']/items[at0002,'Топография опухоли']/value")
         assertThat(firstNode).isNotNull
-        assertThat(firstNode.occurences.min).isEqualTo(1)
+        assertThat(firstNode.occurences?.min).isEqualTo(1)
 
         val secondNode: WebTemplateNode =
             webTemplate.findWebTemplateNodeByAqlPath("/content[openEHR-EHR-SECTION.adhoc.v1,'Форма N 027-1У']/items[openEHR-EHR-ADMIN_ENTRY.oncology_reference_form_027_1_simi.v0,'Форма N 027-1У']/data[at0001]/items[at0012]/items[openEHR-EHR-CLUSTER.cancer_diagnosis_gel-simi.v0,'Опухоль']")
 
         val nonMandatory: WebTemplateNode? = secondNode.children.firstOrNull { node -> "Морфологический тип опухоли" == node.name }
         assertThat(nonMandatory).isNotNull
-        assertThat(nonMandatory!!.occurences.min).isEqualTo(0)
+        assertThat(nonMandatory?.occurences?.min).isEqualTo(0)
     }
 
     @Test
@@ -109,7 +109,7 @@ class InfinityTest : AbstractWebTemplateTest() {
     fun testCompositionNotNull() {
         val template = getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.prevaccinal_examination.v1.xml")
         val context = WebTemplateBuilderContext("ru", ImmutableSet.of("en", "ru"))
-        val webTemplate: WebTemplate = WTBuilder.build(template, context)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, context)
         assertThat(webTemplate).isNotNull
 
         val locale = Locale(webTemplate.defaultLanguage, webTemplate.defaultLanguage.toUpperCase())

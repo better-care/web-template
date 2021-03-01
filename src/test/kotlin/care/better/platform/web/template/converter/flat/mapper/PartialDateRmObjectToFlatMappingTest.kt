@@ -15,12 +15,13 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.template.AmNode
+import care.better.platform.web.template.builder.model.WebTemplateInputType
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.value.SimpleValueConverter
-import com.marand.thinkehr.web.build.WebTemplateInputType
-import com.marand.thinkehr.web.build.WebTemplateNode
-import com.marand.thinkehr.web.build.input.WebTemplateInput
-import com.marand.thinkehr.web.build.input.WebTemplateValidation
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.builder.model.input.WebTemplateInput
+import care.better.platform.web.template.builder.model.input.WebTemplateValidation
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.openehr.rm.datatypes.DvDate
@@ -33,10 +34,12 @@ class PartialDateRmObjectToFlatMappingTest {
 
     @Test
     fun testDateWithYearOnly() {
-        val webTemplateNode = WebTemplateNode().apply {
-            this.input = WebTemplateInput(WebTemplateInputType.DATE)
-            this.input.validation = WebTemplateValidation()
-            this.input.validation.pattern = "yyyy-??-XX"
+        val webTemplateNode = WebTemplateNode(AmNode(null, "DV_DATE"),"DV_DATE", "/").apply {
+            this.setInput(WebTemplateInput(WebTemplateInputType.DATE).apply {
+                this.validation = WebTemplateValidation().apply {
+                    this.pattern = "yyyy-??-XX"
+                }
+            })
         }
 
         val dvDate = DvDate().apply { this.value = "2016" }

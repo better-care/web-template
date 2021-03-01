@@ -19,12 +19,12 @@ import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import com.google.common.collect.ImmutableList
 import com.google.common.collect.ImmutableSet
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
-import com.marand.thinkehr.web.build.WebTemplateNode
-import com.marand.thinkehr.web.build.input.CodedValue
-import com.marand.thinkehr.web.build.input.WebTemplateCodedValue
-import com.marand.thinkehr.web.composition.exception.UnknownPathBuilderException
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.exception.UnknownPathBuilderException
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.builder.model.input.CodedValue
+import care.better.platform.web.template.builder.model.input.WebTemplateCodedValue
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.io.IOException
@@ -40,7 +40,7 @@ class LocalizationTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testPerinatal() {
-        val webTemplate: WebTemplate = WTBuilder.build(
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(
             getTemplate("/convert/templates/MED - Perinatal history Summary.opt"),
             WebTemplateBuilderContext("sl", ImmutableList.of("en", "ru")))
 
@@ -59,16 +59,16 @@ class LocalizationTest : AbstractWebTemplateTest() {
     fun testEmptyDefaultLanguage() {
         val template = getTemplate("/convert/templates/MED - Perinatal history Summary.opt")
         val context = WebTemplateBuilderContext("", ImmutableList.of("en", "ru"))
-        val webTemplate: WebTemplate = WTBuilder.build(template, context)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, context)
         assertThat(webTemplate.defaultLanguage).isEqualTo("")
     }
 
     @Test
     @Throws(JAXBException::class, IOException::class)
-    fun invalidPath() {
+    fun testInvalidPath() {
         val template = getTemplate("/convert/templates/MED - Perinatal history Summary.opt")
         val context = WebTemplateBuilderContext("sl", ImmutableList.of("en", "ru"))
-        val webTemplate: WebTemplate = WTBuilder.build(template, context)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, context)
         assertThatThrownBy { webTemplate.getLabel("perinatal_history/11perinatal_history/maternal_pregnancy/significant_family_history/family_issue") }
             .isInstanceOf(UnknownPathBuilderException::class.java)
     }
@@ -78,7 +78,7 @@ class LocalizationTest : AbstractWebTemplateTest() {
     fun testCodes() {
         val template = getTemplate("/convert/templates/MSE - Initial Medication Safety Report.opt")
         val context = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(template, context)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, context)
         val codes: List<CodedValue> = webTemplate.getCodes("initial_medication_safety_report/context/event_participant/participant_clinical_role", "sl")
         assertThat(codes[0].label).isNotEmpty
     }
@@ -88,7 +88,7 @@ class LocalizationTest : AbstractWebTemplateTest() {
     fun testSecoondCodes() {
         val template = getTemplate("/convert/templates/ICU - Ventilator device Report.opt")
         val context = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(template, context)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, context)
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("ventilator_device_report/sle_5000/sle_5000_observations/ventilator_settings/inspiratory_time_t_i")
         assertThat(node.localizedNames).contains(entry("sl", "Inspiratorni čas (T i)"))
     }
@@ -98,7 +98,7 @@ class LocalizationTest : AbstractWebTemplateTest() {
     fun testLabels() {
         val template = getTemplate("/convert/templates/MSE - Adverse Drug Reaction Report.opt")
         val context = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(template, context)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, context)
         assertThat(webTemplate.getLabel("adverse_drug_reaction_report/context/event_participant", "en")).isEqualTo("Event participant")
         assertThat(
             webTemplate.getLabel(
@@ -115,7 +115,7 @@ class LocalizationTest : AbstractWebTemplateTest() {
     fun testInvalidNode() {
         val template = getTemplate("/convert/templates/MSE - Adverse Drug Reaction Report.opt")
         val context = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(template, context)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, context)
         assertThatThrownBy { webTemplate.getLabel("xyz", "en") }.isInstanceOf(UnknownPathBuilderException::class.java)
     }
 
@@ -124,7 +124,7 @@ class LocalizationTest : AbstractWebTemplateTest() {
     fun testAnnotations() {
         val template = getTemplate("/convert/templates/ZN - Vital Functions Encounter-1.xml")
         val node: WebTemplateNode =
-            WTBuilder.build(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))).findWebTemplateNode("vital_functions/vital_signs")
+            WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))).findWebTemplateNode("vital_functions/vital_signs")
         assertThat(node.localizedNames).containsOnly(entry("en", "Vital signs"), entry("sl", "Ocena vitalnih funkcij"))
     }
 
@@ -133,11 +133,11 @@ class LocalizationTest : AbstractWebTemplateTest() {
     fun testAnnotationsV2() {
         val template = getTemplate("/convert/templates/Basic Assessment.opt")
         val firstNode: WebTemplateNode =
-            WTBuilder.build(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))).findWebTemplateNode("basic_assessment")
+            WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))).findWebTemplateNode("basic_assessment")
         assertThat(firstNode.localizedNames).containsOnly(entry("en", "Basic Assessment"), entry("sl", ""))
 
         val secondNode: WebTemplateNode =
-            WTBuilder.build(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "fr"))).findWebTemplateNode("basic_assessment")
+            WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "fr"))).findWebTemplateNode("basic_assessment")
         assertThat(secondNode.localizedNames).containsOnly(entry("en", "Basic Assessment"), entry("fr", "Évaluation de base"))
     }
 
@@ -145,7 +145,7 @@ class LocalizationTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testUnits() {
         val template = getTemplate("/convert/templates/older/Demo Vitals.opt")
-        val webTemplate: WebTemplate = WTBuilder.build(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("vitals/vitals/body_temperature:0/any_event:0/temperature")
         val codedValues: List<WebTemplateCodedValue> = node.inputs[1].list
         assertThat(codedValues).hasSize(2)
@@ -159,7 +159,7 @@ class LocalizationTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testSecondUnits() {
         val template = getTemplate("/convert/templates/Unit Localisation.opt")
-        val webTemplate: WebTemplate = WTBuilder.build(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "de")))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "de")))
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("unit_localisation/body_temperature:0/any_event:0/temperature")
         val codedValues: List<WebTemplateCodedValue> = node.inputs[1].list
         assertThat(codedValues).hasSize(2)
@@ -171,17 +171,17 @@ class LocalizationTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testConstrainedNameLocalization() {
         val template = getTemplate("/convert/templates/DRP Report - new.opt")
-        val webTemplateEN: WebTemplate = WTBuilder.build(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplateEN: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
         val nodeEN: WebTemplateNode = webTemplateEN.findWebTemplateNode("drp_report/context/sender")
         assertThat(nodeEN.localizedName).isEqualTo("Sender")
         assertThat(nodeEN.localizedNames).contains(entry("en", "Sender"), entry("sl", "Pošiljatelj"))
 
-        val webTemplateSL: WebTemplate = WTBuilder.build(template, WebTemplateBuilderContext("sl", ImmutableList.of("en", "sl")))
+        val webTemplateSL: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("sl", ImmutableList.of("en", "sl")))
         val nodeSL: WebTemplateNode = webTemplateSL.findWebTemplateNode("drp_report/context/sender")
         assertThat(nodeSL.localizedName).isEqualTo("Pošiljatelj")
         assertThat(nodeSL.localizedNames).contains(entry("en", "Sender"), entry("sl", "Pošiljatelj"))
 
-        val webTemplate: WebTemplate = WTBuilder.build(template, WebTemplateBuilderContext(ImmutableSet.of("en", "sl")))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext(languages = setOf("en", "sl")))
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("drp_report/context/sender")
         assertThat(node.localizedName).isEqualTo("Sender")
         assertThat(node.localizedNames).contains(entry("en", "Sender"), entry("sl", "Pošiljatelj"))
@@ -191,7 +191,7 @@ class LocalizationTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testAnnotationsFromAD() {
         val template = getTemplate("/convert/templates/Headache.opt")
-        val webTemplateEN: WebTemplate = WTBuilder.build(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "sl", "de")))
+        val webTemplateEN: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "sl", "de")))
         val node: WebTemplateNode = webTemplateEN.findWebTemplateNode("headache/headache")
         assertThat(node.localizedName).isEqualTo("Headache")
         assertThat(node.localizedNames).contains(entry("sl", "Slovenski prevod"), entry("de", "Deutsch"))

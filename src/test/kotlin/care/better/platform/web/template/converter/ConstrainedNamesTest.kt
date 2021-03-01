@@ -18,9 +18,9 @@ package care.better.platform.web.template.converter
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import com.google.common.collect.ImmutableList
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
-import com.marand.thinkehr.web.build.WebTemplateNode
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -36,7 +36,7 @@ class ConstrainedNamesTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testAnnotationLocalization() {
         val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/ZN - Fluid balance record.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/ZN - Fluid balance record.opt"), builderContext)
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("fluid_balance_record/fluid_intake/food")
         assertThat(node.localizedNames).isNotEmpty
         assertThat(node.localizedNames["sl"]).isEqualTo("Hrana")
@@ -46,7 +46,7 @@ class ConstrainedNamesTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testConstrainedNames() {
         val template = getTemplate("/convert/templates/ICU - Ventilator device Report3.opt")
-        val webTemplate: WebTemplate = WTBuilder.build(template, WebTemplateBuilderContext("en", ImmutableList.of("en")))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", ImmutableList.of("en")))
 
         val firstNode: WebTemplateNode = webTemplate.findWebTemplateNode("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings")
         val secondNode: WebTemplateNode = webTemplate.findWebTemplateNode("ventilator_device_report/nbp840/nbp840_observtions/ventilator_settings")
@@ -65,7 +65,7 @@ class ConstrainedNamesTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testRelaxedNamesConversion() {
         val template = getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_specialist_examination.opt")
-        val webTemplate: WebTemplate = WTBuilder.build(template, WebTemplateBuilderContext("ru", ImmutableList.of("ru")))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("ru", ImmutableList.of("ru")))
 
         val element = getComposition("/convert/compositions/compositionWithRelaxedNames.xml")
 
@@ -79,7 +79,7 @@ class ConstrainedNamesTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testNamesWithTerminologies() {
         val template = getTemplate("/convert/templates/Laboratory report.xml")
-        val webTemplate: WebTemplate = WTBuilder.build(template, WebTemplateBuilderContext("en", ImmutableList.of("en")))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", ImmutableList.of("en")))
 
         val composition = getComposition("/convert/compositions/namesExtTerminology.xml")
 

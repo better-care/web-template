@@ -18,8 +18,8 @@ package care.better.platform.web.template.converter
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
 import org.junit.jupiter.api.Test
@@ -39,7 +39,7 @@ import javax.xml.bind.JAXBException
  * @since 3.1.0
  */
 class AnySomeConstrainedTest : AbstractWebTemplateTest() {
-    private var webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/any_element_someconstrained.opt"), WebTemplateBuilderContext("en"))
+    private var webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/any_element_someconstrained.opt"), WebTemplateBuilderContext("en"))
     private var context: ConversionContext = ConversionContext.create().build()
 
     @Test

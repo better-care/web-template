@@ -20,8 +20,8 @@ import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.google.common.collect.ImmutableMap
 import com.google.common.collect.ImmutableSet
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
@@ -35,9 +35,9 @@ import javax.xml.bind.JAXBException
 class IntervalTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
-    fun intervalEvent() {
+    fun testIntervalEvent() {
         val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Headache.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Headache.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.builder<String, String>()
                 .put("ctx/language", "sl")

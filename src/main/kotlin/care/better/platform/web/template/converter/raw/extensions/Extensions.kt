@@ -23,7 +23,6 @@ import care.better.platform.template.AmNode
 import care.better.platform.template.AmUtils
 import care.better.platform.utils.RmUtils
 import care.better.platform.web.template.converter.exceptions.ConversionException
-import com.marand.thinkehr.web.WebTemplateConstants
 import org.openehr.am.aom.CCodePhrase
 import org.openehr.base.basetypes.GenericId
 import org.openehr.base.basetypes.PartyRef
@@ -91,11 +90,11 @@ fun RmObject?.isNotEmpty(): Boolean = !this.isEmpty()
 internal fun DvCodedText.Companion.createFromOpenEhrTerminology(groupId: String, name: String): DvCodedText =
     with(OpenEhrTerminology.getInstance().getId(groupId, name)) {
         if (this == null) {
-            val text = OpenEhrTerminology.getInstance().getText(WebTemplateConstants.DEFAULT_LANGUAGE, name)
+            val text = OpenEhrTerminology.getInstance().getText("en", name)
                 ?: throw ConversionException("OpenEHR code for groupid/name not found: $groupId/$name")
-            return create(WebTemplateConstants.TERMINOLOGY_OPENEHR, name, text)
+            return create("openehr", name, text)
         }
-        return create(WebTemplateConstants.TERMINOLOGY_OPENEHR, this, name)
+        return create("openehr", this, name)
     }
 
 
@@ -173,3 +172,11 @@ private val elementRmType = RmUtils.getRmTypeName(Element::class.java)
  * @return [Boolean] indicating if [AmNode] is for ELEMENT RM type
  */
 internal fun AmNode.isForElement() = elementRmType == this.rmType
+
+internal fun CharSequence?.isNotNullOrBlank(): Boolean {
+    return this != null && this.isNotBlank()
+}
+
+internal fun CharSequence?.isNotNullOrEmpty(): Boolean {
+    return !this.isNullOrEmpty()
+}

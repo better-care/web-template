@@ -27,8 +27,8 @@ import care.better.platform.web.template.converter.raw.factory.leaf.DvTimeFactor
 import care.better.platform.web.template.converter.value.LocaleBasedValueConverter
 import com.fasterxml.jackson.databind.node.TextNode
 import com.google.common.collect.ImmutableMap
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.*
 import org.joda.time.DateTime
 import org.joda.time.LocalDate
@@ -53,7 +53,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testFixedValues() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
         val composition: Composition? =
             webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/fixed_values/fixed_text|code", "at0009"), context)
@@ -72,7 +72,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testMultimedia() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.of(
@@ -96,7 +96,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testMultimediaUnknownAttribute() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
 
         assertThatThrownBy {
@@ -115,7 +115,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testMultimediaFailedInvalidValue() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
         assertThatThrownBy {
             webTemplate.convertFromFlatToRaw<Composition>(
@@ -131,7 +131,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testProportion() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.of(
@@ -151,7 +151,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testProportionWithInvalidNumerator() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
 
         assertThatThrownBy {
@@ -170,7 +170,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testProportionWithInvalidDenominator() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
 
         assertThatThrownBy {
@@ -189,7 +189,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testUri() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
         val composition: Composition? =
             webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/uri", "http://www.google.com"), context)
@@ -202,7 +202,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testFirstDate() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/date", "2014-1-13"), context)
 
@@ -230,7 +230,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testSecondDate() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/date", "2014-1-13"), context)
 
@@ -258,7 +258,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testFirstTime() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/time", "14:35"), context)
 
@@ -290,7 +290,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testSecondTime() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/time", "14:35"), context)
 
@@ -307,7 +307,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testThirdTime() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/time", "14:35"), context)
 
@@ -337,7 +337,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testFirstDateTime() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.of("testing_template/context/testing/date_time", "2014-1-13T14:35:00.000"),
@@ -362,7 +362,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testSecondDateTime() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.of("testing_template/context/testing/date_time", "2014-1-13T14:35:00.000"),

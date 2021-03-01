@@ -18,13 +18,13 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 import care.better.platform.template.AmNode
 import care.better.platform.template.AmUtils
 import care.better.platform.utils.JodaConversionUtils
+import care.better.platform.web.template.builder.input.DurationWebTemplateInputBuilder
+import care.better.platform.web.template.builder.model.input.WebTemplateDurationField
 import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
-import com.marand.thinkehr.web.build.input.DurationWebTemplateInputBuilder
-import com.marand.thinkehr.web.build.input.WebTemplateDurationField
-import com.marand.thinkehr.web.build.input.WebTemplateInput
+import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import org.joda.time.Period
 import org.joda.time.format.ISOPeriodFormat
 import org.joda.time.format.PeriodFormatter
@@ -44,7 +44,7 @@ internal object DvDurationFactory : DvQuantifiedFactory<DvDuration>() {
 
     override fun handleWebTemplateInput(conversionContext: ConversionContext, amNode: AmNode, rmObject: DvDuration, webTemplateInput: WebTemplateInput) {
         val item = AmUtils.getPrimitiveItem(amNode, CDuration::class.java, "value")
-        val max = DurationWebTemplateInputBuilder.getMax(item)
+        val max = DurationWebTemplateInputBuilder.getMax(item!!)
         val min = DurationWebTemplateInputBuilder.getMin(item)
 
         if (min != Period.ZERO && max == min) {

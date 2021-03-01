@@ -20,8 +20,8 @@ import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.core.type.TypeReference
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
@@ -37,7 +37,7 @@ class ParticipationCtxTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testInvalidParticipation() {
-        val webTemplate: WebTemplate = WTBuilder.build(
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(
             getTemplate("/convert/templates/Visual Acuity Report.opt"),
             WebTemplateBuilderContext("en"))
 
@@ -53,7 +53,7 @@ class ParticipationCtxTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testMultipleParticipationsMissingScheme() {
         val webTemplate: WebTemplate =
-            WTBuilder.build(getTemplate("/convert/templates/IDCR - Cancer MDT Output Report.v0.xml"), WebTemplateBuilderContext("en"))
+            WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/IDCR - Cancer MDT Output Report.v0.xml"), WebTemplateBuilderContext("en"))
         val flatMap: Map<String, Any?> =
             getObjectMapper().readValue(getJson("/convert/compositions/Participation Ctx Composition(2).json"), object : TypeReference<Map<String, Any?>>() {})
 
@@ -67,7 +67,7 @@ class ParticipationCtxTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testMultipleParticipations() {
         val webTemplate: WebTemplate =
-            WTBuilder.build(getTemplate("/convert/templates/IDCR - Cancer MDT Output Report.v0.xml"), WebTemplateBuilderContext("en"))
+            WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/IDCR - Cancer MDT Output Report.v0.xml"), WebTemplateBuilderContext("en"))
         val flatMap: Map<String, Any?> =
             getObjectMapper().readValue(getJson("/convert/compositions/Participation Ctx Composition(3).json"), object : TypeReference<Map<String, Any?>>() {})
 

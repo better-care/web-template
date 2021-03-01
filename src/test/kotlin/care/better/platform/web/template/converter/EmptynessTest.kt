@@ -21,8 +21,8 @@ import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.google.common.collect.ImmutableList
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
@@ -38,7 +38,7 @@ class EmptynessTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testEmptyComposition() {
         val template = getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_allergist_examination_child_lanit.opt")
-        val webTemplate: WebTemplate = WTBuilder.build(template, WebTemplateBuilderContext("ru"))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("ru"))
         val builderContext = ConversionContext.create().withLanguage("ru").withTerritory("RU").withComposerName("Composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(emptyMap(), builderContext)
         assertThat(composition).isNull()
@@ -48,7 +48,7 @@ class EmptynessTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testEmptyEvaluation() {
         val template = getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_specialist_examination.opt")
-        val webTemplate: WebTemplate = WTBuilder.build(template, WebTemplateBuilderContext("ru", ImmutableList.of("ru")))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("ru", ImmutableList.of("ru")))
         val builderContext = ConversionContext.create().withLanguage("ru").withTerritory("RU").withComposerName("Composer").build()
         val objectMapper = ObjectMapper()
         val node = objectMapper.readTree(getJson("/convert/compositions/emptyEvaluation.json")) as ObjectNode

@@ -21,8 +21,8 @@ import care.better.platform.web.template.converter.exceptions.ConversionExceptio
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.node.ObjectNode
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
@@ -39,7 +39,7 @@ class ProportionTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testProportion() {
         val templateName = "/convert/templates/older/Demo Vitals.opt"
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate(templateName), WebTemplateBuilderContext("en"))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate(templateName), WebTemplateBuilderContext("en"))
         val structuredComposition: ObjectNode = getObjectMapper().readTree(getJson("/convert/compositions/vitals_proportion.json")) as ObjectNode
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(structuredComposition, ConversionContext.create().build())
         assertThat(composition?.content ?: emptyList()).isNotEmpty
@@ -49,7 +49,7 @@ class ProportionTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testInvalidAttributeFailed() {
         val templateName = "/convert/templates/older/Demo Vitals.opt"
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate(templateName), WebTemplateBuilderContext("en"))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate(templateName), WebTemplateBuilderContext("en"))
         val structuredComposition: ObjectNode = getObjectMapper().readTree(getJson("/convert/compositions/vitals_proportion-fail.json")) as ObjectNode
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(structuredComposition, ConversionContext.create().build())
         assertThat(composition?.content ?: emptyList()).isNotEmpty
@@ -58,7 +58,7 @@ class ProportionTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testInvalidDenominatorAttribute() {
-        val webTemplate = WTBuilder.build(getTemplate("/convert/templates/Visual Acuity Report.opt"), WebTemplateBuilderContext("en"))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Visual Acuity Report.opt"), WebTemplateBuilderContext("en"))
         val json = getJson("/convert/compositions/Visual Acuity Report.json")
         val values = getObjectMapper().readValue(json, object : TypeReference<Map<String, Any?>>() {})
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(values, ConversionContext.create().build()) }
@@ -69,7 +69,7 @@ class ProportionTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testInvalidIntegral() {
-        val webTemplate = WTBuilder.build(getTemplate("/convert/templates/Visual Acuity Report.opt"), WebTemplateBuilderContext("en"))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Visual Acuity Report.opt"), WebTemplateBuilderContext("en"))
         val json = getJson("/convert/compositions/Second Visual Acuity Report.json")
         val values = getObjectMapper().readValue(json, object : TypeReference<Map<String, Any?>>() {})
         val composition: Composition? = webTemplate.convertFromFlatToRaw(values, ConversionContext.create().build())

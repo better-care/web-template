@@ -15,6 +15,7 @@
 
 package care.better.platform.web.template.converter
 
+import care.better.platform.template.AmNode
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
@@ -27,9 +28,9 @@ import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.google.common.collect.ImmutableList
 import com.google.common.collect.ImmutableMap
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
-import com.marand.thinkehr.web.build.WebTemplateNode
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
 import org.junit.jupiter.api.Test
@@ -54,7 +55,7 @@ class NullFlavourTest : AbstractWebTemplateTest() {
         val flatConversionContext = FlatMappingContext()
         val element = Element().apply { this.nullFlavour = DvCodedText.create("openehr", "271", "no information") }
 
-        ElementToFlatMapper.map(WebTemplateNode(), SimpleValueConverter, element, "id", flatConversionContext)
+        ElementToFlatMapper.map(WebTemplateNode(AmNode(null, "ELEMENT"), "ELEMENT", "/"), SimpleValueConverter, element, "id", flatConversionContext)
 
         assertThat(flatConversionContext.get()).hasSize(3)
         assertThat(flatConversionContext.get()).contains(entry("id/_null_flavour|code", "271"))
@@ -66,7 +67,7 @@ class NullFlavourTest : AbstractWebTemplateTest() {
     fun testNullFlavorElementToFormattedFlatMap() {
         val formattedFlatConversionContext = FormattedFlatMappingContext()
         val element = Element().apply { this.nullFlavour = DvCodedText.create("openehr", "272", "masked") }
-        ElementToFlatMapper.mapFormatted(WebTemplateNode(), SimpleValueConverter, element, "id", formattedFlatConversionContext)
+        ElementToFlatMapper.mapFormatted(WebTemplateNode(AmNode(null, "ELEMENT"),"ELEMENT", "/"), SimpleValueConverter, element, "id", formattedFlatConversionContext)
         assertThat(formattedFlatConversionContext.get()).hasSize(3)
 
         assertThat(formattedFlatConversionContext.get()).hasSize(3)
@@ -79,7 +80,7 @@ class NullFlavourTest : AbstractWebTemplateTest() {
     @Throws(IOException::class)
     fun testNullFlavorJsonRetrieve() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("Composer").build()
-        val webTemplate = WTBuilder.build(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
 
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(
                 getObjectMapper().readTree(getJson("/convert/compositions/Demo Vitals Null Flavour(1).json")) as ObjectNode,
@@ -109,7 +110,7 @@ class NullFlavourTest : AbstractWebTemplateTest() {
     @Throws(IOException::class)
     fun testNullFlavorPlainRetrieve() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("Composer").build()
-        val webTemplate = WTBuilder.build(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
 
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(
                 getObjectMapper().readTree(getJson("/convert/compositions/Demo Vitals Null Flavour(2).json")) as ObjectNode,
@@ -133,7 +134,7 @@ class NullFlavourTest : AbstractWebTemplateTest() {
     @Throws(IOException::class)
     fun testNullFlavorJsonBuild() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("Composer").build()
-        val webTemplate = WTBuilder.build(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
 
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(
                 getObjectMapper().readTree(getJson("/convert/compositions/Demo Vitals Null Flavour(3).json")) as ObjectNode,
@@ -167,7 +168,7 @@ class NullFlavourTest : AbstractWebTemplateTest() {
     @Throws(IOException::class)
     fun testNullFlavorMapBuild() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("Composer").build()
-        val webTemplate = WTBuilder.build(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
         val flatMap: Map<String, Any?> = getObjectMapper().readValue(getJson("/convert/compositions/Demo Vitals Null Flavour(4).json"), object : TypeReference<Map<String, Any?>>() {})
         val composition: Composition? = webTemplate.convertFromFlatToRaw(flatMap, context)
         assertThat(composition).isNotNull
@@ -190,7 +191,7 @@ class NullFlavourTest : AbstractWebTemplateTest() {
     @Throws(IOException::class)
     fun testNullFlavorMissingTerminology() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("Composer").build()
-        val webTemplate = WTBuilder.build(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
 
         val flatMap: Map<String, Any?> = getObjectMapper().readValue(getJson("/convert/compositions/Demo Vitals Null Flavour(5).json"), object : TypeReference<Map<String, Any?>>() {})
         val composition: Composition? = webTemplate.convertFromFlatToRaw(flatMap, context)
@@ -210,7 +211,7 @@ class NullFlavourTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testNullFlavorDirectValueToJson() {
-        val webTemplate = WTBuilder.build(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
 
         val composition = getDemoVitalsComposition(webTemplate, true)
 
@@ -240,7 +241,7 @@ class NullFlavourTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testNullFlavorDirectValueFromJson() {
-        val webTemplate = WTBuilder.build(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
 
         val composition = getDemoVitalsComposition(webTemplate, true)
         val node: JsonNode? = webTemplate.convertFromRawToStructured(composition, FromRawConversion.create())
@@ -284,9 +285,9 @@ class NullFlavourTest : AbstractWebTemplateTest() {
 
     @Test
     @Throws(IOException::class, JAXBException::class)
-    fun simpleTest() {
+    fun testSimpleTest() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
                 ImmutableMap.builder<String, String>()
                         .put("ctx/language", "sl")
@@ -306,9 +307,9 @@ class NullFlavourTest : AbstractWebTemplateTest() {
 
     @Test
     @Throws(IOException::class, JAXBException::class)
-    fun secondSimpleTest() {
+    fun testSecondSimpleTest() {
         val builderContext = WebTemplateBuilderContext("sl")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
                 ImmutableMap.builder<String, String>()
                         .put("ctx/language", "sl")
@@ -328,8 +329,8 @@ class NullFlavourTest : AbstractWebTemplateTest() {
 
     @Test
     @Throws(IOException::class, JAXBException::class)
-    fun nullFlavourBroken() {
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/clinical-summary-events.opt"),  WebTemplateBuilderContext("en"))
+    fun testNullFlavourBroken() {
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/clinical-summary-events.opt"),  WebTemplateBuilderContext("en"))
         val context = ConversionContext.create()
                 .withActivityTimingProvider { _ -> DvParsable("R1", "timing")  }
                 .withInstructionNarrativeProvider { _ -> DvText("narrative") }

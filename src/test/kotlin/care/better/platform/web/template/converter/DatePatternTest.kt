@@ -21,8 +21,8 @@ import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
@@ -40,19 +40,19 @@ class DatePatternTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testPatterns() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/zzz-dates.xml"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/zzz-dates.xml"), builderContext)
 
-        assertThat(webTemplate.findWebTemplateNode("encounter/date_possibilities/any_event/date-any").input.validation).isNull()
-        assertThat(webTemplate.findWebTemplateNode("encounter/date_possibilities/any_event/date-full").input.validation.pattern).isEqualTo("yyyy-mm-dd")
-        assertThat(webTemplate.findWebTemplateNode("encounter/date_possibilities/any_event/date-partial").input.validation.pattern).isEqualTo("yyyy-??-XX")
-        assertThat(webTemplate.findWebTemplateNode("encounter/date_possibilities/any_event/date-partialwithmonth").input.validation.pattern).isEqualTo("yyyy-mm-??")
+        assertThat(webTemplate.findWebTemplateNode("encounter/date_possibilities/any_event/date-any").getInput()!!.validation).isNull()
+        assertThat(webTemplate.findWebTemplateNode("encounter/date_possibilities/any_event/date-full").getInput()!!.validation?.pattern).isEqualTo("yyyy-mm-dd")
+        assertThat(webTemplate.findWebTemplateNode("encounter/date_possibilities/any_event/date-partial").getInput()!!.validation?.pattern).isEqualTo("yyyy-??-XX")
+        assertThat(webTemplate.findWebTemplateNode("encounter/date_possibilities/any_event/date-partialwithmonth").getInput()!!.validation?.pattern).isEqualTo("yyyy-mm-??")
     }
 
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testPatternsContentAny() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/zzz-dates.xml"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/zzz-dates.xml"), builderContext)
         val extractorAny: PathValueExtractor = NameAndNodeMatchingPathValueExtractor("/content[openEHR-EHR-OBSERVATION.date_possibilities.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value/value")
         val attributeName = "date-any"
 
@@ -69,7 +69,7 @@ class DatePatternTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testPatternsContentFull() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/zzz-dates.xml"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/zzz-dates.xml"), builderContext)
         val extractorAny: PathValueExtractor = NameAndNodeMatchingPathValueExtractor("/content[openEHR-EHR-OBSERVATION.date_possibilities.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0005]/value/value")
         val attributeName = "date-full"
 
@@ -82,7 +82,7 @@ class DatePatternTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testPatternsContentPartial() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/zzz-dates.xml"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/zzz-dates.xml"), builderContext)
         val extractorAny: PathValueExtractor = NameAndNodeMatchingPathValueExtractor("/content[openEHR-EHR-OBSERVATION.date_possibilities.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0006]/value/value")
         val attributeName = "date-partial"
 
@@ -96,7 +96,7 @@ class DatePatternTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testPatternsContentPartialWithMonth() {
         val builderContext = WebTemplateBuilderContext("en")
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/zzz-dates.xml"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/zzz-dates.xml"), builderContext)
         val extractorAny: PathValueExtractor = NameAndNodeMatchingPathValueExtractor("/content[openEHR-EHR-OBSERVATION.date_possibilities.v0]/data[at0001]/events[at0002]/data[at0003]/items[at0007]/value/value")
         val attributeName = "date-partialwithmonth"
 

@@ -19,8 +19,8 @@ import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.google.common.collect.ImmutableList
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
 import org.junit.jupiter.api.Test
@@ -37,7 +37,7 @@ class FixedValuesTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testFixed() {
         val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/ZN - Assessment Scales Encounter2.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/ZN - Assessment Scales Encounter2.opt"), builderContext)
 
         val values: Map<String, String> = mapOf(Pair("assessment_scales/pain_assessment/story/pain/exascerbating_factor/factor", "test"))
 
@@ -54,7 +54,7 @@ class FixedValuesTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testFixedCodedInDvText() {
         val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate("/convert/templates/Testing Template N1.opt"), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template N1.opt"), builderContext)
         val values: Map<String, String> = mapOf(Pair("test_encounter/testing/testing/name_1", "hello world!"))
 
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()

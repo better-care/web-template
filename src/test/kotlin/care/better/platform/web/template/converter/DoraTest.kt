@@ -20,8 +20,8 @@ import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import com.google.common.collect.ImmutableMap
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.openehr.base.basetypes.GenericId
@@ -42,7 +42,7 @@ class DoraTest : AbstractWebTemplateTest() {
     fun testOccurencesBug() {
         val builderContext = WebTemplateBuilderContext("en")
         val templateName = "/convert/templates/Breast - Radiographer Mammography Report.xml"
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate(templateName), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate(templateName), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
@@ -114,7 +114,7 @@ class DoraTest : AbstractWebTemplateTest() {
     fun testIsmTransitionWtNode() {
         val builderContext = WebTemplateBuilderContext("en")
         val templateName = "/convert/templates/Breast - Radiographer Mammography Report.xml"
-        val webTemplate: WebTemplate = WTBuilder.build(getTemplate(templateName), builderContext)
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate(templateName), builderContext)
 
         val partyIdentified = PartyIdentified.forName("name").apply {
             this.externalRef = PartyRef().apply {

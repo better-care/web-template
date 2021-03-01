@@ -19,8 +19,8 @@ import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.google.common.collect.ImmutableMap
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.joda.time.DateTime
 import org.junit.jupiter.api.Test
@@ -39,7 +39,7 @@ class XdsBuilderTest : AbstractWebTemplateTest() {
     fun testCdaDocument() {
         val template = getTemplate("/convert/templates/CDA Document.opt")
 
-        val webTemplate: WebTemplate = WTBuilder.build(template, WebTemplateBuilderContext("sl"))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("sl"))
 
         val values: Map<String, Any> = ImmutableMap.builder<String, Any>()
             .put("cda_document/context/setting|code", "238")
@@ -91,7 +91,7 @@ class XdsBuilderTest : AbstractWebTemplateTest() {
     fun testXdsGenericDocument() {
         val template = getTemplate("/convert/templates/XDS Document.opt")
 
-        val webTemplate = WTBuilder.build(template, WebTemplateBuilderContext("sl"))
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("sl"))
 
         val values: Map<String, Any> = ImmutableMap.builder<String, Any>()
             .put("ctx/health_care_facility|name", "hospital")

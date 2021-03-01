@@ -20,8 +20,8 @@ import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.core.type.TypeReference
 import com.google.common.collect.ImmutableList
-import com.marand.thinkehr.web.WebTemplateBuilderContext
-import com.marand.thinkehr.web.build.WTBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
@@ -36,7 +36,7 @@ class PersistentCompositionTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testPersistentWithContext() {
-        val webTemplate: WebTemplate = WTBuilder.build(
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(
             getTemplate("/convert/templates/Falls care plan.opt"),
             WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
 
@@ -51,7 +51,7 @@ class PersistentCompositionTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testPersistentWithoutContext() {
-        val webTemplate: WebTemplate = WTBuilder.build(
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(
             getTemplate("/convert/templates/persistent.opt"),
             WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
 
