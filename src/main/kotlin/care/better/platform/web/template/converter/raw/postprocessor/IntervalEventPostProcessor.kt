@@ -32,9 +32,9 @@ internal object IntervalEventPostProcessor : EventPostProcessor<IntervalEvent>()
 
     override fun postProcess(
             conversionContext: ConversionContext,
-            amNode: AmNode,
+            amNode: AmNode?,
             instance: IntervalEvent,
-            webTemplatePath: WebTemplatePath) {
+            webTemplatePath: WebTemplatePath?) {
         super.postProcess(conversionContext, amNode, instance, webTemplatePath)
         if (instance.width == null) {
             instance.width = JodaConversionUtils.createDvDuration("PT0S")

@@ -40,12 +40,14 @@ internal class RawToFlatConverter : AbstractRawToFlatConverter<Any>() {
     }
 
     override fun <R : RmObject> convertForAqlPath(webTemplate: WebTemplate, aqlPath: String, rmObject: R): Map<String, Any> {
-        map(webTemplate.findWebTemplateNodeByAqlPath(aqlPath), rmObject, webTemplate.tree.jsonId)
+        val webTemplateNode = webTemplate.findWebTemplateNodeByAqlPath(aqlPath)
+        map(webTemplateNode, rmObject, webTemplateNode.jsonId)
         return flatConversionContext.get()
     }
 
     override fun <R : RmObject> convertForWebTemplatePath(webTemplate: WebTemplate, webTemplatePath: String, rmObject: R): Map<String, Any> {
-        map(webTemplate.findWebTemplateNode(webTemplatePath), rmObject, webTemplate.tree.jsonId)
+        val webTemplateNode = webTemplate.findWebTemplateNode(webTemplatePath)
+        map(webTemplateNode, rmObject, webTemplateNode.jsonId)
         return flatConversionContext.get()
     }
 

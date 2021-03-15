@@ -41,6 +41,7 @@ internal object DvCodedTextToFlatMapper : RmObjectToFlatMapper<DvCodedText> {
         flatConversionContext["$webTemplatePath|code"] = rmObject.definingCode?.codeString
         flatConversionContext["$webTemplatePath|value"] = rmObject.value
         flatConversionContext["$webTemplatePath|terminology"] = rmObject.definingCode?.terminologyId?.value
+        flatConversionContext["$webTemplatePath|preferred_term"] = rmObject.definingCode?.preferredTerm
     }
 
     override fun mapFormatted(
@@ -61,5 +62,6 @@ internal object DvCodedTextToFlatMapper : RmObjectToFlatMapper<DvCodedText> {
         formattedFlatConversionContext["$webTemplatePath|code"] = rmObject.definingCode?.codeString
         formattedFlatConversionContext["$webTemplatePath|value"] = rmObject.value
         formattedFlatConversionContext["$webTemplatePath|terminology"] = rmObject.definingCode?.terminologyId?.value
+        formattedFlatConversionContext["$webTemplatePath|preferred_term"] = rmObject.definingCode?.preferredTerm
     }
 }

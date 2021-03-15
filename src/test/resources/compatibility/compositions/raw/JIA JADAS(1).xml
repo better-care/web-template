@@ -26,7 +26,7 @@
         <ns2:template_id>
             <ns2:value>JIA JADAS</ns2:value>
         </ns2:template_id>
-        <ns2:rm_version>1.0.4</ns2:rm_version>
+        <ns2:rm_version>1.1.0</ns2:rm_version>
     </ns2:archetype_details>
     <ns2:feeder_audit>
         <ns2:original_content xsi:type="ns2:DV_PARSABLE" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -80,7 +80,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-OBSERVATION.jadas.v0</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:language>
             <ns2:terminology_id>

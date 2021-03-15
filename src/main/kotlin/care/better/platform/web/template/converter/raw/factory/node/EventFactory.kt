@@ -30,10 +30,10 @@ import org.openehr.rm.datatypes.DvDateTime
  * @constructor Creates a new instance of [EventFactory]
  */
 internal abstract class EventFactory<T : Event> : LocatableFactory<T>() {
-    override fun createLocatable(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): T =
+    override fun createLocatable(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): T =
         createEvent(conversionContext, amNode, webTemplatePath).apply {
             this.time = DvDateTime.create(conversionContext.time)
         }
 
-    protected abstract fun createEvent(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): T
+    protected abstract fun createEvent(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): T
 }

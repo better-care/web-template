@@ -74,13 +74,13 @@ internal object PostProcessDelegator {
      * @param webTemplatePath Web template path
      */
     @Suppress("UNCHECKED_CAST")
-    fun delegate(conversionContext: ConversionContext, amNode: AmNode, instance: Any?, webTemplatePath: WebTemplatePath) {
+    fun delegate(conversionContext: ConversionContext, amNode: AmNode?, instance: Any?, webTemplatePath: WebTemplatePath?) {
         if (instance == null) {
             return
         }
         val instanceClass = instance::class.java
 
-        if (instance is RmObject) {
+        if (webTemplatePath != null && instance is RmObject) {
             conversionContext.rmVisitors[instanceClass]?.also { (it as RmVisitor<RmObject>).visit(instance, webTemplatePath.toString()) }
         }
 
@@ -96,4 +96,6 @@ internal object PostProcessDelegator {
             (processor as PostProcessor<Any>).postProcess(conversionContext, amNode, instance, webTemplatePath)
         }
     }
+
+    fun getPostProcessors(): Map<Class<*>, PostProcessor<*>> = postProcessorMap
 }

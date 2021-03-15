@@ -42,7 +42,7 @@ class ProportionTest : AbstractWebTemplateTest() {
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate(templateName), WebTemplateBuilderContext("en"))
         val structuredComposition: ObjectNode = getObjectMapper().readTree(getJson("/convert/compositions/vitals_proportion.json")) as ObjectNode
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(structuredComposition, ConversionContext.create().build())
-        assertThat(composition?.content ?: emptyList()).isNotEmpty
+        assertThat(composition?.content ?: emptyList()).isEmpty()
     }
 
     @Test

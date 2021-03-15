@@ -50,6 +50,7 @@ import org.openehr.rm.datatypes.DvEhrUri
 import java.io.IOException
 import java.io.OutputStream
 
+
 /**
  * @author Primoz Delopst
  * @author Bostjan Lah
@@ -65,15 +66,16 @@ import java.io.OutputStream
  * @param version Version of [WebTemplate] model
  * @param nodes [Multimap] of [AmNode] and [WebTemplateNode]
  */
-@JsonPropertyOrder("templateId", "version", "defaultLanguage", "languages", "tree")
+@JsonPropertyOrder("templateId", "semVer", "version", "defaultLanguage", "languages", "tree")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 class WebTemplate internal constructor(
         val tree: WebTemplateNode,
         val templateId: String,
+        val semVer: String?,
         val defaultLanguage: String,
         val languages: Collection<String>,
         val version: String,
-        @JsonIgnore val nodes: Multimap<AmNode, WebTemplateNode>) {
+        @JsonIgnore private val nodes: Multimap<AmNode, WebTemplateNode>) {
 
     companion object {
         /**
@@ -83,6 +85,7 @@ class WebTemplate internal constructor(
          * @param pathSegments AQL path represented as [List] of [PathSegment]
          * @return [AmNode] find for AQL path
          */
+        @JvmStatic
         fun resolvePath(amNode: AmNode, pathSegments: List<PathSegment>): AmNode? {
             var node = amNode
             for (pathSegment in pathSegments) {
@@ -100,6 +103,7 @@ class WebTemplate internal constructor(
          * @param rmType RM type
          * @return Matching [AmNode] child if exist, otherwise, return null
          */
+        @JvmStatic
         fun findChildNode(amNode: AmNode, pathSegment: PathSegment, rmType: String?): AmNode? =
             with(amNode.attributes[pathSegment.element]) {
                 if (this == null) {
@@ -142,7 +146,8 @@ class WebTemplate internal constructor(
      * @param fromRawConversion [FromRawConversion]
      * @return RM object in FLAT format ([Map] of web template path and value pairs)
      */
-    fun <T : RmObject> convertFromRawToFlat(rmObject: T, fromRawConversion: FromRawConversion): Map<String, Any> =
+    @JvmOverloads
+    fun <T : RmObject> convertFromRawToFlat(rmObject: T, fromRawConversion: FromRawConversion = FromRawConversion.create()): Map<String, Any> =
         RawToFlatConverter().convert(this, fromRawConversion, rmObject)
 
     /**
@@ -152,7 +157,8 @@ class WebTemplate internal constructor(
      * @param fromRawConversion [FromRawConversion]
      * @return RM object in FLAT format ([Map] of web template path and formatted value pairs)
      */
-    fun <T : RmObject> convertFormattedFromRawToFlat(rmObject: T, fromRawConversion: FromRawConversion): Map<String, String> =
+    @JvmOverloads
+    fun <T : RmObject> convertFormattedFromRawToFlat(rmObject: T, fromRawConversion: FromRawConversion = FromRawConversion.create()): Map<String, String> =
         FormattedRawToFlatConverter(fromRawConversion.valueConverter).convert(this, fromRawConversion, rmObject)
 
     /**
@@ -162,8 +168,9 @@ class WebTemplate internal constructor(
      * @param fromRawConversion [FromRawConversion]
      * @return RM object in STRUCTURED format
      */
-    fun <T : RmObject> convertFromRawToStructured(rmObject: T, fromRawConversion: FromRawConversion): JsonNode? =
-        RawToStructuredConverter.convert(this, fromRawConversion, rmObject)
+    @JvmOverloads
+    fun <T : RmObject> convertFromRawToStructured(rmObject: T, fromRawConversion: FromRawConversion = FromRawConversion.create()): JsonNode? =
+        RawToStructuredConverter(fromRawConversion.objectMapper).convert(this, fromRawConversion, rmObject)
 
     /**
      * Converts the RM object in RAW format to the RM object in STRUCTURED format with formatted values.
@@ -172,8 +179,9 @@ class WebTemplate internal constructor(
      * @param fromRawConversion [FromRawConversion]
      * @return RM object in STRUCTURED format with formatted values
      */
-    fun <T : RmObject> convertFormattedFromRawToStructured(rmObject: T, fromRawConversion: FromRawConversion): JsonNode? =
-        FormattedRawToStructuredConverter(fromRawConversion.valueConverter).convert(this, fromRawConversion, rmObject)
+    @JvmOverloads
+    fun <T : RmObject> convertFormattedFromRawToStructured(rmObject: T, fromRawConversion: FromRawConversion = FromRawConversion.create()): JsonNode? =
+        FormattedRawToStructuredConverter(fromRawConversion.valueConverter, fromRawConversion.objectMapper).convert(this, fromRawConversion, rmObject)
 
     /**
      * Converts [WebTemplate] to JSON formatted [String].
@@ -238,10 +246,22 @@ class WebTemplate internal constructor(
      * Finds [WebTemplateNode] for the AQL path.
      *
      * @param aqlPath AQL path
-     * @return [WebTemplateNode] if found, otherwise, return null
+     * @return [WebTemplateNode]
      * @throws [UnknownPathBuilderException] if no node was found for the AQL path
      */
     fun findWebTemplateNodeByAqlPath(aqlPath: String): WebTemplateNode = findWebTemplateNodeByAqlPath(PathUtils.getPathSegments(aqlPath))
+
+    /**
+     * Finds [WebTemplateNode] for the AQL path.
+     *
+     * @param aqlPath AQL path
+     * @return [WebTemplateNode] if found, otherwise, return null
+     */
+    fun findWebTemplateNodeByAqlPathOrNull(aqlPath: String): WebTemplateNode? =
+        with(PathUtils.getPathSegments(aqlPath)) {
+            val amNode = resolvePath(tree.amNode, this)
+            getMatchingWebTemplateNode(this, amNode)
+        }
 
     /**
      * Finds [WebTemplateNode] for the AQL path and archetype ID.
@@ -353,7 +373,7 @@ class WebTemplate internal constructor(
      * @param amNode [AmNode]
      * @return [Collection] of [WebTemplateNode]
      */
-    fun getWebTemplateNodes(amNode: AmNode?): Collection<WebTemplateNode> = amNode?.let { nodes.get(amNode)?.toList() } ?: emptyList()
+    fun getWebTemplateNodes(amNode: AmNode?): Collection<WebTemplateNode> = amNode?.let { nodes.get(it)?.toList() } ?: emptyList()
 
     /**
      * Returns [List] of [CodedValue] for the web template path.
@@ -429,6 +449,19 @@ class WebTemplate internal constructor(
             else -> getLinkPathRecursive(path.child, path.getId(), "", tree)
         }
     }
+
+    /**
+     * Returns [List] of [WebTemplateNode] for [AmNode]
+     *
+     * @param amNode [AmNode]
+     * @return [List] of [WebTemplateNode]
+     */
+    fun getNodes(amNode: AmNode?): List<WebTemplateNode> =
+        if (amNode == null)
+            emptyList()
+        else
+            nodes[amNode]?.toList() ?: emptyList()
+
 
     /**
      * Recursively gets a RM path suitable to be used for [DvEhrUri] or [Link] for the given web template path.

@@ -23,7 +23,9 @@ import com.fasterxml.jackson.databind.node.ObjectNode
 import com.google.common.collect.ImmutableList
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.converter.exceptions.ConversionException
 import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
 import java.io.IOException
@@ -40,8 +42,10 @@ class EmptynessTest : AbstractWebTemplateTest() {
         val template = getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_allergist_examination_child_lanit.opt")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("ru"))
         val builderContext = ConversionContext.create().withLanguage("ru").withTerritory("RU").withComposerName("Composer").build()
-        val composition: Composition? = webTemplate.convertFromFlatToRaw(emptyMap(), builderContext)
-        assertThat(composition).isNull()
+        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(emptyMap(), builderContext) }
+            .isInstanceOf(ConversionException::class.java)
+            .hasMessage("COMPOSITION has no attribute осмотр_аллерголога-иммунолога.")
+
     }
 
     @Test

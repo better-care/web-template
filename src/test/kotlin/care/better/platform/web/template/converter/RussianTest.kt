@@ -70,6 +70,7 @@ class RussianTest : AbstractWebTemplateTest() {
         val flatMap: Map<String, Any?> = webTemplate.convertFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap["информация/справочная_информация:0/из_справочника|code"]).isEqualTo("123")
         assertThat(flatMap["информация/справочная_информация:0/из_справочника|value"]).isEqualTo("Первая категория")
+        assertThat(flatMap["информация/category|value"]).isEqualTo("episodic")
     }
 
     @Test

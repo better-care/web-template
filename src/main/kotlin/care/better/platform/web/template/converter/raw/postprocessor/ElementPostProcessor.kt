@@ -17,6 +17,7 @@ package care.better.platform.web.template.converter.raw.postprocessor
 
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NULL_FLAVOURS_GROUP_NAME
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.extensions.createFromOpenEhrTerminology
 import org.openehr.base.basetypes.TerminologyId
@@ -32,12 +33,12 @@ import org.openehr.rm.datatypes.DvCodedText
 internal object ElementPostProcessor : LocatablePostProcessor<Element>() {
     private val supportedClass = Element::class.java
 
-    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode, instance: Element, webTemplatePath: WebTemplatePath) {
+    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode?, instance: Element, webTemplatePath: WebTemplatePath?) {
         instance.nullFlavour?.also { nullFlavour ->
             if (nullFlavour.value == null && nullFlavour.definingCode?.codeString != null) {
-                instance.nullFlavour = DvCodedText.createFromOpenEhrTerminology("15", nullFlavour.definingCode?.codeString!!)
+                instance.nullFlavour = DvCodedText.createFromOpenEhrTerminology(NULL_FLAVOURS_GROUP_NAME, nullFlavour.definingCode?.codeString!!)
             } else if (nullFlavour.value != null && nullFlavour.definingCode?.codeString == null) {
-                DvCodedText.createFromOpenEhrTerminology("15", nullFlavour.value!!).also { nullFlavour.definingCode = it.definingCode }
+                DvCodedText.createFromOpenEhrTerminology(NULL_FLAVOURS_GROUP_NAME, nullFlavour.value!!).also { nullFlavour.definingCode = it.definingCode }
             }
 
             nullFlavour.definingCode?.also {

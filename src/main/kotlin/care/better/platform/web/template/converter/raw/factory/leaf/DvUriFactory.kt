@@ -15,10 +15,10 @@
 
 package care.better.platform.web.template.converter.raw.factory.leaf
 
-import care.better.platform.web.template.converter.raw.context.ConversionContext
-import care.better.platform.web.template.converter.WebTemplatePath
-import com.fasterxml.jackson.databind.JsonNode
 import care.better.platform.template.AmNode
+import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.raw.context.ConversionContext
+import com.fasterxml.jackson.databind.JsonNode
 import org.openehr.rm.datatypes.DvUri
 
 /**
@@ -38,10 +38,10 @@ internal object DvUriFactory : RmObjectLeafNodeFactory<DvUri>() {
             rmObject: DvUri,
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean =
-            if (attribute.attribute.isBlank() || attribute.attribute == "value") {
-                rmObject.value = jsonNode.asText()
-                true
-            } else {
-                false
-            }
+        if (attribute.attribute.isBlank() || attribute.attribute == "value") {
+            rmObject.value = jsonNode.asText()
+            true
+        } else {
+            false
+        }
 }

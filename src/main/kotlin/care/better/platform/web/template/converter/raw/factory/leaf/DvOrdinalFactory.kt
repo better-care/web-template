@@ -16,11 +16,11 @@
 package care.better.platform.web.template.converter.raw.factory.leaf
 
 import care.better.platform.template.AmNode
+import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils
 import com.fasterxml.jackson.databind.JsonNode
-import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import org.openehr.am.aom.CDvOrdinal
 import org.openehr.rm.datatypes.CodePhrase
 import org.openehr.rm.datatypes.DvCodedText
@@ -165,7 +165,11 @@ internal object DvOrdinalFactory : DvOrderedFactory<DvOrdinal>() {
 
                 if (it.definingCode?.codeString != null && it.value.isNullOrBlank()) {
                     this.value =
-                        WebTemplateConversionUtils.getTermText(amNode, it.definingCode?.terminologyId?.value, it.definingCode?.codeString, conversionContext.language)
+                        WebTemplateConversionUtils.getTermText(
+                            amNode,
+                            it.definingCode?.terminologyId?.value,
+                            it.definingCode?.codeString,
+                            conversionContext.language)
                 } else {
                     this.value = it.value
                 }

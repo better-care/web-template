@@ -43,6 +43,7 @@ interface WebTemplateRange<T> {
 
         @JsonIgnore
         @JvmStatic
-        fun isFixed(range: WebTemplateRange<*>, minOp: String?, maxOp: String?): Boolean = range.getMinimal() == range.getMaximal() && ">=" == minOp && "<=" == maxOp
+        fun isFixed(range: WebTemplateRange<*>, minOp: String?, maxOp: String?): Boolean =
+            range.getMinimal() == range.getMaximal() && ">=" == minOp && "<=" == maxOp
     }
 }

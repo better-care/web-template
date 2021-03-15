@@ -18,17 +18,16 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 import care.better.platform.template.AmNode
 import care.better.platform.template.AmUtils
 import care.better.platform.utils.RmUtils
+import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.extensions.isForElement
 import care.better.platform.web.template.converter.raw.extensions.isNotEmpty
-import care.better.platform.web.template.converter.raw.factory.node.RmObjectNodeFactoryProvider
+import care.better.platform.web.template.converter.raw.factory.node.RmObjectNodeFactoryDelegator
 import care.better.platform.web.template.converter.raw.postprocessor.PostProcessDelegator
 import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils
 import com.fasterxml.jackson.databind.JsonNode
-import com.fasterxml.jackson.databind.node.ObjectNode
-import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import org.openehr.am.aom.CCodePhrase
 import org.openehr.am.aom.CCodeReference
 import org.openehr.base.basetypes.TerminologyId
@@ -68,8 +67,9 @@ internal open class DvCodedTextFactory : RmObjectLeafNodeFactory<DvCodedText>() 
             Pair(AttributeDto.forAttribute("value"), 1),
             Pair(AttributeDto.forAttribute("code"), 2),
             Pair(AttributeDto.forAttribute("terminology"), 3),
-            Pair(AttributeDto.forAttribute("_mapping"), 4),
-            Pair(AttributeDto.forAttribute("other"), 5))
+            Pair(AttributeDto.forAttribute("preferred_term"), 4),
+            Pair(AttributeDto.forAttribute("_mapping"), 5),
+            Pair(AttributeDto.forAttribute("other"), 6))
 
     override fun sortFieldNames(attributes: List<AttributeDto>): List<AttributeDto> =
         attributes.asSequence().map { Pair(it, sortMap[it] ?: Integer.MAX_VALUE) }.sortedBy { it.second }.map { it.first }.toList()
@@ -116,6 +116,10 @@ internal open class DvCodedTextFactory : RmObjectLeafNodeFactory<DvCodedText>() 
                 handleDvCodedTextString(conversionContext, amNode, rmObject, jsonNode.asText())
                 true
             }
+            attribute.attribute == "preferred_term" -> {
+                handlePreferredTermAttribute(jsonNode, rmObject)
+                true
+            }
             attribute.attribute == "_mapping" -> {
                 rmObject.mappings = jsonNode.mapIndexedNotNull { index, node ->
                     TermMappingFactory.create(conversionContext, amNode, node, WebTemplatePath(attribute.originalAttribute, webTemplatePath, index))
@@ -138,7 +142,7 @@ internal open class DvCodedTextFactory : RmObjectLeafNodeFactory<DvCodedText>() 
             else -> this
         }
 
-    override fun afterPropertiesSet(conversionContext: ConversionContext, amNode: AmNode, objectNode: ObjectNode, rmObject: DvCodedText) {
+    override fun afterPropertiesSet(conversionContext: ConversionContext, amNode: AmNode, jsonNode: JsonNode, rmObject: DvCodedText) {
         getFactory(amNode).afterPropertiesSet(amNode, rmObject)
     }
 
@@ -221,6 +225,28 @@ internal open class DvCodedTextFactory : RmObjectLeafNodeFactory<DvCodedText>() 
      */
     protected open fun handleValueAttribute(amNode: AmNode, jsonNode: JsonNode, rmObject: DvCodedText) {
         rmObject.value = jsonNode.asText()
+    }
+
+    /**
+     * Sets preferred_term to [DvCodedText] from [JsonNode] "|preferred_term" entry value.
+     *
+     * @param jsonNode [JsonNode]
+     * @param rmObject [DvCodedText]
+     */
+    protected open fun handlePreferredTermAttribute(jsonNode: JsonNode, rmObject: DvCodedText) {
+        if (rmObject.definingCode == null) {
+            rmObject.definingCode = CodePhrase()
+        }
+
+        rmObject.definingCode.also {
+            if (it == null) {
+                rmObject.definingCode = CodePhrase().apply {
+                    this.preferredTerm = jsonNode.asText()
+                }
+            } else {
+                it.preferredTerm = jsonNode.asText()
+            }
+        }
     }
 
     /**
@@ -412,8 +438,11 @@ internal open class DvCodedTextFactory : RmObjectLeafNodeFactory<DvCodedText>() 
                             elementAmNode,
                             lastParentWithCollection.items as MutableCollection<Any>,
                             {
-                                RmObjectNodeFactoryProvider.provide(RmUtils.getRmTypeName(Element::class.java))
-                                    .create(conversionContext, elementAmNode, webTemplatePath) as Element
+                                RmObjectNodeFactoryDelegator.delegateOrThrow(
+                                    RmUtils.getRmTypeName(Element::class.java),
+                                    conversionContext,
+                                    elementAmNode,
+                                    webTemplatePath) as Element
                             },
                             dvText,
                             webTemplatePath)
@@ -427,8 +456,11 @@ internal open class DvCodedTextFactory : RmObjectLeafNodeFactory<DvCodedText>() 
                             elementAmNode,
                             lastParentWithCollection.items as MutableCollection<Any>,
                             {
-                                RmObjectNodeFactoryProvider.provide(RmUtils.getRmTypeName(Element::class.java))
-                                    .create(conversionContext, elementAmNode, webTemplatePath) as Element
+                                RmObjectNodeFactoryDelegator.delegateOrThrow(
+                                    RmUtils.getRmTypeName(Element::class.java),
+                                    conversionContext,
+                                    elementAmNode,
+                                    webTemplatePath) as Element
                             },
                             dvText,
                             webTemplatePath)
@@ -442,8 +474,11 @@ internal open class DvCodedTextFactory : RmObjectLeafNodeFactory<DvCodedText>() 
                             elementAmNode,
                             lastParentWithCollection as MutableCollection<Any>,
                             {
-                                RmObjectNodeFactoryProvider.provide(RmUtils.getRmTypeName(Element::class.java))
-                                    .create(conversionContext, elementAmNode, webTemplatePath) as Element
+                                RmObjectNodeFactoryDelegator.delegateOrThrow(
+                                    RmUtils.getRmTypeName(Element::class.java),
+                                    conversionContext,
+                                    elementAmNode,
+                                    webTemplatePath) as Element
                             },
                             dvText,
                             webTemplatePath)

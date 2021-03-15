@@ -24,7 +24,7 @@
   "ctx/participation_name": "Named Participant",
   "ctx/participation_function": "District Nurse",
   "ctx/participation_id": "998877",
-  "ctx/participation_mode": "videoconferencing",
+  "ctx/participation_mode": "videoconference",
   "visual_acuity_report/visual_acuity:0/any_event:0/test_name|code": "at0139",
   "visual_acuity_report/visual_acuity:0/any_event:0/left_eye/eye_examined|code": "at0012",
   "visual_acuity_report/visual_acuity:0/any_event:0/left_eye/notation/low_vision_score|code": "at0018",

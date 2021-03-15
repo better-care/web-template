@@ -23,7 +23,7 @@ import care.better.platform.web.template.builder.model.WebTemplateNode
  * @author Primoz Delopst
  * @since 3.1.0
  */
-class ActionChildrenPostProcessor : WebTemplateNodeChildrenPostProcessor{
+class ActionChildrenPostProcessor : WebTemplateNodeChildrenPostProcessor {
     override fun postProcess(webTemplateNode: WebTemplateNode) {
         webTemplateNode.children.forEach {
             if (it.path.startsWith("${webTemplateNode.path}/protocol")) {

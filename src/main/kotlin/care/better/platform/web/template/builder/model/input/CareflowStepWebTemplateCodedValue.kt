@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder
  * @author Primoz Delopst
  * @since 3.1.0
  */
+@Suppress("SpellCheckingInspection")
 @JsonPropertyOrder("value", "label", "localizedLabels", "localizedDescriptions", "termBindings", "validation", "currentStates")
 class CareflowStepWebTemplateCodedValue(
         codedValue: WebTemplateCodedValue,

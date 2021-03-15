@@ -28,7 +28,7 @@
         <ns2:template_id>
             <ns2:value>ISPEK - ZN - APACHE</ns2:value>
         </ns2:template_id>
-        <ns2:rm_version>1.0.4</ns2:rm_version>
+        <ns2:rm_version>1.1.0</ns2:rm_version>
     </ns2:archetype_details>
     <ns2:language>
         <ns2:terminology_id>
@@ -87,7 +87,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-CLUSTER.composition_context_detail.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                     <ns2:name>
@@ -108,7 +108,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-SECTION.ispek_dialog.v1</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:items xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.body_temperature-zn.v1">
             <ns2:name>
@@ -118,7 +118,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-OBSERVATION.body_temperature-zn.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -173,7 +173,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-OBSERVATION.heart_rate-pulse-zn.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -228,7 +228,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-OBSERVATION.blood_pressure-zn.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -283,7 +283,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-OBSERVATION.respiration.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -339,7 +339,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-SECTION.ispek_dialog.v1</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:items xsi:type="ns2:ACTION" archetype_node_id="openEHR-EHR-ACTION.procedure-unassisted_oxygen_delivery.v1">
             <ns2:name>
@@ -349,7 +349,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-ACTION.procedure-unassisted_oxygen_delivery.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -393,7 +393,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-CLUSTER.gas_delivery-oxygen.v1</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.ambient_oxygen.v1">
                         <ns2:name>
@@ -403,7 +403,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.ambient_oxygen.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0052">
                             <ns2:name>
@@ -439,7 +439,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-SECTION.ispek_dialog.v1</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:items xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.glasgow_coma-paed.v1">
             <ns2:name>
@@ -449,7 +449,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-OBSERVATION.glasgow_coma-paed.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -503,7 +503,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-SECTION.ispek_dialog.v1</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:items xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.apache_scoring_mnd.v1">
             <ns2:name>
@@ -513,7 +513,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-OBSERVATION.apache_scoring_mnd.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>

@@ -42,7 +42,7 @@ internal object HistoryPostProcessor : LocatablePostProcessor<History>() {
 
     private val supportedClass = History::class.java
 
-    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode, instance: History, webTemplatePath: WebTemplatePath) {
+    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode?, instance: History, webTemplatePath: WebTemplatePath?) {
         super.postProcess(conversionContext, amNode, instance, webTemplatePath)
 
         if (instance.events.isNotEmpty() && instance.origin == null) {
@@ -82,8 +82,8 @@ internal object HistoryPostProcessor : LocatablePostProcessor<History>() {
      * @param amNode [AmNode]
      * @param event [Event]
      */
-    private fun findEventOffset(amNode: AmNode, event: Event): Period? =
-        amNode.attributes["events"]?.children?.mapNotNull { node ->
+    private fun findEventOffset(amNode: AmNode?, event: Event): Period? =
+        amNode?.attributes?.get("events")?.children?.mapNotNull { node ->
             if (event.archetypeNodeId == node.archetypeNodeId) {
                 val offset = AmUtils.getPrimitiveItem(node, CDuration::class.java, "offset", "value")
                 if (offset?.range?.lower != null) {

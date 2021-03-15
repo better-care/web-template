@@ -18,6 +18,7 @@ package care.better.platform.web.template.converter.raw.postprocessor
 import care.better.platform.template.AmNode
 import care.better.platform.template.AmUtils
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ISM_TRANSITION_GROUP_NAME
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.extensions.createFromOpenEhrTerminology
 import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils
@@ -36,12 +37,12 @@ internal object IsmTransitionPostProcessor : PostProcessor<IsmTransition> {
 
     override fun postProcess(
             conversionContext: ConversionContext,
-            amNode: AmNode,
+            amNode: AmNode?,
             instance: IsmTransition,
-            webTemplatePath: WebTemplatePath) {
+            webTemplatePath: WebTemplatePath?) {
 
         if (instance.careflowStep != null && instance.currentState == null && instance.transition == null) {
-            amNode.parent!!.attributes["ism_transition"]?.also { attribute ->
+            amNode?.parent?.attributes?.get("ism_transition")?.also { attribute ->
                 attribute.children.firstOrNull { it.nodeId == instance.careflowStep?.definingCode?.codeString }?.also {
                     val currentStateCCodePhrase = AmUtils.getCObjectItem(it, CCodePhrase::class.java, "current_state", "defining_code")
                     if (currentStateCCodePhrase != null && currentStateCCodePhrase.codeList.isNotEmpty()) {
@@ -56,7 +57,7 @@ internal object IsmTransitionPostProcessor : PostProcessor<IsmTransition> {
                 }
             }
         } else if (instance.currentState == null) {
-            instance.currentState = DvCodedText.createFromOpenEhrTerminology("21", conversionContext.ismTransitionCurrentState)
+            instance.currentState = DvCodedText.createFromOpenEhrTerminology(ISM_TRANSITION_GROUP_NAME, conversionContext.ismTransitionCurrentState)
         }
     }
 

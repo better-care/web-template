@@ -27,6 +27,11 @@ import java.util.regex.Pattern
  */
 data class WebTemplatePath(val key: String, val parent: WebTemplatePath? = null, val index: Int? = null) {
 
+    companion object {
+        @JvmStatic
+        fun forBlankPath(): WebTemplatePath = WebTemplatePath("", null, null)
+    }
+
     /**
      * Returns [String] representation of this [WebTemplatePath] recursively.
      *
@@ -88,6 +93,7 @@ data class ReversedWebTemplatePath(val key: String, val child: ReversedWebTempla
          * @param webTemplatePath Web template path
          * @return [ReversedWebTemplatePath]
          */
+        @JvmStatic
         fun fromString(webTemplatePath: String): ReversedWebTemplatePath =
             convertRecursive(webTemplatePath.split(segmentSeparatorPattern).toList(), 0)!!
 
@@ -155,6 +161,7 @@ data class WebTemplatePathSegment(val key: String, val index: Int?, val attribut
          * @param webTemplatePathSegment Web template path segment
          * @return [WebTemplatePathSegment]
          */
+        @JvmStatic
         fun fromString(webTemplatePathSegment: String): WebTemplatePathSegment {
             try {
                 val (keyString, attributeString) = webTemplatePathSegment.split(attributeSeparatorPattern).toList().padWithNulls(2)

@@ -41,7 +41,7 @@ internal object CodePhraseFactory : RmObjectLeafNodeFactory<CodePhrase>() {
             attribute: AttributeDto,
             rmObject: CodePhrase,
             jsonNode: JsonNode,
-            webTemplatePath: WebTemplatePath): Boolean {
+            webTemplatePath: WebTemplatePath): Boolean =
         if (attribute.attribute.isBlank() || attribute.attribute == "code") {
             val textValue = jsonNode.asText()
             findConstraint(amNode)?.also {
@@ -51,14 +51,16 @@ internal object CodePhraseFactory : RmObjectLeafNodeFactory<CodePhrase>() {
             }
 
             rmObject.codeString = textValue
-            return true
-        }
-        if (attribute.attribute == "terminology") {
+            true
+        } else if (attribute.attribute == "terminology") {
             rmObject.terminologyId ?: TerminologyId().also { rmObject.terminologyId = it }.apply { this.value = jsonNode.asText() }
-            return true
+            true
+        } else if (attribute.attribute == "preferred_term") {
+            rmObject.preferredTerm = jsonNode.asText()
+            true
+        } else {
+            false
         }
-        return false
-    }
 
     override fun removeDependentValues(map: MutableMap<AttributeDto, JsonNode>): Boolean {
         val codeNode = map[AttributeDto.forAttribute("code")]

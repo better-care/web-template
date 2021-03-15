@@ -16,9 +16,9 @@
 package care.better.platform.web.template.converter.structured.mapper
 
 import care.better.openehr.rm.RmObject
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.base.basetypes.*
 import org.openehr.rm.common.Link
 import org.openehr.rm.common.Participation
@@ -35,7 +35,7 @@ import org.openehr.rm.datatypes.*
  *
  * Singleton used to delegate the RM object to the [RmObjectToStructuredMapper] based on the RM object class.
  */
-internal object RmObjectToStructuredMapperDelegator {
+object RmObjectToStructuredMapperDelegator {
     private val rmObjectToStructuredMappers: Map<Class<out RmObject>, RmObjectToStructuredMapper<out RmObject>> =
         mapOf(
             Pair(Action::class.java, ActionToStructuredMapper),
@@ -54,6 +54,7 @@ internal object RmObjectToStructuredMapperDelegator {
             Pair(DvParsable::class.java, DvParsableToStructuredMapper),
             Pair(DvProportion::class.java, DvProportionToStructuredMapper),
             Pair(DvQuantity::class.java, DvQuantityToStructuredMapper),
+            Pair(DvScale::class.java, DvScaleToStructuredMapper),
             Pair(DvText::class.java, DvTextToStructuredMapper),
             Pair(DvTime::class.java, DvTimeToStructuredMapper),
             Pair(DvUri::class.java, DvUriToStructuredMapper),
@@ -90,6 +91,7 @@ internal object RmObjectToStructuredMapperDelegator {
      * @param rmObject RM object in RAW format
      * @return RM object in STRUCTURED format
      */
+    @JvmStatic
     @Suppress("UNCHECKED_CAST")
     fun <T : RmObject> delegate(
             webTemplateNode: WebTemplateNode,
@@ -105,6 +107,7 @@ internal object RmObjectToStructuredMapperDelegator {
      * @param rmObject RM object in RAW format
      * @return RM object in STRUCTURED format
      */
+    @JvmStatic
     @Suppress("UNCHECKED_CAST")
     fun <T : RmObject> delegateFormatted(
             webTemplateNode: WebTemplateNode,

@@ -19,9 +19,11 @@ import care.better.platform.path.PathSegment
 import care.better.platform.path.PathUtils
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.SETTING_GROUP_NAME
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.extensions.createFromOpenEhrTerminology
 import org.openehr.base.basetypes.LocatableRef
+import org.openehr.base.basetypes.TerminologyId
 import org.openehr.rm.common.Link
 import org.openehr.rm.composition.Composition
 import org.openehr.rm.composition.EventContext
@@ -42,7 +44,7 @@ internal object CompositionPostProcessor : LocatablePostProcessor<Composition>()
     private val NAME_PATTERN = Pattern.compile("\\s*#[0-9]+$")
 
 
-    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode, instance: Composition, webTemplatePath: WebTemplatePath) {
+    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode?, instance: Composition, webTemplatePath: WebTemplatePath?) {
         super.postProcess(conversionContext, amNode, instance, webTemplatePath)
 
         if (instance.context != null && isPersistent(instance)) {
@@ -58,6 +60,17 @@ internal object CompositionPostProcessor : LocatablePostProcessor<Composition>()
                 updateEventContext(context, conversionContext)
             }
         }
+
+        val territory = instance.territory
+        if (territory != null && territory.terminologyId == null) {
+            territory.terminologyId = TerminologyId("ISO_3166-1")
+        }
+
+        val language = instance.language
+        if (language != null && language.terminologyId == null) {
+            language.terminologyId = TerminologyId("ISO_639-1")
+        }
+
         postProcessInstructionDetails(instance, conversionContext)
     }
 
@@ -82,7 +95,7 @@ internal object CompositionPostProcessor : LocatablePostProcessor<Composition>()
 
         if (eventContext.setting == null) {
             if (conversionContext.setting != null) {
-                eventContext.setting = DvCodedText.createFromOpenEhrTerminology("10", conversionContext.setting)
+                eventContext.setting = DvCodedText.createFromOpenEhrTerminology(SETTING_GROUP_NAME, conversionContext.setting)
             } else {
                 eventContext.setting = DvCodedText.createWithOpenEHRTerminology("238", "other care")
             }
@@ -115,6 +128,7 @@ internal object CompositionPostProcessor : LocatablePostProcessor<Composition>()
                 val path = when {
                     instructionDetails.instructionId?.path != null -> instructionDetails.instructionId?.path
                     conversionContext.actionToInstructionHandler != null -> conversionContext.actionToInstructionHandler.resolvePath(
+                        composition,
                         instructionDetails,
                         instructionDetailsData,
                         conversionContext)

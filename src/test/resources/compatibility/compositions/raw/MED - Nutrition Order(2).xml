@@ -25,7 +25,7 @@
         <ns2:template_id>
             <ns2:value>ISPEK - MED - Nutrition Order</ns2:value>
         </ns2:template_id>
-        <ns2:rm_version>1.0.4</ns2:rm_version>
+        <ns2:rm_version>1.1.0</ns2:rm_version>
     </ns2:archetype_details>
     <ns2:language>
         <ns2:terminology_id>
@@ -73,7 +73,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:items xsi:type="ns2:INSTRUCTION" archetype_node_id="openEHR-EHR-INSTRUCTION.nutrition_order.v0">
             <ns2:name>
@@ -86,7 +86,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-INSTRUCTION.nutrition_order.v0</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -149,7 +149,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.nutrition_direction.v0</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0177">
                             <ns2:name>
@@ -343,7 +343,7 @@
                                 <ns2:archetype_id>
                                     <ns2:value>openEHR-EHR-CLUSTER.nutrition_order_summary.v0</ns2:value>
                                 </ns2:archetype_id>
-                                <ns2:rm_version>1.0.4</ns2:rm_version>
+                                <ns2:rm_version>1.1.0</ns2:rm_version>
                             </ns2:archetype_details>
                             <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002">
                                 <ns2:name xsi:type="ns2:DV_CODED_TEXT">

@@ -16,6 +16,7 @@
 package care.better.platform.web.template.converter.raw.factory.leaf
 
 import care.better.platform.template.AmNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ISM_TRANSITION_GROUP_NAME
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.extensions.createFromOpenEhrTerminology
@@ -50,15 +51,16 @@ internal object IsmTransitionDvCodedTextFactory : DvCodedTextFactory() {
     override fun handleBlankAttribute(conversionContext: ConversionContext, amNode: AmNode, jsonNode: JsonNode, rmObject: DvCodedText) {
         if (isCurrentStateNode(amNode)) {
             try {
-                DvCodedText.createFromOpenEhrTerminology("21", jsonNode.asText()).also {
+                DvCodedText.createFromOpenEhrTerminology(ISM_TRANSITION_GROUP_NAME, jsonNode.asText()).also {
                     rmObject.definingCode = it.definingCode
                     rmObject.value = it.value
                 }
                 handleDvCodedTextStringTerminology(amNode, rmObject.definingCode!!, null)
             } catch (ignored: ConversionException) {
             }
+        } else {
+            handleDvCodedTextString(conversionContext, amNode, rmObject, jsonNode.asText())
         }
-        handleDvCodedTextString(conversionContext, amNode, rmObject, jsonNode.asText())
     }
 
 
@@ -73,7 +75,7 @@ internal object IsmTransitionDvCodedTextFactory : DvCodedTextFactory() {
         super.handleValueAttribute(amNode, jsonNode, rmObject)
         if (isCurrentStateNode(amNode)) {
             try {
-                DvCodedText.createFromOpenEhrTerminology("21", jsonNode.asText()).also { rmObject.definingCode = it.definingCode }
+                DvCodedText.createFromOpenEhrTerminology(ISM_TRANSITION_GROUP_NAME, jsonNode.asText()).also { rmObject.definingCode = it.definingCode }
             } catch (ignored: ConversionException) {
             }
         }

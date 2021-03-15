@@ -18,11 +18,11 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 import care.better.platform.template.AmNode
 import care.better.platform.template.AmUtils
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PERCENTAGE_PROPORTION_TYPE
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils
 import com.fasterxml.jackson.databind.JsonNode
-import com.fasterxml.jackson.databind.node.ObjectNode
 import org.openehr.am.aom.CBoolean
 import org.openehr.am.aom.CInteger
 import org.openehr.am.aom.CReal
@@ -72,7 +72,7 @@ internal object DvProportionFactory : DvQuantifiedFactory<DvProportion>() {
                         rmObject.numerator = convertValue(conversionContext, jsonNode, getMaxPrecision(amNode))
 
                         rmObject.type?.also {
-                            if (it.toInt() == 2) {
+                            if (it.toInt() == PERCENTAGE_PROPORTION_TYPE) {
                                 rmObject.denominator = 100.0f
                             }
                         }
@@ -86,7 +86,7 @@ internal object DvProportionFactory : DvQuantifiedFactory<DvProportion>() {
                     else -> false
                 }
 
-    override fun afterPropertiesSet(conversionContext: ConversionContext, amNode: AmNode, objectNode: ObjectNode, rmObject: DvProportion) {
+    override fun afterPropertiesSet(conversionContext: ConversionContext, amNode: AmNode, jsonNode: JsonNode, rmObject: DvProportion) {
         if (rmObject.precision == null) {
             rmObject.precision = getMaxPrecision(amNode)
         }
@@ -95,6 +95,7 @@ internal object DvProportionFactory : DvQuantifiedFactory<DvProportion>() {
     override fun removeDependentValues(map: MutableMap<AttributeDto, JsonNode>): Boolean {
         if (map[AttributeDto.forAttribute("denominator")] != null && map[AttributeDto.forAttribute("numerator")] == null) {
             map.remove(AttributeDto.forAttribute("denominator"))
+            map.remove(AttributeDto.ofBlank())
             return true
         }
         return false
@@ -204,7 +205,7 @@ internal object DvProportionFactory : DvQuantifiedFactory<DvProportion>() {
             }
         }
 
-        if (numerator == null && denominator == null && rmObject.type == 2) {
+        if (numerator == null && denominator == null && rmObject.type == PERCENTAGE_PROPORTION_TYPE) {
             rmObject.numerator = convertValue(conversionContext, jsonNode, precisionMax)
             rmObject.denominator = 100.0f
         }
@@ -238,4 +239,6 @@ internal object DvProportionFactory : DvQuantifiedFactory<DvProportion>() {
             value.toFloat()
         else
             value.toBigDecimal().setScale(precisionMax, RoundingMode.HALF_UP).toFloat()
+
+    override fun canRemoveDependantValues(): Boolean = true
 }

@@ -16,12 +16,12 @@
 package care.better.platform.web.template.converter.raw.factory.leaf
 
 import care.better.platform.template.AmNode
+import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ValueNode
-import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import org.openehr.rm.common.FeederAudit
 import org.openehr.rm.datatypes.DvCodedText
 
@@ -37,8 +37,7 @@ internal object FeederAuditFactory : RmObjectLeafNodeFactory<FeederAudit>() {
             conversionContext: ConversionContext,
             amNode: AmNode,
             valueNode: ValueNode,
-            webTemplatePath: WebTemplatePath,
-            webTemplateInput: WebTemplateInput?): FeederAudit =
+            webTemplatePath: WebTemplatePath): FeederAudit =
         throw ConversionException("${amNode.rmType} can not be created from simple value", webTemplatePath.toString())
 
     override fun createInstance(attributes: Set<AttributeDto>): FeederAudit = FeederAudit()

@@ -32,7 +32,7 @@ import org.openehr.rm.common.Locatable
  * @param rmClass [Locatable] [Class] for which a new instance will be created
  */
 internal open class LocatableInstanceClassFactory<T : Locatable>(private val rmClass: Class<T>) : LocatableFactory<T>() {
-    override fun createLocatable(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): T =
+    override fun createLocatable(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): T =
         try {
             rmClass.getConstructor().newInstance()
         } catch (e: Exception) {

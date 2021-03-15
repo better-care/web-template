@@ -33,6 +33,6 @@ import org.openehr.rm.common.Locatable
 internal open class LocatableInstanceFallbackNameFactory<T : Locatable>(private val factory: () -> T, rmClass: Class<T>) : LocatableFactory<T>() {
     private val className: String = rmClass.simpleName
 
-    override fun createLocatable(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): T =
+    override fun createLocatable(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): T =
         factory.invoke().apply { setFallbackName(this, className) }
 }

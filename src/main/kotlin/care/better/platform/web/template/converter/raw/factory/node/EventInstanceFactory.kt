@@ -30,5 +30,5 @@ import org.openehr.rm.datastructures.Event
  * @param factory Supplier that creates a new instance of [Event]
  */
 internal class EventInstanceFactory<T : Event>(private val factory: () -> T) : EventFactory<T>() {
-    override fun createEvent(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): T = factory.invoke()
+    override fun createEvent(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): T = factory.invoke()
 }

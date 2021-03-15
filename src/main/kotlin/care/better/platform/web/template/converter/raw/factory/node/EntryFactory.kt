@@ -37,13 +37,13 @@ import org.openehr.rm.datatypes.DvCodedText
  * @constructor Creates a new instance of [EntryFactory]
  */
 internal abstract class EntryFactory<T : Entry> : LocatableFactory<T>() {
-    override fun createLocatable(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): T =
+    override fun createLocatable(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): T =
         createEntry(conversionContext, amNode, webTemplatePath).apply {
 
             conversionContext.language?.also { this.language = CodePhrase.createLanguagePhrase(it) }
             conversionContext.encoding?.also { this.encoding = CodePhrase.createEncodingPhrase(it) }
 
-            val subjectAmNode = AmUtils.getAmNode(amNode, "subject")
+            val subjectAmNode = amNode?.let { AmUtils.getAmNode(it, "subject") }
 
             if (subjectAmNode != null && "PARTY_PROXY" != subjectAmNode.rmType)
                 this.subject = when (subjectAmNode.rmType) {
@@ -69,5 +69,5 @@ internal abstract class EntryFactory<T : Entry> : LocatableFactory<T>() {
             this.otherParticipations.addAll(conversionContext.getParticipationList())
         }
 
-    protected abstract fun createEntry(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): T
+    protected abstract fun createEntry(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): T
 }

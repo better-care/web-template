@@ -30,5 +30,5 @@ import org.openehr.rm.common.Locatable
  * @param factory Supplier that creates a new instance of [Locatable]
  */
 internal open class LocatableInstanceFactory<T : Locatable>(private val factory: () -> T) : LocatableFactory<T>() {
-    override fun createLocatable(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): T = factory.invoke()
+    override fun createLocatable(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): T = factory.invoke()
 }

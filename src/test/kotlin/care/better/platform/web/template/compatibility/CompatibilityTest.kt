@@ -23,6 +23,7 @@ import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.builder.mapper.WebTemplateObjectMapper
 import care.better.platform.web.template.converter.FromRawConversion
+import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.core.JsonParser
@@ -87,7 +88,7 @@ class CompatibilityTest : AbstractWebTemplateTest() {
             mapOf(Pair("medtronic_vbhc_crc_clinical_outcomes_baseline/baseline_treatment_factors/treatment", "e9a3fedc-f8ba-431f-9c48-b35d6012fb10"))),
         CompatibilityInputResourceDto("VBHC CRC Clinical Outcomes Follow-up", false, Pair(1, 1), "en", setOf("en")),
         CompatibilityInputResourceDto("VBHC CRC PROM", false, Pair(1, 1), "en", setOf("en")),
-        CompatibilityInputResourceDto("CHAQ", false, Pair(1, 1), "en", setOf("en")),
+        CompatibilityInputResourceDto("CHAQ", false, Pair(1, 1), "en", setOf("en"), nullable = true),
         CompatibilityInputResourceDto("JIA Body map", false, Pair(1, 1), "en", setOf("en")),
         CompatibilityInputResourceDto("JIA JADAS", false, Pair(1, 1), "en", setOf("en")),
         CompatibilityInputResourceDto("Tanner stages", false, Pair(1, 1), "en", setOf("en")),
@@ -128,31 +129,57 @@ class CompatibilityTest : AbstractWebTemplateTest() {
                 WebTemplateBuilderContext(it.language, it.languages))
 
             for (i in it.range.first .. it.range.second) {
-                val flatComposition = CompatibilityMapper.readValue(
-                    getJson("/compatibility/compositions/flat/${it.name}($i).json"),
-                    object : TypeReference<Map<String, Any>>() {})
+                val flatComposition =
+                    if (it.nullable)
+                        mapOf()
+                    else
+                        CompatibilityMapper.readValue(
+                            getJson("/compatibility/compositions/flat/${it.name}($i).json"),
+                            object : TypeReference<Map<String, Any>>() {})
 
-                val structuredComposition = CompatibilityMapper.readTree(getJson("/compatibility/compositions/structured/${it.name}($i).json")) as ObjectNode
+                val structuredComposition =
+                    if (it.nullable)
+                        ConversionObjectMapper.createObjectNode()
+                    else
+                        CompatibilityMapper.readTree(getJson("/compatibility/compositions/structured/${it.name}($i).json")) as ObjectNode
 
-                val rawComposition = getComposition("/compatibility/compositions/raw/${it.name}($i).xml")
+                val rawComposition =
+                    if (it.nullable)
+                        Composition()
+                    else
+                        getComposition("/compatibility/compositions/raw/${it.name}($i).xml")
 
                 val context = ConversionContext.create().withUidGenerator(getUidGenerator(it.instructionUidEntries)).build()
                 if (it.flat) {
                     val inputFlatComposition = CompatibilityMapper.readValue(
                         getJson("/compatibility/compositions/input/${it.name}($i).json"),
                         object : TypeReference<Map<String, Any>>() {})
-                    val convertedComposition: Composition = webTemplate.convertFromFlatToRaw(inputFlatComposition, context)!!
+                    val convertedComposition: Composition? = webTemplate.convertFromFlatToRaw(inputFlatComposition, context)
+
+                    if (it.nullable){
+                        assertThat(convertedComposition).isNull()
+                        return
+                    }
+
+                    assertThat(convertedComposition).isNotNull()
 
                     testFlatToRaw(webTemplate, inputFlatComposition, rawComposition, it.instructionUidEntries)
-                    testRawToFlat(webTemplate, convertedComposition, flatComposition)
+                    testRawToFlat(webTemplate, convertedComposition!!, flatComposition)
                     testRawToStructured(webTemplate, convertedComposition, structuredComposition)
 
                 } else {
                     val inputStructuredComposition = CompatibilityMapper.readTree(getJson("/compatibility/compositions/input/${it.name}($i).json")) as ObjectNode
-                    val convertedComposition: Composition = webTemplate.convertFromStructuredToRaw(inputStructuredComposition, context)!!
+                    val convertedComposition: Composition? = webTemplate.convertFromStructuredToRaw(inputStructuredComposition, context)
+
+                    if (it.nullable){
+                        assertThat(convertedComposition).isNull()
+                        return
+                    }
+
+                    assertThat(convertedComposition).isNotNull()
 
                     testStructuredToRaw(webTemplate, inputStructuredComposition, rawComposition, it.instructionUidEntries)
-                    testRawToFlat(webTemplate, convertedComposition, flatComposition)
+                    testRawToFlat(webTemplate, convertedComposition!!, flatComposition)
                     testRawToStructured(webTemplate, convertedComposition, structuredComposition)
                 }
             }
@@ -258,7 +285,8 @@ class CompatibilityTest : AbstractWebTemplateTest() {
             val range: Pair<Int, Int>,
             val language: String,
             val languages: Set<String>,
-            val instructionUidEntries: Map<String, String> = mutableMapOf())
+            val instructionUidEntries: Map<String, String> = mutableMapOf(),
+            val nullable: Boolean = false)
 
     private fun getUidGenerator(instructionUidEntries: Map<String, String>): (String) -> String = { instructionUidEntries[it] ?: UUID.randomUUID().toString() }
 

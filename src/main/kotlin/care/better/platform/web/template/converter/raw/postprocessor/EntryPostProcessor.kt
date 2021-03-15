@@ -18,6 +18,7 @@ package care.better.platform.web.template.converter.raw.postprocessor
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.raw.context.ConversionContext
+import org.openehr.base.basetypes.TerminologyId
 import org.openehr.rm.composition.Entry
 
 /**
@@ -38,11 +39,21 @@ internal open class EntryPostProcessor<T : Entry> : LocatablePostProcessor<T>() 
 
     private val supportedClass = Entry::class.java
 
-    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode, instance: T, webTemplatePath: WebTemplatePath) {
+    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode?, instance: T, webTemplatePath: WebTemplatePath?) {
         super.postProcess(conversionContext, amNode, instance, webTemplatePath)
 
         if (instance.workFlowId == null && conversionContext.workflowId != null) {
             instance.workFlowId = conversionContext.workflowId
+        }
+
+        val encoding = instance.encoding
+        if (encoding != null && encoding.terminologyId == null) {
+            encoding.terminologyId = TerminologyId("IANA_character-sets")
+        }
+
+        val language = instance.language
+        if (language != null && language.terminologyId == null) {
+            language.terminologyId = TerminologyId("ISO_639-1")
         }
     }
 

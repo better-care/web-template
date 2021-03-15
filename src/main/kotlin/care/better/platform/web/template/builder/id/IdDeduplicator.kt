@@ -20,6 +20,7 @@ package care.better.platform.web.template.builder.id
  * @author Primoz Delopst
  * @since 3.1.0
  */
+@Suppress("SpellCheckingInspection")
 fun interface IdDeduplicator {
     fun getUniqueBaseId(parentId: String, baseId: String): String
 }

@@ -33,7 +33,7 @@ class WebTemplateValidation {
     var precision: WebTemplateValidationIntegerRange? = null
 
     @JsonIgnore
-    fun getMaxPrecision(): Int? = if (precision == null) null else precision!!.max
+    fun getMaxPrecision(): Int? = if (precision == null) null else precision?.max
 
     @JsonIgnore
     fun isEmpty(): Boolean = pattern == null && range == null && precision == null

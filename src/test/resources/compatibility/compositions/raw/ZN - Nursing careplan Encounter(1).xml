@@ -28,7 +28,7 @@
         <ns2:template_id>
             <ns2:value>ISPEK - ZN - Nursing careplan Encounter</ns2:value>
         </ns2:template_id>
-        <ns2:rm_version>1.0.4</ns2:rm_version>
+        <ns2:rm_version>1.1.0</ns2:rm_version>
     </ns2:archetype_details>
     <ns2:language>
         <ns2:terminology_id>
@@ -87,7 +87,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-CLUSTER.composition_context_detail.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                     <ns2:name>
@@ -108,7 +108,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-SECTION.care_plan_zn.v1</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:items xsi:type="ns2:SECTION" archetype_node_id="at0009">
             <ns2:name>
@@ -122,7 +122,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.problem_diagnosis.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -169,7 +169,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.problem_status.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
                             <ns2:name>
@@ -213,7 +213,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.diagnostic_evidence.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
                             <ns2:name>
@@ -240,7 +240,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.goal_set-zn.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -318,7 +318,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-INSTRUCTION.request-zn.v1</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:language>
                         <ns2:terminology_id>
@@ -394,7 +394,7 @@
                                     <ns2:archetype_id>
                                         <ns2:value>openEHR-EHR-CLUSTER.timing.v1</ns2:value>
                                     </ns2:archetype_id>
-                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                    <ns2:rm_version>1.1.0</ns2:rm_version>
                                 </ns2:archetype_details>
                                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                                     <ns2:name>
@@ -424,7 +424,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-INSTRUCTION.request-zn.v1</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:language>
                         <ns2:terminology_id>
@@ -500,7 +500,7 @@
                                     <ns2:archetype_id>
                                         <ns2:value>openEHR-EHR-CLUSTER.timing.v1</ns2:value>
                                     </ns2:archetype_id>
-                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                    <ns2:rm_version>1.1.0</ns2:rm_version>
                                 </ns2:archetype_details>
                                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                                     <ns2:name>
@@ -530,7 +530,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-INSTRUCTION.request-zn.v1</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:language>
                         <ns2:terminology_id>
@@ -606,7 +606,7 @@
                                     <ns2:archetype_id>
                                         <ns2:value>openEHR-EHR-CLUSTER.timing.v1</ns2:value>
                                     </ns2:archetype_id>
-                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                    <ns2:rm_version>1.1.0</ns2:rm_version>
                                 </ns2:archetype_details>
                                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                                     <ns2:name>
@@ -636,7 +636,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-INSTRUCTION.request-zn.v1</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:language>
                         <ns2:terminology_id>
@@ -712,7 +712,7 @@
                                     <ns2:archetype_id>
                                         <ns2:value>openEHR-EHR-CLUSTER.timing.v1</ns2:value>
                                     </ns2:archetype_id>
-                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                    <ns2:rm_version>1.1.0</ns2:rm_version>
                                 </ns2:archetype_details>
                                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                                     <ns2:name>
@@ -742,7 +742,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-INSTRUCTION.request-zn.v1</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:language>
                         <ns2:terminology_id>
@@ -818,7 +818,7 @@
                                     <ns2:archetype_id>
                                         <ns2:value>openEHR-EHR-CLUSTER.timing.v1</ns2:value>
                                     </ns2:archetype_id>
-                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                    <ns2:rm_version>1.1.0</ns2:rm_version>
                                 </ns2:archetype_details>
                                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                                     <ns2:name>
@@ -848,7 +848,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-INSTRUCTION.request-zn.v1</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:language>
                         <ns2:terminology_id>
@@ -924,7 +924,7 @@
                                     <ns2:archetype_id>
                                         <ns2:value>openEHR-EHR-CLUSTER.timing.v1</ns2:value>
                                     </ns2:archetype_id>
-                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                    <ns2:rm_version>1.1.0</ns2:rm_version>
                                 </ns2:archetype_details>
                                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                                     <ns2:name>
@@ -954,7 +954,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-INSTRUCTION.request-zn.v1</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:language>
                         <ns2:terminology_id>
@@ -1030,7 +1030,7 @@
                                     <ns2:archetype_id>
                                         <ns2:value>openEHR-EHR-CLUSTER.timing.v1</ns2:value>
                                     </ns2:archetype_id>
-                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                    <ns2:rm_version>1.1.0</ns2:rm_version>
                                 </ns2:archetype_details>
                                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                                     <ns2:name>
@@ -1060,7 +1060,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-INSTRUCTION.request-zn.v1</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:language>
                         <ns2:terminology_id>
@@ -1136,7 +1136,7 @@
                                     <ns2:archetype_id>
                                         <ns2:value>openEHR-EHR-CLUSTER.timing.v1</ns2:value>
                                     </ns2:archetype_id>
-                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                    <ns2:rm_version>1.1.0</ns2:rm_version>
                                 </ns2:archetype_details>
                                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                                     <ns2:name>
@@ -1166,7 +1166,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-INSTRUCTION.request-zn.v1</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:language>
                         <ns2:terminology_id>
@@ -1242,7 +1242,7 @@
                                     <ns2:archetype_id>
                                         <ns2:value>openEHR-EHR-CLUSTER.timing.v1</ns2:value>
                                     </ns2:archetype_id>
-                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                    <ns2:rm_version>1.1.0</ns2:rm_version>
                                 </ns2:archetype_details>
                                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                                     <ns2:name>
@@ -1272,7 +1272,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-INSTRUCTION.request-zn.v1</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:language>
                         <ns2:terminology_id>
@@ -1348,7 +1348,7 @@
                                     <ns2:archetype_id>
                                         <ns2:value>openEHR-EHR-CLUSTER.timing.v1</ns2:value>
                                     </ns2:archetype_id>
-                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                    <ns2:rm_version>1.1.0</ns2:rm_version>
                                 </ns2:archetype_details>
                                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                                     <ns2:name>
@@ -1378,7 +1378,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-INSTRUCTION.request-zn.v1</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:language>
                         <ns2:terminology_id>
@@ -1454,7 +1454,7 @@
                                     <ns2:archetype_id>
                                         <ns2:value>openEHR-EHR-CLUSTER.timing.v1</ns2:value>
                                     </ns2:archetype_id>
-                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                    <ns2:rm_version>1.1.0</ns2:rm_version>
                                 </ns2:archetype_details>
                                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                                     <ns2:name>
@@ -1484,7 +1484,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-INSTRUCTION.request-zn.v1</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:language>
                         <ns2:terminology_id>
@@ -1560,7 +1560,7 @@
                                     <ns2:archetype_id>
                                         <ns2:value>openEHR-EHR-CLUSTER.timing.v1</ns2:value>
                                     </ns2:archetype_id>
-                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                    <ns2:rm_version>1.1.0</ns2:rm_version>
                                 </ns2:archetype_details>
                                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                                     <ns2:name>
@@ -1590,7 +1590,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-INSTRUCTION.request-zn.v1</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:language>
                         <ns2:terminology_id>
@@ -1666,7 +1666,7 @@
                                     <ns2:archetype_id>
                                         <ns2:value>openEHR-EHR-CLUSTER.timing.v1</ns2:value>
                                     </ns2:archetype_id>
-                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                    <ns2:rm_version>1.1.0</ns2:rm_version>
                                 </ns2:archetype_details>
                                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                                     <ns2:name>
@@ -1696,7 +1696,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-INSTRUCTION.request-zn.v1</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:language>
                         <ns2:terminology_id>
@@ -1772,7 +1772,7 @@
                                     <ns2:archetype_id>
                                         <ns2:value>openEHR-EHR-CLUSTER.timing.v1</ns2:value>
                                     </ns2:archetype_id>
-                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                    <ns2:rm_version>1.1.0</ns2:rm_version>
                                 </ns2:archetype_details>
                                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                                     <ns2:name>
@@ -1802,7 +1802,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-INSTRUCTION.request-zn.v1</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:language>
                         <ns2:terminology_id>
@@ -1878,7 +1878,7 @@
                                     <ns2:archetype_id>
                                         <ns2:value>openEHR-EHR-CLUSTER.timing.v1</ns2:value>
                                     </ns2:archetype_id>
-                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                    <ns2:rm_version>1.1.0</ns2:rm_version>
                                 </ns2:archetype_details>
                                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                                     <ns2:name>
@@ -1908,7 +1908,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-INSTRUCTION.request-zn.v1</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:language>
                         <ns2:terminology_id>
@@ -1984,7 +1984,7 @@
                                     <ns2:archetype_id>
                                         <ns2:value>openEHR-EHR-CLUSTER.timing.v1</ns2:value>
                                     </ns2:archetype_id>
-                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                    <ns2:rm_version>1.1.0</ns2:rm_version>
                                 </ns2:archetype_details>
                                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                                     <ns2:name>
@@ -2017,7 +2017,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.problem_diagnosis.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -2064,7 +2064,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.problem_status.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
                             <ns2:name>
@@ -2108,7 +2108,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.diagnostic_evidence.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
                             <ns2:name>
@@ -2135,7 +2135,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.goal_set-zn.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -2206,7 +2206,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.goal_set-zn.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -2282,7 +2282,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.problem_diagnosis.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -2329,7 +2329,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.problem_status.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
                             <ns2:name>
@@ -2373,7 +2373,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.diagnostic_evidence.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
                             <ns2:name>
@@ -2400,7 +2400,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.goal_set-zn.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -2471,7 +2471,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.goal_set-zn.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -2547,7 +2547,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.problem_diagnosis.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -2594,7 +2594,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.problem_status.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
                             <ns2:name>
@@ -2638,7 +2638,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.diagnostic_evidence.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
                             <ns2:name>
@@ -2665,7 +2665,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.goal_set-zn.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -2741,7 +2741,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.problem_diagnosis.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -2788,7 +2788,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.problem_status.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
                             <ns2:name>
@@ -2865,7 +2865,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.diagnostic_evidence.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
                             <ns2:name>
@@ -2897,7 +2897,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.problem_diagnosis.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -2944,7 +2944,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.problem_status.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
                             <ns2:name>
@@ -2988,7 +2988,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.diagnostic_evidence.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
                             <ns2:name>
@@ -3015,7 +3015,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.goal_set-zn.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -3091,7 +3091,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.problem_diagnosis.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -3138,7 +3138,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.problem_status.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
                             <ns2:name>
@@ -3182,7 +3182,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.diagnostic_evidence.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
                             <ns2:name>
@@ -3209,7 +3209,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.goal_set-zn.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -3280,7 +3280,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.goal_set-zn.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -3356,7 +3356,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.problem_diagnosis.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -3403,7 +3403,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.problem_status.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
                             <ns2:name>
@@ -3447,7 +3447,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.diagnostic_evidence.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
                             <ns2:name>
@@ -3474,7 +3474,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.goal_set-zn.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -3545,7 +3545,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.goal_set-zn.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -3621,7 +3621,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.problem_diagnosis.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -3668,7 +3668,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.problem_status.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
                             <ns2:name>
@@ -3712,7 +3712,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.diagnostic_evidence.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
                             <ns2:name>
@@ -3739,7 +3739,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.goal_set-zn.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -3810,7 +3810,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.goal_set-zn.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -3881,7 +3881,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.goal_set-zn.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -3957,7 +3957,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.problem_diagnosis.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -4004,7 +4004,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.problem_status.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0004">
                             <ns2:name>
@@ -4048,7 +4048,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.diagnostic_evidence.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
                             <ns2:name>
@@ -4075,7 +4075,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.goal_set-zn.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>

@@ -37,6 +37,8 @@ internal object DvQuantityToFlatMapper : DvQuantifiedToFlatMapper<DvQuantity>() 
             flatConversionContext: FlatMappingContext) {
         flatConversionContext["$webTemplatePath|magnitude"] = rmObject.magnitude
         flatConversionContext["$webTemplatePath|unit"] = rmObject.units
+        flatConversionContext["$webTemplatePath|unit_system"] = rmObject.unitsSystem
+        flatConversionContext["$webTemplatePath|unit_display_name"] = rmObject.unitsDisplayName
 
         super.map(webTemplateNode, valueConverter, rmObject, webTemplatePath, flatConversionContext)
     }
@@ -49,6 +51,8 @@ internal object DvQuantityToFlatMapper : DvQuantifiedToFlatMapper<DvQuantity>() 
             formattedFlatConversionContext: FormattedFlatMappingContext) {
         formattedFlatConversionContext["$webTemplatePath|magnitude"] = valueConverter.formatDouble(rmObject.magnitude)
         formattedFlatConversionContext["$webTemplatePath|unit"] = rmObject.units
+        formattedFlatConversionContext["$webTemplatePath|unit_system"] = rmObject.unitsSystem
+        formattedFlatConversionContext["$webTemplatePath|unit_display_name"] = rmObject.unitsDisplayName
 
         super.mapFormatted(webTemplateNode, valueConverter, rmObject, webTemplatePath, formattedFlatConversionContext)
     }

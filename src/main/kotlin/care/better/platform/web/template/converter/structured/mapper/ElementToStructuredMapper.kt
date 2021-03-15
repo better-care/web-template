@@ -33,8 +33,14 @@ internal object ElementToStructuredMapper : LocatableToStructuredMapper<Element>
         with(ConversionObjectMapper.createObjectNode()) {
             map(webTemplateNode, valueConverter, rmObject, this)
             val nullFlavour = rmObject.nullFlavour
-            if (rmObject.value == null && nullFlavour != null) {
-                this.putSingletonAsArray("_null_flavour") { DvCodedTextToStructuredMapper.map(webTemplateNode, valueConverter, nullFlavour) }
+            val nullReason = rmObject.nullReason
+            if (rmObject.value == null) {
+                if (nullFlavour != null) {
+                    this.putSingletonAsArray("_null_flavour") { DvCodedTextToStructuredMapper.map(webTemplateNode, valueConverter, nullFlavour) }
+                }
+                if (nullReason != null) {
+                    this.putSingletonAsArray("_null_reason") { DvTextToStructuredMapper.map(webTemplateNode, valueConverter, nullReason) }
+                }
             }
             this
         }
@@ -43,8 +49,14 @@ internal object ElementToStructuredMapper : LocatableToStructuredMapper<Element>
         with(ConversionObjectMapper.createObjectNode()) {
             map(webTemplateNode, valueConverter, rmObject, this)
             val nullFlavour = rmObject.nullFlavour
-            if (rmObject.value == null && nullFlavour != null) {
-                this.putSingletonAsArray("_null_flavour") { DvCodedTextToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, nullFlavour) }
+            val nullReason = rmObject.nullReason
+            if (rmObject.value == null) {
+                if (nullFlavour != null) {
+                    this.putSingletonAsArray("_null_flavour") { DvCodedTextToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, nullFlavour) }
+                }
+                if (nullReason != null) {
+                    this.putSingletonAsArray("_null_reason") { DvTextToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, nullReason) }
+                }
             }
             this
         }

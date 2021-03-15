@@ -33,6 +33,8 @@ internal object DvQuantityToStructuredMapper : DvQuantifiedToStructuredMapper<Dv
         with(ConversionObjectMapper.createObjectNode()) {
             this.putIfNotNull("|magnitude", rmObject.magnitude)
             this.putIfNotNull("|unit", rmObject.units)
+            this.putIfNotNull("|unit_system", rmObject.unitsSystem)
+            this.putIfNotNull("|unit_display_name", rmObject.unitsDisplayName)
             map(webTemplateNode, valueConverter, rmObject, this)
             this
         }
@@ -41,6 +43,8 @@ internal object DvQuantityToStructuredMapper : DvQuantifiedToStructuredMapper<Dv
         with(ConversionObjectMapper.createObjectNode()) {
             this.putIfNotNull("|magnitude", valueConverter.formatDouble(rmObject.magnitude))
             this.putIfNotNull("|unit", rmObject.units)
+            this.putIfNotNull("|unit_system", rmObject.unitsSystem)
+            this.putIfNotNull("|unit_display_name", rmObject.unitsDisplayName)
             mapFormatted(webTemplateNode, valueConverter, rmObject, this)
             this
         }

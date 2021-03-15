@@ -29,19 +29,24 @@ import org.openehr.proc.taskplanning.ContextExpression
  * Singleton instance of [RmObjectInstanceClassFactory] that creates a new instance of [ContextExpression].
  */
 internal object ContextExpressionFactory : RmObjectInstanceClassFactory<ContextExpression<*>>(ContextExpression::class.java) {
-    override fun create(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): ContextExpression<*> =
+    override fun create(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): ContextExpression<*> =
         (if (isBoolean(amNode)) BooleanContextExpression() else super.create(conversionContext, amNode, webTemplatePath)).apply {
-            if (amNode.name == null && amNode.parent?.name != null) {
-                this.name = amNode.parent?.name
+            val name = amNode?.name
+            val parentName = amNode?.parent?.name
+            if (name == null && parentName != null) {
+                this.name = parentName
             }
         }
 
-    private fun isBoolean(amNode: AmNode): Boolean =
-        with(AmUtils.resolvePath(amNode, "type")) {
-            amNode.rmType == "BOOLEAN_CONTEXT_EXPRESSION"
-                    || amNode.rmType == "CONTEXT_EXPRESSION<TYPE_DEF_BOOLEAN>"
-                    || amNode.rmType == "CONTEXT_EXPRESSION<BOOLEAN>"
-                    || (this != null && this.rmType == "TYPE_DEF_BOOLEAN")
+    private fun isBoolean(amNode: AmNode?): Boolean =
+        if (amNode == null) {
+            false
+        } else {
+            with(AmUtils.resolvePath(amNode, "type")) {
+                amNode.rmType == "BOOLEAN_CONTEXT_EXPRESSION"
+                        || amNode.rmType == "CONTEXT_EXPRESSION<TYPE_DEF_BOOLEAN>"
+                        || amNode.rmType == "CONTEXT_EXPRESSION<BOOLEAN>"
+                        || (this != null && this.rmType == "TYPE_DEF_BOOLEAN")
+            }
         }
-
 }

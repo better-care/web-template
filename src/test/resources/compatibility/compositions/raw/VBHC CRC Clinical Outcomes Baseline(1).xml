@@ -25,7 +25,7 @@
         <ns2:template_id>
             <ns2:value>MEDTRONIC VBHC CRC Clinical Outcomes Baseline</ns2:value>
         </ns2:template_id>
-        <ns2:rm_version>1.0.4</ns2:rm_version>
+        <ns2:rm_version>1.1.0</ns2:rm_version>
     </ns2:archetype_details>
     <ns2:feeder_audit>
         <ns2:original_content xsi:type="ns2:DV_PARSABLE" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -82,7 +82,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-CLUSTER.research_information.v0</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                     <ns2:name>
@@ -123,7 +123,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-ACTION.care_plan.v0</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:language>
             <ns2:terminology_id>
@@ -174,7 +174,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:items xsi:type="ns2:ACTION" archetype_node_id="openEHR-EHR-ACTION.procedure.v1">
             <ns2:name>
@@ -184,7 +184,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-ACTION.procedure.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -249,7 +249,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-OBSERVATION.height.v2</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -303,7 +303,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-OBSERVATION.body_weight.v2</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -357,7 +357,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-OBSERVATION.ecog-mdt.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -419,7 +419,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:items xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.problem_diagnosis-cog.v1">
                 <ns2:name>
@@ -429,7 +429,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.problem_diagnosis-cog.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -473,7 +473,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:items xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.problem_diagnosis-ibd.v1">
                 <ns2:name>
@@ -483,7 +483,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.problem_diagnosis-ibd.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -527,7 +527,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:items xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.problem_diagnosis.v1">
                 <ns2:name>
@@ -537,7 +537,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.problem_diagnosis.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -586,7 +586,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.anatomical_location_relative.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0020">
                             <ns2:name>
@@ -626,7 +626,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.tnm.v0</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                             <ns2:name>
@@ -715,7 +715,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.tnm-pathological.v0</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0003.1">
                             <ns2:name>
@@ -860,7 +860,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.macroscopy_colorectal_carcinoma.v0</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0349">
                             <ns2:name>
@@ -890,7 +890,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.lymph_node_metastases.v0</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                             <ns2:name>
@@ -919,7 +919,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-EVALUATION.ichom_crc_genetic_report.v0</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:language>
                     <ns2:terminology_id>
@@ -1020,7 +1020,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:items xsi:type="ns2:INSTRUCTION" archetype_node_id="openEHR-EHR-INSTRUCTION.service_request.v1">
             <ns2:name>
@@ -1033,7 +1033,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-INSTRUCTION.service_request.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>

@@ -33,7 +33,7 @@ internal object DvCodedTextPostProcessor : PostProcessor<DvCodedText> {
 
     private val SUBFIELD_PATTERN = Pattern.compile("(.*?)(" + Pattern.quote("|") + "(.+))?$")
 
-    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode, instance: DvCodedText, webTemplatePath: WebTemplatePath) {
+    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode?, instance: DvCodedText, webTemplatePath: WebTemplatePath?) {
         if (instance.value == null && instance.definingCode != null) {
             val wtPath = webTemplatePath.toString()
             val matcher = SUBFIELD_PATTERN.matcher(wtPath)

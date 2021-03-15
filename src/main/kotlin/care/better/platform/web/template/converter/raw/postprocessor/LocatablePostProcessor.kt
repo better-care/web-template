@@ -38,7 +38,7 @@ internal open class LocatablePostProcessor<T : Locatable> : PostProcessor<T> {
 
     private val supportedClass = Locatable::class.java
 
-    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode, instance: T, webTemplatePath: WebTemplatePath) {
+    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode?, instance: T, webTemplatePath: WebTemplatePath?) {
         instance.links = instance.links.ifEmpty { conversionContext.links.toMutableList() }
     }
 

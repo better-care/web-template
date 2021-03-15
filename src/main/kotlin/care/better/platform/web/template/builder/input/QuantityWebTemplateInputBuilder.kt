@@ -43,12 +43,12 @@ internal object QuantityWebTemplateInputBuilder : WebTemplateInputBuilder<CDvQua
                 buildFromList(input, validator.list, amNode, context.languages)
             }
             if (validator.assumedValue != null) {
-                input.defaultValue = validator.assumedValue?.magnitude.toString() + ' ' + validator.assumedValue?.units
+                input.defaultValue = "${validator.assumedValue?.magnitude.toString()} ${validator.assumedValue?.units}"
             }
         }
         val defaultValue = WebTemplateBuilderUtils.getDefaultValue(amNode, DvQuantity::class.java)
         if (defaultValue != null) {
-            input.defaultValue = defaultValue.magnitude.toString() + ' ' + defaultValue.units
+            input.defaultValue = "${defaultValue.magnitude} ${defaultValue.units}"
         }
         return input
     }
@@ -96,10 +96,12 @@ internal object QuantityWebTemplateInputBuilder : WebTemplateInputBuilder<CDvQua
                     }
                 }
             }
+
             languages.asSequence()
                 .map { Pair(it, findText(amNode, it, item.units)) }
                 .filter { it.second != null }
                 .forEach { value.localizedLabels[it.first] = it.second!! }
+
             input.list.add(value)
         }
     }

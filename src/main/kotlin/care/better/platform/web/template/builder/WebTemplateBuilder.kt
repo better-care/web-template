@@ -34,6 +34,7 @@ import care.better.platform.template.type.CollectionInfo
 import care.better.platform.template.type.CollectionType
 import care.better.platform.template.type.TypeInfo
 import care.better.platform.utils.RmUtils
+import care.better.platform.utils.TemplateUtils
 import care.better.platform.utils.exception.RmClassCastException
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.builder.compactor.MediumWebTemplateCompactor
@@ -53,6 +54,7 @@ import care.better.platform.web.template.builder.model.input.range.WebTemplateIn
 import care.better.platform.web.template.builder.postprocess.WebTemplateNodeChildrenPostProcessorDelegator
 import care.better.platform.web.template.builder.utils.CodePhraseUtils
 import care.better.platform.web.template.builder.utils.WebTemplateBuilderUtils
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ISM_TRANSITION_GROUP_NAME
 import care.better.platform.web.template.converter.raw.extensions.isForElement
 import care.better.platform.web.template.converter.raw.extensions.isNotNullOrBlank
 import care.better.platform.web.template.converter.raw.extensions.isNotNullOrEmpty
@@ -98,6 +100,7 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
 
         private val OVERRIDE_OPTIONAL: Set<RmProperty> =
             setOf(RmProperty(Activity::class.java, "timing")) // no longer mandatory in RM 1.0.4 (added for backward compatibility)
+
         private val SKIP_PATHS: Set<String> = setOf("name")
 
         private val ANY_DATA_TYPES =
@@ -118,7 +121,8 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
                 RmUtils.getRmTypeName(DvDateTime::class.java),
                 RmUtils.getRmTypeName(DvDate::class.java),
                 RmUtils.getRmTypeName(DvTime::class.java),
-                RmUtils.getRmTypeName(DvOrdinal::class.java))
+                RmUtils.getRmTypeName(DvOrdinal::class.java),
+                RmUtils.getRmTypeName(DvScale::class.java))
 
         /**
          * Builds [WebTemplate] from the [Template].
@@ -135,7 +139,8 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
             WebTemplateBuilder(template, context).build(
                 AmTreeBuilder(template).build(),
                 from,
-                requireNotNull(template.templateId.value) { "Template ID is mandatory." })
+                requireNotNull(template.templateId.value) { "Template ID is mandatory." },
+                TemplateUtils.extractSemVerFromTemplateDescription(template))
 
         /**
          * Builds [WebTemplate] from the [Template].
@@ -161,7 +166,7 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
     private val idBuilder: WebTemplateIdBuilder = WebTemplateIdBuilder()
     private val postProcess: Boolean = true
 
-    private fun build(root: AmNode, from: String?, templateId: String): WebTemplate? =
+    private fun build(root: AmNode, from: String?, templateId: String, semVer: String?): WebTemplate? =
         with(if (from == null) root else resolvePath(root, from)) {
             val nodes: Multimap<AmNode, WebTemplateNode> = ArrayListMultimap.create()
             if (this != null) {
@@ -171,7 +176,8 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
                         idBuilder.buildIds(this, nodes)
                     },
                     templateId,
-                    defaultLanguage,
+                    semVer,
+                    context.contextLanguage ?: defaultLanguage,
                     context.languages,
                     CURRENT_VERSION,
                     nodes)
@@ -297,7 +303,7 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
         val nodeId = amNode.nodeId
 
         if (nodeId.isNotNullOrEmpty()) {
-            findTermBindings(amNode, nodeId).forEach { key, value -> CodePhraseUtils.getBindingCodedValue(value)?.also { node.termBindings[key] = it } }
+            findTermBindings(amNode, nodeId).forEach { (key, value) -> CodePhraseUtils.getBindingCodedValue(value)?.also { node.termBindings[key] = it } }
         }
     }
 
@@ -333,7 +339,7 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
 
     private fun createCustomNode(amNode: AmNode, attributeName: String?, existence: WebTemplateIntegerRange): WebTemplateNode =
         buildNode(attributeName, amNode).apply {
-            this.name = attributeName!!.substring(0, 1).toUpperCase() + attributeName.substring(1)
+            this.name = "${attributeName?.substring(0, 1)?.toUpperCase()}${attributeName?.substring(1)}"
             this.inContext = true
             this.occurences = existence
             setTermBindings(this)
@@ -455,7 +461,7 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
         webTemplateNode.children.add(
             createCurrentStateInput(
                 currentState,
-                if (allowedCurrentStates.isEmpty()) OpenEhrTerminology.getInstance().getGroupChildren("21") else allowedCurrentStates))
+                if (allowedCurrentStates.isEmpty()) OpenEhrTerminology.getInstance().getGroupChildren(ISM_TRANSITION_GROUP_NAME) else allowedCurrentStates))
 
         webTemplateNode.children.add(createCustomNode(transition, "transition", WebTemplateIntegerRange(0, 1)))
         webTemplateNode.children.add(careflowStepWtNode)
@@ -500,7 +506,11 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
         if (attributeName == null)
             ""
         else
-            "${if (segments.isEmpty()) "" else segments.peek()?.path}/${attributeName}${getArchetypePredicate(amNode, if (isNameConstrained(amNode)) amNode.name else null)}"
+            "${if (segments.isEmpty()) "" else segments.peek()?.path}/${attributeName}${
+                getArchetypePredicate(
+                    amNode,
+                    if (isNameConstrained(amNode)) amNode.name else null)
+            }"
 
     private fun getPath(attributeName: String, amNode: AmNode, customName: String?): String =
         "${if (segments.isEmpty()) "" else segments.peek()?.path}/${attributeName}${getArchetypePredicate(amNode, customName)}"

@@ -16,6 +16,7 @@
 package care.better.platform.web.template.converter.raw.context
 
 import care.better.platform.path.NameAndNodeMatchingPathValueExtractor
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.SELF_REFERENCE_COMPOSITION
 import org.openehr.rm.common.Link
 import org.openehr.rm.composition.Composition
 import org.openehr.rm.composition.Instruction
@@ -49,6 +50,7 @@ interface ActionToInstructionHandler {
      * @return Resolved path
      */
     fun resolvePath(
+            composition: Composition,
             instructionDetails: InstructionDetails,
             instructionDetailsData: InstructionDetailsData,
             conversionContext: ConversionContext): String?
@@ -61,16 +63,18 @@ interface ActionToInstructionHandler {
  *
  * @constructor Creates a new instance of [InCompositionActionToInstructionHandler]
  */
-class InCompositionActionToInstructionHandler : ActionToInstructionHandler {
+open class InCompositionActionToInstructionHandler : ActionToInstructionHandler {
     override fun handle(
             composition: Composition,
             instructionDetails: InstructionDetails,
             instructionDetailsData: InstructionDetailsData,
             conversionContext: ConversionContext) {
         instructionDetails.instructionId?.id?.value?.also {
-            if (it == "\$selfComposition") {
+            val resolvedComposition = resolve(composition, instructionDetails, instructionDetailsData, conversionContext)
+
+            if (resolvedComposition != null) {
                 val pathValueExtractor = NameAndNodeMatchingPathValueExtractor(instructionDetails.instructionId?.path!!)
-                val instructions = pathValueExtractor.getValue(composition, true)
+                val instructions = pathValueExtractor.getValue(resolvedComposition, true)
                 if (instructions.isNotEmpty() && instructions[0] is Instruction) {
                     val instruction = instructions[0] as Instruction
                     if (instruction.activities.isNotEmpty()) {
@@ -99,7 +103,19 @@ class InCompositionActionToInstructionHandler : ActionToInstructionHandler {
     }
 
     override fun resolvePath(
+            composition: Composition,
             instructionDetails: InstructionDetails,
             instructionDetailsData: InstructionDetailsData,
             conversionContext: ConversionContext): String? = null
+
+
+    open fun resolve(
+            composition: Composition,
+            instructionDetails: InstructionDetails,
+            instructionDetailsData: InstructionDetailsData,
+            conversionContext: ConversionContext): Composition? =
+        if (SELF_REFERENCE_COMPOSITION == instructionDetails.instructionId?.id?.value)
+            composition
+        else
+            null
 }

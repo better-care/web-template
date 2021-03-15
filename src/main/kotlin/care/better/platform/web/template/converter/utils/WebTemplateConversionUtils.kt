@@ -35,7 +35,7 @@ import java.util.regex.Pattern
  *
  * Set of utility functions used during the RM object conversion.
  */
-internal object WebTemplateConversionUtils {
+object WebTemplateConversionUtils {
 
     private val ID_INVALID_CHARACTERS = Pattern.compile("[^\\p{IsAlphabetic}0-9_.-]")
     private val MULTIPLE_UNDERSCORE = Pattern.compile("_{2,}")
@@ -47,7 +47,7 @@ internal object WebTemplateConversionUtils {
      * @return Web template path segment key (without index and attribute)
      */
     @JvmStatic
-    fun getWebTemplatePathSegmentForName(name: String): String =
+    internal fun getWebTemplatePathSegmentForName(name: String): String =
         ID_INVALID_CHARACTERS.matcher(name).replaceAll("_").toLowerCase()
             .let { MULTIPLE_UNDERSCORE.matcher(it).replaceAll("_") }
             .removePrefix("_").removeSuffix("_")
@@ -59,7 +59,7 @@ internal object WebTemplateConversionUtils {
      * @return [java.time.LocalTime]
      */
     @JvmStatic
-    fun convert(localTime: LocalTime): java.time.LocalTime =
+    internal fun convert(localTime: LocalTime): java.time.LocalTime =
         java.time.LocalTime.of(localTime.hourOfDay, localTime.minuteOfHour, localTime.secondOfMinute, localTime.millisOfSecond * 1000000)
 
 
@@ -70,7 +70,7 @@ internal object WebTemplateConversionUtils {
      * @return [java.time.LocalTime]
      */
     @JvmStatic
-    fun convertTime(dateTime: DateTime): java.time.LocalTime =
+    internal fun convertTime(dateTime: DateTime): java.time.LocalTime =
         java.time.LocalTime.of(dateTime.hourOfDay, dateTime.minuteOfHour, dateTime.secondOfMinute, dateTime.millisOfSecond * 1000000)
 
     /**
@@ -80,7 +80,7 @@ internal object WebTemplateConversionUtils {
      * @return [java.time.OffsetTime]
      */
     @JvmStatic
-    fun convertOffsetTime(dateTime: DateTime): OffsetTime =
+    internal fun convertOffsetTime(dateTime: DateTime): OffsetTime =
         OffsetTime.of(
             dateTime.hourOfDay,
             dateTime.minuteOfHour,
@@ -95,7 +95,7 @@ internal object WebTemplateConversionUtils {
      * @return [java.time.LocalDate]
      */
     @JvmStatic
-    fun convert(localDate: LocalDate): java.time.LocalDate =
+    internal fun convert(localDate: LocalDate): java.time.LocalDate =
         java.time.LocalDate.of(localDate.year, localDate.monthOfYear, localDate.dayOfMonth)
 
     /**
@@ -105,7 +105,7 @@ internal object WebTemplateConversionUtils {
      * @return [java.time.OffsetDateTime]
      */
     @JvmStatic
-    fun convert(dateTime: DateTime): OffsetDateTime = OffsetDateTime.ofInstant(dateTime.toDate().toInstant(), ZoneId.of(dateTime.zone.id))
+    internal fun convert(dateTime: DateTime): OffsetDateTime = OffsetDateTime.ofInstant(dateTime.toDate().toInstant(), ZoneId.of(dateTime.zone.id))
 
     @JvmStatic
     fun getTermText(amNode: AmNode, terminologyId: String?, codeString: String?, language: String?): String? =
@@ -121,7 +121,7 @@ internal object WebTemplateConversionUtils {
         }
 
     @JvmStatic
-    fun getFixedValue(interval: IntervalOfReal?): Float? =
+    internal fun getFixedValue(interval: IntervalOfReal?): Float? =
         interval?.let {
             val range = WebTemplateDecimalRange(interval)
             if (range.isFixed())

@@ -22,7 +22,6 @@ import care.better.platform.web.template.builder.model.WebTemplateInputType
 import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.builder.model.input.range.WebTemplateIntegerRange
-import com.google.common.collect.ImmutableSet
 import com.google.common.collect.Iterables
 import org.apache.commons.lang3.StringUtils
 import org.openehr.rm.datastructures.*
@@ -38,21 +37,21 @@ import kotlin.collections.HashMap
 internal open class MinimalWebTemplateCompactor : WebTemplateCompactor {
 
     companion object {
-        private val SKIP_IF_EMPTY: Set<String> = ImmutableSet.builder<String>()
-            .add("LIST")
-            .add(RmUtils.getRmTypeName(Cluster::class.java))
-            .add(RmUtils.getRmTypeName(Element::class.java))
-            .add(RmUtils.getRmTypeName(ItemTree::class.java))
-            .add(RmUtils.getRmTypeName(ItemList::class.java))
-            .add(RmUtils.getRmTypeName(ItemSingle::class.java))
-            .add(RmUtils.getRmTypeName(ItemTable::class.java))
-            .add(RmUtils.getRmTypeName(ItemStructure::class.java))
-            .add(RmUtils.getRmTypeName(History::class.java))
-            .add(RmUtils.getRmTypeName(PointEvent::class.java))
-            .add(RmUtils.getRmTypeName(IntervalEvent::class.java))
-            .add(RmUtils.getRmTypeName(Event::class.java))
-            .add(RmUtils.getRmTypeName(Item::class.java))
-            .build()
+        private val SKIP_IF_EMPTY: Set<String> =
+            setOf(
+                "LIST",
+                RmUtils.getRmTypeName(Cluster::class.java),
+                RmUtils.getRmTypeName(Element::class.java),
+                RmUtils.getRmTypeName(ItemTree::class.java),
+                RmUtils.getRmTypeName(ItemList::class.java),
+                RmUtils.getRmTypeName(ItemSingle::class.java),
+                RmUtils.getRmTypeName(ItemTable::class.java),
+                RmUtils.getRmTypeName(ItemStructure::class.java),
+                RmUtils.getRmTypeName(History::class.java),
+                RmUtils.getRmTypeName(PointEvent::class.java),
+                RmUtils.getRmTypeName(IntervalEvent::class.java),
+                RmUtils.getRmTypeName(Event::class.java),
+                RmUtils.getRmTypeName(Item::class.java))
     }
 
     private val segments: Deque<WebTemplateNode> = ArrayDeque()
@@ -83,8 +82,10 @@ internal open class MinimalWebTemplateCompactor : WebTemplateCompactor {
                 copyCardinalities(node.cardinalities, Iterables.get(segments, 2))
             }
             val childNode = node.children[0]
-            if ("ELEMENT" == node.rmType && (childNode.occurences!!.min == null || childNode.occurences!!.min == 0)) {
-                childNode.occurences!!.min = 1
+            if ("ELEMENT" == node.rmType && (childNode.occurences?.min == null || 0 == childNode.occurences?.min)) {
+                childNode.occurences?.also {
+                    it.min = 1
+                }
             }
             copyValues(node, childNode)
             childNode
@@ -95,6 +96,7 @@ internal open class MinimalWebTemplateCompactor : WebTemplateCompactor {
         }
     }
 
+    @Suppress("SpellCheckingInspection")
     protected open fun isSkippable(node: WebTemplateNode): Boolean =
         try {
             DataValue::class.java.isAssignableFrom(RmUtils.getRmClass(node.rmType))
@@ -117,13 +119,13 @@ internal open class MinimalWebTemplateCompactor : WebTemplateCompactor {
         } catch (ignored: RmClassCastException) {
             to.rmType = from.rmType
         }
-        val fromOccurences = from.occurences
-        val toOccurences = to.occurences
-        if (toOccurences?.min == null || fromMinGtTo(fromOccurences!!, toOccurences) || fromElementToDataValue(to)) {
-            toOccurences!!.min = fromOccurences?.min
+        val fromOccurrences = from.occurences!!
+        val toOccurrences = to.occurences!!
+        if (toOccurrences.min == null || fromMinGtTo(fromOccurrences, toOccurrences) || fromElementToDataValue(to)) {
+            toOccurrences.min = fromOccurrences.min
         }
-        if (fromOccurences?.max == null || fromMaxLtTo(fromOccurences, toOccurences)) {
-            toOccurences.max = fromOccurences?.max
+        if (fromOccurrences.max == null || fromMaxLtTo(fromOccurrences, toOccurrences)) {
+            toOccurrences.max = fromOccurrences.max
         }
         if (from.dependsOn != null) {
             copyDependsOn(from, to)
@@ -137,20 +139,25 @@ internal open class MinimalWebTemplateCompactor : WebTemplateCompactor {
     }
 
     private fun fromElementToDataValue(to: WebTemplateNode): Boolean =
-        to.rmType.startsWith("DV_") && 1 == to.occurences?.min  // ELEMENT.value is always 1..1, so copy from ELEMENT occurences
+        to.rmType.startsWith("DV_") && 1 == to.occurences?.min  // ELEMENT.value is always 1..1, so copy from ELEMENT occurrences
 
 
-    private fun fromMaxLtTo(fromOccurences: WebTemplateIntegerRange, toOccurences: WebTemplateIntegerRange): Boolean =
-        toOccurences.max != null && toOccurences.max!! < fromOccurences.max!!
+    private fun fromMaxLtTo(fromOccurrences: WebTemplateIntegerRange, toOccurrences: WebTemplateIntegerRange): Boolean =
+        with(toOccurrences.max) {
+            this != null && this < fromOccurrences.max!!
+        }
 
-    private fun fromMinGtTo(fromOccurences: WebTemplateIntegerRange, toOccurences: WebTemplateIntegerRange): Boolean =
-        fromOccurences.min != null && toOccurences.min!! > fromOccurences.min!!
+    private fun fromMinGtTo(fromOccurrences: WebTemplateIntegerRange, toOccurrences: WebTemplateIntegerRange): Boolean =
+        with(fromOccurrences.min) {
+            this != null && toOccurrences.min!! > this
+        }
 
     fun copyDependsOn(from: WebTemplateNode, to: WebTemplateNode) {
-        if (to.dependsOn == null)
+        val dependsOn = to.dependsOn
+        if (dependsOn == null)
             to.dependsOn = from.dependsOn
         else
-            to.dependsOn!!.addAll(from.dependsOn!!)
+            from.dependsOn?.also { dependsOn.addAll(it) }
     }
 
     private fun compactChildren(currentChildren: MutableList<WebTemplateNode>) {
@@ -159,11 +166,11 @@ internal open class MinimalWebTemplateCompactor : WebTemplateCompactor {
     }
 
     protected fun copyCardinalities(cardinalities: MutableList<WebTemplateCardinality>?, node: WebTemplateNode) {
-        if (node.cardinalities == null) {
+        val nodeCardinalities = node.cardinalities
+        if (nodeCardinalities == null)
             node.cardinalities = cardinalities
-        } else {
-            node.cardinalities!!.addAll(cardinalities!!)
-        }
+        else
+            cardinalities?.also { nodeCardinalities.addAll(it) }
     }
 
     private fun compactCodedTextWithOther(children: MutableList<WebTemplateNode>) {
@@ -174,11 +181,11 @@ internal open class MinimalWebTemplateCompactor : WebTemplateCompactor {
                 val difference = StringUtils.difference(node0.path, node1.path)
                 if ("/defining_code" == difference) {
                     node1.inputs.add(WebTemplateInput(WebTemplateInputType.TEXT, "other"))
-                    node1.getInput()!!.listOpen = true
+                    node1.getInput()?.listOpen = true
                     children.removeAt(0)
                 } else if (difference.isEmpty()) {
                     node0.inputs.add(WebTemplateInput(WebTemplateInputType.TEXT, "other"))
-                    node0.getInput()!!.listOpen = true
+                    node0.getInput()?.listOpen = true
                     children.removeAt(1)
                 }
             }

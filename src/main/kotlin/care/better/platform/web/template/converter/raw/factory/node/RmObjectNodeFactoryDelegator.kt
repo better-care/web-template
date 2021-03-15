@@ -16,8 +16,11 @@
 package care.better.platform.web.template.converter.raw.factory.node
 
 import care.better.openehr.rm.RmObject
+import care.better.platform.template.AmNode
 import care.better.platform.utils.RmUtils
+import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.exceptions.ConversionException
+import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.factory.leaf.RmObjectLeafNodeFactory
 import org.openehr.proc.taskplanning.*
 import org.openehr.rm.common.Participation
@@ -29,11 +32,11 @@ import org.openehr.rm.datatypes.DvInterval
  * @author Primoz Delopst
  * @since 3.1.0
  *
- * Singleton that provides [RmObjectNodeFactory] instance based on [RmObject] RM name.
+ * Singleton that delegates to the [RmObjectNodeFactory] instance based on [RmObject] RM name.
  * Note that [RmObjectNodeFactory] are defined for all nodes except leaf nodes.
  * Factories for leaf nodes are defined with a [RmObjectLeafNodeFactory] interface.
  */
-internal object RmObjectNodeFactoryProvider {
+object RmObjectNodeFactoryDelegator {
 
     private val rmObjectNodeFactories: Map<String, RmObjectNodeFactory<out RmObject>> = mapOf(
         Pair(RmUtils.getRmTypeName(Action::class.java), ActionFactory),
@@ -100,6 +103,7 @@ internal object RmObjectNodeFactoryProvider {
         Pair(RmUtils.getRmTypeName(SubjectPrecondition::class.java), RmObjectInstanceFactory { SubjectPrecondition() }),
         Pair(RmUtils.getRmTypeName(SubPlan::class.java), LocatableInstanceFallbackNameFactory({ SubPlan() }, SubPlan::class.java)),
         Pair(RmUtils.getRmTypeName(SystemNotification::class.java), LocatableInstanceFactory { SystemNotification() }),
+        Pair(RmUtils.getRmTypeName(SystemRequest::class.java), LocatableInstanceFactory { SystemRequest() }),
         Pair(RmUtils.getRmTypeName(Task::class.java), LocatableInstanceClassFactory(PerformableTask::class.java)),
         Pair(RmUtils.getRmTypeName(TaskGroup::class.java), LocatableInstanceFallbackNameClassFactory(TaskGroup::class.java)),
         Pair(RmUtils.getRmTypeName(TaskParticipation::class.java), LocatableInstanceFactory { TaskParticipation() }),
@@ -112,13 +116,40 @@ internal object RmObjectNodeFactoryProvider {
         Pair(RmUtils.getRmTypeName(TimerWait::class.java), RmObjectInstanceFactory { TimerWait() }),
         Pair(RmUtils.getRmTypeName(WorkPlan::class.java), LocatableInstanceFactory { WorkPlan() }))
 
+
     /**
-     * Provides [RmObjectNodeFactory] based on [RmObject] RM type.
+     * Delegates [RmObject] initialization to the [RmObjectNodeFactory] based on the RM type and returns newly created instance.
      *
      * @param rmType [RmObject] RM type
-     * @return [RmObjectNodeFactory]
+     * @param conversionContext [ConversionContext]
+     * @param amNode [AmNode]
+     * @param webTemplatePath [WebTemplatePath]
+     * @return New instance of the [RmObject]
      * @throws [ConversionException] if [RmObjectNodeFactory] is not found
      */
-    fun provide(rmType: String): RmObjectNodeFactory<out RmObject> =
-        rmObjectNodeFactories[RmUtils.getNonGenericRmNamePart(rmType)] ?: throw ConversionException("RM object node factory for $rmType not found.")
+    @JvmStatic
+    @Suppress("UNCHECKED_CAST")
+    fun <T : RmObject> delegateOrThrow(rmType: String, conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): T {
+        val factory = rmObjectNodeFactories[RmUtils.getNonGenericRmNamePart(rmType)]
+            ?: throw ConversionException("RM object node factory for $rmType not found.")
+
+        return (factory as RmObjectNodeFactory<T>).create(conversionContext, amNode, webTemplatePath)
+    }
+
+    /**
+     * Delegates [RmObject] initialization to the [RmObjectNodeFactory] based on the RM type and returns newly created instance.
+     *
+     * @param rmType [RmObject] RM type
+     * @param conversionContext [ConversionContext]
+     * @param amNode [AmNode]
+     * @param webTemplatePath [WebTemplatePath]
+     * @return New instance of the [RmObject] if [RmObjectNodeFactory] is found, otherwise, null
+     */
+    @JvmStatic
+    @Suppress("UNCHECKED_CAST")
+    fun <T : RmObject> delegateOrNull(rmType: String, conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): T? {
+        val factory = rmObjectNodeFactories[RmUtils.getNonGenericRmNamePart(rmType)] ?: return null
+
+        return (factory as RmObjectNodeFactory<T>).create(conversionContext, amNode, webTemplatePath)
+    }
 }

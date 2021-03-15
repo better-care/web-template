@@ -91,6 +91,8 @@ object SimpleValueConverter : ValueConverter {
 
     override fun formatPartialDateTime(partialDateTime: PartialDateTime): String = partialDateTime.format()
 
+    override fun parsePartialDateTime(value: String, pattern: String): PartialDateTime = PartialDateTime.from(value, pattern)
+
     override fun parsePartialDateTime(value: String): PartialDateTime = PartialDateTime.from(value)
 
     override fun parsePartialTime(value: String): PartialTime = PartialTime.from(value)

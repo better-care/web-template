@@ -21,7 +21,7 @@ import care.better.platform.utils.RmUtils
 import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import care.better.platform.web.template.converter.raw.factory.leaf.RmObjectLeafNodeFactoryProvider
+import care.better.platform.web.template.converter.raw.factory.leaf.RmObjectLeafNodeFactoryDelegator
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ArrayNode
 import org.openehr.rm.datatypes.DvDateTime
@@ -82,7 +82,7 @@ interface SpecialCaseRmObjectHandler {
     fun getAttributeName(): String
 
     /**
-     * Converts [JsonNode] to [DvDateTime] using [RmObjectLeafNodeFactoryProvider].
+     * Converts [JsonNode] to [DvDateTime] using [RmObjectLeafNodeFactoryDelegator].
      *
      * @param conversionContext [ConversionContext]
      * @param amNode [AmNode]
@@ -92,11 +92,9 @@ interface SpecialCaseRmObjectHandler {
     fun createDvDateTime(conversionContext: ConversionContext, amNode: AmNode, jsonNode: JsonNode, webTemplatePath: WebTemplatePath): DvDateTime? =
         if (jsonNode.isArray) {
             jsonNode.mapNotNull {
-                RmObjectLeafNodeFactoryProvider.getFactory(dvDateTimeRmType)
-                    .create(conversionContext, amNode, it, webTemplatePath) as DvDateTime?
+                RmObjectLeafNodeFactoryDelegator.delegateOrThrow(dvDateTimeRmType, conversionContext, amNode, it, webTemplatePath) as DvDateTime?
             }.firstOrNull()
         } else {
-            RmObjectLeafNodeFactoryProvider.getFactory(dvDateTimeRmType)
-                .create(conversionContext, amNode, jsonNode, webTemplatePath) as DvDateTime?
+            RmObjectLeafNodeFactoryDelegator.delegateOrThrow(dvDateTimeRmType, conversionContext, amNode, jsonNode, webTemplatePath) as DvDateTime?
         }
 }

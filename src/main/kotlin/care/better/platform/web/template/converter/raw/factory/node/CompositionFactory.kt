@@ -18,8 +18,11 @@ package care.better.platform.web.template.converter.raw.factory.node
 import care.better.platform.template.AmNode
 import care.better.platform.template.AmUtils
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants
+import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.extensions.createFromAmNode
+import care.better.platform.web.template.converter.raw.extensions.createFromOpenEhrTerminology
 import org.openehr.base.basetypes.GenericId
 import org.openehr.base.basetypes.PartyRef
 import org.openehr.rm.common.PartyIdentified
@@ -35,7 +38,7 @@ import org.openehr.rm.datatypes.DvCodedText
  * Singleton instance of [LocatableFactory] that creates a new instance of [Composition].
  */
 internal object CompositionFactory : LocatableFactory<Composition>() {
-    override fun createLocatable(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): Composition =
+    override fun createLocatable(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): Composition =
         Composition().apply {
             when {
                 conversionContext.composer != null -> this.composer = conversionContext.composer
@@ -55,15 +58,14 @@ internal object CompositionFactory : LocatableFactory<Composition>() {
                 }
             }
 
-            val categoryAmNode = AmUtils.getAmNode(amNode, "category")?.also { this.category = DvCodedText.createFromAmNode(it) }
+            val categoryAmNode = amNode?.let { node -> AmUtils.getAmNode(node, "category")?.also { this.category = DvCodedText.createFromAmNode(it) } }
             val categoryDvCodedText = if (categoryAmNode != null) DvCodedText.createFromAmNode(categoryAmNode) else null
 
-            when {
-                categoryDvCodedText != null -> this.category = categoryDvCodedText
-                conversionContext.category != null && conversionContext.category == "persistent" -> {
-                    this.category = DvCodedText.createWithOpenEHRTerminology("431", "persistent")
-                }
-                else -> DvCodedText.createWithOpenEHRTerminology("433", "event")
+            this.category = when {
+                categoryDvCodedText != null -> categoryDvCodedText
+                conversionContext.category != null ->
+                    DvCodedText.createFromOpenEhrTerminology(WebTemplateConstants.COMPOSITION_CATEGORY_GROUP_NAME, conversionContext.category)
+                else -> throw ConversionException("Composition category is not valid: ${conversionContext.category}")
             }
 
             conversionContext.language?.also { this.language = CodePhrase.createLanguagePhrase(it) }

@@ -55,9 +55,38 @@ class PartialDateTime(val partialDate: PartialDate, val partialTime: PartialTime
                 else
                     PartialDateTime(PartialDate.from(value), null)
             }
+
+        /**
+         * Parses a [String] to a [PartialDateTime] matching it against the constraint pattern from the archetype.
+         *
+         * @param value [String] value
+         * @param pattern Pattern
+         * @return [PartialTime]
+         */
+        @JvmStatic
+        fun from(value: String, pattern: String): PartialDateTime =
+            with(value.indexOf('T')) {
+                if (this != -1) {
+                    val patternParts = pattern.split("T")
+                    PartialDateTime(
+                        PartialDate.from(value.substring(0, this), patternParts[0]),
+                        if (patternParts.size == 2)
+                            PartialTime.from(value.substring(this + 1), patternParts[1])
+                        else
+                            PartialTime.from(value.substring(this + 1)))
+                } else {
+                    PartialDateTime(PartialDate.from(value, pattern), null)
+                }
+            }
+
     }
 
-    fun format(): String = partialDate.format() + if (partialTime == null) "" else 'T' + partialTime.format()
+    fun format(): String = "${partialDate.format()}${if (partialTime == null) "" else "T${partialTime.format()}"}"
+
+    fun format(pattern: String) = with(pattern) {
+        val patternParts = pattern.split("T")
+        "${partialDate.format(patternParts[0])}${if (partialTime == null) "" else "T${if (patternParts.size == 2) partialTime.format(patternParts[1]) else partialTime.format()}"}"
+    }
 
     override fun equals(other: Any?): Boolean =
         when {

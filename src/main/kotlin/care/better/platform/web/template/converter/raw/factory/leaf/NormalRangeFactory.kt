@@ -15,13 +15,14 @@
 
 package care.better.platform.web.template.converter.raw.factory.leaf
 
+import care.better.openehr.rm.RmObject
 import care.better.platform.template.AmNode
+import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ValueNode
-import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import org.openehr.rm.datatypes.DvInterval
 import org.openehr.rm.datatypes.DvOrdered
 
@@ -37,8 +38,7 @@ internal object NormalRangeFactory : RmObjectLeafNodeFactory<DvInterval>() {
             conversionContext: ConversionContext,
             amNode: AmNode,
             valueNode: ValueNode,
-            webTemplatePath: WebTemplatePath,
-            webTemplateInput: WebTemplateInput?): DvInterval =
+            webTemplatePath: WebTemplatePath): DvInterval =
         throw ConversionException("${amNode.rmType} can not be created from simple value", webTemplatePath.toString())
 
     override fun createInstance(attributes: Set<AttributeDto>): DvInterval = DvInterval()
@@ -54,16 +54,24 @@ internal object NormalRangeFactory : RmObjectLeafNodeFactory<DvInterval>() {
             "lower" -> {
                 rmObject.lower =
                     jsonNode.mapNotNull {
-                        RmObjectLeafNodeFactoryProvider.getFactory(amNode.rmType)
-                            .create(conversionContext, amNode, it, webTemplatePath + attribute.originalAttribute) as DvOrdered
+                        RmObjectLeafNodeFactoryDelegator.delegateOrThrow<RmObject>(
+                            amNode.rmType,
+                            conversionContext,
+                            amNode,
+                            it,
+                            webTemplatePath + attribute.originalAttribute) as DvOrdered
                     }.firstOrNull()
                 true
             }
             "upper" -> {
                 rmObject.upper =
                     jsonNode.mapNotNull {
-                        RmObjectLeafNodeFactoryProvider.getFactory(amNode.rmType)
-                            .create(conversionContext, amNode, it, webTemplatePath + attribute.originalAttribute) as DvOrdered
+                        RmObjectLeafNodeFactoryDelegator.delegateOrThrow<RmObject>(
+                            amNode.rmType,
+                            conversionContext,
+                            amNode,
+                            it,
+                            webTemplatePath + attribute.originalAttribute) as DvOrdered
                     }.firstOrNull()
                 true
             }

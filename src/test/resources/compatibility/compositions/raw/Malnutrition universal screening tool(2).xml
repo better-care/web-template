@@ -28,7 +28,7 @@
         <ns2:template_id>
             <ns2:value>Malnutrition universal screening tool</ns2:value>
         </ns2:template_id>
-        <ns2:rm_version>1.0.4</ns2:rm_version>
+        <ns2:rm_version>1.1.0</ns2:rm_version>
     </ns2:archetype_details>
     <ns2:feeder_audit>
         <ns2:original_content xsi:type="ns2:DV_PARSABLE" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -88,7 +88,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-CLUSTER.xds_metadata.v0</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0003">
                     <ns2:name>
@@ -109,7 +109,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-OBSERVATION.must.v0</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:language>
             <ns2:terminology_id>
@@ -268,7 +268,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-OBSERVATION.body_weight.v2</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:language>
             <ns2:terminology_id>
@@ -322,7 +322,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-OBSERVATION.height.v2</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:language>
             <ns2:terminology_id>
@@ -376,7 +376,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-OBSERVATION.body_mass_index.v2</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:language>
             <ns2:terminology_id>
@@ -431,7 +431,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-EVALUATION.management_guidelines.v0</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:language>
             <ns2:terminology_id>
@@ -468,7 +468,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:items xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.body_weight.v2">
             <ns2:name>
@@ -478,7 +478,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-OBSERVATION.body_weight.v2</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>

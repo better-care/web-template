@@ -71,7 +71,15 @@ internal object DvDateTimeFactory : DvQuantifiedFactory<DvDateTime>() {
         } else if (pattern == FULL_PATTERN) {
             rmObject.value = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(conversionContext.valueConverter.parseDateTime(dateTimeString, true))
         } else {
-            rmObject.value = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(conversionContext.valueConverter.parseDateTime(dateTimeString, false))
+            if (pattern.isNotBlank() && (pattern.contains("?") || pattern.contains("X"))) {
+                try {
+                    rmObject.value = conversionContext.valueConverter.parsePartialDateTime(dateTimeString, pattern).format(pattern)
+                } catch (ex: IllegalArgumentException) {
+                    rmObject.value = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(conversionContext.valueConverter.parseDateTime(dateTimeString, false))
+                }
+            } else {
+                rmObject.value = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(conversionContext.valueConverter.parseDateTime(dateTimeString, false))
+            }
         }
     }
 

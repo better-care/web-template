@@ -27,7 +27,7 @@ import org.openehr.rm.composition.Action
  * Singleton instance of [EntryFactory] that creates a new instance of [Action].
  */
 internal object ActionFactory : EntryFactory<Action>() {
-    override fun createEntry(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): Action =
+    override fun createEntry(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): Action =
         Action().apply {
             if (conversionContext.actionIsmTransitionProvider != null)
                 conversionContext.actionIsmTransitionProvider.also { this.ismTransition = it.getIsmTransition(webTemplatePath.toString()) }

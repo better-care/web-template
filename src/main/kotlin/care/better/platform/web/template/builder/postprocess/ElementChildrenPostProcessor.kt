@@ -45,7 +45,7 @@ class ElementChildrenPostProcessor : WebTemplateNodeChildrenPostProcessor {
         webTemplateNode.children[codedTextIndex].also {
             it.inputs.add(WebTemplateInput(WebTemplateInputType.TEXT, "other"))
         }
-        webTemplateNode.children[codedTextIndex].getInput()!!.listOpen = true
+        webTemplateNode.children[codedTextIndex].getInput()?.listOpen = true
         webTemplateNode.children.removeAt(textIndex)
     }
 }

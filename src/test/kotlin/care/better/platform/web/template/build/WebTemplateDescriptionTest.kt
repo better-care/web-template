@@ -45,7 +45,7 @@ class WebTemplateDescriptionTest : AbstractWebTemplateTest() {
     @Test
     fun testWebTemplateNotHasDescriptions() {
         val template = getTemplate("/build/Demo Vitals.opt")
-        val webTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"), false))
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"), null, false))
 
         assertThat(webTemplate.tree.localizedDescriptions).isEmpty()
 

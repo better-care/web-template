@@ -20,6 +20,7 @@ import care.better.platform.web.template.converter.structured.mapper.RmObjectToS
 import care.better.platform.web.template.converter.value.SimpleValueConverter
 import com.fasterxml.jackson.databind.JsonNode
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import com.fasterxml.jackson.databind.ObjectMapper
 
 /**
  * @author Primoz Delopst
@@ -27,7 +28,7 @@ import care.better.platform.web.template.builder.model.WebTemplateNode
  *
  * Singleton instance of [AbstractRawToStructuredConverter] that converts the RM object in RAW format to the RM object in STRUCTURED format.
  */
-internal object RawToStructuredConverter : AbstractRawToStructuredConverter() {
+internal class RawToStructuredConverter(objectMapper: ObjectMapper) : AbstractRawToStructuredConverter(objectMapper) {
     override fun <R : RmObject> mapRmObject(webTemplateNode: WebTemplateNode, rmObject: R): JsonNode? =
         RmObjectToStructuredMapperDelegator.delegate(webTemplateNode, SimpleValueConverter, rmObject)
 }

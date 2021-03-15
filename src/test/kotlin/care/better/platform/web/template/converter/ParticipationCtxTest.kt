@@ -46,7 +46,7 @@ class ParticipationCtxTest : AbstractWebTemplateTest() {
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(flatMap, ConversionContext.create().build()) }
             .isInstanceOf(ConversionException::class.java)
-            .hasMessage("Unknown participation mode: videoconferencing!")
+            .hasMessage("Unknown participation mode: 'videoconference'")
     }
 
     @Test

@@ -20,6 +20,7 @@ import care.better.platform.web.template.converter.utils.WebTemplateConversionUt
 import care.better.platform.web.template.date.partial.PartialDate
 import care.better.platform.web.template.date.partial.PartialDateTime
 import care.better.platform.web.template.date.partial.PartialTime
+import com.sun.xml.internal.ws.wsdl.writer.document.Part
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.format.DateTimeFormatter
 import org.joda.time.format.ISODateTimeFormat
@@ -181,6 +182,8 @@ class LocaleBasedValueConverter(private val locale: Locale) : ValueConverter {
             convertToOffsetTimeLocalized(value) ?: throw  ConversionException("Unable to convert value to LocalTime: $value")
 
     override fun parsePartialDateTime(value: String): PartialDateTime = PartialDateTime.from(value)
+
+    override fun parsePartialDateTime(value: String, pattern: String): PartialDateTime = PartialDateTime.from(value, pattern)
 
     override fun parsePartialTime(value: String): PartialTime = PartialTime.from(value)
 

@@ -29,7 +29,7 @@
         <ns2:template_id>
             <ns2:value>Adverse Reaction List.v1</ns2:value>
         </ns2:template_id>
-        <ns2:rm_version>1.0.4</ns2:rm_version>
+        <ns2:rm_version>1.1.0</ns2:rm_version>
     </ns2:archetype_details>
     <ns2:language>
         <ns2:terminology_id>
@@ -77,7 +77,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-SECTION.allergies_adverse_reactions_rcp.v1</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:items xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.adverse_reaction_risk.v1">
             <ns2:name>
@@ -87,7 +87,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-EVALUATION.adverse_reaction_risk.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -144,7 +144,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-EVALUATION.adverse_reaction_risk.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -201,7 +201,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-OBSERVATION.progress_note.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>

@@ -42,5 +42,6 @@ internal object CodePhraseToStructuredMapper : RmObjectToStructuredMapper<CodePh
     private fun mapCodePhrase(codePhrase: CodePhrase, objectNode: ObjectNode) {
         objectNode.putIfNotNull("|code", codePhrase.codeString)
         objectNode.putIfNotNull("|terminology", codePhrase.terminologyId?.value)
+        objectNode.putIfNotNull("|preferred_term", codePhrase.preferredTerm)
     }
 }

@@ -25,7 +25,7 @@ import care.better.platform.web.template.converter.raw.context.ConversionContext
  *
  * Interface used to post-process the RM object or [MutableList] of the RM objects in RAW format that were created from STRUCTURED format.
  */
-internal interface PostProcessor<T> {
+interface PostProcessor<T> {
     /**
      * Post-processes the RM object in RAW format.
      *
@@ -34,7 +34,7 @@ internal interface PostProcessor<T> {
      * @param instance RM object or [MutableList] of RM objects in RAW format
      * @param webTemplatePath Web template path to the RM object or to the [List] of RM objects
      */
-    fun postProcess(conversionContext: ConversionContext, amNode: AmNode, instance: T, webTemplatePath: WebTemplatePath)
+    fun postProcess(conversionContext: ConversionContext, amNode: AmNode?, instance: T, webTemplatePath: WebTemplatePath?)
 
     /**
      * Checks if this [PostProcessor] will accept the RM object or [MutableList] of the RM objects in RAW format.
@@ -42,6 +42,7 @@ internal interface PostProcessor<T> {
      * @param instanceClass [Class] of the RM object or [MutableList] of RM objects that will be post processed.
      * @return [Boolean] indicating if this [PostProcessor] can process the RM object or [MutableList] of the RM objects
      */
+    @JvmDefault
     fun accept(instanceClass: Class<*>): Boolean = getType().isAssignableFrom(instanceClass)
 
     /**
@@ -57,6 +58,7 @@ internal interface PostProcessor<T> {
      *
      * @return Order of this [PostProcessor]
      */
+    @JvmDefault
     fun getOrder(): Int = Integer.MIN_VALUE
 }
 

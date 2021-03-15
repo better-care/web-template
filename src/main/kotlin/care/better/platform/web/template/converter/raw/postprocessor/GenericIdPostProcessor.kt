@@ -29,7 +29,7 @@ import org.openehr.base.basetypes.GenericId
 internal object GenericIdPostProcessor : PostProcessor<GenericId> {
     private val supportedClass = GenericId::class.java
 
-    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode, instance: GenericId, webTemplatePath: WebTemplatePath) {
+    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode?, instance: GenericId, webTemplatePath: WebTemplatePath?) {
         if (instance.scheme == null) {
             instance.scheme = conversionContext.idScheme
         }

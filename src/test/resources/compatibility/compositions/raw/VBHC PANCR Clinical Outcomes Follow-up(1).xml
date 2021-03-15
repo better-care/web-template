@@ -28,7 +28,7 @@
         <ns2:template_id>
             <ns2:value>MEDTRONIC VBHC PANCR Clinical Outcomes Follow-up</ns2:value>
         </ns2:template_id>
-        <ns2:rm_version>1.0.4</ns2:rm_version>
+        <ns2:rm_version>1.1.0</ns2:rm_version>
     </ns2:archetype_details>
     <ns2:feeder_audit>
         <ns2:original_content xsi:type="ns2:DV_PARSABLE" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -88,7 +88,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-CLUSTER.research_information.v0</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                     <ns2:name>
@@ -129,7 +129,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:items xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.problem_diagnosis.v1">
             <ns2:name>
@@ -139,7 +139,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-EVALUATION.problem_diagnosis.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -183,7 +183,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-SECTION.adhoc.v1</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:items xsi:type="ns2:INSTRUCTION" archetype_node_id="openEHR-EHR-INSTRUCTION.service_request.v1">
             <ns2:name>
@@ -196,7 +196,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-INSTRUCTION.service_request.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -252,7 +252,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-ADMIN_ENTRY.admission.v0</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>

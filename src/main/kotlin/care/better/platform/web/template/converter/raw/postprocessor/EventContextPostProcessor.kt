@@ -32,9 +32,9 @@ internal object EventContextPostProcessor : PostProcessor<EventContext> {
 
     override fun postProcess(
             conversionContext: ConversionContext,
-            amNode: AmNode,
+            amNode: AmNode?,
             instance: EventContext,
-            webTemplatePath: WebTemplatePath) {
+            webTemplatePath: WebTemplatePath?) {
         instance.participations = instance.participations.ifEmpty { conversionContext.getParticipationList().toMutableList() }
 
         if (instance.otherContext != null && instance.otherContext.isEmpty()) {

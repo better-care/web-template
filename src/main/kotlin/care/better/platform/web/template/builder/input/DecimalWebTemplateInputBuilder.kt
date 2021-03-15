@@ -30,7 +30,6 @@ import org.openehr.am.aom.CReal
  * @author Primoz Delopst
  * @since 3.1.0
  */
-
 internal object DecimalWebTemplateInputBuilder : WebTemplateInputBuilder<CReal> {
     override fun build(amNode: AmNode, validator: CReal?, context: WebTemplateBuilderContext): WebTemplateInput {
         val input = WebTemplateInput(WebTemplateInputType.DECIMAL)

@@ -122,7 +122,7 @@ internal object DvTimeFactory : DvQuantifiedFactory<DvTime>() {
         if (pattern.isNullOrBlank()) {
             rmObject.value = valueConverter.parsePartialTime(timeString).format()
         } else {
-            rmObject.value = valueConverter.parsePartialTime(timeString).format()
+            rmObject.value = valueConverter.parsePartialTime(timeString, pattern).format(pattern)
         }
     }
 }

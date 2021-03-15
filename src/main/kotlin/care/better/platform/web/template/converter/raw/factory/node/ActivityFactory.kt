@@ -30,7 +30,7 @@ import org.openehr.rm.datatypes.DvParsable
  * Singleton instance of [LocatableFactory] that creates a new instance of [Activity].
  */
 internal object ActivityFactory : LocatableFactory<Activity>() {
-    override fun createLocatable(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): Activity =
+    override fun createLocatable(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): Activity =
         Activity().apply {
             val activityTimingProvider = conversionContext.activityTimingProvider
             if (activityTimingProvider != null)
@@ -38,7 +38,7 @@ internal object ActivityFactory : LocatableFactory<Activity>() {
             else
                 this.timing = DvParsable().apply { this.formalism = "timing" }
 
-            val cString = AmUtils.getPrimitiveItem(amNode, CString::class.java, "action_archetype_id")
+            val cString = amNode?.let { AmUtils.getPrimitiveItem(it, CString::class.java, "action_archetype_id") }
             if (cString?.pattern != null)
                 this.actionArchetypeId = cString.pattern
             else

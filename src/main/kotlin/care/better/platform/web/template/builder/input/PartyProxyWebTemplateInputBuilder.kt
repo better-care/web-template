@@ -28,7 +28,6 @@ import org.openehr.am.aom.CString
  * @author Primoz Delopst
  * @since 3.1.0
  */
-
 abstract class PartyProxyWebTemplateInputBuilder : WebTemplateInputBuilder<Any> {
     override fun build(amNode: AmNode, validator: Any?, context: WebTemplateBuilderContext): WebTemplateInput = WebTemplateInput(WebTemplateInputType.TEXT)
 

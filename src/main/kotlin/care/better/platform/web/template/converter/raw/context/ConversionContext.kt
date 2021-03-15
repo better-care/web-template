@@ -17,6 +17,7 @@ package care.better.platform.web.template.converter.raw.context
 
 import care.better.openehr.rm.RmObject
 import care.better.platform.web.template.WebTemplate
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PARTICIPATION_MODE_GROUP_NAME
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.extensions.createFromOpenEhrTerminology
 import care.better.platform.web.template.converter.raw.extensions.createPartyIdentified
@@ -86,6 +87,8 @@ class ConversionContext private constructor(
         val actionToInstructionHandler: ActionToInstructionHandler?,
         val rmVisitors: Map<Class<*>, RmVisitor<*>> = mapOf(),
         val valueConverter: ValueConverter,
+        val incompleteMode: Boolean,
+        val strictMode: Boolean,
         val aqlPath: String?,
         val webTemplatePath: String?) {
 
@@ -146,7 +149,7 @@ class ConversionContext private constructor(
                     if (mode.isNullOrBlank()) {
                         this.mode = DvCodedText.create("openehr", "193", "not specified")
                     } else {
-                        this.mode = DvCodedText.createFromOpenEhrTerminology("9", mode)
+                        this.mode = DvCodedText.createFromOpenEhrTerminology(PARTICIPATION_MODE_GROUP_NAME, mode)
                     }
                     val id = if (participationIds.size > index) participationIds[index] else null
                     if (StringUtils.isNotBlank(id) && (StringUtils.isBlank(idNamespace) || StringUtils.isBlank(idScheme))) {
@@ -221,6 +224,8 @@ class ConversionContext private constructor(
             actionToInstructionHandler,
             rmVisitors.toMutableMap(),
             valueConverter,
+            incompleteMode,
+            strictMode,
             aqlPath,
             webTemplatePath,
             webTemplate)
@@ -277,6 +282,8 @@ class ConversionContext private constructor(
             private var actionToInstructionHandler: ActionToInstructionHandler? = null,
             private var rmVisitors: MutableMap<Class<*>, RmVisitor<*>> = mutableMapOf(),
             private var valueConverter: ValueConverter? = null,
+            private var incompleteMode: Boolean = false,
+            private var strictMode: Boolean = false,
             private var aqlPath: String? = null,
             private var webTemplatePath: String? = null,
             private var webTemplate: WebTemplate? = null) {
@@ -326,6 +333,8 @@ class ConversionContext private constructor(
         fun getActionToInstructionHandler() = actionToInstructionHandler
         fun getRmVisitors() = rmVisitors
         fun getValueConverter() = valueConverter
+        fun isForIncompleteMode() = incompleteMode
+        fun isForStrictMode() = strictMode
         fun getAqlPath() = aqlPath
         fun getWebTemplatePath() = webTemplatePath
 
@@ -426,8 +435,21 @@ class ConversionContext private constructor(
         fun putRmVisitor(rmObjectClass: Class<*>, rmVisitor: RmVisitor<RmObject>) = apply { this.rmVisitors[rmObjectClass] = rmVisitor }
         fun putRmVisitors(rmVisitors: Map<Class<*>, RmVisitor<RmObject>>) = apply { this.rmVisitors.putAll(rmVisitors) }
         fun withValueConvert(valueConverter: ValueConverter) = apply { this.valueConverter = valueConverter }
+        fun withIncompleteMode() = apply {
+            if (strictMode) {
+                throw ConversionException("Incomplete mode can only be used when strict mode is disabled!")
+            }
+            this.incompleteMode = true
+        }
+        fun withStrictMode() = apply {
+            if (incompleteMode){
+                throw ConversionException("Strict mode can only be used when incomplete mode is disabled!")
+            }
+            this.strictMode = true
+        }
         fun forAqlPath(aqlPath: String) = apply { this.aqlPath = aqlPath }
         fun forWebTemplatePath(webTemplatePath: String) = apply { this.webTemplatePath = webTemplatePath }
+        fun withNoLocale() = apply { this.locale = null }
 
         /**
          * Creates and returns a new instance of [ConversionContext].
@@ -481,6 +503,8 @@ class ConversionContext private constructor(
                 actionToInstructionHandler,
                 rmVisitors,
                 getOrCreateValueConverter(),
+                incompleteMode,
+                strictMode,
                 aqlPath,
                 webTemplatePath).also { it.webTemplate = webTemplate }
 

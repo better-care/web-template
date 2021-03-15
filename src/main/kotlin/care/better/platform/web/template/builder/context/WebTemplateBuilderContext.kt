@@ -32,8 +32,9 @@ import care.better.platform.web.template.builder.path.PathFilter
  * @param isAddDescriptions [Boolean] indicating if descriptions will be added or not
  * @param filter [PathFilter]
  */
-data class WebTemplateBuilderContext(
+data class WebTemplateBuilderContext @JvmOverloads constructor(
         val defaultLanguage: String? = null,
         val languages: Collection<String> = emptyList(),
+        val contextLanguage: String? = null,
         val isAddDescriptions: Boolean = true,
         val filter: PathFilter = NoopPathFilter)

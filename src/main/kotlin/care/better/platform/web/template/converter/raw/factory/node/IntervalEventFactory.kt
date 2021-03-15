@@ -43,18 +43,18 @@ internal object IntervalEventFactory : EventFactory<IntervalEvent>() {
             Pair("268", "median"))
 
 
-    override fun createEvent(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): IntervalEvent =
+    override fun createEvent(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): IntervalEvent =
         IntervalEvent().apply {
             this.mathFunction = DvCodedText().apply {
                 this.definingCode = CodePhrase.create("openehr", DEFAULT_CODE)
                 this.value = MATH_FUNCTIONS[DEFAULT_CODE]
             }
 
-            val node: AmNode? = AmUtils.getAmNode(amNode, "math_function", "defining_code")
+            val node: AmNode? = amNode?.let { AmUtils.getAmNode(it, "math_function", "defining_code") }
             node?.also {
                 val cObject = node.cObject
                 if (cObject is CCodePhrase && cObject.codeList.isNotEmpty()) {
-                    this.mathFunction =  DvCodedText().apply {
+                    this.mathFunction = DvCodedText().apply {
                         this.definingCode = CodePhrase.create(cObject.terminologyId?.value!!, cObject.codeList[0])
                         this.value = MATH_FUNCTIONS[cObject.codeList[0]]
                     }

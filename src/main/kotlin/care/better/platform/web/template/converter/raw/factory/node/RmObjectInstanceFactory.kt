@@ -30,5 +30,5 @@ import care.better.platform.web.template.converter.raw.context.ConversionContext
  * @param factory Supplier that creates a new instance of [RmObject]
  */
 internal class RmObjectInstanceFactory<T : RmObject>(private val factory: () -> T) : RmObjectNodeFactory<T> {
-    override fun create(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): T = factory.invoke()
+    override fun create(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): T = factory.invoke()
 }

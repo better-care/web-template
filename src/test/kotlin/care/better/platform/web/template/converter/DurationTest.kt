@@ -40,34 +40,37 @@ class DurationTest : AbstractWebTemplateTest() {
                 AmNode(null, "DV_DURATION"),
                 TextNode.valueOf("P0Y1M1D0WT0H0M0S"),
                 WebTemplatePath("id"),
-                emptyList(),
-                null)
+                emptyList())
         }.isInstanceOf(ConversionException::class.java).hasMessage("Error processing value: \"P0Y1M1D0WT0H0M0S\" (path: id).")
     }
 
     @Test
     fun testMixed() {
-        val dvDuration = DvDurationFactory.create(
-            ConversionContext.create().build(),
-            AmNode(null, "DV_DURATION"),
-            TextNode.valueOf("P0Y1M0W1DT0H0M0S"),
-            WebTemplatePath("id"),
-            emptyList(),
-            null) as DvDuration
+        validateDvDurationValue("P0Y1M0W1DT0H0M0S", "P1M1D")
+    }
 
-        assertThat(dvDuration.value).isEqualTo("P1M1D")
+    @Test
+    fun testNegative() {
+        validateDvDurationValue("P0Y-1M0W1DT0H0M0S", "P-1M1D")
+        validateDvDurationValue("P0Y1M0W-1DT0H0M0S", "P1M-1D")
+        validateDvDurationValue("-P0Y1M1W1DT0H0M0S", "P-1M-1W-1D")
+        validateDvDurationValue("-P0Y1M1W1DT0H0M0S", "P-1M-1W-1D")
+        validateDvDurationValue("-P0Y-1M1W1DT0H0M0S", "P1M-1W-1D")
+        validateDvDurationValue("-P0Y-1M-1W-1DT0H0M0S", "P1M1W1D")
     }
 
     @Test
     fun testMixedWeeksAndRest() {
-        val dvDuration = DvDurationFactory.create(
-            ConversionContext.create().build(),
-            AmNode(null, "DV_DURATION"),
-            TextNode.valueOf("P0Y1M2W1DT0H0M0S"),
-            WebTemplatePath("id"),
-            emptyList(),
-            null) as DvDuration
+        validateDvDurationValue("P0Y1M2W1DT0H0M0S", "P1M2W1D")
+    }
 
-        assertThat(dvDuration.value).isEqualTo("P1M2W1D")
+    private fun validateDvDurationValue(pattern: String, valueToCompare: String) {
+        val dvDuration1 = DvDurationFactory.create(
+                ConversionContext.create().build(),
+                AmNode(null, "DV_DURATION"),
+                TextNode.valueOf(pattern),
+                WebTemplatePath("id"),
+                emptyList()) as DvDuration
+        assertThat(dvDuration1.value).isEqualTo(valueToCompare)
     }
 }

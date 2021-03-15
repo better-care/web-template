@@ -37,24 +37,27 @@ import java.util.*
  * @constructor Creates a new instance of [LocatableFactory]
  */
 internal abstract class LocatableFactory<T : Locatable> : RmObjectNodeFactory<T> {
-    override fun create(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): T =
+    override fun create(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): T =
         createLocatable(conversionContext, amNode, webTemplatePath).apply {
-            this.archetypeNodeId = amNode.archetypeNodeId
-            if (!amNode.archetypeNodeId!!.startsWith("at")) {
-                this.archetypeDetails = createArchetypeDetails(amNode.archetypeNodeId!!)
+            if (amNode != null) {
+                val archetypeNodeId = amNode.archetypeNodeId
+                this.archetypeNodeId = archetypeNodeId
+                if (archetypeNodeId != null && !archetypeNodeId.startsWith("at")) {
+                    this.archetypeDetails = createArchetypeDetails(archetypeNodeId)
+                }
+                this.name = createLocatableName(amNode, webTemplatePath)
             }
-            this.name = createLocatableName(amNode, webTemplatePath)
         }
 
-    protected abstract fun createLocatable(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): T
+    protected abstract fun createLocatable(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): T
 
     private fun createArchetypeDetails(archetypeNodeId: String) =
         Archetyped().apply {
             this.archetypeId = ArchetypeId().apply { this.value = archetypeNodeId }
         }
 
-    private fun createLocatableName(amNode: AmNode, webTemplatePath: WebTemplatePath): DvText {
-        if (webTemplatePath.parent != null) {
+    private fun createLocatableName(amNode: AmNode, webTemplatePath: WebTemplatePath?): DvText {
+        if (webTemplatePath?.parent != null) {
             val nameCodePhrase: CCodePhrase? = AmUtils.getNameCodePhrase(amNode)
             if (nameCodePhrase != null) {
                 val codeList = nameCodePhrase.codeList

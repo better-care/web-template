@@ -30,5 +30,5 @@ import org.openehr.rm.composition.Entry
  * @param factory Supplier that creates a new instance of [Entry]
  */
 internal open class EntryInstanceFactory<T : Entry>(private val factory: () -> T) : EntryFactory<T>() {
-    override fun createEntry(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): T = factory.invoke()
+    override fun createEntry(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): T = factory.invoke()
 }

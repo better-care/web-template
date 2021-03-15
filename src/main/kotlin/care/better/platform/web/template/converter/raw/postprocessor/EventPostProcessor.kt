@@ -39,7 +39,7 @@ internal open class EventPostProcessor<T : Event> : LocatablePostProcessor<T>() 
 
     private val supportedClass = Event::class.java
 
-    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode, instance: T, webTemplatePath: WebTemplatePath) {
+    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode?, instance: T, webTemplatePath: WebTemplatePath?) {
         super.postProcess(conversionContext, amNode, instance, webTemplatePath)
         if (instance.time == null) {
             instance.time = DvDateTime.Companion.create(conversionContext.time)

@@ -28,7 +28,7 @@ import org.openehr.rm.composition.Instruction
  * Singleton instance of [EntryFactory] that creates a new instance of [Instruction].
  */
 internal object InstructionFactory : EntryFactory<Instruction>() {
-    override fun createEntry(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): Instruction =
+    override fun createEntry(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): Instruction =
         Instruction().apply {
             this.uid = HierObjectId(conversionContext.uidGenerator.invoke(webTemplatePath.toString()))
             conversionContext.instructionNarrativeProvider?.also {

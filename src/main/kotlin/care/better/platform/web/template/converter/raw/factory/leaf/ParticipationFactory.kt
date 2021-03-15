@@ -17,15 +17,14 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PARTICIPATION_MODE_GROUP_NAME
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.extensions.createFromOpenEhrTerminology
 import care.better.platform.web.template.converter.raw.extensions.createGenericId
 import care.better.platform.web.template.converter.raw.extensions.createPartyRef
 import com.fasterxml.jackson.databind.JsonNode
-import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.databind.node.ValueNode
-import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import org.openehr.base.basetypes.GenericId
 import org.openehr.base.basetypes.PartyRef
 import org.openehr.rm.common.Participation
@@ -47,8 +46,7 @@ internal object ParticipationFactory : RmObjectLeafNodeFactory<Participation>() 
             conversionContext: ConversionContext,
             amNode: AmNode,
             valueNode: ValueNode,
-            webTemplatePath: WebTemplatePath,
-            webTemplateInput: WebTemplateInput?): Participation =
+            webTemplatePath: WebTemplatePath): Participation =
         throw ConversionException("${amNode.rmType} can not be created from simple value", webTemplatePath.toString())
 
     override fun createInstance(attributes: Set<AttributeDto>): Participation = Participation()
@@ -82,7 +80,7 @@ internal object ParticipationFactory : RmObjectLeafNodeFactory<Participation>() 
                 true
             }
             attribute.attribute == "mode" -> {
-                rmObject.mode = DvCodedText.createFromOpenEhrTerminology("9", jsonNode.asText())
+                rmObject.mode = DvCodedText.createFromOpenEhrTerminology(PARTICIPATION_MODE_GROUP_NAME, jsonNode.asText())
                 true
             }
             attribute.attribute.startsWith("identifiers_assigner") -> {
@@ -105,7 +103,7 @@ internal object ParticipationFactory : RmObjectLeafNodeFactory<Participation>() 
         }
     }
 
-    override fun afterPropertiesSet(conversionContext: ConversionContext, amNode: AmNode, objectNode: ObjectNode, rmObject: Participation) {
+    override fun afterPropertiesSet(conversionContext: ConversionContext, amNode: AmNode, jsonNode: JsonNode, rmObject: Participation) {
         if (rmObject.mode == null) {
             rmObject.mode = DvCodedText.createWithOpenEHRTerminology("193", "not specified")
         }

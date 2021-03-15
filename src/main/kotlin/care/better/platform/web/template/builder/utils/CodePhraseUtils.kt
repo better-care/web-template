@@ -23,6 +23,7 @@ import care.better.platform.template.AmUtils.findText
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.builder.model.input.WebTemplateBindingCodedValue
 import care.better.platform.web.template.builder.model.input.WebTemplateCodedValue
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.DEFAULT_LANGUAGE
 import org.apache.commons.lang3.StringUtils
 import org.openehr.am.aom.TermBindingItem
 
@@ -34,7 +35,7 @@ import org.openehr.am.aom.TermBindingItem
 internal object CodePhraseUtils {
     @JvmStatic
     fun getOpenEhrTerminologyText(code: String, language: String?): String? =
-        (if (language == null) null else OpenEhrTerminology.getInstance().getText(language, code)) ?: OpenEhrTerminology.getInstance().getText("en", code)
+        (if (language == null) null else OpenEhrTerminology.getInstance().getText(language, code)) ?: OpenEhrTerminology.getInstance().getText(DEFAULT_LANGUAGE, code)
 
     @JvmStatic
     fun getLocalTerminologyText(code: String?, amNode: AmNode, language: String?): String? =

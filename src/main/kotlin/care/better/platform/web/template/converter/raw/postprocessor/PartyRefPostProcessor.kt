@@ -29,7 +29,7 @@ import org.openehr.base.basetypes.PartyRef
 internal object PartyRefPostProcessor : PostProcessor<PartyRef> {
     private val supportedClass = PartyRef::class.java
 
-    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode, instance: PartyRef, webTemplatePath: WebTemplatePath) {
+    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode?, instance: PartyRef, webTemplatePath: WebTemplatePath?) {
         if (instance.namespace == null) {
             instance.namespace = conversionContext.idNamespace
         }

@@ -109,6 +109,15 @@ interface ValueConverter {
     fun parsePartialDateTime(value: String): PartialDateTime
 
     /**
+     * Parses a [String] value to a [PartialDateTime].
+     *
+     * @param value [String] value
+     * @param pattern Pattern
+     * @return [PartialDateTime]
+     */
+    fun parsePartialDateTime(value: String, pattern: String): PartialDateTime
+
+    /**
      * Parses a [String] value to a [PartialTime].
      *
      * @param value [String] value

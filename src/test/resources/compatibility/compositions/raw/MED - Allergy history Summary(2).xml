@@ -28,7 +28,7 @@
         <ns2:template_id>
             <ns2:value>ISPEK - MED - Allergy history Summary</ns2:value>
         </ns2:template_id>
-        <ns2:rm_version>1.0.4</ns2:rm_version>
+        <ns2:rm_version>1.1.0</ns2:rm_version>
     </ns2:archetype_details>
     <ns2:language>
         <ns2:terminology_id>
@@ -70,7 +70,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-EVALUATION.summary_context.v1</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:language>
             <ns2:terminology_id>
@@ -132,7 +132,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-SECTION.ispek_dialog.v1</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:items xsi:type="ns2:EVALUATION" archetype_node_id="openEHR-EHR-EVALUATION.clinical_synopsis-allergies_mnd.v1">
             <ns2:name>
@@ -142,7 +142,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-EVALUATION.clinical_synopsis-allergies_mnd.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -210,7 +210,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-EVALUATION.adverse_reaction-md.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -278,7 +278,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-EVALUATION.adverse_reaction-md.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -346,7 +346,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-EVALUATION.adverse_reaction-md.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -414,7 +414,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-EVALUATION.adverse_reaction-md.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>

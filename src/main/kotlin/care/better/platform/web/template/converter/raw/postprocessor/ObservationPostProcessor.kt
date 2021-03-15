@@ -29,7 +29,7 @@ import org.openehr.rm.composition.Observation
 internal object ObservationPostProcessor : EntryPostProcessor<Observation>() {
     private val supportedClass = Observation::class.java
 
-    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode, instance: Observation, webTemplatePath: WebTemplatePath) {
+    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode?, instance: Observation, webTemplatePath: WebTemplatePath?) {
         super.postProcess(conversionContext, amNode, instance, webTemplatePath)
         if (instance.data?.events.isNullOrEmpty()) {
             instance.data = null

@@ -28,7 +28,7 @@
         <ns2:template_id>
             <ns2:value>OPENeP - Medication Administration</ns2:value>
         </ns2:template_id>
-        <ns2:rm_version>1.0.4</ns2:rm_version>
+        <ns2:rm_version>1.1.0</ns2:rm_version>
     </ns2:archetype_details>
     <ns2:language>
         <ns2:terminology_id>
@@ -87,7 +87,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-CLUSTER.composition_context_detail.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                     <ns2:name>
@@ -116,7 +116,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-ACTION.medication.v1</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:language>
             <ns2:terminology_id>
@@ -154,7 +154,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-CLUSTER.medication.v0</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0132">
                     <ns2:name>
@@ -186,7 +186,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-CLUSTER.medication.v0</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0132">
                         <ns2:name>
@@ -259,7 +259,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-CLUSTER.medication.v0</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0132">
                         <ns2:name>
@@ -333,7 +333,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-CLUSTER.dosage.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0135">
                     <ns2:name>
@@ -416,7 +416,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-CLUSTER.Medication_additional_details.v0</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0010">
                     <ns2:name>
@@ -438,7 +438,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.dosage.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0135">
                             <ns2:name>

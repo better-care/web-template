@@ -16,12 +16,12 @@
 package care.better.platform.web.template.converter.raw.factory.leaf
 
 import care.better.platform.template.AmNode
+import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ValueNode
-import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import org.openehr.rm.datatypes.TermMapping
 
 /**
@@ -37,8 +37,7 @@ internal object TermMappingFactory : RmObjectLeafNodeFactory<TermMapping>() {
             conversionContext: ConversionContext,
             amNode: AmNode,
             valueNode: ValueNode,
-            webTemplatePath: WebTemplatePath,
-            webTemplateInput: WebTemplateInput?): TermMapping =
+            webTemplatePath: WebTemplatePath): TermMapping =
         throw ConversionException("${amNode.rmType} can not be created from simple value", webTemplatePath.toString())
 
     override fun createInstance(attributes: Set<AttributeDto>): TermMapping = TermMapping()
@@ -77,4 +76,11 @@ internal object TermMappingFactory : RmObjectLeafNodeFactory<TermMapping>() {
             }
             else -> false
         }
+
+    override fun afterPropertiesSet(conversionContext: ConversionContext, amNode: AmNode, jsonNode: JsonNode, rmObject: TermMapping) {
+        super.afterPropertiesSet(conversionContext, amNode, jsonNode, rmObject)
+        if (rmObject.match.isNullOrBlank()) {
+            rmObject.match = "?"
+        }
+    }
 }

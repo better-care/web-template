@@ -32,9 +32,9 @@ internal object DvIdentifierPostProcessor : PostProcessor<DvIdentifier> {
 
     override fun postProcess(
             conversionContext: ConversionContext,
-            amNode: AmNode,
+            amNode: AmNode?,
             instance: DvIdentifier,
-            webTemplatePath: WebTemplatePath) {
+            webTemplatePath: WebTemplatePath?) {
         if (instance.issuer == null) {
             instance.issuer = conversionContext.identifierIssuer
         }

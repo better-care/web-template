@@ -16,10 +16,10 @@
 package care.better.platform.web.template.converter.flat.mapper
 
 import care.better.openehr.rm.RmObject
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.base.basetypes.*
 import org.openehr.rm.common.Link
 import org.openehr.rm.common.Participation
@@ -36,7 +36,7 @@ import org.openehr.rm.datatypes.*
  *
  * Singleton used to delegate the RM object to the [RmObjectToFlatMapper] based on the RM object class.
  */
-internal object RmObjectToFlatMapperDelegator {
+object RmObjectToFlatMapperDelegator {
 
     private val rmObjectToFlatMappers: Map<Class<out RmObject>, RmObjectToFlatMapper<out RmObject>> = mapOf(
         Pair(Action::class.java, ActionToFlatMapper),
@@ -55,6 +55,7 @@ internal object RmObjectToFlatMapperDelegator {
         Pair(DvParsable::class.java, DvParsableToFlatMapper),
         Pair(DvProportion::class.java, DvProportionToFlatMapper),
         Pair(DvQuantity::class.java, DvQuantityToFlatMapper),
+        Pair(DvScale::class.java, DvScaleToFlatMapper),
         Pair(DvText::class.java, DvTextToFlatMapper),
         Pair(DvTime::class.java, DvTimeToFlatMapper),
         Pair(DvUri::class.java, DvUriToFlatMapper),
@@ -93,6 +94,7 @@ internal object RmObjectToFlatMapperDelegator {
      * @param webTemplatePath Web template path
      * @param flatConversionContext [FlatMappingContext]
      */
+    @JvmStatic
     @Suppress("UNCHECKED_CAST")
     fun <T : RmObject> delegate(
             webTemplateNode: WebTemplateNode,
@@ -115,6 +117,7 @@ internal object RmObjectToFlatMapperDelegator {
      * @param webTemplatePath Web template path
      * @param formattedFlatConversionContext [FormattedFlatMappingContext]
      */
+    @JvmStatic
     @Suppress("UNCHECKED_CAST")
     fun <T : RmObject> delegateFormatted(
             webTemplateNode: WebTemplateNode,

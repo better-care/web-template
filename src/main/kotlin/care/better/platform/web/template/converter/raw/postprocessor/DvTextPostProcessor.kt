@@ -30,7 +30,7 @@ import org.openehr.rm.datatypes.DvText
 internal object DvTextPostProcessor : PostProcessor<DvText> {
     private val supportedClass = DvText::class.java
 
-    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode, instance: DvText, webTemplatePath: WebTemplatePath) {
+    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode?, instance: DvText, webTemplatePath: WebTemplatePath?) {
         instance.mappings.forEach {
             if (it.purpose != null && it.purpose?.value == null) {
                 throw ConversionException("Missing purpose value for $webTemplatePath!")

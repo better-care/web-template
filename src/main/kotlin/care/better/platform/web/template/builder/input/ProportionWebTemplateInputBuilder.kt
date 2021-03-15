@@ -163,7 +163,13 @@ internal object ProportionWebTemplateInputBuilder : WebTemplateInputBuilder<Any>
         return input
     }
 
-    private fun createInput(amNode: AmNode, suffix: String, type: CInteger?, precision: CInteger?, integral: CBoolean?, defaultValue: Float?): WebTemplateInput =
+    private fun createInput(
+            amNode: AmNode,
+            suffix: String,
+            type: CInteger?,
+            precision: CInteger?,
+            integral: CBoolean?,
+            defaultValue: Float?): WebTemplateInput =
         with(getPrimitiveItem(amNode, CReal::class.java, suffix)) {
             if (isIntegral(type, precision, integral))
                 createIntegerInput(suffix, this, if (defaultValue == null) null else Math.round(defaultValue))

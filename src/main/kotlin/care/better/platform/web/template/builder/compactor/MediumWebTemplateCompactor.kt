@@ -39,7 +39,6 @@ internal class MediumWebTemplateCompactor : MinimalWebTemplateCompactor() {
             RmUtils.getRmTypeName(PointEvent::class.java),
             RmUtils.getRmTypeName(IntervalEvent::class.java),
             RmUtils.getRmTypeName(Event::class.java))
-
     }
 
     override fun compactNode(node: WebTemplateNode): WebTemplateNode? =

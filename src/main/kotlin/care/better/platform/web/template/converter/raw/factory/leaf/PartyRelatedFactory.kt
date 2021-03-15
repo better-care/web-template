@@ -17,14 +17,13 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 
 import care.better.platform.template.AmNode
 import care.better.platform.template.AmUtils
+import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.extensions.createFromAmNode
 import com.fasterxml.jackson.databind.JsonNode
-import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.databind.node.ValueNode
-import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import org.openehr.rm.common.PartyRelated
 import org.openehr.rm.datatypes.DvCodedText
 
@@ -39,8 +38,7 @@ internal object PartyRelatedFactory : RmObjectLeafNodeFactory<PartyRelated>() {
             conversionContext: ConversionContext,
             amNode: AmNode,
             valueNode: ValueNode,
-            webTemplatePath: WebTemplatePath,
-            webTemplateInput: WebTemplateInput?): PartyRelated =
+            webTemplatePath: WebTemplatePath): PartyRelated =
         throw ConversionException("${amNode.rmType} can not be created from simple value", webTemplatePath.toString())
 
     override fun createInstance(attributes: Set<AttributeDto>): PartyRelated = PartyRelated()
@@ -54,7 +52,7 @@ internal object PartyRelatedFactory : RmObjectLeafNodeFactory<PartyRelated>() {
             webTemplatePath: WebTemplatePath): Boolean =
         PartyIdentifiedFactory.handleField(conversionContext, amNode, attribute, rmObject, jsonNode, webTemplatePath)
 
-    override fun afterPropertiesSet(conversionContext: ConversionContext, amNode: AmNode, objectNode: ObjectNode, rmObject: PartyRelated) {
+    override fun afterPropertiesSet(conversionContext: ConversionContext, amNode: AmNode, jsonNode: JsonNode, rmObject: PartyRelated) {
         AmUtils.getAmNode(amNode, "relationship")?.also { rmObject.relationship = DvCodedText.createFromAmNode(it) }
     }
 }

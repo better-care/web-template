@@ -41,12 +41,14 @@ internal class FormattedRawToFlatConverter(private val valueConverter: ValueConv
     }
 
     override fun <R : RmObject> convertForAqlPath(webTemplate: WebTemplate, aqlPath: String, rmObject: R): Map<String, String> {
-        map(webTemplate.findWebTemplateNodeByAqlPath(aqlPath), rmObject, webTemplate.tree.jsonId)
+        val webTemplateNode = webTemplate.findWebTemplateNodeByAqlPath(aqlPath)
+        map(webTemplateNode, rmObject, webTemplateNode.jsonId)
         return formattedFlatConversionContext.get()
     }
 
     override fun <R : RmObject> convertForWebTemplatePath(webTemplate: WebTemplate, webTemplatePath: String, rmObject: R): Map<String, String> {
-        map(webTemplate.findWebTemplateNode(webTemplatePath), rmObject, webTemplate.tree.jsonId)
+        val webTemplateNode = webTemplate.findWebTemplateNode(webTemplatePath)
+        map(webTemplateNode, rmObject, webTemplateNode.jsonId)
         return formattedFlatConversionContext.get()
     }
 

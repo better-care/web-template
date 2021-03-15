@@ -45,8 +45,9 @@ import java.util.regex.Pattern
  * @author Primoz Delopst
  * @since 3.1.0
  */
+@Suppress("SpellCheckingInspection")
 internal object CodePhraseWebTemplateInputBuilder : WebTemplateInputBuilder<CCodePhrase> {
-    private val OPENEHR_CONCEPT_GROUPS = Collections.singletonMap(RmProperty(IntervalEvent::class.java, "math_function"), "14")
+    private val OPENEHR_CONCEPT_GROUPS = Collections.singletonMap(RmProperty(IntervalEvent::class.java, "math_function"), "event math function")
     private val WILDCARD_VALUE = Pattern.compile("[^:]+:\\*")
 
     override fun build(amNode: AmNode, validator: CCodePhrase?, context: WebTemplateBuilderContext): WebTemplateInput =
@@ -197,9 +198,9 @@ internal object CodePhraseWebTemplateInputBuilder : WebTemplateInputBuilder<CCod
 
     private fun buildOpenEhrList(amNode: AmNode, context: WebTemplateBuilderContext, input: WebTemplateInput) {
         val rmClass = RmUtils.getRmClass(amNode.parent!!.rmType)
-        val groupId = OPENEHR_CONCEPT_GROUPS[RmProperty(rmClass, amNode.name)]
-        if (groupId != null) {
-            OpenEhrTerminology.getInstance().getGroupChildren(groupId).forEach {
+        val groupName = OPENEHR_CONCEPT_GROUPS[RmProperty(rmClass, amNode.name)]
+        if (groupName != null) {
+            OpenEhrTerminology.getInstance().getGroupChildren(groupName).forEach {
                 input.list.add(WebTemplateCodedValue(it, CodePhraseUtils.getOpenEhrTerminologyText(it, context.defaultLanguage)))
             }
             input.fixed = input.list.size == 1

@@ -53546,6 +53546,25 @@
                           }
                         ],
                         "inContext": true
+                      },
+                      {
+                        "id" : "scale_value",
+                        "name" : "Quantity",
+                        "localizedName" : "Quantity",
+                        "rmType" : "DV_SCALE",
+                        "min" : 0,
+                        "max" : 1,
+                        "localizedNames" : {
+                          "en" : "Quantity"
+                        },
+                        "localizedDescriptions" : {
+                          "en" : "The quantity of material used - default derived from EAN terminology."
+                        },
+                        "aqlPath" : "/content[openEHR-EHR-ACTION.procedure.v1,'Nursing intervention']/protocol[at0053]/items[openEHR-EHR-CLUSTER.nursing_process_action_zn.v1]/items[at0009]/items[at0012]/Quantity",
+                        "inputs" : [ {
+                          "type" : "CODED_TEXT"
+                        } ],
+                        "inContext" : true
                       }
                     ]
                   }

@@ -19,10 +19,10 @@ import care.better.platform.path.NameAndNodeMatchingPathValueExtractor
 import care.better.platform.path.PathValueExtractor
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
-import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
@@ -176,10 +176,10 @@ class PartialTemporalTest : AbstractWebTemplateTest() {
 
         val secondDateTime = ZonedDateTime.of(2019, 2, 1, 0, 0, 0, 0, ZoneId.systemDefault()).toOffsetDateTime()
         assertValueMatches(webTemplate, extractor, attributeName, "2019-02", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(secondDateTime), secondDateTime)
-        assertValueMatches(webTemplate, extractor, attributeName, "2019-02-01", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(secondDateTime), secondDateTime)
+        assertValueMatches(webTemplate, extractor, attributeName, "2019-02-01", "2019-02-01", "2019-02-01")
 
         val thirdDateTime = ZonedDateTime.of(2019, 2, 1, 13, 0, 0, 0, ZoneId.systemDefault()).toOffsetDateTime()
-        assertValueMatches(webTemplate, extractor, attributeName, "2019-02-01T13", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(thirdDateTime), thirdDateTime)
+        assertValueMatches(webTemplate, extractor, attributeName, "2019-02-01T13", "2019-02-01T13", "2019-02-01T13")
 
         val firstOffsetDateTime = ZonedDateTime.of(2019, 2, 1, 13, 10, 0, 0, ZoneId.systemDefault()).toOffsetDateTime()
         assertValueMatches(
@@ -187,8 +187,9 @@ class PartialTemporalTest : AbstractWebTemplateTest() {
             extractor,
             attributeName,
             "2019-02-01T13:10",
-            DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(firstOffsetDateTime),
-            firstOffsetDateTime)
+            "2019-02-01T13:10",
+            firstOffsetDateTime,
+            DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(firstOffsetDateTime))
 
         val secondOffsetDateTime = ZonedDateTime.of(2019, 2, 1, 13, 10, 20, 0, ZoneId.systemDefault()).toOffsetDateTime()
         assertValueMatches(
@@ -196,8 +197,9 @@ class PartialTemporalTest : AbstractWebTemplateTest() {
             extractor,
             attributeName,
             "2019-02-01T13:10:20",
-            DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(secondOffsetDateTime),
-            secondOffsetDateTime)
+            "2019-02-01T13:10:20",
+            secondOffsetDateTime,
+            DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(secondOffsetDateTime))
 
         val thirdOffsetDateTime = ZonedDateTime.of(2019, 2, 1, 13, 10, 20, 777000000, ZoneId.systemDefault()).toOffsetDateTime()
         assertValueMatches(webTemplate, extractor, attributeName, "2019-02-01T13:10:20.777+01:00", "2019-02-01T13:10:20.777+01:00", thirdOffsetDateTime)
@@ -274,12 +276,13 @@ class PartialTemporalTest : AbstractWebTemplateTest() {
             attributeName: String,
             incomingValue: String,
             compositionValue: String,
-            nativeValue: Any) {
+            nativeValue: Any,
+            formattedCompositionValue: String = compositionValue) {
         val composition = buildComposition(webTemplate, getValues(attributeName, incomingValue))
         assertThat(extractor.getValue(composition)).hasSize(1).containsExactly(compositionValue)
 
         val retrieveFormatted: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition, FromRawConversion.create())
-        assertThat(retrieveFormatted["dates/dates/$attributeName"]).isEqualTo(compositionValue)
+        assertThat(retrieveFormatted["dates/dates/$attributeName"]).isEqualTo(formattedCompositionValue)
         val retrieve: Map<String, Any?> = webTemplate.convertFromRawToFlat(composition, FromRawConversion.create())
         assertThat(retrieve["dates/dates/$attributeName"]).isEqualTo(nativeValue)
     }

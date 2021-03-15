@@ -31,7 +31,7 @@ class ParsableChildrenPostProcessor : WebTemplateNodeChildrenPostProcessor {
         webTemplateNode.children.clear()
         webTemplateNode.setInput(WebTemplateInput(WebTemplateInputType.TEXT))
         WebTemplateBuilderUtils.getDefaultValue(webTemplateNode.amNode, DvParsable::class.java)?.also {
-            webTemplateNode.getInput()!!.defaultValue = it.value
+            webTemplateNode.getInput()?.defaultValue = it.value
         }
     }
 }

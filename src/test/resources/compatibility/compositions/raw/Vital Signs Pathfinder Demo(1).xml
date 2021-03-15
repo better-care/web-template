@@ -28,7 +28,7 @@
         <ns2:template_id>
             <ns2:value>Vital Signs Pathfinder Demo</ns2:value>
         </ns2:template_id>
-        <ns2:rm_version>1.0.4</ns2:rm_version>
+        <ns2:rm_version>1.1.0</ns2:rm_version>
     </ns2:archetype_details>
     <ns2:language>
         <ns2:terminology_id>
@@ -76,7 +76,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-OBSERVATION.blood_pressure.v2</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:language>
             <ns2:terminology_id>
@@ -201,7 +201,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-OBSERVATION.body_temperature.v2</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:language>
             <ns2:terminology_id>
@@ -302,7 +302,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-OBSERVATION.pulse_oximetry.v1</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:language>
             <ns2:terminology_id>
@@ -365,7 +365,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-OBSERVATION.pulse.v1</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:language>
             <ns2:terminology_id>
@@ -481,7 +481,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-OBSERVATION.body_weight.v2</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:language>
             <ns2:terminology_id>

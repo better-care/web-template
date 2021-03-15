@@ -33,9 +33,9 @@ internal object ParticipationPostProcessor : PostProcessor<Participation> {
 
     override fun postProcess(
             conversionContext: ConversionContext,
-            amNode: AmNode,
+            amNode: AmNode?,
             instance: Participation,
-            webTemplatePath: WebTemplatePath) {
+            webTemplatePath: WebTemplatePath?) {
         if (instance.function == null) {
             instance.function = DvText("unknown")
         }

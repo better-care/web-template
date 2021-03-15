@@ -28,7 +28,7 @@
         <ns2:template_id>
             <ns2:value>ISPEK - ZN - Vital Functions Encounter</ns2:value>
         </ns2:template_id>
-        <ns2:rm_version>1.0.4</ns2:rm_version>
+        <ns2:rm_version>1.1.0</ns2:rm_version>
     </ns2:archetype_details>
     <ns2:language>
         <ns2:terminology_id>
@@ -87,7 +87,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-CLUSTER.composition_context_detail.v1</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                     <ns2:name>
@@ -124,7 +124,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-SECTION.ispek_dialog.v1</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:items xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.heart_rate-pulse-zn.v1">
             <ns2:name>
@@ -134,7 +134,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-OBSERVATION.heart_rate-pulse-zn.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -189,7 +189,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-OBSERVATION.exam.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -230,7 +230,7 @@
                                 <ns2:archetype_id>
                                     <ns2:value>openEHR-EHR-CLUSTER.patient_state_zn.v1</ns2:value>
                                 </ns2:archetype_id>
-                                <ns2:rm_version>1.0.4</ns2:rm_version>
+                                <ns2:rm_version>1.1.0</ns2:rm_version>
                             </ns2:archetype_details>
                             <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0003">
                                 <ns2:name>
@@ -260,7 +260,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-SECTION.ispek_dialog.v1</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:items xsi:type="ns2:OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.respiratory_exam__zn.v1">
             <ns2:name>
@@ -270,7 +270,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-OBSERVATION.respiratory_exam__zn.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -400,7 +400,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-OBSERVATION.indirect_oximetry.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -455,7 +455,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-ACTION.procedure.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -485,7 +485,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-CLUSTER.aspiration_zn.v1</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0005">
                         <ns2:name>
@@ -517,7 +517,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.bodily_substance-sputum.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0002.1">
                             <ns2:name>
@@ -608,7 +608,7 @@
                 <ns2:archetype_id>
                     <ns2:value>openEHR-EHR-ACTION.procedure-unassisted_oxygen_delivery.v1</ns2:value>
                 </ns2:archetype_id>
-                <ns2:rm_version>1.0.4</ns2:rm_version>
+                <ns2:rm_version>1.1.0</ns2:rm_version>
             </ns2:archetype_details>
             <ns2:language>
                 <ns2:terminology_id>
@@ -652,7 +652,7 @@
                         <ns2:archetype_id>
                             <ns2:value>openEHR-EHR-CLUSTER.gas_delivery-oxygen.v1</ns2:value>
                         </ns2:archetype_id>
-                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                        <ns2:rm_version>1.1.0</ns2:rm_version>
                     </ns2:archetype_details>
                     <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="openEHR-EHR-CLUSTER.ambient_oxygen.v1">
                         <ns2:name>
@@ -662,7 +662,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.ambient_oxygen.v1</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0051">
                             <ns2:name>

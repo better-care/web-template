@@ -55,7 +55,7 @@ internal object StringWebTemplateInputBuilder : WebTemplateInputBuilder<CString>
             val defaultValue = WebTemplateBuilderUtils.getDefaultValue(amNode, dataValueClass)
             if (defaultValue != null) {
                 if (defaultValue is DvIdentifier) {
-                    input.defaultValue = defaultValue.issuer + "::" + defaultValue.assigner + "::" + defaultValue.id + "::" + defaultValue.type
+                    input.defaultValue = "${defaultValue.issuer}::${defaultValue.assigner}::${defaultValue.id}::${defaultValue.type}"
                 } else if (defaultValue is DvText) {
                     input.defaultValue = defaultValue.value.toString()
                 }

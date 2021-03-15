@@ -20,13 +20,12 @@ package care.better.platform.web.template.builder.id
  * @author Primoz Delopst
  * @since 3.1.0
  */
+@Suppress("SpellCheckingInspection")
 abstract class AbstractSuffixIdDeduplicator : IdDeduplicator {
     private val allIds: MutableMap<String, MutableSet<String>> = mutableMapOf()
 
     override fun getUniqueBaseId(parentId: String, baseId: String): String {
-        val ids: MutableSet<String> = with(allIds[parentId]) {
-            this ?: hashSetOf<String>().also { allIds[parentId] = it }
-        }
+        val ids: MutableSet<String> = with(allIds[parentId]) { this ?: hashSetOf<String>().also { allIds[parentId] = it } }
         return if (ids.contains(baseId)) {
             val suffix = getUniqueSuffix(ids, baseId)
             check(!ids.contains(baseId + suffix)) { "Unable to deduplicate id=$parentId/$baseId" }

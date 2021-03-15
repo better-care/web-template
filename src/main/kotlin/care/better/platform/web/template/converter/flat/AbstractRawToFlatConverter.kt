@@ -24,6 +24,7 @@ import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.converter.FromRawConversion
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import com.google.common.collect.Sets
 import org.openehr.rm.common.Locatable
 import org.openehr.rm.composition.Composition
 import org.openehr.rm.datatypes.DataValue
@@ -38,6 +39,8 @@ import org.openehr.rm.datatypes.DvText
  * Base class that converts the RM object in RAW format to the RM object in FLAT format.
  */
 internal abstract class AbstractRawToFlatConverter<T> {
+
+    private val exported = Sets.newIdentityHashSet<Any>()
 
     /**
      * Converts the RM object in RAW format to the RM object in FLAT format.
@@ -99,6 +102,20 @@ internal abstract class AbstractRawToFlatConverter<T> {
      */
     abstract fun <R : RmObject> mapRmObject(webTemplateNode: WebTemplateNode, rmObject: R, webTemplatePath: String)
 
+
+    /**
+     * Maps the RM object in RAW format to the FLAT format.
+     *
+     * @param webTemplateNode [WebTemplateNode]
+     * @param rmObject RM object in RAW format
+     * @param webTemplatePath Web template path
+     */
+    fun <R : RmObject> mapRmObjectInternally(webTemplateNode: WebTemplateNode, rmObject: R, webTemplatePath: String) {
+        if (!exported.contains(rmObject)) {
+            mapRmObject(webTemplateNode, rmObject, webTemplatePath)
+        }
+    }
+
     /**
      * Recursively maps the RM object in RAW format to the RM object in FLAT format.
      *
@@ -107,7 +124,7 @@ internal abstract class AbstractRawToFlatConverter<T> {
      * @param webTemplatePath Web template path to the RM object
      */
     protected open fun map(webTemplateNode: WebTemplateNode, rmObject: RmObject, webTemplatePath: String) {
-        mapRmObject(webTemplateNode, rmObject, webTemplatePath)
+        mapRmObjectInternally(webTemplateNode, rmObject, webTemplatePath)
 
         if (rmObject is DvInterval) {
             return
@@ -154,7 +171,7 @@ internal abstract class AbstractRawToFlatConverter<T> {
      */
     private fun mapOmittedRmObjects(webTemplateNode: WebTemplateNode, rmObjects: List<RmObject>, webTemplatePath: String) {
         rmObjects.forEachIndexed { index, rmObject ->
-            mapRmObject(webTemplateNode, rmObject, "$webTemplatePath${if (webTemplateNode.isRepeating()) ":$index" else ""}")
+            mapRmObjectInternally(webTemplateNode, rmObject, "$webTemplatePath${if (webTemplateNode.isRepeating()) ":$index" else ""}")
         }
     }
 

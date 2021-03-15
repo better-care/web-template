@@ -26,6 +26,7 @@ import care.better.platform.web.template.builder.model.input.WebTemplateDuration
 import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.builder.model.input.WebTemplateValidation
 import care.better.platform.web.template.builder.model.input.range.WebTemplateValidationIntegerRange
+import care.better.platform.web.template.builder.utils.DurationUtils
 import care.better.platform.web.template.builder.utils.WebTemplateBuilderUtils
 import com.google.common.base.Splitter
 import com.google.common.collect.ImmutableSet
@@ -59,7 +60,7 @@ internal object DurationWebTemplateInputBuilder : WebTemplateInputBuilder<CDurat
             min = Period.ZERO
             max = Period.ZERO
         } else {
-            fields = if (validator.pattern == null) FULL_DURATION else getAllowedFields(validator.pattern!!)
+            fields = if (validator.pattern == null) FULL_DURATION else DurationUtils.getAllowedFields(validator.pattern!!)
             min = if (validator.range?.lower != null) JodaConversionUtils.toPeriod(validator.range?.lower!!) else Period.ZERO
             max = if (validator.range?.upper != null) JodaConversionUtils.toPeriod(validator.range?.upper!!) else Period.ZERO
             if (validator.assumedValue != null) {
@@ -100,9 +101,9 @@ internal object DurationWebTemplateInputBuilder : WebTemplateInputBuilder<CDurat
             if (defaultValue == null && item.assumedValue != null) {
                 defaultValue = item.assumedValue
             }
-            fields = if (item.pattern == null) FULL_DURATION else getAllowedFields(item.pattern!!)
-            min = getMin(item)
-            max = getMax(item)
+            fields = if (item.pattern == null) FULL_DURATION else DurationUtils.getAllowedFields(item.pattern!!)
+            min = DurationUtils.getMin(item)
+            max = DurationUtils.getMax(item)
         }
         val defaultPeriod = if (defaultValue == null) null else Period.parse(defaultValue)
         for (field in fields) {
@@ -120,44 +121,4 @@ internal object DurationWebTemplateInputBuilder : WebTemplateInputBuilder<CDurat
             node.inputs.add(input)
         }
     }
-
-    private fun getAllowedFields(pattern: String): Set<WebTemplateDurationField> {
-        val iterator: Iterator<String> = Splitter.on("T").split(pattern).iterator()
-        val allowedFields: MutableSet<WebTemplateDurationField> = EnumSet.noneOf(WebTemplateDurationField::class.java)
-        if (iterator.hasNext()) {
-            val ymdw = iterator.next()
-            if (ymdw.contains("Y")) {
-                allowedFields.add(WebTemplateDurationField.YEAR)
-            }
-            if (ymdw.contains("M")) {
-                allowedFields.add(WebTemplateDurationField.MONTH)
-            }
-            if (ymdw.contains("D")) {
-                allowedFields.add(WebTemplateDurationField.DAY)
-            }
-            if (ymdw.contains("W")) {
-                allowedFields.add(WebTemplateDurationField.WEEK)
-            }
-        }
-        if (iterator.hasNext()) {
-            val hms = iterator.next()
-            if (hms.contains("H")) {
-                allowedFields.add(WebTemplateDurationField.HOUR)
-            }
-            if (hms.contains("M")) {
-                allowedFields.add(WebTemplateDurationField.MINUTE)
-            }
-            if (hms.contains("S")) {
-                allowedFields.add(WebTemplateDurationField.SECOND)
-            }
-        }
-        return allowedFields
-    }
-
-    fun getMin(item: CDuration): Period = if (item.range?.lower != null) JodaConversionUtils.toPeriod(item.range?.lower!!) else Period.ZERO
-
-
-    fun getMax(item: CDuration): Period = if (item.range?.upper != null) JodaConversionUtils.toPeriod(item.range?.upper!!) else Period.ZERO
-
-    fun getAssumedValue(item: CDuration): Period = if (item.assumedValue != null) JodaConversionUtils.toPeriod(item.assumedValue!!) else Period.ZERO
 }

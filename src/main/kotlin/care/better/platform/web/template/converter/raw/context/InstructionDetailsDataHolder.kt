@@ -16,6 +16,7 @@
 package care.better.platform.web.template.converter.raw.context
 
 import care.better.platform.template.AmNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.SELF_REFERENCE_COMPOSITION
 import org.openehr.rm.composition.InstructionDetails
 
 /**
@@ -101,7 +102,7 @@ class InstructionDetailsData private constructor(
         fun withInstructionUid(instructionUid: String) = apply { this.instructionUid = instructionUid }
         fun withWebTemplatePath(webTemplatePath: String) = apply { this.webTemplatePath = webTemplatePath }
         fun withInstructionNode(instructionNode: AmNode) = apply { this.instructionNode = instructionNode }
-        fun isReferenceSelfComposition(compositionUid: String) = apply { this.referenceSelfComposition = compositionUid == "\$selfComposition" }
+        fun isReferenceSelfComposition(compositionUid: String) = apply { this.referenceSelfComposition = compositionUid == SELF_REFERENCE_COMPOSITION }
 
         /**
          * Creates a new instance of [InstructionDetailsData].

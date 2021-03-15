@@ -5952,6 +5952,27 @@
                               }
                             ],
                             "inContext": true
+                          },
+                          {
+                            "id": "scale_value",
+                            "name": "Result value",
+                            "localizedName": "Result value",
+                            "rmType": "DV_SCALE",
+                            "min": 0,
+                            "max": 1,
+                            "localizedNames": {
+                              "en": "Result value"
+                            },
+                            "localizedDescriptions": {
+                              "en": "Actual value of the result. Most result values will be numerical measurements, but others may be coded concepts, free text, or multimedia images."
+                            },
+                            "aqlPath": "/content[openEHR-EHR-OBSERVATION.lab_test.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0095]/items[at0096]/items[at0078]/Result value",
+                            "inputs": [
+                              {
+                                "type": "CODED_TEXT"
+                              }
+                            ],
+                            "inContext": true
                           }
                         ]
                       },

@@ -21,8 +21,9 @@ import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.google.common.collect.ImmutableMap
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.builder.WebTemplateBuilder
-import org.assertj.core.api.Assertions.assertThat
-import org.assertj.core.api.Assertions.entry
+import care.better.platform.web.template.converter.exceptions.ConversionException
+import com.fasterxml.jackson.databind.node.ObjectNode
+import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
 import org.openehr.rm.composition.Observation
@@ -65,7 +66,7 @@ class ParticipationTest : AbstractWebTemplateTest() {
                         .put("vitals/vitals/haemoglobin_a1c/_other_participation:1|name", "Marija Medved")
                         .put("vitals/vitals/haemoglobin_a1c/_other_participation:1|id", "998")
                         .put("vitals/vitals/haemoglobin_a1c/_other_participation:1|function", "watcher")
-                        .put("vitals/vitals/haemoglobin_a1c/_other_participation:1|mode", "videoconference")
+                        .put("vitals/vitals/haemoglobin_a1c/_other_participation:1|mode", "videoconferencing")
                         .put("vitals/vitals/haemoglobin_a1c/_link:0|meaning", "none")
                         .put("vitals/vitals/haemoglobin_a1c/_link:0|type", "href")
                         .put("vitals/vitals/haemoglobin_a1c/_link:0|target", "http://www.sun.com")
@@ -83,7 +84,7 @@ class ParticipationTest : AbstractWebTemplateTest() {
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|function", "performer"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|name", "Marija Medved"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|id", "998"),
-                entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|mode", "videoconference"),
+                entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|mode", "videoconferencing"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|function", "watcher"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|identifiers_assigner:0", "A"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|identifiers_issuer:0", "I"),
@@ -135,7 +136,7 @@ class ParticipationTest : AbstractWebTemplateTest() {
                         .put("vitals/vitals/haemoglobin_a1c/_other_participation:1|name", "Marija Medved")
                         .put("vitals/vitals/haemoglobin_a1c/_other_participation:1|id", "998")
                         .put("vitals/vitals/haemoglobin_a1c/_other_participation:1|function", "watcher")
-                        .put("vitals/vitals/haemoglobin_a1c/_other_participation:1|mode", "videoconference")
+                        .put("vitals/vitals/haemoglobin_a1c/_other_participation:1|mode", "videoconferencing")
                         .put("vitals/vitals/haemoglobin_a1c/_link:0|meaning", "none")
                         .put("vitals/vitals/haemoglobin_a1c/_link:0|type", "href")
                         .put("vitals/vitals/haemoglobin_a1c/_link:0|target", "http://www.sun.com")
@@ -153,7 +154,7 @@ class ParticipationTest : AbstractWebTemplateTest() {
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|function", "performer"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|name", "Marija Medved"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|id", "998"),
-                entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|mode", "videoconference"),
+                entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|mode", "videoconferencing"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|function", "watcher"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|identifiers_assigner:0", "A"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|identifiers_issuer:0", "I"),
@@ -203,7 +204,7 @@ class ParticipationTest : AbstractWebTemplateTest() {
                         .put("vitals/vitals/haemoglobin_a1c/_other_participation:1|name", "Marija Medved")
                         .put("vitals/vitals/haemoglobin_a1c/_other_participation:1|id", "998")
                         .put("vitals/vitals/haemoglobin_a1c/_other_participation:1|function", "watcher")
-                        .put("vitals/vitals/haemoglobin_a1c/_other_participation:1|mode", "videoconference")
+                        .put("vitals/vitals/haemoglobin_a1c/_other_participation:1|mode", "videoconferencing")
                         .put("vitals/vitals/haemoglobin_a1c/_link:0|meaning", "none")
                         .put("vitals/vitals/haemoglobin_a1c/_link:0|type", "href")
                         .put("vitals/vitals/haemoglobin_a1c/_link:0|target", "http://www.sun.com")
@@ -219,7 +220,7 @@ class ParticipationTest : AbstractWebTemplateTest() {
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|mode", "face-to-face communication"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|function", "performer"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|name", "Marija Medved"),
-                entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|mode", "videoconference"),
+                entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|mode", "videoconferencing"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|function", "watcher"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|identifiers_assigner:0", "A1"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|identifiers_issuer:0", "I1"),
@@ -265,7 +266,7 @@ class ParticipationTest : AbstractWebTemplateTest() {
                         .put("vitals/context/_participations:1|name", "Marija Medved")
                         .put("vitals/context/_participations:1|id", "998")
                         .put("vitals/context/_participations:1|function", "watcher")
-                        .put("vitals/context/_participations:1|mode", "videoconference")
+                        .put("vitals/context/_participations:1|mode", "videoconferencing")
                         .build(),
                 ConversionContext.create().build())
 
@@ -277,14 +278,14 @@ class ParticipationTest : AbstractWebTemplateTest() {
                 entry("vitals/context/_participation:0|function", "performer"),
                 entry("vitals/context/_participation:1|name", "Marija Medved"),
                 entry("vitals/context/_participation:1|id", "998"),
-                entry("vitals/context/_participation:1|mode", "videoconference"),
+                entry("vitals/context/_participation:1|mode", "videoconferencing"),
                 entry("vitals/context/_participation:1|function", "watcher"))
     }
 
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testParticipationsOnContextFromCtx() {
-        val composition: Composition? = webTemplate.convertFromFlatToRaw(
+        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(
                 ImmutableMap.builder<String, String>()
                         .put("ctx/language", "sl")
                         .put("ctx/territory", "SI")
@@ -294,14 +295,40 @@ class ParticipationTest : AbstractWebTemplateTest() {
                         .put("ctx/participation_name", "Named Participant")
                         .put("ctx/participation_function", "District Nurse")
                         .put("ctx/participation_id", "998877")
-                        .put("ctx/participation_mode", "videoconference")
+                        .put("ctx/participation_mode", "videoconferencing")
                         .build(),
-                ConversionContext.create().build())
+                ConversionContext.create().build()) }
+            .isInstanceOf(ConversionException::class.java)
+            .hasMessage("COMPOSITION has no attribute vitals.")
+    }
+
+    @Test
+    @Throws(IOException::class, JAXBException::class)
+    fun testParticipationsOnContextFromCtxAndRoot() {
+        val structuredComposition = """
+            {
+                "ctx/language": "sl",
+                "ctx/territory": "SI",
+                "ctx/id_scheme": "ispek",
+                "ctx/id_namespace": "ispek",
+                "ctx/composer_name": "George Orwell",
+                "ctx/participation_name": "Named Participant",
+                "ctx/participation_function": "District Nurse",
+                "ctx/participation_id": "998877",
+                "ctx/participation_mode": "videoconferencing",
+                "vitals": {}
+            }
+        """
+
+        val composition = webTemplate.convertFromStructuredToRaw<Composition>(
+            getObjectMapper().readTree(structuredComposition) as ObjectNode,
+            ConversionContext.create().build())
 
         assertThat(composition).isNull()
     }
 
-    @Test
+
+        @Test
     @Throws(IOException::class, JAXBException::class)
     fun testParticipationsOnContextFromCtxOverride() {
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
@@ -314,7 +341,7 @@ class ParticipationTest : AbstractWebTemplateTest() {
                         .put("ctx/participation_name", "Named Participant")
                         .put("ctx/participation_function", "District Nurse")
                         .put("ctx/participation_id", "998877")
-                        .put("ctx/participation_mode", "videoconference")
+                        .put("ctx/participation_mode", "videoconferencing")
                         .put("vitals/context/_participations:0|name", "Janez Novak")
                         .put("vitals/context/_participations:0|id", "999")
                         .put("vitals/context/_participations:0|function", "performer")
@@ -436,7 +463,7 @@ class ParticipationTest : AbstractWebTemplateTest() {
                         .put("ctx/participation_name", "Named Participant")
                         .put("ctx/participation_function", "District Nurse")
                         .put("ctx/participation_id", "998877")
-                        .put("ctx/participation_mode", "videoconference")
+                        .put("ctx/participation_mode", "videoconferencing")
                         .put("ctx/participation_identifiers", "I1::A1::ID1::T1;I2::A2::ID2::T2")
                         .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology", "local")
                         .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|code", "at0037")
@@ -455,7 +482,7 @@ class ParticipationTest : AbstractWebTemplateTest() {
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|id", "998877"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|id_scheme", "ispek"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|id_namespace", "ispek"),
-                entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|mode", "videoconference"),
+                entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|mode", "videoconferencing"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|function", "District Nurse"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|identifiers_assigner:0", "A1"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|identifiers_issuer:0", "I1"),
@@ -480,12 +507,12 @@ class ParticipationTest : AbstractWebTemplateTest() {
                         .put("ctx/participation_name:0", "Named Participant")
                         .put("ctx/participation_function:0", "District Nurse")
                         .put("ctx/participation_id:0", "998877")
-                        .put("ctx/participation_mode:0", "videoconference")
+                        .put("ctx/participation_mode:0", "videoconferencing")
                         .put("ctx/participation_identifiers:0", "I1::A1::ID1::T1;I2::A2::ID2::T2")
                         .put("ctx/participation_name:1", "Named Participant 2")
                         .put("ctx/participation_function:1", "District Nurse 2")
                         .put("ctx/participation_id:1", "9988772")
-                        .put("ctx/participation_mode:1", "videoconference")
+                        .put("ctx/participation_mode:1", "videoconferencing")
                         .put("ctx/participation_identifiers:1", "II1::AA1::IID1::TT1;II2::AA2::IID2::TT2")
                         .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology", "local")
                         .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|code", "at0037")
@@ -504,7 +531,7 @@ class ParticipationTest : AbstractWebTemplateTest() {
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|id", "998877"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|id_scheme", "ispek"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|id_namespace", "ispek"),
-                entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|mode", "videoconference"),
+                entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|mode", "videoconferencing"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|function", "District Nurse"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|identifiers_assigner:0", "A1"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|identifiers_issuer:0", "I1"),
@@ -518,7 +545,7 @@ class ParticipationTest : AbstractWebTemplateTest() {
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|id", "9988772"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|id_scheme", "ispek"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|id_namespace", "ispek"),
-                entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|mode", "videoconference"),
+                entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|mode", "videoconferencing"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|function", "District Nurse 2"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|identifiers_assigner:0", "AA1"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|identifiers_issuer:0", "II1"),
@@ -543,7 +570,7 @@ class ParticipationTest : AbstractWebTemplateTest() {
                         .put("ctx/participation_name:0", "Named Participant")
                         .put("ctx/participation_function:0", "District Nurse")
                         .put("ctx/participation_id:0", "998877")
-                        .put("ctx/participation_mode:0", "videoconference")
+                        .put("ctx/participation_mode:0", "videoconferencing")
                         .put("ctx/participation_identifiers:0|issuer:0", "I1")
                         .put("ctx/participation_identifiers:0|assigner:0", "A1")
                         .put("ctx/participation_identifiers:0|id:0", "ID1")
@@ -555,7 +582,7 @@ class ParticipationTest : AbstractWebTemplateTest() {
                         .put("ctx/participation_name:1", "Named Participant 2")
                         .put("ctx/participation_function:1", "District Nurse 2")
                         .put("ctx/participation_id:1", "9988772")
-                        .put("ctx/participation_mode:1", "videoconference")
+                        .put("ctx/participation_mode:1", "videoconferencing")
                         .put("ctx/participation_identifiers:1", "II1::AA1::IID1::TT1;II2::AA2::IID2::TT2")
                         .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology", "local")
                         .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|code", "at0037")
@@ -574,7 +601,7 @@ class ParticipationTest : AbstractWebTemplateTest() {
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|id", "998877"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|id_scheme", "ispek"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|id_namespace", "ispek"),
-                entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|mode", "videoconference"),
+                entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|mode", "videoconferencing"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|function", "District Nurse"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|identifiers_assigner:0", "A1"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:0|identifiers_issuer:0", "I1"),
@@ -588,7 +615,7 @@ class ParticipationTest : AbstractWebTemplateTest() {
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|id", "9988772"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|id_scheme", "ispek"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|id_namespace", "ispek"),
-                entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|mode", "videoconference"),
+                entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|mode", "videoconferencing"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|function", "District Nurse 2"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|identifiers_assigner:0", "AA1"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|identifiers_issuer:0", "II1"),

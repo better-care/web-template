@@ -45,7 +45,7 @@ class InputTypeSerializationTestTest {
 
     @Throws(IOException::class)
     private fun write(input: WebTemplateInput, extra: Int) {
-        objectWriter.writeValue(File("/tmp/${input.type}${extra}"), input)
+        objectWriter.writeValue(File.createTempFile("${input.type}${extra}", null), input)
     }
 
     @Test

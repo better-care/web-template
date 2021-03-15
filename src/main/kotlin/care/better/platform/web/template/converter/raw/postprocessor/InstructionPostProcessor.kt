@@ -30,7 +30,7 @@ import org.openehr.rm.datatypes.DvText
 internal object InstructionPostProcessor : EntryPostProcessor<Instruction>() {
     private val supportedClass = Instruction::class.java
 
-    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode, instance: Instruction, webTemplatePath: WebTemplatePath) {
+    override fun postProcess(conversionContext: ConversionContext, amNode: AmNode?, instance: Instruction, webTemplatePath: WebTemplatePath?) {
         super.postProcess(conversionContext, amNode, instance, webTemplatePath)
         if (instance.narrative == null) {
             instance.narrative = DvText(conversionContext.instructionNarrative)

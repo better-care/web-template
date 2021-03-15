@@ -29,6 +29,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.datatype.joda.JodaModule
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.converter.value.SimpleValueConverter
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
@@ -116,12 +117,47 @@ class RmObjectTest : AbstractWebTemplateTest() {
         val extractor = NameAndNodeMatchingPathValueExtractor("content[openEHR-EHR-OBSERVATION.lab_test.v1]")
         val compositionObservation = extractor.getValue(composition).iterator().next() as Observation
 
+        val observationFromAqlPath = webTemplate.convertFromFlatToRaw<Observation>(
+            observationMap,
+            ConversionContext.createForAqlPath("content[openEHR-EHR-OBSERVATION.lab_test.v1]").build())
+
+        val observationFromWebTemplatePath = webTemplate.convertFromFlatToRaw<Observation>(
+            observationMap,
+            ConversionContext.createForWebTemplatePath("laboratory_report/laboratory_test_result").build())
+
         test(
-            webTemplate.convertFromFlatToRaw(observationMap, ConversionContext.createForAqlPath("content[openEHR-EHR-OBSERVATION.lab_test.v1]").build()),
+            observationFromAqlPath,
             compositionObservation)
         test(
-            webTemplate.convertFromFlatToRaw(observationMap, ConversionContext.createForWebTemplatePath("laboratory_report/laboratory_test_result").build()),
+            observationFromWebTemplatePath,
             compositionObservation)
+
+        val observationNode = webTemplate.findWebTemplateNode("laboratory_report/laboratory_test_result")
+        
+        val retrievedObservationMapFromAqlPath = webTemplate.convertFromRawToFlat(
+            observationFromAqlPath!!,
+            FromRawConversion.createForAqlPath("content[openEHR-EHR-OBSERVATION.lab_test.v1]"))
+
+        assertThat(retrievedObservationMapFromAqlPath.all { it.key.startsWith(observationNode.jsonId) }).isTrue()
+
+        val retrievedObservationMapFromWebTemplatePath = webTemplate.convertFromRawToFlat(
+            observationFromWebTemplatePath!!,
+            FromRawConversion.createForWebTemplatePath("laboratory_report/laboratory_test_result"))
+
+        assertThat(retrievedObservationMapFromWebTemplatePath.all { it.key.startsWith(observationNode.jsonId) }).isTrue()
+
+        val retrievedObservationJsonNodeFromAqlPath = webTemplate.convertFromRawToStructured(
+            observationFromAqlPath,
+            FromRawConversion.createForAqlPath("content[openEHR-EHR-OBSERVATION.lab_test.v1]"))
+
+        assertThat(retrievedObservationJsonNodeFromAqlPath!!.has(observationNode.jsonId)).isTrue()
+
+        val retrievedObservationJsonNodeFromWebTemplatePath = webTemplate.convertFromRawToStructured(
+            observationFromWebTemplatePath,
+            FromRawConversion.createForWebTemplatePath("laboratory_report/laboratory_test_result"))
+
+        assertThat(retrievedObservationJsonNodeFromWebTemplatePath!!.has(observationNode.jsonId)).isTrue()
+
     }
 
     @Test

@@ -42,7 +42,7 @@ internal object DvParsableFactory : RmObjectLeafNodeFactory<DvParsable>() {
             webTemplatePath: WebTemplatePath): Boolean =
         if (attribute.attribute.isBlank() || attribute.attribute == "value") {
             rmObject.value = jsonNode.asText()
-            AmUtils.getPrimitiveItem(amNode, CString::class.java, "formalism")?.also {
+            AmUtils.getPrimitiveItem(if ("STRING" == amNode.rmType) amNode.parent!! else amNode, CString::class.java, "formalism")?.also {
                 if (it.list.size == 1) {
                     rmObject.formalism = it.list[0]
                 }

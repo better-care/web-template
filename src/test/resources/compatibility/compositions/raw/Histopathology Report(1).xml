@@ -39,7 +39,7 @@
         <ns2:template_id>
             <ns2:value>Histopathology Report</ns2:value>
         </ns2:template_id>
-        <ns2:rm_version>1.0.4</ns2:rm_version>
+        <ns2:rm_version>1.1.0</ns2:rm_version>
     </ns2:archetype_details>
     <ns2:feeder_audit>
         <ns2:original_content xsi:type="ns2:DV_PARSABLE" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -131,7 +131,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-OBSERVATION.laboratory_test_result.v0</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:language>
             <ns2:terminology_id>
@@ -171,7 +171,7 @@
                     <ns2:archetype_id>
                         <ns2:value>openEHR-EHR-CLUSTER.organisation.v0</ns2:value>
                     </ns2:archetype_id>
-                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                    <ns2:rm_version>1.1.0</ns2:rm_version>
                 </ns2:archetype_details>
                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                     <ns2:name>
@@ -223,7 +223,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.specimen.v0</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0046">
                             <ns2:name>
@@ -263,7 +263,7 @@
                             <ns2:archetype_id>
                                 <ns2:value>openEHR-EHR-CLUSTER.histopathology_findings.v0</ns2:value>
                             </ns2:archetype_id>
-                            <ns2:rm_version>1.0.4</ns2:rm_version>
+                            <ns2:rm_version>1.1.0</ns2:rm_version>
                         </ns2:archetype_details>
                         <ns2:items xsi:type="ns2:CLUSTER" archetype_node_id="at0012">
                             <ns2:name xsi:type="ns2:DV_CODED_TEXT">
@@ -287,7 +287,7 @@
                                         <ns2:archetype_id>
                                             <ns2:value>openEHR-EHR-CLUSTER.microscopy_cervical_carcinoma.v0</ns2:value>
                                         </ns2:archetype_id>
-                                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                                        <ns2:rm_version>1.1.0</ns2:rm_version>
                                     </ns2:archetype_details>
                                     <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0003">
                                         <ns2:name>
@@ -510,7 +510,7 @@
                                                 <ns2:archetype_id>
                                                     <ns2:value>openEHR-EHR-CLUSTER.figo_staging-cervical.v0</ns2:value>
                                                 </ns2:archetype_id>
-                                                <ns2:rm_version>1.0.4</ns2:rm_version>
+                                                <ns2:rm_version>1.1.0</ns2:rm_version>
                                             </ns2:archetype_details>
                                             <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0018">
                                                 <ns2:name>
@@ -529,7 +529,7 @@
                                                 <ns2:archetype_id>
                                                     <ns2:value>openEHR-EHR-CLUSTER.tnm_staging.v1</ns2:value>
                                                 </ns2:archetype_id>
-                                                <ns2:rm_version>1.0.4</ns2:rm_version>
+                                                <ns2:rm_version>1.1.0</ns2:rm_version>
                                             </ns2:archetype_details>
                                             <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0043">
                                                 <ns2:name>
@@ -551,7 +551,7 @@
                                     <ns2:archetype_id>
                                         <ns2:value>openEHR-EHR-CLUSTER.specimen.v0</ns2:value>
                                     </ns2:archetype_id>
-                                    <ns2:rm_version>1.0.4</ns2:rm_version>
+                                    <ns2:rm_version>1.1.0</ns2:rm_version>
                                 </ns2:archetype_details>
                                 <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0015">
                                     <ns2:name>
@@ -569,7 +569,7 @@
                                         <ns2:archetype_id>
                                             <ns2:value>openEHR-EHR-CLUSTER.anatomical_location.v1</ns2:value>
                                         </ns2:archetype_id>
-                                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                                        <ns2:rm_version>1.1.0</ns2:rm_version>
                                     </ns2:archetype_details>
                                     <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0001">
                                         <ns2:name>
@@ -622,7 +622,7 @@
                                         <ns2:archetype_id>
                                             <ns2:value>openEHR-EHR-CLUSTER.specimen_container.v0</ns2:value>
                                         </ns2:archetype_id>
-                                        <ns2:rm_version>1.0.4</ns2:rm_version>
+                                        <ns2:rm_version>1.1.0</ns2:rm_version>
                                     </ns2:archetype_details>
                                     <ns2:items xsi:type="ns2:ELEMENT" archetype_node_id="at0003">
                                         <ns2:name>
@@ -667,7 +667,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-OBSERVATION.tnm_stage_pathological.v0</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:language>
             <ns2:terminology_id>
@@ -739,7 +739,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-OBSERVATION.figo_stage_pathological.v0</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:language>
             <ns2:terminology_id>
@@ -811,7 +811,7 @@
             <ns2:archetype_id>
                 <ns2:value>openEHR-EHR-EVALUATION.recommendation-histopathology.v1</ns2:value>
             </ns2:archetype_id>
-            <ns2:rm_version>1.0.4</ns2:rm_version>
+            <ns2:rm_version>1.1.0</ns2:rm_version>
         </ns2:archetype_details>
         <ns2:language>
             <ns2:terminology_id>

@@ -48,7 +48,7 @@ import kotlin.collections.LinkedHashMap
     "inputs",
     "children")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-class WebTemplateNode(@JsonIgnore val amNode: AmNode, var rmType: String,  @field:JsonProperty("aqlPath") var path: String) {
+class WebTemplateNode(@JsonIgnore val amNode: AmNode, var rmType: String, @field:JsonProperty("aqlPath") var path: String) {
 
     var name: String? = null
     var localizedName: String? = null

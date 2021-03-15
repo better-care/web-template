@@ -36,6 +36,7 @@ internal object CodePhraseToFlatMapper : RmObjectToFlatMapper<CodePhrase> {
             flatConversionContext: FlatMappingContext) {
         flatConversionContext["$webTemplatePath|code"] = rmObject.codeString
         flatConversionContext["$webTemplatePath|terminology"] = rmObject.terminologyId?.value
+        flatConversionContext["$webTemplatePath|preferred_term"] = rmObject.preferredTerm
     }
 
     override fun mapFormatted(
@@ -46,5 +47,6 @@ internal object CodePhraseToFlatMapper : RmObjectToFlatMapper<CodePhrase> {
             formattedFlatConversionContext: FormattedFlatMappingContext) {
         formattedFlatConversionContext["$webTemplatePath|code"] = rmObject.codeString
         formattedFlatConversionContext["$webTemplatePath|terminology"] = rmObject.terminologyId?.value
+        formattedFlatConversionContext["$webTemplatePath|preferred_term"] = rmObject.preferredTerm
     }
 }

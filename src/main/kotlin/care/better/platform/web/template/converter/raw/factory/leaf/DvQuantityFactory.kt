@@ -21,7 +21,6 @@ import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
-import com.fasterxml.jackson.databind.node.ObjectNode
 import org.openehr.am.aom.CDvQuantity
 import org.openehr.am.aom.CQuantityItem
 import org.openehr.rm.datatypes.DvQuantity
@@ -61,12 +60,18 @@ internal object DvQuantityFactory : DvQuantifiedFactory<DvQuantity>() {
                 } else if (attribute.attribute == "unit") {
                     rmObject.units = jsonNode.asText()
                     true
+                } else if (attribute.attribute == "unit_system") {
+                    rmObject.unitsSystem = jsonNode.asText()
+                    true
+                } else if (attribute.attribute == "unit_display_name") {
+                    rmObject.unitsDisplayName = jsonNode.asText()
+                    true
                 } else {
                     false
                 }
 
 
-    override fun afterPropertiesSet(conversionContext: ConversionContext, amNode: AmNode, objectNode: ObjectNode, rmObject: DvQuantity) {
+    override fun afterPropertiesSet(conversionContext: ConversionContext, amNode: AmNode, jsonNode: JsonNode, rmObject: DvQuantity) {
         if (rmObject.units == null) {
             if (amNode.cObject is CDvQuantity) {
                 val cDvQuantity = amNode.cObject as CDvQuantity
@@ -90,6 +95,7 @@ internal object DvQuantityFactory : DvQuantifiedFactory<DvQuantity>() {
     override fun removeDependentValues(map: MutableMap<AttributeDto, JsonNode>): Boolean {
         if (map[AttributeDto.forAttribute("unit")] != null && map[AttributeDto.forAttribute("value")] == null && map[AttributeDto.forAttribute("magnitude")] == null && map[AttributeDto.ofBlank()] == null) {
             map.remove(AttributeDto.forAttribute("unit"))
+            map.remove(AttributeDto.ofBlank())
             return true
         }
         return false
@@ -106,4 +112,6 @@ internal object DvQuantityFactory : DvQuantifiedFactory<DvQuantity>() {
             item.precision?.also { interval -> AmUtils.getMax(interval)?.also { rmObject.precision = it } }
         }
     }
+
+    override fun canRemoveDependantValues(): Boolean = true
 }

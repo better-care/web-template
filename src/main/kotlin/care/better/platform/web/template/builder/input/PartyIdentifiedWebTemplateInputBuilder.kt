@@ -23,7 +23,6 @@ import care.better.platform.web.template.builder.model.WebTemplateNode
  * @author Primoz Delopst
  * @since 3.1.0
  */
-
 internal object PartyIdentifiedWebTemplateInputBuilder : PartyProxyWebTemplateInputBuilder() {
     override fun build(node: WebTemplateNode, context: WebTemplateBuilderContext) {
         super.build(node, context)

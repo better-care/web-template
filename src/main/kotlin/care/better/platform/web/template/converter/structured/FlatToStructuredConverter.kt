@@ -38,7 +38,7 @@ import java.util.regex.Pattern
  *
  * Converts the RM object in FLAT format to the RM object in STRUCTURED format.
  */
-internal class FlatToStructuredConverter(private val objectMapper: ObjectMapper) : (Map<String, Any?>) -> JsonNode {
+class FlatToStructuredConverter(private val objectMapper: ObjectMapper) : (Map<String, Any?>) -> JsonNode {
 
     companion object {
         private val segmentSeparatorPattern = Pattern.compile("/", Pattern.LITERAL)

@@ -28,11 +28,11 @@ import org.openehr.rm.datatypes.DvText
  * Singleton instance of [LocatableFactory] that creates a new instance of [DefinedAction].
  */
 internal object DefinedActionFactory : LocatableFactory<DefinedAction>() {
-    override fun createLocatable(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): DefinedAction =
+    override fun createLocatable(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): DefinedAction =
         DefinedAction().apply {
-            val name = amNode.name
+            val name = amNode?.name
             if (name != null && name.isNotBlank()) {
-                this.name = DvText(amNode.name!!)
+                this.name = DvText(name)
             }
         }
 }

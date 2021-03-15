@@ -32,7 +32,7 @@ import care.better.platform.web.template.converter.raw.context.ConversionContext
  * @param rmClass [RmObject] [Class] for which a new instance will be created
  */
 internal open class RmObjectInstanceClassFactory<T : RmObject>(private val rmClass: Class<T>) : RmObjectNodeFactory<T> {
-    override fun create(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): T =
+    override fun create(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): T =
         try {
             rmClass.getConstructor().newInstance()
         } catch (e: Exception) {

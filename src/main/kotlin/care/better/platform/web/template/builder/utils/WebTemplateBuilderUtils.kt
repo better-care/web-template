@@ -17,13 +17,17 @@ package care.better.platform.web.template.builder.utils
 
 import care.better.platform.template.AmNode
 import care.better.platform.utils.RmUtils
+import care.better.platform.utils.TemplateUtils
 import care.better.platform.utils.exception.RmClassCastException
 import care.better.platform.web.template.WebTemplate
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.builder.model.WebTemplateNode
-import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils
 import com.google.common.base.Splitter
+import org.openehr.am.aom.Template
 import org.openehr.rm.datatypes.DataValue
 import java.util.regex.Pattern
+
 
 /**
  * @author Bostjan Lah
@@ -32,7 +36,7 @@ import java.util.regex.Pattern
  *
  * Set of utility functions used during the [WebTemplate] building.
  */
-internal object WebTemplateBuilderUtils {
+object WebTemplateBuilderUtils {
     private val LOCALIZATION_PATTERN = Pattern.compile("L10n=\\{(.+?)(?<!\\\\)}")
 
     @JvmStatic
@@ -52,7 +56,7 @@ internal object WebTemplateBuilderUtils {
     }
 
     @JvmStatic
-    fun getDataValueClass(amNode: AmNode): Class<*>? =
+    internal fun getDataValueClass(amNode: AmNode): Class<*>? =
         sequenceOf(amNode, amNode.parent)
             .filter { it != null }
             .mapNotNull {
@@ -70,7 +74,7 @@ internal object WebTemplateBuilderUtils {
 
 
     @JvmStatic
-    fun buildChain(node: WebTemplateNode, parent: WebTemplateNode) {
+    internal fun buildChain(node: WebTemplateNode, parent: WebTemplateNode) {
         var amNode: AmNode? = node.amNode
         while (amNode != null) {
             node.chain.add(0, amNode)
@@ -98,7 +102,7 @@ internal object WebTemplateBuilderUtils {
     }
 
     @JvmStatic
-    fun parseTranslations(value: String, localizedNamesFromAnnotations: MutableMap<String, String?>) {
+    internal fun parseTranslations(value: String, localizedNamesFromAnnotations: MutableMap<String, String?>) {
         val matcher = LOCALIZATION_PATTERN.matcher(value)
         if (matcher.find()) {
             val translations = matcher.group(1)
@@ -114,6 +118,11 @@ internal object WebTemplateBuilderUtils {
     }
 
     @JvmStatic
-    fun getChoiceWebTemplateId(typeName: String): String = "${typeName.substring(3).toLowerCase()}_value"
+    internal fun getChoiceWebTemplateId(typeName: String): String = "${typeName.substring(3).toLowerCase()}_value"
 
+    @JvmStatic
+    fun buildWebTemplate(template: Template): WebTemplate {
+        val webTemplateBuilderContext = WebTemplateBuilderContext(template.language?.codeString, TemplateUtils.findTemplateLanguages(template))
+        return requireNotNull(WebTemplateBuilder.build(template, webTemplateBuilderContext))
+    }
 }

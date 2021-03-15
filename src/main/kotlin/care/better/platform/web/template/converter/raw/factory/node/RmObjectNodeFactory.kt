@@ -37,6 +37,6 @@ internal interface RmObjectNodeFactory<T : RmObject> {
      * @param webTemplatePath [WebTemplatePath]
      * @return New instance of RM object in RAW format
      */
-    fun create(conversionContext: ConversionContext, amNode: AmNode, webTemplatePath: WebTemplatePath): T
+    fun create(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): T
 
 }

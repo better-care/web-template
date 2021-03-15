@@ -20,6 +20,7 @@ import care.better.platform.web.template.converter.structured.mapper.RmObjectToS
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import com.fasterxml.jackson.databind.ObjectMapper
 
 /**
  * @author Primoz Delopst
@@ -30,7 +31,7 @@ import care.better.platform.web.template.builder.model.WebTemplateNode
  * @constructor Creates a new instance of [FormattedRawToStructuredConverter]
  * @param valueConverter [ValueConverter]
  */
-internal class FormattedRawToStructuredConverter(private val valueConverter: ValueConverter) : AbstractRawToStructuredConverter() {
+internal class FormattedRawToStructuredConverter(private val valueConverter: ValueConverter, objectMapper: ObjectMapper) : AbstractRawToStructuredConverter(objectMapper) {
     override fun <R : RmObject> mapRmObject(webTemplateNode: WebTemplateNode, rmObject: R): JsonNode? =
         RmObjectToStructuredMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, rmObject)
 }
