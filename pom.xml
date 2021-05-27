@@ -20,7 +20,10 @@
     <artifactId>web-template</artifactId>
     <version>3.1.0-SNAPSHOT</version>
 
-    <name>Web template</name>
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>WebTemplate implementation for openEHR CDR</description>
+    <url>https://github.com/better-care/web-template</url>
+
     <packaging>jar</packaging>
 
     <properties>
@@ -45,6 +48,12 @@
 
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <enforcer-plugin.version>3.0.0-M2</enforcer-plugin.version>
+
+        <maven-dokka-plugin.version>1.4.32</maven-dokka-plugin.version>
+        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+        <maven-scm-provider-gitexe.version>1.9.5</maven-scm-provider-gitexe.version>
+        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+        <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -267,4 +276,143 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>central-release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>${maven-source-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.jetbrains.dokka</groupId>
+                        <artifactId>dokka-maven-plugin</artifactId>
+                        <version>${maven-dokka-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>javadocJar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <sourceLinks>
+                                <link>
+                                    <url>https://github.com/better-care/web-template</url>
+                                    <lineSuffix>#L</lineSuffix>
+                                </link>
+                            </sourceLinks>
+                        </configuration>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>${nexus-staging-maven-plugin.version}</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://s01.oss.sonatype.org</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${maven-gpg-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <gpgArguments>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:git://github.com:better-care/web-template.git</connection>
+        <developerConnection>scm:git:ssh://github.com:better-care/web-template.git</developerConnection>
+        <url>https://github.com/better-care/web-template/tree/master/</url>
+    </scm>
+    <developers>
+        <developer>
+            <name>Bostjan Lah</name>
+            <email>bostjan.lah@better.care</email>
+            <organization>Better Ltd</organization>
+            <organizationUrl>https://www.better.care/</organizationUrl>
+        </developer>
+        <developer>
+            <name>Matija Polajnar</name>
+            <email>matija.polajnar@better.care</email>
+            <organization>Better Ltd</organization>
+            <organizationUrl>https://www.better.care/</organizationUrl>
+        </developer>
+        <developer>
+            <name>Primož Delopst</name>
+            <email>primoz.delopst@better.care</email>
+            <organization>Better Ltd</organization>
+            <organizationUrl>https://www.better.care/</organizationUrl>
+        </developer>
+        <developer>
+            <name>Dušan Marković</name>
+            <email>dusan.markovic@better.care</email>
+            <organization>Better Ltd</organization>
+            <organizationUrl>https://www.better.care/</organizationUrl>
+        </developer>
+        <developer>
+            <name>Domen Muren</name>
+            <email>domen.muren@better.care</email>
+            <organization>Better Ltd</organization>
+            <organizationUrl>https://www.better.care/</organizationUrl>
+        </developer>
+        <developer>
+            <name>Matic Ribič</name>
+            <email>matic.ribic@better.care</email>
+            <organization>Better Ltd</organization>
+            <organizationUrl>https://www.better.care/</organizationUrl>
+        </developer>
+    </developers>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 </project>
