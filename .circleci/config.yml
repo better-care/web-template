@@ -1,0 +1,26 @@
+version: 2.1
+orbs:
+  codecov: codecov/codecov@1.0.2
+jobs:
+  build:
+    working_directory: ~/web-template
+    docker:
+      - image: circleci/openjdk:8-jdk-stretch
+    environment:
+      TZ: Europe/Podgorica
+    steps:
+      - checkout
+      - restore_cache:
+          key: web-template-{{ checksum "pom.xml" }}
+      - run: mvn dependency:go-offline -P code-coverage
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: web-template-{{ checksum "pom.xml" }}
+      - run: mvn clean install -P code-coverage
+      - store_test_results:
+          path: target/surefire-reports
+      - codecov/upload:
+         file: target/jacoco-report/jacoco.xml
+         token: $CODECOV_TOKEN
+

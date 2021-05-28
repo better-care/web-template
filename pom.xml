@@ -47,12 +47,13 @@
         <jupiter.version>5.7.0</jupiter.version>
 
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
-        <enforcer-plugin.version>3.0.0-M2</enforcer-plugin.version>
-
         <maven-dokka-plugin.version>1.4.32</maven-dokka-plugin.version>
+        <maven-enforcer-plugin.version>3.0.0-M2</maven-enforcer-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <maven-scm-provider-gitexe.version>1.9.5</maven-scm-provider-gitexe.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
     </properties>
 
@@ -63,11 +64,13 @@
                 <artifactId>annotations</artifactId>
                 <version>${kotlin-annotations.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-reflect</artifactId>
                 <version>${kotlin.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>joda-time</groupId>
                 <artifactId>joda-time</artifactId>
@@ -256,10 +259,11 @@
                     </dependency>
                 </dependencies>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>${enforcer-plugin.version}</version>
+                <version>${maven-enforcer-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>enforce</id>
@@ -274,10 +278,46 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+            </plugin>
         </plugins>
     </build>
 
     <profiles>
+        <profile>
+            <id>code-coverage</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>${jacoco-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>report</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>report</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>target/jacoco-report</outputDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
         <profile>
             <id>central-release</id>
             <build>
@@ -362,11 +402,13 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
+
     <scm>
         <connection>scm:git:git://github.com:better-care/web-template.git</connection>
         <developerConnection>scm:git:ssh://github.com:better-care/web-template.git</developerConnection>
         <url>https://github.com/better-care/web-template/tree/master/</url>
     </scm>
+
     <developers>
         <developer>
             <name>Bostjan Lah</name>
@@ -374,30 +416,35 @@
             <organization>Better Ltd</organization>
             <organizationUrl>https://www.better.care/</organizationUrl>
         </developer>
+
         <developer>
             <name>Matija Polajnar</name>
             <email>matija.polajnar@better.care</email>
             <organization>Better Ltd</organization>
             <organizationUrl>https://www.better.care/</organizationUrl>
         </developer>
+
         <developer>
             <name>Primož Delopst</name>
             <email>primoz.delopst@better.care</email>
             <organization>Better Ltd</organization>
             <organizationUrl>https://www.better.care/</organizationUrl>
         </developer>
+
         <developer>
             <name>Dušan Marković</name>
             <email>dusan.markovic@better.care</email>
             <organization>Better Ltd</organization>
             <organizationUrl>https://www.better.care/</organizationUrl>
         </developer>
+
         <developer>
             <name>Domen Muren</name>
             <email>domen.muren@better.care</email>
             <organization>Better Ltd</organization>
             <organizationUrl>https://www.better.care/</organizationUrl>
         </developer>
+
         <developer>
             <name>Matic Ribič</name>
             <email>matic.ribic@better.care</email>
@@ -405,11 +452,13 @@
             <organizationUrl>https://www.better.care/</organizationUrl>
         </developer>
     </developers>
+
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
             <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
+
         <repository>
             <id>ossrh</id>
             <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
