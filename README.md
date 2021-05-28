@@ -3,7 +3,7 @@
 WebTemplate implementation for openEHR CDR
 
 ## Licence
-[![License](https://img.shields.io/badge/license-apache%202.0-60C060.svg)](https://www.apache.org/licenses/LICENSE-2.0.txt)
+[![License](https://img.shields.io/badge/license-apache%202.0-60C060.svg)](https://choosealicense.com/licenses/apache-2.0/)
 
 ## Release 
 
@@ -14,3 +14,7 @@ WebTemplate implementation for openEHR CDR
 
 ## Test Coverage
 [![codecov](https://codecov.io/gh/better-care/web-template/branch/master/graph/badge.svg?token=XAL78TEMAF)](https://codecov.io/gh/better-care/web-template)
+
+## Contributing
+
+See our [CONTRIBUTING](/CONTRIBUTING.md) guide.
