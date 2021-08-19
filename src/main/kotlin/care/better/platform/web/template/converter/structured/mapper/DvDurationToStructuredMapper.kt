@@ -54,4 +54,8 @@ internal object DvDurationToStructuredMapper : DvQuantifiedToStructuredMapper<Dv
             mapFormatted(webTemplateNode, valueConverter, rmObject, this)
             this.resolve()
         }
+
+    override fun supportsValueNode(): Boolean = true
+
+    override fun defaultValueNodeAttribute(): String = "|value"
 }

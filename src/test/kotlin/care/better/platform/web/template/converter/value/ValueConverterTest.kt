@@ -34,7 +34,7 @@ class ValueConverterTest {
         assertThat(valueConverter.parseDate("13.12.2013")).isEqualTo(LocalDate.of(2013, 12, 13))
         assertThat(valueConverter.parseTime("14:50")).isEqualTo(LocalTime.of(14, 50, 0))
         assertThat(valueConverter.parseOffsetTime("14:50+02:00")).isEqualTo(OffsetTime.of(14, 50, 0, 0, ZoneOffset.ofHours(2)))
-        assertThat(valueConverter.parseDateTime("13.12.2013 14:50"))
+        assertThat(valueConverter.parseDateTime("13.12.2013, 14:50"))
             .isEqualTo(ZonedDateTime.of(2013, 12, 13, 14, 50, 0, 0, ZoneId.systemDefault()).toOffsetDateTime())
     }
 
@@ -46,7 +46,7 @@ class ValueConverterTest {
         assertThat(valueConverter.parseDate("Freitag, 13. Dezember 2013")).isEqualTo(LocalDate.of(2013, 12, 13))
         assertThat(valueConverter.parseTime("14:50")).isEqualTo(LocalTime.of(14, 50, 0))
         assertThat(valueConverter.parseOffsetTime("14:50+02:00")).isEqualTo(OffsetTime.of(14, 50, 0, 0, ZoneOffset.ofHours(2)))
-        assertThat(valueConverter.parseDateTime("13.12.2013 14:50"))
+        assertThat(valueConverter.parseDateTime("13.12.2013, 14:50"))
             .isEqualTo(ZonedDateTime.of(2013, 12, 13, 14, 50, 0, 0, ZoneId.systemDefault()).toOffsetDateTime())
     }
 

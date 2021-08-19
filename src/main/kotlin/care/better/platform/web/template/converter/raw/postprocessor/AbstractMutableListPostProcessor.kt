@@ -36,7 +36,7 @@ abstract class AbstractMutableListPostProcessor : PostProcessor<MutableList<Any>
         val iterator = instance.iterator()
         while (iterator.hasNext()) {
             val next = iterator.next()
-            if (mustRemove(next)) {
+            if (mustRemove(next, conversionContext)) {
                 iterator.remove()
             } else {
                 if (next is Locatable) {
@@ -61,7 +61,7 @@ abstract class AbstractMutableListPostProcessor : PostProcessor<MutableList<Any>
         }
     }
 
-    abstract fun mustRemove(element: Any): Boolean
+    abstract fun mustRemove(element: Any, conversionContext: ConversionContext): Boolean
 
     /**
      * Sorts [MutableList] using [AmNode].

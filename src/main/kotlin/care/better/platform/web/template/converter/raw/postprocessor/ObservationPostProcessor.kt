@@ -18,6 +18,7 @@ package care.better.platform.web.template.converter.raw.postprocessor
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.raw.context.ConversionContext
+import care.better.platform.web.template.converter.raw.extensions.isEmpty
 import org.openehr.rm.composition.Observation
 
 /**
@@ -31,7 +32,7 @@ internal object ObservationPostProcessor : EntryPostProcessor<Observation>() {
 
     override fun postProcess(conversionContext: ConversionContext, amNode: AmNode?, instance: Observation, webTemplatePath: WebTemplatePath?) {
         super.postProcess(conversionContext, amNode, instance, webTemplatePath)
-        if (instance.data?.events.isNullOrEmpty()) {
+        if (instance.data?.events.isNullOrEmpty() && instance.data?.summary.isEmpty()) {
             instance.data = null
         }
         if (instance.state?.events.isNullOrEmpty()) {

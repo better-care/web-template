@@ -114,4 +114,15 @@ object RmObjectToStructuredMapperDelegator {
             valueConverter: ValueConverter,
             rmObject: T): JsonNode? =
         rmObjectToStructuredMappers[rmObject::class.java]?.let { (it as RmObjectToStructuredMapper<T>).mapFormatted(webTemplateNode, valueConverter, rmObject) }
+
+    /**
+     * Delegates default attribute name resolving to the [RmObjectToStructuredMapper] and returns the resolved attribute.
+     *
+     * @param rmClass  [RmObject] [Class]
+     * @param attribute Attribute name
+     * @return  Resolved attribute
+     */
+    @Suppress("UNCHECKED_CAST")
+    fun <T : RmObject> delegateResolveDefaultValueNodeAttribute(rmClass: Class<T>, attribute: String): String =
+        rmObjectToStructuredMappers[rmClass]?.let { (it as RmObjectToStructuredMapper<T>).resolveDefaultValueNodeAttribute(attribute) } ?: attribute
 }

@@ -15,11 +15,11 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.TextNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvUri
 
 /**
@@ -34,4 +34,8 @@ internal object DvUriToStructuredMapper : RmObjectToStructuredMapper<DvUri> {
 
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvUri): JsonNode =
         map(webTemplateNode, valueConverter, rmObject)
+
+    override fun supportsValueNode(): Boolean = true
+
+    override fun defaultValueNodeAttribute(): String = "|value"
 }

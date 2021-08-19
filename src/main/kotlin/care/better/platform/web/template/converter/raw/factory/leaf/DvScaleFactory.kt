@@ -97,7 +97,7 @@ internal object DvScaleFactory : DvOrderedFactory<DvScale>() {
             rmObject: DvScale,
             webTemplatePath: WebTemplatePath,
             parents: List<Any>,
-            strict: Boolean): Boolean =
+            strictSearching: Boolean): Boolean =
         super.handleOnParent(conversionContext, amNode, attribute, jsonNode, rmObject, webTemplatePath, parents, false)
 
     /**

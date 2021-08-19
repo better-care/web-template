@@ -27,6 +27,7 @@
     <packaging>jar</packaging>
 
     <properties>
+        <java.version>1.8</java.version>
         <kotlin.version>1.4.21</kotlin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -34,17 +35,19 @@
         <log4j-api-kotlin.version>1.0.0</log4j-api-kotlin.version>
         <jackson-kotlin.version>2.11.2</jackson-kotlin.version>
 
-        <ehr-common.version>3.1.0-RC1</ehr-common.version>
+        <ehr-common.version>3.1.0-RC2</ehr-common.version>
 
         <jackson.version>2.11.3</jackson.version>
-        <jaxb.version>2.3.1</jaxb.version>
+        <jakarta.xml.version>2.3.3</jakarta.xml.version>
         <joda.version>2.10.5</joda.version>
-        <commons-lang3.version>3.11</commons-lang3.version>
-
+        <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-io.version>2.8.0</commons-io.version>
         <commons-math3.version>3.6.1</commons-math3.version>
         <assertj.version>3.18.1</assertj.version>
         <jupiter.version>5.7.0</jupiter.version>
+
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
 
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-dokka-plugin.version>1.4.32</maven-dokka-plugin.version>
@@ -165,9 +168,16 @@
         </dependency>
 
         <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>${jaxb.version}</version>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jakarta.xml.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>${jakarta.xml.version}</version>
+            <scope>runtime</scope>
         </dependency>
 
         <dependency>
@@ -240,7 +250,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <jvmTarget>1.8</jvmTarget>
+                    <jvmTarget>${java.version}</jvmTarget>
                     <args>
                         <arg>-Xjsr305=strict</arg>
                         <arg>-Xjvm-default=compatibility</arg>

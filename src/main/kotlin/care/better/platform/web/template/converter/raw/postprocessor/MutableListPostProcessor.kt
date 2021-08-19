@@ -16,6 +16,8 @@
 
 package care.better.platform.web.template.converter.raw.postprocessor
 
+import care.better.platform.web.template.converter.raw.context.ConversionContext
+
 /**
  * @author Primoz Delopst
  * @since 3.1.0
@@ -23,5 +25,5 @@ package care.better.platform.web.template.converter.raw.postprocessor
  *  Singleton instance of [PostProcessor] that post-processes [MutableList]
  */
 internal object MutableListPostProcessor : AbstractMutableListPostProcessor() {
-    override fun mustRemove(element: Any): Boolean = false
+    override fun mustRemove(element: Any, conversionContext: ConversionContext): Boolean = false
 }

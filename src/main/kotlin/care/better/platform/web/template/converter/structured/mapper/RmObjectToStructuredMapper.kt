@@ -16,9 +16,12 @@
 package care.better.platform.web.template.converter.structured.mapper
 
 import care.better.openehr.rm.RmObject
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
+import com.fasterxml.jackson.databind.node.ValueNode
+import org.openehr.rm.datastructures.Element
+import org.openehr.rm.datatypes.DataValue
 
 /**
  * @author Primoz Delopst
@@ -46,4 +49,27 @@ internal interface RmObjectToStructuredMapper<T : RmObject> {
      * @return RM object in STRUCTURED format with formatted values
      */
     fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: T): JsonNode
+
+    /**
+     * Returns default attribute name for cases when [DataValue] in STRUCTURED format is presented as [ValueNode]
+     * but has parent [Element] with AM attributes (_uid ...).
+     *
+     * @return Default attribute name
+     */
+    fun defaultValueNodeAttribute(): String = throw UnsupportedOperationException()
+
+    /**
+     * Checks if [RmObject] in STRUCTURED format can be presented as [ValueNode].
+     *
+     * @return [Boolean] indicating if [RmObject] in STRUCTURED format can be presented as [ValueNode]
+     */
+    fun supportsValueNode(): Boolean = false
+
+    /**
+     * Resolves default attribute name for cases when [DataValue] in STRUCTURED format is presented as [ValueNode]
+     * but has parent [Element] with AM attributes (_uid ...).
+     *
+     * @return Resolved attribute name
+     */
+    fun resolveDefaultValueNodeAttribute(attribute: String) = if (attribute == "" && supportsValueNode()) defaultValueNodeAttribute() else attribute
 }

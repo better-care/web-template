@@ -21,14 +21,14 @@ import care.better.platform.template.AmUtils
 import care.better.platform.utils.RmUtils
 import care.better.platform.utils.exception.RmClassCastException
 import care.better.platform.web.template.WebTemplate
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.converter.FromRawConversion
 import care.better.platform.web.template.converter.exceptions.ConversionException
-import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
+import care.better.platform.web.template.converter.structured.mapper.RmObjectToStructuredMapperDelegator
 import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.node.ArrayNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.common.collect.Sets
 import org.openehr.rm.common.Locatable
 import org.openehr.rm.composition.Composition
@@ -114,7 +114,7 @@ internal abstract class AbstractRawToStructuredConverter(private val objectMappe
      * @param rmObject RM object in RAW format
      */
     fun <R : RmObject> mapRmObjectInternally(webTemplateNode: WebTemplateNode, rmObject: R): JsonNode? {
-        if (!exported.contains(rmObject)){
+        if (!exported.contains(rmObject)) {
             return mapRmObject(webTemplateNode, rmObject)
         }
         return null
@@ -206,6 +206,9 @@ internal abstract class AbstractRawToStructuredConverter(private val objectMappe
                 convertedJsonNodes.map { node ->
                     if (omittedNode == null || (omittedNode.isObject && omittedNode.isEmpty)) node else merge(
                         node,
+                        { attribute ->
+                            RmObjectToStructuredMapperDelegator.delegateResolveDefaultValueNodeAttribute(RmUtils.getRmClass(chain.last().rmType), attribute)
+                        },
                         omittedNode as ObjectNode)
                 }.asSequence()
             }
@@ -215,12 +218,13 @@ internal abstract class AbstractRawToStructuredConverter(private val objectMappe
     /**
      * Merge two [JsonNode].
      *
-     * @param parent [JsonNode]
-     * @param child [JsonNode]
+     * @param node [JsonNode]
+     * @param attributeNameResolver Attribute name resolver
+     * @param omittedNode [JsonNode] for [RmObject] in RAW format that was omitted in [RmObject] in STRUCTURED format (Element, History, ItemTree...)
      * @return Merged [JsonNode]
      */
-    private fun merge(parent: JsonNode, child: ObjectNode): JsonNode {
-        val iterator = child.fieldNames()
+    private fun merge(node: JsonNode, attributeNameResolver: (String) -> String, omittedNode: ObjectNode): JsonNode {
+        val iterator = omittedNode.fieldNames()
         val names: MutableList<String> = mutableListOf()
         while (iterator.hasNext()) {
             names.add(iterator.next())
@@ -228,15 +232,15 @@ internal abstract class AbstractRawToStructuredConverter(private val objectMappe
 
         return if (names.isNotEmpty()) {
             val objectNode =
-                if (parent.isObject)
-                    parent as ObjectNode
-                else objectMapper.createObjectNode().apply { this.replace("", parent) }
+                if (node.isObject)
+                    node as ObjectNode
+                else objectMapper.createObjectNode().apply { this.replace(attributeNameResolver.invoke(""), node) }
             names.forEach {
-                objectNode.replace(it, child.get(it))
+                objectNode.replace(it, omittedNode.get(it))
             }
             objectNode
         } else {
-            parent
+            node
         }
     }
 

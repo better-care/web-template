@@ -16,13 +16,13 @@
 package care.better.platform.web.template.converter.structured.mapper
 
 import care.better.platform.utils.RmUtils
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putCollectionAsArray
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.mapper.resolve
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvCodedText
 import org.openehr.rm.datatypes.DvText
 
@@ -57,4 +57,8 @@ internal object DvTextToStructuredMapper : RmObjectToStructuredMapper<DvText> {
             }
             this.resolve()
         }
+
+    override fun supportsValueNode(): Boolean = true
+
+    override fun defaultValueNodeAttribute(): String = "|value"
 }

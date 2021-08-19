@@ -20,6 +20,7 @@ import care.better.platform.web.template.converter.WebTemplatePathSegment
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.isEmptyInDepth
+import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.node.*
@@ -38,7 +39,7 @@ import java.util.regex.Pattern
  *
  * Converts the RM object in FLAT format to the RM object in STRUCTURED format.
  */
-class FlatToStructuredConverter(private val objectMapper: ObjectMapper) : (Map<String, Any?>) -> JsonNode {
+class FlatToStructuredConverter(private val objectMapper: ObjectMapper) : (Map<String, Any?>) -> JsonNode, (Map<String, Any?>, ConversionContext) -> JsonNode {
 
     companion object {
         private val segmentSeparatorPattern = Pattern.compile("/", Pattern.LITERAL)
@@ -56,8 +57,19 @@ class FlatToStructuredConverter(private val objectMapper: ObjectMapper) : (Map<S
      *  @param map RM object in FLAT format
      *  @return RM object in STRUCTURED format
      */
-    override fun invoke(map: Map<String, Any?>): JsonNode = objectMapper.createObjectNode().apply {
-        convertToStructured(map.asSequence().filter { isNotEmpty(it.value) }.map { convertEntry(it.key, it.value) }.toList(), this, 0)
+    override fun invoke(map: Map<String, Any?>): JsonNode = map(map, false)
+
+    /**
+     *  Converts the RM object in FLAT format to the RM object in STRUCTURED format.
+     *
+     *  @param map RM object in FLAT format
+     *  @param conversionContext [ConversionContext]
+     *  @return RM object in STRUCTURED format
+     */
+    override fun invoke(map: Map<String, Any?>, conversionContext: ConversionContext): JsonNode = map(map, conversionContext.strictMode)
+
+    private fun map(map: Map<String, Any?>, strict: Boolean = false): JsonNode = objectMapper.createObjectNode().apply {
+        convertToStructured(map.asSequence().filter { strict || isNotEmpty(it.value) }.map { convertEntry(it.key, it.value) }.toList(), this, 0)
     }
 
     /**

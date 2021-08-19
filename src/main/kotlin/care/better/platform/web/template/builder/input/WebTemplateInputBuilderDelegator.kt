@@ -98,13 +98,13 @@ object WebTemplateInputBuilderDelegator {
     @Suppress("UNCHECKED_CAST")
     @JvmStatic
     fun <T> delegate(amNode: AmNode, validator: T, context: WebTemplateBuilderContext): WebTemplateInput? =
-        with(requireNotNull(typeBuilders[amNode.rmType]) { "Unsupported type: ${amNode.rmType}" }) {
+        with(requireNotNull(typeBuilders[RmUtils.getNonGenericRmNamePart(amNode.rmType)]) { "Unsupported type: ${amNode.rmType}" }) {
             (this as WebTemplateInputBuilder<T>).build(amNode, validator, context)
         }
 
     @JvmStatic
     internal fun delegate(webTemplateNode: WebTemplateNode, context: WebTemplateBuilderContext) {
-        with(requireNotNull(typeBuilders[webTemplateNode.rmType]) { "Unsupported type: ${webTemplateNode.rmType}" }) {
+        with(requireNotNull(typeBuilders[RmUtils.getNonGenericRmNamePart(webTemplateNode.rmType)]) { "Unsupported type: ${webTemplateNode.rmType}" }) {
             this.build(webTemplateNode, context)
         }
     }

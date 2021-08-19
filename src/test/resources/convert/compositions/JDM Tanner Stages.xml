@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	Copyright 2021 Better Ltd (www.better.care)
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<composition xmlns="http://schemas.openehr.org/v1" archetype_node_id="openEHR-EHR-COMPOSITION.report.v1">
+    <name>
+        <value>Tanner stages</value>
+    </name>
+    <uid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="OBJECT_VERSION_ID">
+        <value>71ec968c-3123-4d35-8fbf-68869cec595d::default::1</value>
+    </uid>
+    <archetype_details>
+        <archetype_id>
+            <value>openEHR-EHR-COMPOSITION.report.v1</value>
+        </archetype_id>
+        <template_id>
+            <value>CATTEDRA JDM Tanner stages</value>
+        </template_id>
+        <rm_version>1.0.4</rm_version>
+    </archetype_details>
+    <feeder_audit>
+        <original_content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="DV_PARSABLE">
+            <value>{"/generic-coded_text-8052464":[{"|code":"9cd9da98-f192-4517-8612-0a03f1c09c15","|value":"Male"}]}</value>
+            <formalism>application/json</formalism>
+        </original_content>
+        <originating_system_audit>
+            <system_id>FormRenderer</system_id>
+        </originating_system_audit>
+    </feeder_audit>
+    <language>
+        <terminology_id>
+            <value>ISO_639-1</value>
+        </terminology_id>
+        <code_string>en</code_string>
+    </language>
+    <territory>
+        <terminology_id>
+            <value>ISO_3166-1</value>
+        </terminology_id>
+        <code_string>SI</code_string>
+    </territory>
+    <category>
+        <value>event</value>
+        <defining_code>
+            <terminology_id>
+                <value>openehr</value>
+            </terminology_id>
+            <code_string>433</code_string>
+        </defining_code>
+    </category>
+    <composer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="PARTY_IDENTIFIED">
+        <name>developer</name>
+    </composer>
+    <context>
+        <start_time>
+            <value>2021-06-30T12:53:20.11+02:00</value>
+        </start_time>
+        <setting>
+            <value>other care</value>
+            <defining_code>
+                <terminology_id>
+                    <value>openehr</value>
+                </terminology_id>
+                <code_string>238</code_string>
+            </defining_code>
+        </setting>
+    </context>
+    <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="OBSERVATION" archetype_node_id="openEHR-EHR-OBSERVATION.tanner.v1">
+        <name>
+            <value>Tanner stages</value>
+        </name>
+        <uid xsi:type="OBJECT_VERSION_ID">
+            <value>d43cc77f-1b58-4a5d-aba2-4345734ecd42</value>
+        </uid>
+        <archetype_details>
+            <archetype_id>
+                <value>openEHR-EHR-OBSERVATION.tanner.v1</value>
+            </archetype_id>
+            <rm_version>1.0.4</rm_version>
+        </archetype_details>
+        <language>
+            <terminology_id>
+                <value>ISO_639-1</value>
+            </terminology_id>
+            <code_string>en</code_string>
+        </language>
+        <encoding>
+            <terminology_id>
+                <value>IANA_character-sets</value>
+            </terminology_id>
+            <code_string>UTF-8</code_string>
+        </encoding>
+        <subject xsi:type="PARTY_SELF"/>
+        <data archetype_node_id="at0001">
+            <name>
+                <value>*Event Series(nb)</value>
+            </name>
+            <uid xsi:type="OBJECT_VERSION_ID">
+                <value>5e425d99-06e5-464d-a3cf-fe7b50d46b9f</value>
+            </uid>
+            <origin>
+                <value>2021-06-30T12:53:20.11+02:00</value>
+            </origin>
+            <events xsi:type="POINT_EVENT" archetype_node_id="at0002">
+                <name>
+                    <value>Any point in time event</value>
+                </name>
+                <uid xsi:type="OBJECT_VERSION_ID">
+                    <value>ff6f2d7b-d1e2-4341-aa68-29420bd4b50e</value>
+                </uid>
+                <time>
+                    <value>2021-06-30T12:53:20.11+02:00</value>
+                </time>
+                <data xsi:type="ITEM_TREE" archetype_node_id="at0003">
+                    <name>
+                        <value>*Tree(nb)</value>
+                    </name>
+                    <uid xsi:type="OBJECT_VERSION_ID">
+                        <value>376dc89f-cda2-49e3-aa8d-150ae6b27636</value>
+                    </uid>
+                    <items xsi:type="ELEMENT" archetype_node_id="at0004">
+                        <name>
+                            <value>Genitals</value>
+                        </name>
+                        <uid xsi:type="OBJECT_VERSION_ID">
+                            <value>9fbd965f-e75e-478e-9d1c-d9d5ce441b48</value>
+                        </uid>
+                        <value xsi:type="DV_CODED_TEXT">
+                            <value>Stage 5</value>
+                            <defining_code>
+                                <terminology_id>
+                                    <value>local</value>
+                                </terminology_id>
+                                <code_string>at0011</code_string>
+                            </defining_code>
+                        </value>
+                    </items>
+                    <items xsi:type="ELEMENT" archetype_node_id="at0006">
+                        <name>
+                            <value>Pubic hair</value>
+                        </name>
+                        <uid xsi:type="OBJECT_VERSION_ID">
+                            <value>c7094e3b-77a2-4d5d-8dfd-69c00c587f04</value>
+                        </uid>
+                        <value xsi:type="DV_CODED_TEXT">
+                            <value>Stage 5</value>
+                            <defining_code>
+                                <terminology_id>
+                                    <value>local</value>
+                                </terminology_id>
+                                <code_string>at0021</code_string>
+                            </defining_code>
+                        </value>
+                    </items>
+                    <items xsi:type="ELEMENT" archetype_node_id="at0027">
+                        <name>
+                            <value>Comment</value>
+                        </name>
+                        <uid xsi:type="OBJECT_VERSION_ID">
+                            <value>f24ec4bb-4791-4358-9459-e1d14f82c4b1</value>
+                        </uid>
+                        <value xsi:type="DV_TEXT">
+                            <value>this is a comment. very informative</value>
+                        </value>
+                    </items>
+                </data>
+            </events>
+        </data>
+    </content>
+</composition>

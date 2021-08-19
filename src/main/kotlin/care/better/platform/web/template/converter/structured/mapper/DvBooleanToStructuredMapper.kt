@@ -15,11 +15,11 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.BooleanNode
 import com.fasterxml.jackson.databind.node.TextNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvBoolean
 
 /**
@@ -35,4 +35,7 @@ internal object DvBooleanToStructuredMapper : RmObjectToStructuredMapper<DvBoole
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvBoolean): JsonNode =
         TextNode.valueOf(rmObject.value.toString())
 
+    override fun supportsValueNode(): Boolean = true
+
+    override fun defaultValueNodeAttribute(): String = "|value"
 }

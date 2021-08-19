@@ -17,13 +17,13 @@ package care.better.platform.web.template.converter.structured.mapper
 
 import care.better.platform.utils.DateTimeConversionUtils
 import care.better.platform.utils.JSR310ConversionUtils
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.mapper.resolve
 import care.better.platform.web.template.converter.value.ValueConverter
 import care.better.platform.web.template.date.partial.PartialDate
 import com.fasterxml.jackson.databind.JsonNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvDate
 
 /**
@@ -56,4 +56,8 @@ internal object DvDateToStructuredMapper : DvQuantifiedToStructuredMapper<DvDate
             map(webTemplateNode, valueConverter, rmObject, this)
             this.resolve()
         }
+
+    override fun supportsValueNode(): Boolean = true
+
+    override fun defaultValueNodeAttribute(): String = "|value"
 }

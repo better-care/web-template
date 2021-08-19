@@ -133,6 +133,13 @@ class ConversionContext private constructor(
     internal fun getWebTemplate(): WebTemplate = webTemplate!!
 
     /**
+     * Returns [Boolean] indicating if strict mode is not enabled.
+     *
+     * @return [Boolean]
+     */
+    fun isStrictModeNotEnabled() = !strictMode
+
+    /**
      * Creates and returns [List] of [Participation] from this [ConversionContext].
      *
      * @return [List] of [Participation]

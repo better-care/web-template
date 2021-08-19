@@ -36,7 +36,7 @@ internal object DvProportionToStructuredMapper : DvQuantifiedToStructuredMapper<
             this.putIfNotNull("|numerator", rmObject.numerator)
             this.putIfNotNull("|denominator", rmObject.denominator)
             this.putIfNotNull("|type", rmObject.type)
-            this.putIfNotNull("", rmObject.numerator / rmObject.denominator)
+            this.putIfNotNull("|value", rmObject.numerator / rmObject.denominator)
             map(webTemplateNode, valueConverter, rmObject, this)
             this.resolve()
         }
@@ -44,10 +44,10 @@ internal object DvProportionToStructuredMapper : DvQuantifiedToStructuredMapper<
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvProportion): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
             if (2 == rmObject.type) {
-                this.putIfNotNull("", "${valueConverter.formatDouble(rmObject.numerator.toDouble())}%")
+                this.putIfNotNull("|value", "${valueConverter.formatDouble(rmObject.numerator.toDouble())}%")
             } else {
                 this.putIfNotNull(
-                    "",
+                    "|value",
                     "${valueConverter.formatDouble(rmObject.numerator.toDouble())}/${valueConverter.formatDouble(rmObject.denominator.toDouble())}")
                 this.putIfNotNull("|numerator", valueConverter.formatDouble(rmObject.numerator.toDouble()))
                 this.putIfNotNull("|denominator", valueConverter.formatDouble(rmObject.denominator.toDouble()))
@@ -56,4 +56,5 @@ internal object DvProportionToStructuredMapper : DvQuantifiedToStructuredMapper<
             mapFormatted(webTemplateNode, valueConverter, rmObject, this)
             this.resolve()
         }
+
 }

@@ -19,6 +19,12 @@ import care.better.platform.path.NameAndNodeMatchingPathValueExtractor
 import care.better.platform.path.SimplePathValueExtractor
 import care.better.platform.utils.DateTimeConversionUtils
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.exception.UnknownPathBuilderException
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.builder.model.input.WebTemplateCodedValue
+import care.better.platform.web.template.builder.model.input.WebTemplateOrdinalCodedValue
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.value.LocaleBasedValueConverter
@@ -30,12 +36,6 @@ import com.fasterxml.jackson.datatype.joda.JodaModule
 import com.google.common.collect.ImmutableList
 import com.google.common.collect.ImmutableMap
 import com.google.common.collect.ImmutableSet
-import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
-import care.better.platform.web.template.builder.WebTemplateBuilder
-import care.better.platform.web.template.builder.exception.UnknownPathBuilderException
-import care.better.platform.web.template.builder.model.WebTemplateNode
-import care.better.platform.web.template.builder.model.input.WebTemplateCodedValue
-import care.better.platform.web.template.builder.model.input.WebTemplateOrdinalCodedValue
 import org.assertj.core.api.Assertions.*
 import org.joda.time.DateTime
 import org.joda.time.LocalDate
@@ -57,7 +57,6 @@ import java.time.OffsetDateTime
 import java.time.ZoneOffset
 import java.util.*
 import javax.xml.bind.JAXBException
-import kotlin.collections.HashMap
 
 /**
  * @author Primoz Delopst
@@ -1309,6 +1308,17 @@ class LocaleTest : AbstractWebTemplateTest() {
         assertThat(node.getInput("year")?.defaultValue).isNull()
         assertThat(node.getInput("month")?.defaultValue).isNull()
         assertThat(node.getInput("day")?.defaultValue).isNull()
+    }
+
+    @Test
+    @Throws(IOException::class, JAXBException::class)
+    fun templateWithTypedRmType() {
+        val webTemplate = WebTemplateBuilder.build(getTemplate("/convert/templates/KDS_Laborbericht.opt"), WebTemplateBuilderContext("en"))!!
+        val aqlPathToOffendingNode = "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Laborbefund']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Probenmaterial']/items[at0015]/value"
+        val node = webTemplate.findWebTemplateNodeByAqlPath(aqlPathToOffendingNode)
+        assertThat(node).isNotNull
+        assertThat(node.rmType).isEqualTo("DV_DATE_TIME")
+        assertThat(node.children).isEmpty()
     }
 
     @Throws(JAXBException::class, IOException::class)

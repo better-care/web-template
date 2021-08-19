@@ -79,14 +79,14 @@ class ClinicalTest : AbstractWebTemplateTest() {
 
         val flatMap: Map<String, String> = ImmutableMap.builder<String, String>()
             .put("vitals/vitals/haemoglobin_a1c/any_event/hba1c", "5,1")
-            .put("vitals/vitals/haemoglobin_a1c/datetime_result_issued", "20.1.2012 19:30")
-            .put("vitals/vitals/body_temperature/any_event/time", "1.1.2012 0:0")
+            .put("vitals/vitals/haemoglobin_a1c/datetime_result_issued", "20. 1. 2012 19:30")
+            .put("vitals/vitals/body_temperature/any_event/time", "1. 1. 2012 0:0")
             .put("vitals/vitals/body_temperature/site_of_measurement", "at0022")
             .put("vitals/vitals/body_temperature/any_event/temperature|magnitude", "38,1")
             .put("vitals/vitals/body_temperature/any_event/temperature|unit", "°C")
             .put("vitals/vitals/body_temperature:1/any_event/temperature|magnitude", "39,1")
             .put("vitals/vitals/body_temperature:1/any_event/temperature|unit", "°C")
-            .put("ctx/time", "1.2.2012 00:00")
+            .put("ctx/time", "1. 2. 2012 00:00")
             .put("ctx/category", "event")
             .put("ctx/setting", "dental care")
             .put("ctx/id_schema", "local_sch")
@@ -178,7 +178,7 @@ class ClinicalTest : AbstractWebTemplateTest() {
 
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en"))
         val values: Map<String, String> = ImmutableMap.builder<String, String>()
-            .put("vitals/vitals/haemoglobin_a1c/datetime_result_issued", "1/2/2012 8:07")
+            .put("vitals/vitals/haemoglobin_a1c/datetime_result_issued", "1/2/2012, 8:07")
             .put("vitals/vitals/haemoglobin_a1c/receiver_order_identifier", "rec")
             .put("vitals/vitals/haemoglobin_a1c/any_event/test_status", "at0038")
             .put("vitals/vitals/haemoglobin_a1c/any_event/hba1c", "3.2")
@@ -219,6 +219,15 @@ class ClinicalTest : AbstractWebTemplateTest() {
 
         val retrieveFormatted: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition, FromRawConversion.create(Locale("ru")))
         assertThat(retrieveFormatted).contains(entry("vitals/vitals/haemoglobin_a1c:0/any_event:0/hba1c", "3,2%"))
+
+
+        val structuredComposition = webTemplate.convertFromRawToStructured(composition, FromRawConversion.create())
+        val proportion = structuredComposition!!.get("vitals").get("vitals").get(0).get("haemoglobin_a1c").get(0).get("any_event").get(0).get("hba1c").get(0)
+        assertThat(proportion.has("")).isFalse
+        assertThat(proportion.has("|value")).isTrue
+        assertThat(proportion.get("|value").floatValue()).isEqualTo(0.032f)
+
+
     }
 
     @Test
@@ -276,9 +285,9 @@ class ClinicalTest : AbstractWebTemplateTest() {
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en"))
 
         val values: Map<String, String> = ImmutableMap.builder<String, String>()
-            .put("ctx/time", "1.2.2012 00:01")
+            .put("ctx/time", "1. 2. 2012 00:01")
             .put("ctx/category", "persistent")
-            .put("ctx/history_origin", "1.2.2012 00:01")
+            .put("ctx/history_origin", "1. 2. 2012 00:01")
             .put("perinatal_history/perinatal_history/apgar_score/a1_minute/total", "3")
             .put("perinatal_history/perinatal_history/apgar_score/a10_minute/total", "5")
             .put("perinatal_history/perinatal_history/maternal_pregnancy/labour_or_delivery/duration_of_labour|day", "1")

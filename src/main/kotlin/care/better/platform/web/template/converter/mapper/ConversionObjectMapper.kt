@@ -63,7 +63,7 @@ internal object ConversionObjectMapper : BetterObjectMapper() {
                 amNode,
                 this,
                 webTemplatePath)
-            if (this.isEmpty()) null else this
+            if (this.isEmpty(conversionContext.strictMode)) null else this
         }
 
     private fun extractRawNodeString(jsonNode: JsonNode): String =
@@ -341,7 +341,7 @@ internal fun JsonNode.isEmptyInDepth(): Boolean =
 internal fun ArrayNode.toSingletonReversed(conversionContext: ConversionContext, webTemplatePath: WebTemplatePath): JsonNode {
     val size = size()
     if (size > 1 && conversionContext.strictMode) {
-        throw ConversionException("JSON array with single value is expected ", webTemplatePath.toString())
+        throw ConversionException("JSON array with single value is expected", webTemplatePath.toString())
     }
 
     return if (size == 1) get(0) else mergeToSingletonReversed()

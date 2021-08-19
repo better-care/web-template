@@ -137,7 +137,7 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
      */
     @Suppress("UNCHECKED_CAST")
     private fun convertObjectNode(objectNode: ObjectNode, webTemplateNode: WebTemplateNode, webTemplatePath: WebTemplatePath): Any? {
-        if (objectNode.isEmpty) { //ObjectNode is empty; nothing will be created.
+        if (objectNode.isEmpty && conversionContext.isStrictModeNotEnabled()) { //ObjectNode is empty; nothing will be created.
             return null
         }
 
@@ -147,11 +147,15 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
         val specialCaseHandlers: MutableList<(RmObject) -> Unit> = mutableListOf()
 
         objectNode.fields().forEach { (key, value) ->
-            if ((value.isArray && value.isEmpty) || (value.isObject && value.isEmpty)) {  //JsonNode is empty; nothing will be created.
+            if ((value.isArray && value.isEmpty) || (value.isObject && value.isEmpty && conversionContext.isStrictModeNotEnabled())) {  //JsonNode is empty; nothing will be created.
                 return@forEach
             }
 
-            val arrayNode: ArrayNode = if (value.isArray) value as ArrayNode else ConversionObjectMapper.createArrayNode().apply { this.add(value) } //Maybe value was not passed as array node
+            val arrayNode: ArrayNode = when {  //Maybe value was not passed as array node
+                value.isArray -> value as ArrayNode
+                conversionContext.strictMode && !value.isNull -> throw ConversionException("JSON array is expected", webTemplatePath.toString())
+                else -> ConversionObjectMapper.createArrayNode().apply { this.add(value) }
+            }
 
             if (!key.startsWith("transient_") && key != "ctx" && !key.startsWith("ctx/")) { //Skip transient fields and ctx values (ctx was already set to the ConversionContext).
                 val childWebTemplateNode = map[key]
@@ -183,7 +187,7 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
         }
 
         //ChainConversionResult is empty if the created object is null or if the created collection is empty.
-        if (chainConversionResult.all { it.isEmpty() } && specialCaseHandlers.isEmpty()) {
+        if (chainConversionResult.all { it.isEmpty() } && specialCaseHandlers.isEmpty() && conversionContext.isStrictModeNotEnabled()) {
             return null
         }
 
@@ -202,12 +206,12 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
         identityMap.values.forEach { it.invoke() } //Post-process firstly created the collection in the chain.
 
 
-        if (!createdRmObject.isEmpty()) {
+        if (!createdRmObject.isEmpty(conversionContext.strictMode)) {
             handleMandatoryWebTemplateInputs(createdRmObject, webTemplateNode, webTemplatePath)
         }
 
         PostProcessDelegator.delegate(conversionContext, webTemplateNode.amNode, createdRmObject, webTemplatePath)
-        return if (createdRmObject.isEmpty()) null else createdRmObject
+        return if (createdRmObject.isEmpty(conversionContext.strictMode)) null else createdRmObject
     }
 
     /**
@@ -268,7 +272,7 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
         val amAttribute = getAmAttribute(key, amNode)
 
         if (amAttribute == null || amAttribute.children.size > 1) {
-            if (arrayNode.isEmptyInDepth()) {
+            if (conversionContext.isStrictModeNotEnabled() && arrayNode.isEmptyInDepth()) {
                 return ChainConversionResult.nothing()
             } else {
                 throw ConversionException("${amNode.rmType} has no attribute ${webTemplatePath.key}", webTemplatePath.toString())
@@ -369,7 +373,7 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
                             postProcessors,
                             factoryFunction)
                         chainPostProcessors.addAll(postProcessors)
-                        if (createdValue.isEmpty()) { //If ELEMENT is empty, remove it from the list, otherwise post-process it.
+                        if (createdValue.isEmpty(conversionContext.strictMode)) { //If ELEMENT is empty, remove it from the list, otherwise post-process it.
                             collection.remove(createdValue)
                         } else {
                             PostProcessDelegator.delegate(conversionContext, firstAmNode, createdValue, webTemplatePath.copy(index = index))
@@ -408,7 +412,7 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
                 convertInChain(mutableListOf(value), arrayNode, chain.drop(1), webTemplatePath, chainPostProcessors, factoryFunction)
 
                 return if (existingValue == null) {
-                    if (value.isEmpty()) { //If RM object is empty, do nothing. If we will need it, we will create it again.
+                    if (value.isEmpty(conversionContext.strictMode)) { //If RM object is empty, do nothing. If we will need it, we will create it again.
                         ChainConversionResult.nothing()
                     } else {
                         firstChainSingletonHolder[Pair(firstAmNode, webTemplatePath.parent?.toString() ?: "")] = value
@@ -500,7 +504,7 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
                         webTemplatePath.copy(index = index),
                         chainPostProcessors,
                         factoryFunction)
-                    if (createdValue.isEmpty()) {
+                    if (createdValue.isEmpty(conversionContext.strictMode)) {
                         collection.remove(createdValue)
                     } else {
                         PostProcessDelegator.delegate(conversionContext, amNode, createdValue, webTemplatePath.copy(index = index))

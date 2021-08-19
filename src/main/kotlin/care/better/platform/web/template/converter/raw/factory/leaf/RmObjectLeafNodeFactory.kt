@@ -68,7 +68,7 @@ internal abstract class RmObjectLeafNodeFactory<T : RmObject> {
             else -> createForValueNode(conversionContext, amNode, node as ValueNode, webTemplatePath)
         }?.let {
             PostProcessDelegator.delegate(conversionContext, amNode, it, webTemplatePath)
-            if ((it as RmObject).isEmpty()) null else it
+            if ((it as RmObject).isEmpty(conversionContext.strictMode)) null else it
         }
 
     /**
@@ -109,10 +109,10 @@ internal abstract class RmObjectLeafNodeFactory<T : RmObject> {
             objectNode: ObjectNode,
             webTemplatePath: WebTemplatePath,
             parents: List<Any> = listOf()): T? {
-        val objectNodeMap = getFilteredObjectNodeMap(objectNode)
+        val objectNodeMap = getFilteredObjectNodeMap(objectNode, webTemplatePath, conversionContext.strictMode)
         return when {
-            objectNodeMap.isEmpty() -> null
-            else -> {
+            objectNodeMap.isEmpty() && conversionContext.strictMode -> createInstance(emptySet())
+            objectNodeMap.isNotEmpty() -> {
                 val instance: T = createInstance(objectNodeMap.keys)
                 /*
                   In rare cases, data value leaf node contains only properties for the parent.
@@ -155,6 +155,7 @@ internal abstract class RmObjectLeafNodeFactory<T : RmObject> {
                     null
                 }
             }
+            else -> null
         }
     }
 
@@ -162,26 +163,39 @@ internal abstract class RmObjectLeafNodeFactory<T : RmObject> {
      * Filters [ObjectNode] entries.
      *
      * @param objectNode [ObjectNode]
+     * @param strict [Boolean] indicating if strict mode is enabled
      * @return [Map] of filtered [ObjectNode] entries
      */
-    private fun getFilteredObjectNodeMap(objectNode: ObjectNode): Map<AttributeDto, JsonNode> =
+    private fun getFilteredObjectNodeMap(
+            objectNode: ObjectNode,
+            webTemplatePath: WebTemplatePath = WebTemplatePath.forBlankPath(),
+            strict: Boolean = false): Map<AttributeDto, JsonNode> =
         if (objectNode.isEmpty) {
             emptyMap()
         } else {
             val map = mutableMapOf<AttributeDto, JsonNode>()
 
             if (objectNode.has("") && objectNode.getFieldNames().size != 1) {
+                if (strict) {
+                    throw ConversionException("Object node with blank attribute name and multiple fields", webTemplatePath.toString())
+                }
                 map.remove(AttributeDto.ofBlank())
             }
 
             objectNode.fields().forEach {
                 if (!it.key.startsWith("transient_")) {
-                    if (!it.value.isNull && !it.value.isMissingNode && !(it.value.isTextual && it.value.asText().isNullOrBlank())) {
+                    if (strict && !it.value.isNull) {
+                        map[AttributeDto(it.key, it.key.replace("|", ""))] = it.value
+                    } else if (!it.value.isNull && !it.value.isMissingNode && !(it.value.isTextual && it.value.asText().isNullOrBlank())) {
                         map[AttributeDto(it.key, it.key.replace("|", ""))] = it.value
                     }
                 }
             }
-            removeDependentValues(map)
+
+            if (!strict) {
+                removeDependentValues(map)
+            }
+
             map
         }
 
@@ -224,7 +238,7 @@ internal abstract class RmObjectLeafNodeFactory<T : RmObject> {
      * @param rmObject RM object in RAW format
      * @param webTemplatePath Web template path from root to current node [WebTemplatePath]
      * @param parents Parent created in [AmNode] chain before leaf node
-     * @param strict [Boolean] indicating whether an error will be thrown if the attribute is not found on the parent [AmNode]
+     * @param strictSearching [Boolean] indicating whether an error will be thrown if the attribute is not found on the parent [AmNode]
      */
     protected open fun handleOnParent(
             conversionContext: ConversionContext,
@@ -234,14 +248,14 @@ internal abstract class RmObjectLeafNodeFactory<T : RmObject> {
             rmObject: T,
             webTemplatePath: WebTemplatePath,
             parents: List<Any>,
-            strict: Boolean = true): Boolean {
+            strictSearching: Boolean = true): Boolean {
         if (parents.isNotEmpty()) {
             val parent = parents.last()
             val amAttribute = getAmAttribute(amNode.parent, attribute.attribute)
             if (amAttribute == null || amAttribute.children.size > 1) {
                 return when {
-                    !strict -> false
-                    jsonNode.isEmptyInDepth() -> false
+                    !strictSearching -> false
+                    conversionContext.isStrictModeNotEnabled() && jsonNode.isEmptyInDepth() -> false
                     else -> throw ConversionException(
                         "${amNode.rmType} has no attribute ${attribute.originalAttribute}",
                         (webTemplatePath + attribute.originalAttribute).toString())

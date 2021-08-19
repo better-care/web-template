@@ -18,6 +18,7 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 import care.better.platform.template.AmNode
 import care.better.platform.template.AmUtils
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import org.openehr.am.aom.CDateTime
@@ -49,7 +50,7 @@ internal object DvDateTimeFactory : DvQuantifiedFactory<DvDateTime>() {
         super.handleField(conversionContext, amNode, attribute, rmObject, jsonNode, webTemplatePath) ||
                 if (attribute.attribute.isBlank() || attribute.attribute == "value") {
                     val textValue = jsonNode.asText()
-                    handleDateTime(conversionContext, amNode, rmObject, textValue)
+                    handleDateTime(conversionContext, amNode, rmObject, textValue, webTemplatePath)
                     true
                 } else {
                     false
@@ -62,8 +63,14 @@ internal object DvDateTimeFactory : DvQuantifiedFactory<DvDateTime>() {
      * @param amNode [AmNode]
      * @param rmObject [DvDate]
      * @param dateTimeString Date time [String]
+     * @param webTemplatePath [WebTemplatePath]
      */
-    private fun handleDateTime(conversionContext: ConversionContext, amNode: AmNode, rmObject: DvDateTime, dateTimeString: String) {
+    private fun handleDateTime(
+            conversionContext: ConversionContext,
+            amNode: AmNode,
+            rmObject: DvDateTime,
+            dateTimeString: String,
+            webTemplatePath: WebTemplatePath) {
         val pattern = AmUtils.getPrimitiveItem(amNode, CDateTime::class.java, "value")?.pattern ?: ""
 
         if (pattern.isBlank() && PARTIAL_PATTERN.matcher(dateTimeString).matches()) {
@@ -75,6 +82,9 @@ internal object DvDateTimeFactory : DvQuantifiedFactory<DvDateTime>() {
                 try {
                     rmObject.value = conversionContext.valueConverter.parsePartialDateTime(dateTimeString, pattern).format(pattern)
                 } catch (ex: IllegalArgumentException) {
+                    if (conversionContext.strictMode){
+                        throw ConversionException("Invalid partial datetime for pattern $pattern", webTemplatePath.toString())
+                    }
                     rmObject.value = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(conversionContext.valueConverter.parseDateTime(dateTimeString, false))
                 }
             } else {

@@ -59,7 +59,7 @@ internal object NormalRangeFactory : RmObjectLeafNodeFactory<DvInterval>() {
                             conversionContext,
                             amNode,
                             it,
-                            webTemplatePath + attribute.originalAttribute) as DvOrdered
+                            webTemplatePath + attribute.originalAttribute) as DvOrdered?
                     }.firstOrNull()
                 true
             }
@@ -71,7 +71,7 @@ internal object NormalRangeFactory : RmObjectLeafNodeFactory<DvInterval>() {
                             conversionContext,
                             amNode,
                             it,
-                            webTemplatePath + attribute.originalAttribute) as DvOrdered
+                            webTemplatePath + attribute.originalAttribute) as DvOrdered?
                     }.firstOrNull()
                 true
             }

@@ -16,6 +16,7 @@
 package care.better.platform.web.template.converter.raw.postprocessor
 
 import care.better.openehr.rm.RmObject
+import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.extensions.isEmpty
 
 /**
@@ -25,9 +26,9 @@ import care.better.platform.web.template.converter.raw.extensions.isEmpty
  * Singleton instance of [PostProcessor] that post-processes [MutableList] and removed empty elements.
  */
 internal object RemovableMutableListPostProcessor : AbstractMutableListPostProcessor() {
-    override fun mustRemove(element: Any): Boolean =
+    override fun mustRemove(element: Any, conversionContext: ConversionContext): Boolean =
         if (element is RmObject)
-            element.isEmpty()
+            element.isEmpty(conversionContext.strictMode)
         else
             false
 

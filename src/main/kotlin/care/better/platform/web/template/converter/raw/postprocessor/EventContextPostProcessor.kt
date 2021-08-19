@@ -37,7 +37,7 @@ internal object EventContextPostProcessor : PostProcessor<EventContext> {
             webTemplatePath: WebTemplatePath?) {
         instance.participations = instance.participations.ifEmpty { conversionContext.getParticipationList().toMutableList() }
 
-        if (instance.otherContext != null && instance.otherContext.isEmpty()) {
+        if (instance.otherContext != null && instance.otherContext.isEmpty(conversionContext.strictMode)) {
             instance.otherContext = null
         }
     }

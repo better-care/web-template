@@ -201,7 +201,7 @@
                         "|numerator": 0.3,
                         "|denominator": 1.0,
                         "|type": 1,
-                        "": 0.3
+                        "|value": 0.3
                       }
                     ]
                   }
@@ -415,7 +415,7 @@
                 "|numerator": 38.912304,
                 "|denominator": 100.0,
                 "|type": 2,
-                "": 0.38912305
+                "|value": 0.38912305
               }
             ],
             "time": [

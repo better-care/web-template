@@ -20,7 +20,6 @@ import care.better.platform.web.template.converter.utils.WebTemplateConversionUt
 import care.better.platform.web.template.date.partial.PartialDate
 import care.better.platform.web.template.date.partial.PartialDateTime
 import care.better.platform.web.template.date.partial.PartialTime
-import com.sun.xml.internal.ws.wsdl.writer.document.Part
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.format.DateTimeFormatter
 import org.joda.time.format.ISODateTimeFormat
@@ -119,6 +118,7 @@ class LocaleBasedValueConverter(private val locale: Locale) : ValueConverter {
             try {
                 return WebTemplateConversionUtils.convert(format.parseDateTime(value))
             } catch (ignored: IllegalArgumentException) {
+            } catch (ignored: UnsupportedOperationException) {
             }
         }
         return null
