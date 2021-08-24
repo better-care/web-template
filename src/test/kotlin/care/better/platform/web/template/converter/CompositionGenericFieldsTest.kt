@@ -33,8 +33,8 @@ class CompositionGenericFieldsTest : AbstractWebTemplateTest() {
 
         val context = ConversionContext.create().withUidGenerator { UUID.randomUUID().toString() }.build()
         val convertedComposition: Composition? = webTemplate.convertFromStructuredToRaw(inputStructuredComposition, context)
-        assertThat(convertedComposition).isNotNull()
-        assertThat(convertedComposition!!.feederAudit?.originalContent).isNotNull()
+        assertThat(convertedComposition).isNotNull
+        assertThat(convertedComposition!!.feederAudit?.originalContent).isNotNull
     }
 
     @Test
@@ -46,7 +46,7 @@ class CompositionGenericFieldsTest : AbstractWebTemplateTest() {
 
         val convertedComposition: Composition? = webTemplate.convertFromFlatToRaw(inputFlatComposition, context)
 
-        assertThat(convertedComposition).isNotNull()
-        assertThat(convertedComposition!!.feederAudit?.originalContent).isNotNull()
+        assertThat(convertedComposition).isNotNull
+        assertThat(convertedComposition!!.feederAudit?.originalContent).isNotNull
     }
 }

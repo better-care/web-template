@@ -137,7 +137,7 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
      */
     @Suppress("UNCHECKED_CAST")
     private fun convertObjectNode(objectNode: ObjectNode, webTemplateNode: WebTemplateNode, webTemplatePath: WebTemplatePath): Any? {
-        if (objectNode.isEmpty && conversionContext.isStrictModeNotEnabled()) { //ObjectNode is empty; nothing will be created.
+        if (objectNode.isEmpty && conversionContext.isStrictModeNotEnabled() && isEmptyToNullConversionAllowable(webTemplateNode)) { //ObjectNode is empty; nothing will be created.
             return null
         }
 
@@ -187,7 +187,7 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
         }
 
         //ChainConversionResult is empty if the created object is null or if the created collection is empty.
-        if (chainConversionResult.all { it.isEmpty() } && specialCaseHandlers.isEmpty() && conversionContext.isStrictModeNotEnabled()) {
+        if (chainConversionResult.all { it.isEmpty() } && specialCaseHandlers.isEmpty() && isEmptyToNullConversionAllowable(webTemplateNode) && conversionContext.isStrictModeNotEnabled()) {
             return null
         }
 
@@ -286,6 +286,10 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
             webTemplatePath,
             { node, wtPath, parents -> createChildNode(key, node, wtPath, amAttributeAmNode, parents) })
     }
+
+    private fun isEmptyToNullConversionAllowable(webTemplateNode: WebTemplateNode) =
+            conversionContext.isStrictModeNotEnabled() && !(webTemplateNode.amNode.parent == null && genericFieldFeederAudit != null)
+
 
     /**
      * Converts the RM object or [Collection] of the RM objects in STRUCTURED format to RAW format for the RM attributes.
