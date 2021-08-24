@@ -26,6 +26,7 @@ import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.factory.leaf.DvProportionFactory
 import care.better.platform.web.template.converter.raw.factory.leaf.DvQuantityFactory
 import care.better.platform.web.template.converter.raw.factory.leaf.DvTimeFactory
+import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils
 import care.better.platform.web.template.converter.value.LocaleBasedValueConverter
 import com.fasterxml.jackson.databind.node.TextNode
 import com.google.common.collect.ImmutableMap
@@ -260,26 +261,30 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("en")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
-        val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/time", "14:35"), context)
+        val time = LocalTime.of(14, 35)
+
+        val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/time", time), context)
 
         val firstFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(firstComposition!!, FromRawConversion.create())
-        assertThat(firstFlatMap).contains(entry("testing_template/context/testing/time", "14:35:00"))
+        assertThat(firstFlatMap).contains(entry("testing_template/context/testing/time", DateTimeFormatter.ISO_LOCAL_TIME.format(time)))
 
+        val localTime = LocalTime.of(14, 35, 10, 117000000)
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.of("testing_template/context/testing/time", LocalTime.of(14, 35, 10, 117000000)),
+            ImmutableMap.of("testing_template/context/testing/time", localTime),
             context)
 
         val secondFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(secondComposition!!, FromRawConversion.create())
-        assertThat(secondFlatMap).contains(entry("testing_template/context/testing/time", "14:35:10.117"))
+        assertThat(secondFlatMap).contains(entry("testing_template/context/testing/time", DateTimeFormatter.ISO_LOCAL_TIME.format(localTime)))
 
+        val zonedDateTime = ZonedDateTime.of(2014, 1, 13, 14, 35, 10, 117000000, ZoneId.systemDefault())
         val thirdComposition: Composition? = webTemplate.convertFromFlatToRaw(
             ImmutableMap.of(
                 "testing_template/context/testing/time",
-                ZonedDateTime.of(2014, 1, 13, 14, 35, 10, 117000000, ZoneId.systemDefault())),
+                zonedDateTime),
             context)
 
         val thirdFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(thirdComposition!!, FromRawConversion.create())
-        assertThat(thirdFlatMap).contains(entry("testing_template/context/testing/time", "14:35:10.117+01:00"))
+        assertThat(thirdFlatMap).contains(entry("testing_template/context/testing/time", DateTimeFormatter.ISO_OFFSET_TIME.format(zonedDateTime.toOffsetDateTime())))
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("testing_template/context/testing/time", true), context) }
             .isInstanceOf(ConversionException::class.java)
@@ -314,19 +319,23 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
         val firstFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(firstComposition!!, FromRawConversion.create())
         assertThat(firstFlatMap).contains(entry("testing_template/context/testing/time", "14:35:00"))
 
+        val jodaLocalTime = org.joda.time.LocalTime(14, 35, 10, 117)
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.of("testing_template/context/testing/time", org.joda.time.LocalTime(14, 35, 10, 117)),
+            ImmutableMap.of("testing_template/context/testing/time", jodaLocalTime),
             context)
+        val localTime = WebTemplateConversionUtils.convert(jodaLocalTime)
 
         val secondFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(secondComposition!!, FromRawConversion.create())
-        assertThat(secondFlatMap).contains(entry("testing_template/context/testing/time", "14:35:10.117"))
+        assertThat(secondFlatMap).contains(entry("testing_template/context/testing/time", DateTimeFormatter.ISO_LOCAL_TIME.format(localTime)))
 
+        val dateTime = DateTime(2014, 1, 13, 14, 35, 10, 117)
         val thirdComposition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.of("testing_template/context/testing/time", DateTime(2014, 1, 13, 14, 35, 10, 117)),
+            ImmutableMap.of("testing_template/context/testing/time", dateTime),
             context)
+        val convertOffsetTime = WebTemplateConversionUtils.convertOffsetTime(dateTime)
 
         val thirdFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(thirdComposition!!, FromRawConversion.create())
-        assertThat(thirdFlatMap).contains(entry("testing_template/context/testing/time", "14:35:10.117+01:00"))
+        assertThat(thirdFlatMap).contains(entry("testing_template/context/testing/time", DateTimeFormatter.ISO_OFFSET_TIME.format(convertOffsetTime)))
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("testing_template/context/testing/time", "17:aa"), context) }
             .isInstanceOf(ConversionException::class.java)

@@ -44,6 +44,8 @@ import java.io.File
 import java.io.FileWriter
 import java.io.IOException
 import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import java.util.*
 import javax.xml.bind.JAXBElement
 import javax.xml.bind.JAXBException
@@ -77,6 +79,7 @@ class ClinicalTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en"))
 
+        val contextStartTime = LocalDateTime.of(2012, 2, 1, 0, 0)
         val flatMap: Map<String, String> = ImmutableMap.builder<String, String>()
             .put("vitals/vitals/haemoglobin_a1c/any_event/hba1c", "5,1")
             .put("vitals/vitals/haemoglobin_a1c/datetime_result_issued", LocalDateTime.of(2012, 1, 20, 19, 30).toString())
@@ -86,7 +89,7 @@ class ClinicalTest : AbstractWebTemplateTest() {
             .put("vitals/vitals/body_temperature/any_event/temperature|unit", "°C")
             .put("vitals/vitals/body_temperature:1/any_event/temperature|magnitude", "39,1")
             .put("vitals/vitals/body_temperature:1/any_event/temperature|unit", "°C")
-            .put("ctx/time", LocalDateTime.of(2012, 2, 1, 0, 0).toString())
+            .put("ctx/time", contextStartTime.toString())
             .put("ctx/category", "event")
             .put("ctx/setting", "dental care")
             .put("ctx/id_schema", "local_sch")
@@ -106,7 +109,8 @@ class ClinicalTest : AbstractWebTemplateTest() {
         val composition: Composition? = webTemplate.convertFromFlatToRaw(flatMap, context)
         composition!!.archetypeDetails!!.templateId = template.templateId
         assertThat(composition).isNotNull
-        assertThat(composition.context!!.startTime!!.value).isEqualTo("2012-02-01T00:00:00+01:00")
+        val contextStartOffsetDateTime = contextStartTime.atZone(ZoneId.systemDefault()).toOffsetDateTime()
+        assertThat(composition.context!!.startTime!!.value).isEqualTo(DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(contextStartOffsetDateTime))
 
         val section = composition.content[0] as Section
         assertThat(section.name!!.value).isEqualTo("Vitals")
@@ -284,11 +288,11 @@ class ClinicalTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en"))
 
-        val formattedLocalDateTime = LocalDateTime.of(2012, 2, 1, 0, 1).toString()
+        val contextStartDateTime = LocalDateTime.of(2012, 2, 1, 0, 1)
         val values: Map<String, String> = ImmutableMap.builder<String, String>()
-            .put("ctx/time", formattedLocalDateTime)
+            .put("ctx/time", contextStartDateTime.toString())
             .put("ctx/category", "persistent")
-            .put("ctx/history_origin", formattedLocalDateTime)
+            .put("ctx/history_origin", contextStartDateTime.toString())
             .put("perinatal_history/perinatal_history/apgar_score/a1_minute/total", "3")
             .put("perinatal_history/perinatal_history/apgar_score/a10_minute/total", "5")
             .put("perinatal_history/perinatal_history/maternal_pregnancy/labour_or_delivery/duration_of_labour|day", "1")
@@ -305,7 +309,8 @@ class ClinicalTest : AbstractWebTemplateTest() {
         assertThat(observation.name!!.value).isEqualTo("Apgar score")
 
         val history = observation.data
-        assertThat(history!!.origin!!.value).isEqualTo("2012-02-01T00:01:00+01:00")
+        val contextStartOffsetDateTime = contextStartDateTime.atZone(ZoneId.systemDefault()).toOffsetDateTime()
+        assertThat(history!!.origin!!.value).isEqualTo(DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(contextStartOffsetDateTime))
 
         val firstEvent = history.events[0] as PointEvent
         val secondEvent = history.events[1] as PointEvent

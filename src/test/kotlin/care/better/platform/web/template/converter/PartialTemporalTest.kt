@@ -92,7 +92,8 @@ class PartialTemporalTest : AbstractWebTemplateTest() {
             secondOffsetDateTime)
 
         val thirdOffsetDateTime = ZonedDateTime.of(2019, 2, 1, 13, 10, 20, 777000000, ZoneId.systemDefault()).toOffsetDateTime()
-        assertValueMatches(webTemplate, extractor, attributeName, "2019-02-01T13:10:20.777+01:00", "2019-02-01T13:10:20.777+01:00", thirdOffsetDateTime)
+        val thirdOffsetDateTimeString = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(thirdOffsetDateTime)
+        assertValueMatches(webTemplate, extractor, attributeName, thirdOffsetDateTimeString, thirdOffsetDateTimeString, thirdOffsetDateTime)
     }
 
     /**
@@ -164,7 +165,8 @@ class PartialTemporalTest : AbstractWebTemplateTest() {
             secondOffsetDateTime)
 
         val thirdOffsetDateTime = ZonedDateTime.of(2019, 2, 1, 13, 10, 20, 777000000, ZoneId.systemDefault()).toOffsetDateTime()
-        assertValueMatches(webTemplate, extractor, attributeName, "2019-02-01T13:10:20.777+01:00", "2019-02-01T13:10:20.777+01:00", thirdOffsetDateTime)
+        val thirdOffsetDateTimeString = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(thirdOffsetDateTime)
+        assertValueMatches(webTemplate, extractor, attributeName, thirdOffsetDateTimeString, thirdOffsetDateTimeString, thirdOffsetDateTime)
     }
 
     @Test
@@ -202,7 +204,8 @@ class PartialTemporalTest : AbstractWebTemplateTest() {
             DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(secondOffsetDateTime))
 
         val thirdOffsetDateTime = ZonedDateTime.of(2019, 2, 1, 13, 10, 20, 777000000, ZoneId.systemDefault()).toOffsetDateTime()
-        assertValueMatches(webTemplate, extractor, attributeName, "2019-02-01T13:10:20.777+01:00", "2019-02-01T13:10:20.777+01:00", thirdOffsetDateTime)
+        val thirdOffsetDateTimeString = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(thirdOffsetDateTime)
+        assertValueMatches(webTemplate, extractor, attributeName, thirdOffsetDateTimeString, thirdOffsetDateTimeString, thirdOffsetDateTime)
     }
 
     @Test
