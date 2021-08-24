@@ -16,10 +16,10 @@
 package care.better.platform.web.template.converter.flat.mapper
 
 import care.better.platform.template.AmNode
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.value.LocaleBasedValueConverter
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
 import org.junit.jupiter.api.Test

@@ -88,7 +88,8 @@ class CompatibilityTest : AbstractWebTemplateTest() {
             mapOf(Pair("medtronic_vbhc_crc_clinical_outcomes_baseline/baseline_treatment_factors/treatment", "e9a3fedc-f8ba-431f-9c48-b35d6012fb10"))),
         CompatibilityInputResourceDto("VBHC CRC Clinical Outcomes Follow-up", false, Pair(1, 1), "en", setOf("en")),
         CompatibilityInputResourceDto("VBHC CRC PROM", false, Pair(1, 1), "en", setOf("en")),
-        CompatibilityInputResourceDto("CHAQ", false, Pair(1, 1), "en", setOf("en"), nullable = true),
+        CompatibilityInputResourceDto("CHAQ", false, Pair(1, 1), "en", setOf("en"), onlyGenericFields = true),
+        CompatibilityInputResourceDto("CHAQ", false, Pair(2, 2), "en", setOf("en"), nullable = true),
         CompatibilityInputResourceDto("JIA Body map", false, Pair(1, 1), "en", setOf("en")),
         CompatibilityInputResourceDto("JIA JADAS", false, Pair(1, 1), "en", setOf("en")),
         CompatibilityInputResourceDto("Tanner stages", false, Pair(1, 1), "en", setOf("en")),
@@ -130,7 +131,7 @@ class CompatibilityTest : AbstractWebTemplateTest() {
 
             for (i in it.range.first .. it.range.second) {
                 val flatComposition =
-                    if (it.nullable)
+                    if (it.nullable || it.onlyGenericFields)
                         mapOf()
                     else
                         CompatibilityMapper.readValue(
@@ -138,13 +139,13 @@ class CompatibilityTest : AbstractWebTemplateTest() {
                             object : TypeReference<Map<String, Any>>() {})
 
                 val structuredComposition =
-                    if (it.nullable)
+                    if (it.nullable || it.onlyGenericFields)
                         ConversionObjectMapper.createObjectNode()
                     else
                         CompatibilityMapper.readTree(getJson("/compatibility/compositions/structured/${it.name}($i).json")) as ObjectNode
 
                 val rawComposition =
-                    if (it.nullable)
+                    if (it.nullable || it.onlyGenericFields)
                         Composition()
                     else
                         getComposition("/compatibility/compositions/raw/${it.name}($i).xml")
@@ -173,6 +174,10 @@ class CompatibilityTest : AbstractWebTemplateTest() {
 
                     if (it.nullable){
                         assertThat(convertedComposition).isNull()
+                        return
+                    } else if (it.onlyGenericFields) {
+                        assertThat(convertedComposition).isNotNull()
+                        assertThat(convertedComposition?.feederAudit?.originalContent).isNotNull()
                         return
                     }
 
@@ -286,7 +291,8 @@ class CompatibilityTest : AbstractWebTemplateTest() {
             val language: String,
             val languages: Set<String>,
             val instructionUidEntries: Map<String, String> = mutableMapOf(),
-            val nullable: Boolean = false)
+            val nullable: Boolean = false,
+            val onlyGenericFields: Boolean = false)
 
     private fun getUidGenerator(instructionUidEntries: Map<String, String>): (String) -> String = { instructionUidEntries[it] ?: UUID.randomUUID().toString() }
 

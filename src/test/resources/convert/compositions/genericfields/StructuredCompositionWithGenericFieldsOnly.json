@@ -1,0 +1,26 @@
+{
+  "composed_document": {
+    "context": [
+      {}
+    ],
+    "dynamic_entry": []
+  },
+  "ctx": {
+    "generic_fields": {
+      "/generic-input_text-4288737": [
+        "test"
+      ],
+      "/generic-numeric_field-437295": [
+        "123"
+      ]
+    },
+    "language": "en",
+    "territory": "en",
+    "tags": [
+      {
+        "tag": "formName",
+        "value": "new"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "composed_document/_feeder_audit/originating_system_audit|system_id": "FormRenderer",
+  "composed_document/_feeder_audit/original_content": "{\"/generic-input_text-4288737\":[\"test\"],\"/generic-numeric_field-437295\":[\"123\"]}",
+  "composed_document/_feeder_audit/original_content|formalism": "application/json",
+  "composed_document/language|code": "en",
+  "composed_document/language|terminology": "ISO_639-1",
+  "composed_document/territory|code": "en",
+  "composed_document/territory|terminology": "ISO_3166-1",
+  "composed_document/context/start_time": "2021-08-10T12:44:18.84+02:00",
+  "composed_document/context/setting|code": "238",
+  "composed_document/context/setting|value": "other care",
+  "composed_document/context/setting|terminology": "openehr",
+  "composed_document/composer|name": "admin"
+}

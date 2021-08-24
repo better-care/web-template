@@ -20,15 +20,15 @@ import care.better.platform.path.PathUtils
 import care.better.platform.utils.JSR310ConversionUtils
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.mapper.WebTemplateObjectMapper
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.google.common.collect.ImmutableMap
 import com.google.common.collect.ImmutableSet
-import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
-import care.better.platform.web.template.builder.WebTemplateBuilder
-import care.better.platform.web.template.builder.mapper.WebTemplateObjectMapper
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
 import org.joda.time.Period
@@ -43,7 +43,7 @@ import org.openehr.rm.datatypes.*
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
-import java.math.BigInteger
+import java.time.LocalDateTime
 import java.util.*
 import javax.xml.bind.JAXBElement
 import javax.xml.bind.JAXBException
@@ -79,14 +79,14 @@ class ClinicalTest : AbstractWebTemplateTest() {
 
         val flatMap: Map<String, String> = ImmutableMap.builder<String, String>()
             .put("vitals/vitals/haemoglobin_a1c/any_event/hba1c", "5,1")
-            .put("vitals/vitals/haemoglobin_a1c/datetime_result_issued", "20. 1. 2012 19:30")
-            .put("vitals/vitals/body_temperature/any_event/time", "1. 1. 2012 0:0")
+            .put("vitals/vitals/haemoglobin_a1c/datetime_result_issued", LocalDateTime.of(2012, 1, 20, 19, 30).toString())
+            .put("vitals/vitals/body_temperature/any_event/time", LocalDateTime.of(2012, 1, 1, 0, 0).toString())
             .put("vitals/vitals/body_temperature/site_of_measurement", "at0022")
             .put("vitals/vitals/body_temperature/any_event/temperature|magnitude", "38,1")
             .put("vitals/vitals/body_temperature/any_event/temperature|unit", "°C")
             .put("vitals/vitals/body_temperature:1/any_event/temperature|magnitude", "39,1")
             .put("vitals/vitals/body_temperature:1/any_event/temperature|unit", "°C")
-            .put("ctx/time", "1. 2. 2012 00:00")
+            .put("ctx/time", LocalDateTime.of(2012, 2, 1, 0, 0).toString())
             .put("ctx/category", "event")
             .put("ctx/setting", "dental care")
             .put("ctx/id_schema", "local_sch")
@@ -178,7 +178,7 @@ class ClinicalTest : AbstractWebTemplateTest() {
 
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en"))
         val values: Map<String, String> = ImmutableMap.builder<String, String>()
-            .put("vitals/vitals/haemoglobin_a1c/datetime_result_issued", "1/2/2012, 8:07")
+            .put("vitals/vitals/haemoglobin_a1c/datetime_result_issued", LocalDateTime.of(2012, 2, 1, 8, 7).toString())
             .put("vitals/vitals/haemoglobin_a1c/receiver_order_identifier", "rec")
             .put("vitals/vitals/haemoglobin_a1c/any_event/test_status", "at0038")
             .put("vitals/vitals/haemoglobin_a1c/any_event/hba1c", "3.2")
@@ -284,10 +284,11 @@ class ClinicalTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en"))
 
+        val formattedLocalDateTime = LocalDateTime.of(2012, 2, 1, 0, 1).toString()
         val values: Map<String, String> = ImmutableMap.builder<String, String>()
-            .put("ctx/time", "1. 2. 2012 00:01")
+            .put("ctx/time", formattedLocalDateTime)
             .put("ctx/category", "persistent")
-            .put("ctx/history_origin", "1. 2. 2012 00:01")
+            .put("ctx/history_origin", formattedLocalDateTime)
             .put("perinatal_history/perinatal_history/apgar_score/a1_minute/total", "3")
             .put("perinatal_history/perinatal_history/apgar_score/a10_minute/total", "5")
             .put("perinatal_history/perinatal_history/maternal_pregnancy/labour_or_delivery/duration_of_labour|day", "1")

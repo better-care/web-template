@@ -18,6 +18,8 @@ package care.better.platform.web.template.converter
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.raw.context.ConversionContext
@@ -27,8 +29,6 @@ import care.better.platform.web.template.converter.raw.factory.leaf.DvTimeFactor
 import care.better.platform.web.template.converter.value.LocaleBasedValueConverter
 import com.fasterxml.jackson.databind.node.TextNode
 import com.google.common.collect.ImmutableMap
-import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
-import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.*
 import org.joda.time.DateTime
 import org.joda.time.LocalDate

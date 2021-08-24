@@ -114,7 +114,7 @@ class LocaleBasedValueConverter(private val locale: Locale) : ValueConverter {
         }
 
     private fun convertToOffsetDateTimeLocalized(value: String): OffsetDateTime? {
-        for (format in dateTimeFormatters) {
+        for (format in dateTimeFormatters.filter { it.isParser }) {
             try {
                 return WebTemplateConversionUtils.convert(format.parseDateTime(value))
             } catch (ignored: IllegalArgumentException) {
@@ -125,7 +125,7 @@ class LocaleBasedValueConverter(private val locale: Locale) : ValueConverter {
     }
 
     private fun convertToLocalDateLocalized(value: String): LocalDate? {
-        for (format in dateFormatters) {
+        for (format in dateFormatters.filter { it.isParser }) {
             try {
                 return WebTemplateConversionUtils.convert(format.parseLocalDate(value))
             } catch (ignored: IllegalArgumentException) {
@@ -135,7 +135,7 @@ class LocaleBasedValueConverter(private val locale: Locale) : ValueConverter {
     }
 
     private fun convertToLocalTimeLocalized(value: String): LocalTime? {
-        for (format in timeFormatters) {
+        for (format in timeFormatters.filter { it.isParser }) {
             try {
                 return WebTemplateConversionUtils.convert(format.parseLocalTime(value))
             } catch (ignored: IllegalArgumentException) {

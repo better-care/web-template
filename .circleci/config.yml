@@ -6,8 +6,6 @@ jobs:
     working_directory: ~/web-template
     docker:
       - image: circleci/openjdk:8-jdk-stretch
-    environment:
-      TZ: Europe/Podgorica
     steps:
       - checkout
       - restore_cache:
