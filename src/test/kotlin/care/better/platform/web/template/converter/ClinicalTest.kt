@@ -110,7 +110,8 @@ class ClinicalTest : AbstractWebTemplateTest() {
         composition!!.archetypeDetails!!.templateId = template.templateId
         assertThat(composition).isNotNull
         val contextStartOffsetDateTime = contextStartTime.atZone(ZoneId.systemDefault()).toOffsetDateTime()
-        assertThat(composition.context!!.startTime!!.value).isEqualTo(DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(contextStartOffsetDateTime))
+        val formattedOffsetDateTime = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(contextStartOffsetDateTime)
+        assertThat(composition.context!!.startTime!!.value).isEqualTo(formattedOffsetDateTime)
 
         val section = composition.content[0] as Section
         assertThat(section.name!!.value).isEqualTo("Vitals")
@@ -119,7 +120,7 @@ class ClinicalTest : AbstractWebTemplateTest() {
         assertThat(hba1c.name!!.value).isEqualTo("Haemoglobin A1c")
 
         val history2 = hba1c.data
-        assertThat(history2!!.origin!!.value).isEqualTo("2012-02-01T00:00:00+01:00")
+        assertThat(history2!!.origin!!.value).isEqualTo(formattedOffsetDateTime)
 
         val data2 = history2.events[0].data as ItemTree?
         val element2 = data2!!.items[0] as Element
