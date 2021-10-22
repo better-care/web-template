@@ -157,7 +157,8 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
                 else -> ConversionObjectMapper.createArrayNode().apply { this.add(value) }
             }
 
-            if (!key.startsWith("transient_") && key != "ctx" && !key.startsWith("ctx/")) { //Skip transient fields and ctx values (ctx was already set to the ConversionContext).
+            val isFieldTransient = key.startsWith("transient_") && !map.containsKey(key)
+            if (!isFieldTransient && key != "ctx" && !key.startsWith("ctx/")) { //Skip transient fields and ctx values (ctx was already set to the ConversionContext).
                 val childWebTemplateNode = map[key]
                 when {
                     childWebTemplateNode != null -> {  //Handle WebTemplateNode structure.
