@@ -15,11 +15,9 @@
 
 package care.better.platform.web.template.converter.value
 
+import care.better.platform.time.format.OpenEhrDateTimeFormatter
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils
-import care.better.platform.web.template.date.partial.PartialDate
-import care.better.platform.web.template.date.partial.PartialDateTime
-import care.better.platform.web.template.date.partial.PartialTime
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.format.DateTimeFormatter
 import org.joda.time.format.ISODateTimeFormat
@@ -158,10 +156,6 @@ class LocaleBasedValueConverter(private val locale: Locale) : ValueConverter {
         return null
     }
 
-    override fun parsePartialDate(value: String, pattern: String): PartialDate = PartialDate.from(value, pattern)
-
-    override fun parsePartialDate(value: String): PartialDate = PartialDate.from(value)
-
     override fun parseTime(value: String): LocalTime =
         when {
             NOW.equals(value, ignoreCase = true) -> LocalTime.now()
@@ -181,23 +175,64 @@ class LocaleBasedValueConverter(private val locale: Locale) : ValueConverter {
         else
             convertToOffsetTimeLocalized(value) ?: throw  ConversionException("Unable to convert value to LocalTime: $value")
 
-    override fun parsePartialDateTime(value: String): PartialDateTime = PartialDateTime.from(value)
+    override fun parseOpenEhrDate(value: String, pattern: String, strict: Boolean): TemporalAccessor =
+        if (NOW.equals(value, ignoreCase = true)) {
+            OpenEhrDateTimeFormatter.ofPattern(pattern, false, locale).parseDate(LocalDate.now().toString())
+        } else {
+            try {
+                OpenEhrDateTimeFormatter.ofPattern(pattern, strict, locale).parseDate(value)
+            } catch (ignored: DateTimeException) {
+                if (isLocalizedDateOrDateTime(value)) {
+                    convertToLocalDateLocalized(value) ?: throw  ConversionException("Unable to convert value to OpenEhr Date: $value")
+                } else {
+                    throw  ConversionException("Unable to convert value to OpenEhr Date: $value")
 
-    override fun parsePartialDateTime(value: String, pattern: String): PartialDateTime = PartialDateTime.from(value, pattern)
+                }
+            }
+        }
 
-    override fun parsePartialTime(value: String): PartialTime = PartialTime.from(value)
+    override fun parseOpenEhrDateTime(value: String, pattern: String, strict: Boolean): TemporalAccessor =
+        if (NOW.equals(value, ignoreCase = true)) {
+            OpenEhrDateTimeFormatter.ofPattern(pattern, false, locale).parseDateTime(OffsetDateTime.now().toString())
+        } else {
+            try {
+                OpenEhrDateTimeFormatter.ofPattern(pattern, strict, locale).parseDateTime(value)
+            } catch (ignored: DateTimeException) {
+                if (isLocalizedDateOrDateTime(value)) {
+                    convertToOffsetDateTimeLocalized(value) ?: throw  ConversionException("Unable to convert value to OpenEhr Date: $value")
+                } else {
+                    throw  ConversionException("Unable to convert value to OpenEhr Date: $value")
 
-    override fun parsePartialTime(value: String, pattern: String): PartialTime = PartialTime.from(value, pattern)
+                }
+            }
+        }
+
+    override fun parseOpenEhrTime(value: String, pattern: String, strict: Boolean): TemporalAccessor =
+        if (NOW.equals(value, ignoreCase = true)) {
+            OpenEhrDateTimeFormatter.ofPattern(pattern, false, locale).parseTime(OffsetTime.now().toString())
+        } else {
+            try {
+                OpenEhrDateTimeFormatter.ofPattern(pattern, strict, locale).parseTime(value)
+            } catch (ignored: DateTimeException) {
+                throw  ConversionException("Unable to convert value to OpenEhr Time: $value")
+            }
+        }
+
+    // datetime is marked as localized if it doesn't contain standard date separator "-" or if it's not only a time without a date
+    private fun isLocalizedDateOrDateTime(value: String): Boolean =
+        (value.takeUnless { value.contains(":") } ?: value.substring(0, value.indexOf(":")))
+            .let { !it.contains("-") && it.contains(".") || it.contains("/") }
+
+    override fun formatOpenEhrTemporal(temporal: TemporalAccessor, pattern: String, strict: Boolean): String =
+        try {
+            OpenEhrDateTimeFormatter.ofPattern(pattern, strict, locale).format(temporal)
+        } catch (ignored: DateTimeException) {
+            throw  ConversionException("Unable to format OpenEhr Date/Time/DateTime: $temporal")
+        }
 
     override fun formatDateTime(dateTime: OffsetDateTime): String = jsr310DefaultFormatter.format(dateTime)
 
-    override fun formatPartialDateTime(partialDateTime: PartialDateTime): String = partialDateTime.format()
-
     override fun formatDate(date: LocalDate): String = jsr310DateFormatter.format(date)
-
-    override fun formatPartialDate(date: PartialDate): String = date.format()
-
-    override fun formatPartialTime(time: PartialTime): String = time.format()
 
     override fun formatTime(time: LocalTime): String = jsr310TimeFormatter.format(time)
 

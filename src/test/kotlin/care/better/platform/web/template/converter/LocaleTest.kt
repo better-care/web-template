@@ -18,6 +18,7 @@ package care.better.platform.web.template.converter
 import care.better.platform.path.NameAndNodeMatchingPathValueExtractor
 import care.better.platform.path.SimplePathValueExtractor
 import care.better.platform.utils.DateTimeConversionUtils
+import care.better.platform.time.temporal.OpenEhrLocalDate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
@@ -55,6 +56,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.time.OffsetDateTime
+import java.time.YearMonth
 import java.time.ZoneOffset
 import java.util.*
 import javax.xml.bind.JAXBException
@@ -1114,10 +1116,11 @@ class LocaleTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withTerritory("SI").withLanguage("en").withComposerName("Test").build()
 
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("test_encounter/testing:0/testing:0/partial_date", "2016-01"), context)
-        assertThat(webTemplate.convertFromRawToFlat(firstComposition!!, FromRawConversion.create())["test_encounter/testing:0/testing:0/partial_date"]).isEqualTo("2016-01")
+        assertThat(webTemplate.convertFromRawToFlat(firstComposition!!, FromRawConversion.create())["test_encounter/testing:0/testing:0/partial_date"]).isEqualTo(YearMonth.of(2016,1))
 
-        val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("test_encounter/testing:0/testing:0/partial_date", "2016-01-01"), context)
-        assertThat(webTemplate.convertFromRawToFlat(secondComposition!!, FromRawConversion.create())["test_encounter/testing:0/testing:0/partial_date"]).isEqualTo(java.time.LocalDate.of(2016, 1, 1))
+        val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("test_encounter/testing:0/testing:0/partial_date", java.time.LocalDate.of(2016, 1, 1)), context)
+        assertThat(webTemplate.convertFromRawToFlat(secondComposition!!, FromRawConversion.create())["test_encounter/testing:0/testing:0/partial_date"]).isEqualTo(
+                java.time.LocalDate.of(2016, 1, 1))
     }
 
     @Test
@@ -1130,7 +1133,7 @@ class LocaleTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withTerritory("SI").withLanguage("en").withComposerName("Test").build()
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("test_encounter/testing:0/testing:0/partial_date", "2016-13"), context) }
             .isInstanceOf(ConversionException::class.java)
-            .hasMessage("Error processing value: \"2016-13\" (path: test_encounter/testing:0/testing:0/partial_date).")
+            .hasMessage("Error processing value \"2016-13\" for pattern \"yyyy-mm-??\" (path: test_encounter/testing:0/testing:0/partial_date).")
     }
 
     @Test
@@ -1143,7 +1146,7 @@ class LocaleTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withTerritory("SI").withLanguage("en").withComposerName("Test").build()
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("test_encounter/testing:0/testing:0/partial_date", "z2016-12"), context) }
             .isInstanceOf(ConversionException::class.java)
-            .hasMessage("Error processing value: \"z2016-12\" (path: test_encounter/testing:0/testing:0/partial_date).")
+            .hasMessage("Error processing value \"z2016-12\" for pattern \"yyyy-mm-??\" (path: test_encounter/testing:0/testing:0/partial_date).")
     }
 
     @Test
@@ -1156,10 +1159,10 @@ class LocaleTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withTerritory("SI").withLanguage("en").withComposerName("Test").build()
 
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("test_encounter/testing:0/testing:0/partial_date", "2016-01"), context)
-        assertThat(webTemplate.convertFromRawToFlat(firstComposition!!, FromRawConversion.create())["test_encounter/testing:0/testing:0/partial_date"]).isEqualTo("2016-01")
+        assertThat(webTemplate.convertFromRawToFlat(firstComposition!!, FromRawConversion.create())["test_encounter/testing:0/testing:0/partial_date"]).isEqualTo(YearMonth.of(2016, 1))
 
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("test_encounter/testing:0/testing:0/partial_date", "2016-12-01"), context)
-        assertThat(webTemplate.convertFromRawToFlat(secondComposition!!, FromRawConversion.create())["test_encounter/testing:0/testing:0/partial_date"]).isEqualTo("2016-12")
+        assertThat(webTemplate.convertFromRawToFlat(secondComposition!!, FromRawConversion.create())["test_encounter/testing:0/testing:0/partial_date"]).isEqualTo(YearMonth.of(2016, 12))
     }
 
     @Test
@@ -1170,7 +1173,7 @@ class LocaleTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withTerritory("SI").withLanguage("en").withComposerName("Test").build()
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("test_encounter/testing:0/testing:0/partial_date", "2016-13"), context) }
             .isInstanceOf(ConversionException::class.java)
-            .hasMessage("Error processing value: \"2016-13\" (path: test_encounter/testing:0/testing:0/partial_date).")
+            .hasMessage("Error processing value \"2016-13\" for pattern \"yyyy-??-XX\" (path: test_encounter/testing:0/testing:0/partial_date).")
     }
 
     @Test

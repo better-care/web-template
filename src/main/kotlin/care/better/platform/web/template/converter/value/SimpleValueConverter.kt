@@ -15,14 +15,14 @@
 
 package care.better.platform.web.template.converter.value
 
+import care.better.platform.time.format.OpenEhrDateTimeFormatter
 import care.better.platform.utils.DateTimeConversionUtils
+import care.better.platform.time.temporal.*
 import care.better.platform.web.template.converter.exceptions.ConversionException
-import care.better.platform.web.template.date.partial.PartialDate
-import care.better.platform.web.template.date.partial.PartialDateTime
-import care.better.platform.web.template.date.partial.PartialTime
 import org.openehr.rm.datatypes.DvDate
 import java.time.*
 import java.time.format.DateTimeFormatter
+import java.time.temporal.TemporalAccessor
 
 /**
  * @author Primoz Delopst
@@ -59,10 +59,6 @@ object SimpleValueConverter : ValueConverter {
             }
         }
 
-    override fun parsePartialDate(value: String, pattern: String): PartialDate = PartialDate.from(value, pattern)
-
-    override fun parsePartialDate(value: String): PartialDate = PartialDate.from(value)
-
     override fun parseTime(value: String): LocalTime =
         when {
             NOW.equals(value, ignoreCase = true) -> LocalTime.now()
@@ -89,23 +85,49 @@ object SimpleValueConverter : ValueConverter {
 
     override fun formatDateTime(dateTime: OffsetDateTime): String = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(dateTime)
 
-    override fun formatPartialDateTime(partialDateTime: PartialDateTime): String = partialDateTime.format()
+    override fun parseOpenEhrDate(value: String, pattern: String, strict: Boolean): TemporalAccessor =
+        if (NOW.equals(value, ignoreCase = true)) {
+            OpenEhrDateTimeFormatter.ofPattern(pattern, false).parseDate(LocalDate.now().toString())
+        } else {
+            try {
+                OpenEhrDateTimeFormatter.ofPattern(pattern, strict).parseDate(value)
+            } catch (ignored: DateTimeException) {
+                throw  ConversionException("Unable to convert value to OpenEhr Date: $value")
+            }
+        }
 
-    override fun parsePartialDateTime(value: String, pattern: String): PartialDateTime = PartialDateTime.from(value, pattern)
+    override fun parseOpenEhrDateTime(value: String, pattern: String, strict: Boolean): TemporalAccessor =
+        if (NOW.equals(value, ignoreCase = true)) {
+            OpenEhrDateTimeFormatter.ofPattern(pattern, false).parseDateTime(OffsetDateTime.now().toString())
+        } else {
+            try {
+                OpenEhrDateTimeFormatter.ofPattern(pattern, strict).parseDateTime(value)
+            } catch (ignored: DateTimeException) {
+                throw  ConversionException("Unable to convert value to OpenEhr DateTime: $value")
+            }
+        }
 
-    override fun parsePartialDateTime(value: String): PartialDateTime = PartialDateTime.from(value)
+    override fun parseOpenEhrTime(value: String, pattern: String, strict: Boolean): TemporalAccessor =
+        if (NOW.equals(value, ignoreCase = true)) {
+            OpenEhrDateTimeFormatter.ofPattern(pattern, false).parseTime(OffsetTime.now().toString())
+        } else {
+            try {
+                OpenEhrDateTimeFormatter.ofPattern(pattern, strict).parseTime(value)
+            } catch (ignored: DateTimeException) {
+                throw  ConversionException("Unable to convert value to OpenEhr Time: $value")
+            }
+        }
 
-    override fun parsePartialTime(value: String): PartialTime = PartialTime.from(value)
-
-    override fun parsePartialTime(value: String, pattern: String): PartialTime = PartialTime.from(value, pattern)
+    override fun formatOpenEhrTemporal(temporal: TemporalAccessor, pattern: String, strict: Boolean): String =
+        try {
+            OpenEhrDateTimeFormatter.ofPattern(pattern, strict).format(temporal)
+        } catch (ignored: DateTimeException) {
+            throw  ConversionException("Unable to format OpenEhr Date/Time/DateTime: $temporal")
+        }
 
     override fun formatDate(date: LocalDate): String = DateTimeFormatter.ISO_LOCAL_DATE.format(date)
 
     override fun formatDate(date: DvDate): String = date.value!!
-
-    override fun formatPartialDate(date: PartialDate): String = date.format()
-
-    override fun formatPartialTime(time: PartialTime): String = time.format()
 
     override fun formatTime(time: LocalTime): String = DateTimeFormatter.ISO_LOCAL_TIME.format(time)
 

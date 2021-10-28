@@ -15,16 +15,18 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
-import care.better.platform.utils.DateTimeConversionUtils
-import care.better.platform.utils.JSR310ConversionUtils
+import care.better.platform.template.AmUtils
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.mapper.resolve
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.date.partial.PartialDate
 import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.databind.node.ObjectNode
+import org.openehr.am.aom.CDate
 import org.openehr.rm.datatypes.DvDate
+import java.time.DateTimeException
 
 /**
  * @author Primoz Delopst
@@ -35,24 +37,15 @@ import org.openehr.rm.datatypes.DvDate
 internal object DvDateToStructuredMapper : DvQuantifiedToStructuredMapper<DvDate>() {
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvDate): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            val value = requireNotNull(rmObject.value) { "DV_DATE value must not be null!" }
-            if (DateTimeConversionUtils.isPartialDate(value)) {
-                this.putIfNotNull("", value)
-            } else {
-                this.putIfNotNull("", JSR310ConversionUtils.toLocalDate(rmObject).toString())
-            }
+            putValue(this, rmObject, valueConverter, "")
             map(webTemplateNode, valueConverter, rmObject, this)
             this.resolve()
         }
 
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvDate): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            val value = requireNotNull(rmObject.value) { "DV_DATE value must not be null!" }
-            if (DateTimeConversionUtils.isPartialDate(value)) {
-                this.putIfNotNull("", valueConverter.formatPartialDate(PartialDate.from(value)))
-            } else {
-                this.putIfNotNull("", valueConverter.formatDate(rmObject))
-            }
+            val pattern = AmUtils.getPrimitiveItem(webTemplateNode.amNode, CDate::class.java, "value")?.pattern ?: ""
+            putValue(this, rmObject, valueConverter, pattern)
             map(webTemplateNode, valueConverter, rmObject, this)
             this.resolve()
         }
@@ -60,4 +53,15 @@ internal object DvDateToStructuredMapper : DvQuantifiedToStructuredMapper<DvDate
     override fun supportsValueNode(): Boolean = true
 
     override fun defaultValueNodeAttribute(): String = "|value"
+
+    private fun putValue(node: ObjectNode, rmObject: DvDate, valueConverter: ValueConverter, pattern: String) {
+        val value = requireNotNull(rmObject.value) { "DV_DATE value must not be null!" }
+        try {
+            node.putIfNotNull("", valueConverter.formatOpenEhrTemporal(valueConverter.parseOpenEhrDate(value, pattern, false), pattern, false))
+        } catch (_: ConversionException) {
+            node.putIfNotNull("", value)
+        } catch (_: DateTimeException) {
+            node.putIfNotNull("", value)
+        }
+    }
 }

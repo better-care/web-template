@@ -16,6 +16,8 @@
 package care.better.platform.web.template.converter.flat.mapper
 
 import care.better.platform.template.AmNode
+import care.better.platform.time.temporal.OpenEhrLocalTime
+import care.better.platform.time.temporal.OpenEhrOffsetDateTime
 import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.value.LocaleBasedValueConverter
@@ -40,9 +42,10 @@ class RmObjectToFlatMappingTest {
     fun testDateTime() {
         val flatConversionContext = FlatMappingContext()
         val dateTime = ZonedDateTime.of(2012, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault()).toOffsetDateTime()
+        val actualDateTime = OpenEhrOffsetDateTime.of(2012, 1, 1, 0, 0, 0, null, ZoneId.systemDefault().rules.getOffset(dateTime.toInstant()))
 
         RmObjectToFlatMapperDelegator.delegate(WebTemplateNode(AmNode(null, "DV_DATE_TIME"), "DV_DATE_TIME", "/"), valueConverter, DvDateTime.create(dateTime), "id", flatConversionContext)
-        assertThat<Any>(flatConversionContext.get()["id"]).isEqualTo(dateTime)
+        assertThat<Any>(flatConversionContext.get()["id"]).isEqualTo(actualDateTime)
     }
 
     @Test
@@ -76,7 +79,7 @@ class RmObjectToFlatMappingTest {
         val flatConversionContext = FlatMappingContext()
         val localTime = LocalTime.of(13, 37)
         RmObjectToFlatMapperDelegator.delegate(WebTemplateNode(AmNode(null, "DV_TIME"), "DV_TIME", "/"), valueConverter, DvTime.create(localTime), "id", flatConversionContext)
-        assertThat(flatConversionContext.get()).contains(entry("id", localTime))
+        assertThat(flatConversionContext.get()).contains(entry("id", OpenEhrLocalTime.of(13, 37, 0)))
     }
 
     @Test

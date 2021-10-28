@@ -16,14 +16,12 @@
 package care.better.platform.web.template.converter.value
 
 import care.better.platform.utils.JSR310ConversionUtils
-import care.better.platform.web.template.date.partial.PartialDate
-import care.better.platform.web.template.date.partial.PartialDateTime
-import care.better.platform.web.template.date.partial.PartialTime
 import org.openehr.rm.datatypes.DvDate
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.OffsetDateTime
 import java.time.OffsetTime
+import java.time.temporal.TemporalAccessor
 
 /**
  * @author Bostjan Lah
@@ -49,23 +47,6 @@ interface ValueConverter {
      * @return [LocalDate]
      */
     fun parseDate(value: String, strict: Boolean): LocalDate
-
-    /**
-     * Parses a [String] value to a [PartialDate].
-     *
-     * @param value [String] value
-     * @param pattern Pattern in 'YYYY-MM-??' or 'YYYY-??-XX' format
-     * @return [PartialDate]
-     */
-    fun parsePartialDate(value: String, pattern: String): PartialDate
-
-    /**
-     * Parses a [String] value to a [PartialDate].
-     *
-     * @param value String value
-     * @return [PartialDate]
-     */
-    fun parsePartialDate(value: String): PartialDate
 
     /**
      * Parses a [String] value to a [LocalTime].
@@ -101,38 +82,44 @@ interface ValueConverter {
     fun parseDateTime(value: String, strict: Boolean): OffsetDateTime
 
     /**
-     * Parses a [String] value to a [PartialDateTime].
-     *
-     * @param value [String] value
-     * @return [PartialDateTime]
-     */
-    fun parsePartialDateTime(value: String): PartialDateTime
-
-    /**
-     * Parses a [String] value to a [PartialDateTime].
+     * Parses a [String] value to a [TemporalAccessor] by OpenEHR specification.
      *
      * @param value [String] value
      * @param pattern Pattern
-     * @return [PartialDateTime]
+     * @param strict [Boolean] indicating if a date has to strictly fit to pattern
+     * @return [TemporalAccessor]
      */
-    fun parsePartialDateTime(value: String, pattern: String): PartialDateTime
+    fun parseOpenEhrDate(value: String, pattern: String, strict: Boolean): TemporalAccessor
 
     /**
-     * Parses a [String] value to a [PartialTime].
-     *
-     * @param value [String] value
-     * @return [PartialTime]
-     */
-    fun parsePartialTime(value: String): PartialTime
-
-    /**
-     * Parses a [String] value to a [PartialTime].
+     * Parses a [String] value to a [TemporalAccessor] by OpenEHR specification.
      *
      * @param value [String] value
      * @param pattern Pattern
-     * @return [PartialTime]
+     * @param strict [Boolean] indicating if a date has to strictly fit to pattern
+     * @return [TemporalAccessor]
      */
-    fun parsePartialTime(value: String, pattern: String): PartialTime
+    fun parseOpenEhrDateTime(value: String, pattern: String, strict: Boolean): TemporalAccessor
+
+    /**
+     * Parses a [String] value to a [TemporalAccessor] by OpenEHR specification.
+     *
+     * @param value [String] value
+     * @param pattern Pattern
+     * @param strict [Boolean] indicating if a date has to strictly fit to pattern
+     * @return [TemporalAccessor]
+     */
+    fun parseOpenEhrTime(value: String, pattern: String, strict: Boolean): TemporalAccessor
+
+    /**
+     * Formats a [TemporalAccessor] as [String].
+     *
+     * @param temporal [TemporalAccessor] value
+     * @param pattern Pattern
+     * @param strict [Boolean] indicating if a date has to strictly fit to pattern
+     * @return [TemporalAccessor] formatted as [String]
+     */
+    fun formatOpenEhrTemporal(temporal: TemporalAccessor, pattern: String, strict: Boolean): String
 
     /**
      * Formats a [LocalDate] as [String].
@@ -149,23 +136,6 @@ interface ValueConverter {
      * @return [LocalDate] formatted as [String]
      */
     fun formatDate(date: DvDate): String = formatDate(JSR310ConversionUtils.toLocalDate(date))
-
-    /**
-     * Formats a [PartialDate] to a [String].
-     *
-     * @param date [PartialDate] value
-     * @return [PartialDate] formatted as [String]
-     */
-    fun formatPartialDate(date: PartialDate): String
-
-
-    /**
-     * Formats a [PartialTime] to a [String].
-     *
-     * @param time [PartialTime] value
-     * @return [PartialTime] formatted as [String]
-     */
-    fun formatPartialTime(time: PartialTime): String
 
     /**
      * Formats a [LocalTime] as [String].
@@ -190,14 +160,6 @@ interface ValueConverter {
      * @return [OffsetDateTime] formatted as [String]
      */
     fun formatDateTime(dateTime: OffsetDateTime): String
-
-    /**
-     * Formats a [PartialDateTime] as [String].
-     *
-     * @param partialDateTime [PartialDateTime] value
-     * @return [PartialDateTime] formatted as [String]
-     */
-    fun formatPartialDateTime(partialDateTime: PartialDateTime): String
 
     /**
      * Parses a [String] value to a [Double].

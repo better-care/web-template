@@ -23,8 +23,6 @@ import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import org.openehr.am.aom.CDate
 import org.openehr.rm.datatypes.DvDate
-import java.time.DateTimeException
-import java.time.format.DateTimeFormatter
 
 /**
  * @author Primoz Delopst
@@ -47,11 +45,7 @@ internal object DvDateFactory : DvQuantifiedFactory<DvDate>() {
             webTemplatePath: WebTemplatePath): Boolean =
         super.handleField(conversionContext, amNode, attribute, rmObject, jsonNode, webTemplatePath) ||
                 if (attribute.attribute.isBlank() || attribute.attribute == "value") {
-                    handleDate(
-                        conversionContext,
-                        amNode,
-                        rmObject,
-                        jsonNode.asText())
+                    handleDate(conversionContext, amNode, rmObject, jsonNode.asText(), webTemplatePath)
                     true
                 } else {
                     false
@@ -65,57 +59,14 @@ internal object DvDateFactory : DvQuantifiedFactory<DvDate>() {
      * @param rmObject [DvDate]
      * @param dateString Date [String]
      */
-    private fun handleDate(conversionContext: ConversionContext, amNode: AmNode, rmObject: DvDate, dateString: String) {
+    private fun handleDate(conversionContext: ConversionContext, amNode: AmNode, rmObject: DvDate, dateString: String, webTemplatePath: WebTemplatePath) {
         val pattern = AmUtils.getPrimitiveItem(amNode, CDate::class.java, "value")?.pattern ?: ""
 
-        if (pattern == FULL_PATTERN) {
-            handleLocalDate(conversionContext, rmObject, dateString, true)
-        } else {
-            if (pattern.isBlank()) {
-                try {
-                    handleLocalDate(conversionContext, rmObject, dateString, false)
-                } catch (ignored: DateTimeException) {
-                    handlePartialDate(conversionContext, rmObject, dateString, PARTIAL_PATTERN)
-                } catch (ignored: ConversionException) {
-                    handlePartialDate(conversionContext, rmObject, dateString, PARTIAL_PATTERN)
-                }
-            } else {
-                handlePartialDate(conversionContext, rmObject, dateString, pattern)
-            }
+        try {
+            val date = conversionContext.valueConverter.parseOpenEhrDate(dateString, pattern, conversionContext.strictMode)
+            rmObject.value = conversionContext.valueConverter.formatOpenEhrTemporal(date, pattern, conversionContext.strictMode)
+        } catch (e: RuntimeException) {
+            throw ConversionException("Error processing value \"$dateString\" for pattern \"$pattern\"", webTemplatePath.toString())
         }
-    }
-
-    /**
-     * Sets local date [String] to [DvDate].
-     *
-     * @param conversionContext [ConversionContext]
-     * @param rmObject [DvDate]
-     * @param dateString Local date [String]
-     */
-    private fun handleLocalDate(conversionContext: ConversionContext, rmObject: DvDate, dateString: String, strict: Boolean) {
-        if (strict) {
-            rmObject.value = DateTimeFormatter.ISO_LOCAL_DATE.format(conversionContext.valueConverter.parseDate(dateString, true))
-        } else {
-            try {
-                rmObject.value = DateTimeFormatter.ISO_LOCAL_DATE.format(conversionContext.valueConverter.parseDate(dateString, true))
-            } catch (ignored: ConversionException) {
-                try {
-                    rmObject.value = conversionContext.valueConverter.parsePartialDate(dateString).format()
-                } catch (e: IllegalArgumentException) {
-                    throw ConversionException("Unable to convert value to LocalDate: $dateString", e)
-                }
-            }
-        }
-    }
-
-    /**
-     * Sets partial date [String] to [DvDate].
-     *
-     * @param conversionContext [ConversionContext]
-     * @param rmObject [DvDate]
-     * @param dateString Partial date [String]
-     */
-    private fun handlePartialDate(conversionContext: ConversionContext, rmObject: DvDate, dateString: String, pattern: String) {
-        rmObject.value = conversionContext.valueConverter.parsePartialDate(dateString, pattern).format(pattern)
     }
 }

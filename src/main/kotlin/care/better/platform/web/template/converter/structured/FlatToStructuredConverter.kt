@@ -16,11 +16,14 @@
 package care.better.platform.web.template.converter.structured
 
 import care.better.openehr.rm.RmObject
+import care.better.platform.time.format.OpenEhrDateTimeFormatter
+import care.better.platform.time.temporal.*
 import care.better.platform.web.template.converter.WebTemplatePathSegment
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.isEmptyInDepth
 import care.better.platform.web.template.converter.raw.context.ConversionContext
+import care.better.platform.web.template.converter.value.SimpleValueConverter
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.node.*
@@ -238,11 +241,19 @@ class FlatToStructuredConverter(private val objectMapper: ObjectMapper) : (Map<S
             is DateTime -> TextNode.valueOf(convertDateTime(value))
             is OffsetDateTime -> TextNode.valueOf(convertOffsetDateTime(value))
             is ZonedDateTime -> TextNode.valueOf(convertZonedDateTime(value))
+            is Year -> TextNode.valueOf(convertYear(value))
+            is YearMonth -> TextNode.valueOf(convertYearMonth(value))
+            is LocalDateTime -> TextNode.valueOf(convertLocalDateTime(value))
             is LocalDate -> TextNode.valueOf(convertLocalDate(value))
             is org.joda.time.LocalDate -> TextNode.valueOf(convertLocalDate(value))
             is LocalTime -> TextNode.valueOf(convertLocalTime(value))
             is org.joda.time.LocalTime -> TextNode.valueOf(convertLocalTime(value))
             is OffsetTime -> TextNode.valueOf(convertOffsetTime(value))
+            is OpenEhrOffsetDateTime -> TextNode.valueOf(convertOpenEhrOffsetDateTime(value))
+            is OpenEhrLocalDateTime -> TextNode.valueOf(convertOpenEhrLocalDateTime(value))
+            is OpenEhrLocalDate -> TextNode.valueOf(convertOpenEhrLocalDate(value))
+            is OpenEhrOffsetTime -> TextNode.valueOf(convertOpenEhrOffsetTime(value))
+            is OpenEhrLocalTime -> TextNode.valueOf(convertOpenEhrLocalTime(value))
             is Period -> TextNode.valueOf(ISOPeriodFormat.standard().print(value))
             is RmObject -> ConversionObjectMapper.createObjectNode().apply { this.replace("|raw", ConversionObjectMapper.valueToTree(value)) }
             else -> throw ConversionException("${value::class.java.name} is not supported!")
@@ -282,6 +293,13 @@ class FlatToStructuredConverter(private val objectMapper: ObjectMapper) : (Map<S
     private fun convertLocalDate(localDate: LocalDate): String =
             DateTimeFormatter.ISO_LOCAL_DATE.format(localDate)
 
+    private fun convertYear(year: Year): String = year.value.toString()
+
+    private fun convertYearMonth(yearMonth: YearMonth): String = OpenEhrDateTimeFormatter.ofPattern("yyyy-MM").format(yearMonth)
+
+    private fun convertLocalDateTime(localDateTime: LocalDateTime): String =
+            DateTimeFormatter.ISO_LOCAL_DATE_TIME.format(localDateTime)
+
     private fun convertLocalDate(localDate: org.joda.time.LocalDate): String =
             DateTimeFormatter.ISO_LOCAL_DATE.format(LocalDate.of(localDate.year, localDate.monthOfYear, localDate.dayOfMonth))
 
@@ -296,6 +314,21 @@ class FlatToStructuredConverter(private val objectMapper: ObjectMapper) : (Map<S
                     localTime.millisOfSecond * 1000000))
 
     private fun convertOffsetTime(offsetTime: OffsetTime): String = DateTimeFormatter.ISO_OFFSET_TIME.format(offsetTime)
+
+    private fun convertOpenEhrOffsetDateTime(offsetDateTime: OpenEhrOffsetDateTime): String =
+        SimpleValueConverter.formatOpenEhrTemporal(offsetDateTime, "YYYY-??-??T??:??:??.???Z", true)
+
+    private fun convertOpenEhrLocalDateTime(localDateTime: OpenEhrLocalDateTime): String =
+        SimpleValueConverter.formatOpenEhrTemporal(localDateTime, "YYYY-??-??T??:??:??.???", true)
+
+    private fun convertOpenEhrLocalDate(localDate: OpenEhrLocalDate): String =
+        SimpleValueConverter.formatOpenEhrTemporal(localDate, "YYYY-??-??", true)
+
+    private fun convertOpenEhrOffsetTime(offsetTime: OpenEhrOffsetTime): String =
+        SimpleValueConverter.formatOpenEhrTemporal(offsetTime, "HH:??:??.???Z", true)
+
+    private fun convertOpenEhrLocalTime(localTime: OpenEhrLocalTime): String =
+        SimpleValueConverter.formatOpenEhrTemporal(localTime, "HH:??:??.???", true)
 
     /**
      * Converts the single FLAT format entry to the [EntryDto].

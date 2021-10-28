@@ -15,15 +15,16 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
-import care.better.platform.utils.DateTimeConversionUtils
-import care.better.platform.utils.JSR310ConversionUtils
+import care.better.platform.template.AmUtils
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.mapper.resolve
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.date.partial.PartialTime
 import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.databind.node.ObjectNode
+import org.openehr.am.aom.CTime
 import org.openehr.rm.datatypes.DvTime
 import java.time.DateTimeException
 
@@ -36,34 +37,15 @@ import java.time.DateTimeException
 internal object DvTimeToStructuredMapper : DvQuantifiedToStructuredMapper<DvTime>() {
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvTime): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            val value = requireNotNull(rmObject.value) { "DV_TIME value must not be null!" }
-            try {
-                DateTimeConversionUtils.toOffsetTime(value, true)
-                this.putIfNotNull("", JSR310ConversionUtils.toOffsetTime(rmObject).toString())
-            } catch (_: DateTimeException) {
-                try {
-                    this.putIfNotNull("", JSR310ConversionUtils.toLocalTime(rmObject).toString())
-                } catch (_: DateTimeException) {
-                    this.putIfNotNull("", rmObject.value)
-                }
-            }
+            putValue(this, rmObject, valueConverter, "")
             map(webTemplateNode, valueConverter, rmObject, this)
             this.resolve()
         }
 
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvTime): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            val value = requireNotNull(rmObject.value) { "DV_TIME value must not be null!" }
-            try {
-                DateTimeConversionUtils.toOffsetTime(value, true)
-                this.putIfNotNull("", valueConverter.formatOffsetTime(JSR310ConversionUtils.toOffsetTime(rmObject)))
-            } catch (_: DateTimeException) {
-                try {
-                    this.putIfNotNull("", valueConverter.formatTime(JSR310ConversionUtils.toLocalTime(rmObject)))
-                } catch (_: DateTimeException) {
-                    this.putIfNotNull("", valueConverter.formatPartialTime(PartialTime.from(value)))
-                }
-            }
+            val pattern = AmUtils.getPrimitiveItem(webTemplateNode.amNode, CTime::class.java, "value")?.pattern ?: ""
+            putValue(this, rmObject, valueConverter, pattern)
             mapFormatted(webTemplateNode, valueConverter, rmObject, this)
             this.resolve()
         }
@@ -71,4 +53,15 @@ internal object DvTimeToStructuredMapper : DvQuantifiedToStructuredMapper<DvTime
     override fun supportsValueNode(): Boolean = true
 
     override fun defaultValueNodeAttribute(): String = "|value"
+
+    private fun putValue(node: ObjectNode, rmObject: DvTime, valueConverter: ValueConverter, pattern: String) {
+        val value = requireNotNull(rmObject.value) { "DV_TIME value must not be null!" }
+        try {
+            node.putIfNotNull("", valueConverter.formatOpenEhrTemporal(valueConverter.parseOpenEhrTime(value, pattern, false), pattern, false))
+        } catch (_: ConversionException) {
+            node.putIfNotNull("", value)
+        } catch (_: DateTimeException) {
+            node.putIfNotNull("", value)
+        }
+    }
 }

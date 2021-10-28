@@ -15,13 +15,13 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
-import care.better.platform.utils.DateTimeConversionUtils
-import care.better.platform.utils.JSR310ConversionUtils
+import care.better.platform.template.AmUtils
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.date.partial.PartialTime
-import care.better.platform.web.template.builder.model.WebTemplateNode
+import org.openehr.am.aom.CTime
 import org.openehr.rm.datatypes.DvTime
 import java.time.DateTimeException
 
@@ -41,14 +41,12 @@ internal object DvTimeToFlatMapper : DvQuantifiedToFlatMapper<DvTime>() {
             flatConversionContext: FlatMappingContext) {
         val value = requireNotNull(rmObject.value) { "DV_TIME value must not be null!" }
         try {
-            DateTimeConversionUtils.toOffsetTime(value, true)
-            flatConversionContext[webTemplatePath] = JSR310ConversionUtils.toOffsetTime(rmObject)
-        } catch (_: DateTimeException) {
-            try {
-                flatConversionContext[webTemplatePath] = JSR310ConversionUtils.toLocalTime(rmObject)
-            } catch (_: DateTimeException) {
-                flatConversionContext[webTemplatePath] = rmObject.value
-            }
+            val pattern = AmUtils.getPrimitiveItem(webTemplateNode.amNode, CTime::class.java, "value")?.pattern ?: ""
+            flatConversionContext[webTemplatePath] = valueConverter.parseOpenEhrTime(value, pattern, false)
+        } catch (ignored: ConversionException) {
+            flatConversionContext[webTemplatePath] = value
+        } catch (ignored: DateTimeException) {
+            flatConversionContext[webTemplatePath] = value
         }
         super.map(webTemplateNode, valueConverter, rmObject, webTemplatePath, flatConversionContext)
     }
@@ -61,14 +59,13 @@ internal object DvTimeToFlatMapper : DvQuantifiedToFlatMapper<DvTime>() {
             formattedFlatConversionContext: FormattedFlatMappingContext) {
         val value = requireNotNull(rmObject.value) { "DV_TIME value must not be null!" }
         try {
-            DateTimeConversionUtils.toOffsetTime(value, true)
-            formattedFlatConversionContext[webTemplatePath] = valueConverter.formatOffsetTime(JSR310ConversionUtils.toOffsetTime(rmObject))
-        } catch (_: DateTimeException) {
-            try {
-                formattedFlatConversionContext[webTemplatePath] = valueConverter.formatTime(JSR310ConversionUtils.toLocalTime(rmObject))
-            } catch (_: DateTimeException) {
-                formattedFlatConversionContext[webTemplatePath] = valueConverter.formatPartialTime(PartialTime.from(value))
-            }
+            val pattern = AmUtils.getPrimitiveItem(webTemplateNode.amNode, CTime::class.java, "value")?.pattern ?: ""
+            formattedFlatConversionContext[webTemplatePath] =
+                valueConverter.formatOpenEhrTemporal(valueConverter.parseOpenEhrTime(value, pattern, false), pattern, false)
+        } catch (ignored: ConversionException) {
+            formattedFlatConversionContext[webTemplatePath] = value
+        } catch (ignored: DateTimeException) {
+            formattedFlatConversionContext[webTemplatePath] = value
         }
         super.mapFormatted(webTemplateNode, valueConverter, rmObject, webTemplatePath, formattedFlatConversionContext)
     }

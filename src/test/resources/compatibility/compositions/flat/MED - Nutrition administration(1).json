@@ -27,7 +27,7 @@
 	"nutrition_administration/nutrition_detail/nutrition:0/ism_transition/current_state|terminology" : "openehr",
 	"nutrition_administration/nutrition_detail/nutrition:0/meal/type_of_meal|other" : "EXTRA_FOOD",
 	"nutrition_administration/nutrition_detail/nutrition:0/meal/meal_pattern:0/supplement" : "Mlečni riž PK",
-	"nutrition_administration/nutrition_detail/nutrition:0/meal/meal_pattern:0/time_consumed" : "11:27+01:00",
+	"nutrition_administration/nutrition_detail/nutrition:0/meal/meal_pattern:0/time_consumed" : "11:27:00+01:00",
 	"nutrition_administration/nutrition_detail/nutrition:0/meal/meal_pattern:0/dosage:0/dose_unit" : "g",
 	"nutrition_administration/nutrition_detail/nutrition:0/time" : "2019-09-29T11:27:00+02:00",
 	"nutrition_administration/nutrition_detail/nutrition:0/language|code" : "sl",

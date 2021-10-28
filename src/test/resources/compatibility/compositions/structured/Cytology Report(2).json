@@ -67,7 +67,7 @@
             "processing": [
               {
                 "date_and_time_specimen_received": [
-                  "2020-04-09T15:06+02:00"
+                  "2020-04-09T15:06:00+02:00"
                 ],
                 "laboratory_specimen_id": [
                   "tecko1"

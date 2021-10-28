@@ -171,7 +171,7 @@ class FeederAuditTest : AbstractWebTemplateTest() {
         val value = values[0] as Locatable
         assertThat(value.feederAudit).isNotNull
         assertThat(value.feederAudit!!.originatingSystemAudit!!.systemId).isEqualTo("infoflex")
-        assertThat(value.feederAudit!!.originatingSystemAudit!!.time!!.value).isEqualTo("2018-01-01T03:00:00Z")
+        assertThat(value.feederAudit!!.originatingSystemAudit!!.time!!.value).isEqualTo("2018-01-01T03:00Z")
     }
 
     private fun buildDeepComposition(): Composition {

@@ -15,16 +15,16 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
-import care.better.platform.utils.DateTimeConversionUtils
-import care.better.platform.utils.JSR310ConversionUtils
+import care.better.platform.template.AmUtils
 import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.mapper.resolve
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.date.partial.PartialDateTime
 import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.databind.node.ObjectNode
+import org.openehr.am.aom.CDate
 import org.openehr.rm.datatypes.DvDateTime
 import java.time.DateTimeException
 
@@ -37,39 +37,15 @@ import java.time.DateTimeException
 internal object DvDateTimeToStructuredMapper : DvQuantifiedToStructuredMapper<DvDateTime>() {
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvDateTime): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            val value = requireNotNull(rmObject.value) { "DV_DATE_TIME value must not be null!" }
-
-            if (DateTimeConversionUtils.isPartialDateTime(value)) {
-                this.putIfNotNull("", value)
-            } else {
-                try {
-                    valueConverter.parseDateTime(value, true)
-                    this.putIfNotNull("", JSR310ConversionUtils.toOffsetDateTime(rmObject).toString())
-                } catch (ignored: ConversionException) {
-                    this.putIfNotNull("", value)
-                } catch (ignored: DateTimeException) {
-                    this.putIfNotNull("", value)
-                }
-            }
+            putValue(this, rmObject, valueConverter, "")
             map(webTemplateNode, valueConverter, rmObject, this)
             this.resolve()
         }
 
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvDateTime): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            val value = requireNotNull(rmObject.value) { "DV_DATE_TIME value must not be null!" }
-            if (DateTimeConversionUtils.isPartialDateTime(value)) {
-                this.putIfNotNull("", valueConverter.formatPartialDateTime(PartialDateTime.from(value)))
-            } else {
-                try {
-                    valueConverter.parseDateTime(value, true)
-                    this.putIfNotNull("", valueConverter.formatDateTime(JSR310ConversionUtils.toOffsetDateTime(rmObject)))
-                } catch (ignored: ConversionException) {
-                    this.putIfNotNull("", valueConverter.formatPartialDateTime(PartialDateTime.from(value)))
-                } catch (ignored: DateTimeException) {
-                    this.putIfNotNull("", valueConverter.formatPartialDateTime(PartialDateTime.from(value)))
-                }
-            }
+            val pattern = AmUtils.getPrimitiveItem(webTemplateNode.amNode, CDate::class.java, "value")?.pattern ?: ""
+            putValue(this, rmObject, valueConverter, pattern)
             mapFormatted(webTemplateNode, valueConverter, rmObject, this)
             this.resolve()
         }
@@ -77,4 +53,15 @@ internal object DvDateTimeToStructuredMapper : DvQuantifiedToStructuredMapper<Dv
     override fun supportsValueNode(): Boolean = true
 
     override fun defaultValueNodeAttribute(): String = "|value"
+
+    private fun putValue(node: ObjectNode, rmObject: DvDateTime, valueConverter: ValueConverter, pattern: String) {
+        val value = requireNotNull(rmObject.value) { "DV_DATE_TIME value must not be null!" }
+        try {
+            node.putIfNotNull("", valueConverter.formatOpenEhrTemporal(valueConverter.parseOpenEhrDateTime(value, pattern, false), pattern, false))
+        } catch (_: ConversionException) {
+            node.putIfNotNull("", value)
+        } catch (_: DateTimeException) {
+            node.putIfNotNull("", value)
+        }
+    }
 }

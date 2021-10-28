@@ -79,7 +79,7 @@
                 "date_and_time_specimen_received": [
                   {
                     "date_time_value": [
-                      "2020-04-01T12:00+02:00"
+                      "2020-04-01T12:00:00+02:00"
                     ]
                   }
                 ],
@@ -91,7 +91,7 @@
           }
         ],
         "date_of_report": [
-          "2020-04-08T12:01+02:00"
+          "2020-04-08T12:01:00+02:00"
         ],
         "histopathology_findings": [
           {
@@ -247,7 +247,7 @@
                 "specimen": [
                   {
                     "datetime_collected": [
-                      "2020-04-01T11:00+02:00"
+                      "2020-04-01T11:00:00+02:00"
                     ],
                     "anatomical_location": [
                       {

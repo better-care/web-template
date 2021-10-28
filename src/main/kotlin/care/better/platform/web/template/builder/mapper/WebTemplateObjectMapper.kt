@@ -15,6 +15,7 @@
 
 package care.better.platform.web.template.builder.mapper
 
+import care.better.platform.json.jackson.time.OpenEhrTimeModule
 import care.better.platform.web.template.WebTemplate
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.ObjectWriter
@@ -32,6 +33,7 @@ internal object WebTemplateObjectMapper : ObjectMapper() {
     init {
         this.registerModule(JodaModule())
         this.registerModule(KotlinModule())
+        this.registerModule(OpenEhrTimeModule())
         this.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
     }
 

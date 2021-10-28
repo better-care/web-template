@@ -25,6 +25,7 @@ import care.better.platform.web.template.builder.model.input.WebTemplateValidati
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.openehr.rm.datatypes.DvDate
+import java.time.Year
 
 /**
  * @author Primoz Delopst
@@ -46,6 +47,6 @@ class PartialDateRmObjectToFlatMappingTest {
         val flatConversionContext = FlatMappingContext()
 
         DvDateToFlatMapper.map(webTemplateNode, SimpleValueConverter, dvDate, "id", flatConversionContext)
-        Assertions.assertThat(flatConversionContext.get()).contains(Assertions.entry("id", "2016"))
+        Assertions.assertThat(flatConversionContext.get()).contains(Assertions.entry("id", Year.of(2016)))
     }
 }

@@ -74,7 +74,7 @@ class DatePatternTest : AbstractWebTemplateTest() {
         val attributeName = "date-full"
 
         assertValueMatches(webTemplate, extractorAny, attributeName, "2019-02-01", "2019-02-01")
-        assertThatThrownBy { buildComposition(webTemplate, getValues(attributeName, "2019-02")) }.isInstanceOf(ConversionException::class.java)
+        assertValueMatches(webTemplate, extractorAny, attributeName, "2019-02", "2019-02-01")
         assertThatThrownBy { buildComposition(webTemplate, getValues(attributeName, "2019-02-33")) }.isInstanceOf(ConversionException::class.java)
     }
 
@@ -102,7 +102,7 @@ class DatePatternTest : AbstractWebTemplateTest() {
 
         assertValueMatches(webTemplate, extractorAny, attributeName, "2019-02-01", "2019-02-01")
         assertValueMatches(webTemplate, extractorAny, attributeName, "2019-02", "2019-02")
-        assertThatThrownBy { buildComposition(webTemplate, getValues(attributeName, "2019")) }.isInstanceOf(ConversionException::class.java)
+        assertValueMatches(webTemplate, extractorAny, attributeName, "2019-01", "2019-01")
         assertThatThrownBy { buildComposition(webTemplate, getValues(attributeName, "2019-17")) }.isInstanceOf(ConversionException::class.java)
     }
 

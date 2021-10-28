@@ -43,6 +43,7 @@ import org.openehr.rm.datatypes.DvText
 import java.io.IOException
 import java.text.NumberFormat
 import java.time.OffsetDateTime
+import java.time.Year
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.*
@@ -632,7 +633,7 @@ class RussianTest : AbstractWebTemplateTest() {
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(structuredComposition, builderContext)
 
         assertThat(webTemplate.convertFromRawToFlat(composition!!, FromRawConversion.create()))
-                .contains(entry("карта_профилактических_прививок/туберкулезные_пробы/заготовка_заголовка:0/результат_иммунодиагностики/дата", "2013"))
+                .contains(entry("карта_профилактических_прививок/туберкулезные_пробы/заготовка_заголовка:0/результат_иммунодиагностики/дата", Year.of(2013)))
 
         assertThat(webTemplate.convertFormattedFromRawToFlat(composition, FromRawConversion.create()))
                 .contains(entry("карта_профилактических_прививок/туберкулезные_пробы/заготовка_заголовка:0/результат_иммунодиагностики/дата", "2013"))

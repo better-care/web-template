@@ -17,6 +17,7 @@ package care.better.platform.web.template.compatibility
 
 import care.better.platform.jaxb.JaxbRegistry
 import care.better.platform.json.jackson.better.BetterObjectMapper
+import care.better.platform.json.jackson.time.OpenEhrTimeModule
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.builder.WebTemplateBuilder
@@ -299,6 +300,7 @@ class CompatibilityTest : AbstractWebTemplateTest() {
         init {
             registerModule(JodaModule())
             registerModule(JavaTimeModule())
+            registerModule(OpenEhrTimeModule())
             disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
             enable(JsonParser.Feature.ALLOW_COMMENTS)
             setDefaultPropertyInclusion(JsonInclude.Value.construct(JsonInclude.Include.NON_EMPTY, JsonInclude.Include.USE_DEFAULTS))

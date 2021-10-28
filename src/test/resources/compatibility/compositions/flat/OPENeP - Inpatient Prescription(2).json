@@ -45,7 +45,7 @@
   "inpatient_prescription/medication_order:0/order/therapeutic_direction:0/dosage:0/dose_unit|terminology" : "local",
   "inpatient_prescription/medication_order:0/order/therapeutic_direction:0/dosage:0/timing_-_daily:0/frequency/quantity_value|magnitude" : 1.0,
   "inpatient_prescription/medication_order:0/order/therapeutic_direction:0/dosage:0/timing_-_daily:0/frequency/quantity_value|unit" : "1/d",
-  "inpatient_prescription/medication_order:0/order/therapeutic_direction:0/dosage:0/timing_-_daily:0/specific_time:0/time_value" : "08:00+01:00",
+  "inpatient_prescription/medication_order:0/order/therapeutic_direction:0/dosage:0/timing_-_daily:0/specific_time:0/time_value" : "08:00:00+01:00",
   "inpatient_prescription/medication_order:0/order/therapeutic_direction:0/dosage:0/alternate_dose_amount/quantity_value|magnitude" : 1.0,
   "inpatient_prescription/medication_order:0/order/therapeutic_direction:0/dosage:0/alternate_dose_amount/quantity_value|unit" : "1",
   "inpatient_prescription/medication_order:0/order/therapeutic_direction:0/dosage:0/alternate_dose_unit|code" : "vpih",

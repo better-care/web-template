@@ -24,8 +24,6 @@ import com.fasterxml.jackson.databind.JsonNode
 import org.openehr.am.aom.CDateTime
 import org.openehr.rm.datatypes.DvDate
 import org.openehr.rm.datatypes.DvDateTime
-import java.time.format.DateTimeFormatter
-import java.util.regex.Pattern
 
 /**
  * @author Primoz Delopst
@@ -34,9 +32,6 @@ import java.util.regex.Pattern
  * Singleton instance of [DvQuantifiedFactory] that creates a new instance of [DvDateTime].
  */
 internal object DvDateTimeFactory : DvQuantifiedFactory<DvDateTime>() {
-
-    private const val FULL_PATTERN = "yyyy-mm-ddTHH:MM:SS"
-    private val PARTIAL_PATTERN = Pattern.compile("[0-9]{4}(-[0-9]{2}(-[0-9]{2}(T[0-9]{2})?)?)?")
 
     override fun createInstance(attributes: Set<AttributeDto>): DvDateTime = DvDateTime()
 
@@ -73,24 +68,11 @@ internal object DvDateTimeFactory : DvQuantifiedFactory<DvDateTime>() {
             webTemplatePath: WebTemplatePath) {
         val pattern = AmUtils.getPrimitiveItem(amNode, CDateTime::class.java, "value")?.pattern ?: ""
 
-        if (pattern.isBlank() && PARTIAL_PATTERN.matcher(dateTimeString).matches()) {
-            rmObject.value = conversionContext.valueConverter.parsePartialDateTime(dateTimeString).format()
-        } else if (pattern == FULL_PATTERN) {
-            rmObject.value = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(conversionContext.valueConverter.parseDateTime(dateTimeString, true))
-        } else {
-            if (pattern.isNotBlank() && (pattern.contains("?") || pattern.contains("X"))) {
-                try {
-                    rmObject.value = conversionContext.valueConverter.parsePartialDateTime(dateTimeString, pattern).format(pattern)
-                } catch (ex: IllegalArgumentException) {
-                    if (conversionContext.strictMode){
-                        throw ConversionException("Invalid partial datetime for pattern $pattern", webTemplatePath.toString())
-                    }
-                    rmObject.value = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(conversionContext.valueConverter.parseDateTime(dateTimeString, false))
-                }
-            } else {
-                rmObject.value = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(conversionContext.valueConverter.parseDateTime(dateTimeString, false))
-            }
+        try {
+            val datetime = conversionContext.valueConverter.parseOpenEhrDateTime(dateTimeString, pattern, conversionContext.strictMode)
+            rmObject.value = conversionContext.valueConverter.formatOpenEhrTemporal(datetime, pattern, conversionContext.strictMode)
+        } catch (e: RuntimeException) {
+            throw ConversionException("Error processing value \"$dateTimeString\" for pattern \"$pattern\"", webTemplatePath.toString())
         }
     }
-
 }

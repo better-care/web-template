@@ -17,16 +17,12 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 
 import care.better.platform.template.AmNode
 import care.better.platform.template.AmUtils
-import care.better.platform.utils.DateTimeConversionUtils
 import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
 import org.openehr.am.aom.CTime
 import org.openehr.rm.datatypes.DvTime
-import java.time.DateTimeException
-import java.time.format.DateTimeFormatter
 
 /**
  * @author Primoz Delopst
@@ -47,13 +43,7 @@ internal object DvTimeFactory : DvQuantifiedFactory<DvTime>() {
             webTemplatePath: WebTemplatePath): Boolean =
         super.handleField(conversionContext, amNode, attribute, rmObject, jsonNode, webTemplatePath) ||
                 if (attribute.attribute.isBlank() || attribute.attribute == "value") {
-                    val pattern = AmUtils.getPrimitiveItem(amNode, CTime::class.java, "value")?.pattern ?: ""
-                    val textValue = jsonNode.asText()
-                    if (isOffsetTime(textValue)) {
-                        handleOffsetTime(conversionContext.valueConverter, rmObject, textValue, pattern)
-                    } else {
-                        handleLocalTime(conversionContext.valueConverter, rmObject, textValue, pattern)
-                    }
+                    handleTime(conversionContext, amNode, rmObject, jsonNode.asText(), webTemplatePath)
                     true
                 } else {
                     false
@@ -61,68 +51,21 @@ internal object DvTimeFactory : DvQuantifiedFactory<DvTime>() {
 
 
     /**
-     * Sets local time [String] to [DvTime].
+     * Sets time [String] to [DvTime].
      *
-     * @param valueConverter [ValueConverter]
+     * @param conversionContext [ConversionContext]
+     * @param amNode [AmNode]
      * @param rmObject [DvTime]
-     * @param timeString Local time [String]
-     * @param pattern Pattern
+     * @param timeString Date [String]
      */
-    private fun handleLocalTime(valueConverter: ValueConverter, rmObject: DvTime, timeString: String, pattern: String?) {
-        val timeStart = timeString.indexOf("T")
-        val time = if (timeStart == -1) timeString else timeString.substring(timeStart + 1)
+    private fun handleTime(conversionContext: ConversionContext, amNode: AmNode, rmObject: DvTime, timeString: String, webTemplatePath: WebTemplatePath) {
+        val pattern = AmUtils.getPrimitiveItem(amNode, CTime::class.java, "value")?.pattern ?: ""
 
         try {
-            val localTime = valueConverter.parseTime(time)
-            rmObject.value = DateTimeFormatter.ISO_LOCAL_TIME.format(localTime)
-        } catch (ignored: DateTimeException) {
-            handlePartialTime(valueConverter, rmObject, time, pattern)
-        } catch (ignored: ConversionException) {
-            handlePartialTime(valueConverter, rmObject, time, pattern)
-        }
-    }
-
-    /**
-     * Sets offset time [String] to [DvTime].
-     *
-     * @param valueConverter [ValueConverter]
-     * @param rmObject [DvTime]
-     * @param timeString Offset time [String]
-     * @param pattern Pattern
-     */
-    private fun handleOffsetTime(valueConverter: ValueConverter, rmObject: DvTime, timeString: String, pattern: String?) {
-        val timeStart = timeString.indexOf("T")
-        val time = if (timeStart == -1) timeString else timeString.substring(timeStart + 1)
-
-        try {
-            val offsetTime = valueConverter.parseOffsetTime(time)
-            rmObject.value = DateTimeFormatter.ISO_OFFSET_TIME.format(offsetTime)
-        } catch (ignored: DateTimeException) {
-            handlePartialTime(valueConverter, rmObject, time, pattern)
-        } catch (ignored: ConversionException) {
-            handlePartialTime(valueConverter, rmObject, time, pattern)
-        }
-    }
-
-    /**
-     * Checks if time [String] is in offset time format.
-     *
-     * @param timeString Time [String]
-     * @return [Boolean] indicating if time [String] is in offset time format or not
-     */
-    private fun isOffsetTime(timeString: String): Boolean =
-        try {
-            DateTimeConversionUtils.toOffsetTime(timeString, true)
-            true
-        } catch (ex: DateTimeException) {
-            false
-        }
-
-    private fun handlePartialTime(valueConverter: ValueConverter, rmObject: DvTime, timeString: String, pattern: String?) {
-        if (pattern.isNullOrBlank()) {
-            rmObject.value = valueConverter.parsePartialTime(timeString).format()
-        } else {
-            rmObject.value = valueConverter.parsePartialTime(timeString, pattern).format(pattern)
+            val time = conversionContext.valueConverter.parseOpenEhrTime(timeString, pattern, conversionContext.strictMode)
+            rmObject.value = conversionContext.valueConverter.formatOpenEhrTemporal(time, pattern, conversionContext.strictMode)
+        } catch (e: RuntimeException) {
+            throw ConversionException("Error processing value \"$timeString\" for pattern \"$pattern\"", webTemplatePath.toString())
         }
     }
 }

@@ -224,7 +224,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("testing_template/context/testing/date", true), context) }
             .isInstanceOf(ConversionException::class.java)
-            .hasMessageContaining("Error processing value: true (path: testing_template/context/testing/date).")
+            .hasMessageContaining("Error processing value \"true\" for pattern \"\" (path: testing_template/context/testing/date).")
     }
 
     @Test
@@ -252,7 +252,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("testing_template/context/testing/date", "2014-a-b"), context) }
             .isInstanceOf(ConversionException::class.java)
-            .hasMessageContaining("Error processing value: \"2014-a-b\" (path: testing_template/context/testing/date).")
+            .hasMessageContaining("Error processing value \"2014-a-b\" for pattern \"\" (path: testing_template/context/testing/date).")
     }
 
     @Test
@@ -288,7 +288,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("testing_template/context/testing/time", true), context) }
             .isInstanceOf(ConversionException::class.java)
-            .hasMessage("Error processing value: true (path: testing_template/context/testing/time).")
+            .hasMessage("Error processing value \"true\" for pattern \"\" (path: testing_template/context/testing/time).")
     }
 
     @Test
@@ -300,12 +300,12 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/time", "14:35"), context)
 
         val firstFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(firstComposition!!, FromRawConversion.create())
-        assertThat(firstFlatMap).contains(entry("testing_template/context/testing/time", "14:35:00"))
+        assertThat(firstFlatMap).contains(entry("testing_template/context/testing/time", "14:35"))
 
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/time", "14:35+02:00"), context)
 
         val secondFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(secondComposition!!, FromRawConversion.create())
-        assertThat(secondFlatMap).contains(entry("testing_template/context/testing/time", "14:35:00+02:00"))
+        assertThat(secondFlatMap).contains(entry("testing_template/context/testing/time", "14:35+02:00"))
     }
 
     @Test
@@ -317,7 +317,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/time", "14:35"), context)
 
         val firstFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(firstComposition!!, FromRawConversion.create())
-        assertThat(firstFlatMap).contains(entry("testing_template/context/testing/time", "14:35:00"))
+        assertThat(firstFlatMap).contains(entry("testing_template/context/testing/time", "14:35"))
 
         val jodaLocalTime = org.joda.time.LocalTime(14, 35, 10, 117)
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(
@@ -339,7 +339,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("testing_template/context/testing/time", "17:aa"), context) }
             .isInstanceOf(ConversionException::class.java)
-            .hasMessage("Error processing value: \"17:aa\" (path: testing_template/context/testing/time).")
+            .hasMessage("Error processing value \"17:aa\" for pattern \"\" (path: testing_template/context/testing/time).")
     }
 
     @Test
@@ -360,11 +360,11 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/date_time", dt), context)
 
         val secondFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(secondComposition!!, FromRawConversion.create())
-        assertThat(secondFlatMap).contains(entry("testing_template/context/testing/date_time", ISODateTimeFormat.dateTime().print(dt)))
+        assertThat(secondFlatMap).contains(entry("testing_template/context/testing/date_time", "2014-01-13T14:35:10+01:00"))
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("testing_template/context/testing/date_time", true), context) }
             .isInstanceOf(ConversionException::class.java)
-            .hasMessageContaining("Un")
+            .hasMessage("Error processing value \"true\" for pattern \"yyyy-mm-ddTHH:MM:SS\" (path: testing_template/context/testing/date_time).")
     }
 
     @Test
@@ -385,11 +385,11 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/date_time", dt), context)
 
         val secondFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(secondComposition!!, FromRawConversion.create())
-        assertThat(secondFlatMap).contains(entry("testing_template/context/testing/date_time", ISODateTimeFormat.dateTime().print(dt)))
+        assertThat(secondFlatMap).contains(entry("testing_template/context/testing/date_time", "2014-01-13T14:35:10+01:00"))
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("testing_template/context/testing/date_time", "17:aa"), context) }
             .isInstanceOf(ConversionException::class.java)
-            .hasMessageContaining("Unable to convert value to DateTime: 17:aa (path: testing_template/context/testing/date_time).")
+            .hasMessageContaining("Error processing value \"17:aa\" for pattern \"yyyy-mm-ddTHH:MM:SS\" (path: testing_template/context/testing/date_time).")
     }
 
     @Test

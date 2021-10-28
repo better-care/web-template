@@ -65,15 +65,15 @@
                 "order_details": [
                   {
                     "order_start_date_time": [
-                      "2019-01-22T11:30+01:00"
+                      "2019-01-22T11:30:00+01:00"
                     ],
                     "order_stop_date_time": [
-                      "2019-01-22T15:20:00.100+01:00"
+                      "2019-01-22T15:20:00.1+01:00"
                     ],
                     "nutrition_course_summary": [
                       {
                         "date_of_next_meal": [
-                          "2019-01-22T11:30+01:00"
+                          "2019-01-22T11:30:00+01:00"
                         ],
                         "type_of_next_meal": [
                           {

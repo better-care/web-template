@@ -36,7 +36,7 @@ class StrictModeTest : AbstractWebTemplateTest() {
 
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("sl"))
         val values: Map<String, Any> = ImmutableMap.builder<String, Any>()
-            .put("medical_document/document/date_last_reviewed", "2012-12-01T10:17:00.000+01:00")
+            .put("medical_document/document/date_last_reviewed", "2012-12-01")
             .put("medical_document/document/content", "Hello world!")
             .put("medical_document/document/status", "at0007")
             .build()
