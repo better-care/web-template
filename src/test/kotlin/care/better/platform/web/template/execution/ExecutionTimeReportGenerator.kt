@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package care.better.platform.web.template.speed
+package care.better.platform.web.template.execution
 
 import care.better.platform.jaxb.JaxbRegistry
 import care.better.platform.json.jackson.better.BetterObjectMapper
@@ -27,6 +27,7 @@ import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
+import com.fasterxml.jackson.databind.json.JsonMapper
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.datatype.joda.JodaModule
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
@@ -48,9 +49,9 @@ import javax.xml.transform.stream.StreamSource
 class ExecutionTimeReportGenerator(resources: List<ResourceDto>, private val repetitions: Int = 50) {
     private val jaxbRegistry: JaxbRegistry = JaxbRegistry.getInstance()
 
-    private val objectMapper: ObjectMapper = ObjectMapper().apply {
-        this.enable(JsonParser.Feature.ALLOW_COMMENTS)
-    }
+    private val objectMapper: ObjectMapper = JsonMapper.builder()
+            .enable(JsonParser.Feature.ALLOW_COMMENTS)
+            .build()
 
     private val reportDto: ReportDto = ReportDto()
 

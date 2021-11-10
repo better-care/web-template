@@ -42,7 +42,6 @@ interface PostProcessor<T> {
      * @param instanceClass [Class] of the RM object or [MutableList] of RM objects that will be post processed.
      * @return [Boolean] indicating if this [PostProcessor] can process the RM object or [MutableList] of the RM objects
      */
-    @JvmDefault
     fun accept(instanceClass: Class<*>): Boolean = getType().isAssignableFrom(instanceClass)
 
     /**
@@ -58,7 +57,6 @@ interface PostProcessor<T> {
      *
      * @return Order of this [PostProcessor]
      */
-    @JvmDefault
     fun getOrder(): Int = Integer.MIN_VALUE
 }
 

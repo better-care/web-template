@@ -116,9 +116,9 @@ internal object ProportionWebTemplateInputBuilder : WebTemplateInputBuilder<Any>
         }
         val proportionTypes =
             if (type == null)
-                WebTemplateProportionType.values().asSequence().map { it.name }.map { it.toLowerCase() }.toList()
+                WebTemplateProportionType.values().asSequence().map { it.name }.map { it.lowercase() }.toList()
             else
-                WebTemplateProportionType.values().asSequence().filter { type.list.contains(it.ordinal) }.map { it.name }.map { it.toLowerCase() }.toList()
+                WebTemplateProportionType.values().asSequence().filter { type.list.contains(it.ordinal) }.map { it.name }.map { it.lowercase() }.toList()
 
         node.proportionTypes.addAll(proportionTypes)
     }

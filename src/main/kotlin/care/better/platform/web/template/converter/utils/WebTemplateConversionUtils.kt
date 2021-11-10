@@ -48,7 +48,7 @@ object WebTemplateConversionUtils {
      */
     @JvmStatic
     internal fun getWebTemplatePathSegmentForName(name: String): String =
-        ID_INVALID_CHARACTERS.matcher(name).replaceAll("_").toLowerCase()
+        ID_INVALID_CHARACTERS.matcher(name).replaceAll("_").lowercase()
             .let { MULTIPLE_UNDERSCORE.matcher(it).replaceAll("_") }
             .removePrefix("_").removeSuffix("_")
 

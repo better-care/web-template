@@ -19,17 +19,16 @@ import care.better.openehr.rm.RmObject
 import care.better.platform.path.NameAndNodeMatchingPathValueExtractor
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.JsonNode
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
+import com.fasterxml.jackson.databind.json.JsonMapper
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.datatype.joda.JodaModule
-import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
-import care.better.platform.web.template.builder.WebTemplateBuilder
-import care.better.platform.web.template.converter.value.SimpleValueConverter
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
@@ -192,10 +191,10 @@ class RmObjectTest : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("sl")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/rmobject/LAB - Laboratory Test Report.xml"), builderContext)
 
-        val mapper = ObjectMapper().apply {
-            this.registerModule(JodaModule())
-            this.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
-        }
+        val mapper = JsonMapper.builder()
+                .addModule(JodaModule())
+                .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+                .build()
 
         val observationMap: Map<String, Any> = mapper.readValue(getJson("/convert/compositions/rmobject/lab-observation-flat-prefixed.json"), object : TypeReference<Map<String, Any>>() {})
         val compositionMap: Map<String, Any> = mapper.readValue(getJson("/convert/compositions/rmobject/lab-composition-flat.json"), object : TypeReference<Map<String, Any>>() {})

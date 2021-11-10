@@ -94,7 +94,7 @@ object WebTemplateBuilderUtils {
                 val id = item.id
                 if (value != null && value.contains("L10n={"))
                     parseTranslations(value, localizedNamesFromAnnotations)
-                else if (id != null && id.toLowerCase().startsWith("l10n."))
+                else if (id != null && id.lowercase().startsWith("l10n."))
                     localizedNamesFromAnnotations[id.substring(5)] = value
             }
         }
@@ -118,7 +118,7 @@ object WebTemplateBuilderUtils {
     }
 
     @JvmStatic
-    internal fun getChoiceWebTemplateId(typeName: String): String = "${typeName.substring(3).toLowerCase()}_value"
+    internal fun getChoiceWebTemplateId(typeName: String): String = "${typeName.substring(3).lowercase()}_value"
 
     @JvmStatic
     fun buildWebTemplate(template: Template): WebTemplate {
