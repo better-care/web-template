@@ -17,22 +17,22 @@ package care.better.platform.web.template.abstraction
 
 import care.better.platform.jaxb.JaxbRegistry
 import care.better.platform.web.template.WebTemplate
+import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.builder.model.WebTemplateNode
 import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.common.collect.Lists
-import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.apache.commons.io.IOUtils
-import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.BeforeEach
+import org.joda.time.DateTimeZone
+import org.junit.jupiter.api.AfterAll
+import org.junit.jupiter.api.BeforeAll
 import org.openehr.am.aom.Template
 import org.openehr.rm.composition.Composition
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.nio.charset.StandardCharsets
-import java.time.ZoneId
 import java.util.*
 import javax.xml.bind.JAXBException
 import javax.xml.bind.Unmarshaller
@@ -43,6 +43,29 @@ import javax.xml.transform.stream.StreamSource
  * @since 3.1.0
  */
 abstract class AbstractWebTemplateTest {
+
+    companion object {
+        private lateinit var defaultTimeZone: TimeZone
+        private lateinit var defaultDateTimeZone: DateTimeZone
+
+        @BeforeAll
+        @JvmStatic
+        @Suppress("unused")
+        internal fun init() {
+            defaultTimeZone = TimeZone.getDefault()
+            TimeZone.setDefault(TimeZone.getTimeZone("Europe/Ljubljana"))
+            defaultDateTimeZone = DateTimeZone.getDefault()
+            DateTimeZone.setDefault(DateTimeZone.forID("Europe/Ljubljana"))
+        }
+
+        @AfterAll
+        @JvmStatic
+        @Suppress("unused")
+        internal fun tearDown() {
+            TimeZone.setDefault(defaultTimeZone)
+            DateTimeZone.setDefault(defaultDateTimeZone)
+        }
+    }
 
     private val unmarshaller: Unmarshaller = JaxbRegistry.getInstance().unmarshaller
 

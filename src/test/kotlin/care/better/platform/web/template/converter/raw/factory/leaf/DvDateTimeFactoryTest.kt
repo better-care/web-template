@@ -25,6 +25,7 @@ import care.better.platform.web.template.converter.exceptions.ConversionExceptio
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
+import org.joda.time.DateTimeZone
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -48,6 +49,7 @@ class DvDateTimeFactoryTest : AbstractWebTemplateTest() {
 
     companion object {
         private lateinit var defaultTimeZone: TimeZone
+        private lateinit var defaultDateTimeZone: DateTimeZone
         private var defaultLocale = Locale.GERMANY
         private const val CONVERSION_EXCEPTION = "CONVERSION_EXCEPTION"
 
@@ -57,6 +59,8 @@ class DvDateTimeFactoryTest : AbstractWebTemplateTest() {
         internal fun init() {
             defaultTimeZone = TimeZone.getDefault()
             TimeZone.setDefault(TimeZone.getTimeZone("Europe/Ljubljana"))
+            defaultDateTimeZone = DateTimeZone.getDefault()
+            DateTimeZone.setDefault(DateTimeZone.forID("Europe/Ljubljana"))
         }
 
         @AfterAll
@@ -64,6 +68,7 @@ class DvDateTimeFactoryTest : AbstractWebTemplateTest() {
         @Suppress("unused")
         internal fun tearDown() {
             TimeZone.setDefault(defaultTimeZone)
+            DateTimeZone.setDefault(defaultDateTimeZone)
         }
 
         @JvmStatic

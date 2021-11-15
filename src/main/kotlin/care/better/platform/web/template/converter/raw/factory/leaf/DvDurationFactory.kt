@@ -63,7 +63,7 @@ internal object DvDurationFactory : DvQuantifiedFactory<DvDuration>() {
             webTemplatePath: WebTemplatePath): Boolean =
         super.handleField(conversionContext, amNode, attribute, rmObject, jsonNode, webTemplatePath) ||
                 when {
-                    durationFields.contains(attribute.attribute.toUpperCase()) -> {
+                    durationFields.contains(attribute.attribute.uppercase()) -> {
                         handleDurationEnumAttribute(attribute, jsonNode, rmObject)
                         true
                     }
@@ -85,7 +85,7 @@ internal object DvDurationFactory : DvQuantifiedFactory<DvDuration>() {
     private fun handleDurationEnumAttribute(attribute: AttributeDto, jsonNode: JsonNode, rmObject: DvDuration) {
         val currentPeriod = if (rmObject.value == null) Period.ZERO else JodaConversionUtils.toPeriod(rmObject)
 
-        val field: WebTemplateDurationField = WebTemplateDurationField.valueOf(attribute.attribute.toUpperCase())
+        val field: WebTemplateDurationField = WebTemplateDurationField.valueOf(attribute.attribute.uppercase())
 
         val fieldValue: Int = try {
             Integer.valueOf(jsonNode.asText())

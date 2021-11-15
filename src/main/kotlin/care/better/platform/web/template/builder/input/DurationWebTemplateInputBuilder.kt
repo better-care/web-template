@@ -68,7 +68,7 @@ internal object DurationWebTemplateInputBuilder : WebTemplateInputBuilder<CDurat
             }
         }
         for (field in fields) {
-            val codedValue = WebTemplateCodedValue(field.name.toLowerCase(), field.name.toLowerCase())
+            val codedValue = WebTemplateCodedValue(field.name.lowercase(), field.name.lowercase())
             codedValue.validation = WebTemplateValidation()
             val fieldMin = min[field.durationFieldType]
             val fieldMax = max[field.durationFieldType]
@@ -107,7 +107,7 @@ internal object DurationWebTemplateInputBuilder : WebTemplateInputBuilder<CDurat
         }
         val defaultPeriod = if (defaultValue == null) null else Period.parse(defaultValue)
         for (field in fields) {
-            val input = WebTemplateInput(WebTemplateInputType.INTEGER, field.name.toLowerCase())
+            val input = WebTemplateInput(WebTemplateInputType.INTEGER, field.name.lowercase())
             input.validation = WebTemplateValidation()
             val fieldMin = min[field.durationFieldType]
             val fieldMax = max[field.durationFieldType]

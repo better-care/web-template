@@ -51,7 +51,7 @@ internal object DvDurationToFlatMapper : DvQuantifiedToFlatMapper<DvDuration>() 
         val period: Period = JodaConversionUtils.toPeriod(rmObject)
 
         WebTemplateDurationField.values().forEach {
-            val key = it.name.toLowerCase()
+            val key = it.name.lowercase()
             val value = period[it.durationFieldType]
             if (value > 0) {
                 formattedFlatConversionContext["$webTemplatePath|$key"] = value.toString()

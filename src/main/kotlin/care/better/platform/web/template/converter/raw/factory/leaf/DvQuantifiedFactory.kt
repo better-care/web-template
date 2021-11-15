@@ -43,7 +43,7 @@ internal abstract class DvQuantifiedFactory<T : DvQuantified> : DvOrderedFactory
                 if (attribute.attribute == "magnitude_status") {
                     val textValue = jsonNode.asText()
                     if (textValue != null) {
-                        if (OpenEhrTerminology.getMagnitudeStatusCodes().contains(textValue.toUpperCase()))
+                        if (OpenEhrTerminology.getMagnitudeStatusCodes().contains(textValue.uppercase()))
                             rmObject.magnitudeStatus = textValue
                         else
                             throw ConversionException("Invalid MAGNITUDE_STATUS: $textValue", webTemplatePath.toString())

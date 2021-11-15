@@ -45,7 +45,7 @@ internal object DvDurationToStructuredMapper : DvQuantifiedToStructuredMapper<Dv
             val period: Period = JodaConversionUtils.toPeriod(rmObject)
 
             WebTemplateDurationField.values().forEach {
-                val key = it.name.toLowerCase()
+                val key = it.name.lowercase()
                 val value = period[it.durationFieldType]
                 if (value > 0) {
                     this.putIfNotNull("|$key", value.toString())

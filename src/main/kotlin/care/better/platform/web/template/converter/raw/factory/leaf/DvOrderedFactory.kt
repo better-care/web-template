@@ -44,8 +44,8 @@ internal abstract class DvOrderedFactory<T : DvOrdered> : RmObjectLeafNodeFactor
             "normal_status" -> {
                 val textValue = jsonNode.asText()
                 if (textValue != null) {
-                    if (OpenEhrTerminology.getNormalStatusCodes().contains(textValue.toUpperCase()))
-                        rmObject.normalStatus = CodePhrase.create("openehr", textValue.toUpperCase())
+                    if (OpenEhrTerminology.getNormalStatusCodes().contains(textValue.uppercase()))
+                        rmObject.normalStatus = CodePhrase.create("openehr", textValue.uppercase())
                     else
                         throw ConversionException("Invalid NORMAL_STATUS code: $textValue", webTemplatePath.toString())
                 }

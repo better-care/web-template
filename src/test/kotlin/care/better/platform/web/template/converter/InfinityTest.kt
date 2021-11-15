@@ -44,7 +44,7 @@ class InfinityTest : AbstractWebTemplateTest() {
         val template = getTemplate(templateName)
 
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("ru"))
-        val locale = Locale(webTemplate.defaultLanguage, webTemplate.defaultLanguage.toUpperCase())
+        val locale = Locale(webTemplate.defaultLanguage, webTemplate.defaultLanguage.uppercase())
 
         val conversionContext = ConversionContext.create()
             .withLanguage(locale.language)
@@ -67,7 +67,7 @@ class InfinityTest : AbstractWebTemplateTest() {
         val template = getTemplate(templateName)
 
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("ru"))
-        val locale = Locale(webTemplate.defaultLanguage, webTemplate.defaultLanguage.toUpperCase())
+        val locale = Locale(webTemplate.defaultLanguage, webTemplate.defaultLanguage.uppercase())
 
         val conversionContext = ConversionContext.create()
             .withLanguage(locale.language)
@@ -112,7 +112,7 @@ class InfinityTest : AbstractWebTemplateTest() {
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, context)
         assertThat(webTemplate).isNotNull
 
-        val locale = Locale(webTemplate.defaultLanguage, webTemplate.defaultLanguage.toUpperCase())
+        val locale = Locale(webTemplate.defaultLanguage, webTemplate.defaultLanguage.uppercase())
 
         val node: ObjectNode = getObjectMapper().readTree(getJson("/convert/compositions/composition_with_activity.json")) as ObjectNode
 

@@ -220,7 +220,7 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
             val childNode = createAmNode(amNode, it, "value", Element::class.java)
             amChildren.add(childNode)
             children.add(createCustomNode(childNode, amNode.name, WebTemplateIntegerRange(1, 1)).apply {
-                this.jsonId = WebTemplateBuilderUtils.getChoiceWebTemplateId(it.substring(3).toLowerCase())
+                this.jsonId = WebTemplateBuilderUtils.getChoiceWebTemplateId(it.substring(3).lowercase())
             })
         }
 
@@ -339,7 +339,7 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
 
     private fun createCustomNode(amNode: AmNode, attributeName: String?, existence: WebTemplateIntegerRange): WebTemplateNode =
         buildNode(attributeName, amNode).apply {
-            this.name = "${attributeName?.substring(0, 1)?.toUpperCase()}${attributeName?.substring(1)}"
+            this.name = "${attributeName?.substring(0, 1)?.uppercase()}${attributeName?.substring(1)}"
             this.inContext = true
             this.occurences = existence
             setTermBindings(this)

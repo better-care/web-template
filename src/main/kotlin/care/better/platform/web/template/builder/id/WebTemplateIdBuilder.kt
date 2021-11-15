@@ -87,9 +87,9 @@ internal class WebTemplateIdBuilder {
     private fun buildTypedId(type: String): String =
         with(INTERVAL_PATTERN.matcher(type)) {
             if (this.matches())
-                "interval_of_${this.group(1).toLowerCase()}_value"
+                "interval_of_${this.group(1).lowercase()}_value"
             else
-                "${type.substring(3).toLowerCase()}_value"
+                "${type.substring(3).lowercase()}_value"
         }
 
     private fun fixPolymorphicOrder(children: MutableList<WebTemplateNode>) {
