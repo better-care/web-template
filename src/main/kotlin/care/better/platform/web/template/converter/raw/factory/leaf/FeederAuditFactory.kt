@@ -73,7 +73,7 @@ internal object FeederAuditFactory : RmObjectLeafNodeFactory<FeederAudit>() {
                 true
             }
             attribute.attribute == "feeder_system_audit" -> {
-                rmObject.originatingSystemAudit = jsonNode.mapNotNull {
+                rmObject.feederSystemAudit = jsonNode.mapNotNull {
                     FeederAuditDetailsFactory.create(conversionContext, amNode, it, webTemplatePath + attribute.originalAttribute)
                 }.firstOrNull()
                 true
