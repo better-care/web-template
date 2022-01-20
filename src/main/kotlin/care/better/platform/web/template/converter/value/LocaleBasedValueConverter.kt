@@ -179,7 +179,6 @@ class LocaleBasedValueConverter(private val locale: Locale) : ValueConverter {
                 convertToLocalDateLocalized(value) ?: throw ConversionException("Unable to convert value to OpenEhr Date: $value")
             } else {
                 throw ConversionException("Unable to convert value to OpenEhr Date: $value")
-
             }
         }
     }
@@ -194,7 +193,6 @@ class LocaleBasedValueConverter(private val locale: Locale) : ValueConverter {
                 convertToOffsetDateTimeLocalized(value) ?: throw ConversionException("Unable to convert value to OpenEhr Date: $value")
             } else {
                 throw ConversionException("Unable to convert value to OpenEhr Date: $value")
-
             }
         }
     }
