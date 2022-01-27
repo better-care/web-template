@@ -34,7 +34,7 @@
         <kotlin-annotations.version>20.1.0</kotlin-annotations.version>
         <log4j-api-kotlin.version>1.0.0</log4j-api-kotlin.version>
 
-        <ehr-common.version>3.1.4-A1</ehr-common.version>
+        <ehr-common.version>3.1.4-DS1</ehr-common.version>
 
         <jackson.version>2.13.0</jackson.version>
         <jakarta.xml.version>2.3.3</jakarta.xml.version>
