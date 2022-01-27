@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.1.4 - 2022-01-27
+
+- Bump ehr-common dependency version to 3.1.4
+- Deprecate LocaleBasedValueConverter
+
 ## 3.1.3 - 2021-12-06
 
 - Bump ehr-common dependency version to 3.1.3
