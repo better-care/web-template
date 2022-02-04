@@ -37,6 +37,7 @@ import java.util.*
  *
  * Implementation of [ValueConverter] that converts decimal and temporal values to strings and vice-versa using the locale.
  */
+@Deprecated(message = "Since 3.1.4 with java9+ (because of http://openjdk.java.net/jeps/252)")
 class LocaleBasedValueConverter(private val locale: Locale) : ValueConverter {
 
     companion object {
@@ -83,33 +84,30 @@ class LocaleBasedValueConverter(private val locale: Locale) : ValueConverter {
         styles.forEach { formatters.add(getFormatter(locale, it)) }
     }
 
-    private fun getFormatter(locale: Locale, dateStyle: String): DateTimeFormatter =
-        DateTimeFormat.forPattern(DateTimeFormat.patternForStyle(dateStyle, locale)).withLocale(locale).withOffsetParsed()
+    private fun getFormatter(locale: Locale, dateStyle: String): DateTimeFormatter = DateTimeFormat.forPattern(DateTimeFormat.patternForStyle(dateStyle, locale)).withLocale(locale).withOffsetParsed()
 
 
-    override fun parseDateTime(value: String, strict: Boolean): OffsetDateTime =
-        when {
-            NOW.equals(value, ignoreCase = true) -> OffsetDateTime.now()
-            else -> {
-                try {
-                    OffsetDateTime.parse(value, java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME)
-                } catch (ignored: DateTimeException) {
-                    convertToOffsetDateTimeLocalized(value) ?: throw ConversionException("Unable to convert value to DateTime: $value")
-                }
+    override fun parseDateTime(value: String, strict: Boolean): OffsetDateTime = when {
+        NOW.equals(value, ignoreCase = true) -> OffsetDateTime.now()
+        else -> {
+            try {
+                OffsetDateTime.parse(value, java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+            } catch (ignored: DateTimeException) {
+                convertToOffsetDateTimeLocalized(value) ?: throw ConversionException("Unable to convert value to DateTime: $value")
             }
         }
+    }
 
-    override fun parseDate(value: String, strict: Boolean): LocalDate =
-        when {
-            NOW.equals(value, ignoreCase = true) -> LocalDate.now()
-            else -> {
-                try {
-                    LocalDate.parse(value, java.time.format.DateTimeFormatter.ISO_LOCAL_DATE)
-                } catch (ignored: DateTimeException) {
-                    convertToLocalDateLocalized(value) ?: throw ConversionException("Unable to convert value to LocalDate: $value")
-                }
+    override fun parseDate(value: String, strict: Boolean): LocalDate = when {
+        NOW.equals(value, ignoreCase = true) -> LocalDate.now()
+        else -> {
+            try {
+                LocalDate.parse(value, java.time.format.DateTimeFormatter.ISO_LOCAL_DATE)
+            } catch (ignored: DateTimeException) {
+                convertToLocalDateLocalized(value) ?: throw ConversionException("Unable to convert value to LocalDate: $value")
             }
         }
+    }
 
     private fun convertToOffsetDateTimeLocalized(value: String): OffsetDateTime? {
         for (format in dateTimeFormatters.filter { it.isParser }) {
@@ -156,79 +154,70 @@ class LocaleBasedValueConverter(private val locale: Locale) : ValueConverter {
         return null
     }
 
-    override fun parseTime(value: String): LocalTime =
-        when {
-            NOW.equals(value, ignoreCase = true) -> LocalTime.now()
-            else -> {
-                try {
-                    LocalTime.parse(value, java.time.format.DateTimeFormatter.ISO_LOCAL_TIME)
-                } catch (ignored: DateTimeException) {
-                    convertToLocalTimeLocalized(value) ?: throw ConversionException("Unable to convert value to LocalTime: $value")
-                }
-            }
-
-        }
-
-    override fun parseOffsetTime(value: String): OffsetTime =
-        if (NOW.equals(value, ignoreCase = true))
-            OffsetTime.now()
-        else
-            convertToOffsetTimeLocalized(value) ?: throw  ConversionException("Unable to convert value to LocalTime: $value")
-
-    override fun parseOpenEhrDate(value: String, pattern: String, strict: Boolean): TemporalAccessor =
-        if (NOW.equals(value, ignoreCase = true)) {
-            OpenEhrDateTimeFormatter.ofPattern(pattern, false, locale).parseDate(LocalDate.now().toString())
-        } else {
+    override fun parseTime(value: String): LocalTime = when {
+        NOW.equals(value, ignoreCase = true) -> LocalTime.now()
+        else -> {
             try {
-                OpenEhrDateTimeFormatter.ofPattern(pattern, strict, locale).parseDate(value)
+                LocalTime.parse(value, java.time.format.DateTimeFormatter.ISO_LOCAL_TIME)
             } catch (ignored: DateTimeException) {
-                if (isLocalizedDateOrDateTime(value)) {
-                    convertToLocalDateLocalized(value) ?: throw  ConversionException("Unable to convert value to OpenEhr Date: $value")
-                } else {
-                    throw  ConversionException("Unable to convert value to OpenEhr Date: $value")
-
-                }
+                convertToLocalTimeLocalized(value) ?: throw ConversionException("Unable to convert value to LocalTime: $value")
             }
         }
 
-    override fun parseOpenEhrDateTime(value: String, pattern: String, strict: Boolean): TemporalAccessor =
-        if (NOW.equals(value, ignoreCase = true)) {
-            OpenEhrDateTimeFormatter.ofPattern(pattern, false, locale).parseDateTime(OffsetDateTime.now().toString())
-        } else {
-            try {
-                OpenEhrDateTimeFormatter.ofPattern(pattern, strict, locale).parseDateTime(value)
-            } catch (ignored: DateTimeException) {
-                if (isLocalizedDateOrDateTime(value)) {
-                    convertToOffsetDateTimeLocalized(value) ?: throw  ConversionException("Unable to convert value to OpenEhr Date: $value")
-                } else {
-                    throw  ConversionException("Unable to convert value to OpenEhr Date: $value")
+    }
 
-                }
+    override fun parseOffsetTime(value: String): OffsetTime = if (NOW.equals(value, ignoreCase = true)) OffsetTime.now()
+    else convertToOffsetTimeLocalized(value) ?: throw ConversionException("Unable to convert value to LocalTime: $value")
+
+    override fun parseOpenEhrDate(value: String, pattern: String, strict: Boolean): TemporalAccessor = if (NOW.equals(value, ignoreCase = true)) {
+        OpenEhrDateTimeFormatter.ofPattern(pattern, false, locale).parseDate(LocalDate.now().toString())
+    } else {
+        try {
+            OpenEhrDateTimeFormatter.ofPattern(pattern, strict, locale).parseDate(value)
+        } catch (ignored: DateTimeException) {
+            if (isLocalizedDateOrDateTime(value)) {
+                convertToLocalDateLocalized(value) ?: throw ConversionException("Unable to convert value to OpenEhr Date: $value")
+            } else {
+                throw ConversionException("Unable to convert value to OpenEhr Date: $value")
+
             }
         }
+    }
 
-    override fun parseOpenEhrTime(value: String, pattern: String, strict: Boolean): TemporalAccessor =
-        if (NOW.equals(value, ignoreCase = true)) {
-            OpenEhrDateTimeFormatter.ofPattern(pattern, false, locale).parseTime(OffsetTime.now().toString())
-        } else {
-            try {
-                OpenEhrDateTimeFormatter.ofPattern(pattern, strict, locale).parseTime(value)
-            } catch (ignored: DateTimeException) {
-                throw  ConversionException("Unable to convert value to OpenEhr Time: $value")
+    override fun parseOpenEhrDateTime(value: String, pattern: String, strict: Boolean): TemporalAccessor = if (NOW.equals(value, ignoreCase = true)) {
+        OpenEhrDateTimeFormatter.ofPattern(pattern, false, locale).parseDateTime(OffsetDateTime.now().toString())
+    } else {
+        try {
+            OpenEhrDateTimeFormatter.ofPattern(pattern, strict, locale).parseDateTime(value)
+        } catch (ignored: DateTimeException) {
+            if (isLocalizedDateOrDateTime(value)) {
+                convertToOffsetDateTimeLocalized(value) ?: throw ConversionException("Unable to convert value to OpenEhr Date: $value")
+            } else {
+                throw ConversionException("Unable to convert value to OpenEhr Date: $value")
+
             }
         }
+    }
+
+    override fun parseOpenEhrTime(value: String, pattern: String, strict: Boolean): TemporalAccessor = if (NOW.equals(value, ignoreCase = true)) {
+        OpenEhrDateTimeFormatter.ofPattern(pattern, false, locale).parseTime(OffsetTime.now().toString())
+    } else {
+        try {
+            OpenEhrDateTimeFormatter.ofPattern(pattern, strict, locale).parseTime(value)
+        } catch (ignored: DateTimeException) {
+            throw ConversionException("Unable to convert value to OpenEhr Time: $value")
+        }
+    }
 
     // datetime is marked as localized if it doesn't contain standard date separator "-" or if it's not only a time without a date
-    private fun isLocalizedDateOrDateTime(value: String): Boolean =
-        (value.takeUnless { value.contains(":") } ?: value.substring(0, value.indexOf(":")))
-            .let { !it.contains("-") && it.contains(".") || it.contains("/") }
+    private fun isLocalizedDateOrDateTime(value: String): Boolean = (value.takeUnless { value.contains(":") }
+            ?: value.substring(0, value.indexOf(":"))).let { !it.contains("-") && it.contains(".") || it.contains("/") }
 
-    override fun formatOpenEhrTemporal(temporal: TemporalAccessor, pattern: String, strict: Boolean): String =
-        try {
-            OpenEhrDateTimeFormatter.ofPattern(pattern, strict, locale).format(temporal)
-        } catch (ignored: DateTimeException) {
-            throw  ConversionException("Unable to format OpenEhr Date/Time/DateTime: $temporal")
-        }
+    override fun formatOpenEhrTemporal(temporal: TemporalAccessor, pattern: String, strict: Boolean): String = try {
+        OpenEhrDateTimeFormatter.ofPattern(pattern, strict, locale).format(temporal)
+    } catch (ignored: DateTimeException) {
+        throw ConversionException("Unable to format OpenEhr Date/Time/DateTime: $temporal")
+    }
 
     override fun formatDateTime(dateTime: OffsetDateTime): String = jsr310DefaultFormatter.format(dateTime)
 
@@ -238,14 +227,13 @@ class LocaleBasedValueConverter(private val locale: Locale) : ValueConverter {
 
     override fun formatOffsetTime(time: OffsetTime): String = jsr310TimeFormatter.format(time)
 
-    override fun parseDouble(value: String): Double =
-        try {
-            with(NumberFormat.getInstance(locale) as DecimalFormat) {
-                this.parse(value).toDouble()
-            }
-        } catch (e: ParseException) {
-            throw ConversionException("Invalid decimal value: $value", e)
+    override fun parseDouble(value: String): Double = try {
+        with(NumberFormat.getInstance(locale) as DecimalFormat) {
+            this.parse(value).toDouble()
         }
+    } catch (e: ParseException) {
+        throw ConversionException("Invalid decimal value: $value", e)
+    }
 
     override fun formatDouble(value: Double): String = with(NumberFormat.getInstance(locale) as DecimalFormat) { this.format(value) }
 }
