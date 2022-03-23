@@ -31,10 +31,12 @@ import care.better.platform.web.template.builder.path.PathFilter
  * @param languages [Collection] of other possible languages
  * @param isAddDescriptions [Boolean] indicating if descriptions will be added or not
  * @param filter [PathFilter]
+ * @param otherDetails [Map] of other details
  */
 data class WebTemplateBuilderContext @JvmOverloads constructor(
         val defaultLanguage: String? = null,
         val languages: Collection<String> = emptyList(),
         val contextLanguage: String? = null,
         val isAddDescriptions: Boolean = true,
-        val filter: PathFilter = NoopPathFilter)
+        val filter: PathFilter = NoopPathFilter,
+        val otherDetails: Map<String, Any?> = mapOf())

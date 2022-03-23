@@ -2742,5 +2742,8 @@
         "inContext": true
       }
     ]
+  },
+  "otherDetails" : {
+    "is_singleton" : "EHR"
   }
 }

@@ -43,10 +43,7 @@ import care.better.platform.web.template.builder.context.WebTemplateBuilderConte
 import care.better.platform.web.template.builder.exception.BuilderException
 import care.better.platform.web.template.builder.id.WebTemplateIdBuilder
 import care.better.platform.web.template.builder.input.WebTemplateInputBuilderDelegator
-import care.better.platform.web.template.builder.model.RmProperty
-import care.better.platform.web.template.builder.model.WebTemplateCardinality
-import care.better.platform.web.template.builder.model.WebTemplateInputType
-import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.builder.model.*
 import care.better.platform.web.template.builder.model.input.CareflowStepWebTemplateCodedValue
 import care.better.platform.web.template.builder.model.input.WebTemplateCodedValue
 import care.better.platform.web.template.builder.model.input.WebTemplateInput
@@ -92,11 +89,11 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
 
         private val IGNORED_RM_PROPERTIES: Set<RmProperty> =
             setOf(
-                RmProperty(Composition::class.java, "category"), // always constrained in the template otherwise default is OK
-                RmProperty(History::class.java, "origin"), // can be calculated from events
-                RmProperty(DvCodedText::class.java, "value"), // from code
-                RmProperty(Locatable::class.java, "archetype_node_id"), // from template
-                RmProperty(Locatable::class.java, "name")) // from template
+                    RmProperty(Composition::class.java, "category"), // always constrained in the template otherwise default is OK
+                    RmProperty(History::class.java, "origin"), // can be calculated from events
+                    RmProperty(DvCodedText::class.java, "value"), // from code
+                    RmProperty(Locatable::class.java, "archetype_node_id"), // from template
+                    RmProperty(Locatable::class.java, "name")) // from template
 
         private val OVERRIDE_OPTIONAL: Set<RmProperty> =
             setOf(RmProperty(Activity::class.java, "timing")) // no longer mandatory in RM 1.0.4 (added for backward compatibility)
@@ -105,24 +102,24 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
 
         private val ANY_DATA_TYPES =
             arrayOf(
-                RmUtils.getRmTypeName(DvCodedText::class.java),
-                RmUtils.getRmTypeName(DvText::class.java),
-                RmUtils.getRmTypeName(DvMultimedia::class.java),
-                RmUtils.getRmTypeName(DvParsable::class.java),
-                RmUtils.getRmTypeName(DvState::class.java),
-                RmUtils.getRmTypeName(DvBoolean::class.java),
-                RmUtils.getRmTypeName(DvIdentifier::class.java),
-                RmUtils.getRmTypeName(DvUri::class.java),
-                RmUtils.getRmTypeName(DvEhrUri::class.java),
-                RmUtils.getRmTypeName(DvDuration::class.java),
-                RmUtils.getRmTypeName(DvQuantity::class.java),
-                RmUtils.getRmTypeName(DvCount::class.java),
-                RmUtils.getRmTypeName(DvProportion::class.java),
-                RmUtils.getRmTypeName(DvDateTime::class.java),
-                RmUtils.getRmTypeName(DvDate::class.java),
-                RmUtils.getRmTypeName(DvTime::class.java),
-                RmUtils.getRmTypeName(DvOrdinal::class.java),
-                RmUtils.getRmTypeName(DvScale::class.java))
+                    RmUtils.getRmTypeName(DvCodedText::class.java),
+                    RmUtils.getRmTypeName(DvText::class.java),
+                    RmUtils.getRmTypeName(DvMultimedia::class.java),
+                    RmUtils.getRmTypeName(DvParsable::class.java),
+                    RmUtils.getRmTypeName(DvState::class.java),
+                    RmUtils.getRmTypeName(DvBoolean::class.java),
+                    RmUtils.getRmTypeName(DvIdentifier::class.java),
+                    RmUtils.getRmTypeName(DvUri::class.java),
+                    RmUtils.getRmTypeName(DvEhrUri::class.java),
+                    RmUtils.getRmTypeName(DvDuration::class.java),
+                    RmUtils.getRmTypeName(DvQuantity::class.java),
+                    RmUtils.getRmTypeName(DvCount::class.java),
+                    RmUtils.getRmTypeName(DvProportion::class.java),
+                    RmUtils.getRmTypeName(DvDateTime::class.java),
+                    RmUtils.getRmTypeName(DvDate::class.java),
+                    RmUtils.getRmTypeName(DvTime::class.java),
+                    RmUtils.getRmTypeName(DvOrdinal::class.java),
+                    RmUtils.getRmTypeName(DvScale::class.java))
 
         /**
          * Builds [WebTemplate] from the [Template].
@@ -137,10 +134,10 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
         @JvmOverloads
         fun build(template: Template, context: WebTemplateBuilderContext, from: String? = null): WebTemplate? =
             WebTemplateBuilder(template, context).build(
-                AmTreeBuilder(template).build(),
-                from,
-                requireNotNull(template.templateId.value) { "Template ID is mandatory." },
-                TemplateUtils.extractSemVerFromTemplateDescription(template))
+                    AmTreeBuilder(template).build(),
+                    from,
+                    requireNotNull(template.templateId.value) { "Template ID is mandatory." },
+                    TemplateUtils.extractSemVerFromTemplateDescription(template))
 
         /**
          * Builds [WebTemplate] from the [Template].
@@ -159,7 +156,9 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
 
     private val templateLanguage: String = requireNotNull(template.language?.codeString) { "Template default language is mandatory." }
     private val defaultLanguage = webTemplateBuilderContext.defaultLanguage ?: templateLanguage
-    private val context = webTemplateBuilderContext.copy(defaultLanguage = defaultLanguage)
+    private val context = webTemplateBuilderContext.copy(
+            defaultLanguage = defaultLanguage,
+            otherDetails =  WebTemplateBuilderUtils.extractOtherDetails(template.description?.otherDetails ?: listOf()))
 
     private val segments: Deque<WebTemplateNode> = ArrayDeque()
     private val compactor: WebTemplateCompactor = MediumWebTemplateCompactor()
@@ -171,16 +170,17 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
             val nodes: Multimap<AmNode, WebTemplateNode> = ArrayListMultimap.create()
             if (this != null) {
                 WebTemplate(
-                    buildNode(null, this).apply {
-                        compactor.compact(this)
-                        idBuilder.buildIds(this, nodes)
-                    },
-                    templateId,
-                    semVer,
-                    context.contextLanguage ?: defaultLanguage,
-                    context.languages,
-                    CURRENT_VERSION,
-                    nodes)
+                        buildNode(null, this).apply {
+                            compactor.compact(this)
+                            idBuilder.buildIds(this, nodes)
+                        },
+                        templateId,
+                        semVer,
+                        context.contextLanguage ?: defaultLanguage,
+                        context.languages,
+                        CURRENT_VERSION,
+                        nodes,
+                        context.otherDetails)
             } else {
                 null
             }
@@ -459,9 +459,10 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
         val careflowStepWtNode = createCareFlowStepNode(amNode, careflowStep, allowedCurrentStates)
 
         webTemplateNode.children.add(
-            createCurrentStateInput(
-                currentState,
-                if (allowedCurrentStates.isEmpty()) OpenEhrTerminology.getInstance().getGroupChildren(ISM_TRANSITION_GROUP_NAME) else allowedCurrentStates))
+                createCurrentStateInput(
+                        currentState,
+                        if (allowedCurrentStates.isEmpty()) OpenEhrTerminology.getInstance()
+                            .getGroupChildren(ISM_TRANSITION_GROUP_NAME) else allowedCurrentStates))
 
         webTemplateNode.children.add(createCustomNode(transition, "transition", WebTemplateIntegerRange(0, 1)))
         webTemplateNode.children.add(careflowStepWtNode)
@@ -481,8 +482,8 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
                         val codedValue = CodePhraseUtils.getCodedValue("local", it.nodeId!!, amNode, context)
                         val currentStateCCodePhrase = getCObjectItem(it, CCodePhrase::class.java, "current_state", "defining_code")
                         CareflowStepWebTemplateCodedValue(
-                            codedValue,
-                            if (currentStateCCodePhrase?.codeList != null) currentStateCCodePhrase.codeList else emptyList()).apply {
+                                codedValue,
+                                if (currentStateCCodePhrase?.codeList != null) currentStateCCodePhrase.codeList else emptyList()).apply {
                             allowedCurrentStates.addAll(this.currentStates)
                         }
                     }.toList()
@@ -508,8 +509,8 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
         else
             "${if (segments.isEmpty()) "" else segments.peek()?.path}/${attributeName}${
                 getArchetypePredicate(
-                    amNode,
-                    if (isNameConstrained(amNode)) amNode.name else null)
+                        amNode,
+                        if (isNameConstrained(amNode)) amNode.name else null)
             }"
 
     private fun getPath(attributeName: String, amNode: AmNode, customName: String?): String =

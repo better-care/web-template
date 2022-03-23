@@ -65,8 +65,9 @@ import java.io.OutputStream
  * @param languages [Collection] of supported languages
  * @param version Version of [WebTemplate] model
  * @param nodes [Multimap] of [AmNode] and [WebTemplateNode]
+ * @param otherDetails [Map] of other details
  */
-@JsonPropertyOrder("templateId", "semVer", "version", "defaultLanguage", "languages", "tree")
+@JsonPropertyOrder("templateId", "semVer", "version", "defaultLanguage", "languages", "tree", "otherDetails")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 class WebTemplate internal constructor(
         val tree: WebTemplateNode,
@@ -75,7 +76,8 @@ class WebTemplate internal constructor(
         val defaultLanguage: String,
         val languages: Collection<String>,
         val version: String,
-        @JsonIgnore private val nodes: Multimap<AmNode, WebTemplateNode>) {
+        @JsonIgnore private val nodes: Multimap<AmNode, WebTemplateNode>,
+        val otherDetails: Map<String, Any?> = mapOf()) {
 
     companion object {
         /**
