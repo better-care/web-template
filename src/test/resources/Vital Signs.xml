@@ -36,6 +36,7 @@
         <other_details id="Sign off"></other_details>
         <other_details id="Speciality"></other_details>
         <other_details id="User roles"></other_details>
+        <other_details id="is_singleton">EHR</other_details>
         <details>
             <language>
                 <terminology_id>

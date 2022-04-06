@@ -32,6 +32,7 @@
         <other_details id="original_namespace">org.openehr</other_details>
         <other_details id="original_publisher">openEHR Foundation</other_details>
         <other_details id="custodian_namespace">org.openehr</other_details>
+        <other_details id="is_singleton">EHR</other_details>
         <other_details id="MD5-CAM-1.0.1">251c863c8c823a5b0d361e287aebc508</other_details>
         <other_details id="PARENT:MD5-CAM-1.0.1">15173A4BF38FA171E47BBE704F3E0940</other_details>
         <other_details id="build_uid">35f77377-7cdf-3e59-9831-b5cc4031df70</other_details>

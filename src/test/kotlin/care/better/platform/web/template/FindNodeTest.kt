@@ -82,6 +82,9 @@ class FindNodeTest : AbstractWebTemplateTest() {
             "openEHR-EHR-OBSERVATION.blood_pressure.v1",
             "/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value")
         assertThat(hits).hasSize(1)
+        assertThat(template.description!!.otherDetails.filter { it.id == "is_singleton" }).isNotEmpty
+        assertThat(webTemplate.otherDetails.keys).containsOnly("is_singleton")
+        assertThat(webTemplate.otherDetails.values).containsOnly("EHR")
     }
 
     @Test
