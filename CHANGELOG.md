@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-##3.1.5 - 2022-04-07
+## 3.1.5 - 2022-04-07
 
 - Add possibility to add other details to web template
 
