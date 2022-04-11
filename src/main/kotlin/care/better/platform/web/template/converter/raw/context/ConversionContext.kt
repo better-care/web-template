@@ -180,12 +180,24 @@ class ConversionContext private constructor(
             entryParticipation
         }
 
+
     /**
-     * Creates a new [Builder] from this [ConversionContext].
+     * Creates a copy of [ConversionContext] with different web template path.
+     * @param aqlPath AQL path
      *
-     * @return [ConversionContext] [Builder]
+     * @return [ConversionContext]
      */
-    fun createBuilder(): Builder = Builder(
+    fun copyWithAqlPath(aqlPath: String): ConversionContext = createBuilder(aqlPath = aqlPath).build()
+
+    /**
+     * Creates a copy of [ConversionContext] with different web template path.
+     * @param webTemplatePath Web template path
+     *
+     * @return [ConversionContext]
+     */
+    fun copyWithWebTemplatePath(webTemplatePath: String): ConversionContext = createBuilder(webTemplatePath = webTemplatePath).build()
+
+    private fun createBuilder(aqlPath: String? = null, webTemplatePath: String? = null): Builder = Builder(
             locale,
             language,
             territory,
