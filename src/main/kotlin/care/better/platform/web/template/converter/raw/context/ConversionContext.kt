@@ -24,6 +24,7 @@ import care.better.platform.web.template.converter.raw.extensions.createPartyIde
 import care.better.platform.web.template.converter.value.LocaleBasedValueConverter
 import care.better.platform.web.template.converter.value.SimpleValueConverter
 import care.better.platform.web.template.converter.value.ValueConverter
+import org.apache.commons.lang3.Conversion
 import org.apache.commons.lang3.StringUtils
 import org.openehr.base.basetypes.ObjectRef
 import org.openehr.rm.common.*
@@ -179,10 +180,81 @@ class ConversionContext private constructor(
             entryParticipation
         }
 
+
+    /**
+     * Creates a copy of [ConversionContext] with different web template path.
+     * @param aqlPath AQL path
+     *
+     * @return [ConversionContext]
+     */
+    fun copyWithAqlPath(aqlPath: String): ConversionContext = createBuilder(aqlPath = aqlPath).build()
+
+    /**
+     * Creates a copy of [ConversionContext] with different web template path.
+     * @param webTemplatePath Web template path
+     *
+     * @return [ConversionContext]
+     */
+    fun copyWithWebTemplatePath(webTemplatePath: String): ConversionContext = createBuilder(webTemplatePath = webTemplatePath).build()
+
+    private fun createBuilder(aqlPath: String? = null, webTemplatePath: String? = null): Builder = Builder(
+            locale,
+            language,
+            territory,
+            category,
+            setting,
+            composerName,
+            composerId,
+            composerSelf,
+            composer,
+            time,
+            actionTime,
+            historyOrigin,
+            endTime,
+            encoding,
+            idNamespace,
+            idScheme,
+            providerName,
+            providerId,
+            participationNames.toMutableList(),
+            participationIds.toMutableList(),
+            participationFunctions.toMutableList(),
+            participationModes.toMutableList(),
+            participationIdentifiers.map { it.toMutableList() }.toMutableList(),
+            ismTransitionCurrentState,
+            instructionNarrative,
+            activityTiming,
+            ismTransition,
+            subject,
+            entryProvider,
+            entryParticipation.toMutableList(),
+            identifierIssuer,
+            identifierAssigner,
+            identifierType,
+            activityTimingProvider,
+            instructionNarrativeProvider,
+            actionIsmTransitionProvider,
+            uidGenerator,
+            healthCareFacility,
+            location,
+            workflowId,
+            links.toMutableList(),
+            termBindingTerminologies.toMutableSet(),
+            actionToInstructionHandler,
+            rmVisitors.toMutableMap(),
+            valueConverter,
+            incompleteMode,
+            strictMode,
+            aqlPath,
+            webTemplatePath,
+            webTemplate)
+
     /**
      * Creates a new [Builder] from this [ConversionContext].
      *
      * @param webTemplate [WebTemplate]
+     *
+     * @return [ConversionContext] [Builder]
      */
     internal fun createBuilder(webTemplate: WebTemplate): Builder =
         Builder(

@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.1.5 - 2022-04-07
+
+- Add possibility to add other details to web template
+
 ## 3.1.4 - 2022-01-27
 
 - Bump ehr-common dependency version to 3.1.4
