@@ -22,6 +22,7 @@ import care.better.platform.web.template.builder.utils.CodePhraseUtils
 import org.joda.time.DateTime
 import org.joda.time.LocalDate
 import org.joda.time.LocalTime
+import org.openehr.am.aom.ArchetypeTerm
 import org.openehr.base.foundationtypes.IntervalOfReal
 import java.time.OffsetDateTime
 import java.time.OffsetTime
@@ -117,8 +118,14 @@ object WebTemplateConversionUtils {
             else
                 null
 
-            term ?: AmUtils.findTerm(amNode.terms, codeString, "text")
+            term ?: AmUtils.findTerm(amNode.terms, codeString, "text") ?: findTemplateTerminologyTerm(amNode.terms, terminologyId, codeString)
         }
+
+    private fun findTemplateTerminologyTerm(terms: List<ArchetypeTerm>, terminologyId: String?, codeString: String?): String? =
+        if (terminologyId != null && codeString != null)
+            AmUtils.findTerm(terms, "$terminologyId::$codeString", "text")
+        else
+            null
 
     @JvmStatic
     internal fun getFixedValue(interval: IntervalOfReal?): Float? =

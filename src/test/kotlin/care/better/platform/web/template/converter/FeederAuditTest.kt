@@ -32,10 +32,14 @@ import org.junit.jupiter.api.Test
 import org.openehr.rm.common.FeederAudit
 import org.openehr.rm.common.Locatable
 import org.openehr.rm.composition.Composition
+import org.openehr.rm.composition.Evaluation
 import org.openehr.rm.composition.Observation
 import org.openehr.rm.composition.Section
+import org.openehr.rm.datastructures.Element
+import org.openehr.rm.datastructures.ItemTree
 import org.openehr.rm.datatypes.DvMultimedia
 import org.openehr.rm.datatypes.DvParsable
+import java.awt.color.CMMException
 import java.io.IOException
 import javax.xml.bind.JAXBException
 
@@ -172,6 +176,21 @@ class FeederAuditTest : AbstractWebTemplateTest() {
         assertThat(value.feederAudit).isNotNull
         assertThat(value.feederAudit!!.originatingSystemAudit!!.systemId).isEqualTo("infoflex")
         assertThat(value.feederAudit!!.originatingSystemAudit!!.time!!.value).isEqualTo("2018-01-01T03:00Z")
+    }
+
+    @Test
+    fun testFeederAuditOnElement() {
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Clinical course.opt"), WebTemplateBuilderContext("en"))
+        val flatMap = getObjectMapper().readValue(getJson("/convert/compositions/clinical_course.json"), object : TypeReference<Map<String, Any>>(){})
+
+        val builderContext = ConversionContext.create().withLanguage("en").withTerritory("SI").build()
+        val composition: Composition? =  webTemplate.convertFromFlatToRaw(flatMap, builderContext)
+        assertThat(composition).isNotNull
+
+        val webTemplateNode = webTemplate.findWebTemplateNode("clinical_course/meap/assessment_a/clinical_synopsis")
+        val extractor = NameAndNodeMatchingPathValueExtractor(webTemplateNode.path)
+        val evaluation: Evaluation =  extractor.getValue(composition)[0] as Evaluation
+        assertThat(((evaluation.data as ItemTree).items[0] as Element).feederAudit?.originatingSystemAudit?.systemId).isEqualTo("386053000")
     }
 
     private fun buildDeepComposition(): Composition {

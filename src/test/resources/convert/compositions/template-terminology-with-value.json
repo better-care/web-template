@@ -1,0 +1,8 @@
+{
+    "ctx/language": "en",
+    "ctx/territory": "IE",
+    "template_terminology/body_weight/any_event:0/weight|magnitude": 78.2,
+    "template_terminology/body_weight/any_event:0/weight|unit": "kg",
+    "template_terminology/body_weight/any_event:0/confounding_factors:0|code": "Un",
+    "template_terminology/body_weight/any_event:0/confounding_factors:0|value": "Custom value"
+}
