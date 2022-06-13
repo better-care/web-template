@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.1.6 - 2022-06-13
+
+- Add possibility to copy ConversionContext with different web template or AQL path
+- Coded texts fields with local (template) terminology can't be created without a value trough web templates
+
 ## 3.1.5 - 2022-04-07
 
 - Add possibility to add other details to web template
