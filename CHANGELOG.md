@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.2.0 - 2022-06-23
+
+- Apply changes from 3.1 branch
+
 ## 3.1.6 - 2022-06-13
 
 - Add the possibility to copy ConversionContext with a different web template or AQL path
