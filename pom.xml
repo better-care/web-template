@@ -32,26 +32,26 @@
         <jetbrains-annotations.version>20.1.0</jetbrains-annotations.version>
         <log4j-api-kotlin.version>1.0.0</log4j-api-kotlin.version>
 
-        <ehr-common.version>4.0.0-A1</ehr-common.version>
+        <ehr-common.version>4.0.0-A2</ehr-common.version>
 
-        <jackson.version>2.13.1</jackson.version>
+        <jackson.version>2.13.4</jackson.version>
         <jakarta.xml.bind.version>2.3.3</jakarta.xml.bind.version>
         <jaxb-runtime.version>2.3.6</jaxb-runtime.version>
-        <joda.version>2.10.8</joda.version>
+        <joda.version>2.11.1</joda.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-io.version>2.11.0</commons-io.version>
         <commons-math3.version>3.6.1</commons-math3.version>
-        <assertj.version>3.22.0</assertj.version>
-        <jupiter.version>5.8.1</jupiter.version>
+        <assertj.version>3.23.1</assertj.version>
+        <jupiter.version>5.9.0</jupiter.version>
 
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <maven-dokka-plugin.version>${kotlin.version}</maven-dokka-plugin.version>
-        <maven-enforcer-plugin.version>3.0.0</maven-enforcer-plugin.version>
+        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+        <maven-dokka-plugin.version>1.5.31</maven-dokka-plugin.version>
+        <maven-enforcer-plugin.version>3.1.0</maven-enforcer-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
-        <maven-jacoco-plugin.version>0.8.7</maven-jacoco-plugin.version>
+        <maven-jacoco-plugin.version>0.8.8</maven-jacoco-plugin.version>
         <maven-nexus-staging-plugin.version>1.6.8</maven-nexus-staging-plugin.version>
         <maven-scm-provider-gitexe.version>1.9.5</maven-scm-provider-gitexe.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
