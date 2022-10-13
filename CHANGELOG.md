@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 - Bump ehr-common dependency version to 3.2.0
 - Apply changes from 3.1 branch
 
+## 3.1.17 - 2022-10-13 
+
+- Add possibility to have transient attributes
+
 ## 3.1.6 - 2022-06-13
 
 - Add the possibility to copy ConversionContext with a different web template or AQL path
