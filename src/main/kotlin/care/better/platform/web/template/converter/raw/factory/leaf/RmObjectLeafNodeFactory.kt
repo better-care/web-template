@@ -183,7 +183,7 @@ internal abstract class RmObjectLeafNodeFactory<T : RmObject> {
             }
 
             objectNode.fields().forEach {
-                if (!it.key.startsWith("transient_")) {
+                if (!it.key.startsWith("transient_") && !it.key.startsWith("|transient_")) {
                     if (strict && !it.value.isNull) {
                         map[AttributeDto(it.key, it.key.replace("|", ""))] = it.value
                     } else if (!it.value.isNull && !it.value.isMissingNode && !(it.value.isTextual && it.value.asText().isNullOrBlank())) {
