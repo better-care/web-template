@@ -27,14 +27,14 @@
     <packaging>jar</packaging>
 
     <properties>
-        <java.version>16</java.version>
-        <kotlin.version>1.5.30</kotlin.version>
+        <java.version>17</java.version>
+        <kotlin.version>1.6.10</kotlin.version>
         <jetbrains-annotations.version>20.1.0</jetbrains-annotations.version>
         <log4j-api-kotlin.version>1.0.0</log4j-api-kotlin.version>
 
-        <ehr-common.version>4.0.0-A2</ehr-common.version>
+        <ehr-common.version>4.0.0-A3</ehr-common.version>
 
-        <jackson.version>2.13.4</jackson.version>
+        <jackson.version>2.14.0-rc2</jackson.version>
         <jakarta.xml.bind.version>2.3.3</jakarta.xml.bind.version>
         <jaxb-runtime.version>2.3.6</jaxb-runtime.version>
         <joda.version>2.11.1</joda.version>
