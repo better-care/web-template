@@ -2,7 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## 3.1.17 - 2022-10-13 
+## 3.1.8 - 2022-10-28 
+
+- Bump ehr-common dependency version to 3.1.5
+
+## 3.1.7 - 2022-10-13 
 
 - Add possibility to have transient attributes
 
