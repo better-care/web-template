@@ -32,12 +32,12 @@
         <jetbrains-annotations.version>20.1.0</jetbrains-annotations.version>
         <log4j-api-kotlin.version>1.0.0</log4j-api-kotlin.version>
 
-        <ehr-common.version>4.0.0-A3</ehr-common.version>
+        <ehr-common.version>4.0.0-A4</ehr-common.version>
 
-        <jackson.version>2.14.0-rc2</jackson.version>
+        <jackson.version>2.14.0-rc3</jackson.version>
         <jakarta.xml.bind.version>2.3.3</jakarta.xml.bind.version>
         <jaxb-runtime.version>2.3.6</jaxb-runtime.version>
-        <joda.version>2.11.1</joda.version>
+        <joda-time.version>2.11.1</joda-time.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-io.version>2.11.0</commons-io.version>
         <commons-math3.version>3.6.1</commons-math3.version>
@@ -77,7 +77,7 @@
             <dependency>
                 <groupId>joda-time</groupId>
                 <artifactId>joda-time</artifactId>
-                <version>${joda.version}</version>
+                <version>${joda-time.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
