@@ -69,15 +69,15 @@ import java.io.OutputStream
  */
 @JsonPropertyOrder("templateId", "semVer", "version", "defaultLanguage", "languages", "tree", "otherDetails")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-class WebTemplate internal constructor(
-        val tree: WebTemplateNode,
-        val templateId: String,
-        val semVer: String?,
-        val defaultLanguage: String,
-        val languages: Collection<String>,
-        val version: String,
+open class WebTemplate internal constructor(
+        open val tree: WebTemplateNode,
+        open val templateId: String,
+        open val semVer: String?,
+        open val defaultLanguage: String,
+        open val languages: Collection<String>,
+        open val version: String,
         @JsonIgnore private val nodes: Multimap<AmNode, WebTemplateNode>,
-        val otherDetails: Map<String, Any?> = mapOf()) {
+        open val otherDetails: Map<String, Any?> = mapOf()) {
 
     companion object {
         /**
@@ -103,7 +103,7 @@ class WebTemplate internal constructor(
          * @param amNode [AmNode]
          * @param pathSegment [PathSegment]
          * @param rmType RM type
-         * @return Matching [AmNode] child if exist, otherwise, return null
+         * @return Matching [AmNode] child if exists, otherwise, return null
          */
         @JvmStatic
         fun findChildNode(amNode: AmNode, pathSegment: PathSegment, rmType: String?): AmNode? =
@@ -127,7 +127,7 @@ class WebTemplate internal constructor(
      * @param conversionContext [ConversionContext]
      * @return RM object in RAW format
      */
-    fun <T : RmObject> convertFromFlatToRaw(flatRmObject: Map<String, Any?>, conversionContext: ConversionContext): T? =
+    open fun <T : RmObject> convertFromFlatToRaw(flatRmObject: Map<String, Any?>, conversionContext: ConversionContext): T? =
         convertFromStructuredToRaw(FlatToStructuredConverter.getInstance().invoke(flatRmObject, conversionContext) as ObjectNode, conversionContext)
 
     /**
@@ -137,7 +137,7 @@ class WebTemplate internal constructor(
      * @param conversionContext [ConversionContext]
      * @return RM object in RAW format
      */
-    fun <T : RmObject> convertFromStructuredToRaw(structuredRmObject: ObjectNode, conversionContext: ConversionContext): T? {
+    open fun <T : RmObject> convertFromStructuredToRaw(structuredRmObject: ObjectNode, conversionContext: ConversionContext): T? {
         return StructuredToRawConverter(conversionContext.createBuilder(this).build(), structuredRmObject).convert()
     }
 
@@ -149,7 +149,7 @@ class WebTemplate internal constructor(
      * @return RM object in FLAT format ([Map] of web template path and value pairs)
      */
     @JvmOverloads
-    fun <T : RmObject> convertFromRawToFlat(rmObject: T, fromRawConversion: FromRawConversion = FromRawConversion.create()): Map<String, Any> =
+    open fun <T : RmObject> convertFromRawToFlat(rmObject: T, fromRawConversion: FromRawConversion = FromRawConversion.create()): Map<String, Any> =
         RawToFlatConverter().convert(this, fromRawConversion, rmObject)
 
     /**
@@ -160,7 +160,7 @@ class WebTemplate internal constructor(
      * @return RM object in FLAT format ([Map] of web template path and formatted value pairs)
      */
     @JvmOverloads
-    fun <T : RmObject> convertFormattedFromRawToFlat(rmObject: T, fromRawConversion: FromRawConversion = FromRawConversion.create()): Map<String, String> =
+    open fun <T : RmObject> convertFormattedFromRawToFlat(rmObject: T, fromRawConversion: FromRawConversion = FromRawConversion.create()): Map<String, String> =
         FormattedRawToFlatConverter(fromRawConversion.valueConverter).convert(this, fromRawConversion, rmObject)
 
     /**
@@ -171,7 +171,7 @@ class WebTemplate internal constructor(
      * @return RM object in STRUCTURED format
      */
     @JvmOverloads
-    fun <T : RmObject> convertFromRawToStructured(rmObject: T, fromRawConversion: FromRawConversion = FromRawConversion.create()): JsonNode? =
+    open fun <T : RmObject> convertFromRawToStructured(rmObject: T, fromRawConversion: FromRawConversion = FromRawConversion.create()): JsonNode? =
         RawToStructuredConverter(fromRawConversion.objectMapper).convert(this, fromRawConversion, rmObject)
 
     /**
@@ -182,7 +182,7 @@ class WebTemplate internal constructor(
      * @return RM object in STRUCTURED format with formatted values
      */
     @JvmOverloads
-    fun <T : RmObject> convertFormattedFromRawToStructured(rmObject: T, fromRawConversion: FromRawConversion = FromRawConversion.create()): JsonNode? =
+    open fun <T : RmObject> convertFormattedFromRawToStructured(rmObject: T, fromRawConversion: FromRawConversion = FromRawConversion.create()): JsonNode? =
         FormattedRawToStructuredConverter(fromRawConversion.valueConverter, fromRawConversion.objectMapper).convert(this, fromRawConversion, rmObject)
 
     /**
@@ -194,7 +194,7 @@ class WebTemplate internal constructor(
      */
     @Throws(JsonProcessingException::class)
     @JvmOverloads
-    fun asJson(pretty: Boolean = false): String = WebTemplateObjectMapper.getWriter(pretty).writeValueAsString(this)
+    open fun asJson(pretty: Boolean = false): String = WebTemplateObjectMapper.getWriter(pretty).writeValueAsString(this)
 
     /**
      * Writes [WebTemplate] to the [OutputStream].
@@ -205,7 +205,7 @@ class WebTemplate internal constructor(
      */
     @Throws(IOException::class)
     @JvmOverloads
-    fun write(outputStream: OutputStream, pretty: Boolean = false) = WebTemplateObjectMapper.getWriter(pretty).writeValue(outputStream, this)
+    open fun write(outputStream: OutputStream, pretty: Boolean = false) = WebTemplateObjectMapper.getWriter(pretty).writeValue(outputStream, this)
 
     /**
      * Finds [WebTemplateNode] for the web template path.
@@ -214,7 +214,7 @@ class WebTemplate internal constructor(
      * @return [WebTemplateNode] [WebTemplateNode] if found, otherwise, return null
      * @throws [UnknownPathBuilderException] web template path is not valid for this web template
      */
-    fun findWebTemplateNode(webTemplatePath: String): WebTemplateNode {
+    open fun findWebTemplateNode(webTemplatePath: String): WebTemplateNode {
         val path: ReversedWebTemplatePath = ReversedWebTemplatePath.fromString(
             if (webTemplatePath.startsWith("/"))
                 "${tree.jsonId}$webTemplatePath"
@@ -251,7 +251,7 @@ class WebTemplate internal constructor(
      * @return [WebTemplateNode]
      * @throws [UnknownPathBuilderException] if no node was found for the AQL path
      */
-    fun findWebTemplateNodeByAqlPath(aqlPath: String): WebTemplateNode = findWebTemplateNodeByAqlPath(PathUtils.getPathSegments(aqlPath))
+    open fun findWebTemplateNodeByAqlPath(aqlPath: String): WebTemplateNode = findWebTemplateNodeByAqlPath(PathUtils.getPathSegments(aqlPath))
 
     /**
      * Finds [WebTemplateNode] for the AQL path.
@@ -259,7 +259,7 @@ class WebTemplate internal constructor(
      * @param aqlPath AQL path
      * @return [WebTemplateNode] if found, otherwise, return null
      */
-    fun findWebTemplateNodeByAqlPathOrNull(aqlPath: String): WebTemplateNode? =
+    open fun findWebTemplateNodeByAqlPathOrNull(aqlPath: String): WebTemplateNode? =
         with(PathUtils.getPathSegments(aqlPath)) {
             val amNode = resolvePath(tree.amNode, this)
             getMatchingWebTemplateNode(this, amNode)
@@ -273,7 +273,7 @@ class WebTemplate internal constructor(
      * @return [WebTemplateNode] if found, otherwise, return null
      * @throws [UnknownPathBuilderException] if no node was found for the AQL path
      */
-    fun findWebTemplateNodesByAqlPath(archetypeId: String, aqlPath: String): List<WebTemplateNode> {
+    open fun findWebTemplateNodesByAqlPath(archetypeId: String, aqlPath: String): List<WebTemplateNode> {
         val archetypeNodes = with(mutableListOf<WebTemplateNode>()) {
             findWebTemplateNodesByArchetypeId(tree, archetypeId, this)
             this.toList()
@@ -291,7 +291,7 @@ class WebTemplate internal constructor(
      * @return [WebTemplateNode] if found, otherwise, return null
      * @throws [UnknownPathBuilderException] if no node was found for the AQL path
      */
-    fun findWebTemplateNodeByAqlPath(rmType: String, aqlPath: String): WebTemplateNode =
+    open fun findWebTemplateNodeByAqlPath(rmType: String, aqlPath: String): WebTemplateNode =
         findWebTemplateNodeByAqlPath(rmType, PathUtils.getPathSegments(aqlPath))
 
     /**
@@ -302,7 +302,7 @@ class WebTemplate internal constructor(
      * @return [WebTemplateNode] if found, otherwise, return null
      * @throws [UnknownPathBuilderException] if no node was found for the AQL path
      */
-    fun findWebTemplateNodeByAqlPath(rmType: String, pathSegments: List<PathSegment>): WebTemplateNode {
+    open fun findWebTemplateNodeByAqlPath(rmType: String, pathSegments: List<PathSegment>): WebTemplateNode {
         val amNode: AmNode? = if (pathSegments.size > 1) {
             val lastSegment = pathSegments[pathSegments.size - 1]
             val parentNode = resolvePath(tree.amNode, pathSegments.subList(0, pathSegments.size - 1))
@@ -324,7 +324,7 @@ class WebTemplate internal constructor(
      * @return [WebTemplateNode] if found, otherwise, return null
      * @throws [UnknownPathBuilderException] if no node was found for the AQL path
      */
-    fun findWebTemplateNodeByAqlPath(pathSegments: List<PathSegment>): WebTemplateNode =
+    open fun findWebTemplateNodeByAqlPath(pathSegments: List<PathSegment>): WebTemplateNode =
         with(resolvePath(tree.amNode, pathSegments)) {
             getMatchingWebTemplateNode(pathSegments, this) ?: throw UnknownPathBuilderException(PathUtils.buildPath(pathSegments))
         }
@@ -375,7 +375,7 @@ class WebTemplate internal constructor(
      * @param amNode [AmNode]
      * @return [Collection] of [WebTemplateNode]
      */
-    fun getWebTemplateNodes(amNode: AmNode?): Collection<WebTemplateNode> = amNode?.let { nodes.get(it)?.toList() } ?: emptyList()
+    open fun getWebTemplateNodes(amNode: AmNode?): Collection<WebTemplateNode> = amNode?.let { nodes.get(it)?.toList() } ?: emptyList()
 
     /**
      * Returns [List] of [CodedValue] for the web template path.
@@ -387,7 +387,7 @@ class WebTemplate internal constructor(
      * @throws [UnknownPathBuilderException] web template path is not valid for this web template
      */
     @JvmOverloads
-    fun getCodes(webTemplatePath: String, language: String? = null): List<CodedValue> =
+    open fun getCodes(webTemplatePath: String, language: String? = null): List<CodedValue> =
         with(findWebTemplateNode(webTemplatePath)) {
             if (this.hasInput())
                 this.getInput()?.list?.map { CodedValue(it.value, if (language == null) it.label else it.localizedLabels[language]) } ?: emptyList()
@@ -403,7 +403,7 @@ class WebTemplate internal constructor(
      * @return [List] of [CodedValue] including their descriptions for the web template path in the specified language
      * @throws [UnknownPathBuilderException] web template path is not valid for this web template
      */
-    fun getCodesWithDescription(webTemplatePath: String, language: String): List<CodedValueWithDescription> =
+    open fun getCodesWithDescription(webTemplatePath: String, language: String): List<CodedValueWithDescription> =
         with(findWebTemplateNode(webTemplatePath)) {
             val termDefinitions = if (this.amNode.termDefinitions.containsKey(language))
                 this.amNode.termDefinitions.let { it[language] } ?: emptyList()
@@ -428,7 +428,7 @@ class WebTemplate internal constructor(
      * @throws [UnknownPathBuilderException] if web template path is not valid for this web template
      */
     @JvmOverloads
-    fun getLabel(webTemplatePath: String, language: String? = null): String? =
+    open fun getLabel(webTemplatePath: String, language: String? = null): String? =
         with(findWebTemplateNode(webTemplatePath)) {
             if (language == null) this.localizedName else this.localizedNames[language]
         }
@@ -440,7 +440,7 @@ class WebTemplate internal constructor(
      * @param webTemplatePath path
      * @return Path [String]
      */
-    fun getLinkPath(webTemplatePath: String): String {
+    open fun getLinkPath(webTemplatePath: String): String {
         val path: ReversedWebTemplatePath = ReversedWebTemplatePath.fromString(
             if (webTemplatePath.startsWith("/"))
                 "${tree.jsonId}$webTemplatePath"
@@ -458,7 +458,7 @@ class WebTemplate internal constructor(
      * @param amNode [AmNode]
      * @return [List] of [WebTemplateNode]
      */
-    fun getNodes(amNode: AmNode?): List<WebTemplateNode> =
+    open fun getNodes(amNode: AmNode?): List<WebTemplateNode> =
         if (amNode == null)
             emptyList()
         else
