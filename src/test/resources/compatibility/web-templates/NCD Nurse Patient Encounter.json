@@ -2448,7 +2448,7 @@
                             "value": "14743-9",
                             "label": "Glucose [Moles/volume] in Capillary blood by Glucometer",
                             "localizedLabels": {
-                              "en": ""
+                              "en": "Glucose [Moles/volume] in Capillary blood by Glucometer"
                             }
                           }
                         ],
@@ -2501,7 +2501,7 @@
                                 "value": "14743-9",
                                 "label": "Glucose [Moles/volume] in Capillary blood by Glucometer",
                                 "localizedLabels": {
-                                  "en": ""
+                                  "en": "Glucose [Moles/volume] in Capillary blood by Glucometer"
                                 }
                               }
                             ],
@@ -2726,7 +2726,7 @@
                             "value": "LOINC3",
                             "label": "HIV rapid test",
                             "localizedLabels": {
-                              "en": ""
+                              "en": "HIV rapid test"
                             }
                           }
                         ],
@@ -2939,7 +2939,7 @@
                             "value": "LOINC4",
                             "label": "VDRL",
                             "localizedLabels": {
-                              "en": ""
+                              "en": "VDRL"
                             }
                           }
                         ],
