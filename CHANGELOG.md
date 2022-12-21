@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.1.11 - 2022-12-21
+
+- Allow null values to be passed to builders' "with" methods
+
 ## 3.1.10 - 2022-12-01
 
 - Open web template functions for external usage
