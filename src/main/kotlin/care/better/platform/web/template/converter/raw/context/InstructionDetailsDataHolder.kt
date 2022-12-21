@@ -97,11 +97,11 @@ class InstructionDetailsData private constructor(
             private var referenceSelfComposition: Boolean = false) {
 
 
-        fun withInstructionIndex(instructionIndex: Int) = apply { this.instructionIndex = instructionIndex }
-        fun withActivityIndex(activityIndex: Int) = apply { this.activityIndex = activityIndex }
-        fun withInstructionUid(instructionUid: String) = apply { this.instructionUid = instructionUid }
-        fun withWebTemplatePath(webTemplatePath: String) = apply { this.webTemplatePath = webTemplatePath }
-        fun withInstructionNode(instructionNode: AmNode) = apply { this.instructionNode = instructionNode }
+        fun withInstructionIndex(instructionIndex: Int?) = apply { this.instructionIndex = instructionIndex }
+        fun withActivityIndex(activityIndex: Int?) = apply { this.activityIndex = activityIndex }
+        fun withInstructionUid(instructionUid: String?) = apply { this.instructionUid = instructionUid }
+        fun withWebTemplatePath(webTemplatePath: String?) = apply { this.webTemplatePath = webTemplatePath }
+        fun withInstructionNode(instructionNode: AmNode?) = apply { this.instructionNode = instructionNode }
         fun isReferenceSelfComposition(compositionUid: String) = apply { this.referenceSelfComposition = compositionUid == SELF_REFERENCE_COMPOSITION }
 
         /**
