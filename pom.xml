@@ -18,7 +18,7 @@
 
     <groupId>care.better.platform</groupId>
     <artifactId>web-template</artifactId>
-    <version>3.2.1-SNAPSHOT</version>
+    <version>3.2.1</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>WebTemplate implementation for openEHR CDR</description>
@@ -34,7 +34,7 @@
         <jetbrains-annotations.version>20.1.0</jetbrains-annotations.version>
         <log4j-api-kotlin.version>1.0.0</log4j-api-kotlin.version>
 
-        <ehr-common.version>3.2.1-A1</ehr-common.version>
+        <ehr-common.version>3.2.1</ehr-common.version>
 
         <jackson.version>2.13.4</jackson.version>
         <jakarta.xml.version>2.3.3</jakarta.xml.version>

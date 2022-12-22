@@ -2,14 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.2.1 - 2022-12-22
+
+- Add possibility to have transient attributes
+- Bump jackson dependencies version to 2.13.4
+- Open web template functions for external usage
+- Allow null values to be passed to builders' "with" methods
+- Bump ehr-common dependency version to 3.2.1
+
 ## 3.2.0 - 2022-06-23
 
 - Bump ehr-common dependency version to 3.2.0
 - Apply changes from 3.1 branch
-
-## 3.1.17 - 2022-10-13 
-
-- Add possibility to have transient attributes
 
 ## 3.1.11 - 2022-12-21
 
@@ -19,16 +23,16 @@ All notable changes to this project will be documented in this file.
 
 - Open web template functions for external usage
 
-## 3.1.9 - 2022-10-28 
+## 3.1.9 - 2022-10-28
 
 - Bump ehr-common dependency version to 3.1.7
 - Bump jackson dependencies version to 2.13.4
 
-## 3.1.8 - 2022-10-28 
+## 3.1.8 - 2022-10-28
 
 - Bump ehr-common dependency version to 3.1.5
 
-## 3.1.7 - 2022-10-13 
+## 3.1.7 - 2022-10-13
 
 - Add possibility to have transient attributes
 
