@@ -69,7 +69,8 @@ internal open class DvCodedTextFactory : RmObjectLeafNodeFactory<DvCodedText>() 
             Pair(AttributeDto.forAttribute("terminology"), 3),
             Pair(AttributeDto.forAttribute("preferred_term"), 4),
             Pair(AttributeDto.forAttribute("_mapping"), 5),
-            Pair(AttributeDto.forAttribute("other"), 6))
+            Pair(AttributeDto.forAttribute("other"), 6),
+            Pair(AttributeDto.forAttribute("formatting"), 7))
 
     override fun sortFieldNames(attributes: List<AttributeDto>): List<AttributeDto> =
         attributes.asSequence().map { Pair(it, sortMap[it] ?: Integer.MAX_VALUE) }.sortedBy { it.second }.map { it.first }.toList()
@@ -124,6 +125,10 @@ internal open class DvCodedTextFactory : RmObjectLeafNodeFactory<DvCodedText>() 
                 rmObject.mappings = jsonNode.mapIndexedNotNull { index, node ->
                     TermMappingFactory.create(conversionContext, amNode, node, WebTemplatePath(attribute.originalAttribute, webTemplatePath, index))
                 }.toMutableList()
+                true
+            }
+            attribute.attribute == "formatting" -> {
+                rmObject.formatting = jsonNode.asText()
                 true
             }
             else -> false

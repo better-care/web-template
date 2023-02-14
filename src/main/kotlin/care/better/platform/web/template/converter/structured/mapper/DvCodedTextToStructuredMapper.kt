@@ -37,6 +37,7 @@ internal object DvCodedTextToStructuredMapper : RmObjectToStructuredMapper<DvCod
             this.putIfNotNull("|value", rmObject.value)
             this.putIfNotNull("|terminology", rmObject.definingCode?.terminologyId?.value)
             this.putIfNotNull("|preferred_term", rmObject.definingCode?.preferredTerm)
+            this.putIfNotNull("|formatting", rmObject.formatting)
             this
         }
 
@@ -47,6 +48,7 @@ internal object DvCodedTextToStructuredMapper : RmObjectToStructuredMapper<DvCod
             this.putIfNotNull("|value", rmObject.value)
             this.putIfNotNull("|terminology", rmObject.definingCode?.terminologyId?.value)
             this.putIfNotNull("|preferred_term", rmObject.definingCode?.preferredTerm)
+            this.putIfNotNull("|formatting", rmObject.formatting)
             this
         }
 }

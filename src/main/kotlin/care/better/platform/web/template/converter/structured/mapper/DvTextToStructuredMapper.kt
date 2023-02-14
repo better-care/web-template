@@ -21,6 +21,7 @@ import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putCollectionAsArray
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.mapper.resolve
+import care.better.platform.web.template.converter.raw.extensions.isNotNullOrBlank
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
 import org.openehr.rm.datatypes.DvCodedText
@@ -42,19 +43,22 @@ internal object DvTextToStructuredMapper : RmObjectToStructuredMapper<DvText> {
             if (webTemplateNode.rmType == dvCodedTextRmType) {
                 this.putIfNotNull("|other", rmObject.value)
             } else {
-                this.putIfNotNull(if (rmObject.mappings.isEmpty()) "" else "|value", rmObject.value)
+                this.putIfNotNull(if (rmObject.mappings.isEmpty() && rmObject.formatting.isNullOrBlank()) "" else "|value", rmObject.value)
             }
+            this.putIfNotNull("|formatting", rmObject.formatting)
             this.resolve()
         }
 
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvText): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
             this.putCollectionAsArray("_mapping", rmObject.mappings) { TermMappingToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+
             if (webTemplateNode.rmType == dvCodedTextRmType) {
                 this.putIfNotNull("|other", rmObject.value)
             } else {
-                this.putIfNotNull(if (rmObject.mappings.isEmpty()) "" else "|value", rmObject.value)
+                this.putIfNotNull(if (rmObject.mappings.isEmpty() && rmObject.formatting.isNullOrBlank()) "" else "|value", rmObject.value)
             }
+            this.putIfNotNull("|formatting", rmObject.formatting)
             this.resolve()
         }
 

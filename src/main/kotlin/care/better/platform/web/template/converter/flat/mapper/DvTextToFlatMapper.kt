@@ -20,6 +20,7 @@ import care.better.platform.web.template.converter.flat.context.FlatMappingConte
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.raw.extensions.isNotNullOrBlank
 import org.openehr.rm.datatypes.DvCodedText
 import org.openehr.rm.datatypes.DvText
 
@@ -45,7 +46,11 @@ internal object DvTextToFlatMapper : RmObjectToFlatMapper<DvText> {
         if (webTemplateNode.rmType == dvCodedTextRmType) {
             flatConversionContext["$webTemplatePath|other"] = rmObject.value
         } else {
-            flatConversionContext["$webTemplatePath${if (rmObject.mappings.isEmpty()) "" else "|value"}"] = rmObject.value
+            flatConversionContext["$webTemplatePath${if (rmObject.mappings.isEmpty() && rmObject.formatting.isNullOrBlank()) "" else "|value"}"] = rmObject.value
+        }
+
+        rmObject.formatting?.also {
+            flatConversionContext["$webTemplatePath|formatting"] = it
         }
     }
 
@@ -67,7 +72,11 @@ internal object DvTextToFlatMapper : RmObjectToFlatMapper<DvText> {
         if (webTemplateNode.rmType == dvCodedTextRmType) {
             formattedFlatConversionContext["$webTemplatePath|other"] = rmObject.value
         } else {
-            formattedFlatConversionContext["$webTemplatePath${if (rmObject.mappings.isEmpty()) "" else "|value"}"] = rmObject.value
+            formattedFlatConversionContext["$webTemplatePath${if (rmObject.mappings.isEmpty() && rmObject.formatting.isNullOrBlank()) "" else "|value"}"] = rmObject.value
+        }
+
+        rmObject.formatting?.also {
+            formattedFlatConversionContext["$webTemplatePath|formatting"] = it
         }
     }
 }

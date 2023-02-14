@@ -67,6 +67,9 @@ internal object DvTextFactory : RmObjectLeafNodeFactory<DvText>() {
                     TermMappingFactory.create(conversionContext, amNode, node, WebTemplatePath(attribute.originalAttribute, webTemplatePath, index))
                 }.toMutableList()
                 true
+            } else if (attribute.attribute == "formatting") {
+                rmObject.formatting = jsonNode.asText()
+                true
             } else {
                 false
             }
