@@ -15,6 +15,7 @@
 
 package care.better.platform.web.template.converter
 
+import care.better.platform.path.NameAndNodeMatchingPathValueExtractor
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.raw.context.ConversionContext
@@ -22,9 +23,11 @@ import com.google.common.collect.ImmutableMap
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.converter.exceptions.ConversionException
+import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.node.ObjectNode
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
+import org.openehr.rm.common.Participation
 import org.openehr.rm.composition.Composition
 import org.openehr.rm.composition.Observation
 import org.openehr.rm.composition.Section
@@ -625,5 +628,24 @@ class ParticipationTest : AbstractWebTemplateTest() {
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|identifiers_issuer:1", "II2"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|identifiers_type:1", "TT2"),
                 entry("vitals/vitals/haemoglobin_a1c:0/_other_participation:1|identifiers_id:1", "IID2"))
+    }
+
+    @Test
+    fun testParticipationFunctions() {
+        val growthChartWebTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(
+                getTemplate("/convert/templates/Lifecare_Care_Template_Growth_Chart.xml"),
+                WebTemplateBuilderContext("en"))
+
+        val flatMap: Map<String, Any?> = getObjectMapper().readValue(
+                getJson("/convert/compositions/Lifecare_Care_Template_Growth_Chart.json"),
+                object : TypeReference<Map<String, Any?>>() {})
+
+        val composition: Composition? = growthChartWebTemplate.convertFromFlatToRaw(flatMap, ConversionContext.create().build())
+
+        assertThat(composition).isNotNull
+
+        assertThat(NameAndNodeMatchingPathValueExtractor("/context/participations").getValue(composition).map { (it as Participation).function?.value })
+            .containsOnly("COMPOSER", "MAIN_PROVIDER")
+
     }
 }

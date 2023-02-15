@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.2.2 - 2023-02-15
+
+- Fix issue that participation_function attribute was not handled correctly if participation_id attribute was not present
+
 ## 3.2.1 - 2022-12-22
 
 - Add possibility to have transient attributes
@@ -14,6 +18,10 @@ All notable changes to this project will be documented in this file.
 
 - Bump ehr-common dependency version to 3.2.0
 - Apply changes from 3.1 branch
+
+## 3.1.12 - 2023-02-15
+
+- Fix issue that participation_function attribute was not handled correctly if participation_id attribute was not present
 
 ## 3.1.11 - 2022-12-21
 
