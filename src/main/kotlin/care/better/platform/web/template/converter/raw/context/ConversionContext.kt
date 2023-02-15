@@ -149,7 +149,7 @@ class ConversionContext private constructor(
             val participationList: MutableList<Participation> = mutableListOf()
             participationNames.forEachIndexed { index, name ->
                 participationList.add(Participation().apply {
-                    if (participationIds.size > index) {
+                    if (participationFunctions.size > index) {
                         this.function = DvText(participationFunctions[index])
                     }
                     val mode = if (participationModes.size > index) participationModes[index] else null
