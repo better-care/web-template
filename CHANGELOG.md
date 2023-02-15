@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.1.12 - 2023-02-15
+
+- Fix issue that participation_function attribute was not handled correctly if participation_id attribute was not present
+
 ## 3.1.11 - 2022-12-21
 
 - Allow null values to be passed to builders' "with" methods
