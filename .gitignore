@@ -20,3 +20,5 @@ generated.ddl
 application-dev.yml
 application-dev.properties
 *.lck
+
+.java-version

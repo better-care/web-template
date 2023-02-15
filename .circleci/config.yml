@@ -5,7 +5,7 @@ jobs:
   build:
     working_directory: ~/web-template
     docker:
-      - image: circleci/openjdk:8-jdk-stretch
+      - image: cimg/openjdk:17.0.6
     steps:
       - checkout
       - restore_cache:

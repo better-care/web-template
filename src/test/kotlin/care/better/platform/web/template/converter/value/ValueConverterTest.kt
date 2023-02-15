@@ -15,6 +15,7 @@
 
 package care.better.platform.web.template.converter.value
 
+import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
@@ -26,7 +27,7 @@ import java.util.*
  * @author Primoz Delopst
  * @since 3.1.0
  */
-class ValueConverterTest {
+class ValueConverterTest : AbstractWebTemplateTest() {
     @Test
     fun testRussian() {
         val valueConverter: ValueConverter = LocaleBasedValueConverter(Locale("ru", "RU"))
