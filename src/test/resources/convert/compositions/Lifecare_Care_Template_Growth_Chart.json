@@ -1,0 +1,78 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "encounter/physiological_measurements:0/height_length:0/any_event:0/time:0": "2022-02-15T12:00:00.000+02:00",
+  "encounter/physiological_measurements:0/height_length:0/any_event:0/height_length:0|magnitude": 120,
+  "encounter/physiological_measurements:0/height_length:0/any_event:0/height_length:0|unit": "cm",
+  "encounter/physiological_measurements:0/body_weight:0/any_event:0/time:0": "2022-02-15T12:00:00.000+02:00",
+  "encounter/physiological_measurements:0/body_weight:0/any_event:0/weight:0|magnitude": 40,
+  "encounter/physiological_measurements:0/body_weight:0/any_event:0/weight:0|unit": "kg",
+  "encounter/physiological_measurements:0/body_mass_index:0/any_event:0/body_mass_index:0|magnitude": 27.8,
+  "encounter/physiological_measurements:0/body_mass_index:0/any_event:0/body_mass_index:0|unit": null,
+  "encounter/physiological_measurements:0/body_mass_index:0/any_event:0/time:0": "2022-02-15T12:00:00.000+02:00",
+  "encounter/physiological_measurements:0/tanner_stages:0/any_point_in_time_event:0/time:0": "2022-02-15T12:00:00.000+02:00",
+  "encounter/context/view_info:0/view:0|code": "173",
+  "encounter/context/view_info:0/view:0|value": "NEU",
+  "encounter/context/view_info:0/view:0|terminology": "245312002",
+  "encounter/context/composition_state:0/state": 2,
+  "encounter/context/author:0/creatorid:0": "m",
+  "encounter/context/author:0/creatorrole:0": "1234",
+  "encounter/context/author:0/creatorname:0": "Testing Author",
+  "ctx/participation_name:0": "Testing Author",
+  "ctx/participation_function:0": "COMPOSER",
+  "ctx/participation_identifiers:0|id:0": "m",
+  "ctx/participation_identifiers:0|type:0": "userid",
+  "ctx/participation_identifiers:0|id:1": "1234",
+  "ctx/participation_identifiers:0|type:1": "roleid",
+  "encounter/context/encounter_reference:0/registrytype": "2",
+  "ctx/language": "en",
+  "ctx/territory": "FI",
+  "encounter/_feeder_audit/original_content": "{\"generics\":{\"encounter/physiological_measurements:0/tanner_stages:0/any_point_in_time_event:0/generic-input_text-7986596:0\":\"male\"}}",
+  "encounter/_feeder_audit/original_content|formalism": "application/text",
+  "encounter/_feeder_audit/originating_system_audit|system_id": "DataEntry",
+  "encounter/_feeder_audit/originating_system_audit|version_id": "1",
+  "encounter/context/author:0/creationtime:0": "2022-02-15T12:30:58.846+02:00",
+  "encounter/context/encounter_reference:0/serviceevent|id": "24119623651114982023057",
+  "encounter/context/encounter_reference:0/serviceevent|type": "serviceeventid",
+  "encounter/context/encounter_reference:0/serviceevent|issuer": "Lifecare",
+  "encounter/context/encounter_reference:0/serviceevent|assigner": "Lifecare",
+  "encounter/context/encounter_reference:0/time": "2022-02-15T10:00:56.237Z",
+  "encounter/context/encounter_reference:0/encounter|id": "1fc6589a",
+  "encounter/context/encounter_reference:0/encounter|type": "encounterid",
+  "encounter/context/encounter_reference:0/encounter|issuer": "Lifecare",
+  "encounter/context/encounter_reference:0/encounter|assigner": "Lifecare",
+  "encounter/context/encounter_reference:0/functionality|id": "avos",
+  "encounter/context/encounter_reference:0/functionality|type": "encounter",
+  "encounter/context/encounter_reference:0/functionality|issuer": "Lifecare",
+  "encounter/context/encounter_reference:0/functionality|assigner": "Lifecare",
+  "encounter/context/encounter_reference:0/speciality|terminology": "245322003",
+  "encounter/context/encounter_reference:0/speciality|code": "245322003",
+  "encounter/context/encounter_reference:0/speciality|value": "98",
+  "encounter/context/organisation/identifier": "668",
+  "encounter/context/organisation/name_of_organisation": "Org",
+  "encounter/context/care_unit/identifier": "57",
+  "encounter/context/care_unit/name_of_unit": "Unit",
+  "ctx/participation_name:1": "Testing Author",
+  "ctx/participation_function:1": "MAIN_PROVIDER",
+  "ctx/participation_identifiers:1|id:0": "m",
+  "ctx/participation_identifiers:1|type:0": "userid",
+  "ctx/participation_identifiers:1|id:1": "1234",
+  "ctx/participation_identifiers:1|type:1": "roleid",
+  "encounter/context/my_kanta:0/available_from_the_date": "2022-02-14T22:00:00.000Z",
+  "encounter/context/my_kanta:0/not_shown": false,
+  "encounter/context/phase_of_care_process:0/care_process_code|terminology": "245312006",
+  "encounter/context/phase_of_care_process:0/care_process_code|code": "15",
+  "encounter/context/phase_of_care_process:0/care_process_code|value": "Hoidon toteutus"
+}
