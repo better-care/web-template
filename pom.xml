@@ -32,7 +32,7 @@
 
         <jetbrains-annotations.version>20.1.0</jetbrains-annotations.version>
 
-        <ehr-common.version>4.0.0-RC1</ehr-common.version>
+        <ehr-common.version>4.0.0-A6</ehr-common.version>
 
         <jackson.version>2.14.1</jackson.version>
         <jakarta.xml.bind.version>2.3.3</jakarta.xml.bind.version>
