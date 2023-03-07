@@ -88,6 +88,7 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
         val webTemplate = conversionContext.getWebTemplate()
 
         val rmObject = if (conversionContext.aqlPath.isNullOrBlank() && conversionContext.webTemplatePath.isNullOrBlank()) {
+            validateFieldsOnRoot(structuredRmObject, webTemplate.tree.jsonId, webTemplate.tree.rmType)
             val objectNode = getObjectNodeForWebTemplateSegment(structuredRmObject, webTemplate.tree.jsonId)
                 ?: throw ConversionException("${webTemplate.tree.rmType} has no attribute ${webTemplate.tree.jsonId}.")
 

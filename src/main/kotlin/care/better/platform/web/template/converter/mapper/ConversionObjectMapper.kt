@@ -79,9 +79,10 @@ internal object ConversionObjectMapper : BetterObjectMapper() {
 /**
  * Returns [ObjectNode] for the web template path segment
  *
+ * @param objectNode [ObjectNode]
  * @param webTemplatePathSegment Web template path segment [String]
  * @return [ObjectNode]
- * @throws [ConversionException] is [JsonNode] for the web template path segment is [ArrayNode] with multiple values.
+ * @throws [ConversionException] if [JsonNode] for the web template path segment is [ArrayNode] with multiple values.
  */
 internal fun getObjectNodeForWebTemplateSegment(objectNode: ObjectNode, webTemplatePathSegment: String): ObjectNode? =
     objectNode.get(webTemplatePathSegment)?.let {
@@ -93,6 +94,23 @@ internal fun getObjectNodeForWebTemplateSegment(objectNode: ObjectNode, webTempl
             throw ConversionException("Expecting to convert single RM object, but multiple were provided.", webTemplatePathSegment)
         }
     }
+
+
+/**
+ * Validates [ObjectNode] for the web template path segment on root
+ *
+ * @param objectNode [ObjectNode]
+ * @param webTemplatePathSegment Web template path segment [String]
+ * @param rmType RM type
+ * @throws [ConversionException] if  web template path segment is unknown.
+ */
+internal fun validateFieldsOnRoot(objectNode: ObjectNode, webTemplatePathSegment: String, rmType: String) {
+    objectNode.fields().forEach { (key, _) ->
+        if (!key.startsWith("transient_") && key != "ctx" && !key.startsWith("ctx/") && key != webTemplatePathSegment) {
+            throw ConversionException("$rmType has no attribute $key.")
+        }
+    }
+}
 
 /**
  * Returns [ObjectNode] for the web template path.
