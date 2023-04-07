@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.2.3 - 2023-04-11
+
+- Bump ehr-common dependency version to 3.2.2
+
+
 ## 3.2.2 - 2023-02-15
 
 - Fix issue that participation_function attribute was not handled correctly if participation_id attribute was not present
