@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## 3.2.3 - 2023-04-11
+## 3.2.3 - 2023-04-07
 
 - Bump ehr-common dependency version to 3.2.2
 
