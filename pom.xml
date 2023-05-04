@@ -33,14 +33,15 @@
         <jetbrains-annotations.version>20.1.0</jetbrains-annotations.version>
         <log4j-api-kotlin.version>1.2.0</log4j-api-kotlin.version>
 
-        <ehr-common.version>4.0.0-SNAPSHOT</ehr-common.version>
+        <ehr-common.version>4.0.0-A8</ehr-common.version>
 
         <assertj.version>3.24.2</assertj.version>
         <commons-io.version>2.11.0</commons-io.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-math3.version>3.6.1</commons-math3.version>
         <jackson.version>2.15.0</jackson.version>
-        <jakarta.xml.version>2.3.3</jakarta.xml.version>
+        <jakarta.xml.bind.version>2.3.3</jakarta.xml.bind.version>
+        <jakarta.xml.version>2.3.6</jakarta.xml.version>
         <joda-time.version>2.10.8</joda-time.version>
         <jupiter.version>5.9.2</jupiter.version>
 
@@ -199,7 +200,7 @@
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
-            <version>${jaxb-runtime.version}</version>
+            <version>${jakarta.xml.version}</version>
             <scope>runtime</scope>
         </dependency>
 
