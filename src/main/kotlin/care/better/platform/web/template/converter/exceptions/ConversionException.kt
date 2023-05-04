@@ -21,6 +21,7 @@ package care.better.platform.web.template.converter.exceptions
  *
  * Exception that is thrown during RM object conversion.
  */
+@Suppress("USELESS_CAST")
 class ConversionException : RuntimeException {
 
     private var path: String? = null
@@ -89,9 +90,9 @@ class ConversionException : RuntimeException {
 
     fun copyWithPath(path: String) =
         if (cause != null && message != null)
-            ConversionException(message, cause, path)
+            ConversionException(message as String, cause as Throwable, path)
         else if (message != null)
-            ConversionException(message, path)
+            ConversionException(message as String, path)
         else
             ConversionException(path)
 }

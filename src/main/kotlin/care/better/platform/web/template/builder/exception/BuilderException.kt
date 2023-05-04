@@ -22,6 +22,7 @@ package care.better.platform.web.template.builder.exception
  *
  * Exception that is thrown during Web template building.
  */
+@Suppress("USELESS_CAST")
 class BuilderException : RuntimeException {
 
     private var path: String? = null
@@ -90,9 +91,9 @@ class BuilderException : RuntimeException {
 
     fun copyWithPath(path: String) =
         if (cause != null && message != null)
-            BuilderException(message, cause, path)
+            BuilderException(message as String, cause as Throwable, path)
         else if (message != null)
-            BuilderException(message, path)
+            BuilderException(message as String, path)
         else
             BuilderException(path)
 }
