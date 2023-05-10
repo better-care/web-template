@@ -33,7 +33,7 @@
         <jetbrains-annotations.version>20.1.0</jetbrains-annotations.version>
         <log4j-api-kotlin.version>1.2.0</log4j-api-kotlin.version>
 
-        <ehr-common.version>4.0.0-A8</ehr-common.version>
+        <ehr-common.version>4.0.0-A9</ehr-common.version>
 
         <assertj.version>3.24.2</assertj.version>
         <commons-io.version>2.11.0</commons-io.version>
@@ -42,7 +42,7 @@
         <jackson.version>2.15.0</jackson.version>
         <jakarta.xml.bind.version>2.3.3</jakarta.xml.bind.version>
         <jakarta.xml.version>2.3.6</jakarta.xml.version>
-        <joda-time.version>2.10.8</joda-time.version>
+        <joda-time.version>2.12.5</joda-time.version>
         <jupiter.version>5.9.2</jupiter.version>
 
         <maven.compiler.source>${java.version}</maven.compiler.source>
