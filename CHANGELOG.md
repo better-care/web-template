@@ -24,6 +24,10 @@ All notable changes to this project will be documented in this file.
 - Bump ehr-common dependency version to 3.2.0
 - Apply changes from 3.1 branch
 
+## 3.1.13 - 2023-06-20
+
+- Increase dependencies versions (commons-io, jackson, kotlin)
+
 ## 3.1.12 - 2023-02-15
 
 - Fix issue that participation_function attribute was not handled correctly if participation_id attribute was not present
