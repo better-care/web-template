@@ -2,10 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.2.4 - 2023-06-20
+
+- Increase dependencies versions (commons-io, jackson, kotlin)
+
 ## 3.2.3 - 2023-04-07
 
 - Bump ehr-common dependency version to 3.2.2
-
 
 ## 3.2.2 - 2023-02-15
 
@@ -23,6 +26,10 @@ All notable changes to this project will be documented in this file.
 
 - Bump ehr-common dependency version to 3.2.0
 - Apply changes from 3.1 branch
+
+## 3.1.13 - 2023-06-20
+
+- Increase dependencies versions (commons-io, jackson, kotlin)
 
 ## 3.1.12 - 2023-02-15
 
