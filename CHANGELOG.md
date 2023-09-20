@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 - Fix ctx/action_time to fall back to ctx/time (instead of current time)
 - Fix DV_ORDINAL and DV_SCALE conversion to support templates without value list constraints
-- Increase dependencies versions due to regular security updates
+- Update dependencies versions due to regular security updates
 
 ## 3.2.4 - 2023-06-20
 
