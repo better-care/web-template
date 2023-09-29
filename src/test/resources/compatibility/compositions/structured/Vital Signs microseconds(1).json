@@ -1,0 +1,159 @@
+{
+  "vital_signs": {
+    "language": [
+      {
+        "|code": "en",
+        "|terminology": "ISO_639-1"
+      }
+    ],
+    "territory": [
+      {
+        "|code": "CA",
+        "|terminology": "ISO_3166-1"
+      }
+    ],
+    "context": [
+      {
+        "start_time": [
+          "2016-01-01T13:10:00.0000002Z"
+        ],
+        "setting": [
+          {
+            "|code": "238",
+            "|value": "other care",
+            "|terminology": "openehr"
+          }
+        ]
+      }
+    ],
+    "body_temperature": [
+      {
+        "any_event": [
+          {
+            "temperature": [
+              {
+                "|magnitude": 37.1,
+                "|unit": "°C"
+              }
+            ],
+            "time": [
+              "2016-01-01T13:10:00.0000002Z"
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "blood_pressure": [
+      {
+        "any_event": [
+          {
+            "systolic": [
+              {
+                "|magnitude": 120.0,
+                "|unit": "mm[Hg]"
+              }
+            ],
+            "diastolic": [
+              {
+                "|magnitude": 90.0,
+                "|unit": "mm[Hg]"
+              }
+            ],
+            "time": [
+              "2016-01-01T13:10:00.0000002Z"
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "height_length": [
+      {
+        "any_event": [
+          {
+            "body_height_length": [
+              {
+                "|magnitude": 171.0,
+                "|unit": "cm"
+              }
+            ],
+            "time": [
+              "2016-01-01T13:10:00.0000002Z"
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "body_weight": [
+      {
+        "any_event": [
+          {
+            "body_weight": [
+              {
+                "|magnitude": 57.2,
+                "|unit": "kg"
+              }
+            ],
+            "time": [
+              "2016-01-01T13:10:00.0000002Z"
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "category": [
+      {
+        "|code": "433",
+        "|value": "event",
+        "|terminology": "openehr"
+      }
+    ]
+  }
+}

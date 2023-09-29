@@ -48,28 +48,28 @@ import java.util.*
 class CompatibilityTest : AbstractWebTemplateTest() {
 
     private val serverResources: List<CompatibilityServerResourceDto> = listOf(
-        CompatibilityServerResourceDto("OPENeP - Medication Administration", Pair(1, 3), "sl", setOf("sl", "en")),
-        CompatibilityServerResourceDto("LAB - Laboratory Test Report", Pair(1, 3), "sl", setOf("sl", "en")),
-        CompatibilityServerResourceDto("ZN - Vital Functions Encounter", Pair(1, 3), "sl", setOf("sl", "en")),
-        CompatibilityServerResourceDto("OPENeP - Inpatient Prescription", Pair(1, 3), "sl", setOf("sl", "en")),
-        CompatibilityServerResourceDto("ZN - Nursing careplan Encounter", Pair(1, 2), "sl", setOf("sl", "en")),
-        CompatibilityServerResourceDto("MED - Allergy history Summary", Pair(1, 2), "sl", setOf("sl", "en")),
-        CompatibilityServerResourceDto(
+            CompatibilityServerResourceDto("OPENeP - Medication Administration", Pair(1, 3), "sl", setOf("sl", "en")),
+            CompatibilityServerResourceDto("LAB - Laboratory Test Report", Pair(1, 3), "sl", setOf("sl", "en")),
+            CompatibilityServerResourceDto("ZN - Vital Functions Encounter", Pair(1, 3), "sl", setOf("sl", "en")),
+            CompatibilityServerResourceDto("OPENeP - Inpatient Prescription", Pair(1, 3), "sl", setOf("sl", "en")),
+            CompatibilityServerResourceDto("ZN - Nursing careplan Encounter", Pair(1, 2), "sl", setOf("sl", "en")),
+            CompatibilityServerResourceDto("MED - Allergy history Summary", Pair(1, 2), "sl", setOf("sl", "en")),
+            CompatibilityServerResourceDto(
             "MED - Nutrition Order",
             Pair(1, 1),
             "sl",
             setOf("sl", "en"),
             mapOf(Pair("nutrition_order/nutrition/nutrition_order:0", "932ba8bf-b3ef-4396-958a-5394686bf347"))),
-        CompatibilityServerResourceDto("MED - Nutrition administration", Pair(1, 1), "sl", setOf("sl", "en")),
-        CompatibilityServerResourceDto("ZN - APACHE", Pair(1, 2), "sl", setOf("sl", "en")),
-        CompatibilityServerResourceDto("Malnutrition universal screening tool", Pair(1, 2), "en", setOf("en")),
-        CompatibilityServerResourceDto("NCD Nurse Patient Encounter", Pair(1, 1), "en", setOf("en")),
-        CompatibilityServerResourceDto("Waterlow pressure damage risk assessment", Pair(1, 1), "en", setOf("en")),
-        CompatibilityServerResourceDto("Vital Signs Pathfinder Demo", Pair(1, 2), "en", setOf("en")),
-        CompatibilityServerResourceDto("VBHC PANCR Clinical Outcomes Follow-up", Pair(1, 1), "en", setOf("en")),
-        CompatibilityServerResourceDto("Adverse Reaction List.v1", Pair(1, 1), "en", setOf("en")),
-        CompatibilityServerResourceDto("Histopathology Report", Pair(1, 1), "sl", setOf("sl", "en")),
-        CompatibilityServerResourceDto("Cytology Report", Pair(1, 2), "sl", setOf("sl", "en")))
+            CompatibilityServerResourceDto("MED - Nutrition administration", Pair(1, 1), "sl", setOf("sl", "en")),
+            CompatibilityServerResourceDto("ZN - APACHE", Pair(1, 2), "sl", setOf("sl", "en")),
+            CompatibilityServerResourceDto("Malnutrition universal screening tool", Pair(1, 2), "en", setOf("en")),
+            CompatibilityServerResourceDto("NCD Nurse Patient Encounter", Pair(1, 1), "en", setOf("en")),
+            CompatibilityServerResourceDto("Waterlow pressure damage risk assessment", Pair(1, 1), "en", setOf("en")),
+            CompatibilityServerResourceDto("Vital Signs Pathfinder Demo", Pair(1, 2), "en", setOf("en")),
+            CompatibilityServerResourceDto("VBHC PANCR Clinical Outcomes Follow-up", Pair(1, 1), "en", setOf("en")),
+            CompatibilityServerResourceDto("Adverse Reaction List.v1", Pair(1, 1), "en", setOf("en")),
+            CompatibilityServerResourceDto("Histopathology Report", Pair(1, 1), "sl", setOf("sl", "en")),
+            CompatibilityServerResourceDto("Cytology Report", Pair(1, 2), "sl", setOf("sl", "en")))
 
     private val inputResources: List<CompatibilityInputResourceDto> = listOf(
         CompatibilityInputResourceDto("Falls care plan", true, Pair(1, 1), "sl", setOf("sl", "en")),
@@ -96,7 +96,8 @@ class CompatibilityTest : AbstractWebTemplateTest() {
         CompatibilityInputResourceDto("Anamnesis", false, Pair(1, 1), "en", setOf("en")),
         CompatibilityInputResourceDto("Cytology Report", false, Pair(3, 3), "en", setOf("en")),
         CompatibilityInputResourceDto("HPV Report", false, Pair(1, 1), "en", setOf("en")),
-        CompatibilityInputResourceDto("Colposcopy", false, Pair(1, 1), "en", setOf("en")))
+        CompatibilityInputResourceDto("Colposcopy", false, Pair(1, 1), "en", setOf("en")),
+        CompatibilityInputResourceDto("Vital Signs microseconds", true, Pair(1, 1), "en", setOf("en")))
 
     @Test
     fun testCompatibilityFromServer() {

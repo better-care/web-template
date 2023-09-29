@@ -1,0 +1,11 @@
+{
+  "ctx/time": "2016-01-01T13:10:00.0000002Z",
+  "ctx/language": "en",
+  "ctx/territory": "CA",
+  "vital_signs/body_temperature/any_event/temperature|magnitude": 37.1,
+  "vital_signs/body_temperature/any_event/temperature|unit": "°C",
+  "vital_signs/blood_pressure/any_event/systolic": 120,
+  "vital_signs/blood_pressure/any_event/diastolic": 90,
+  "vital_signs/height_length/any_event/body_height_length": 171,
+  "vital_signs/body_weight/any_event/body_weight": 57.2
+}
