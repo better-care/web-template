@@ -160,7 +160,7 @@ class CompatibilityTest : AbstractWebTemplateTest() {
 
                     if (it.nullable){
                         assertThat(convertedComposition).isNull()
-                        return
+                        return@forEach
                     }
 
                     assertThat(convertedComposition).isNotNull()
@@ -175,11 +175,11 @@ class CompatibilityTest : AbstractWebTemplateTest() {
 
                     if (it.nullable){
                         assertThat(convertedComposition).isNull()
-                        return
+                        return@forEach
                     } else if (it.onlyGenericFields) {
                         assertThat(convertedComposition).isNotNull()
                         assertThat(convertedComposition?.feederAudit?.originalContent).isNotNull()
-                        return
+                        return@forEach
                     }
 
                     assertThat(convertedComposition).isNotNull()
