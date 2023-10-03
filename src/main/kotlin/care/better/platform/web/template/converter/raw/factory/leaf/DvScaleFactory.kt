@@ -18,12 +18,15 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils
 import com.fasterxml.jackson.databind.JsonNode
 import org.openehr.am.aom.CDvScale
+import org.openehr.base.basetypes.TerminologyId
 import org.openehr.rm.datatypes.CodePhrase
 import org.openehr.rm.datatypes.DvCodedText
+import org.openehr.rm.datatypes.DvOrdinal
 import org.openehr.rm.datatypes.DvScale
 
 /**
@@ -65,7 +68,24 @@ internal object DvScaleFactory : DvOrderedFactory<DvScale>() {
                     false
                 }
             } else {
-                false
+                if (attribute.attribute == "scale") {
+                    handleScaleAttributeIfNoConstraint(jsonNode, rmObject)
+                    true
+                } else if (attribute.attribute == "code") {
+                    handleCodeAttributeIfNoConstraint(jsonNode, rmObject)
+                    true
+                } else if (attribute.attribute.isBlank() || attribute.attribute == "value") {
+                    getInitializedSymbol(rmObject).value = jsonNode.asText()
+                    true
+                } else if (attribute.attribute == "preferred_term") {
+                    handlePreferredTermAttributeIfNoConstraint(jsonNode, rmObject)
+                    true
+                } else if (attribute.attribute == "terminology") {
+                    handleTerminologyIdAttributeIfNoConstraint(jsonNode, rmObject)
+                    true
+                } else {
+                    false
+                }
             }
         }
 
@@ -99,6 +119,49 @@ internal object DvScaleFactory : DvOrderedFactory<DvScale>() {
             parents: List<Any>,
             strictSearching: Boolean): Boolean =
         super.handleOnParent(conversionContext, amNode, attribute, jsonNode, rmObject, webTemplatePath, parents, false)
+
+    private fun getInitializedSymbol(rmObject: DvScale): DvCodedText {
+        rmObject.symbol = (rmObject.symbol ?: DvCodedText()).apply {
+            definingCode = (definingCode ?: CodePhrase()).apply {
+                terminologyId = (terminologyId ?: TerminologyId()).apply {
+                    value = "external"
+                }
+            }
+        }
+        return rmObject.symbol!!
+    }
+
+    private fun handlePreferredTermAttributeIfNoConstraint(jsonNode: JsonNode, rmObject: DvScale) {
+        getInitializedSymbol(rmObject).definingCode = CodePhrase().apply {
+            this.preferredTerm = jsonNode.asText()
+        }
+    }
+
+    private fun handleTerminologyIdAttributeIfNoConstraint(jsonNode: JsonNode, rmObject: DvScale) {
+        getInitializedSymbol(rmObject).definingCode?.terminologyId = TerminologyId().apply {
+            this.value = jsonNode.asText()
+        }
+    }
+
+    private fun handleCodeAttributeIfNoConstraint(jsonNode: JsonNode, rmObject: DvScale) {
+        getInitializedSymbol(rmObject).definingCode = CodePhrase().apply {
+            this.codeString = jsonNode.asText()
+        }
+    }
+
+    private fun handleScaleAttributeIfNoConstraint(jsonNode: JsonNode, rmObject: DvScale) {
+        if (jsonNode.isNumber) {
+            rmObject.value = jsonNode.numberValue().toDouble()
+        } else {
+            val textValue = jsonNode.asText()
+
+            try {
+                rmObject.value = textValue.toDouble()
+            } catch (ex: NumberFormatException) {
+                throw ConversionException("Invalid value for attribute 'scale' on DV_SCALE: ${jsonNode.asText()}", ex)
+            }
+        }
+    }
 
     /**
      * Sets values to [DvScale] from [JsonNode] "|value" entry value.
@@ -165,10 +228,10 @@ internal object DvScaleFactory : DvOrderedFactory<DvScale>() {
                 if (it.definingCode?.codeString != null && it.value.isNullOrBlank()) {
                     this.value =
                         WebTemplateConversionUtils.getTermText(
-                            amNode,
-                            it.definingCode?.terminologyId?.value,
-                            it.definingCode?.codeString,
-                            conversionContext.language)
+                                amNode,
+                                it.definingCode?.terminologyId?.value,
+                                it.definingCode?.codeString,
+                                conversionContext.language)
                 } else {
                     this.value = it.value
                 }

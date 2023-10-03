@@ -17,6 +17,9 @@ package care.better.platform.web.template.converter
 
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.context.InCompositionActionToInstructionHandler
 import com.fasterxml.jackson.core.type.TypeReference
@@ -24,9 +27,6 @@ import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.google.common.collect.ImmutableMap
 import com.google.common.collect.ImmutableSet
-import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
-import care.better.platform.web.template.builder.WebTemplateBuilder
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
 import org.junit.jupiter.api.Test
@@ -52,10 +52,10 @@ class InstructionActionTest : AbstractWebTemplateTest() {
                 .put("ctx/id_scheme", "ispek")
                 .put("ctx/id_namespace", "ispek")
                 .put("ctx/composer_name", "George Orwell")
+                .put("ctx/time", "2015-01-01T01:01:01Z")
                 .put("medication_order/medication_detail/medication_instruction/narrative", "Take Aspirin as needed")
                 .put("medication_order/medication_detail/medication_instruction/order/medicine", "Aspirin")
                 .put("medication_order/medication_detail/medication_instruction/order/timing", "R3/2014-01-10T00:00:00.000+01:00")
-                .put("medication_order/medication_detail/medication_action/time", "2015-01-01T01:01:01.000Z")
                 .put("medication_order/medication_detail/medication_action/ism_transition/current_state", "524")
                 .put("medication_order/medication_detail/medication_action/medicine|code", "a")
                 .put("medication_order/medication_detail/medication_action/medicine|value", "Aspirin")
@@ -74,7 +74,8 @@ class InstructionActionTest : AbstractWebTemplateTest() {
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|composition_uid", "compositionuid"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001]"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|path",
-                  "/content[openEHR-EHR-SECTION.medication.v1,'Medication detail']/items[openEHR-EHR-INSTRUCTION.medication.v1 and uid/value='insuid']"))
+                  "/content[openEHR-EHR-SECTION.medication.v1,'Medication detail']/items[openEHR-EHR-INSTRUCTION.medication.v1 and uid/value='insuid']"),
+            entry("medication_order/medication_detail/medication_action:0/time", "2015-01-01T01:01:01Z"))
     }
 
     @Test

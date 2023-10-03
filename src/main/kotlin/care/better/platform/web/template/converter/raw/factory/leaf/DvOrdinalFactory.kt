@@ -18,10 +18,12 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils
 import com.fasterxml.jackson.databind.JsonNode
 import org.openehr.am.aom.CDvOrdinal
+import org.openehr.base.basetypes.TerminologyId
 import org.openehr.rm.datatypes.CodePhrase
 import org.openehr.rm.datatypes.DvCodedText
 import org.openehr.rm.datatypes.DvOrdinal
@@ -66,10 +68,26 @@ internal object DvOrdinalFactory : DvOrderedFactory<DvOrdinal>() {
                     false
                 }
             } else {
-                false
+                if (attribute.attribute == "ordinal") {
+                    handleOrdinalAttributeIfNoConstraint(jsonNode, rmObject)
+                    true
+                } else if (attribute.attribute == "code") {
+                    handleCodeAttributeIfNoConstraint(jsonNode, rmObject)
+                    true
+                } else if (attribute.attribute.isBlank() || attribute.attribute == "value") {
+                    getInitializedSymbol(rmObject).value = jsonNode.asText()
+                    true
+                } else if (attribute.attribute == "preferred_term") {
+                    handlePreferredTermAttributeIfNoConstraint(jsonNode, rmObject)
+                    true
+                } else if (attribute.attribute == "terminology") {
+                    handleTerminologyIdAttributeIfNoConstraint(jsonNode, rmObject)
+                    true
+                } else {
+                    false
+                }
             }
         }
-
 
     override fun handleAfterParent(
             conversionContext: ConversionContext,
@@ -100,6 +118,49 @@ internal object DvOrdinalFactory : DvOrderedFactory<DvOrdinal>() {
             parents: List<Any>,
             strictSearching: Boolean): Boolean =
         super.handleOnParent(conversionContext, amNode, attribute, jsonNode, rmObject, webTemplatePath, parents, false)
+
+    private fun getInitializedSymbol(rmObject: DvOrdinal): DvCodedText {
+        rmObject.symbol = (rmObject.symbol ?: DvCodedText()).apply {
+            definingCode = (definingCode ?: CodePhrase()).apply {
+                terminologyId = (terminologyId ?: TerminologyId()).apply {
+                    value = "external"
+                }
+            }
+        }
+        return rmObject.symbol!!
+    }
+
+    private fun handlePreferredTermAttributeIfNoConstraint(jsonNode: JsonNode, rmObject: DvOrdinal) {
+        getInitializedSymbol(rmObject).definingCode = CodePhrase().apply {
+            this.preferredTerm = jsonNode.asText()
+        }
+    }
+
+    private fun handleTerminologyIdAttributeIfNoConstraint(jsonNode: JsonNode, rmObject: DvOrdinal) {
+        getInitializedSymbol(rmObject).definingCode?.terminologyId = TerminologyId().apply {
+            this.value = jsonNode.asText()
+        }
+    }
+
+    private fun handleCodeAttributeIfNoConstraint(jsonNode: JsonNode, rmObject: DvOrdinal) {
+        getInitializedSymbol(rmObject).definingCode = CodePhrase().apply {
+            this.codeString = jsonNode.asText()
+        }
+    }
+
+    private fun handleOrdinalAttributeIfNoConstraint(jsonNode: JsonNode, rmObject: DvOrdinal) {
+        if (jsonNode.isNumber) {
+            rmObject.value = jsonNode.numberValue().toInt()
+        } else {
+            val textValue = jsonNode.asText()
+
+            try {
+                rmObject.value = textValue.toInt()
+            } catch (ex: NumberFormatException) {
+                throw ConversionException("Invalid value for attribute 'ordinal' on DV_ORDINAL: ${jsonNode.asText()}", ex)
+            }
+        }
+    }
 
     /**
      * Sets values to [DvOrdinal] from [JsonNode] "|value" entry value.
@@ -166,10 +227,10 @@ internal object DvOrdinalFactory : DvOrderedFactory<DvOrdinal>() {
                 if (it.definingCode?.codeString != null && it.value.isNullOrBlank()) {
                     this.value =
                         WebTemplateConversionUtils.getTermText(
-                            amNode,
-                            it.definingCode?.terminologyId?.value,
-                            it.definingCode?.codeString,
-                            conversionContext.language)
+                                amNode,
+                                it.definingCode?.terminologyId?.value,
+                                it.definingCode?.codeString,
+                                conversionContext.language)
                 } else {
                     this.value = it.value
                 }
