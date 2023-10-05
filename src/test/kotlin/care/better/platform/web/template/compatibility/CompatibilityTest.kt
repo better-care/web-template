@@ -24,7 +24,6 @@ import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.builder.mapper.WebTemplateObjectMapper
 import care.better.platform.web.template.converter.FromRawConversion
-import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.core.JsonParser
@@ -36,12 +35,20 @@ import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.datatype.joda.JodaModule
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.AfterAll
+import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
 import org.skyscreamer.jsonassert.JSONAssert
 import org.skyscreamer.jsonassert.JSONCompareMode
+import java.io.File
 import java.io.StringWriter
+import java.nio.file.Files
+import java.nio.file.Path
 import java.util.*
+import kotlin.io.path.deleteIfExists
+import kotlin.io.path.listDirectoryEntries
+import kotlin.io.path.writeText
 
 /**
  * @author Primoz Delopst
@@ -119,8 +126,8 @@ class CompatibilityTest : AbstractWebTemplateTest() {
 
                 testFlatToRaw(it.name, webTemplate, flatComposition, rawComposition, it.instructionUidEntries)
                 testStructuredToRaw(it.name, webTemplate, structuredComposition, rawComposition, it.instructionUidEntries)
-                testRawToFlat(it.name, webTemplate, rawComposition, flatComposition)
-                testRawToStructured(it.name, webTemplate, rawComposition, structuredComposition)
+                testRawToFlat(it.name, webTemplate, rawComposition, "/compatibility/compositions/flat/${it.name}($i).json")
+                testRawToStructured(it.name, webTemplate, rawComposition, "/compatibility/compositions/structured/${it.name}($i).json")
             }
         }
     }
@@ -133,26 +140,6 @@ class CompatibilityTest : AbstractWebTemplateTest() {
                 WebTemplateBuilderContext(it.language, it.languages))
 
             for (i in it.range.first .. it.range.second) {
-                val flatComposition =
-                    if (it.nullable || it.onlyGenericFields)
-                        mapOf()
-                    else
-                        CompatibilityMapper.readValue(
-                            getJson("/compatibility/compositions/flat/${it.name}($i).json"),
-                            object : TypeReference<Map<String, Any>>() {})
-
-                val structuredComposition =
-                    if (it.nullable || it.onlyGenericFields)
-                        ConversionObjectMapper.createObjectNode()
-                    else
-                        CompatibilityMapper.readTree(getJson("/compatibility/compositions/structured/${it.name}($i).json")) as ObjectNode
-
-                val rawComposition =
-                    if (it.nullable || it.onlyGenericFields)
-                        Composition()
-                    else
-                        getComposition("/compatibility/compositions/raw/${it.name}($i).xml")
-
                 val context = ConversionContext.create().withUidGenerator(getUidGenerator(it.instructionUidEntries)).build()
                 if (it.flat) {
                     val inputFlatComposition = CompatibilityMapper.readValue(
@@ -167,9 +154,11 @@ class CompatibilityTest : AbstractWebTemplateTest() {
 
                     assertThat(convertedComposition).isNotNull()
 
+                    val rawComposition = getComposition("/compatibility/compositions/raw/${it.name}($i).xml")
+
                     testFlatToRaw(it.name, webTemplate, inputFlatComposition, rawComposition, it.instructionUidEntries)
-                    testRawToFlat(it.name, webTemplate, convertedComposition!!, flatComposition)
-                    testRawToStructured(it.name, webTemplate, convertedComposition, structuredComposition)
+                    testRawToFlat(it.name, webTemplate, convertedComposition!!, "/compatibility/compositions/flat/${it.name}($i).json")
+                    testRawToStructured(it.name, webTemplate, convertedComposition, "/compatibility/compositions/structured/${it.name}($i).json")
 
                 } else {
                     val inputStructuredComposition = CompatibilityMapper.readTree(getJson("/compatibility/compositions/input/${it.name}($i).json")) as ObjectNode
@@ -186,9 +175,11 @@ class CompatibilityTest : AbstractWebTemplateTest() {
 
                     assertThat(convertedComposition).isNotNull()
 
+                    val rawComposition = getComposition("/compatibility/compositions/raw/${it.name}($i).xml")
+
                     testStructuredToRaw(it.name, webTemplate, inputStructuredComposition, rawComposition, it.instructionUidEntries)
-                    testRawToFlat(it.name, webTemplate, convertedComposition!!, flatComposition)
-                    testRawToStructured(it.name, webTemplate, convertedComposition, structuredComposition)
+                    testRawToFlat(it.name, webTemplate, convertedComposition!!, "/compatibility/compositions/flat/${it.name}($i).json")
+                    testRawToStructured(it.name, webTemplate, convertedComposition, "/compatibility/compositions/structured/${it.name}($i).json")
                 }
             }
         }
@@ -201,11 +192,7 @@ class CompatibilityTest : AbstractWebTemplateTest() {
                 getTemplate("/compatibility/templates/$name.xml"),
                 WebTemplateBuilderContext("en", setOf("en")))
 
-            JSONAssert.assertEquals(
-                    "Web template incompatible: $name",
-                    getJson("/compatibility/web-templates/$name.json"),
-                    WebTemplateObjectMapper.writeValueAsString(webTemplate),
-                    JSONCompareMode.LENIENT)
+            assertJsonEquals("Web template incompatible: $name", "/compatibility/web-templates/$name.json", webTemplate)
         }
     }
 
@@ -255,32 +242,38 @@ class CompatibilityTest : AbstractWebTemplateTest() {
             )
     }
 
-    private fun testRawToFlat(name: String, webTemplate: WebTemplate, inputRawComposition: Composition, referenceFlatComposition: Map<String, Any?>) {
+    private fun testRawToFlat(name: String, webTemplate: WebTemplate, inputRawComposition: Composition, referenceFlatCompositionFile: String) {
         val flatComposition: Map<String, Any?> = with(webTemplate.convertFromRawToFlat(inputRawComposition, FromRawConversion.create())) {
             //Ensure that map is serialized and deserialized in the same way as the reference map
             CompatibilityMapper.readValue(CompatibilityMapper.writeValueAsString(this), object : TypeReference<Map<String, Any?>>() {})
         }
 
-        JSONAssert.assertEquals(
-                "Raw to flat conversion incompatible: $name",
-                CompatibilityMapper.writeValueAsString(referenceFlatComposition),
-                CompatibilityMapper.writeValueAsString(flatComposition),
-                JSONCompareMode.LENIENT
-        )
+        assertJsonEquals("Raw to flat conversion incompatible: $name", referenceFlatCompositionFile, flatComposition)
     }
 
-    private fun testRawToStructured(name: String, webTemplate: WebTemplate, inputRawComposition: Composition, referenceStructuredComposition: ObjectNode) {
+    private fun testRawToStructured(name: String, webTemplate: WebTemplate, inputRawComposition: Composition, referenceStructuredCompositionFile: String) {
         val structuredComposition: JsonNode = with(webTemplate.convertFromRawToStructured(inputRawComposition, FromRawConversion.create())!!) {
             //Ensure that JSON node is serialized and deserialized in the same way as reference JSON node
             CompatibilityMapper.readTree(CompatibilityMapper.writeValueAsString(this))
         }
 
-        JSONAssert.assertEquals(
-                "Raw to flat conversion incompatible: $name",
-                referenceStructuredComposition.toPrettyString(),
-                structuredComposition.toPrettyString(),
-                JSONCompareMode.LENIENT
-        )
+        assertJsonEquals("Raw to flat conversion incompatible: $name", referenceStructuredCompositionFile, structuredComposition)
+    }
+
+    private fun assertJsonEquals(description: String, referenceJsonFile: String, value: Any) {
+        val actualJson = WebTemplateObjectMapper.getWriter(pretty = true).writeValueAsString(value)
+        val tempFileOnFailure = Files.createTempFile(tempDirectory, File(referenceJsonFile).name, ".json")
+        try {
+            JSONAssert.assertEquals(
+                    "$description\nExpected: contents of $referenceJsonFile\nActual: contents of $tempFileOnFailure\n",
+                    getJson(referenceJsonFile),
+                    actualJson,
+                    JSONCompareMode.LENIENT)
+            tempFileOnFailure.deleteIfExists()
+        } catch (e: AssertionError) {
+            tempFileOnFailure.writeText(actualJson)
+            throw e
+        }
     }
 
     private data class CompatibilityServerResourceDto(
@@ -316,6 +309,23 @@ class CompatibilityTest : AbstractWebTemplateTest() {
             setDefaultPropertyInclusion(JsonInclude.Value.construct(JsonInclude.Include.NON_EMPTY, JsonInclude.Include.USE_DEFAULTS))
             configure(DeserializationFeature.FAIL_ON_INVALID_SUBTYPE, true)
             configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true)
+        }
+    }
+
+    companion object {
+        private lateinit var tempDirectory: Path
+        @JvmStatic
+        @BeforeAll
+        fun setUp() {
+            tempDirectory = Files.createTempDirectory("CompatibilityTest")
+        }
+
+        @JvmStatic
+        @AfterAll
+        fun tearDown() {
+            if (tempDirectory.listDirectoryEntries().isEmpty()) {
+                tempDirectory.deleteIfExists()
+            }
         }
     }
 }
