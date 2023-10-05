@@ -42,6 +42,7 @@
         <jackson.version>2.15.2</jackson.version>
         <jakarta.xml.version>2.3.3</jakarta.xml.version>
         <joda-time.version>2.12.5</joda-time.version>
+        <jsonassert.version>1.5.1</jsonassert.version>
         <jupiter.version>5.9.3</jupiter.version>
 
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -75,7 +76,6 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <jsonassert.version>1.5.1</jsonassert.version>
     </properties>
 
     <dependencyManagement>
