@@ -325,7 +325,7 @@ class ConversionContext private constructor(
             private var composerSelf: Boolean = false,
             private var composer: PartyProxy? = null,
             private var time: OffsetDateTime = OffsetDateTime.now(),
-            private var actionTime: OffsetDateTime? = OffsetDateTime.now(),
+            private var actionTime: OffsetDateTime? = null,
             private var historyOrigin: OffsetDateTime? = null,
             private var endTime: OffsetDateTime? = null,
             private var encoding: String? = Charsets.UTF_8.toString(),

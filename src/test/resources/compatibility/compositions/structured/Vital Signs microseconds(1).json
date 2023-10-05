@@ -1,4 +1,4 @@
-// Copyright 2021 Better Ltd (www.better.care)
+// Copyright 2023 Better Ltd (www.better.care)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
 // limitations under the License.
 
 {
-  "anamnesis": {
+  "vital_signs": {
     "language": [
       {
         "|code": "en",
@@ -22,25 +22,14 @@
     ],
     "territory": [
       {
-        "|code": "SI",
+        "|code": "CA",
         "|terminology": "ISO_3166-1"
       }
     ],
     "context": [
       {
-        "context_detail": [
-          {
-            "source": [
-              {
-                "|code": "1",
-                "|value": "Ginekolog",
-                "|terminology": "A02_anamnesis_source"
-              }
-            ]
-          }
-        ],
         "start_time": [
-          "2021-02-15T12:14:00+01:00"
+          "2016-01-01T13:10:00.0000002Z"
         ],
         "setting": [
           {
@@ -51,45 +40,21 @@
         ]
       }
     ],
-    "menstrual_cycle": [
+    "body_temperature": [
       {
-        "length_of_cycle": [
-          "P23D"
-        ],
-        "description_of_cycle": [
+        "any_event": [
           {
-            "|code": "1",
-            "|value": "Redna",
-            "|terminology": "A01_menstruation"
-          }
-        ],
-        "last_menstruation_date": [
-          "2021-02-02"
-        ],
-        "duration_of_menses": [
-          "P5D"
-        ],
-        "diagnosis_details": [
-          {
-            "pregnant": [
+            "temperature": [
               {
-                "|code": "2",
-                "|value": "Ne",
-                "|terminology": "A03_pregnancy"
+                "|magnitude": 37.1,
+                "|unit": "°C"
               }
+            ],
+            "time": [
+              "2016-01-01T13:10:00.0000002Z"
             ]
           }
         ],
-        "contraception_use": [
-          {
-            "|code": "1",
-            "|value": "Nobena",
-            "|terminology": "A05_contraception"
-          }
-        ],
-        "time": [
-          "2021-02-15T12:14:00+01:00"
-        ],
         "language": [
           {
             "|code": "en",
@@ -104,59 +69,82 @@
         ]
       }
     ],
-    "obstetric_summary": [
+    "blood_pressure": [
       {
-        "abortions_a": [
-          0
-        ],
-        "live_births": [
-          0
-        ],
-        "language": [
+        "any_event": [
           {
-            "|code": "en",
-            "|terminology": "ISO_639-1"
-          }
-        ],
-        "encoding": [
-          {
-            "|code": "UTF-8",
-            "|terminology": "IANA_character-sets"
-          }
-        ]
-      }
-    ],
-    "problem_diagnosis": [
-      {
-        "clinical_diagnosis_icd": [
-          {
-            "|code": "Z01.4",
-            "|value": "Ginekološki pregled (splošni)(rutinski)",
-            "|terminology": "ICD"
-          }
-        ],
-        "accompanying_diagnosis": [
-          {
-            "|code": "R87.9",
-            "|value": "Nenormalni izvidi vzorcev iz ženskih spolovil, neopredeljeni",
-            "|terminology": "ICD"
-          }
-        ],
-        "terminology_details": [
-          {
-            "terminology_name": [
+            "systolic": [
               {
-                "|code": "at0005",
-                "|value": "MKB",
-                "|terminology": "local"
+                "|magnitude": 120.0,
+                "|unit": "mm[Hg]"
               }
             ],
-            "terminology_version": [
+            "diastolic": [
               {
-                "|code": "at0006",
-                "|value": "10",
-                "|terminology": "local"
+                "|magnitude": 90.0,
+                "|unit": "mm[Hg]"
               }
+            ],
+            "time": [
+              "2016-01-01T13:10:00.0000002Z"
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "height_length": [
+      {
+        "any_event": [
+          {
+            "body_height_length": [
+              {
+                "|magnitude": 171.0,
+                "|unit": "cm"
+              }
+            ],
+            "time": [
+              "2016-01-01T13:10:00.0000002Z"
+            ]
+          }
+        ],
+        "language": [
+          {
+            "|code": "en",
+            "|terminology": "ISO_639-1"
+          }
+        ],
+        "encoding": [
+          {
+            "|code": "UTF-8",
+            "|terminology": "IANA_character-sets"
+          }
+        ]
+      }
+    ],
+    "body_weight": [
+      {
+        "any_event": [
+          {
+            "body_weight": [
+              {
+                "|magnitude": 57.2,
+                "|unit": "kg"
+              }
+            ],
+            "time": [
+              "2016-01-01T13:10:00.0000002Z"
             ]
           }
         ],
@@ -181,8 +169,5 @@
         "|terminology": "openehr"
       }
     ]
-  },
-  "ctx": {
-    "generic_fields": {}
   }
 }

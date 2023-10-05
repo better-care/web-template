@@ -1,0 +1,57 @@
+// Copyright 2023 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "vital_signs/language|code": "en",
+  "vital_signs/language|terminology": "ISO_639-1",
+  "vital_signs/territory|code": "CA",
+  "vital_signs/territory|terminology": "ISO_3166-1",
+  "vital_signs/context/start_time": "2016-01-01T13:10:00.0000002Z",
+  "vital_signs/context/setting|code": "238",
+  "vital_signs/context/setting|value": "other care",
+  "vital_signs/context/setting|terminology": "openehr",
+  "vital_signs/body_temperature:0/any_event:0/temperature|magnitude": 37.1,
+  "vital_signs/body_temperature:0/any_event:0/temperature|unit": "°C",
+  "vital_signs/body_temperature:0/any_event:0/time": "2016-01-01T13:10:00.0000002Z",
+  "vital_signs/body_temperature:0/language|code": "en",
+  "vital_signs/body_temperature:0/language|terminology": "ISO_639-1",
+  "vital_signs/body_temperature:0/encoding|code": "UTF-8",
+  "vital_signs/body_temperature:0/encoding|terminology": "IANA_character-sets",
+  "vital_signs/blood_pressure:0/any_event:0/systolic|magnitude": 120.0,
+  "vital_signs/blood_pressure:0/any_event:0/systolic|unit": "mm[Hg]",
+  "vital_signs/blood_pressure:0/any_event:0/diastolic|magnitude": 90.0,
+  "vital_signs/blood_pressure:0/any_event:0/diastolic|unit": "mm[Hg]",
+  "vital_signs/blood_pressure:0/any_event:0/time": "2016-01-01T13:10:00.0000002Z",
+  "vital_signs/blood_pressure:0/language|code": "en",
+  "vital_signs/blood_pressure:0/language|terminology": "ISO_639-1",
+  "vital_signs/blood_pressure:0/encoding|code": "UTF-8",
+  "vital_signs/blood_pressure:0/encoding|terminology": "IANA_character-sets",
+  "vital_signs/height_length:0/any_event:0/body_height_length|magnitude": 171.0,
+  "vital_signs/height_length:0/any_event:0/body_height_length|unit": "cm",
+  "vital_signs/height_length:0/any_event:0/time": "2016-01-01T13:10:00.0000002Z",
+  "vital_signs/height_length:0/language|code": "en",
+  "vital_signs/height_length:0/language|terminology": "ISO_639-1",
+  "vital_signs/height_length:0/encoding|code": "UTF-8",
+  "vital_signs/height_length:0/encoding|terminology": "IANA_character-sets",
+  "vital_signs/body_weight:0/any_event:0/body_weight|magnitude": 57.2,
+  "vital_signs/body_weight:0/any_event:0/body_weight|unit": "kg",
+  "vital_signs/body_weight:0/any_event:0/time": "2016-01-01T13:10:00.0000002Z",
+  "vital_signs/body_weight:0/language|code": "en",
+  "vital_signs/body_weight:0/language|terminology": "ISO_639-1",
+  "vital_signs/body_weight:0/encoding|code": "UTF-8",
+  "vital_signs/body_weight:0/encoding|terminology": "IANA_character-sets",
+  "vital_signs/category|code": "433",
+  "vital_signs/category|value": "event",
+  "vital_signs/category|terminology": "openehr"
+}
