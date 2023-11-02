@@ -33,7 +33,7 @@
         <jetbrains-annotations.version>20.1.0</jetbrains-annotations.version>
         <log4j-api-kotlin.version>1.2.0</log4j-api-kotlin.version>
 
-        <ehr-common.version>4.0.0-A12</ehr-common.version>
+        <ehr-common.version>4.0.0-A14</ehr-common.version>
 
         <assertj.version>3.24.2</assertj.version>
         <commons-io.version>2.11.0</commons-io.version>
@@ -43,6 +43,7 @@
         <jakarta.xml.bind.version>2.3.3</jakarta.xml.bind.version>
         <jakarta.xml.version>2.3.6</jakarta.xml.version>
         <joda-time.version>2.12.5</joda-time.version>
+        <jsonassert.version>1.5.1</jsonassert.version>
         <jupiter.version>5.9.3</jupiter.version>
 
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -254,6 +255,13 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
             <version>${jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.skyscreamer</groupId>
+            <artifactId>jsonassert</artifactId>
+            <version>${jsonassert.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

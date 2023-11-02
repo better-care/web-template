@@ -17,8 +17,7 @@
   "version": "2.3",
   "defaultLanguage": "en",
   "languages": [
-    "en",
-    "sl"
+    "en"
   ],
   "tree": {
     "id": "vital_signs",
@@ -32,8 +31,7 @@
       "en": "Vital Signs"
     },
     "localizedDescriptions": {
-      "en": "Generic encounter or progress note composition",
-      "sl": "Generic encounter or progress note composition"
+      "en": "Generic encounter or progress note composition"
     },
     "aqlPath": "",
     "children": [
@@ -54,12 +52,10 @@
             "min": 0,
             "max": -1,
             "localizedNames": {
-              "en": "Context detail",
-              "sl": "Podrobnosti"
+              "en": "Context detail"
             },
             "localizedDescriptions": {
-              "en": "Additional contextual detail to be applied to all compositions.",
-              "sl": "Dodatni podatki o kontekstu"
+              "en": "Additional contextual detail to be applied to all compositions."
             },
             "aqlPath": "/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.context_detail.v1]",
             "children": [
@@ -72,12 +68,10 @@
                 "min": 1,
                 "max": -1,
                 "localizedNames": {
-                  "en": "Tags",
-                  "sl": "Tagi"
+                  "en": "Tags"
                 },
                 "localizedDescriptions": {
-                  "en": "*",
-                  "sl": "*"
+                  "en": "*"
                 },
                 "annotations": {
                   "comment": "Tags applied to the composition. They can contain various ids, such as episode id, central case id or\n                                        other types of information forming composition meta-data.\n                                    "
@@ -135,12 +129,10 @@
         "min": 0,
         "max": -1,
         "localizedNames": {
-          "en": "Body temperature",
-          "sl": "Telesna temperature"
+          "en": "Body temperature"
         },
         "localizedDescriptions": {
-          "en": "A measurement of the body temperature, which is a surrogate for the whole body temperature of the person.",
-          "sl": "*A measurement of the body temperature, which is a surrogate for the whole body temperature of the person.(en)"
+          "en": "A measurement of the body temperature, which is a surrogate for the whole body temperature of the person."
         },
         "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_temperature.v1]",
         "children": [
@@ -153,12 +145,10 @@
             "min": 0,
             "max": -1,
             "localizedNames": {
-              "en": "Any event",
-              "sl": "Any event"
+              "en": "Any event"
             },
             "localizedDescriptions": {
-              "en": "Any event",
-              "sl": "*Any event(en)"
+              "en": "Any event"
             },
             "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_temperature.v1]/data[at0002]/events[at0003]",
             "children": [
@@ -171,12 +161,10 @@
                 "min": 1,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Temperature",
-                  "sl": "Telesna temperature"
+                  "en": "Temperature"
                 },
                 "localizedDescriptions": {
-                  "en": "The measured body temperature (as a surrogate for the whole body)",
-                  "sl": "*The measured body temperature (as a surrogate for the whole body)(en)"
+                  "en": "The measured body temperature (as a surrogate for the whole body)"
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_temperature.v1]/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value",
                 "inputs": [
@@ -228,12 +216,10 @@
                   "temperature"
                 ],
                 "localizedNames": {
-                  "en": "Body exposure",
-                  "sl": "Obleka"
+                  "en": "Body exposure"
                 },
                 "localizedDescriptions": {
-                  "en": "The thermal situation of the person who is having the temperature taken",
-                  "sl": "*The thermal situation of the person who is having the temperature taken(en)"
+                  "en": "The thermal situation of the person who is having the temperature taken"
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_temperature.v1]/data[at0002]/events[at0003]/state[at0029]/items[at0030]/value",
                 "inputs": [
@@ -245,48 +231,40 @@
                         "value": "at0031",
                         "label": "Naked",
                         "localizedLabels": {
-                          "en": "Naked",
-                          "sl": "Gol"
+                          "en": "Naked"
                         },
                         "localizedDescriptions": {
-                          "en": "No clothing, bedding or covering",
-                          "sl": "*No clothing, bedding or covering(en)"
+                          "en": "No clothing, bedding or covering"
                         }
                       },
                       {
                         "value": "at0032",
                         "label": "Reduced clothing/bedding",
                         "localizedLabels": {
-                          "en": "Reduced clothing/bedding",
-                          "sl": "Premalo oblečen (zavit)"
+                          "en": "Reduced clothing/bedding"
                         },
                         "localizedDescriptions": {
-                          "en": "The person is covered by a lesser amount of clothing or bedding than deemed appropriate for the environmental\n                    circumstances\n                ",
-                          "sl": "*The person is covered by a lesser amount of clothing or bedding than deemed appropriate for the environmental\n                    circumstances(en)\n                "
+                          "en": "The person is covered by a lesser amount of clothing or bedding than deemed appropriate for the environmental\n                    circumstances\n                "
                         }
                       },
                       {
                         "value": "at0033",
                         "label": "Appropriate clothing/bedding",
                         "localizedLabels": {
-                          "en": "Appropriate clothing/bedding",
-                          "sl": "Primerno oblečen (zavit)"
+                          "en": "Appropriate clothing/bedding"
                         },
                         "localizedDescriptions": {
-                          "en": "The person is covered by an amount of clothing or bedding deemed appropriate for the environmental circumstances",
-                          "sl": "*The person is covered by an amount of clothing or bedding deemed appropriate for the environmental circumstances(en)\n                "
+                          "en": "The person is covered by an amount of clothing or bedding deemed appropriate for the environmental circumstances"
                         }
                       },
                       {
                         "value": "at0034",
                         "label": "Increased clothing/bedding",
                         "localizedLabels": {
-                          "en": "Increased clothing/bedding",
-                          "sl": "Preveč oblečen (zavit)"
+                          "en": "Increased clothing/bedding"
                         },
                         "localizedDescriptions": {
-                          "en": "The person is covered by an increased amount of clothing or bedding than deemed appropriate for the environmental\n                    circumstances\n                ",
-                          "sl": "*The person is covered by an increased amount of clothing or bedding than deemed appropriate for the environmental\n                    circumstances(en)\n                "
+                          "en": "The person is covered by an increased amount of clothing or bedding than deemed appropriate for the environmental\n                    circumstances\n                "
                         }
                       }
                     ],
@@ -306,12 +284,10 @@
                   "temperature"
                 ],
                 "localizedNames": {
-                  "en": "Description of thermal stress",
-                  "sl": "Opis"
+                  "en": "Description of thermal stress"
                 },
                 "localizedDescriptions": {
-                  "en": "Description of the conditions applied to the subject that might influence their measured body temperature.",
-                  "sl": "*Description of the conditions applied to the subject that might influence their measured body temperature.(en)"
+                  "en": "Description of the conditions applied to the subject that might influence their measured body temperature."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_temperature.v1]/data[at0002]/events[at0003]/state[at0029]/items[at0041]/value",
                 "inputs": [
@@ -348,12 +324,10 @@
               "any_event"
             ],
             "localizedNames": {
-              "en": "Site of measurement",
-              "sl": "Stran telesa"
+              "en": "Site of measurement"
             },
             "localizedDescriptions": {
-              "en": "The anatomical site of measurement of the temperature",
-              "sl": "*The anatomical site of measurement of the temperature(en)"
+              "en": "The anatomical site of measurement of the temperature"
             },
             "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_temperature.v1]/protocol[at0020]/items[at0021]/value",
             "inputs": [
@@ -365,132 +339,110 @@
                     "value": "at0022",
                     "label": "Mouth",
                     "localizedLabels": {
-                      "en": "Mouth",
-                      "sl": "Usta"
+                      "en": "Mouth"
                     },
                     "localizedDescriptions": {
-                      "en": "Temperature is measured within the mouth",
-                      "sl": "*Temperature is measured within the mouth(en)"
+                      "en": "Temperature is measured within the mouth"
                     }
                   },
                   {
                     "value": "at0023",
                     "label": "Ear canal",
                     "localizedLabels": {
-                      "en": "Ear canal",
-                      "sl": "V ušesu"
+                      "en": "Ear canal"
                     },
                     "localizedDescriptions": {
-                      "en": "Temperature is measured from within the external auditory canal",
-                      "sl": "*Temperature is measured from within the external auditory canal(en)"
+                      "en": "Temperature is measured from within the external auditory canal"
                     }
                   },
                   {
                     "value": "at0024",
                     "label": "Axilla",
                     "localizedLabels": {
-                      "en": "Axilla",
-                      "sl": "Pod pazduho"
+                      "en": "Axilla"
                     },
                     "localizedDescriptions": {
-                      "en": "Temperature is measured from the skin of the axilla with the arm positioned down by the side",
-                      "sl": "*Temperature is measured from the skin of the axilla with the arm positioned down by the side(en)"
+                      "en": "Temperature is measured from the skin of the axilla with the arm positioned down by the side"
                     }
                   },
                   {
                     "value": "at0025",
                     "label": "Rectum",
                     "localizedLabels": {
-                      "en": "Rectum",
-                      "sl": "Rektalno"
+                      "en": "Rectum"
                     },
                     "localizedDescriptions": {
-                      "en": "Temperature measured within the rectum",
-                      "sl": "*Temperature measured within the rectum(en)"
+                      "en": "Temperature measured within the rectum"
                     }
                   },
                   {
                     "value": "at0026",
                     "label": "Nasopharynx",
                     "localizedLabels": {
-                      "en": "Nasopharynx",
-                      "sl": "Nazofarinks"
+                      "en": "Nasopharynx"
                     },
                     "localizedDescriptions": {
-                      "en": "Temperature is measured within the nasopharynx",
-                      "sl": "*Temperature is measured within the nasopharynx(en)"
+                      "en": "Temperature is measured within the nasopharynx"
                     }
                   },
                   {
                     "value": "at0027",
                     "label": "Urinary bladder",
                     "localizedLabels": {
-                      "en": "Urinary bladder",
-                      "sl": "Sečni mehur"
+                      "en": "Urinary bladder"
                     },
                     "localizedDescriptions": {
-                      "en": "Temperature is measured in the urinary bladder",
-                      "sl": "*Temperature is measured in the urinary bladder(en)"
+                      "en": "Temperature is measured in the urinary bladder"
                     }
                   },
                   {
                     "value": "at0028",
                     "label": "Intravascular",
                     "localizedLabels": {
-                      "en": "Intravascular",
-                      "sl": "Intravaskularno"
+                      "en": "Intravascular"
                     },
                     "localizedDescriptions": {
-                      "en": "Temperature is measured within the vascular system",
-                      "sl": "*Temperature is measured within the vascular system(en)"
+                      "en": "Temperature is measured within the vascular system"
                     }
                   },
                   {
                     "value": "at0043",
                     "label": "Skin",
                     "localizedLabels": {
-                      "en": "Skin",
-                      "sl": "Na koži"
+                      "en": "Skin"
                     },
                     "localizedDescriptions": {
-                      "en": "Temperature is measured from exposed skin",
-                      "sl": "*Temperature is measured from exposed skin(en)"
+                      "en": "Temperature is measured from exposed skin"
                     }
                   },
                   {
                     "value": "at0051",
                     "label": "Vagina",
                     "localizedLabels": {
-                      "en": "Vagina",
-                      "sl": "Vaginalno"
+                      "en": "Vagina"
                     },
                     "localizedDescriptions": {
-                      "en": "Temperature is measured within the vagina",
-                      "sl": "*Temperature is measured within the vagina(en)"
+                      "en": "Temperature is measured within the vagina"
                     }
                   },
                   {
                     "value": "at0054",
                     "label": "Oesophagus",
                     "localizedLabels": {
-                      "en": "Oesophagus",
-                      "sl": "V požiralniku"
+                      "en": "Oesophagus"
                     },
                     "localizedDescriptions": {
-                      "en": "Temperatue is measured within the oesophagus",
-                      "sl": "*Temperatue is measured within the oesophagus(en)"
+                      "en": "Temperatue is measured within the oesophagus"
                     }
                   },
                   {
                     "value": "at0055",
                     "label": "Inguinal skin crease",
                     "localizedLabels": {
-                      "en": "Inguinal skin crease",
-                      "sl": "V ustih"
+                      "en": "Inguinal skin crease"
                     },
                     "localizedDescriptions": {
-                      "en": "Temperature is measured in the inguinal skin crease between the leg and abdominal wall",
-                      "sl": "*Temperature is measured in the inguinal skin crease between the leg and abdominal wall(en)"
+                      "en": "Temperature is measured in the inguinal skin crease between the leg and abdominal wall"
                     }
                   }
                 ]
@@ -553,12 +505,10 @@
         "min": 0,
         "max": -1,
         "localizedNames": {
-          "en": "Blood Pressure",
-          "sl": "*Blood Pressure(en)"
+          "en": "Blood Pressure"
         },
         "localizedDescriptions": {
-          "en": "The local measurement of arterial blood pressure which is a surrogate for arterial. pressure in the systemic\n                    circulation. Most commonly, use of the term 'blood pressure' refers to measurement of brachial artery pressure in the upper arm.\n                ",
-          "sl": "*The local measurement of arterial blood pressure which is a surrogate for arterial. pressure in the systemic\n                    circulation. Most commonly, use of the term 'blood pressure' refers to measurement of brachial artery pressure in the upper arm.(en)\n                "
+          "en": "The local measurement of arterial blood pressure which is a surrogate for arterial. pressure in the systemic\n                    circulation. Most commonly, use of the term 'blood pressure' refers to measurement of brachial artery pressure in the upper arm.\n                "
         },
         "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]",
         "children": [
@@ -571,12 +521,10 @@
             "min": 0,
             "max": -1,
             "localizedNames": {
-              "en": "any event",
-              "sl": "*any event(en)"
+              "en": "any event"
             },
             "localizedDescriptions": {
-              "en": "Default event",
-              "sl": "*Default event(en)"
+              "en": "Default event"
             },
             "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/data[at0001]/events[at0006]",
             "children": [
@@ -589,12 +537,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Systolic",
-                  "sl": "*Systolic(en)"
+                  "en": "Systolic"
                 },
                 "localizedDescriptions": {
-                  "en": "Peak systemic arterial blood pressure - measured in systolic or contraction phase of the heart cycle.",
-                  "sl": "*Peak systemic arterial blood pressure - measured in systolic or contraction phase of the heart cycle.(en)"
+                  "en": "Peak systemic arterial blood pressure - measured in systolic or contraction phase of the heart cycle."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value",
                 "inputs": [
@@ -604,9 +550,9 @@
                     "validation": {
                       "range": {
                         "minOp": ">=",
-                        "min": 0,
+                        "min": 0.0,
                         "maxOp": "<",
-                        "max": 1000
+                        "max": 1000.0
                       },
                       "precision": {
                         "minOp": ">=",
@@ -626,9 +572,9 @@
                         "validation": {
                           "range": {
                             "minOp": ">=",
-                            "min": 0,
+                            "min": 0.0,
                             "maxOp": "<",
-                            "max": 1000
+                            "max": 1000.0
                           },
                           "precision": {
                             "minOp": ">=",
@@ -657,12 +603,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Diastolic",
-                  "sl": "*Diastolic(en)"
+                  "en": "Diastolic"
                 },
                 "localizedDescriptions": {
-                  "en": "Minimum systemic arterial blood pressure - measured in the diastolic or relaxation phase of the heart cycle.",
-                  "sl": "*Minimum systemic arterial blood pressure - measured in the diastolic or relaxation phase of the heart cycle.(en)\n                "
+                  "en": "Minimum systemic arterial blood pressure - measured in the diastolic or relaxation phase of the heart cycle."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/data[at0001]/events[at0006]/data[at0003]/items[at0005]/value",
                 "inputs": [
@@ -672,9 +616,9 @@
                     "validation": {
                       "range": {
                         "minOp": ">=",
-                        "min": 0,
+                        "min": 0.0,
                         "maxOp": "<",
-                        "max": 1000
+                        "max": 1000.0
                       },
                       "precision": {
                         "minOp": ">=",
@@ -694,9 +638,9 @@
                         "validation": {
                           "range": {
                             "minOp": ">=",
-                            "min": 0,
+                            "min": 0.0,
                             "maxOp": "<",
-                            "max": 1000
+                            "max": 1000.0
                           },
                           "precision": {
                             "minOp": ">=",
@@ -725,12 +669,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Mean Arterial Pressure",
-                  "sl": "*Mean Arterial Pressure(en)"
+                  "en": "Mean Arterial Pressure"
                 },
                 "localizedDescriptions": {
-                  "en": "The average arterial pressure that occurs over the entire course of the heart contraction and relaxation cycle.",
-                  "sl": "*The average arterial pressure that occurs over the entire course of the heart contraction and relaxation cycle.(en)\n                "
+                  "en": "The average arterial pressure that occurs over the entire course of the heart contraction and relaxation cycle."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/data[at0001]/events[at0006]/data[at0003]/items[at1006]/value",
                 "inputs": [
@@ -740,9 +682,9 @@
                     "validation": {
                       "range": {
                         "minOp": ">=",
-                        "min": 0,
+                        "min": 0.0,
                         "maxOp": "<",
-                        "max": 1000
+                        "max": 1000.0
                       },
                       "precision": {
                         "minOp": ">=",
@@ -762,9 +704,9 @@
                         "validation": {
                           "range": {
                             "minOp": ">=",
-                            "min": 0,
+                            "min": 0.0,
                             "maxOp": "<",
-                            "max": 1000
+                            "max": 1000.0
                           },
                           "precision": {
                             "minOp": ">=",
@@ -787,12 +729,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Pulse Pressure",
-                  "sl": "*Pulse Pressure(en)"
+                  "en": "Pulse Pressure"
                 },
                 "localizedDescriptions": {
-                  "en": "The difference between the systolic and diastolic pressure.",
-                  "sl": "*The difference between the systolic and diastolic pressure.(en)"
+                  "en": "The difference between the systolic and diastolic pressure."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/data[at0001]/events[at0006]/data[at0003]/items[at1007]/value",
                 "inputs": [
@@ -802,9 +742,9 @@
                     "validation": {
                       "range": {
                         "minOp": ">=",
-                        "min": 0,
+                        "min": 0.0,
                         "maxOp": "<",
-                        "max": 1000
+                        "max": 1000.0
                       },
                       "precision": {
                         "minOp": ">=",
@@ -824,9 +764,9 @@
                         "validation": {
                           "range": {
                             "minOp": ">=",
-                            "min": 0,
+                            "min": 0.0,
                             "maxOp": "<",
-                            "max": 1000
+                            "max": 1000.0
                           },
                           "precision": {
                             "minOp": ">=",
@@ -849,12 +789,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Comment",
-                  "sl": "*Comment(en)"
+                  "en": "Comment"
                 },
                 "localizedDescriptions": {
-                  "en": "Comment on blood pressure measurement.",
-                  "sl": "*Comment on blood pressure measurement.(en)"
+                  "en": "Comment on blood pressure measurement."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/data[at0001]/events[at0006]/data[at0003]/items[at0033]/value",
                 "inputs": [
@@ -879,12 +817,10 @@
                   "pulse_pressure"
                 ],
                 "localizedNames": {
-                  "en": "Position",
-                  "sl": "*Position(en)"
+                  "en": "Position"
                 },
                 "localizedDescriptions": {
-                  "en": "The position of the subject at the time of measurement.",
-                  "sl": "*The position of the subject at the time of measurement.(en)"
+                  "en": "The position of the subject at the time of measurement."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/data[at0001]/events[at0006]/state[at0007]/items[at0008]/value",
                 "inputs": [
@@ -896,60 +832,50 @@
                         "value": "at1000",
                         "label": "Standing",
                         "localizedLabels": {
-                          "en": "Standing",
-                          "sl": "*Standing(en)"
+                          "en": "Standing"
                         },
                         "localizedDescriptions": {
-                          "en": "Standing at the time of blood pressure measurement.",
-                          "sl": "*Standing at the time of blood pressure measurement.(en)"
+                          "en": "Standing at the time of blood pressure measurement."
                         }
                       },
                       {
                         "value": "at1001",
                         "label": "Sitting",
                         "localizedLabels": {
-                          "en": "Sitting",
-                          "sl": "*Sitting(en)"
+                          "en": "Sitting"
                         },
                         "localizedDescriptions": {
-                          "en": "Sitting (for example on bed or chair) at the time of blood pressure measurement.",
-                          "sl": "*Sitting (for example on bed or chair) at the time of blood pressure measurement.(en)"
+                          "en": "Sitting (for example on bed or chair) at the time of blood pressure measurement."
                         }
                       },
                       {
                         "value": "at1002",
                         "label": "Reclining",
                         "localizedLabels": {
-                          "en": "Reclining",
-                          "sl": "*Reclining(en)"
+                          "en": "Reclining"
                         },
                         "localizedDescriptions": {
-                          "en": "Reclining at the time of blood pressure measurement.",
-                          "sl": "*Reclining at the time of blood pressure measurement.(en)"
+                          "en": "Reclining at the time of blood pressure measurement."
                         }
                       },
                       {
                         "value": "at1003",
                         "label": "Lying",
                         "localizedLabels": {
-                          "en": "Lying",
-                          "sl": "*Lying(en)"
+                          "en": "Lying"
                         },
                         "localizedDescriptions": {
-                          "en": "Lying flat at the time of blood pressure measurement.",
-                          "sl": "*Lying flat at the time of blood pressure measurement.(en)"
+                          "en": "Lying flat at the time of blood pressure measurement."
                         }
                       },
                       {
                         "value": "at1014",
                         "label": "Lying with tilt to left",
                         "localizedLabels": {
-                          "en": "Lying with tilt to left",
-                          "sl": "*Lying with tilt to left(en)"
+                          "en": "Lying with tilt to left"
                         },
                         "localizedDescriptions": {
-                          "en": "Lying flat with some lateral tilt, usually angled towards the left side. Commonly required in the last trimester of\n                    pregnancy to relieve aortocaval compression.\n                ",
-                          "sl": "*Lying flat with some lateral tilt, usually angled towards the left side. Commonly required in the last trimester of\n                    pregnancy to relieve aortocaval compression.(en)\n                "
+                          "en": "Lying flat with some lateral tilt, usually angled towards the left side. Commonly required in the last trimester of\n                    pregnancy to relieve aortocaval compression.\n                "
                         }
                       }
                     ],
@@ -973,12 +899,10 @@
                   "pulse_pressure"
                 ],
                 "localizedNames": {
-                  "en": "Sleep status",
-                  "sl": "*Sleep status(en)"
+                  "en": "Sleep status"
                 },
                 "localizedDescriptions": {
-                  "en": "Sleep status - supports interpretation of 24 hour ambulatory blood pressure records.",
-                  "sl": "*Sleep status - supports interpretation of 24 hour ambulatory blood pressure records. (en)"
+                  "en": "Sleep status - supports interpretation of 24 hour ambulatory blood pressure records."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/data[at0001]/events[at0006]/state[at0007]/items[at1043]/value",
                 "inputs": [
@@ -990,24 +914,20 @@
                         "value": "at1044",
                         "label": "Alert & awake",
                         "localizedLabels": {
-                          "en": "Alert & awake",
-                          "sl": "*Alert & awake(en)"
+                          "en": "Alert & awake"
                         },
                         "localizedDescriptions": {
-                          "en": "Subject is fully conscious.",
-                          "sl": "*Subject is fully conscious.(en)"
+                          "en": "Subject is fully conscious."
                         }
                       },
                       {
                         "value": "at1045",
                         "label": "Sleeping",
                         "localizedLabels": {
-                          "en": "Sleeping",
-                          "sl": "*Sleeping(en)"
+                          "en": "Sleeping"
                         },
                         "localizedDescriptions": {
-                          "en": "Subject is in the natural state of bodily rest.",
-                          "sl": "*Subject is in the natural state of bodily rest.(en)"
+                          "en": "Subject is in the natural state of bodily rest."
                         }
                       }
                     ],
@@ -1031,12 +951,10 @@
                   "pulse_pressure"
                 ],
                 "localizedNames": {
-                  "en": "Tilt",
-                  "sl": "*Tilt(en)"
+                  "en": "Tilt"
                 },
                 "localizedDescriptions": {
-                  "en": "The craniocaudal tilt of the surface on which the person is lying at the time of measurement.",
-                  "sl": "*The craniocaudal tilt of the surface on which the person is lying at the time of measurement.(en)"
+                  "en": "The craniocaudal tilt of the surface on which the person is lying at the time of measurement."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/data[at0001]/events[at0006]/state[at0007]/items[at1005]/value",
                 "inputs": [
@@ -1046,9 +964,9 @@
                     "validation": {
                       "range": {
                         "minOp": ">=",
-                        "min": -90,
+                        "min": -90.0,
                         "maxOp": "<=",
-                        "max": 90
+                        "max": 90.0
                       },
                       "precision": {
                         "minOp": ">=",
@@ -1057,7 +975,7 @@
                         "max": 0
                       }
                     },
-                    "defaultValue": 0
+                    "defaultValue": 0.0
                   },
                   {
                     "suffix": "unit",
@@ -1069,9 +987,9 @@
                         "validation": {
                           "range": {
                             "minOp": ">=",
-                            "min": -90,
+                            "min": -90.0,
                             "maxOp": "<=",
-                            "max": 90
+                            "max": 90.0
                           },
                           "precision": {
                             "minOp": ">=",
@@ -1114,12 +1032,10 @@
               "any_event"
             ],
             "localizedNames": {
-              "en": "Cuff size",
-              "sl": "*Cuff size(en)"
+              "en": "Cuff size"
             },
             "localizedDescriptions": {
-              "en": "The size of the cuff used for blood pressure measurement.",
-              "sl": "*The size of the cuff used for blood pressure measurement. (en)"
+              "en": "The size of the cuff used for blood pressure measurement."
             },
             "annotations": {
               "comment": "Perloff D, Grim C, Flack J, Frohlich ED, Hill M, McDonald M, Morgenstern BZ. Human blood pressure determination by\n                        sphygmomanometry. Circulation 1993;88;2460-2470.\n                    "
@@ -1134,84 +1050,70 @@
                     "value": "at0015",
                     "label": "Adult Thigh",
                     "localizedLabels": {
-                      "en": "Adult Thigh",
-                      "sl": "*Adult Thigh(en)"
+                      "en": "Adult Thigh"
                     },
                     "localizedDescriptions": {
-                      "en": "A cuff used for an adult thigh - bladder approx 20cm x 42cm.",
-                      "sl": "*A cuff used for an adult thigh - bladder approx 20cm x 42cm.(en)"
+                      "en": "A cuff used for an adult thigh - bladder approx 20cm x 42cm."
                     }
                   },
                   {
                     "value": "at0016",
                     "label": "Large Adult",
                     "localizedLabels": {
-                      "en": "Large Adult",
-                      "sl": "*Large Adult(en)"
+                      "en": "Large Adult"
                     },
                     "localizedDescriptions": {
-                      "en": "A cuff for adults with larger arms - bladder approx 16cm x 38cm.",
-                      "sl": "*A cuff for adults with larger arms - bladder approx 16cm x 38cm.(en)"
+                      "en": "A cuff for adults with larger arms - bladder approx 16cm x 38cm."
                     }
                   },
                   {
                     "value": "at0017",
                     "label": "Adult",
                     "localizedLabels": {
-                      "en": "Adult",
-                      "sl": "*Adult(en)"
+                      "en": "Adult"
                     },
                     "localizedDescriptions": {
-                      "en": "A cuff that is standard for an adult - bladder approx 13cm x 30cm.",
-                      "sl": "*A cuff that is standard for an adult - bladder approx 13cm x 30cm.(en)"
+                      "en": "A cuff that is standard for an adult - bladder approx 13cm x 30cm."
                     }
                   },
                   {
                     "value": "at1008",
                     "label": "Small Adult",
                     "localizedLabels": {
-                      "en": "Small Adult",
-                      "sl": "*Small Adult(en)"
+                      "en": "Small Adult"
                     },
                     "localizedDescriptions": {
-                      "en": "A cuff used for a small adult - bladder approx 10cm x 24cm.",
-                      "sl": "*A cuff used for a small adult - bladder approx 10cm x 24cm.(en)"
+                      "en": "A cuff used for a small adult - bladder approx 10cm x 24cm."
                     }
                   },
                   {
                     "value": "at1009",
                     "label": "Paediatric/Child",
                     "localizedLabels": {
-                      "en": "Paediatric/Child",
-                      "sl": "*Paediatric/Child(en)"
+                      "en": "Paediatric/Child"
                     },
                     "localizedDescriptions": {
-                      "en": "A cuff that is appropriate for a child or adult with a thin arm - bladder approx 8cm x 21cm.",
-                      "sl": "*A cuff that is appropriate for a child or adult with a thin arm - bladder approx 8cm x 21cm.(en)"
+                      "en": "A cuff that is appropriate for a child or adult with a thin arm - bladder approx 8cm x 21cm."
                     }
                   },
                   {
                     "value": "at1018",
                     "label": "Infant",
                     "localizedLabels": {
-                      "en": "Infant",
-                      "sl": "*Infant(en)"
+                      "en": "Infant"
                     },
                     "localizedDescriptions": {
-                      "en": "A cuff used for infants - bladder approx 5cm x 15cm.",
-                      "sl": "*A cuff used for infants - bladder approx 5cm x 15cm.(en)"
+                      "en": "A cuff used for infants - bladder approx 5cm x 15cm."
                     }
                   },
                   {
                     "value": "at1019",
                     "label": "Neonatal",
                     "localizedLabels": {
-                      "en": "Neonatal",
-                      "sl": "*Neonatal(en)"
+                      "en": "Neonatal"
                     },
                     "localizedDescriptions": {
-                      "en": "A cuff used for a neonate, assuming cuff is the appropriate size for maturity and birthweight of the neonate.",
-                      "sl": "*A cuff used for a neonate, assuming cuff is the appropriate size for maturity and birthweight of the neonate.(en)\n                "
+                      "en": "A cuff used for a neonate, assuming cuff is the appropriate size for maturity and birthweight of the neonate."
                     }
                   }
                 ]
@@ -1236,12 +1138,10 @@
               "any_event"
             ],
             "localizedNames": {
-              "en": "Location",
-              "sl": "*Location(en)"
+              "en": "Location"
             },
             "localizedDescriptions": {
-              "en": "Body location where blood pressure is measured. Use 'Location of measurement' to select from common sites. Use 'Specific\n                    location' to record more specific details or a site that is not in the common set or to refer to an external terminology.\n                ",
-              "sl": "*Body location where blood pressure is measured. Use 'Location of measurement' to select from common sites. Use\n                    'Specific location' to record more specific details or a site that is not in the common set or to refer to an external terminology.(en)\n                "
+              "en": "Body location where blood pressure is measured. Use 'Location of measurement' to select from common sites. Use 'Specific\n                    location' to record more specific details or a site that is not in the common set or to refer to an external terminology.\n                "
             },
             "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/protocol[at0011]/items[at1033]",
             "children": [
@@ -1254,12 +1154,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Location of measurement",
-                  "sl": "*Location of measurement(en)"
+                  "en": "Location of measurement"
                 },
                 "localizedDescriptions": {
-                  "en": "Common body sites where blood pressure is recorded.",
-                  "sl": "*Common body sites where blood pressure is recorded.(en)"
+                  "en": "Common body sites where blood pressure is recorded."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/protocol[at0011]/items[at1033]/items[at0014]/value",
                 "inputs": [
@@ -1271,132 +1169,110 @@
                         "value": "at0025",
                         "label": "Right arm",
                         "localizedLabels": {
-                          "en": "Right arm",
-                          "sl": "*Right arm(en)"
+                          "en": "Right arm"
                         },
                         "localizedDescriptions": {
-                          "en": "The right arm of the person.",
-                          "sl": "*The right arm of the person.(en)"
+                          "en": "The right arm of the person."
                         }
                       },
                       {
                         "value": "at0026",
                         "label": "Left arm",
                         "localizedLabels": {
-                          "en": "Left arm",
-                          "sl": "*Left arm(en)"
+                          "en": "Left arm"
                         },
                         "localizedDescriptions": {
-                          "en": "The left arm of the person.",
-                          "sl": "*The left arm of the person.(en)"
+                          "en": "The left arm of the person."
                         }
                       },
                       {
                         "value": "at0027",
                         "label": "Right thigh",
                         "localizedLabels": {
-                          "en": "Right thigh",
-                          "sl": "*Right thigh(en)"
+                          "en": "Right thigh"
                         },
                         "localizedDescriptions": {
-                          "en": "The right thigh of the person.",
-                          "sl": "*The right thigh of the person.(en)"
+                          "en": "The right thigh of the person."
                         }
                       },
                       {
                         "value": "at0028",
                         "label": "Left thigh",
                         "localizedLabels": {
-                          "en": "Left thigh",
-                          "sl": "*Left thigh(en)"
+                          "en": "Left thigh"
                         },
                         "localizedDescriptions": {
-                          "en": "The left thigh of the person.",
-                          "sl": "*The left thigh of the person.(en)"
+                          "en": "The left thigh of the person."
                         }
                       },
                       {
                         "value": "at1020",
                         "label": "Right wrist",
                         "localizedLabels": {
-                          "en": "Right wrist",
-                          "sl": "*Right wrist(en)"
+                          "en": "Right wrist"
                         },
                         "localizedDescriptions": {
-                          "en": "The right wrist of the subject.",
-                          "sl": "*The right wrist of the subject.(en)"
+                          "en": "The right wrist of the subject."
                         }
                       },
                       {
                         "value": "at1021",
                         "label": "Left wrist",
                         "localizedLabels": {
-                          "en": "Left wrist",
-                          "sl": "*Left wrist(en)"
+                          "en": "Left wrist"
                         },
                         "localizedDescriptions": {
-                          "en": "The left wrist of the subject.",
-                          "sl": "*The left wrist of the subject.(en)"
+                          "en": "The left wrist of the subject."
                         }
                       },
                       {
                         "value": "at1026",
                         "label": "Right ankle",
                         "localizedLabels": {
-                          "en": "Right ankle",
-                          "sl": "*Right ankle(en)"
+                          "en": "Right ankle"
                         },
                         "localizedDescriptions": {
-                          "en": "The right ankle of the subject.",
-                          "sl": "*The right ankle of the subject.(en)"
+                          "en": "The right ankle of the subject."
                         }
                       },
                       {
                         "value": "at1031",
                         "label": "Left ankle",
                         "localizedLabels": {
-                          "en": "Left ankle",
-                          "sl": "*Left ankle(en)"
+                          "en": "Left ankle"
                         },
                         "localizedDescriptions": {
-                          "en": "The left ankle of the subject.",
-                          "sl": "*The left ankle of the subject.(en)"
+                          "en": "The left ankle of the subject."
                         }
                       },
                       {
                         "value": "at1032",
                         "label": "Finger",
                         "localizedLabels": {
-                          "en": "Finger",
-                          "sl": "*Finger(en)"
+                          "en": "Finger"
                         },
                         "localizedDescriptions": {
-                          "en": "A finger of the subject. Identification of the finger can be recorded in 'Specific Location' data element, if\n                    required.\n                ",
-                          "sl": "*A finger of the subject. Identification of the finger can be recorded in 'Specific Location' data element, if\n                    required.(en)\n                "
+                          "en": "A finger of the subject. Identification of the finger can be recorded in 'Specific Location' data element, if\n                    required.\n                "
                         }
                       },
                       {
                         "value": "at1051",
                         "label": "Toe",
                         "localizedLabels": {
-                          "en": "Toe",
-                          "sl": "*Toe(en)"
+                          "en": "Toe"
                         },
                         "localizedDescriptions": {
-                          "en": "A toe of the subject. Identification of the toe can be recorded in 'Specific Location' data element, if required.\n                ",
-                          "sl": "*A toe of the subject. Identification of the toe can be recorded in 'Specific Location' data element, if required.(en)\n                "
+                          "en": "A toe of the subject. Identification of the toe can be recorded in 'Specific Location' data element, if required.\n                "
                         }
                       },
                       {
                         "value": "at1053",
                         "label": "Intra-arterial",
                         "localizedLabels": {
-                          "en": "Intra-arterial",
-                          "sl": "*Intra-arterial(en)"
+                          "en": "Intra-arterial"
                         },
                         "localizedDescriptions": {
-                          "en": "Invasive measurement via transducer access line within an artery. Location of the transducer can be recorded in\n                    'Specific Location' data element, if required.\n                ",
-                          "sl": "*Invasive measurement via transducer access line within an artery. Location of the transducer can be recorded in\n                    'Specific Location' data element, if required.(en)\n                "
+                          "en": "Invasive measurement via transducer access line within an artery. Location of the transducer can be recorded in\n                    'Specific Location' data element, if required.\n                "
                         }
                       }
                     ]
@@ -1417,12 +1293,10 @@
               "any_event"
             ],
             "localizedNames": {
-              "en": "Method",
-              "sl": "*Method(en)"
+              "en": "Method"
             },
             "localizedDescriptions": {
-              "en": "Method of measurement of blood pressure.",
-              "sl": "*Method of measurement of blood pressure.(en)"
+              "en": "Method of measurement of blood pressure."
             },
             "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/protocol[at0011]/items[at1035]/value",
             "inputs": [
@@ -1434,48 +1308,40 @@
                     "value": "at1036",
                     "label": "Auscultation",
                     "localizedLabels": {
-                      "en": "Auscultation",
-                      "sl": "*Auscultation(en)"
+                      "en": "Auscultation"
                     },
                     "localizedDescriptions": {
-                      "en": "Method of measuring blood pressure externally, using a stethoscope and Korotkoff sounds.",
-                      "sl": "*Method of measuring blood pressure externally, using a stethoscope and Korotkoff sounds.(en)"
+                      "en": "Method of measuring blood pressure externally, using a stethoscope and Korotkoff sounds."
                     }
                   },
                   {
                     "value": "at1037",
                     "label": "Palpation",
                     "localizedLabels": {
-                      "en": "Palpation",
-                      "sl": "*Palpation(en)"
+                      "en": "Palpation"
                     },
                     "localizedDescriptions": {
-                      "en": "Method of measuring blood pressure externally, using palpation (usually of the brachial or radial arteries).",
-                      "sl": "*Method of measuring blood pressure externally, using palpation (usually of the brachial or radial arteries).(en)\n                "
+                      "en": "Method of measuring blood pressure externally, using palpation (usually of the brachial or radial arteries)."
                     }
                   },
                   {
                     "value": "at1039",
                     "label": "Machine",
                     "localizedLabels": {
-                      "en": "Machine",
-                      "sl": "*Machine(en)"
+                      "en": "Machine"
                     },
                     "localizedDescriptions": {
-                      "en": "Method of measuring blood pressure externally, using a blood pressure machine.",
-                      "sl": "*Method of measuring blood pressure externally, using a blood pressure machine.(en)"
+                      "en": "Method of measuring blood pressure externally, using a blood pressure machine."
                     }
                   },
                   {
                     "value": "at1040",
                     "label": "Invasive",
                     "localizedLabels": {
-                      "en": "Invasive",
-                      "sl": "*Invasive(en)"
+                      "en": "Invasive"
                     },
                     "localizedDescriptions": {
-                      "en": "Method of measuring blood pressure internally ie involving penetration of the skin and measuring inside blood vessels.\n                ",
-                      "sl": "*Method of measuring blood pressure internally ie involving penetration of the skin and measuring inside blood\n                    vessels.(en)\n                "
+                      "en": "Method of measuring blood pressure internally ie involving penetration of the skin and measuring inside blood vessels.\n                "
                     }
                   }
                 ]
@@ -1494,12 +1360,10 @@
               "any_event"
             ],
             "localizedNames": {
-              "en": "Diastolic endpoint",
-              "sl": "*Diastolic endpoint(en)"
+              "en": "Diastolic endpoint"
             },
             "localizedDescriptions": {
-              "en": "Record which Korotkoff sound is used for determining diastolic pressure using auscultative method.",
-              "sl": "*Record which Korotkoff sound is used for determining diastolic pressure using auscultative method.(en)"
+              "en": "Record which Korotkoff sound is used for determining diastolic pressure using auscultative method."
             },
             "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/protocol[at0011]/items[at1010]/value",
             "inputs": [
@@ -1511,24 +1375,20 @@
                     "value": "at1011",
                     "label": "Phase IV",
                     "localizedLabels": {
-                      "en": "Phase IV",
-                      "sl": "*Phase IV(en)"
+                      "en": "Phase IV"
                     },
                     "localizedDescriptions": {
-                      "en": "The fourth Korotkoff sound is identified as an abrupt muffling of sounds.",
-                      "sl": "*The fourth Korotkoff sound is identified as an abrupt muffling of sounds.(en)"
+                      "en": "The fourth Korotkoff sound is identified as an abrupt muffling of sounds."
                     }
                   },
                   {
                     "value": "at1012",
                     "label": "Phase V",
                     "localizedLabels": {
-                      "en": "Phase V",
-                      "sl": "*Phase V(en)"
+                      "en": "Phase V"
                     },
                     "localizedDescriptions": {
-                      "en": "The fifth Korotkoff sound is identified by absence of sounds as the cuff pressure drops below the diastolic blood\n                    pressure.\n                ",
-                      "sl": "*The fifth Korotkoff sound is identified by absence of sounds as the cuff pressure drops below the diastolic blood\n                    pressure.(en)\n                "
+                      "en": "The fifth Korotkoff sound is identified by absence of sounds as the cuff pressure drops below the diastolic blood\n                    pressure.\n                "
                     }
                   }
                 ]
@@ -1547,12 +1407,10 @@
               "any_event"
             ],
             "localizedNames": {
-              "en": "Device",
-              "sl": "Naprava"
+              "en": "Device"
             },
             "localizedDescriptions": {
-              "en": "Any physical object, product, instrument, apparatus, appliance, material or other item used directly or indirectly in\n                    the provision of healthcare, but is not used primarily through therapeutic or metabolic means.\n                ",
-              "sl": "Uporablja se za zapisovanje podatkov o napravi, ki se lahko uporablja neposredno v terapevtske ali diagnostične namene;\n                    ali neposredno v zagotavljanju zdravstvene oskrbe.\n                "
+              "en": "Any physical object, product, instrument, apparatus, appliance, material or other item used directly or indirectly in\n                    the provision of healthcare, but is not used primarily through therapeutic or metabolic means.\n                "
             },
             "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/protocol[at0011]/items[openEHR-EHR-CLUSTER.device.v1]",
             "children": [
@@ -1565,12 +1423,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Device name",
-                  "sl": "ID"
+                  "en": "Device name"
                 },
                 "localizedDescriptions": {
-                  "en": "Identification of the device. This is very likely to be a coded field, including pre- or post-coordianted details.\n                ",
-                  "sl": "ID naprave"
+                  "en": "Identification of the device. This is very likely to be a coded field, including pre- or post-coordianted details.\n                "
                 },
                 "annotations": {
                   "default": "ISPEK - OTS MZN-SIF-RR-Aparat"
@@ -1591,12 +1447,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Description",
-                  "sl": "Opis"
+                  "en": "Description"
                 },
                 "localizedDescriptions": {
-                  "en": "Description of the device.",
-                  "sl": "Opis naprave"
+                  "en": "Description of the device."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/protocol[at0011]/items[openEHR-EHR-CLUSTER.device.v1]/items[at0002]/value",
                 "inputs": [
@@ -1614,12 +1468,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Type",
-                  "sl": "Tip"
+                  "en": "Type"
                 },
                 "localizedDescriptions": {
-                  "en": "Type of device.",
-                  "sl": "Tip naprave"
+                  "en": "Type of device."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/protocol[at0011]/items[openEHR-EHR-CLUSTER.device.v1]/items[at0003]/value",
                 "inputs": [
@@ -1637,12 +1489,10 @@
                 "min": 0,
                 "max": -1,
                 "localizedNames": {
-                  "en": "Size",
-                  "sl": "Velikost"
+                  "en": "Size"
                 },
                 "localizedDescriptions": {
-                  "en": "Size of device - a choice of value types is offered - count, quantity or text.",
-                  "sl": "Velikost naprave"
+                  "en": "Size of device - a choice of value types is offered - count, quantity or text."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/protocol[at0011]/items[openEHR-EHR-CLUSTER.device.v1]/items[at0016]",
                 "children": [
@@ -1654,12 +1504,10 @@
                     "min": 0,
                     "max": 1,
                     "localizedNames": {
-                      "en": "Size",
-                      "sl": "Velikost"
+                      "en": "Size"
                     },
                     "localizedDescriptions": {
-                      "en": "Size of device - a choice of value types is offered - count, quantity or text.",
-                      "sl": "Velikost naprave"
+                      "en": "Size of device - a choice of value types is offered - count, quantity or text."
                     },
                     "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/protocol[at0011]/items[openEHR-EHR-CLUSTER.device.v1]/items[at0016]/value",
                     "inputs": [
@@ -1676,12 +1524,10 @@
                     "min": 0,
                     "max": 1,
                     "localizedNames": {
-                      "en": "Size",
-                      "sl": "Velikost"
+                      "en": "Size"
                     },
                     "localizedDescriptions": {
-                      "en": "Size of device - a choice of value types is offered - count, quantity or text.",
-                      "sl": "Velikost naprave"
+                      "en": "Size of device - a choice of value types is offered - count, quantity or text."
                     },
                     "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/protocol[at0011]/items[openEHR-EHR-CLUSTER.device.v1]/items[at0016]/value",
                     "inputs": [
@@ -1703,12 +1549,10 @@
                     "min": 0,
                     "max": 1,
                     "localizedNames": {
-                      "en": "Size",
-                      "sl": "Velikost"
+                      "en": "Size"
                     },
                     "localizedDescriptions": {
-                      "en": "Size of device - a choice of value types is offered - count, quantity or text.",
-                      "sl": "Velikost naprave"
+                      "en": "Size of device - a choice of value types is offered - count, quantity or text."
                     },
                     "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/protocol[at0011]/items[openEHR-EHR-CLUSTER.device.v1]/items[at0016]/value",
                     "inputs": [
@@ -1728,12 +1572,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Manufacturer",
-                  "sl": "Proizvajalec"
+                  "en": "Manufacturer"
                 },
                 "localizedDescriptions": {
-                  "en": "The name of the device manufacturer.",
-                  "sl": "Proizvajalec naprave"
+                  "en": "The name of the device manufacturer."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/protocol[at0011]/items[openEHR-EHR-CLUSTER.device.v1]/items[at0004]/value",
                 "inputs": [
@@ -1757,12 +1599,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Date of manufacture",
-                  "sl": "Datum proizvodnje"
+                  "en": "Date of manufacture"
                 },
                 "localizedDescriptions": {
-                  "en": "Date the device was manufactured.",
-                  "sl": "Datum proizvodnje"
+                  "en": "Date the device was manufactured."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/protocol[at0011]/items[openEHR-EHR-CLUSTER.device.v1]/items[at0005]/value",
                 "inputs": [
@@ -1786,12 +1626,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Batch number",
-                  "sl": "Serijska številka"
+                  "en": "Batch number"
                 },
                 "localizedDescriptions": {
-                  "en": "Manufacturer's batch number.",
-                  "sl": "Serijska številka naprave"
+                  "en": "Manufacturer's batch number."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/protocol[at0011]/items[openEHR-EHR-CLUSTER.device.v1]/items[at0006]/value",
                 "inputs": [
@@ -1809,12 +1647,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Date of expiry",
-                  "sl": "Rok trajanja"
+                  "en": "Date of expiry"
                 },
                 "localizedDescriptions": {
-                  "en": "Date that the device/product is no longer fit for use.",
-                  "sl": "Rok trajanja naprave / izdelka"
+                  "en": "Date that the device/product is no longer fit for use."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/protocol[at0011]/items[openEHR-EHR-CLUSTER.device.v1]/items[at0007]/value",
                 "inputs": [
@@ -1832,12 +1668,10 @@
                 "min": 0,
                 "max": -1,
                 "localizedNames": {
-                  "en": "Safety feature",
-                  "sl": "Varnostna navodila"
+                  "en": "Safety feature"
                 },
                 "localizedDescriptions": {
-                  "en": "Details about safety feature(s) of the device.",
-                  "sl": "Varnostna navodila"
+                  "en": "Details about safety feature(s) of the device."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/protocol[at0011]/items[openEHR-EHR-CLUSTER.device.v1]/items[at0013]",
                 "children": [
@@ -1850,12 +1684,10 @@
                     "min": 0,
                     "max": 1,
                     "localizedNames": {
-                      "en": "Type of feature",
-                      "sl": "Tip navodil"
+                      "en": "Type of feature"
                     },
                     "localizedDescriptions": {
-                      "en": "Type of safety feature of the device.",
-                      "sl": "Tip varnostnih navodil"
+                      "en": "Type of safety feature of the device."
                     },
                     "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/protocol[at0011]/items[openEHR-EHR-CLUSTER.device.v1]/items[at0013]/items[at0014]/value",
                     "inputs": [
@@ -1873,12 +1705,10 @@
                     "min": 0,
                     "max": 1,
                     "localizedNames": {
-                      "en": "Description",
-                      "sl": "Opis"
+                      "en": "Description"
                     },
                     "localizedDescriptions": {
-                      "en": "Description of the safety feature of the device.",
-                      "sl": "Opis varnostnih navodil"
+                      "en": "Description of the safety feature of the device."
                     },
                     "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/protocol[at0011]/items[openEHR-EHR-CLUSTER.device.v1]/items[at0013]/items[at0015]/value",
                     "inputs": [
@@ -1904,12 +1734,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Comment",
-                  "sl": "Opomba"
+                  "en": "Comment"
                 },
                 "localizedDescriptions": {
-                  "en": "Comment about the device.",
-                  "sl": "Opombe glede naprave"
+                  "en": "Comment about the device."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.blood_pressure.v1]/protocol[at0011]/items[openEHR-EHR-CLUSTER.device.v1]/items[at0008]/value",
                 "inputs": [
@@ -1988,12 +1816,10 @@
         "min": 0,
         "max": -1,
         "localizedNames": {
-          "en": "Body mass index",
-          "sl": "Indeks telesne mase (ITM)"
+          "en": "Body mass index"
         },
         "localizedDescriptions": {
-          "en": "Calculated measurement which compares a person's weight and height.",
-          "sl": "Indeks telesne mase (ITM)"
+          "en": "Calculated measurement which compares a person's weight and height."
         },
         "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_mass_index.v1]",
         "children": [
@@ -2006,12 +1832,10 @@
             "min": 1,
             "max": -1,
             "localizedNames": {
-              "en": "Any event",
-              "sl": "*Any event(en)"
+              "en": "Any event"
             },
             "localizedDescriptions": {
-              "en": "Any timed recording of Body Mass Index.",
-              "sl": "*Any timed recording of Body Mass Index.(en)"
+              "en": "Any timed recording of Body Mass Index."
             },
             "annotations": {
               "view:pass_through": "true"
@@ -2027,12 +1851,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Body Mass Index",
-                  "sl": "ITM"
+                  "en": "Body Mass Index"
                 },
                 "localizedDescriptions": {
-                  "en": "Index describing ratio of weight to height.",
-                  "sl": "Indeks telesne mase"
+                  "en": "Index describing ratio of weight to height."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_mass_index.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value",
                 "inputs": [
@@ -2042,9 +1864,9 @@
                     "validation": {
                       "range": {
                         "minOp": ">=",
-                        "min": 0,
+                        "min": 0.0,
                         "maxOp": "<",
-                        "max": 1000
+                        "max": 1000.0
                       },
                       "precision": {
                         "minOp": ">=",
@@ -2064,9 +1886,9 @@
                         "validation": {
                           "range": {
                             "minOp": ">=",
-                            "min": 0,
+                            "min": 0.0,
                             "maxOp": "<",
-                            "max": 1000
+                            "max": 1000.0
                           },
                           "precision": {
                             "minOp": ">=",
@@ -2108,12 +1930,10 @@
               "any_event"
             ],
             "localizedNames": {
-              "en": "Method",
-              "sl": "Metoda"
+              "en": "Method"
             },
             "localizedDescriptions": {
-              "en": "The method of entering the Body Mass Index.",
-              "sl": "Metoda"
+              "en": "The method of entering the Body Mass Index."
             },
             "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_mass_index.v1]/protocol[at0005]/items[at0006]/value",
             "inputs": [
@@ -2125,24 +1945,20 @@
                     "value": "at0007",
                     "label": "Automatic entry",
                     "localizedLabels": {
-                      "en": "Automatic entry",
-                      "sl": "Atvmatska"
+                      "en": "Automatic entry"
                     },
                     "localizedDescriptions": {
-                      "en": "Body Mass Index calculated and entered automatically without user intervention.",
-                      "sl": "Atvmatska"
+                      "en": "Body Mass Index calculated and entered automatically without user intervention."
                     }
                   },
                   {
                     "value": "at0008",
                     "label": "Direct entry",
                     "localizedLabels": {
-                      "en": "Direct entry",
-                      "sl": "Od pacienta"
+                      "en": "Direct entry"
                     },
                     "localizedDescriptions": {
-                      "en": "Body Mass Index calculated and entered directly by user.",
-                      "sl": "Od pacienta"
+                      "en": "Body Mass Index calculated and entered directly by user."
                     }
                   }
                 ]
@@ -2161,12 +1977,10 @@
               "any_event"
             ],
             "localizedNames": {
-              "en": "Formula",
-              "sl": "Formula"
+              "en": "Formula"
             },
             "localizedDescriptions": {
-              "en": "Formula used to derive the Body Mass Index.",
-              "sl": "Formula"
+              "en": "Formula used to derive the Body Mass Index."
             },
             "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_mass_index.v1]/protocol[at0005]/items[at0010]/value",
             "inputs": [
@@ -2187,12 +2001,10 @@
               "any_event"
             ],
             "localizedNames": {
-              "en": "Comment",
-              "sl": "Opombe"
+              "en": "Comment"
             },
             "localizedDescriptions": {
-              "en": "Comment about the Body Mass Index measurement eg noting that the measurements used were adjusted weight/height.",
-              "sl": "Opombe"
+              "en": "Comment about the Body Mass Index measurement eg noting that the measurements used were adjusted weight/height."
             },
             "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_mass_index.v1]/protocol[at0005]/items[at0011]/value",
             "inputs": [
@@ -2257,12 +2069,10 @@
         "min": 0,
         "max": -1,
         "localizedNames": {
-          "en": "Height/Length",
-          "sl": "Višina/dolžina"
+          "en": "Height/Length"
         },
         "localizedDescriptions": {
-          "en": "Height, or body length, is measured from crown of head to sole of foot. Height is measured with the individual in a\n                    standing position and body length in a recumbent position.\n                ",
-          "sl": "Višina/dolžina pacienta, izmerjena od vrha glave do podplatov na nogah"
+          "en": "Height, or body length, is measured from crown of head to sole of foot. Height is measured with the individual in a\n                    standing position and body length in a recumbent position.\n                "
         },
         "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v1]",
         "children": [
@@ -2275,12 +2085,10 @@
             "min": 1,
             "max": -1,
             "localizedNames": {
-              "en": "Any event",
-              "sl": "*Any event(en)"
+              "en": "Any event"
             },
             "localizedDescriptions": {
-              "en": "Any timed measurement of height or body length.",
-              "sl": "*Any timed measurement of height or body length.(en)"
+              "en": "Any timed measurement of height or body length."
             },
             "annotations": {
               "view:pass_through": "true"
@@ -2299,8 +2107,7 @@
                   "en": "Body Height/Length"
                 },
                 "localizedDescriptions": {
-                  "en": "The length of the body from crown of head to sole of foot.",
-                  "sl": "Višina/dolžina pacienta, izmerjena od vrha glave do podplatov na nogah"
+                  "en": "The length of the body from crown of head to sole of foot."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0004,'Body Height/Length']/value",
                 "inputs": [
@@ -2310,9 +2117,9 @@
                     "validation": {
                       "range": {
                         "minOp": ">=",
-                        "min": 0,
+                        "min": 0.0,
                         "maxOp": "<=",
-                        "max": 1000
+                        "max": 1000.0
                       }
                     }
                   },
@@ -2326,9 +2133,9 @@
                         "validation": {
                           "range": {
                             "minOp": ">=",
-                            "min": 0,
+                            "min": 0.0,
                             "maxOp": "<=",
-                            "max": 1000
+                            "max": 1000.0
                           }
                         }
                       }
@@ -2345,12 +2152,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Comment",
-                  "sl": "Opombe"
+                  "en": "Comment"
                 },
                 "localizedDescriptions": {
-                  "en": "Comment about the measurement of body height/length.",
-                  "sl": "Opombe"
+                  "en": "Comment about the measurement of body height/length."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0018]/value",
                 "inputs": [
@@ -2372,12 +2177,10 @@
                   "comment"
                 ],
                 "localizedNames": {
-                  "en": "Position",
-                  "sl": "Pozicija"
+                  "en": "Position"
                 },
                 "localizedDescriptions": {
-                  "en": "Position of individual when measured.\n                ",
-                  "sl": "Pozicija pacienta, ko se izvaja meritev"
+                  "en": "Position of individual when measured.\n                "
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.height.v1]/data[at0001]/events[at0002]/state[at0013]/items[at0014]/value",
                 "inputs": [
@@ -2389,24 +2192,20 @@
                         "value": "at0016",
                         "label": "Standing",
                         "localizedLabels": {
-                          "en": "Standing",
-                          "sl": "Stoje"
+                          "en": "Standing"
                         },
                         "localizedDescriptions": {
-                          "en": "Height is measured standing on both feet with weight distributed evenly, heels together and both buttocks and heels in\n                    contact with a vertical back board.\n                ",
-                          "sl": "Stoje"
+                          "en": "Height is measured standing on both feet with weight distributed evenly, heels together and both buttocks and heels in\n                    contact with a vertical back board.\n                "
                         }
                       },
                       {
                         "value": "at0020",
                         "label": "Lying",
                         "localizedLabels": {
-                          "en": "Lying",
-                          "sl": "Leže"
+                          "en": "Lying"
                         },
                         "localizedDescriptions": {
-                          "en": "Length is measured in a fully extended, recumbent position with the pelvis flat, legs extended and feet flexed.",
-                          "sl": "Leže"
+                          "en": "Length is measured in a fully extended, recumbent position with the pelvis flat, legs extended and feet flexed."
                         }
                       }
                     ],
@@ -2486,12 +2285,10 @@
         "min": 0,
         "max": -1,
         "localizedNames": {
-          "en": "Body weight",
-          "sl": "Telesna teža"
+          "en": "Body weight"
         },
         "localizedDescriptions": {
-          "en": "Measurement of the body weight of an individual.",
-          "sl": "Merjenje telesne teže posameznega pacienta"
+          "en": "Measurement of the body weight of an individual."
         },
         "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v1]",
         "children": [
@@ -2514,12 +2311,10 @@
               }
             ],
             "localizedNames": {
-              "en": "Any event",
-              "sl": "*Any event(en)"
+              "en": "Any event"
             },
             "localizedDescriptions": {
-              "en": "Any event",
-              "sl": "*Any event(en)"
+              "en": "Any event"
             },
             "annotations": {
               "view:pass_through": "true"
@@ -2538,8 +2333,7 @@
                   "en": "Body weight"
                 },
                 "localizedDescriptions": {
-                  "en": "The weight of the individual.",
-                  "sl": "Teža pacienta"
+                  "en": "The weight of the individual."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v1]/data[at0002]/events[at0003]/data[at0001]/items[at0004,'Body weight']/value",
                 "inputs": [
@@ -2549,9 +2343,9 @@
                     "validation": {
                       "range": {
                         "minOp": ">=",
-                        "min": 0,
+                        "min": 0.0,
                         "maxOp": "<=",
-                        "max": 1000
+                        "max": 1000.0
                       }
                     }
                   },
@@ -2565,9 +2359,9 @@
                         "validation": {
                           "range": {
                             "minOp": ">=",
-                            "min": 0,
+                            "min": 0.0,
                             "maxOp": "<=",
-                            "max": 1000
+                            "max": 1000.0
                           }
                         }
                       }
@@ -2584,12 +2378,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Comment",
-                  "sl": "Opombe"
+                  "en": "Comment"
                 },
                 "localizedDescriptions": {
-                  "en": "Comment about the measurement of weight.",
-                  "sl": "Opombe"
+                  "en": "Comment about the measurement of weight."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v1]/data[at0002]/events[at0003]/data[at0001]/items[at0024]/value",
                 "inputs": [
@@ -2611,12 +2403,10 @@
                   "comment"
                 ],
                 "localizedNames": {
-                  "en": "State of Dress",
-                  "sl": "Oblečen"
+                  "en": "State of Dress"
                 },
                 "localizedDescriptions": {
-                  "en": "Description of the state of dress of the person at the time of weighing.",
-                  "sl": "Ali je pacient oblečen?"
+                  "en": "Description of the state of dress of the person at the time of weighing."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.body_weight.v1]/data[at0002]/events[at0003]/state[at0008]/items[at0009]/value",
                 "inputs": [
@@ -2628,48 +2418,40 @@
                         "value": "at0011",
                         "label": "Lightly clothed/underwear",
                         "localizedLabels": {
-                          "en": "Lightly clothed/underwear",
-                          "sl": "Lahko oblečen / spodnje perilo"
+                          "en": "Lightly clothed/underwear"
                         },
                         "localizedDescriptions": {
-                          "en": "Clothing which will not add to weight significantly.",
-                          "sl": "Lahko oblečen / spodnje perilo"
+                          "en": "Clothing which will not add to weight significantly."
                         }
                       },
                       {
                         "value": "at0013",
                         "label": "Naked",
                         "localizedLabels": {
-                          "en": "Naked",
-                          "sl": "Nag"
+                          "en": "Naked"
                         },
                         "localizedDescriptions": {
-                          "en": "Without any clothes",
-                          "sl": "Nag"
+                          "en": "Without any clothes"
                         }
                       },
                       {
                         "value": "at0010",
                         "label": "Fully clothed, including shoes",
                         "localizedLabels": {
-                          "en": "Fully clothed, including shoes",
-                          "sl": "Popolnoma oblečen, vključujoč čevlje"
+                          "en": "Fully clothed, including shoes"
                         },
                         "localizedDescriptions": {
-                          "en": "Clothing which may add significantly to weight, including shoes.",
-                          "sl": "Popolnoma oblečen, vključujoč čevlje"
+                          "en": "Clothing which may add significantly to weight, including shoes."
                         }
                       },
                       {
                         "value": "at0017",
                         "label": "Nappy/diaper",
                         "localizedLabels": {
-                          "en": "Nappy/diaper",
-                          "sl": "Plenice"
+                          "en": "Nappy/diaper"
                         },
                         "localizedDescriptions": {
-                          "en": "Wearing only a nappy - can add significant weight.",
-                          "sl": "Pacient nosi plenice"
+                          "en": "Wearing only a nappy - can add significant weight."
                         }
                       }
                     ],
@@ -2749,12 +2531,10 @@
         "min": 0,
         "max": -1,
         "localizedNames": {
-          "en": "Pulse",
-          "sl": "*Pulse(en)"
+          "en": "Pulse"
         },
         "localizedDescriptions": {
-          "en": "The mechanical heart rate - usually measured by palpation",
-          "sl": "*The mechanical heart rate - usually measured by palpation(en)"
+          "en": "The mechanical heart rate - usually measured by palpation"
         },
         "aqlPath": "/content[openEHR-EHR-OBSERVATION.heart_rate-pulse.v1]",
         "children": [
@@ -2767,12 +2547,10 @@
             "min": 0,
             "max": -1,
             "localizedNames": {
-              "en": "Any event",
-              "sl": "*Any event(en)"
+              "en": "Any event"
             },
             "localizedDescriptions": {
-              "en": "Default unspecified event.",
-              "sl": "*Default unspecified event.(en)"
+              "en": "Default unspecified event."
             },
             "aqlPath": "/content[openEHR-EHR-OBSERVATION.heart_rate-pulse.v1]/data[at0002]/events[at0003]",
             "children": [
@@ -2785,12 +2563,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Rate",
-                  "sl": "*Rate(en)"
+                  "en": "Rate"
                 },
                 "localizedDescriptions": {
-                  "en": "The rate of the heart in beats per minute.",
-                  "sl": "*The rate of the heart in beats per minute.(en)"
+                  "en": "The rate of the heart in beats per minute."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.heart_rate-pulse.v1]/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value",
                 "inputs": [
@@ -2800,7 +2576,7 @@
                     "validation": {
                       "range": {
                         "minOp": ">=",
-                        "min": 0
+                        "min": 0.0
                       },
                       "precision": {
                         "minOp": ">=",
@@ -2820,7 +2596,7 @@
                         "validation": {
                           "range": {
                             "minOp": ">=",
-                            "min": 0
+                            "min": 0.0
                           },
                           "precision": {
                             "minOp": ">=",
@@ -2849,12 +2625,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Comment",
-                  "sl": "*Comment(en)"
+                  "en": "Comment"
                 },
                 "localizedDescriptions": {
-                  "en": "Comment about the heart rate and rhythm.",
-                  "sl": "*Comment about the heart rate and rhythm.(en)"
+                  "en": "Comment about the heart rate and rhythm."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.heart_rate-pulse.v1]/data[at0002]/events[at0003]/data[at0001]/items[at0009]/value",
                 "inputs": [
@@ -2876,12 +2650,10 @@
                   "comment"
                 ],
                 "localizedNames": {
-                  "en": "Position",
-                  "sl": "*Position(en)"
+                  "en": "Position"
                 },
                 "localizedDescriptions": {
-                  "en": "The position of the patient when the heartbeat was recorded.",
-                  "sl": "*The position of the patient when the heartbeat was recorded.(en)"
+                  "en": "The position of the patient when the heartbeat was recorded."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.heart_rate-pulse.v1]/data[at0002]/events[at0003]/state[at0012]/items[at0013]/value",
                 "inputs": [
@@ -2893,48 +2665,40 @@
                         "value": "at1000",
                         "label": "Lying",
                         "localizedLabels": {
-                          "en": "Lying",
-                          "sl": "*Lying(en)"
+                          "en": "Lying"
                         },
                         "localizedDescriptions": {
-                          "en": "Lying supine.",
-                          "sl": "*Lying supine.(en)"
+                          "en": "Lying supine."
                         }
                       },
                       {
                         "value": "at1001",
                         "label": "Sitting",
                         "localizedLabels": {
-                          "en": "Sitting",
-                          "sl": "*Sitting(en)"
+                          "en": "Sitting"
                         },
                         "localizedDescriptions": {
-                          "en": "Sitting on bed or chair.",
-                          "sl": "*Sitting on bed or chair.(en)"
+                          "en": "Sitting on bed or chair."
                         }
                       },
                       {
                         "value": "at1002",
                         "label": "Reclining",
                         "localizedLabels": {
-                          "en": "Reclining",
-                          "sl": "*Reclining(en)"
+                          "en": "Reclining"
                         },
                         "localizedDescriptions": {
-                          "en": "Person reclining at 45 degrees with legs raised.",
-                          "sl": "*Person reclining at 45 degrees with legs raised.(en)"
+                          "en": "Person reclining at 45 degrees with legs raised."
                         }
                       },
                       {
                         "value": "at1003",
                         "label": "Standing",
                         "localizedLabels": {
-                          "en": "Standing",
-                          "sl": "*Standing(en)"
+                          "en": "Standing"
                         },
                         "localizedDescriptions": {
-                          "en": "Standing upright.",
-                          "sl": "*Standing upright.(en)"
+                          "en": "Standing upright."
                         }
                       }
                     ],
@@ -2970,12 +2734,10 @@
               "any_event"
             ],
             "localizedNames": {
-              "en": "Method",
-              "sl": "*Method(en)"
+              "en": "Method"
             },
             "localizedDescriptions": {
-              "en": "Source of heart rate and rhythm record.",
-              "sl": "*Source of heart rate and rhythm record.(en)"
+              "en": "Source of heart rate and rhythm record."
             },
             "aqlPath": "/content[openEHR-EHR-OBSERVATION.heart_rate-pulse.v1]/protocol[at0010]/items[at1019]/value",
             "inputs": [
@@ -2987,24 +2749,20 @@
                     "value": "at1020",
                     "label": "Auscultation",
                     "localizedLabels": {
-                      "en": "Auscultation",
-                      "sl": "*Auscultation(en)"
+                      "en": "Auscultation"
                     },
                     "localizedDescriptions": {
-                      "en": "Direct auscultation of the heart.",
-                      "sl": "*Direct auscultation of the heart.(en)"
+                      "en": "Direct auscultation of the heart."
                     }
                   },
                   {
                     "value": "at1021",
                     "label": "Device",
                     "localizedLabels": {
-                      "en": "Device",
-                      "sl": "*Device(en)"
+                      "en": "Device"
                     },
                     "localizedDescriptions": {
-                      "en": "Derived from the electrical activity of the heart, commonly via an electrocardiograph.",
-                      "sl": "*Derived from the electrical activity of the heart, commonly via an electrocardiograph.(en)"
+                      "en": "Derived from the electrical activity of the heart, commonly via an electrocardiograph."
                     }
                   }
                 ]
@@ -3023,12 +2781,10 @@
               "any_event"
             ],
             "localizedNames": {
-              "en": "Description",
-              "sl": "*Description(en)"
+              "en": "Description"
             },
             "localizedDescriptions": {
-              "en": "Details about the method or machine used to record the heart rate and rhythm.",
-              "sl": "*Details about the method or machine used to record the heart rate and rhythm.(en)"
+              "en": "Details about the method or machine used to record the heart rate and rhythm."
             },
             "aqlPath": "/content[openEHR-EHR-OBSERVATION.heart_rate-pulse.v1]/protocol[at0010]/items[at1014]/value",
             "inputs": [
@@ -3049,12 +2805,10 @@
               "any_event"
             ],
             "localizedNames": {
-              "en": "Location of measurement",
-              "sl": "*Location of measurement(en)"
+              "en": "Location of measurement"
             },
             "localizedDescriptions": {
-              "en": "The body site where the pulse was measured",
-              "sl": "*The body site where the pulse was measured(en)"
+              "en": "The body site where the pulse was measured"
             },
             "aqlPath": "/content[openEHR-EHR-OBSERVATION.heart_rate-pulse.v1]/protocol[at0010]/items[at0.2]/value",
             "inputs": [
@@ -3066,120 +2820,100 @@
                     "value": "at0.3",
                     "label": "Radial artery",
                     "localizedLabels": {
-                      "en": "Radial artery",
-                      "sl": "*Radial artery(en)"
+                      "en": "Radial artery"
                     },
                     "localizedDescriptions": {
-                      "en": "The radial artery",
-                      "sl": "*The radial artery(en)"
+                      "en": "The radial artery"
                     }
                   },
                   {
                     "value": "at0.4",
                     "label": "Apex of heart",
                     "localizedLabels": {
-                      "en": "Apex of heart",
-                      "sl": "*Apex of heart(en)"
+                      "en": "Apex of heart"
                     },
                     "localizedDescriptions": {
-                      "en": "The apex beat of the heart (left 5th intercostal space, mid-clavicular line)",
-                      "sl": "*The apex beat of the heart (left 5th intercostal space, mid-clavicular line)(en)"
+                      "en": "The apex beat of the heart (left 5th intercostal space, mid-clavicular line)"
                     }
                   },
                   {
                     "value": "at0.5",
                     "label": "Carotid artery",
                     "localizedLabels": {
-                      "en": "Carotid artery",
-                      "sl": "*Carotid artery(en)"
+                      "en": "Carotid artery"
                     },
                     "localizedDescriptions": {
-                      "en": "The carotid artery in the neck",
-                      "sl": "*The carotid artery in the neck(en)"
+                      "en": "The carotid artery in the neck"
                     }
                   },
                   {
                     "value": "at0.6",
                     "label": "Femoral artery",
                     "localizedLabels": {
-                      "en": "Femoral artery",
-                      "sl": "*Femoral artery(en)"
+                      "en": "Femoral artery"
                     },
                     "localizedDescriptions": {
-                      "en": "The femoral artery",
-                      "sl": "*The femoral artery(en)"
+                      "en": "The femoral artery"
                     }
                   },
                   {
                     "value": "at0.15",
                     "label": "Ulnar artery",
                     "localizedLabels": {
-                      "en": "Ulnar artery",
-                      "sl": "*Ulnar artery(en)"
+                      "en": "Ulnar artery"
                     },
                     "localizedDescriptions": {
-                      "en": "The ulnar artery",
-                      "sl": "*The ulnar artery(en)"
+                      "en": "The ulnar artery"
                     }
                   },
                   {
                     "value": "at0.17",
                     "label": "Brachial artery",
                     "localizedLabels": {
-                      "en": "Brachial artery",
-                      "sl": "*Brachial artery(en)"
+                      "en": "Brachial artery"
                     },
                     "localizedDescriptions": {
-                      "en": "The brachial artery",
-                      "sl": "*The brachial artery(en)"
+                      "en": "The brachial artery"
                     }
                   },
                   {
                     "value": "at0.19",
                     "label": "Popliteal",
                     "localizedLabels": {
-                      "en": "Popliteal",
-                      "sl": "*Popliteal(en)"
+                      "en": "Popliteal"
                     },
                     "localizedDescriptions": {
-                      "en": "The popliteal artery",
-                      "sl": "*The popliteal artery(en)"
+                      "en": "The popliteal artery"
                     }
                   },
                   {
                     "value": "at0.20",
                     "label": "Dorsalis Pedis",
                     "localizedLabels": {
-                      "en": "Dorsalis Pedis",
-                      "sl": "*Dorsalis Pedis(en)"
+                      "en": "Dorsalis Pedis"
                     },
                     "localizedDescriptions": {
-                      "en": "The dorsalis pedis artery",
-                      "sl": "*The dorsalis pedis artery(en)"
+                      "en": "The dorsalis pedis artery"
                     }
                   },
                   {
                     "value": "at0.21",
                     "label": "Tibialis Posterior",
                     "localizedLabels": {
-                      "en": "Tibialis Posterior",
-                      "sl": "*Tibialis Posterior(en)"
+                      "en": "Tibialis Posterior"
                     },
                     "localizedDescriptions": {
-                      "en": "The tibialis posterior artery",
-                      "sl": "*The tibialis posterior artery(en)"
+                      "en": "The tibialis posterior artery"
                     }
                   },
                   {
                     "value": "at0.22",
                     "label": "temporal",
                     "localizedLabels": {
-                      "en": "temporal",
-                      "sl": "*temporal(en)"
+                      "en": "temporal"
                     },
                     "localizedDescriptions": {
-                      "en": "*",
-                      "sl": "**(en)"
+                      "en": "*"
                     }
                   }
                 ]
@@ -3248,12 +2982,10 @@
         "min": 0,
         "max": -1,
         "localizedNames": {
-          "en": "Respirations",
-          "sl": "Diahanje"
+          "en": "Respirations"
         },
         "localizedDescriptions": {
-          "en": "The observed characteristics of spontaneous breathing as would commonly be recorded as part of a 'vital signs'\n                    examination.\n                ",
-          "sl": "Opazovanje spontanega dihanja pacienta"
+          "en": "The observed characteristics of spontaneous breathing as would commonly be recorded as part of a 'vital signs'\n                    examination.\n                "
         },
         "aqlPath": "/content[openEHR-EHR-OBSERVATION.respiration.v1]",
         "children": [
@@ -3266,12 +2998,10 @@
             "min": 0,
             "max": -1,
             "localizedNames": {
-              "en": "Any event",
-              "sl": "*Any event(en)"
+              "en": "Any event"
             },
             "localizedDescriptions": {
-              "en": "Generic event",
-              "sl": "*Generic event(en)"
+              "en": "Generic event"
             },
             "aqlPath": "/content[openEHR-EHR-OBSERVATION.respiration.v1]/data[at0001]/events[at0002]",
             "children": [
@@ -3284,12 +3014,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Rate",
-                  "sl": "Frekvenca dihanja"
+                  "en": "Rate"
                 },
                 "localizedDescriptions": {
-                  "en": "Rate of respiration.",
-                  "sl": "Frekvenca dihanja"
+                  "en": "Rate of respiration."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.respiration.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value",
                 "inputs": [
@@ -3299,9 +3027,9 @@
                     "validation": {
                       "range": {
                         "minOp": ">=",
-                        "min": 0,
+                        "min": 0.0,
                         "maxOp": "<=",
-                        "max": 200
+                        "max": 200.0
                       },
                       "precision": {
                         "minOp": ">=",
@@ -3321,9 +3049,9 @@
                         "validation": {
                           "range": {
                             "minOp": ">=",
-                            "min": 0,
+                            "min": 0.0,
                             "maxOp": "<=",
-                            "max": 200
+                            "max": 200.0
                           },
                           "precision": {
                             "minOp": ">=",
@@ -3346,12 +3074,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Rhythm",
-                  "sl": "Ritem"
+                  "en": "Rhythm"
                 },
                 "localizedDescriptions": {
-                  "en": "Rhythm of respiration.",
-                  "sl": "Ritem dihanja"
+                  "en": "Rhythm of respiration."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.respiration.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0005]/value",
                 "inputs": [
@@ -3363,24 +3089,20 @@
                         "value": "at0006",
                         "label": "Regular",
                         "localizedLabels": {
-                          "en": "Regular",
-                          "sl": "Enakomeren"
+                          "en": "Regular"
                         },
                         "localizedDescriptions": {
-                          "en": "Regular respiration.",
-                          "sl": "*"
+                          "en": "Regular respiration."
                         }
                       },
                       {
                         "value": "at0007",
                         "label": "Irregular",
                         "localizedLabels": {
-                          "en": "Irregular",
-                          "sl": "Neenakomeren"
+                          "en": "Irregular"
                         },
                         "localizedDescriptions": {
-                          "en": "Irregular respirations.",
-                          "sl": "*"
+                          "en": "Irregular respirations."
                         }
                       }
                     ]
@@ -3396,12 +3118,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Depth",
-                  "sl": "Globina"
+                  "en": "Depth"
                 },
                 "localizedDescriptions": {
-                  "en": "Depth of respiration.",
-                  "sl": "Globina dihanja"
+                  "en": "Depth of respiration."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.respiration.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0016]/value",
                 "inputs": [
@@ -3413,48 +3133,40 @@
                         "value": "at0017",
                         "label": "Normal",
                         "localizedLabels": {
-                          "en": "Normal",
-                          "sl": "Normalno"
+                          "en": "Normal"
                         },
                         "localizedDescriptions": {
-                          "en": "Normal depth of breathing.",
-                          "sl": "Normalna globina dihanja"
+                          "en": "Normal depth of breathing."
                         }
                       },
                       {
                         "value": "at0018",
                         "label": "Shallow",
                         "localizedLabels": {
-                          "en": "Shallow",
-                          "sl": "Plitvo"
+                          "en": "Shallow"
                         },
                         "localizedDescriptions": {
-                          "en": "Shallow depth of breathing.",
-                          "sl": "Plitvo dihanje"
+                          "en": "Shallow depth of breathing."
                         }
                       },
                       {
                         "value": "at0019",
                         "label": "Deep",
                         "localizedLabels": {
-                          "en": "Deep",
-                          "sl": "Globoko"
+                          "en": "Deep"
                         },
                         "localizedDescriptions": {
-                          "en": "Deep breathing.",
-                          "sl": "Globoko dihanje"
+                          "en": "Deep breathing."
                         }
                       },
                       {
                         "value": "at0025",
                         "label": "Variable",
                         "localizedLabels": {
-                          "en": "Variable",
-                          "sl": "Spremenljivo"
+                          "en": "Variable"
                         },
                         "localizedDescriptions": {
-                          "en": "Variable depth of breathing.",
-                          "sl": "Spremenljive globine"
+                          "en": "Variable depth of breathing."
                         }
                       }
                     ]
@@ -3470,12 +3182,10 @@
                 "min": 0,
                 "max": 1,
                 "localizedNames": {
-                  "en": "Description",
-                  "sl": "Opis"
+                  "en": "Description"
                 },
                 "localizedDescriptions": {
-                  "en": "A text description of respirations.",
-                  "sl": "Opis dihanja"
+                  "en": "A text description of respirations."
                 },
                 "aqlPath": "/content[openEHR-EHR-OBSERVATION.respiration.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0024]/value",
                 "inputs": [
@@ -3556,12 +3266,10 @@
         "min": 0,
         "max": -1,
         "localizedNames": {
-          "en": "Indirect oximetry",
-          "sl": "Posredna oksimetria"
+          "en": "Indirect oximetry"
         },
         "localizedDescriptions": {
-          "en": "Method of monitoring blood gas measurements such as Spo2 and pTCO2 by indirect, currently non-invasive, means.",
-          "sl": "Metoda merjenja prisotnosti plnov kot so Spo2 in TCO2 na indirekten, posreden n-invazivni način"
+          "en": "Method of monitoring blood gas measurements such as Spo2 and pTCO2 by indirect, currently non-invasive, means."
         },
         "aqlPath": "/content[openEHR-EHR-OBSERVATION.indirect_oximetry.v1]",
         "children": [
@@ -3574,12 +3282,10 @@
             "min": 0,
             "max": 1,
             "localizedNames": {
-              "en": "spO2",
-              "sl": "SaO2"
+              "en": "spO2"
             },
             "localizedDescriptions": {
-              "en": "Measured via pulse oximetry, the saturation of oxygen in the peripheral blood.",
-              "sl": "Saturacija kisika v krvi izmerjena s pulzno oksimetrijo."
+              "en": "Measured via pulse oximetry, the saturation of oxygen in the peripheral blood."
             },
             "annotations": {
               "comment": "SpO2 is defined as the ratio of oxyhaemoglobin (HbO2) to the total concentration of haemoglobin (HbO2 +\n                        deoxyhaemoglobin).\n                    "
@@ -3612,12 +3318,10 @@
             "min": 0,
             "max": -1,
             "localizedNames": {
-              "en": "Location of measurement SaO2",
-              "sl": "Lokacija meritve SaO2"
+              "en": "Location of measurement SaO2"
             },
             "localizedDescriptions": {
-              "en": "Location of measurement SaO2",
-              "sl": "Lokacija meritve SaO2"
+              "en": "Location of measurement SaO2"
             },
             "aqlPath": "/content[openEHR-EHR-OBSERVATION.indirect_oximetry.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0058]/value",
             "inputs": [
@@ -3629,132 +3333,110 @@
                     "value": "at0059",
                     "label": "Fingers of left arm",
                     "localizedLabels": {
-                      "en": "Fingers of left arm",
-                      "sl": "Prst leve roke"
+                      "en": "Fingers of left arm"
                     },
                     "localizedDescriptions": {
-                      "en": "The SaO2 is measured in fingers of left arm",
-                      "sl": "SaO2 je izmerjen na prstih leve roke"
+                      "en": "The SaO2 is measured in fingers of left arm"
                     }
                   },
                   {
                     "value": "at0060",
                     "label": "Fingers of right arm",
                     "localizedLabels": {
-                      "en": "Fingers of right arm",
-                      "sl": "Prst desne roke"
+                      "en": "Fingers of right arm"
                     },
                     "localizedDescriptions": {
-                      "en": "The SaO2 is measured in fingers of right arm",
-                      "sl": "SaO2 je izmerjen na prstih desne roke"
+                      "en": "The SaO2 is measured in fingers of right arm"
                     }
                   },
                   {
                     "value": "at0061",
                     "label": "Toes of left leg",
                     "localizedLabels": {
-                      "en": "Toes of left leg",
-                      "sl": "Prst leve noge"
+                      "en": "Toes of left leg"
                     },
                     "localizedDescriptions": {
-                      "en": "The SaO2 is measured on toes of left leg",
-                      "sl": "SaO2 je izmerjen na prstih leve noge"
+                      "en": "The SaO2 is measured on toes of left leg"
                     }
                   },
                   {
                     "value": "at0062",
                     "label": "Toes of right leg",
                     "localizedLabels": {
-                      "en": "Toes of right leg",
-                      "sl": "Prst desne noge"
+                      "en": "Toes of right leg"
                     },
                     "localizedDescriptions": {
-                      "en": "The SaO2 is measured on toes of right leg",
-                      "sl": "SaO2 je izmerjen na prstih desne noge"
+                      "en": "The SaO2 is measured on toes of right leg"
                     }
                   },
                   {
                     "value": "at0063",
                     "label": "Palm of left arm",
                     "localizedLabels": {
-                      "en": "Palm of left arm",
-                      "sl": "Dlan leve roke"
+                      "en": "Palm of left arm"
                     },
                     "localizedDescriptions": {
-                      "en": "The SaO2 is measured on palm of left arm",
-                      "sl": "SaO2 je izmerjen na dlani leve roke"
+                      "en": "The SaO2 is measured on palm of left arm"
                     }
                   },
                   {
                     "value": "at0064",
                     "label": "Palm of right arm",
                     "localizedLabels": {
-                      "en": "Palm of right arm",
-                      "sl": "Dlan desne roke"
+                      "en": "Palm of right arm"
                     },
                     "localizedDescriptions": {
-                      "en": "The SaO2 is measured on palm of right arm",
-                      "sl": "SaO2 je izmerjen na dlani desne roke"
+                      "en": "The SaO2 is measured on palm of right arm"
                     }
                   },
                   {
                     "value": "at0065",
                     "label": "Left leg",
                     "localizedLabels": {
-                      "en": "Left leg",
-                      "sl": "Leva noga"
+                      "en": "Left leg"
                     },
                     "localizedDescriptions": {
-                      "en": "The SaO2 is measured on left leg",
-                      "sl": "SaO2 je izmerjen na levi nogi"
+                      "en": "The SaO2 is measured on left leg"
                     }
                   },
                   {
                     "value": "at0066",
                     "label": "Right leg",
                     "localizedLabels": {
-                      "en": "Right leg",
-                      "sl": "Desna noga"
+                      "en": "Right leg"
                     },
                     "localizedDescriptions": {
-                      "en": "The SaO2 is measured on right leg",
-                      "sl": "SaO2 je izmerjen na desni nogi"
+                      "en": "The SaO2 is measured on right leg"
                     }
                   },
                   {
                     "value": "at0067",
                     "label": "Left pinna",
                     "localizedLabels": {
-                      "en": "Left pinna",
-                      "sl": "Levi uhelj"
+                      "en": "Left pinna"
                     },
                     "localizedDescriptions": {
-                      "en": "SaO2 is measured on left pinna",
-                      "sl": "SaO2 je izmerjen na levem uhlju"
+                      "en": "SaO2 is measured on left pinna"
                     }
                   },
                   {
                     "value": "at0068",
                     "label": "Right pinna",
                     "localizedLabels": {
-                      "en": "Right pinna",
-                      "sl": "Desni uhelj"
+                      "en": "Right pinna"
                     },
                     "localizedDescriptions": {
-                      "en": "SaO2 is measured on right pinna",
-                      "sl": "SaO2 je izmerjen na desnem uhlju"
+                      "en": "SaO2 is measured on right pinna"
                     }
                   },
                   {
                     "value": "at0069",
                     "label": "Forehead",
                     "localizedLabels": {
-                      "en": "Forehead",
-                      "sl": "Čelo"
+                      "en": "Forehead"
                     },
                     "localizedDescriptions": {
-                      "en": "SaO2 is measured on forehead",
-                      "sl": "SaO2 je izmerjen na čelu"
+                      "en": "SaO2 is measured on forehead"
                     }
                   }
                 ]
@@ -3770,12 +3452,10 @@
             "min": 0,
             "max": 1,
             "localizedNames": {
-              "en": "Comment",
-              "sl": "Opombe"
+              "en": "Comment"
             },
             "localizedDescriptions": {
-              "en": "A text comment about the indirect oximetry result.",
-              "sl": "*A text comment about the indirect oximetry result.(en)"
+              "en": "A text comment about the indirect oximetry result."
             },
             "aqlPath": "/content[openEHR-EHR-OBSERVATION.indirect_oximetry.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0036]/value",
             "inputs": [
@@ -3861,8 +3541,7 @@
                 "value": "433",
                 "label": "event",
                 "localizedLabels": {
-                  "en": "event",
-                  "sl": ""
+                  "en": "event"
                 }
               }
             ],

@@ -29,7 +29,7 @@
     "context": [
       {
         "start_time": [
-          "2021-02-17T15:06Z"
+          "2021-02-17T15:06:00Z"
         ],
         "setting": [
           {
@@ -73,7 +73,7 @@
                 "|numerator": 10.0,
                 "|denominator": 1.0,
                 "|type": 1,
-                "": 10.0
+                "|value": 10.0
               }
             ],
             "c-reactive_protein_crp": [
@@ -87,7 +87,7 @@
                 "|numerator": 0.2,
                 "|denominator": 1.0,
                 "|type": 1,
-                "": 0.2
+                "|value": 0.2
               }
             ],
             "jadas10": [
@@ -97,7 +97,7 @@
                     "|numerator": 19.0,
                     "|denominator": 1.0,
                     "|type": 1,
-                    "": 19.0
+                    "|value": 19.0
                   }
                 ],
                 "jadas10-crp_score": [
@@ -105,7 +105,7 @@
                     "|numerator": 9.2,
                     "|denominator": 1.0,
                     "|type": 1,
-                    "": 9.2
+                    "|value": 9.2
                   }
                 ],
                 "cjadas10_score": [
@@ -113,7 +113,7 @@
                     "|numerator": 9.0,
                     "|denominator": 1.0,
                     "|type": 1,
-                    "": 9.0
+                    "|value": 9.0
                   }
                 ],
                 "jia_status_jadas10": [
@@ -132,7 +132,7 @@
                     "|numerator": 19.0,
                     "|denominator": 1.0,
                     "|type": 1,
-                    "": 19.0
+                    "|value": 19.0
                   }
                 ],
                 "jadas27-crp_score": [
@@ -140,7 +140,7 @@
                     "|numerator": 9.2,
                     "|denominator": 1.0,
                     "|type": 1,
-                    "": 9.2
+                    "|value": 9.2
                   }
                 ],
                 "cjadas27_score": [
@@ -148,7 +148,7 @@
                     "|numerator": 9.0,
                     "|denominator": 1.0,
                     "|type": 1,
-                    "": 9.0
+                    "|value": 9.0
                   }
                 ],
                 "jia_status_jadas27": [
@@ -167,7 +167,7 @@
                     "|numerator": 19.0,
                     "|denominator": 1.0,
                     "|type": 1,
-                    "": 19.0
+                    "|value": 19.0
                   }
                 ],
                 "jadas71-crp_score": [
@@ -175,7 +175,7 @@
                     "|numerator": 9.2,
                     "|denominator": 1.0,
                     "|type": 1,
-                    "": 9.2
+                    "|value": 9.2
                   }
                 ],
                 "cjadas_score": [
@@ -183,7 +183,7 @@
                     "|numerator": 9.0,
                     "|denominator": 1.0,
                     "|type": 1,
-                    "": 9.0
+                    "|value": 9.0
                   }
                 ],
                 "jia_status_jadas71": [
@@ -196,7 +196,7 @@
               }
             ],
             "time": [
-              "2021-02-17T11:11+01:00"
+              "2021-02-17T11:11:00+01:00"
             ]
           }
         ],
