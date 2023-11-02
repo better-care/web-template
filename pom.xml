@@ -30,10 +30,10 @@
         <java.version>17</java.version>
         <kotlin.version>1.8.21</kotlin.version>
 
-        <jetbrains-annotations.version>20.1.0</jetbrains-annotations.version>
+        <jetbrains-annotations.version>23.1.0</jetbrains-annotations.version>
         <log4j-api-kotlin.version>1.2.0</log4j-api-kotlin.version>
 
-        <ehr-common.version>4.0.0-A14</ehr-common.version>
+        <ehr-common.version>4.0.0-A15</ehr-common.version>
 
         <assertj.version>3.24.2</assertj.version>
         <commons-io.version>2.11.0</commons-io.version>
