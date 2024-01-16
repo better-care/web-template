@@ -20,12 +20,16 @@ import care.better.platform.template.AmUtils
 import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils
+import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils.extractTerminologyCode
 import org.openehr.am.aom.CCodePhrase
 import org.openehr.base.basetypes.ArchetypeId
+import org.openehr.base.basetypes.TerminologyId
 import org.openehr.rm.common.Archetyped
 import org.openehr.rm.common.Locatable
+import org.openehr.rm.datatypes.CodePhrase
 import org.openehr.rm.datatypes.DvCodedText
 import org.openehr.rm.datatypes.DvText
+import org.openehr.rm.datatypes.TermMapping
 import java.util.*
 
 /**
@@ -45,7 +49,7 @@ internal abstract class LocatableFactory<T : Locatable> : RmObjectNodeFactory<T>
                 if (archetypeNodeId != null && !archetypeNodeId.startsWith("at")) {
                     this.archetypeDetails = createArchetypeDetails(archetypeNodeId)
                 }
-                this.name = createLocatableName(amNode, webTemplatePath)
+                this.name = createLocatableName(amNode, webTemplatePath, conversionContext)
             }
         }
 
@@ -56,7 +60,7 @@ internal abstract class LocatableFactory<T : Locatable> : RmObjectNodeFactory<T>
             this.archetypeId = ArchetypeId().apply { this.value = archetypeNodeId }
         }
 
-    private fun createLocatableName(amNode: AmNode, webTemplatePath: WebTemplatePath?): DvText {
+    private fun createLocatableName(amNode: AmNode, webTemplatePath: WebTemplatePath?, conversionContext: ConversionContext): DvText {
         if (webTemplatePath?.parent != null) {
             val nameCodePhrase: CCodePhrase? = AmUtils.getNameCodePhrase(amNode)
             if (nameCodePhrase != null) {
@@ -65,10 +69,16 @@ internal abstract class LocatableFactory<T : Locatable> : RmObjectNodeFactory<T>
                     val matchingCode = findMatchingCode(amNode, codeList, webTemplatePath.key) ?: codeList[0]
                     return DvCodedText.create(nameCodePhrase.terminologyId?.value!!, matchingCode, AmUtils.findTermText(amNode, matchingCode)!!)
                 }
-
             }
         }
-        return DvText().apply { this.value = amNode.name }
+        return DvText().apply {
+            this.value = amNode.name
+            addTermBindings(this, conversionContext, amNode)
+        }
+    }
+
+    protected open fun addTermBindings(dvText: DvText, conversionContext: ConversionContext, amNode: AmNode) {
+
     }
 
     private fun findMatchingCode(amNode: AmNode, codeList: List<String>, key: String): String? =

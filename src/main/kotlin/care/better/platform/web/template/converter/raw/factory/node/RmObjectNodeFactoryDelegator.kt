@@ -65,7 +65,7 @@ object RmObjectNodeFactoryDelegator {
         Pair(RmUtils.getRmTypeName(DefinedAction::class.java), DefinedActionFactory),
         Pair(RmUtils.getRmTypeName(DispatchableTask::class.java), LocatableInstanceClassFactory(DispatchableTask::class.java)),
         Pair(RmUtils.getRmTypeName(DvInterval::class.java), RmObjectInstanceFactory { DvInterval() }),
-        Pair(RmUtils.getRmTypeName(Element::class.java), LocatableInstanceFactory { Element() }),
+        Pair(RmUtils.getRmTypeName(Element::class.java), ElementFactory),
         Pair(RmUtils.getRmTypeName(Evaluation::class.java), EntryInstanceFactory { Evaluation() }),
         Pair(RmUtils.getRmTypeName(Event::class.java), EventInstanceFactory { PointEvent() }),
         Pair(RmUtils.getRmTypeName(EventAction::class.java), RmObjectInstanceFactory { EventAction() }),

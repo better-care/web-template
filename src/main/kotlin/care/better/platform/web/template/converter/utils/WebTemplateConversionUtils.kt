@@ -83,11 +83,11 @@ object WebTemplateConversionUtils {
     @JvmStatic
     internal fun convertOffsetTime(dateTime: DateTime): OffsetTime =
         OffsetTime.of(
-            dateTime.hourOfDay,
-            dateTime.minuteOfHour,
-            dateTime.secondOfMinute,
-            dateTime.millisOfSecond * 1000000,
-            ZoneOffset.ofTotalSeconds(dateTime.zone.toTimeZone().rawOffset / 1000))
+                dateTime.hourOfDay,
+                dateTime.minuteOfHour,
+                dateTime.secondOfMinute,
+                dateTime.millisOfSecond * 1000000,
+                ZoneOffset.ofTotalSeconds(dateTime.zone.toTimeZone().rawOffset / 1000))
 
     /**
      * Converts [LocalDate] to [java.time.LocalDate].
@@ -136,4 +136,10 @@ object WebTemplateConversionUtils {
             else
                 null
         }
+
+    private val encodedTerminologyRegex = Regex("\\[.+?::([^]]+)]")
+
+    @JvmStatic
+    internal fun extractTerminologyCode(encodedTerminologyString: String): String =
+        encodedTerminologyRegex.matchEntire(encodedTerminologyString)?.let { it.groupValues[1] } ?: encodedTerminologyString
 }

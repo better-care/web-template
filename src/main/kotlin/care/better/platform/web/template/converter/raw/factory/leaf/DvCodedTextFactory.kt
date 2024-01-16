@@ -27,6 +27,7 @@ import care.better.platform.web.template.converter.raw.extensions.isNotEmpty
 import care.better.platform.web.template.converter.raw.factory.node.RmObjectNodeFactoryDelegator
 import care.better.platform.web.template.converter.raw.postprocessor.PostProcessDelegator
 import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils
+import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils.extractTerminologyCode
 import com.fasterxml.jackson.databind.JsonNode
 import org.openehr.am.aom.CCodePhrase
 import org.openehr.am.aom.CCodeReference
@@ -63,14 +64,14 @@ internal open class DvCodedTextFactory : RmObjectLeafNodeFactory<DvCodedText>() 
 
     private val sortMap: Map<AttributeDto, Int> =
         mapOf(
-            Pair(AttributeDto.ofBlank(), 0),
-            Pair(AttributeDto.forAttribute("value"), 1),
-            Pair(AttributeDto.forAttribute("code"), 2),
-            Pair(AttributeDto.forAttribute("terminology"), 3),
-            Pair(AttributeDto.forAttribute("preferred_term"), 4),
-            Pair(AttributeDto.forAttribute("_mapping"), 5),
-            Pair(AttributeDto.forAttribute("other"), 6),
-            Pair(AttributeDto.forAttribute("formatting"), 7))
+                Pair(AttributeDto.ofBlank(), 0),
+                Pair(AttributeDto.forAttribute("value"), 1),
+                Pair(AttributeDto.forAttribute("code"), 2),
+                Pair(AttributeDto.forAttribute("terminology"), 3),
+                Pair(AttributeDto.forAttribute("preferred_term"), 4),
+                Pair(AttributeDto.forAttribute("_mapping"), 5),
+                Pair(AttributeDto.forAttribute("other"), 6),
+                Pair(AttributeDto.forAttribute("formatting"), 7))
 
     override fun sortFieldNames(attributes: List<AttributeDto>): List<AttributeDto> =
         attributes.asSequence().map { Pair(it, sortMap[it] ?: Integer.MAX_VALUE) }.sortedBy { it.second }.map { it.first }.toList()
@@ -105,32 +106,39 @@ internal open class DvCodedTextFactory : RmObjectLeafNodeFactory<DvCodedText>() 
                 handleBlankAttribute(conversionContext, amNode, jsonNode, rmObject)
                 true
             }
+
             attribute.attribute == "value" -> {
                 handleValueAttribute(amNode, jsonNode, rmObject)
                 true
             }
+
             attribute.attribute == "terminology" -> {
                 handleTerminologyAttribute(jsonNode, rmObject)
                 true
             }
+
             attribute.attribute == "code" -> {
                 handleDvCodedTextString(conversionContext, amNode, rmObject, jsonNode.asText())
                 true
             }
+
             attribute.attribute == "preferred_term" -> {
                 handlePreferredTermAttribute(jsonNode, rmObject)
                 true
             }
+
             attribute.attribute == "_mapping" -> {
                 rmObject.mappings = jsonNode.mapIndexedNotNull { index, node ->
                     TermMappingFactory.create(conversionContext, amNode, node, WebTemplatePath(attribute.originalAttribute, webTemplatePath, index))
                 }.toMutableList()
                 true
             }
+
             attribute.attribute == "formatting" -> {
                 rmObject.formatting = jsonNode.asText()
                 true
             }
+
             else -> false
         }
 
@@ -301,18 +309,18 @@ internal open class DvCodedTextFactory : RmObjectLeafNodeFactory<DvCodedText>() 
         if (rmObject.value == null) {
             rmObject.value = value
                 ?: WebTemplateConversionUtils.getTermText(
-                    amNode,
-                    codePhrase.terminologyId?.value,
-                    rmObject.definingCode?.codeString,
-                    conversionContext.language)
+                        amNode,
+                        codePhrase.terminologyId?.value,
+                        rmObject.definingCode?.codeString,
+                        conversionContext.language)
         }
 
         if (conversionContext.termBindingTerminologies.isNotEmpty()) {
-            amNode.getTermBindings(code)
-                .filter { conversionContext.termBindingTerminologies.contains("*") || conversionContext.termBindingTerminologies.contains(it.key) }
-                .forEach {
-                    rmObject.mappings.add(createTermMapping(it.key, it.value))
-                }
+            rmObject.mappings.addAll(
+                    amNode.getTermBindings(code)
+                        .filterKeys { conversionContext.termBindingTerminologies.contains("*") || conversionContext.termBindingTerminologies.contains(it) }
+                        .map { TermMapping("=", null, CodePhrase(TerminologyId(it.key), extractTerminologyCode(it.value), null)) }
+            )
         }
     }
 
@@ -382,23 +390,6 @@ internal open class DvCodedTextFactory : RmObjectLeafNodeFactory<DvCodedText>() 
     protected open fun getDefaultTerminology(): String = "external"
 
     /**
-     * Creates a new instance of [TermMapping] for code and terminology ID.
-     *
-     * @param code Code
-     * @param terminologyId Terminology ID
-     */
-    private fun createTermMapping(terminologyId: String, code: String): TermMapping =
-        TermMapping().apply {
-            this.match = "="
-            this.target = CodePhrase().apply {
-                this.terminologyId = TerminologyId().apply {
-                    this.value = terminologyId
-                }
-                this.codeString = code
-            }
-        }
-
-    /**
      * Checks if [AmNode] parent has an ISM_TRANSITION RM type.
      *
      * @param amNode [AmNode]
@@ -439,56 +430,59 @@ internal open class DvCodedTextFactory : RmObjectLeafNodeFactory<DvCodedText>() 
                         val elementAmNode =
                             getElementAmNode(amNode) ?: throw ConversionException("AM node for the ELEMENT not found", webTemplatePath.toString())
                         addToCollection(
-                            conversionContext,
-                            elementAmNode,
-                            lastParentWithCollection.items as MutableCollection<Any>,
-                            {
-                                RmObjectNodeFactoryDelegator.delegateOrThrow(
-                                    RmUtils.getRmTypeName(Element::class.java),
-                                    conversionContext,
-                                    elementAmNode,
-                                    webTemplatePath) as Element
-                            },
-                            dvText,
-                            webTemplatePath)
+                                conversionContext,
+                                elementAmNode,
+                                lastParentWithCollection.items as MutableCollection<Any>,
+                                {
+                                    RmObjectNodeFactoryDelegator.delegateOrThrow(
+                                            RmUtils.getRmTypeName(Element::class.java),
+                                            conversionContext,
+                                            elementAmNode,
+                                            webTemplatePath) as Element
+                                },
+                                dvText,
+                                webTemplatePath)
                         return true
                     }
+
                     is ItemList -> {
                         val elementAmNode =
                             getElementAmNode(amNode) ?: throw ConversionException("AM node for the ELEMENT not found", webTemplatePath.toString())
                         addToCollection(
-                            conversionContext,
-                            elementAmNode,
-                            lastParentWithCollection.items as MutableCollection<Any>,
-                            {
-                                RmObjectNodeFactoryDelegator.delegateOrThrow(
-                                    RmUtils.getRmTypeName(Element::class.java),
-                                    conversionContext,
-                                    elementAmNode,
-                                    webTemplatePath) as Element
-                            },
-                            dvText,
-                            webTemplatePath)
+                                conversionContext,
+                                elementAmNode,
+                                lastParentWithCollection.items as MutableCollection<Any>,
+                                {
+                                    RmObjectNodeFactoryDelegator.delegateOrThrow(
+                                            RmUtils.getRmTypeName(Element::class.java),
+                                            conversionContext,
+                                            elementAmNode,
+                                            webTemplatePath) as Element
+                                },
+                                dvText,
+                                webTemplatePath)
                         return true
                     }
+
                     is MutableCollection<*> -> {
                         val elementAmNode =
                             getElementAmNode(amNode) ?: throw ConversionException("AM node for the ELEMENT not found", webTemplatePath.toString())
                         addToCollection(
-                            conversionContext,
-                            elementAmNode,
-                            lastParentWithCollection as MutableCollection<Any>,
-                            {
-                                RmObjectNodeFactoryDelegator.delegateOrThrow(
-                                    RmUtils.getRmTypeName(Element::class.java),
-                                    conversionContext,
-                                    elementAmNode,
-                                    webTemplatePath) as Element
-                            },
-                            dvText,
-                            webTemplatePath)
+                                conversionContext,
+                                elementAmNode,
+                                lastParentWithCollection as MutableCollection<Any>,
+                                {
+                                    RmObjectNodeFactoryDelegator.delegateOrThrow(
+                                            RmUtils.getRmTypeName(Element::class.java),
+                                            conversionContext,
+                                            elementAmNode,
+                                            webTemplatePath) as Element
+                                },
+                                dvText,
+                                webTemplatePath)
                         return true
                     }
+
                     else -> return false
                 }
             }
