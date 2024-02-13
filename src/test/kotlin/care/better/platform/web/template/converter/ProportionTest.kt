@@ -17,12 +17,12 @@ package care.better.platform.web.template.converter
 
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.node.ObjectNode
-import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
-import care.better.platform.web.template.builder.WebTemplateBuilder
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
@@ -41,6 +41,16 @@ class ProportionTest : AbstractWebTemplateTest() {
         val templateName = "/convert/templates/older/Demo Vitals.opt"
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate(templateName), WebTemplateBuilderContext("en"))
         val structuredComposition: ObjectNode = getObjectMapper().readTree(getJson("/convert/compositions/vitals_proportion.json")) as ObjectNode
+        val composition: Composition? = webTemplate.convertFromStructuredToRaw(structuredComposition, ConversionContext.create().build())
+        assertThat(composition?.content ?: emptyList()).isEmpty()
+    }
+
+    @Test
+    @Throws(IOException::class, JAXBException::class)
+    fun testProportionWithValueAndType() {
+        val templateName = "/convert/templates/older/Demo Vitals.opt"
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate(templateName), WebTemplateBuilderContext("en"))
+        val structuredComposition: ObjectNode = getObjectMapper().readTree(getJson("/convert/compositions/vitals_proportion_value_and_type.json")) as ObjectNode
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(structuredComposition, ConversionContext.create().build())
         assertThat(composition?.content ?: emptyList()).isEmpty()
     }

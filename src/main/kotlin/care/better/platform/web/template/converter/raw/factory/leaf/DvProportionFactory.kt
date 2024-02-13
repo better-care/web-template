@@ -93,10 +93,14 @@ internal object DvProportionFactory : DvQuantifiedFactory<DvProportion>() {
     }
 
     override fun removeDependentValues(map: MutableMap<AttributeDto, JsonNode>): Boolean {
-        if (map[AttributeDto.forAttribute("denominator")] != null && map[AttributeDto.forAttribute("numerator")] == null) {
-            map.remove(AttributeDto.forAttribute("denominator"))
-            map.remove(AttributeDto.ofBlank())
-            return true
+        if (map[AttributeDto.forAttribute("numerator")] == null) {
+            val removedValues = listOf(
+                    map.remove(AttributeDto.forAttribute("numerator")),
+                    map.remove(AttributeDto.forAttribute("denominator")),
+                    map.remove(AttributeDto.ofBlank()),
+                    map.remove(AttributeDto.forAttribute("value")),
+                    map.remove(AttributeDto.forAttribute("type")))
+            return removedValues.any { it != null }
         }
         return false
     }
@@ -220,12 +224,10 @@ internal object DvProportionFactory : DvQuantifiedFactory<DvProportion>() {
      * @return [Float] value
      */
     private fun convertValue(conversionContext: ConversionContext, jsonNode: JsonNode, precisionMax: Int?): Float =
-        if (jsonNode.isNumber) {
-            convertsWithFixPrecision(jsonNode.numberValue().toDouble(), precisionMax)
-        } else {
-
-            convertsWithFixPrecision(conversionContext.valueConverter.parseDouble(jsonNode.asText()), precisionMax)
-        }
+        if (jsonNode.isNumber)
+            convertWithFixedPrecision(jsonNode.numberValue().toDouble(), precisionMax)
+        else
+            convertWithFixedPrecision(conversionContext.valueConverter.parseDouble(jsonNode.asText()), precisionMax)
 
     /**
      * Converts [Double] to [Float] with fixed precision.
@@ -234,7 +236,7 @@ internal object DvProportionFactory : DvQuantifiedFactory<DvProportion>() {
      * @param precisionMax Maximal precision
      * @return [Float] value
      */
-    private fun convertsWithFixPrecision(value: Double, precisionMax: Int?): Float =
+    private fun convertWithFixedPrecision(value: Double, precisionMax: Int?): Float =
         if (precisionMax == null)
             value.toFloat()
         else
