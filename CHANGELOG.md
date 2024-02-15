@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.0.0 - 2024-02-15
+
+- Initial 4.0.x version based on 3.2.5
+- Java 17 supported and required
+- Based on Kotlin 1.9.20
+- Support for `|formatting` attribute on DV_TEXT and DV_CODED_TEXT
+
 ## 3.2.5 - 2023-09-20
 
 - Fix ctx/action_time to fall back to ctx/time (instead of current time)
