@@ -4,10 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## 4.0.0 - 2024-02-15
 
-- Initial 4.0.x version based on 3.2.5
+- Initial 4.0.x version based on 3.2.6
 - Java 17 supported and required
 - Based on Kotlin 1.9.20
 - Support for `|formatting` attribute on DV_TEXT and DV_CODED_TEXT
+
+## 3.2.6 - 2024-02-12
+
+- Fix DV_PROPORTION conversion to ignore values with null numerator
 
 ## 3.2.5 - 2023-09-20
 
