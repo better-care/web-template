@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.2.6 - 2024-02-12
+
+- Fix DV_PROPORTION conversion to ignore values with null numerator
+
 ## 3.2.5 - 2023-09-20
 
 - Fix ctx/action_time to fall back to ctx/time (instead of current time)
