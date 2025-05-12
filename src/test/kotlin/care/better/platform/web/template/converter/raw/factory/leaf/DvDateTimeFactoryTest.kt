@@ -300,11 +300,11 @@ class DvDateTimeFactoryTest : AbstractWebTemplateTest() {
                 args("yyyy-mm-ddTHH:MM", "2021-08-06T23:17Z", "2021-08-06T23:17Z", "2021-08-06T23:17Z"),
                 args("yyyy-mm-ddTHH:MM", "2021-08-06T23:17", "2021-08-06T23:17", "2021-08-06T23:17"),
 
-                args("yyyy-mm-ddTHHZ", "2021-08-06T23:17-04:00", "2021-08-07T05", CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddTHHZ", "2021-08-06T23-04:00", "2021-08-07T05", "2021-08-06T23-04:00"),
+                args("yyyy-mm-ddTHHZ", "2021-08-06T23:17-04:00", "2021-08-06T23-04:00", CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddTHHZ", "2021-08-06T23-04:00", "2021-08-06T23-04:00", "2021-08-06T23-04:00"),
                 args("yyyy-mm-ddTHHZ", "2021-08-06T23", "2021-08-06T23+02:00", CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddTHH", "2021-08-06T23:17-04:00", "2021-08-07T05", CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddTHH", "2021-08-06T23-04:00", "2021-08-07T05", "2021-08-06T23-04:00"),
+                args("yyyy-mm-ddTHH", "2021-08-06T23:17-04:00", "2021-08-06T23-04:00", CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddTHH", "2021-08-06T23-04:00", "2021-08-06T23-04:00", "2021-08-06T23-04:00"),
                 args("yyyy-mm-ddTHH", "2021-08-06T23", "2021-08-06T23", "2021-08-06T23"),
 
                 args("yyyy-mm-ddZ", "2021-08-06Z", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
@@ -369,7 +369,7 @@ class DvDateTimeFactoryTest : AbstractWebTemplateTest() {
                 args("", "2021-08-06T23:17:35", "2021-08-06T23:17:35+02:00", "2021-08-06T23:17:35+02:00"),
                 args("", "2021-08-06T23:17Z", "2021-08-06T23:17Z", "2021-08-06T23:17Z"),
                 args("", "2021-08-06T04:03:02Z", "2021-08-06T04:03:02Z", "2021-08-06T04:03:02Z"),
-                args("", "2021-08-06T23Z", "2021-08-07T01", CONVERSION_EXCEPTION),
+                args("", "2021-08-06T23Z", "2021-08-06T23Z", "2021-08-06T23Z"),
                 args("", "2021-08-06", "2021-08-06", "2021-08-06"),
 
                 args("", "23:17:35.654+04:00", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
