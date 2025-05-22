@@ -624,7 +624,10 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
                     }
                 }
                 value.isNull || value.isMissingNode -> null
-                else -> convertObjectNode(value as ObjectNode, webTemplateNode, webTemplatePath.copy(webTemplateNode.amNode))
+                else -> if (value is ObjectNode)
+                    convertObjectNode(value, webTemplateNode, webTemplatePath.copy(webTemplateNode.amNode))
+                else
+                    throw ConversionException("JSON object is expected.", webTemplatePath.toString())
             }
         }
 

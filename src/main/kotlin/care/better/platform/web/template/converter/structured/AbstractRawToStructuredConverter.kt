@@ -32,6 +32,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode
 import com.google.common.collect.Sets
 import org.openehr.rm.common.Locatable
 import org.openehr.rm.composition.Composition
+import org.openehr.rm.datastructures.Element
 import org.openehr.rm.datatypes.*
 import java.io.IOException
 
@@ -44,6 +45,13 @@ import java.io.IOException
 internal abstract class AbstractRawToStructuredConverter(private val objectMapper: ObjectMapper) {
 
     private val exported = Sets.newIdentityHashSet<Any>()
+
+    companion object {
+        private val dvTextRmType = RmUtils.getRmTypeName(DvText::class.java)
+        private val dvCodedTextRmType = RmUtils.getRmTypeName(DvCodedText::class.java)
+        private val elementRmType = RmUtils.getRmTypeName(Element::class.java)
+
+    }
 
     /**
      * Converts the RM object in RAW format to the RM object in STRUCTURED format.
@@ -137,7 +145,7 @@ internal abstract class AbstractRawToStructuredConverter(private val objectMappe
         }
 
         webTemplateNode.children.forEach { child ->
-            val nodes = mapInChain(child, child.chain, rmObject)
+            val nodes = mapInChain(child, webTemplateNode, child.chain, rmObject)
             if (nodes.isNotEmpty()) {
                 val arrayNode = objectMapper.createArrayNode()
                 nodes.forEach { arrayNode.add(it) }
@@ -161,7 +169,7 @@ internal abstract class AbstractRawToStructuredConverter(private val objectMappe
             return jsonNode
         }
         webTemplateNode.children.forEach { child ->
-            val nodes = mapInChain(child, child.chain, rmObject)
+            val nodes = mapInChain(child, webTemplateNode, child.chain, rmObject)
             if (nodes.isNotEmpty()) {
                 val arrayNode = objectMapper.createArrayNode()
                 arrayNode.addAll(nodes)
@@ -177,15 +185,15 @@ internal abstract class AbstractRawToStructuredConverter(private val objectMappe
      * Note that some nodes are not presented in [WebTemplateNode] (ITEM_STRUCTURE for example). This function maps those elements as well.
      *
      * @param webTemplateNode [WebTemplateNode]
+     * @param parentWebTemplateNode [WebTemplateNode] parent of the current [WebTemplateNode]
      * @param chain [List] of [AmNode] from parent [WebTemplateNode] [AmNode] to child [WebTemplateNode] [AmNode] (parent is excluded)
      * @param rmObject RM objects in RAW format
      */
-    @Suppress("UNCHECKED_CAST")
-    private fun mapInChain(webTemplateNode: WebTemplateNode, chain: List<AmNode>, rmObject: RmObject): List<JsonNode> {
+    private fun mapInChain(webTemplateNode: WebTemplateNode, parentWebTemplateNode: WebTemplateNode?, chain: List<AmNode>, rmObject: RmObject): List<JsonNode> {
         val currentAmNode = chain.first()
 
         if (chain.size == 1) {
-            return getMatchingRmObjects(webTemplateNode, rmObject, currentAmNode).asSequence()
+            return getMatchingRmObjects(webTemplateNode, parentWebTemplateNode, rmObject, currentAmNode).asSequence()
                 .mapNotNull { mapRecursive(webTemplateNode, it) }
                 .filter { (it.isObject && !it.isEmpty) || !it.isObject }
                 .toList()
@@ -193,12 +201,13 @@ internal abstract class AbstractRawToStructuredConverter(private val objectMappe
 
         val newChain = chain.drop(1)
         return getMatchingRmObjects(
-            if ("ELEMENT" == currentAmNode.rmType || webTemplateNode.rmType == currentAmNode.rmType) webTemplateNode else null,
-            rmObject,
-            currentAmNode).asSequence().flatMap {
+                if (elementRmType == currentAmNode.rmType || webTemplateNode.rmType == currentAmNode.rmType) webTemplateNode else null,
+                parentWebTemplateNode,
+                rmObject,
+                currentAmNode).asSequence().flatMap {
 
             val omittedNode: JsonNode? = mapRmObjectInternally(webTemplateNode, it)
-            val convertedJsonNodes = mapInChain(webTemplateNode, newChain, it)
+            val convertedJsonNodes = mapInChain(webTemplateNode, parentWebTemplateNode, newChain, it)
 
             if (convertedJsonNodes.isEmpty()) {
                 if (omittedNode == null || (omittedNode.isObject && omittedNode.isEmpty)) emptySequence() else sequenceOf(omittedNode)
@@ -251,12 +260,17 @@ internal abstract class AbstractRawToStructuredConverter(private val objectMappe
      * but only matching observations will be returned.
      *
      * @param webTemplateNode [WebTemplateNode]
+     * @param parentWebTemplateNode [WebTemplateNode] parent of the current [WebTemplateNode]
      * @param parent RM object in RAW format
      * @param amNode [AmNode]
      * @return [List] of RM object children in RAW format
      */
     @Suppress("UNCHECKED_CAST")
-    private fun getMatchingRmObjects(webTemplateNode: WebTemplateNode?, parent: RmObject, amNode: AmNode): List<RmObject> =
+    private fun getMatchingRmObjects(
+            webTemplateNode: WebTemplateNode?,
+            parentWebTemplateNode: WebTemplateNode?,
+            parent: RmObject,
+            amNode: AmNode): List<RmObject> =
         if (parent is DataValue) {
             listOf(parent)
         } else {
@@ -264,7 +278,7 @@ internal abstract class AbstractRawToStructuredConverter(private val objectMappe
             when {
                 child is Collection<*> -> getMatchingRmObjects(amNode, child as Collection<RmObject>, webTemplateNode)
                 child !is RmObject -> emptyList()
-                rmObjectMatches(amNode, child, webTemplateNode) -> listOf(child)
+                rmObjectMatches(amNode, child, webTemplateNode, parentWebTemplateNode) -> listOf(child)
                 else -> emptyList()
             }
         }
@@ -276,14 +290,39 @@ internal abstract class AbstractRawToStructuredConverter(private val objectMappe
      * @param amNode [AmNode]
      * @param rmObject RM object in RAW format
      * @param webTemplateNode [WebTemplateNode]
+     * @param parentWebTemplateNode [WebTemplateNode] parent of the current [WebTemplateNode]
+     * @return [Boolean] indicating if RM object matches
      */
-    private fun rmObjectMatches(amNode: AmNode, rmObject: RmObject, webTemplateNode: WebTemplateNode?): Boolean =
+    private fun rmObjectMatches(amNode: AmNode, rmObject: RmObject, webTemplateNode: WebTemplateNode?, parentWebTemplateNode: WebTemplateNode?): Boolean =
         try {
             val rmClass = RmUtils.getRmClass(amNode.rmType)
-            rmClass.isInstance(rmObject) || isCodedTextForOtherAttribute(rmObject, rmClass, webTemplateNode)
+            val rmType = RmUtils.getRmTypeName(rmObject::class.java)
+
+            if (!shouldOmitDvText(rmType, amNode, parentWebTemplateNode)) {
+                rmClass.isInstance(rmObject) || isCodedTextForOtherAttribute(rmObject, rmClass, webTemplateNode)
+            } else {
+               false
+            }
         } catch (ignored: RmClassCastException) {
             false
         }
+
+    /**
+     * Checks if RM object is of type DV_CODED_TEXT and the template has both DV_CODED_TEXT and DV_TEXT choice.
+     * In this case DV_TEXT should be omitted.
+     *
+     * @param rmType Type of [RmObject] in RAW format
+     * @param amNode [AmNode]
+     * @param parentWebTemplateNode [WebTemplateNode] parent of the current [WebTemplateNode]
+     * @return [Boolean] indicating that [AmNode] type of DV_TEXT should be omitted when this condition is true
+     */
+    private fun shouldOmitDvText(rmType: String, amNode: AmNode, parentWebTemplateNode: WebTemplateNode?): Boolean =
+        parentWebTemplateNode?.rmType == elementRmType &&
+                parentWebTemplateNode.children.size > 1 &&
+                rmType == dvCodedTextRmType &&
+                amNode.rmType == dvTextRmType &&
+                parentWebTemplateNode.children.any { it.rmType == dvCodedTextRmType } && parentWebTemplateNode.children.any { it.rmType == dvTextRmType }
+
 
     /**
      * Checks if the RM object in RAW format was created for [DvCodedText] with the "|other" attribute.

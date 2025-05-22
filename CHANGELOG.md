@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.1.0 - 2025-04-28
+
+- Omit text_value for DV_CODED_TEXT when DV_TEXT and DV_CODED_TEXT are both modeled
+
 ## 4.0.7 - 2025-02-06
 
 - Fix `_raw` RM json conversion

@@ -33,7 +33,7 @@
         <jetbrains-annotations.version>26.0.2</jetbrains-annotations.version>
         <log4j-api-kotlin.version>1.5.0</log4j-api-kotlin.version>
 
-        <ehr-common.version>5.0.0-A4</ehr-common.version>
+        <ehr-common.version>5.0.0-SNAPSHOT</ehr-common.version>
 
         <assertj.version>3.27.3</assertj.version>
         <commons-io.version>2.18.0</commons-io.version>
@@ -175,24 +175,6 @@
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-joda</artifactId>
             <version>${jackson.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.module</groupId>
-            <artifactId>jackson-module-kotlin</artifactId>
-            <version>${jackson.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.jetbrains.kotlin</groupId>
-                    <artifactId>kotlin-stdlib</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>

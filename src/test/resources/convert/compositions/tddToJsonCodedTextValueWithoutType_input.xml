@@ -1,0 +1,432 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Problem_list xmlns="http://schemas.oceanehr.com/templates" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rm="http://schemas.openehr.org/v1" template_id="mnehr-problem-list-coded-text">
+    <name>
+        <value>Problem list</value>
+    </name>
+    <language>
+        <terminology_id>
+            <value>ISO_639-1</value>
+        </terminology_id>
+        <code_string>en</code_string>
+    </language>
+    <territory>
+        <terminology_id>
+            <value>ISO_3166-1</value>
+        </terminology_id>
+        <code_string>MT</code_string>
+    </territory>
+    <category>
+        <value>event</value>
+        <defining_code>
+            <terminology_id>
+                <value>openehr</value>
+            </terminology_id>
+            <code_string>433</code_string>
+        </defining_code>
+    </category>
+    <composer xsi:type="rm:PARTY_IDENTIFIED">
+        <rm:name>Silvia Blake</rm:name>
+    </composer>
+    <context>
+        <start_time>
+            <rm:value>2020-07-22T14:32:31.01+02:00</rm:value>
+        </start_time>
+        <setting>
+            <rm:value>other care</rm:value>
+            <rm:defining_code>
+                <rm:terminology_id>
+                    <rm:value>openehr</rm:value>
+                </rm:terminology_id>
+                <rm:code_string>238</rm:code_string>
+            </rm:defining_code>
+        </setting>
+        <MNEHR_context_details>
+            <name>
+                <value>MNEHR context details</value>
+            </name>
+            <Visit_number>
+                <name>
+                    <value>Visit number</value>
+                </name>
+                <value>
+                    <rm:value>508897211</rm:value>
+                </value>
+            </Visit_number>
+            <Visit_type>
+                <name>
+                    <value>Visit type</value>
+                </name>
+                <value>
+                    <rm:value>Outpatient</rm:value>
+                </value>
+            </Visit_type>
+            <Patient_location_-_Point_of_care>
+                <name>
+                    <value>Patient location-Point of care</value>
+                </name>
+                <value>
+                    <rm:value>Patient location-Point of care 94</rm:value>
+                </value>
+            </Patient_location_-_Point_of_care>
+            <Patient_location_-_Room>
+                <name>
+                    <value>Patient location-Room</value>
+                </name>
+                <value>
+                    <rm:value>Patient location-Room 60</rm:value>
+                </value>
+            </Patient_location_-_Room>
+            <Patient_location_-_Bed>
+                <name>
+                    <value>Patient location-Bed</value>
+                </name>
+                <value>
+                    <rm:value>Patient location-Bed 17</rm:value>
+                </value>
+            </Patient_location_-_Bed>
+            <Patient_location_-_Facility>
+                <name>
+                    <value>Patient location-Facility</value>
+                </name>
+                <value>
+                    <rm:value>Patient location-Facility 76</rm:value>
+                </value>
+            </Patient_location_-_Facility>
+            <Preadmit_number>
+                <name>
+                    <value>Preadmit number</value>
+                </name>
+                <value>
+                    <rm:value>Preadmit number 97</rm:value>
+                </value>
+            </Preadmit_number>
+        </MNEHR_context_details>
+        <XDS_Metadata>
+            <name>
+                <value>XDS Metadata</value>
+            </name>
+            <Document_type>
+                <name>
+                    <value>Document type</value>
+                </name>
+                <value>
+                    <value>NEHR_Problem</value>
+                </value>
+            </Document_type>
+        </XDS_Metadata>
+        <health_care_facility>
+            <rm:external_ref>
+                <rm:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rm:GENERIC_ID">
+                    <rm:value>9091</rm:value>
+                    <rm:scheme>HOSPITAL-NS</rm:scheme>
+                </rm:id>
+                <rm:namespace>HOSPITAL-NS</rm:namespace>
+                <rm:type>PARTY</rm:type>
+            </rm:external_ref>
+            <rm:name>Mater Dei Hospital</rm:name>
+        </health_care_facility>
+        <participations>
+            <rm:function>
+                <rm:value>requester</rm:value>
+            </rm:function>
+            <rm:performer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rm:PARTY_IDENTIFIED">
+                <rm:external_ref>
+                    <rm:id xsi:type="rm:GENERIC_ID">
+                        <rm:value>199</rm:value>
+                        <rm:scheme>HOSPITAL-NS</rm:scheme>
+                    </rm:id>
+                    <rm:namespace>HOSPITAL-NS</rm:namespace>
+                    <rm:type>ANY</rm:type>
+                </rm:external_ref>
+                <rm:name>Dr. Marcus Johnson</rm:name>
+            </rm:performer>
+            <rm:mode>
+                <rm:value>face-to-face communication</rm:value>
+                <rm:defining_code>
+                    <rm:terminology_id>
+                        <rm:value>openehr</rm:value>
+                    </rm:terminology_id>
+                    <rm:code_string>216</rm:code_string>
+                </rm:defining_code>
+            </rm:mode>
+        </participations>
+        <participations>
+            <rm:function>
+                <rm:value>performer</rm:value>
+            </rm:function>
+            <rm:performer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rm:PARTY_IDENTIFIED">
+                <rm:external_ref>
+                    <rm:id xsi:type="rm:GENERIC_ID">
+                        <rm:value>198</rm:value>
+                        <rm:scheme>HOSPITAL-NS</rm:scheme>
+                    </rm:id>
+                    <rm:namespace>HOSPITAL-NS</rm:namespace>
+                    <rm:type>ANY</rm:type>
+                </rm:external_ref>
+                <rm:name>Lara Markham</rm:name>
+            </rm:performer>
+            <rm:mode>
+                <rm:value>not specified</rm:value>
+                <rm:defining_code>
+                    <rm:terminology_id>
+                        <rm:value>openehr</rm:value>
+                    </rm:terminology_id>
+                    <rm:code_string>193</rm:code_string>
+                </rm:defining_code>
+            </rm:mode>
+        </participations>
+    </context>
+    <Problems_and_issues>
+        <name>
+            <value>Problems and issues</value>
+        </name>
+        <Problem_fslash_Diagnosis>
+            <name>
+                <value>Problem/Diagnosis</value>
+            </name>
+            <language>
+                <terminology_id>
+                    <value>ISO_639-1</value>
+                </terminology_id>
+                <code_string>en</code_string>
+            </language>
+            <encoding>
+                <terminology_id>
+                    <value>IANA_character-sets</value>
+                </terminology_id>
+                <code_string>UTF-8</code_string>
+            </encoding>
+            <subject xsi:type="rm:PARTY_SELF"/>
+            <other_participations>
+                <rm:function>
+                    <rm:value>requester</rm:value>
+                </rm:function>
+                <rm:performer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rm:PARTY_IDENTIFIED">
+                    <rm:external_ref>
+                        <rm:id xsi:type="rm:GENERIC_ID">
+                            <rm:value>199</rm:value>
+                            <rm:scheme>HOSPITAL-NS</rm:scheme>
+                        </rm:id>
+                        <rm:namespace>HOSPITAL-NS</rm:namespace>
+                        <rm:type>ANY</rm:type>
+                    </rm:external_ref>
+                    <rm:name>Dr. Marcus Johnson</rm:name>
+                </rm:performer>
+                <rm:mode>
+                    <rm:value>face-to-face communication</rm:value>
+                    <rm:defining_code>
+                        <rm:terminology_id>
+                            <rm:value>openehr</rm:value>
+                        </rm:terminology_id>
+                        <rm:code_string>216</rm:code_string>
+                    </rm:defining_code>
+                </rm:mode>
+            </other_participations>
+            <other_participations>
+                <rm:function>
+                    <rm:value>performer</rm:value>
+                </rm:function>
+                <rm:performer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rm:PARTY_IDENTIFIED">
+                    <rm:external_ref>
+                        <rm:id xsi:type="rm:GENERIC_ID">
+                            <rm:value>198</rm:value>
+                            <rm:scheme>HOSPITAL-NS</rm:scheme>
+                        </rm:id>
+                        <rm:namespace>HOSPITAL-NS</rm:namespace>
+                        <rm:type>ANY</rm:type>
+                    </rm:external_ref>
+                    <rm:name>Lara Markham</rm:name>
+                </rm:performer>
+                <rm:mode>
+                    <rm:value>not specified</rm:value>
+                    <rm:defining_code>
+                        <rm:terminology_id>
+                            <rm:value>openehr</rm:value>
+                        </rm:terminology_id>
+                        <rm:code_string>193</rm:code_string>
+                    </rm:defining_code>
+                </rm:mode>
+            </other_participations>
+            <protocol>
+                <Last_updated>
+                    <name>
+                        <value>Last updated</value>
+                    </name>
+                    <value>
+                        <rm:value>2020-07-13T21:30:37.160749+02:00</rm:value>
+                    </value>
+                </Last_updated>
+            </protocol>
+            <data>
+                <Problem_fslash_Diagnosis_name valueType="DV_CODED_TEXT">
+                    <name>
+                        <value>Problem/Diagnosis name</value>
+                    </name>
+                    <coded_text_value>
+                        <rm:value>ICD10</rm:value>
+                        <rm:defining_code>
+                            <rm:terminology_id>
+                                <rm:value>Diabetes mellitus due to underlying condition with diabetic neuropathy, unspecified</rm:value>
+                            </rm:terminology_id>
+                            <rm:code_string>E0840</rm:code_string>
+                        </rm:defining_code>
+                    </coded_text_value>
+                </Problem_fslash_Diagnosis_name>
+                <Clinical_description>
+                    <name>
+                        <value>Clinical description</value>
+                    </name>
+                    <value>
+                        <rm:value>Diabetes mellitus due to underlying condition with diabetic neuropathy, unspecified</rm:value>
+                    </value>
+                </Clinical_description>
+                <Date_fslash_time_of_onset>
+                    <name>
+                        <value>Date/time of onset</value>
+                    </name>
+                    <value>
+                        <rm:value>2020-02-13T21:30:37.160146+02:00</rm:value>
+                    </value>
+                </Date_fslash_time_of_onset>
+                <Date_fslash_time_clinically_recognised>
+                    <name>
+                        <value>Date/time clinically recognised</value>
+                    </name>
+                    <value>
+                        <rm:value>2020-07-13T21:30:37.160309+02:00</rm:value>
+                    </value>
+                </Date_fslash_time_clinically_recognised>
+                <Severity valueType="DV_CODED_TEXT">
+                    <name>
+                        <value>Severity</value>
+                    </name>
+                    <coded_text_value>
+                        <value>Moderate</value>
+                        <defining_code>
+                            <terminology_id>
+                                <value>local</value>
+                            </terminology_id>
+                            <code_string>at0048</code_string>
+                        </defining_code>
+                    </coded_text_value>
+                </Severity>
+                <Multimedia_Resource>
+                    <name>
+                        <value>Multimedia Resource</value>
+                    </name>
+                    <Name>
+                        <name>
+                            <value>Name</value>
+                        </name>
+                        <value>
+                            <rm:value>Name 48</rm:value>
+                        </value>
+                    </Name>
+                    <Description>
+                        <name>
+                            <value>Description</value>
+                        </name>
+                        <value>
+                            <rm:value>Description 48</rm:value>
+                        </value>
+                    </Description>
+                    <URL>
+                        <name>
+                            <value>URL</value>
+                        </name>
+                        <value>
+                            <rm:value>http://example.com/path/resource</rm:value>
+                        </value>
+                    </URL>
+                    <Source>
+                        <name>
+                            <value>Source</value>
+                        </name>
+                        <value>
+                            <rm:value>Source 88</rm:value>
+                        </value>
+                    </Source>
+                    <Author>
+                        <name>
+                            <value>Author</value>
+                        </name>
+                        <value>
+                            <rm:value>Author 20</rm:value>
+                        </value>
+                    </Author>
+                    <Date_created>
+                        <name>
+                            <value>Date created</value>
+                        </name>
+                        <value>
+                            <rm:value>2020-07-13T21:30:37.160483+02:00</rm:value>
+                        </value>
+                    </Date_created>
+                    <Date_published>
+                        <name>
+                            <value>Date published</value>
+                        </name>
+                        <value>
+                            <rm:value>2020-07-13T21:30:37.160578+02:00</rm:value>
+                        </value>
+                    </Date_published>
+                    <Version>
+                        <name>
+                            <value>Version</value>
+                        </name>
+                        <value>
+                            <rm:value>Version 99</rm:value>
+                        </value>
+                    </Version>
+                </Multimedia_Resource>
+                <Problem_fslash_Diagnosis_qualifier>
+                    <name>
+                        <value>Problem/Diagnosis qualifier</value>
+                    </name>
+                    <Active_fslash_Inactive_quest_>
+                        <name>
+                            <value>Active/Inactive?</value>
+                        </name>
+                        <value>
+                            <value>active</value>
+                            <defining_code>
+                                <terminology_id>
+                                    <value>local</value>
+                                </terminology_id>
+                                <code_string>at0027</code_string>
+                            </defining_code>
+                        </value>
+                    </Active_fslash_Inactive_quest_>
+                    <Course_label>
+                        <name>
+                            <value>Course label</value>
+                        </name>
+                        <value>
+                            <value>Chronic</value>
+                            <defining_code>
+                                <terminology_id>
+                                    <value>local</value>
+                                </terminology_id>
+                                <code_string>at0079</code_string>
+                            </defining_code>
+                        </value>
+                    </Course_label>
+                </Problem_fslash_Diagnosis_qualifier>
+                <Diagnostic_certainty>
+                    <name>
+                        <value>Diagnostic certainty</value>
+                    </name>
+                    <value>
+                        <value>Confirmed</value>
+                        <defining_code>
+                            <terminology_id>
+                                <value>local</value>
+                            </terminology_id>
+                            <code_string>at0076</code_string>
+                        </defining_code>
+                    </value>
+                </Diagnostic_certainty>
+            </data>
+        </Problem_fslash_Diagnosis>
+    </Problems_and_issues>
+</Problem_list>

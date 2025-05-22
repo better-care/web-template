@@ -1,0 +1,87 @@
+// Copyright 2021 Better Ltd (www.better.care)
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{
+  "@class": "COMPOSITION",
+  "name": {
+    "@class": "DV_TEXT",
+    "value": "Problem list"
+  },
+  "content": [
+    {
+      "@class": "SECTION",
+      "name": {
+        "@class": "DV_TEXT",
+        "value": "Problems and issues"
+      },
+      "archetype_details": {
+        "@class": "ARCHETYPED",
+        "archetype_id": {
+          "@class": "ARCHETYPE_ID",
+          "value": "openEHR-EHR-SECTION.problems_issues_rcp.v1"
+        },
+        "rm_version": "1.1.0"
+      },
+      "archetype_node_id": "openEHR-EHR-SECTION.problems_issues_rcp.v1",
+      "items": [
+        {
+          "@class": "EVALUATION",
+          "name": {
+            "@class": "DV_TEXT",
+            "value": "Problem/Diagnosis"
+          },
+          "archetype_details": {
+            "@class": "ARCHETYPED",
+            "archetype_id": {
+              "@class": "ARCHETYPE_ID",
+              "value": "openEHR-EHR-EVALUATION.problem_diagnosis.v1"
+            },
+            "rm_version": "1.1.0"
+          },
+          "archetype_node_id": "openEHR-EHR-EVALUATION.problem_diagnosis.v1",
+          "data": {
+            "@class": "ITEM_TREE",
+            "name": {
+              "@class": "DV_TEXT",
+              "value": "structure"
+            },
+            "archetype_node_id": "at0001",
+            "items": [
+              {
+                "@class": "ELEMENT",
+                "name": {
+                  "@class": "DV_TEXT",
+                  "value": "Problem/Diagnosis name"
+                },
+                "archetype_node_id": "at0002",
+                "value": {
+                  "@class": "DV_CODED_TEXT",
+                  "value": "ICD10",
+                  "defining_code": {
+                    "@class": "CODE_PHRASE",
+                    "terminology_id": {
+                      "@class": "TERMINOLOGY_ID",
+                      "value": "Diabetes mellitus due to underlying condition with diabetic neuropathy, unspecified"
+                    },
+                    "code_string": "E0840"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

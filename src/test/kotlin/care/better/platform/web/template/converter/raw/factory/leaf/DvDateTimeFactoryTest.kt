@@ -92,11 +92,11 @@ class DvDateTimeFactoryTest : AbstractWebTemplateTest() {
 
                 // UTC datetime pattern, partial datetime in timezone
                 args("yyyy-mm-ddTHH:MM:SSZ", "2021-08-06T23:17-04:00", "2021-08-06T23:17:00-04:00", CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddTHH:MM:SSZ", "2021-08-06T23-04:00", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddTHH:MM:SSZ", "2021-08-06T23-04:00", "2021-08-06T23:00:00-04:00", CONVERSION_EXCEPTION),
                 args("yyyy-mm-ddTHH:MM:SSZ", "2021-08-06T01:17+04:00", "2021-08-06T01:17:00+04:00", CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddTHH:MM:SSZ", "2021-08-06T01+04:00", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddTHH:MM:SSZ", "2021-08-06T01+04:00", "2021-08-06T01:00:00+04:00", CONVERSION_EXCEPTION),
                 args("yyyy-mm-ddTHH:MM:SSZ", "2021-08-06T23:17Z", "2021-08-06T23:17:00Z", CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddTHH:MM:SSZ", "2021-08-06T23Z", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddTHH:MM:SSZ", "2021-08-06T23Z", "2021-08-06T23:00:00Z", CONVERSION_EXCEPTION),
 
                 // UTC datetime pattern, local partial datetime
                 args("yyyy-mm-ddTHH:MM:SSZ", "2021-08-06T01:17", "2021-08-06T01:17:00+02:00", CONVERSION_EXCEPTION),
@@ -120,11 +120,11 @@ class DvDateTimeFactoryTest : AbstractWebTemplateTest() {
 
                 // local datetime pattern, partial datetime in timezone
                 args("yyyy-mm-ddTHH:MM:SS", "2021-08-06T23:17-04:00", "2021-08-06T23:17:00-04:00", CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddTHH:MM:SS", "2021-08-06T23-04:00", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddTHH:MM:SS", "2021-08-06T23-04:00", "2021-08-06T23:00:00-04:00", CONVERSION_EXCEPTION),
                 args("yyyy-mm-ddTHH:MM:SS", "2021-08-06T01:17+04:00", "2021-08-06T01:17:00+04:00", CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddTHH:MM:SS", "2021-08-06T01+04:00", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddTHH:MM:SS", "2021-08-06T01+04:00", "2021-08-06T01:00:00+04:00", CONVERSION_EXCEPTION),
                 args("yyyy-mm-ddTHH:MM:SS", "2021-08-06T23:17Z", "2021-08-06T23:17:00Z", CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddTHH:MM:SS", "2021-08-06T23Z", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddTHH:MM:SS", "2021-08-06T23Z", "2021-08-06T23:00:00Z", CONVERSION_EXCEPTION),
 
                 // local datetime pattern, local partial datetime
                 args("yyyy-mm-ddTHH:MM:SS", "2021-08-06T01:17", "2021-08-06T01:17:00+02:00", CONVERSION_EXCEPTION),
@@ -146,11 +146,11 @@ class DvDateTimeFactoryTest : AbstractWebTemplateTest() {
 
                 // optional seconds pattern, partial datetime in timezone
                 args("yyyy-mm-ddTHH:MM:??", "2021-08-06T23:17-04:00", "2021-08-07T05:17", CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddTHH:MM:??", "2021-08-06T23-04:00", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddTHH:MM:??", "2021-08-06T23-04:00", "2021-08-07T05:00", CONVERSION_EXCEPTION),
                 args("yyyy-mm-ddTHH:MM:??", "2021-08-06T01:17+04:00", "2021-08-05T23:17", CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddTHH:MM:??", "2021-08-06T01+04:00", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddTHH:MM:??", "2021-08-06T01+04:00", "2021-08-05T23:00", CONVERSION_EXCEPTION),
                 args("yyyy-mm-ddTHH:MM:??", "2021-08-06T23:17Z", "2021-08-07T01:17", CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddTHH:MM:??", "2021-08-06T23Z", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddTHH:MM:??", "2021-08-06T23Z", "2021-08-07T01:00", CONVERSION_EXCEPTION),
 
                 // optional seconds pattern, local partial datetime
                 args("yyyy-mm-ddTHH:MM:??", "2021-08-06T01:17", "2021-08-06T01:17", "2021-08-06T01:17"),
@@ -172,11 +172,11 @@ class DvDateTimeFactoryTest : AbstractWebTemplateTest() {
 
                 // not allowed seconds pattern, partial datetime in timezone
                 args("yyyy-mm-ddTHH:MM:XX", "2021-08-06T23:17-04:00", "2021-08-07T05:17", CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddTHH:MM:XX", "2021-08-06T23-04:00", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddTHH:MM:XX", "2021-08-06T23-04:00", "2021-08-07T05:00", CONVERSION_EXCEPTION),
                 args("yyyy-mm-ddTHH:MM:XX", "2021-08-06T01:17+04:00", "2021-08-05T23:17", CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddTHH:MM:XX", "2021-08-06T01+04:00", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddTHH:MM:XX", "2021-08-06T01+04:00", "2021-08-05T23:00", CONVERSION_EXCEPTION),
                 args("yyyy-mm-ddTHH:MM:XX", "2021-08-06T23:17Z", "2021-08-07T01:17", CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddTHH:MM:XX", "2021-08-06T23Z", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddTHH:MM:XX", "2021-08-06T23Z", "2021-08-07T01:00", CONVERSION_EXCEPTION),
 
                 // not allowed seconds pattern, local partial datetime
                 args("yyyy-mm-ddTHH:MM:XX", "2021-08-06T01:17", "2021-08-06T01:17", "2021-08-06T01:17"),
@@ -197,16 +197,16 @@ class DvDateTimeFactoryTest : AbstractWebTemplateTest() {
 
                 // optional hour and minute and not allowed seconds pattern, partial datetime in timezone
                 args("yyyy-mm-ddT??:??:XX", "2021-08-06T23:17-04:00", "2021-08-07T05:17", CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddT??:??:XX", "2021-08-06T23-04:00", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddT??:??:XX", "2021-08-06T23-04:00", "2021-08-07T05", CONVERSION_EXCEPTION),
                 args("yyyy-mm-ddT??:??:XX", "2021-08-06T01:17+04:00", "2021-08-05T23:17", CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddT??:??:XX", "2021-08-06T01+04:00", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddT??:??:XX", "2021-08-06T01+04:00", "2021-08-05T23", CONVERSION_EXCEPTION),
                 args("yyyy-mm-ddT??:??:XX", "2021-08-06T23:17Z", "2021-08-07T01:17", CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddT??:??:XX", "2021-08-06T23Z", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddT??:??:XX", "2021-08-06T23Z", "2021-08-07T01", CONVERSION_EXCEPTION),
 
                 // optional hour and minute and not allowed seconds pattern, local partial datetime
                 args("yyyy-mm-ddT??:??:XX", "2021-08-06T01:17", "2021-08-06T01:17", "2021-08-06T01:17"),
                 args("yyyy-mm-ddT??:??:XX", "2021-08-06T01", "2021-08-06T01", "2021-08-06T01"),
-                args("yyyy-mm-ddT??:??:XX", "2021-08-06T", "CONVERSION_EXCEPTION", CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddT??:??:XX", "2021-08-06T", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
                 args("yyyy-mm-ddT??:??:XX", "2021-08-06", "2021-08-06", "2021-08-06"),
                 args("yyyy-mm-ddT??:??:XX", "2021-08", "2021-08-01", CONVERSION_EXCEPTION),
                 args("yyyy-mm-ddT??:??:XX", "2021", "2021-01-01", CONVERSION_EXCEPTION),
@@ -295,15 +295,16 @@ class DvDateTimeFactoryTest : AbstractWebTemplateTest() {
                 args("yyyy-mm-ddTHH:MMZ", "2021-08-06T23:17-04:00", "2021-08-06T23:17-04:00", "2021-08-06T23:17-04:00"),
                 args("yyyy-mm-ddTHH:MMZ", "2021-08-06T23:17Z", "2021-08-06T23:17Z", "2021-08-06T23:17Z"),
                 args("yyyy-mm-ddTHH:MMZ", "2021-08-06T23:17", "2021-08-06T23:17+02:00", CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddTHH:MMZ", "2021-08-06TZ", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
                 args("yyyy-mm-ddTHH:MM", "2021-08-06T23:17-04:00", "2021-08-06T23:17-04:00", "2021-08-06T23:17-04:00"),
                 args("yyyy-mm-ddTHH:MM", "2021-08-06T23:17Z", "2021-08-06T23:17Z", "2021-08-06T23:17Z"),
                 args("yyyy-mm-ddTHH:MM", "2021-08-06T23:17", "2021-08-06T23:17", "2021-08-06T23:17"),
 
-                args("yyyy-mm-ddTHHZ", "2021-08-06T23:17-04:00", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddTHHZ", "2021-08-06T23-04:00", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddTHHZ", "2021-08-06T23", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddTHHZ", "2021-08-06T23:17-04:00", "2021-08-07T05", CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddTHHZ", "2021-08-06T23-04:00", "2021-08-07T05", "2021-08-06T23-04:00"),
+                args("yyyy-mm-ddTHHZ", "2021-08-06T23", "2021-08-06T23+02:00", CONVERSION_EXCEPTION),
                 args("yyyy-mm-ddTHH", "2021-08-06T23:17-04:00", "2021-08-07T05", CONVERSION_EXCEPTION),
-                args("yyyy-mm-ddTHH", "2021-08-06T23-04:00", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
+                args("yyyy-mm-ddTHH", "2021-08-06T23-04:00", "2021-08-07T05", "2021-08-06T23-04:00"),
                 args("yyyy-mm-ddTHH", "2021-08-06T23", "2021-08-06T23", "2021-08-06T23"),
 
                 args("yyyy-mm-ddZ", "2021-08-06Z", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
@@ -368,7 +369,7 @@ class DvDateTimeFactoryTest : AbstractWebTemplateTest() {
                 args("", "2021-08-06T23:17:35", "2021-08-06T23:17:35+02:00", "2021-08-06T23:17:35+02:00"),
                 args("", "2021-08-06T23:17Z", "2021-08-06T23:17Z", "2021-08-06T23:17Z"),
                 args("", "2021-08-06T04:03:02Z", "2021-08-06T04:03:02Z", "2021-08-06T04:03:02Z"),
-                args("", "2021-08-06T23Z", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
+                args("", "2021-08-06T23Z", "2021-08-07T01", CONVERSION_EXCEPTION),
                 args("", "2021-08-06", "2021-08-06", "2021-08-06"),
 
                 args("", "23:17:35.654+04:00", CONVERSION_EXCEPTION, CONVERSION_EXCEPTION),
