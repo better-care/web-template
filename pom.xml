@@ -36,6 +36,7 @@
         <ehr-common.version>5.0.0-SNAPSHOT</ehr-common.version>
 
         <assertj.version>3.27.3</assertj.version>
+        <caffeine.version>3.2.0</caffeine.version>
         <commons-io.version>2.18.0</commons-io.version>
         <commons-lang3.version>3.17.0</commons-lang3.version>
         <commons-math3.version>3.6.1</commons-math3.version>
@@ -190,6 +191,12 @@
             <version>${jaxb-runtime.version}</version>
             <scope>runtime</scope>
         </dependency>
+
+        <dependency>
+          <groupId>com.github.ben-manes.caffeine</groupId>
+          <artifactId>caffeine</artifactId>
+          <version>${caffeine.version}</version>
+      </dependency>
 
         <dependency>
             <groupId>commons-io</groupId>
