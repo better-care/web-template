@@ -28,7 +28,7 @@
 
     <properties>
         <java.version>21</java.version>
-        <kotlin.version>2.1.0</kotlin.version>
+        <kotlin.version>2.1.21</kotlin.version>
 
         <jetbrains-annotations.version>26.0.2</jetbrains-annotations.version>
         <log4j-api-kotlin.version>1.5.0</log4j-api-kotlin.version>
