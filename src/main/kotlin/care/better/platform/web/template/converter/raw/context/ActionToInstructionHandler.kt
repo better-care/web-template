@@ -15,12 +15,18 @@
 
 package care.better.platform.web.template.converter.raw.context
 
+import care.better.platform.path.MethodKey
 import care.better.platform.path.NameAndNodeMatchingPathValueExtractor
 import care.better.platform.web.template.converter.constant.WebTemplateConstants.SELF_REFERENCE_COMPOSITION
+import com.github.benmanes.caffeine.cache.Cache
+import com.github.benmanes.caffeine.cache.Caffeine
 import org.openehr.rm.common.Link
 import org.openehr.rm.composition.Composition
 import org.openehr.rm.composition.Instruction
 import org.openehr.rm.composition.InstructionDetails
+import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.ConcurrentMap
+import java.util.function.Function
 
 /**
  * @author Primoz Delopst
@@ -39,10 +45,10 @@ interface ActionToInstructionHandler {
      * @param conversionContext [ConversionContext]
      */
     fun handle(
-            composition: Composition,
-            instructionDetails: InstructionDetails,
-            instructionDetailsData: InstructionDetailsData,
-            conversionContext: ConversionContext)
+        composition: Composition,
+        instructionDetails: InstructionDetails,
+        instructionDetailsData: InstructionDetailsData,
+        conversionContext: ConversionContext)
 
     /**
      * Resolves path from the [InstructionDetails].
@@ -50,10 +56,10 @@ interface ActionToInstructionHandler {
      * @return Resolved path
      */
     fun resolvePath(
-            composition: Composition,
-            instructionDetails: InstructionDetails,
-            instructionDetailsData: InstructionDetailsData,
-            conversionContext: ConversionContext): String?
+        composition: Composition,
+        instructionDetails: InstructionDetails,
+        instructionDetailsData: InstructionDetailsData,
+        conversionContext: ConversionContext): String?
 
 }
 
@@ -63,17 +69,28 @@ interface ActionToInstructionHandler {
  *
  * @constructor Creates a new instance of [InCompositionActionToInstructionHandler]
  */
-open class InCompositionActionToInstructionHandler : ActionToInstructionHandler {
+open class InCompositionActionToInstructionHandler @JvmOverloads constructor(
+    private val propertyMethods: ConcurrentMap<MethodKey, Function<Any, Any?>> = ConcurrentHashMap(),
+    private val nameAndNodeMatchingPathValueExtractorCache: Cache<String, NameAndNodeMatchingPathValueExtractor> = Caffeine.newBuilder().maximumSize(5000L).build()) :
+    ActionToInstructionHandler {
     override fun handle(
-            composition: Composition,
-            instructionDetails: InstructionDetails,
-            instructionDetailsData: InstructionDetailsData,
-            conversionContext: ConversionContext) {
+        composition: Composition,
+        instructionDetails: InstructionDetails,
+        instructionDetailsData: InstructionDetailsData,
+        conversionContext: ConversionContext) {
         instructionDetails.instructionId?.id?.value?.also {
             val resolvedComposition = resolve(composition, instructionDetails, instructionDetailsData, conversionContext)
 
             if (resolvedComposition != null) {
-                val pathValueExtractor = NameAndNodeMatchingPathValueExtractor(instructionDetails.instructionId?.path!!)
+                val path = instructionDetails.instructionId?.path
+                val pathValueExtractor = nameAndNodeMatchingPathValueExtractorCache.get(
+                    path ?: "/",
+                    Function {
+                        NameAndNodeMatchingPathValueExtractor(
+                            path,
+                            false,
+                            this.propertyMethods)
+                    })
                 val instructions = pathValueExtractor.getValue(resolvedComposition, true)
                 if (instructions.isNotEmpty() && instructions[0] is Instruction) {
                     val instruction = instructions[0] as Instruction
@@ -103,17 +120,17 @@ open class InCompositionActionToInstructionHandler : ActionToInstructionHandler 
     }
 
     override fun resolvePath(
-            composition: Composition,
-            instructionDetails: InstructionDetails,
-            instructionDetailsData: InstructionDetailsData,
-            conversionContext: ConversionContext): String? = null
+        composition: Composition,
+        instructionDetails: InstructionDetails,
+        instructionDetailsData: InstructionDetailsData,
+        conversionContext: ConversionContext): String? = null
 
 
     open fun resolve(
-            composition: Composition,
-            instructionDetails: InstructionDetails,
-            instructionDetailsData: InstructionDetailsData,
-            conversionContext: ConversionContext): Composition? =
+        composition: Composition,
+        instructionDetails: InstructionDetails,
+        instructionDetailsData: InstructionDetailsData,
+        conversionContext: ConversionContext): Composition? =
         if (SELF_REFERENCE_COMPOSITION == instructionDetails.instructionId?.id?.value)
             composition
         else

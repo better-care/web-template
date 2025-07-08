@@ -18,7 +18,7 @@
 
     <groupId>care.better.platform</groupId>
     <artifactId>web-template</artifactId>
-    <version>4.1.1-SNAPSHOT</version>
+    <version>4.1.2-SNAPSHOT</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>WebTemplate implementation for openEHR CDR</description>
@@ -33,10 +33,11 @@
         <jetbrains-annotations.version>23.1.0</jetbrains-annotations.version>
         <log4j-api-kotlin.version>1.2.0</log4j-api-kotlin.version>
 
-        <ehr-common.version>4.1.1-MD1</ehr-common.version>
+        <ehr-common.version>4.1.1</ehr-common.version>
 
         <assertj.version>3.24.2</assertj.version>
-        <commons-io.version>2.11.0</commons-io.version>
+        <caffeine.version>3.2.0</caffeine.version>
+        <commons-io.version>2.19.0</commons-io.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-math3.version>3.6.1</commons-math3.version>
         <jackson.version>2.18.3</jackson.version>
@@ -190,6 +191,12 @@
             <version>${jakarta.xml.version}</version>
             <scope>runtime</scope>
         </dependency>
+
+        <dependency>
+          <groupId>com.github.ben-manes.caffeine</groupId>
+          <artifactId>caffeine</artifactId>
+          <version>${caffeine.version}</version>
+      </dependency>
 
         <dependency>
             <groupId>commons-io</groupId>
@@ -507,7 +514,7 @@
                         <extensions>true</extensions>
                         <configuration>
                             <serverId>ossrh</serverId>
-                            <nexusUrl>https://s01.oss.sonatype.org</nexusUrl>
+                            <nexusUrl>https://ossrh-staging-api.central.sonatype.com</nexusUrl>
                             <autoReleaseAfterClose>true</autoReleaseAfterClose>
                         </configuration>
                     </plugin>
@@ -584,12 +591,12 @@
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+            <url>https://ossrh-staging-api.central.sonatype.com/content/repositories/snapshots</url>
         </snapshotRepository>
 
         <repository>
             <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <url>https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
 </project>
