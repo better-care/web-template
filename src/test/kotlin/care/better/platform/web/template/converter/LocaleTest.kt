@@ -18,7 +18,6 @@ package care.better.platform.web.template.converter
 import care.better.platform.path.NameAndNodeMatchingPathValueExtractor
 import care.better.platform.path.SimplePathValueExtractor
 import care.better.platform.utils.DateTimeConversionUtils
-import care.better.platform.time.temporal.OpenEhrLocalDate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext

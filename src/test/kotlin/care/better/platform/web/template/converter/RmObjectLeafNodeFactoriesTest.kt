@@ -33,7 +33,6 @@ import com.google.common.collect.ImmutableMap
 import org.assertj.core.api.Assertions.*
 import org.joda.time.DateTime
 import org.joda.time.LocalDate
-import org.joda.time.format.ISODateTimeFormat
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
 import java.io.IOException

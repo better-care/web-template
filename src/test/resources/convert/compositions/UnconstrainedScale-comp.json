@@ -36,15 +36,16 @@
               {
                 "|code": "I.74",
                 "|value": "I.74 description",
-                "|terminology": "external_terminology"
+                "|terminology": "external_terminology",
+                "|preferred_term": "term1"
               }
             ],
             "empty_scale": [
               {
                 "|code": "11929db5-a4c8-4d58-9ca3-8478dd7eb9f7",
                 "|value": "t1",
-                "|scale": 1.2
-
+                "|scale": 1.2,
+                "|preferred_term": "term2"
               }
             ]
           }

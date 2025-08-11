@@ -56,10 +56,13 @@ class UnconstrainedOrdinalTest : AbstractWebTemplateTest() {
         val symbol = dvOrdinal.symbol
         assertThat(symbol!!.value).isEqualTo("t1")
         assertThat(symbol!!.definingCode!!.codeString).isEqualTo("11929db5-a4c8-4d58-9ca3-8478dd7eb9f7")
+        assertThat(symbol.definingCode!!.preferredTerm).isEqualTo("term1")
 
         val dvCodedText = (((((composition.content[0] as Observation).data as History).events[0] as PointEvent).data as ItemTree).items[1] as Element).value as DvCodedText
 
         assertThat(dvCodedText.value).isEqualTo("1")
         assertThat(dvCodedText.definingCode!!.codeString).isEqualTo("f6e5e39e-d665-485b-a16b-4902869474d5")
+        assertThat(dvCodedText.definingCode!!.preferredTerm).isEqualTo("term2")
+
     }
 }
