@@ -58,7 +58,7 @@ internal object DvOrdinalFactory : DvOrderedFactory<DvOrdinal>() {
         super.handleField(conversionContext, amNode, attribute, rmObject, jsonNode, webTemplatePath) || run {
             val cDvOrdinal = if (amNode.cObject is CDvOrdinal) amNode.cObject as CDvOrdinal else null
             if (cDvOrdinal != null) {
-                if (attribute.attribute.isBlank() || attribute.attribute == "ordinal") {
+                if (attribute.attribute.isBlank() || attribute.attribute == "value") {
                     handleValueAttribute(conversionContext, amNode, jsonNode, rmObject, cDvOrdinal)
                     true
                 } else if (attribute.attribute == "code") {
