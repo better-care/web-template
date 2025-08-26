@@ -21,7 +21,6 @@ import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import com.google.common.collect.ImmutableMap
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
@@ -45,18 +44,19 @@ class EndTimeTest : AbstractWebTemplateTest() {
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val dateTime = ZonedDateTime.of(2015, 1, 1, 10, 31, 16, 0, ZoneId.systemDefault()).toOffsetDateTime()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/composer_name", "Composer")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/end_time", "2016-01-01T12:30:30Z")
-                .put("vitals/vitals/haemoglobin_a1c/history_origin", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(dateTime))
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology", "local")
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|code", "at0037")
-                .build(),
-            ConversionContext.create().build())
+            mapOf(
+                "ctx/language" to "sl",
+                "ctx/territory" to "SI",
+                "ctx/composer_name" to "Composer",
+                "ctx/id_scheme" to "ispek",
+                "ctx/id_namespace" to "ispek",
+                "ctx/end_time" to "2016-01-01T12:30:30Z",
+                "vitals/vitals/haemoglobin_a1c/history_origin" to DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(dateTime),
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology" to "local",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|code" to "at0037"
+            ),
+            ConversionContext.create().build()
+        )
 
         val section = composition!!.content[0] as Section
         val observation = section.items[0] as Observation

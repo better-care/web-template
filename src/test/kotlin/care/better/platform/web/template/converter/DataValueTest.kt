@@ -20,7 +20,6 @@ import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import com.google.common.collect.ImmutableMap
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
@@ -41,17 +40,19 @@ class DataValueTest : AbstractWebTemplateTest() {
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, Any>()
-                .put("vitals/vitals/body_temperature/any_event/temperature", DvQuantity(39.1, "°C"))
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology", "local")
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|code", "at0037")
-                .build(),
-            context)
+            mapOf(
+                "vitals/vitals/body_temperature/any_event/temperature" to DvQuantity(39.1, "°C"),
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology" to "local",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|code" to "at0037"
+            ),
+            context
+        )
 
         val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap).contains(
             entry("vitals/vitals/body_temperature:0/any_event:0/temperature|magnitude", "39.1"),
             entry("vitals/vitals/haemoglobin_a1c:0/any_event:0/test_status|code", "at0037"),
-            entry("vitals/vitals/haemoglobin_a1c:0/any_event:0/test_status|value", "Začasen"))
+            entry("vitals/vitals/haemoglobin_a1c:0/any_event:0/test_status|value", "Začasen")
+        )
     }
 }

@@ -23,7 +23,6 @@ import care.better.platform.web.template.converter.exceptions.ConversionExceptio
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.node.ObjectNode
-import com.google.common.collect.ImmutableList
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
@@ -52,7 +51,7 @@ class EmptynessTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testEmptyEvaluation() {
         val template = getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_specialist_examination.opt")
-        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("ru", ImmutableList.of("ru")))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("ru", listOf("ru")))
         val builderContext = ConversionContext.create().withLanguage("ru").withTerritory("RU").withComposerName("Composer").build()
         val objectMapper = ObjectMapper()
         val node = objectMapper.readTree(getJson("/convert/compositions/emptyEvaluation.json")) as ObjectNode

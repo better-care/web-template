@@ -28,12 +28,9 @@ import care.better.platform.web.template.builder.model.input.WebTemplateValidati
 import care.better.platform.web.template.builder.model.input.range.WebTemplateValidationIntegerRange
 import care.better.platform.web.template.builder.utils.DurationUtils
 import care.better.platform.web.template.builder.utils.WebTemplateBuilderUtils
-import com.google.common.base.Splitter
-import com.google.common.collect.ImmutableSet
 import org.joda.time.Period
 import org.openehr.am.aom.CDuration
 import org.openehr.rm.datatypes.DvDuration
-import java.util.*
 
 /**
  * @author Bostjan Lah
@@ -41,7 +38,7 @@ import java.util.*
  * @since 3.1.0
  */
 internal object DurationWebTemplateInputBuilder : WebTemplateInputBuilder<CDuration> {
-    private val FULL_DURATION: Set<WebTemplateDurationField> = ImmutableSet.of(
+    private val FULL_DURATION: Set<WebTemplateDurationField> = setOf(
         WebTemplateDurationField.YEAR,
         WebTemplateDurationField.MONTH,
         WebTemplateDurationField.DAY,

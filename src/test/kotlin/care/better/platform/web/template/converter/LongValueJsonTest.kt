@@ -17,16 +17,15 @@ package care.better.platform.web.template.converter
 
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
+import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.node.ObjectNode
-import com.google.common.collect.ImmutableList
-import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
-import care.better.platform.web.template.builder.WebTemplateBuilder
+import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
 import java.io.IOException
-import jakarta.xml.bind.JAXBException
 
 /**
  * @author Primoz Delopst
@@ -38,7 +37,7 @@ class LongValueJsonTest : AbstractWebTemplateTest() {
     fun testLongValueJson() {
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(
             getTemplate("/convert/templates/ZN - Assessment Scales Encounter2.opt"),
-            WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+            WebTemplateBuilderContext("en", listOf("en", "sl")))
 
         val compositionFlatMap: Map<String, Any?> = mapOf(
             Pair("assessment_scales/pain_assessment/story/pain/patient_described_current_intensity/degree_level", 5000000000000000000L))

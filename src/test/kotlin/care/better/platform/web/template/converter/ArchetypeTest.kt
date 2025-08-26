@@ -22,7 +22,6 @@ import care.better.platform.web.template.builder.context.WebTemplateBuilderConte
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.structured.exceptions.PathFormatException
 import com.fasterxml.jackson.core.type.TypeReference
-import com.google.common.collect.ImmutableList
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
@@ -63,7 +62,7 @@ class ArchetypeTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testNoArchetype() {
         val composition = getComposition("/convert/compositions/privantis.xml")
-        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/DRS Fundus Severity for od form.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en")))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/DRS Fundus Severity for od form.xml"), WebTemplateBuilderContext("en", listOf("en")))
         val flatMap: Map<String, Any?> = webTemplate.convertFromRawToFlat(composition, FromRawConversion.create())
         assertThat(flatMap.size).isGreaterThan(2)
     }

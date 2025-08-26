@@ -22,7 +22,6 @@ import care.better.platform.web.template.builder.context.WebTemplateBuilderConte
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.value.SimpleValueConverter
 import care.better.platform.web.template.converter.value.ValueConverter
-import com.google.common.collect.ImmutableMap
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -50,11 +49,11 @@ class TimeZoneTest : AbstractWebTemplateTest() {
             .build()
 
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("sl"))
-        val values: Map<String, String> = ImmutableMap.builder<String, String>()
-            .put("ctx/time", "2015-01-01T10:00:00.000+05:00")
-            .put("vitals/vitals/body_temperature:0/any_event:0/temperature|magnitude", "37.7")
-            .put("vitals/vitals/body_temperature:0/any_event:0/temperature|unit", "°C")
-            .build()
+        val values: Map<String, String> = mapOf(
+            "ctx/time" to "2015-01-01T10:00:00.000+05:00",
+            "vitals/vitals/body_temperature:0/any_event:0/temperature|magnitude" to "37.7",
+            "vitals/vitals/body_temperature:0/any_event:0/temperature|unit" to "°C"
+        )
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(values, context)
         assertThat(composition?.context?.startTime?.value).isEqualTo("2015-01-01T10:00:00+05:00")

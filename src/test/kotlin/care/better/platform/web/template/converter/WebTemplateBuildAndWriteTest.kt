@@ -20,7 +20,6 @@ import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.builder.model.WebTemplateNode
-import com.google.common.collect.ImmutableSet
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat
@@ -77,7 +76,7 @@ class WebTemplateBuildAndWriteTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testAdverseReaction() {
-        buildAndExport("/convert/templates/adverse4.opt", "adverse", "sl", ImmutableSet.of("en", "sl"))
+        buildAndExport("/convert/templates/adverse4.opt", "adverse", "sl", setOf("en", "sl"))
     }
 
     @Test
@@ -157,17 +156,17 @@ class WebTemplateBuildAndWriteTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testAdmission() {
-        buildAndExport("/convert/templates/ZN - Admition Summary Encounter new.opt", "admission", "sl", ImmutableSet.of("en", "sl"))
+        buildAndExport("/convert/templates/ZN - Admition Summary Encounter new.opt", "admission", "sl", setOf("en", "sl"))
     }
 
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testFormsDemo() {
-        buildAndExport("/convert/templates/Forms Demo.opt", "formsdemo", "sl", ImmutableSet.of("en", "sl"))
+        buildAndExport("/convert/templates/Forms Demo.opt", "formsdemo", "sl", setOf("en", "sl"))
     }
 
     @Throws(JAXBException::class, IOException::class)
     private fun buildAndExport(templateName: String, prefix: String) {
-        buildAndExport(templateName, prefix, "sl", ImmutableSet.of("sl", "en"))
+        buildAndExport(templateName, prefix, "sl", setOf("sl", "en"))
     }
 }

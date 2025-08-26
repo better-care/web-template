@@ -56,7 +56,6 @@ import care.better.platform.web.template.converter.raw.extensions.isForElement
 import care.better.platform.web.template.converter.raw.extensions.isNotNullOrBlank
 import care.better.platform.web.template.converter.raw.extensions.isNotNullOrEmpty
 import com.google.common.collect.ArrayListMultimap
-import com.google.common.collect.Lists
 import com.google.common.collect.Multimap
 import org.apache.commons.lang3.StringUtils
 import org.openehr.am.aom.*
@@ -524,7 +523,7 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
 
     private fun createIsmTransitionAttribute(parent: AmNode, attributeName: String, existence: IntervalOfInteger): AmNode =
         createAmNode(parent, "DV_CODED_TEXT", attributeName, IsmTransition::class.java).apply {
-            parent.attributes[attributeName] = AmAttribute(existence, Lists.newArrayList(this)).apply { this.rmOnly = true }
+            parent.attributes[attributeName] = AmAttribute(existence, mutableListOf(this)).apply { this.rmOnly = true }
         }
 
     @Suppress("UNCHECKED_CAST")

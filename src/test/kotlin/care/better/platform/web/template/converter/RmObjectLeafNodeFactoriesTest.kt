@@ -29,7 +29,6 @@ import care.better.platform.web.template.converter.raw.factory.leaf.DvTimeFactor
 import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils
 import care.better.platform.web.template.converter.value.LocaleBasedValueConverter
 import com.fasterxml.jackson.databind.node.TextNode
-import com.google.common.collect.ImmutableMap
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.*
 import org.joda.time.DateTime
@@ -56,7 +55,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
         val composition: Composition? =
-            webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/fixed_values/fixed_text|code", "at0009"), context)
+            webTemplate.convertFromFlatToRaw(mapOf("testing_template/context/testing/fixed_values/fixed_text|code" to "at0009"), context)
 
         val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap).contains(
@@ -75,13 +74,14 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.of(
-                "testing_template/context/testing/multimedia", "http://here.com/123",
-                "testing_template/context/testing/multimedia|alternatetext", "Hello world!",
-                "testing_template/context/testing/multimedia|mediatype", "png",
-                "testing_template/context/testing/multimedia|size", "999"
+            mapOf(
+                "testing_template/context/testing/multimedia" to "http://here.com/123",
+                "testing_template/context/testing/multimedia|alternatetext" to "Hello world!",
+                "testing_template/context/testing/multimedia|mediatype" to "png",
+                "testing_template/context/testing/multimedia|size" to "999"
             ),
-            context)
+            context
+        )
 
         val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap).contains(
@@ -101,11 +101,12 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
 
         assertThatThrownBy {
             webTemplate.convertFromFlatToRaw<Composition>(
-                ImmutableMap.of(
-                    "testing_template/context/testing/multimedia", "http://here.com/123",
-                    "testing_template/context/testing/multimedia|xyz", "Hello world!"
+                mapOf(
+                    "testing_template/context/testing/multimedia" to "http://here.com/123",
+                    "testing_template/context/testing/multimedia|xyz" to "Hello world!"
                 ),
-                context)
+                context
+            )
         }
             .isInstanceOf(ConversionException::class.java)
             .hasMessageStartingWith("DV_MULTIMEDIA has no attribute |xyz (path: testing_template/context/testing/multimedia|xyz).")
@@ -119,11 +120,12 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
         assertThatThrownBy {
             webTemplate.convertFromFlatToRaw<Composition>(
-                ImmutableMap.of(
-                    "testing_template/context/testing/multimedia", "http://here.com/123",
-                    "testing_template/context/testing/multimedia|size", "XYZ"
+                mapOf(
+                    "testing_template/context/testing/multimedia" to "http://here.com/123",
+                    "testing_template/context/testing/multimedia|size" to "XYZ"
                 ),
-                context)
+                context
+            )
         }.isInstanceOf(ConversionException::class.java).hasMessageStartingWith("Invalid value for attribute 'size' of DV_MULTIMEDIA")
     }
 
@@ -134,11 +136,12 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.of(
-                "testing_template/context/testing/proportion|numerator", "10",
-                "testing_template/context/testing/proportion|denominator", "100"
+            mapOf(
+                "testing_template/context/testing/proportion|numerator" to "10",
+                "testing_template/context/testing/proportion|denominator" to "100"
             ),
-            context)
+            context
+        )
 
         val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap).contains(
@@ -156,11 +159,12 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
 
         assertThatThrownBy {
             webTemplate.convertFromFlatToRaw<Composition>(
-                ImmutableMap.of(
-                    "testing_template/context/testing/proportion|numerator", "xyz",
-                    "testing_template/context/testing/proportion|denominator", "100"
+                mapOf(
+                    "testing_template/context/testing/proportion|numerator" to "xyz",
+                    "testing_template/context/testing/proportion|denominator" to "100"
                 ),
-                context)
+                context
+            )
         }
             .isInstanceOf(ConversionException::class.java)
             .hasMessageStartingWith("Invalid decimal value: xyz (path: testing_template/context/testing/proportion).")
@@ -175,11 +179,12 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
 
         assertThatThrownBy {
             webTemplate.convertFromFlatToRaw<Composition>(
-                ImmutableMap.of(
-                    "testing_template/context/testing/proportion|numerator", "10",
-                    "testing_template/context/testing/proportion|denominator", "abc"
+                mapOf(
+                    "testing_template/context/testing/proportion|numerator" to "10",
+                    "testing_template/context/testing/proportion|denominator" to "abc"
                 ),
-                context)
+                context
+            )
         }
             .isInstanceOf(ConversionException::class.java)
             .hasMessageStartingWith("Invalid decimal value: abc (path: testing_template/context/testing/proportion).")
@@ -192,7 +197,7 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
         val composition: Composition? =
-            webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/uri", "http://www.google.com"), context)
+            webTemplate.convertFromFlatToRaw(mapOf("testing_template/context/testing/uri" to "http://www.google.com"), context)
 
         val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap).contains(entry("testing_template/context/testing/uri", "http://www.google.com"))
@@ -204,24 +209,24 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("en")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
-        val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/date", "2014-1-13"), context)
+        val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(mapOf("testing_template/context/testing/date" to "2014-1-13"), context)
 
         val firstFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(firstComposition!!, FromRawConversion.create())
         assertThat(firstFlatMap).contains(entry("testing_template/context/testing/date", "2014-01-13"))
 
         val secondComposition: Composition? =
-            webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/date", LocalDate(2014, 1, 13)), context)
+            webTemplate.convertFromFlatToRaw(mapOf("testing_template/context/testing/date" to LocalDate(2014, 1, 13)), context)
 
         val secondFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(secondComposition!!, FromRawConversion.create())
         assertThat(secondFlatMap).contains(entry("testing_template/context/testing/date", "2014-01-13"))
 
         val thirdComposition: Composition? =
-            webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/date", DateTime(2014, 1, 13, 10, 13)), context)
+            webTemplate.convertFromFlatToRaw(mapOf("testing_template/context/testing/date" to DateTime(2014, 1, 13, 10, 13)), context)
 
         val thirdFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(thirdComposition!!, FromRawConversion.create())
         assertThat(thirdFlatMap).contains(entry("testing_template/context/testing/date", "2014-01-13"))
 
-        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("testing_template/context/testing/date", true), context) }
+        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(mapOf("testing_template/context/testing/date" to true), context) }
             .isInstanceOf(ConversionException::class.java)
             .hasMessageContaining("Error processing value \"true\" for pattern \"\" (path: testing_template/context/testing/date).")
     }
@@ -232,24 +237,24 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("en")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
-        val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/date", "2014-1-13"), context)
+        val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(mapOf("testing_template/context/testing/date" to "2014-1-13"), context)
 
         val firstFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(firstComposition!!, FromRawConversion.create())
         assertThat(firstFlatMap).contains(entry("testing_template/context/testing/date", "2014-01-13"))
 
         val secondComposition: Composition? =
-            webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/date", LocalDate(2014, 1, 13)), context)
+            webTemplate.convertFromFlatToRaw(mapOf("testing_template/context/testing/date" to LocalDate(2014, 1, 13)), context)
 
         val secondFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(secondComposition!!, FromRawConversion.create())
         assertThat(secondFlatMap).contains(entry("testing_template/context/testing/date", "2014-01-13"))
 
         val thirdComposition: Composition? =
-            webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/date", DateTime(2014, 1, 13, 10, 13)), context)
+            webTemplate.convertFromFlatToRaw(mapOf("testing_template/context/testing/date" to DateTime(2014, 1, 13, 10, 13)), context)
 
         val thirdFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(thirdComposition!!, FromRawConversion.create())
         assertThat(thirdFlatMap).contains(entry("testing_template/context/testing/date", "2014-01-13"))
 
-        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("testing_template/context/testing/date", "2014-a-b"), context) }
+        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(mapOf("testing_template/context/testing/date" to "2014-a-b"), context) }
             .isInstanceOf(ConversionException::class.java)
             .hasMessageContaining("Error processing value \"2014-a-b\" for pattern \"\" (path: testing_template/context/testing/date).")
     }
@@ -262,30 +267,30 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
         val time = LocalTime.of(14, 35)
 
-        val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/time", time), context)
+        val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(mapOf("testing_template/context/testing/time" to time), context)
 
         val firstFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(firstComposition!!, FromRawConversion.create())
         assertThat(firstFlatMap).contains(entry("testing_template/context/testing/time", DateTimeFormatter.ISO_LOCAL_TIME.format(time)))
 
         val localTime = LocalTime.of(14, 35, 10, 117000000)
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.of("testing_template/context/testing/time", localTime),
-            context)
+            mapOf("testing_template/context/testing/time" to localTime),
+            context
+        )
 
         val secondFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(secondComposition!!, FromRawConversion.create())
         assertThat(secondFlatMap).contains(entry("testing_template/context/testing/time", DateTimeFormatter.ISO_LOCAL_TIME.format(localTime)))
 
         val zonedDateTime = ZonedDateTime.of(2014, 1, 13, 14, 35, 10, 117000000, ZoneId.systemDefault())
         val thirdComposition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.of(
-                "testing_template/context/testing/time",
-                zonedDateTime),
-            context)
+            mapOf("testing_template/context/testing/time" to zonedDateTime),
+            context
+        )
 
         val thirdFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(thirdComposition!!, FromRawConversion.create())
         assertThat(thirdFlatMap).contains(entry("testing_template/context/testing/time", DateTimeFormatter.ISO_OFFSET_TIME.format(zonedDateTime.toOffsetDateTime())))
 
-        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("testing_template/context/testing/time", true), context) }
+        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(mapOf("testing_template/context/testing/time" to true), context) }
             .isInstanceOf(ConversionException::class.java)
             .hasMessage("Error processing value \"true\" for pattern \"\" (path: testing_template/context/testing/time).")
     }
@@ -296,12 +301,12 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("en")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
-        val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/time", "14:35"), context)
+        val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(mapOf("testing_template/context/testing/time" to "14:35"), context)
 
         val firstFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(firstComposition!!, FromRawConversion.create())
         assertThat(firstFlatMap).contains(entry("testing_template/context/testing/time", "14:35"))
 
-        val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/time", "14:35+02:00"), context)
+        val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(mapOf("testing_template/context/testing/time" to "14:35+02:00"), context)
 
         val secondFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(secondComposition!!, FromRawConversion.create())
         assertThat(secondFlatMap).contains(entry("testing_template/context/testing/time", "14:35+02:00"))
@@ -313,15 +318,16 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("en")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
-        val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/time", "14:35"), context)
+        val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(mapOf("testing_template/context/testing/time" to "14:35"), context)
 
         val firstFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(firstComposition!!, FromRawConversion.create())
         assertThat(firstFlatMap).contains(entry("testing_template/context/testing/time", "14:35"))
 
         val jodaLocalTime = org.joda.time.LocalTime(14, 35, 10, 117)
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.of("testing_template/context/testing/time", jodaLocalTime),
-            context)
+            mapOf("testing_template/context/testing/time" to jodaLocalTime),
+            context
+        )
         val localTime = WebTemplateConversionUtils.convert(jodaLocalTime)
 
         val secondFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(secondComposition!!, FromRawConversion.create())
@@ -329,14 +335,15 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
 
         val dateTime = DateTime(2014, 1, 13, 14, 35, 10, 117)
         val thirdComposition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.of("testing_template/context/testing/time", dateTime),
-            context)
+            mapOf("testing_template/context/testing/time" to dateTime),
+            context
+        )
         val convertOffsetTime = WebTemplateConversionUtils.convertOffsetTime(dateTime)
 
         val thirdFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(thirdComposition!!, FromRawConversion.create())
         assertThat(thirdFlatMap).contains(entry("testing_template/context/testing/time", DateTimeFormatter.ISO_OFFSET_TIME.format(convertOffsetTime)))
 
-        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("testing_template/context/testing/time", "17:aa"), context) }
+        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(mapOf("testing_template/context/testing/time" to "17:aa"), context) }
             .isInstanceOf(ConversionException::class.java)
             .hasMessage("Error processing value \"17:aa\" for pattern \"\" (path: testing_template/context/testing/time).")
     }
@@ -348,20 +355,21 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.of("testing_template/context/testing/date_time", "2014-1-13T14:35:00.000"),
-            context)
+            mapOf("testing_template/context/testing/date_time" to "2014-1-13T14:35:00.000"),
+            context
+        )
 
         val firstFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(firstComposition!!, FromRawConversion.create())
         val dateTime = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(ZonedDateTime.of(2014, 1, 13, 14, 35, 0, 0, ZoneId.systemDefault()))
         assertThat(firstFlatMap).contains(entry("testing_template/context/testing/date_time", dateTime))
 
         val dt = DateTime(2014, 1, 13, 14, 35, 10, 117)
-        val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/date_time", dt), context)
+        val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(mapOf("testing_template/context/testing/date_time" to dt), context)
 
         val secondFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(secondComposition!!, FromRawConversion.create())
         assertThat(secondFlatMap).contains(entry("testing_template/context/testing/date_time", "2014-01-13T14:35:10+01:00"))
 
-        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("testing_template/context/testing/date_time", true), context) }
+        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(mapOf("testing_template/context/testing/date_time" to true), context) }
             .isInstanceOf(ConversionException::class.java)
             .hasMessage("Error processing value \"true\" for pattern \"yyyy-mm-ddTHH:MM:SS\" (path: testing_template/context/testing/date_time).")
     }
@@ -373,20 +381,21 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SL").withComposerName("composer").build()
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.of("testing_template/context/testing/date_time", "2014-1-13T14:35:00.000"),
-            context)
+            mapOf("testing_template/context/testing/date_time" to "2014-1-13T14:35:00.000"),
+            context
+        )
 
         val firstFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(firstComposition!!, FromRawConversion.create())
         val dateTime = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(ZonedDateTime.of(2014, 1, 13, 14, 35, 0, 0, ZoneId.systemDefault()))
         assertThat(firstFlatMap).contains(entry("testing_template/context/testing/date_time", dateTime))
 
         val dt = DateTime(2014, 1, 13, 14, 35, 10, 117)
-        val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("testing_template/context/testing/date_time", dt), context)
+        val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(mapOf("testing_template/context/testing/date_time" to dt), context)
 
         val secondFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(secondComposition!!, FromRawConversion.create())
         assertThat(secondFlatMap).contains(entry("testing_template/context/testing/date_time", "2014-01-13T14:35:10+01:00"))
 
-        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("testing_template/context/testing/date_time", "17:aa"), context) }
+        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(mapOf("testing_template/context/testing/date_time" to "17:aa"), context) }
             .isInstanceOf(ConversionException::class.java)
             .hasMessageContaining("Error processing value \"17:aa\" for pattern \"yyyy-mm-ddTHH:MM:SS\" (path: testing_template/context/testing/date_time).")
     }
@@ -397,7 +406,8 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
             ConversionContext.create().build(),
             AmNode(null, "DV_TIME"),
             TextNode.valueOf("23:30:33.001"),
-            WebTemplatePath("value"), emptyList())
+            WebTemplatePath("value"), emptyList()
+        )
 
         assertThat(dvTime!!.value).isEqualTo("23:30:33.001")
     }
@@ -408,7 +418,8 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
             ConversionContext.create().build(),
             AmNode(null, "DV_TIME"),
             TextNode.valueOf("23:30:33.000000017"),
-            WebTemplatePath("value"), emptyList())
+            WebTemplatePath("value"), emptyList()
+        )
 
         assertThat(dvTime!!.value).isEqualTo("23:30:33.000000017")
     }
@@ -422,7 +433,8 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
             ConversionContext.create().withValueConvert(LocaleBasedValueConverter(Locale("sl", "SI"))).build(),
             AmNode(null, "DV_QUANTITY"),
             firstObjectNode,
-            WebTemplatePath("value"), emptyList())
+            WebTemplatePath("value"), emptyList()
+        )
         assertThat(firstDvQuantity!!.magnitude).isEqualTo(13.01)
 
         val secondObjectNode = ConversionObjectMapper.createObjectNode().apply {
@@ -432,7 +444,8 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
             ConversionContext.create().withValueConvert(LocaleBasedValueConverter(Locale("sl", "SI"))).build(),
             AmNode(null, "DV_QUANTITY"),
             secondObjectNode,
-            WebTemplatePath("value"), emptyList())
+            WebTemplatePath("value"), emptyList()
+        )
         assertThat(secondDvQuantity!!.magnitude).isEqualTo(13.01)
 
         val thirdObjectNode = ConversionObjectMapper.createObjectNode().apply {
@@ -442,7 +455,8 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
             ConversionContext.create().withValueConvert(LocaleBasedValueConverter(Locale("sl", "SI"))).build(),
             AmNode(null, "DV_QUANTITY"),
             thirdObjectNode,
-            WebTemplatePath("value"), emptyList())
+            WebTemplatePath("value"), emptyList()
+        )
         assertThat(thirdDvQuantity!!.magnitude).isEqualTo(13.01)
 
         val fourthObjectNode = ConversionObjectMapper.createObjectNode().apply {
@@ -452,7 +466,8 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
             ConversionContext.create().withValueConvert(LocaleBasedValueConverter(Locale("sl", "SI"))).build(),
             AmNode(null, "DV_QUANTITY"),
             fourthObjectNode,
-            WebTemplatePath("value"), emptyList())
+            WebTemplatePath("value"), emptyList()
+        )
         assertThat(fourthDvQuantity!!.magnitude).isEqualTo(1301.0)
     }
 
@@ -466,7 +481,8 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
             ConversionContext.create().withValueConvert(LocaleBasedValueConverter(Locale("sl", "SI"))).build(),
             AmNode(null, "DV_PROPORTION"),
             firstObjectNode,
-            WebTemplatePath("value"), emptyList())
+            WebTemplatePath("value"), emptyList()
+        )
         assertThat(firstDvProportion!!.numerator).isEqualTo(13.01f)
         assertThat(firstDvProportion.denominator).isEqualTo(100.0f)
 
@@ -478,7 +494,8 @@ class RmObjectLeafNodeFactoriesTest : AbstractWebTemplateTest() {
             ConversionContext.create().withValueConvert(LocaleBasedValueConverter(Locale("sl", "SI"))).build(),
             AmNode(null, "DV_PROPORTION"),
             secondObjectNode,
-            WebTemplatePath("value"), emptyList())
+            WebTemplatePath("value"), emptyList()
+        )
         assertThat(secondDvProportion!!.numerator).isEqualTo(13.01f)
         assertThat(firstDvProportion.denominator).isEqualTo(100.0f)
     }

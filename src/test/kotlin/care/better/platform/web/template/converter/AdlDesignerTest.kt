@@ -22,7 +22,6 @@ import care.better.platform.web.template.builder.context.WebTemplateBuilderConte
 import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.node.ObjectNode
-import com.google.common.collect.ImmutableList
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -37,7 +36,7 @@ class AdlDesignerTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testMissingCategory() {
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en", "sl"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Request_for_Pancreas_Special_Urgency_Listing.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("en").withTerritory("GB").withComposerName("Test").build()
 
@@ -48,7 +47,7 @@ class AdlDesignerTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testCreationFailure() {
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en", "sl"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/recursivecomposition.opt"), builderContext)
         assertThat(webTemplate).isNotNull
     }
@@ -56,7 +55,7 @@ class AdlDesignerTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testCategoryInContextTest() {
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en", "sl"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/DRP Report.xml"), builderContext)
         assertThat(webTemplate).isNotNull
         val category: WebTemplateNode? = webTemplate.tree.children.firstOrNull { node -> "category" == node.jsonId }

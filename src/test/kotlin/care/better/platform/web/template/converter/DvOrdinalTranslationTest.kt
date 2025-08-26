@@ -36,8 +36,9 @@ import java.io.IOException
  */
 class DvOrdinalTranslationTest : AbstractWebTemplateTest() {
     private val webTemplate = WebTemplateBuilder.buildNonNull(
-            getTemplate("/convert/templates/Translated DV_ORDINAL.opt"),
-            WebTemplateBuilderContext("en"))
+        getTemplate("/convert/templates/Translated DV_ORDINAL.opt"),
+        WebTemplateBuilderContext("en")
+    )
 
     @Test
     @Throws(JAXBException::class, IOException::class)

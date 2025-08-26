@@ -22,7 +22,6 @@ import care.better.platform.web.template.builder.context.WebTemplateBuilderConte
 import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.converter.mapper.convertRawJsonNode
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import com.google.common.collect.ImmutableList
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
@@ -35,7 +34,7 @@ import org.openehr.rm.datatypes.DvQuantity
 class RawConversionApiTest : AbstractWebTemplateTest() {
     private val contextBetter = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("Composer").build()
     private val contextOpenEhr = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("Composer").withRawDataMapper(OpenEhrObjectMapper()).build()
-    val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+    val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", listOf("en", "sl")))
 
     private val temperatureNode: WebTemplateNode = webTemplate.findWebTemplateNodeByAqlPath("/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Vitals']/items[openEHR-EHR-OBSERVATION.body_temperature-zn.v1]/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value")
 

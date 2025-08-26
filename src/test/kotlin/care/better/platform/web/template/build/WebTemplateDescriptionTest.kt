@@ -17,9 +17,8 @@ package care.better.platform.web.template.build
 
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
-import com.google.common.collect.ImmutableList
-import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.builder.WebTemplateBuilder
+import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -34,7 +33,7 @@ class WebTemplateDescriptionTest : AbstractWebTemplateTest() {
     fun testWebTemplateHasDescriptions() {
         val template = getTemplate("/build/Demo Vitals.opt")
 
-        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", listOf("en", "sl")))
 
         assertThat(webTemplate.tree.localizedDescriptions["en"]).isEqualTo("Generic encounter or progress note composition")
 
@@ -45,7 +44,7 @@ class WebTemplateDescriptionTest : AbstractWebTemplateTest() {
     @Test
     fun testWebTemplateNotHasDescriptions() {
         val template = getTemplate("/build/Demo Vitals.opt")
-        val webTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"), null, false))
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", listOf("en", "sl"), null, false))
 
         assertThat(webTemplate.tree.localizedDescriptions).isEmpty()
 

@@ -22,7 +22,6 @@ import care.better.platform.web.template.builder.context.WebTemplateBuilderConte
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import com.google.common.collect.ImmutableList
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -40,7 +39,7 @@ class JsonBuilderTest : AbstractWebTemplateTest() {
         val json = getJson("/convert/compositions/ISPEK - ZN - Vital Functions Encounter.json")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(
             getTemplate("/convert/templates/ZN - Vital Functions Encounter.xml"),
-            WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+            WebTemplateBuilderContext("en", listOf("en", "sl")))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("Composer").build()
 
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(getObjectMapper().readTree(json) as ObjectNode, context)
@@ -81,7 +80,7 @@ class JsonBuilderTest : AbstractWebTemplateTest() {
 
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(
             getTemplate("/convert/templates/ZN - Vital Functions Encounter.xml"),
-            WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+            WebTemplateBuilderContext("en", listOf("en", "sl")))
 
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("Composer").build()
 
@@ -108,7 +107,7 @@ class JsonBuilderTest : AbstractWebTemplateTest() {
     fun testOptIssue() {
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(
             getTemplate("/convert/templates/ZN - Vital Functions Encounter-1.xml"),
-            WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+            WebTemplateBuilderContext("en", listOf("en", "sl")))
         assertThat(webTemplate).isNotNull
     }
 }

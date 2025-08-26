@@ -27,8 +27,6 @@ import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import com.google.common.collect.ImmutableMap
-import com.google.common.collect.ImmutableSet
 import jakarta.xml.bind.JAXBElement
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
@@ -63,12 +61,12 @@ class ClinicalTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("sl"))
 
-        val flatMap: Map<String, String> = ImmutableMap.builder<String, String>()
-            .put("vitals/context/setting|code", "238")
-            .put("vitals/context/setting|value", "other care")
-            .put("vitals/vitals/body_temperature:0/any_event:0/temperature|magnitude", "37.7")
-            .put("vitals/vitals/body_temperature:0/any_event:0/temperature|unit", "°C")
-            .build()
+        val flatMap: Map<String, String> = mapOf(
+            "vitals/context/setting|code" to "238",
+            "vitals/context/setting|value" to "other care",
+            "vitals/vitals/body_temperature:0/any_event:0/temperature|magnitude" to "37.7",
+            "vitals/vitals/body_temperature:0/any_event:0/temperature|unit" to "°C",
+        )
         assertThat(webTemplate.convertFromFlatToRaw<Composition>(flatMap, context)).isNotNull
     }
 
@@ -80,31 +78,31 @@ class ClinicalTest : AbstractWebTemplateTest() {
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en"))
 
         val contextStartTime = LocalDateTime.of(2012, 2, 1, 0, 0)
-        val flatMap: Map<String, String> = ImmutableMap.builder<String, String>()
-            .put("vitals/vitals/haemoglobin_a1c/any_event/hba1c", "5,1")
-            .put("vitals/vitals/haemoglobin_a1c/datetime_result_issued", LocalDateTime.of(2012, 1, 20, 19, 30).toString())
-            .put("vitals/vitals/body_temperature/any_event/time", LocalDateTime.of(2012, 1, 1, 0, 0).toString())
-            .put("vitals/vitals/body_temperature/site_of_measurement", "at0022")
-            .put("vitals/vitals/body_temperature/any_event/temperature|magnitude", "38,1")
-            .put("vitals/vitals/body_temperature/any_event/temperature|unit", "°C")
-            .put("vitals/vitals/body_temperature:1/any_event/temperature|magnitude", "39,1")
-            .put("vitals/vitals/body_temperature:1/any_event/temperature|unit", "°C")
-            .put("ctx/time", contextStartTime.toString())
-            .put("ctx/category", "event")
-            .put("ctx/setting", "dental care")
-            .put("ctx/id_schema", "local_sch")
-            .put("ctx/id_namespace", "local_ns")
-            .put("ctx/provider_name", "Pippa Smith")
-            .put("ctx/provider_id", "197")
-            .put("ctx/participation_name", "Edna Smith")
-            .put("ctx/participation_function", "performer")
-            .put("ctx/participation_mode", "face-to-face communication")
-            .put("ctx/participation_id", "199")
-            .put("ctx/participation_name:1", "Testing Doctor")
-            .put("ctx/participation_function:1", "executor")
-            .put("ctx/participation_mode:1", "interpreted audio-only")
-            .put("ctx/participation_id:1", "198")
-            .build()
+        val flatMap: Map<String, String> = mapOf(
+            "vitals/vitals/haemoglobin_a1c/any_event/hba1c" to "5,1",
+            "vitals/vitals/haemoglobin_a1c/datetime_result_issued" to LocalDateTime.of(2012, 1, 20, 19, 30).toString(),
+            "vitals/vitals/body_temperature/any_event/time" to LocalDateTime.of(2012, 1, 1, 0, 0).toString(),
+            "vitals/vitals/body_temperature/site_of_measurement" to "at0022",
+            "vitals/vitals/body_temperature/any_event/temperature|magnitude" to "38,1",
+            "vitals/vitals/body_temperature/any_event/temperature|unit" to "°C",
+            "vitals/vitals/body_temperature:1/any_event/temperature|magnitude" to "39,1",
+            "vitals/vitals/body_temperature:1/any_event/temperature|unit" to "°C",
+            "ctx/time" to contextStartTime.toString(),
+            "ctx/category" to "event",
+            "ctx/setting" to "dental care",
+            "ctx/id_schema" to "local_sch",
+            "ctx/id_namespace" to "local_ns",
+            "ctx/provider_name" to "Pippa Smith",
+            "ctx/provider_id" to "197",
+            "ctx/participation_name" to "Edna Smith",
+            "ctx/participation_function" to "performer",
+            "ctx/participation_mode" to "face-to-face communication",
+            "ctx/participation_id" to "199",
+            "ctx/participation_name:1" to "Testing Doctor",
+            "ctx/participation_function:1" to "executor",
+            "ctx/participation_mode:1" to "interpreted audio-only",
+            "ctx/participation_id:1" to "198"
+        )
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(flatMap, context)
         composition!!.archetypeDetails!!.templateId = template.templateId
@@ -182,27 +180,27 @@ class ClinicalTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withLanguage("en").withTerritory("IE").withComposerName("composer").build()
 
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en"))
-        val values: Map<String, String> = ImmutableMap.builder<String, String>()
-            .put("vitals/vitals/haemoglobin_a1c/datetime_result_issued", LocalDateTime.of(2012, 2, 1, 8, 7).toString())
-            .put("vitals/vitals/haemoglobin_a1c/receiver_order_identifier", "rec")
-            .put("vitals/vitals/haemoglobin_a1c/any_event/test_status", "at0038")
-            .put("vitals/vitals/haemoglobin_a1c/any_event/hba1c", "3.2")
-            .put("vitals/vitals/haemoglobin_a1c/any_event/overall_interpretation", "overall interp")
-            .put("vitals/vitals/haemoglobin_a1c/any_event/diagnostic_service", "diag")
-            .put("vitals/vitals/haemoglobin_a1c/laboratory_test_result_identifier", "lab")
-            .put("vitals/vitals/haemoglobin_a1c/any_event/test_name", "test name")
-            .put("vitals/vitals/haemoglobin_a1c/requestor_order_identifier", "req")
-            .put("ctx/participation_mode:0", "face-to-face communication")
-            .put("ctx/territory", "IE")
-            .put("ctx/category", "event")
-            .put("ctx/action_ism_transition_current_state", "initial")
-            .put("ctx/id_schema", "local")
-            .put("ctx/action_time", "now")
-            .put("ctx/time", "now")
-            .put("ctx/setting", "other care")
-            .put("ctx/language", "en")
-            .put("ctx/id_namespace", "local")
-            .build()
+        val values: Map<String, String> = mapOf(
+            "vitals/vitals/haemoglobin_a1c/datetime_result_issued" to LocalDateTime.of(2012, 2, 1, 8, 7).toString(),
+            "vitals/vitals/haemoglobin_a1c/receiver_order_identifier" to "rec",
+            "vitals/vitals/haemoglobin_a1c/any_event/test_status" to "at0038",
+            "vitals/vitals/haemoglobin_a1c/any_event/hba1c" to "3.2",
+            "vitals/vitals/haemoglobin_a1c/any_event/overall_interpretation" to "overall interp",
+            "vitals/vitals/haemoglobin_a1c/any_event/diagnostic_service" to "diag",
+            "vitals/vitals/haemoglobin_a1c/laboratory_test_result_identifier" to "lab",
+            "vitals/vitals/haemoglobin_a1c/any_event/test_name" to "test name",
+            "vitals/vitals/haemoglobin_a1c/requestor_order_identifier" to "req",
+            "ctx/participation_mode:0" to "face-to-face communication",
+            "ctx/territory" to "IE",
+            "ctx/category" to "event",
+            "ctx/action_ism_transition_current_state" to "initial",
+            "ctx/id_schema" to "local",
+            "ctx/action_time" to "now",
+            "ctx/time" to "now",
+            "ctx/setting" to "other care",
+            "ctx/language" to "en",
+            "ctx/id_namespace" to "local"
+        )
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(values, context)
         composition!!.archetypeDetails!!.templateId = template.templateId
@@ -220,9 +218,10 @@ class ClinicalTest : AbstractWebTemplateTest() {
         assertThat(flatMap).contains(
             entry("vitals/vitals/haemoglobin_a1c:0/any_event:0/hba1c", 0.032f),
             entry("vitals/vitals/haemoglobin_a1c:0/any_event:0/hba1c|numerator", 3.2f),
-            entry("vitals/vitals/haemoglobin_a1c:0/any_event:0/hba1c|denominator", 100.0f))
+            entry("vitals/vitals/haemoglobin_a1c:0/any_event:0/hba1c|denominator", 100.0f)
+        )
 
-        val retrieveFormatted: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition, FromRawConversion.create(Locale("ru")))
+        val retrieveFormatted: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition, FromRawConversion.create(Locale.of("ru")))
         assertThat(retrieveFormatted).contains(entry("vitals/vitals/haemoglobin_a1c:0/any_event:0/hba1c", "3,2%"))
 
 
@@ -231,8 +230,6 @@ class ClinicalTest : AbstractWebTemplateTest() {
         assertThat(proportion.has("")).isFalse
         assertThat(proportion.has("|value")).isTrue
         assertThat(proportion.get("|value").floatValue()).isEqualTo(0.032f)
-
-
     }
 
     @Test
@@ -244,15 +241,15 @@ class ClinicalTest : AbstractWebTemplateTest() {
             .withLanguage("en")
             .withTerritory("IE")
             .withComposerName("composer")
-            .withLocale(Locale("en", "IE"))
+            .withLocale(Locale.of("en", "IE"))
             .build()
 
-        val values: Map<String, String> = ImmutableMap.builder<String, String>()
-            .put("vitals/vitals/body_temperature/any_event/temperature|magnitude", "39")
-            .put("vitals/vitals/body_temperature/any_event/temperature|unit", "°C")
-            .put("vitals/vitals/body_temperature/any_event/symptoms|at0.65", "on")
-            .put("vitals/vitals/body_temperature/any_event/symptoms|at0.64", "on")
-            .build()
+        val values: Map<String, String> = mapOf(
+            "vitals/vitals/body_temperature/any_event/temperature|magnitude" to "39",
+            "vitals/vitals/body_temperature/any_event/temperature|unit" to "°C",
+            "vitals/vitals/body_temperature/any_event/symptoms|at0.65" to "on",
+            "vitals/vitals/body_temperature/any_event/symptoms|at0.64" to "on"
+        )
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(values, context)
         composition!!.archetypeDetails!!.templateId = template.templateId
@@ -272,14 +269,16 @@ class ClinicalTest : AbstractWebTemplateTest() {
             entry("vitals/vitals/body_temperature:0/any_event:0/temperature|magnitude", "39"),
             entry("vitals/vitals/body_temperature:0/any_event:0/temperature|unit", "°C"),
             entry("vitals/vitals/body_temperature:0/any_event:0/symptoms:0|code", "at0.65"),
-            entry("vitals/vitals/body_temperature:0/any_event:0/symptoms:1|code", "at0.64"))
+            entry("vitals/vitals/body_temperature:0/any_event:0/symptoms:1|code", "at0.64")
+        )
 
         val flatMap: Map<String, Any?> = webTemplate.convertFromRawToFlat(composition, FromRawConversion.create())
         assertThat(flatMap).contains(
             entry("vitals/vitals/body_temperature:0/any_event:0/temperature|magnitude", 39.0),
             entry("vitals/vitals/body_temperature:0/any_event:0/temperature|unit", "°C"),
             entry("vitals/vitals/body_temperature:0/any_event:0/symptoms:0|code", "at0.65"),
-            entry("vitals/vitals/body_temperature:0/any_event:0/symptoms:1|code", "at0.64"))
+            entry("vitals/vitals/body_temperature:0/any_event:0/symptoms:1|code", "at0.64")
+        )
     }
 
     @Test
@@ -290,15 +289,15 @@ class ClinicalTest : AbstractWebTemplateTest() {
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en"))
 
         val contextStartDateTime = LocalDateTime.of(2012, 2, 1, 0, 1)
-        val values: Map<String, String> = ImmutableMap.builder<String, String>()
-            .put("ctx/time", contextStartDateTime.toString())
-            .put("ctx/category", "persistent")
-            .put("ctx/history_origin", contextStartDateTime.toString())
-            .put("perinatal_history/perinatal_history/apgar_score/a1_minute/total", "3")
-            .put("perinatal_history/perinatal_history/apgar_score/a10_minute/total", "5")
-            .put("perinatal_history/perinatal_history/maternal_pregnancy/labour_or_delivery/duration_of_labour|day", "1")
-            .put("perinatal_history/perinatal_history/maternal_pregnancy/labour_or_delivery/duration_of_labour|hour", "2")
-            .build()
+        val values: Map<String, String> = mapOf(
+            "ctx/time" to contextStartDateTime.toString(),
+            "ctx/category" to "persistent",
+            "ctx/history_origin" to contextStartDateTime.toString(),
+            "perinatal_history/perinatal_history/apgar_score/a1_minute/total" to "3",
+            "perinatal_history/perinatal_history/apgar_score/a10_minute/total" to "5",
+            "perinatal_history/perinatal_history/maternal_pregnancy/labour_or_delivery/duration_of_labour|day" to "1",
+            "perinatal_history/perinatal_history/maternal_pregnancy/labour_or_delivery/duration_of_labour|hour" to "2"
+        )
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(values, context)
         composition!!.archetypeDetails!!.templateId = template.templateId
@@ -331,13 +330,15 @@ class ClinicalTest : AbstractWebTemplateTest() {
             entry("perinatal_history/perinatal_history/apgar_score:0/a1_minute/total", "3"),
             entry("perinatal_history/perinatal_history/apgar_score:0/a10_minute/total", "5"),
             entry("perinatal_history/perinatal_history/maternal_pregnancy:0/labour_or_delivery:0/duration_of_labour|day", "1"),
-            entry("perinatal_history/perinatal_history/maternal_pregnancy:0/labour_or_delivery:0/duration_of_labour|hour", "2"))
+            entry("perinatal_history/perinatal_history/maternal_pregnancy:0/labour_or_delivery:0/duration_of_labour|hour", "2")
+        )
 
         val flatMap: Map<String, Any?> = webTemplate.convertFromRawToFlat(composition, FromRawConversion.create())
         assertThat(flatMap).contains(
             entry("perinatal_history/perinatal_history/apgar_score:0/a1_minute/total", 3L),
             entry("perinatal_history/perinatal_history/apgar_score:0/a10_minute/total", 5L),
-            entry("perinatal_history/perinatal_history/maternal_pregnancy:0/labour_or_delivery:0/duration_of_labour", Period(0, 0, 0, 1, 2, 0, 0, 0)))
+            entry("perinatal_history/perinatal_history/maternal_pregnancy:0/labour_or_delivery:0/duration_of_labour", Period(0, 0, 0, 1, 2, 0, 0, 0))
+        )
     }
 
     @Test
@@ -346,22 +347,22 @@ class ClinicalTest : AbstractWebTemplateTest() {
         val template = getTemplate("/convert/templates/MED - Perinatal history Summary.opt")
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en"))
-        val values: Map<String, String> = ImmutableMap.builder<String, String>()
-            .put("perinatal_history/perinatal_history/maternal_pregnancy/maternal_age|year", "33")
-            .put("perinatal_history/perinatal_history/maternal_pregnancy/significant_family_history/family_issue", "at0461")
-            .put("perinatal_history/perinatal_history/maternal_pregnancy/number_of_previous_pregnancies", "2")
-            .put("perinatal_history/perinatal_history/maternal_pregnancy/gynaecological_history/gynaecological_issue", "at0469")
-            .put("ctx/participation_mode:0", "face-to-face communication")
-            .put("ctx/category", "persistent")
-            .put("ctx/action_ism_transition_current_state", "initial")
-            .put("ctx/id_schema", "local")
-            .put("ctx/action_time", "now")
-            .put("ctx/time", "now")
-            .put("ctx/setting", "other care")
-            .put("ctx/territory", "IE")
-            .put("ctx/language", "en")
-            .put("ctx/id_namespace", "local")
-            .build()
+        val values: Map<String, String> = mapOf(
+            "perinatal_history/perinatal_history/maternal_pregnancy/maternal_age|year" to "33",
+            "perinatal_history/perinatal_history/maternal_pregnancy/significant_family_history/family_issue" to "at0461",
+            "perinatal_history/perinatal_history/maternal_pregnancy/number_of_previous_pregnancies" to "2",
+            "perinatal_history/perinatal_history/maternal_pregnancy/gynaecological_history/gynaecological_issue" to "at0469",
+            "ctx/participation_mode:0" to "face-to-face communication",
+            "ctx/category" to "persistent",
+            "ctx/action_ism_transition_current_state" to "initial",
+            "ctx/id_schema" to "local",
+            "ctx/action_time" to "now",
+            "ctx/time" to "now",
+            "ctx/setting" to "other care",
+            "ctx/territory" to "IE",
+            "ctx/language" to "en",
+            "ctx/id_namespace" to "local"
+        )
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(values, context)
         composition!!.archetypeDetails!!.templateId = template.templateId
@@ -380,10 +381,10 @@ class ClinicalTest : AbstractWebTemplateTest() {
         val template = getTemplate("/convert/templates/MSE - Initial Medication Safety Report.opt")
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("sl"))
-        val values: Map<String, String> = ImmutableMap.builder<String, String>()
-            .put("initial_medication_safety_report/medication_safety_event/adverse_effect/reaction|code", "ac001")
-            .put("initial_medication_safety_report/medication_safety_event/adverse_effect/reaction|value", "Value")
-            .build()
+        val values: Map<String, String> = mapOf(
+            "initial_medication_safety_report/medication_safety_event/adverse_effect/reaction|code" to "ac001",
+            "initial_medication_safety_report/medication_safety_event/adverse_effect/reaction|value" to "Value"
+        )
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(values, context)
         composition!!.archetypeDetails!!.templateId = template.templateId
@@ -402,7 +403,8 @@ class ClinicalTest : AbstractWebTemplateTest() {
         val map: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition, FromRawConversion.create(context.locale!!))
         assertThat(map).contains(
             entry("initial_medication_safety_report/medication_safety_event:0/adverse_effect:0/reaction|code", "ac001"),
-            entry("initial_medication_safety_report/medication_safety_event:0/adverse_effect:0/reaction|value", "Value"))
+            entry("initial_medication_safety_report/medication_safety_event:0/adverse_effect:0/reaction|value", "Value")
+        )
     }
 
     @Test
@@ -411,11 +413,11 @@ class ClinicalTest : AbstractWebTemplateTest() {
         val template = getTemplate("/convert/templates/MED - Document.opt")
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("sl"))
-        val values: Map<String, Any> = ImmutableMap.builder<String, Any>()
-            .put("medical_document/document/date_last_reviewed", "2012-12-01T10:17:00.000+01:00")
-            .put("medical_document/document/content", "Hello world!")
-            .put("medical_document/document/status", "at0007")
-            .build()
+        val values: Map<String, Any> = mapOf(
+            "medical_document/document/date_last_reviewed" to "2012-12-01T10:17:00.000+01:00",
+            "medical_document/document/content" to "Hello world!",
+            "medical_document/document/status" to "at0007"
+        )
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(values, context)
         assertThat(composition).isNotNull
@@ -426,7 +428,7 @@ class ClinicalTest : AbstractWebTemplateTest() {
     fun testVitalsFixedValues() {
         val templateName = "/convert/templates/ZN - Vital Functions Encounter.opt"
         val template = getTemplate(templateName)
-        buildAndExport(templateName, "vitals-noncompact", "sl", ImmutableSet.of("sl", "en"))
+        buildAndExport(templateName, "vitals-noncompact", "sl", setOf("sl", "en"))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val builderContext = WebTemplateBuilderContext("en")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, builderContext)
@@ -435,32 +437,32 @@ class ClinicalTest : AbstractWebTemplateTest() {
         assertThat(node.dependsOn).isNotNull
         assertThat(node.dependsOn).isNotEmpty
 
-        val values: Map<String, Any> = ImmutableMap.builder<String, Any>()
-            .put("vital_functions/eye_assessment/eye_examination/pupils/left_side/estimated_size", "at0024")
-            .put("vital_functions/eye_assessment/eye_examination/pupils/left_side/pupil_size|unit", "mm")
-            .put("vital_functions/eye_assessment/eye_examination/pupils/right_side/estimated_size", "at0024")
-            .put("vital_functions/eye_assessment/eye_examination/pupils/right_side/measured_size|unit", "mm")
-            .put("vital_functions/glasgow_coma_scale/glasgow_coma_scale/best_eye_response_e", "at0013")
-            .put("vital_functions/glasgow_coma_scale/glasgow_coma_scale/best_motor_response_m", "at0019")
-            .put("vital_functions/glasgow_coma_scale/glasgow_coma_scale/best_verbal_response_-_adult_v", "at0014")
-            .put("vital_functions/glasgow_coma_scale/glasgow_coma_scale/best_verbal_response_-_child_v", "at0.50")
-            .put("vital_functions/glasgow_coma_scale/glasgow_coma_scale/best_verbal_response_-_infant_v", "at0.55")
-            .put("vital_functions/respiratory_assessment/indirect_oximetry/spo2|denominator", "100")
-            .put("vital_functions/respiratory_assessment/respirations/any_event/rate|unit", "/min")
-            .put("vital_functions/respiratory_assessment/respiratory_examination/body_position_exercise", "at0060")
-            .put("vital_functions/vital_signs/blood_pressure/any_event/diastolic|unit", "mm[Hg]")
-            .put("vital_functions/vital_signs/blood_pressure/any_event/systolic|unit", "mm[Hg]")
-            .put("vital_functions/vital_signs/body_mass_index:0/any_event:0/body_mass_index|unit", "kg/m2")
-            .put("vital_functions/vital_signs/body_temperature:0/any_event:0/body_temperature|magnitude", "37")
-            .put("vital_functions/vital_signs/body_temperature:0/any_event:0/body_temperature|unit", "°C")
-            .put("vital_functions/vital_signs/body_temperature:0/any_event:0/symptoms", "at0.65")
-            .put("vital_functions/vital_signs/body_temperature:0/location_of_measurement", "at0.60")
-            .put("vital_functions/vital_signs/body_weight:0/any_event:0/body_weight|unit", "kg")
-            .put("vital_functions/vital_signs/height_length:0/any_event:0/body_height_length|unit", "cm")
-            .put("vital_functions/vital_signs/patient_state/patient_state/body_position", "at0016")
-            .put("vital_functions/vital_signs/patient_state/patient_state/level_of_exertion:0/exercise_level", "at0008")
-            .put("vital_functions/vital_signs/pulse/any_event/heart_rate|unit", "/min")
-            .build()
+        val values: Map<String, Any> = mapOf(
+            "vital_functions/eye_assessment/eye_examination/pupils/left_side/estimated_size" to "at0024",
+            "vital_functions/eye_assessment/eye_examination/pupils/left_side/pupil_size|unit" to "mm",
+            "vital_functions/eye_assessment/eye_examination/pupils/right_side/estimated_size" to "at0024",
+            "vital_functions/eye_assessment/eye_examination/pupils/right_side/measured_size|unit" to "mm",
+            "vital_functions/glasgow_coma_scale/glasgow_coma_scale/best_eye_response_e" to "at0013",
+            "vital_functions/glasgow_coma_scale/glasgow_coma_scale/best_motor_response_m" to "at0019",
+            "vital_functions/glasgow_coma_scale/glasgow_coma_scale/best_verbal_response_-_adult_v" to "at0014",
+            "vital_functions/glasgow_coma_scale/glasgow_coma_scale/best_verbal_response_-_child_v" to "at0.50",
+            "vital_functions/glasgow_coma_scale/glasgow_coma_scale/best_verbal_response_-_infant_v" to "at0.55",
+            "vital_functions/respiratory_assessment/indirect_oximetry/spo2|denominator" to "100",
+            "vital_functions/respiratory_assessment/respirations/any_event/rate|unit" to "/min",
+            "vital_functions/respiratory_assessment/respiratory_examination/body_position_exercise" to "at0060",
+            "vital_functions/vital_signs/blood_pressure/any_event/diastolic|unit" to "mm[Hg]",
+            "vital_functions/vital_signs/blood_pressure/any_event/systolic|unit" to "mm[Hg]",
+            "vital_functions/vital_signs/body_mass_index:0/any_event:0/body_mass_index|unit" to "kg/m2",
+            "vital_functions/vital_signs/body_temperature:0/any_event:0/body_temperature|magnitude" to "37",
+            "vital_functions/vital_signs/body_temperature:0/any_event:0/body_temperature|unit" to "°C",
+            "vital_functions/vital_signs/body_temperature:0/any_event:0/symptoms" to "at0.65",
+            "vital_functions/vital_signs/body_temperature:0/location_of_measurement" to "at0.60",
+            "vital_functions/vital_signs/body_weight:0/any_event:0/body_weight|unit" to "kg",
+            "vital_functions/vital_signs/height_length:0/any_event:0/body_height_length|unit" to "cm",
+            "vital_functions/vital_signs/patient_state/patient_state/body_position" to "at0016",
+            "vital_functions/vital_signs/patient_state/patient_state/level_of_exertion:0/exercise_level" to "at0008",
+            "vital_functions/vital_signs/pulse/any_event/heart_rate|unit" to "/min"
+        )
         val composition: Composition? = webTemplate.convertFromFlatToRaw(values, context)
         assertThat(composition).isNotNull
     }
@@ -470,9 +472,10 @@ class ClinicalTest : AbstractWebTemplateTest() {
     fun testVitalsAqlPath() {
         val templateName = "/convert/templates/ZN - Vital Functions Encounter.opt"
         val template = getTemplate(templateName)
-        val builderContext = WebTemplateBuilderContext("en", ImmutableSet.of("en", "sl"))
+        val builderContext = WebTemplateBuilderContext("en", setOf("en", "sl"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, builderContext)
-        val pathSegments = PathUtils.getPathSegments("/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Vital signs']/items[openEHR-EHR-OBSERVATION.body_temperature-zn.v1,'Body temperature']/protocol[at0020,'protocol']/items[at0021.1,'Location of measurement']/value")
+        val pathSegments =
+            PathUtils.getPathSegments("/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Vital signs']/items[openEHR-EHR-OBSERVATION.body_temperature-zn.v1,'Body temperature']/protocol[at0020,'protocol']/items[at0021.1,'Location of measurement']/value")
 
         val node: WebTemplateNode = webTemplate.findWebTemplateNodeByAqlPath(pathSegments)
         assertThat(node).isNotNull
@@ -483,7 +486,7 @@ class ClinicalTest : AbstractWebTemplateTest() {
     fun testVitalsJson() {
         val templateName = "/convert/templates/ZN - Vital Functions Encounter.opt"
         val template = getTemplate(templateName)
-        buildAndExport(templateName, "vitals-noncompact", "sl", ImmutableSet.of("sl", "en"))
+        buildAndExport(templateName, "vitals-noncompact", "sl", setOf("sl", "en"))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val builderContext = WebTemplateBuilderContext("en")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, builderContext)
@@ -492,23 +495,23 @@ class ClinicalTest : AbstractWebTemplateTest() {
         assertThat(node.dependsOn).isNotNull
         assertThat(node.dependsOn).isNotEmpty
 
-        val values: Map<String, Any> = ImmutableMap.builder<String, Any>()
-            .put("vital_functions/vital_signs/blood_pressure/any_event/diastolic|magnitude", "90")
-            .put("vital_functions/vital_signs/blood_pressure/any_event/diastolic|unit", "mm[Hg]")
-            .put("vital_functions/vital_signs/blood_pressure/any_event/systolic|magnitude", "120")
-            .put("vital_functions/vital_signs/blood_pressure/any_event/systolic|unit", "mm[Hg]")
-            .put("vital_functions/vital_signs/body_mass_index:0/any_event:0/body_mass_index|unit", "kg/m2")
-            .put("vital_functions/vital_signs/body_temperature:0/any_event:0/body_temperature|magnitude", "37")
-            .put("vital_functions/vital_signs/body_temperature:0/any_event:0/body_temperature|unit", "°C")
-            .put("vital_functions/vital_signs/body_temperature:0/any_event:0/symptoms", "at0.65")
-            .put("vital_functions/vital_signs/body_temperature:0/location_of_measurement", "at0.60")
-            .put("vital_functions/vital_signs/body_weight:0/any_event:0/body_weight|magnitude", "40")
-            .put("vital_functions/vital_signs/body_weight:0/any_event:0/body_weight|unit", "kg")
-            .put("vital_functions/vital_signs/height_length:0/any_event:0/body_height_length|magnitude", "70")
-            .put("vital_functions/vital_signs/height_length:0/any_event:0/body_height_length|unit", "cm")
-            .put("vital_functions/vital_signs/pulse/any_event/heart_rate|magnitude", "130")
-            .put("vital_functions/vital_signs/pulse/any_event/heart_rate|unit", "/min")
-            .build()
+        val values: Map<String, Any> = mapOf(
+            "vital_functions/vital_signs/blood_pressure/any_event/diastolic|magnitude" to "90",
+            "vital_functions/vital_signs/blood_pressure/any_event/diastolic|unit" to "mm[Hg]",
+            "vital_functions/vital_signs/blood_pressure/any_event/systolic|magnitude" to "120",
+            "vital_functions/vital_signs/blood_pressure/any_event/systolic|unit" to "mm[Hg]",
+            "vital_functions/vital_signs/body_mass_index:0/any_event:0/body_mass_index|unit" to "kg/m2",
+            "vital_functions/vital_signs/body_temperature:0/any_event:0/body_temperature|magnitude" to "37",
+            "vital_functions/vital_signs/body_temperature:0/any_event:0/body_temperature|unit" to "°C",
+            "vital_functions/vital_signs/body_temperature:0/any_event:0/symptoms" to "at0.65",
+            "vital_functions/vital_signs/body_temperature:0/location_of_measurement" to "at0.60",
+            "vital_functions/vital_signs/body_weight:0/any_event:0/body_weight|magnitude" to "40",
+            "vital_functions/vital_signs/body_weight:0/any_event:0/body_weight|unit" to "kg",
+            "vital_functions/vital_signs/height_length:0/any_event:0/body_height_length|magnitude" to "70",
+            "vital_functions/vital_signs/height_length:0/any_event:0/body_height_length|unit" to "cm",
+            "vital_functions/vital_signs/pulse/any_event/heart_rate|magnitude" to "130",
+            "vital_functions/vital_signs/pulse/any_event/heart_rate|unit" to "/min"
+        )
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(values, context)
         assertThat(composition).isNotNull
@@ -529,53 +532,53 @@ class ClinicalTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val builderContext = WebTemplateBuilderContext("en")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, builderContext)
-        val values: Map<String, Any> = ImmutableMap.builder<String, Any>()
-            .put("simple_body_observation/context/context_detail:0/period_of_care_identifier", "76024131")
-            .put("simple_body_observation/context/setting|238", true)
-            .put("simple_body_observation/context/setting|code", "238")
-            .put("simple_body_observation/context/setting|terminology", "openehr")
-            .put("simple_body_observation/context/setting|value", "other care")
-            .put("simple_body_observation/context/start_time", "2013-10-07T17:09:35.472+02:00")
-            .put("simple_body_observation/eye_examination/additional_description:0", "BP")
-            .put("simple_body_observation/eye_examination/normal", "Normalen vid.")
-            .put("simple_body_observation/eye_examination/time", "2013-10-07T17:09:35.472+02:00")
-            .put("simple_body_observation/psychological_status/general_appearance/dizzy|at0233", true)
-            .put("simple_body_observation/psychological_status/general_appearance/dizzy|code", "at0233")
-            .put("simple_body_observation/psychological_status/general_appearance/dizzy|terminology", "local")
-            .put("simple_body_observation/psychological_status/general_appearance/dizzy|value", "Da")
-            .put("simple_body_observation/psychological_status/orientation/orientation_in_place|code", "at0013")
-            .put("simple_body_observation/psychological_status/orientation/orientation_in_place|ordinal", 2)
-            .put("simple_body_observation/psychological_status/orientation/orientation_in_place|value", "Slaba")
-            .put("simple_body_observation/psychological_status/orientation/orientation_in_time|code", "at0009")
-            .put("simple_body_observation/psychological_status/orientation/orientation_in_time|ordinal", 2)
-            .put("simple_body_observation/psychological_status/orientation/orientation_in_time|value", "Slaba")
-            .put("simple_body_observation/psychological_status/orientation/orientation_to_person|code", "at0017")
-            .put("simple_body_observation/psychological_status/orientation/orientation_to_person|ordinal", 2)
-            .put("simple_body_observation/psychological_status/orientation/orientation_to_person|value", "Slaba")
-            .put("simple_body_observation/psychological_status/psychologgical_assessment_other", "Demenca")
-            .put("simple_body_observation/psychological_status/speech/distinct", "Ni razločen.")
-            .put("simple_body_observation/psychological_status/speech/indistinct", "Momljanje idr.")
-            .put("simple_body_observation/psychological_status/speech/language|at0227", true)
-            .put("simple_body_observation/psychological_status/speech/language|code", "at0227")
-            .put("simple_body_observation/psychological_status/speech/language|terminology", "local")
-            .put("simple_body_observation/psychological_status/speech/language|value", "slovenski")
-            .put("simple_body_observation/psychological_status/thinking/confusion|at0218", true)
-            .put("simple_body_observation/psychological_status/thinking/confusion|code", "at0218")
-            .put("simple_body_observation/psychological_status/thinking/confusion|terminology", "local")
-            .put("simple_body_observation/psychological_status/thinking/confusion|value", "Ne")
-            .put("simple_body_observation/psychological_status/thinking/dementia|at0220", true)
-            .put("simple_body_observation/psychological_status/thinking/dementia|code", "at0220")
-            .put("simple_body_observation/psychological_status/thinking/dementia|terminology", "local")
-            .put("simple_body_observation/psychological_status/thinking/dementia|value", "Da")
-            .put("simple_body_observation/psychological_status/time", "2013-10-07T17:09:35.472+02:00")
-            .put("simple_body_observation/simptomi_bolečine/pain/comments", "ggg")
-            .put("simple_body_observation/simptomi_bolečine/pain/intensity/pain_scale_method|at0.0.201", true)
-            .put("simple_body_observation/simptomi_bolečine/pain/intensity/pain_scale_method|code", "at0.0.201")
-            .put("simple_body_observation/simptomi_bolečine/pain/intensity/pain_scale_method|terminology", "local")
-            .put("simple_body_observation/simptomi_bolečine/pain/intensity/pain_scale_method|value", "6 obrazov")
-            .put("simple_body_observation/simptomi_bolečine/pain/intensity/scale_score", 6)
-            .put("simple_body_observation/simptomi_bolečine/time", "2013-10-07T17:09:35.472+02:00")
-            .build()
+        val values: Map<String, Any> = mapOf(
+            "simple_body_observation/context/context_detail:0/period_of_care_identifier" to "76024131",
+            "simple_body_observation/context/setting|238" to true,
+            "simple_body_observation/context/setting|code" to "238",
+            "simple_body_observation/context/setting|terminology" to "openehr",
+            "simple_body_observation/context/setting|value" to "other care",
+            "simple_body_observation/context/start_time" to "2013-10-07T17:09:35.472+02:00",
+            "simple_body_observation/eye_examination/additional_description:0" to "BP",
+            "simple_body_observation/eye_examination/normal" to "Normalen vid.",
+            "simple_body_observation/eye_examination/time" to "2013-10-07T17:09:35.472+02:00",
+            "simple_body_observation/psychological_status/general_appearance/dizzy|at0233" to true,
+            "simple_body_observation/psychological_status/general_appearance/dizzy|code" to "at0233",
+            "simple_body_observation/psychological_status/general_appearance/dizzy|terminology" to "local",
+            "simple_body_observation/psychological_status/general_appearance/dizzy|value" to "Da",
+            "simple_body_observation/psychological_status/orientation/orientation_in_place|code" to "at0013",
+            "simple_body_observation/psychological_status/orientation/orientation_in_place|ordinal" to 2,
+            "simple_body_observation/psychological_status/orientation/orientation_in_place|value" to "Slaba",
+            "simple_body_observation/psychological_status/orientation/orientation_in_time|code" to "at0009",
+            "simple_body_observation/psychological_status/orientation/orientation_in_time|ordinal" to 2,
+            "simple_body_observation/psychological_status/orientation/orientation_in_time|value" to "Slaba",
+            "simple_body_observation/psychological_status/orientation/orientation_to_person|code" to "at0017",
+            "simple_body_observation/psychological_status/orientation/orientation_to_person|ordinal" to 2,
+            "simple_body_observation/psychological_status/orientation/orientation_to_person|value" to "Slaba",
+            "simple_body_observation/psychological_status/psychologgical_assessment_other" to "Demenca",
+            "simple_body_observation/psychological_status/speech/distinct" to "Ni razločen.",
+            "simple_body_observation/psychological_status/speech/indistinct" to "Momljanje idr.",
+            "simple_body_observation/psychological_status/speech/language|at0227" to true,
+            "simple_body_observation/psychological_status/speech/language|code" to "at0227",
+            "simple_body_observation/psychological_status/speech/language|terminology" to "local",
+            "simple_body_observation/psychological_status/speech/language|value" to "slovenski",
+            "simple_body_observation/psychological_status/thinking/confusion|at0218" to true,
+            "simple_body_observation/psychological_status/thinking/confusion|code" to "at0218",
+            "simple_body_observation/psychological_status/thinking/confusion|terminology" to "local",
+            "simple_body_observation/psychological_status/thinking/confusion|value" to "Ne",
+            "simple_body_observation/psychological_status/thinking/dementia|at0220" to true,
+            "simple_body_observation/psychological_status/thinking/dementia|code" to "at0220",
+            "simple_body_observation/psychological_status/thinking/dementia|terminology" to "local",
+            "simple_body_observation/psychological_status/thinking/dementia|value" to "Da",
+            "simple_body_observation/psychological_status/time" to "2013-10-07T17:09:35.472+02:00",
+            "simple_body_observation/simptomi_bolečine/pain/comments" to "ggg",
+            "simple_body_observation/simptomi_bolečine/pain/intensity/pain_scale_method|at0.0.201" to true,
+            "simple_body_observation/simptomi_bolečine/pain/intensity/pain_scale_method|code" to "at0.0.201",
+            "simple_body_observation/simptomi_bolečine/pain/intensity/pain_scale_method|terminology" to "local",
+            "simple_body_observation/simptomi_bolečine/pain/intensity/pain_scale_method|value" to "6 obrazov",
+            "simple_body_observation/simptomi_bolečine/pain/intensity/scale_score" to 6,
+            "simple_body_observation/simptomi_bolečine/time" to "2013-10-07T17:09:35.472+02:00"
+        )
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(values, context)
         assertThat(composition).isNotNull
@@ -633,15 +636,18 @@ class ClinicalTest : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("en")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, builderContext)
 
-        val composition: Composition? = webTemplate.convertFromStructuredToRaw(getObjectMapper().readValue(getJson("/convert/compositions/careplan_activities.json"), ObjectNode::class.java), context)
+        val composition: Composition? =
+            webTemplate.convertFromStructuredToRaw(getObjectMapper().readValue(getJson("/convert/compositions/careplan_activities.json"), ObjectNode::class.java), context)
         assertThat(composition).isNotNull
 
         val jsonNode: JsonNode? = webTemplate.convertFromRawToStructured(composition!!, FromRawConversion.create())
-        assertThat(jsonNode!!.path("discharge_activity_plan_encounter")
+        assertThat(
+            jsonNode!!.path("discharge_activity_plan_encounter")
                 .path("discharge_activity_plan").path(0)
                 .path("healthcare_service_request").path(4)
                 .path("request").path(0)
                 .path("discharge_intervention_service_requested").path(0)
-                .path("|code").asText()).isEqualTo("100.05")
+                .path("|code").asText()
+        ).isEqualTo("100.05")
     }
 }

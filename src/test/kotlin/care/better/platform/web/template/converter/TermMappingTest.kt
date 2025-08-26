@@ -22,7 +22,6 @@ import care.better.platform.web.template.converter.exceptions.ConversionExceptio
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import com.google.common.collect.ImmutableList
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
@@ -47,7 +46,7 @@ class TermMappingTest : AbstractWebTemplateTest() {
 
     private val webTemplate = WebTemplateBuilder.buildNonNull(
             getTemplate("/convert/templates/older/Demo Vitals.xml"),
-            WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+            WebTemplateBuilderContext("en", listOf("en", "sl")))
 
     @Test
     @Throws(JAXBException::class, IOException::class)

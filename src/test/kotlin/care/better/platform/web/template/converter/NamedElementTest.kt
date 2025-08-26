@@ -21,7 +21,6 @@ import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.core.type.TypeReference
-import com.google.common.collect.ImmutableList
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
@@ -39,7 +38,7 @@ class NamedElementTest : AbstractWebTemplateTest() {
     fun testCustomNames() {
         val compositionFlatMap: Map<String, Any?> = getObjectMapper().readValue(getJson("/convert/compositions/IDCR_-_Laboratory_Test_Report(NamedElement-1).json"), object : TypeReference<Map<String, Any?>>() {})
 
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/IDCR_-_Laboratory_Test_Report.v0.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(compositionFlatMap, ConversionContext.create().build())
 
@@ -63,7 +62,7 @@ class NamedElementTest : AbstractWebTemplateTest() {
     fun testCustomNamesAsDvText() {
         val compositionFlatMap: Map<String, Any?> = getObjectMapper().readValue(getJson("/convert/compositions/IDCR_-_Laboratory_Test_Report(NamedElement-2).json"), object : TypeReference<Map<String, Any?>>() {})
 
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/IDCR_-_Laboratory_Test_Report.v0.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(compositionFlatMap, ConversionContext.create().build())
 
@@ -84,7 +83,7 @@ class NamedElementTest : AbstractWebTemplateTest() {
     fun testRegularNames() {
         val compositionFlatMap: Map<String, Any?> = getObjectMapper().readValue(getJson("/convert/compositions/IDCR_-_Laboratory_Test_Report(NamedElement-3).json"), object : TypeReference<Map<String, Any?>>() {})
 
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/IDCR_-_Laboratory_Test_Report.v0.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(compositionFlatMap, ConversionContext.create().build())
 

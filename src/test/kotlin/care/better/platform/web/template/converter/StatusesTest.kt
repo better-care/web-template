@@ -19,7 +19,6 @@ import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import com.google.common.collect.ImmutableMap
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
@@ -39,15 +38,15 @@ class StatusesTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testOrdinal() {
         val webTemplate: WebTemplate = getWebTemplate("/convert/templates/test_statuses.opt")
-        val firstFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/ordinal", "1")
-                .put("test_statuses/test_statuses:0/ordinal|normal_status", "L")
-                .build()
+        val firstFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/ordinal" to "1",
+            "test_statuses/test_statuses:0/ordinal|normal_status" to "L"
+        )
 
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(firstFlatComposition, ConversionContext.create().build())
         assertThat(firstComposition).isNotNull
@@ -56,14 +55,14 @@ class StatusesTest : AbstractWebTemplateTest() {
         val firstFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(firstComposition, FromRawConversion.create())
         assertThat(firstFlatMap).contains(entry("test_statuses/test_statuses:0/ordinal|normal_status", "L"))
 
-        val secondFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/ordinal", "1")
-                .build()
+        val secondFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/ordinal" to "1"
+        )
 
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(secondFlatComposition, ConversionContext.create().build())
         assertThat(secondComposition).isNotNull
@@ -77,15 +76,15 @@ class StatusesTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testOrdinalN() {
         val webTemplate = getWebTemplate("/convert/templates/test_statuses.opt")
-        val firstFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/ordinal", "1")
-                .put("test_statuses/test_statuses:0/ordinal|normal_status", "N")
-                .build()
+        val firstFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/ordinal" to "1",
+            "test_statuses/test_statuses:0/ordinal|normal_status" to "N"
+        )
 
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(firstFlatComposition, ConversionContext.create().build())
         assertThat(firstComposition).isNotNull
@@ -94,14 +93,14 @@ class StatusesTest : AbstractWebTemplateTest() {
         val firstFlatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(firstComposition, FromRawConversion.create())
         assertThat(firstFlatMap).contains(entry("test_statuses/test_statuses:0/ordinal|normal_status", "N"))
 
-        val secondFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/ordinal", "1")
-                .build()
+        val secondFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/ordinal" to "1"
+        )
 
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(secondFlatComposition, ConversionContext.create().build())
         assertThat(secondComposition).isNotNull
@@ -115,35 +114,35 @@ class StatusesTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testOrdinalInvalid() {
         val webTemplate = getWebTemplate("/convert/templates/test_statuses.opt")
-        val flatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/ordinal", "1")
-                .put("test_statuses/test_statuses:0/ordinal|normal_status", "X")
-                .build()
+        val flatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/ordinal" to "1",
+            "test_statuses/test_statuses:0/ordinal|normal_status" to "X"
+        )
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(flatComposition, ConversionContext.create().build()) }
-                .isInstanceOf(ConversionException::class.java)
-                .hasMessageContaining("Invalid NORMAL_STATUS code: X")
+            .isInstanceOf(ConversionException::class.java)
+            .hasMessageContaining("Invalid NORMAL_STATUS code: X")
     }
 
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testDuration() {
         val webTemplate = getWebTemplate("/convert/templates/test_statuses.opt")
-        val firstFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/duration", "P1Y")
-                .put("test_statuses/test_statuses:0/duration|normal_status", "L")
-                .put("test_statuses/test_statuses:0/duration|magnitude_status", ">=")
-                .build()
+        val firstFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/duration" to "P1Y",
+            "test_statuses/test_statuses:0/duration|normal_status" to "L",
+            "test_statuses/test_statuses:0/duration|magnitude_status" to ">="
+        )
 
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(firstFlatComposition, ConversionContext.create().build())
         assertThat(firstComposition).isNotNull
@@ -155,14 +154,14 @@ class StatusesTest : AbstractWebTemplateTest() {
         assertThat(firstFlatMap).contains(entry("test_statuses/test_statuses:0/duration|normal_status", "L"))
         assertThat(firstFlatMap).contains(entry("test_statuses/test_statuses:0/duration|magnitude_status", ">="))
 
-        val secondFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/duration", "P1M")
-                .build()
+        val secondFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/duration" to "P1M"
+        )
 
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(secondFlatComposition, ConversionContext.create().build())
         assertThat(secondComposition).isNotNull
@@ -179,50 +178,50 @@ class StatusesTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testDurationInvalid() {
         val webTemplate = getWebTemplate("/convert/templates/test_statuses.opt")
-        val firstFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/duration", "P1Y")
-                .put("test_statuses/test_statuses:0/duration|normal_status", "X")
-                .build()
+        val firstFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/duration" to "P1Y",
+            "test_statuses/test_statuses:0/duration|normal_status" to "X"
+        )
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(firstFlatComposition, ConversionContext.create().build()) }
-                .isInstanceOf(ConversionException::class.java)
-                .hasMessageContaining("Invalid NORMAL_STATUS code: X")
+            .isInstanceOf(ConversionException::class.java)
+            .hasMessageContaining("Invalid NORMAL_STATUS code: X")
 
-        val secondFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/duration", "P1Y")
-                .put("test_statuses/test_statuses:0/duration|magnitude_status", "!")
-                .build()
+        val secondFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/duration" to "P1Y",
+            "test_statuses/test_statuses:0/duration|magnitude_status" to "!"
+        )
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(secondFlatComposition, ConversionContext.create().build()) }
-                .isInstanceOf(ConversionException::class.java)
-                .hasMessageContaining("Invalid MAGNITUDE_STATUS: !")
+            .isInstanceOf(ConversionException::class.java)
+            .hasMessageContaining("Invalid MAGNITUDE_STATUS: !")
     }
 
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testQuantity() {
         val webTemplate = getWebTemplate("/convert/templates/test_statuses.opt")
-        val firstFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/quantity|unit", "m")
-                .put("test_statuses/test_statuses:0/quantity|magnitude", "1")
-                .put("test_statuses/test_statuses:0/quantity|normal_status", "L")
-                .put("test_statuses/test_statuses:0/quantity|magnitude_status", ">=")
-                .build()
+        val firstFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/quantity|unit" to "m",
+            "test_statuses/test_statuses:0/quantity|magnitude" to "1",
+            "test_statuses/test_statuses:0/quantity|normal_status" to "L",
+            "test_statuses/test_statuses:0/quantity|magnitude_status" to ">="
+        )
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(firstFlatComposition, ConversionContext.create().build())
         assertThat(firstComposition).isNotNull
         val firstQuantity = getDataValue<DvQuantity>(firstComposition!!)
@@ -233,15 +232,15 @@ class StatusesTest : AbstractWebTemplateTest() {
         assertThat(firstFlatMap).contains(entry("test_statuses/test_statuses:0/quantity|normal_status", "L"))
         assertThat(firstFlatMap).contains(entry("test_statuses/test_statuses:0/quantity|magnitude_status", ">="))
 
-        val secondFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/quantity|unit", "m")
-                .put("test_statuses/test_statuses:0/quantity|magnitude", "1")
-                .build()
+        val secondFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/quantity|unit" to "m",
+            "test_statuses/test_statuses:0/quantity|magnitude" to "1"
+        )
 
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(secondFlatComposition, ConversionContext.create().build())
         assertThat(secondComposition).isNotNull
@@ -258,51 +257,51 @@ class StatusesTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testQuantityInvalid() {
         val webTemplate = getWebTemplate("/convert/templates/test_statuses.opt")
-        val firstFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/quantity|unit", "m")
-                .put("test_statuses/test_statuses:0/quantity|magnitude", "1")
-                .put("test_statuses/test_statuses:0/quantity|normal_status", "X")
-                .build()
+        val firstFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/quantity|unit" to "m",
+            "test_statuses/test_statuses:0/quantity|magnitude" to "1",
+            "test_statuses/test_statuses:0/quantity|normal_status" to "X"
+        )
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(firstFlatComposition, ConversionContext.create().build()) }
-                .isInstanceOf(ConversionException::class.java)
-                .hasMessageContaining("Invalid NORMAL_STATUS code: X")
+            .isInstanceOf(ConversionException::class.java)
+            .hasMessageContaining("Invalid NORMAL_STATUS code: X")
 
-        val secondFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/quantity|unit", "m")
-                .put("test_statuses/test_statuses:0/quantity|magnitude", "1")
-                .put("test_statuses/test_statuses:0/quantity|magnitude_status", "!")
-                .build()
+        val secondFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/quantity|unit" to "m",
+            "test_statuses/test_statuses:0/quantity|magnitude" to "1",
+            "test_statuses/test_statuses:0/quantity|magnitude_status" to "!"
+        )
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(secondFlatComposition, ConversionContext.create().build()) }
-                .isInstanceOf(ConversionException::class.java)
-                .hasMessageContaining("Invalid MAGNITUDE_STATUS: !")
+            .isInstanceOf(ConversionException::class.java)
+            .hasMessageContaining("Invalid MAGNITUDE_STATUS: !")
     }
 
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testDate() {
         val webTemplate = getWebTemplate("/convert/templates/test_statuses.opt")
-        val firstFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/date", "2017-10-01")
-                .put("test_statuses/test_statuses:0/date|normal_status", "L")
-                .put("test_statuses/test_statuses:0/date|magnitude_status", ">=")
-                .build()
+        val firstFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/date" to "2017-10-01",
+            "test_statuses/test_statuses:0/date|normal_status" to "L",
+            "test_statuses/test_statuses:0/date|magnitude_status" to ">="
+        )
 
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(firstFlatComposition, ConversionContext.create().build())
         assertThat(firstComposition).isNotNull
@@ -314,14 +313,14 @@ class StatusesTest : AbstractWebTemplateTest() {
         assertThat(firstFlatMap).contains(entry("test_statuses/test_statuses:0/date|normal_status", "L"))
         assertThat(firstFlatMap).contains(entry("test_statuses/test_statuses:0/date|magnitude_status", ">="))
 
-        val secondFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/date", "2017-10-01")
-                .build()
+        val secondFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/date" to "2017-10-01"
+        )
 
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(secondFlatComposition, ConversionContext.create().build())
         assertThat(secondComposition).isNotNull
@@ -338,49 +337,49 @@ class StatusesTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testDateInvalid() {
         val webTemplate = getWebTemplate("/convert/templates/test_statuses.opt")
-        val firstFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/date", "2017-10-01")
-                .put("test_statuses/test_statuses:0/date|normal_status", "X")
-                .build()
+        val firstFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/date" to "2017-10-01",
+            "test_statuses/test_statuses:0/date|normal_status" to "X"
+        )
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(firstFlatComposition, ConversionContext.create().build()) }
-                .isInstanceOf(ConversionException::class.java)
-                .hasMessageContaining("Invalid NORMAL_STATUS code: X")
+            .isInstanceOf(ConversionException::class.java)
+            .hasMessageContaining("Invalid NORMAL_STATUS code: X")
 
-        val secondFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/date", "2017-10-01")
-                .put("test_statuses/test_statuses:0/quantity|magnitude_status", "!")
-                .build()
+        val secondFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/date" to "2017-10-01",
+            "test_statuses/test_statuses:0/quantity|magnitude_status" to "!"
+        )
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(secondFlatComposition, ConversionContext.create().build()) }
-                .isInstanceOf(ConversionException::class.java)
-                .hasMessageContaining("Invalid MAGNITUDE_STATUS: !")
+            .isInstanceOf(ConversionException::class.java)
+            .hasMessageContaining("Invalid MAGNITUDE_STATUS: !")
     }
 
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testTime() {
         val webTemplate = getWebTemplate("/convert/templates/test_statuses.opt")
-        val firstFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/time", "13:20")
-                .put("test_statuses/test_statuses:0/time|normal_status", "L")
-                .put("test_statuses/test_statuses:0/time|magnitude_status", ">=")
-                .build()
+        val firstFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/time" to "13:20",
+            "test_statuses/test_statuses:0/time|normal_status" to "L",
+            "test_statuses/test_statuses:0/time|magnitude_status" to ">="
+        )
 
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(firstFlatComposition, ConversionContext.create().build())
         assertThat(firstComposition).isNotNull
@@ -392,14 +391,14 @@ class StatusesTest : AbstractWebTemplateTest() {
         assertThat(firstFlatMap).contains(entry("test_statuses/test_statuses:0/time|normal_status", "L"))
         assertThat(firstFlatMap).contains(entry("test_statuses/test_statuses:0/time|magnitude_status", ">="))
 
-        val secondFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/time", "13:20")
-                .build()
+        val secondFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/time" to "13:20"
+        )
 
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(secondFlatComposition, ConversionContext.create().build())
         assertThat(secondComposition).isNotNull
@@ -416,49 +415,49 @@ class StatusesTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testTimeInvalid() {
         val webTemplate = getWebTemplate("/convert/templates/test_statuses.opt")
-        val firstFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/time", "13:20")
-                .put("test_statuses/test_statuses:0/time|normal_status", "X")
-                .build()
+        val firstFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/time" to "13:20",
+            "test_statuses/test_statuses:0/time|normal_status" to "X"
+        )
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(firstFlatComposition, ConversionContext.create().build()) }
-                .isInstanceOf(ConversionException::class.java)
-                .hasMessageContaining("Invalid NORMAL_STATUS code: X")
+            .isInstanceOf(ConversionException::class.java)
+            .hasMessageContaining("Invalid NORMAL_STATUS code: X")
 
-        val secondFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/time", "13:20")
-                .put("test_statuses/test_statuses:0/time|magnitude_status", "!")
-                .build()
+        val secondFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/time" to "13:20",
+            "test_statuses/test_statuses:0/time|magnitude_status" to "!"
+        )
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(secondFlatComposition, ConversionContext.create().build()) }
-                .isInstanceOf(ConversionException::class.java)
-                .hasMessageContaining("Invalid MAGNITUDE_STATUS: !")
+            .isInstanceOf(ConversionException::class.java)
+            .hasMessageContaining("Invalid MAGNITUDE_STATUS: !")
     }
 
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testDateTime() {
         val webTemplate = getWebTemplate("/convert/templates/test_statuses.opt")
-        val firstFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/datetime", "2017-10-01T13:20:00Z")
-                .put("test_statuses/test_statuses:0/datetime|normal_status", "L")
-                .put("test_statuses/test_statuses:0/datetime|magnitude_status", ">=")
-                .build()
+        val firstFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/datetime" to "2017-10-01T13:20:00Z",
+            "test_statuses/test_statuses:0/datetime|normal_status" to "L",
+            "test_statuses/test_statuses:0/datetime|magnitude_status" to ">="
+        )
 
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(firstFlatComposition, ConversionContext.create().build())
         assertThat(firstComposition).isNotNull
@@ -470,14 +469,14 @@ class StatusesTest : AbstractWebTemplateTest() {
         assertThat(firstFlatMap).contains(entry("test_statuses/test_statuses:0/datetime|normal_status", "L"))
         assertThat(firstFlatMap).contains(entry("test_statuses/test_statuses:0/datetime|magnitude_status", ">="))
 
-        val secondFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/datetime", "2017-10-01T13:20:00Z")
-                .build()
+        val secondFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/datetime" to "2017-10-01T13:20:00Z"
+        )
 
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(secondFlatComposition, ConversionContext.create().build())
         assertThat(secondComposition).isNotNull
@@ -494,49 +493,49 @@ class StatusesTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testDateTimeInvalid() {
         val webTemplate = getWebTemplate("/convert/templates/test_statuses.opt")
-        val firstFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/datetime", "2017-10-01T13:20:00Z")
-                .put("test_statuses/test_statuses:0/datetime|normal_status", "X")
-                .build()
+        val firstFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/datetime" to "2017-10-01T13:20:00Z",
+            "test_statuses/test_statuses:0/datetime|normal_status" to "X"
+        )
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(firstFlatComposition, ConversionContext.create().build()) }
-                .isInstanceOf(ConversionException::class.java)
-                .hasMessageContaining("Invalid NORMAL_STATUS code: X")
+            .isInstanceOf(ConversionException::class.java)
+            .hasMessageContaining("Invalid NORMAL_STATUS code: X")
 
-        val secondFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/datetime", "2017-10-01T13:20:00Z")
-                .put("test_statuses/test_statuses:0/datetime|magnitude_status", "!")
-                .build()
+        val secondFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/datetime" to "2017-10-01T13:20:00Z",
+            "test_statuses/test_statuses:0/datetime|magnitude_status" to "!"
+        )
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(secondFlatComposition, ConversionContext.create().build()) }
-                .isInstanceOf(ConversionException::class.java)
-                .hasMessageContaining("Invalid MAGNITUDE_STATUS: !")
+            .isInstanceOf(ConversionException::class.java)
+            .hasMessageContaining("Invalid MAGNITUDE_STATUS: !")
     }
 
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testCount() {
         val webTemplate = getWebTemplate("/convert/templates/test_statuses.opt")
-        val firstFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/count", "17")
-                .put("test_statuses/test_statuses:0/count|normal_status", "L")
-                .put("test_statuses/test_statuses:0/count|magnitude_status", ">=")
-                .build()
+        val firstFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/count" to "17",
+            "test_statuses/test_statuses:0/count|normal_status" to "L",
+            "test_statuses/test_statuses:0/count|magnitude_status" to ">="
+        )
 
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(firstFlatComposition, ConversionContext.create().build())
         assertThat(firstComposition).isNotNull
@@ -548,14 +547,14 @@ class StatusesTest : AbstractWebTemplateTest() {
         assertThat(firstFlatMap).contains(entry("test_statuses/test_statuses:0/count|normal_status", "L"))
         assertThat(firstFlatMap).contains(entry("test_statuses/test_statuses:0/count|magnitude_status", ">="))
 
-        val secondFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/count", "17")
-                .build()
+        val secondFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/count" to "17"
+        )
 
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(secondFlatComposition, ConversionContext.create().build())
         assertThat(secondComposition).isNotNull
@@ -572,50 +571,50 @@ class StatusesTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCountInvalid() {
         val webTemplate = getWebTemplate("/convert/templates/test_statuses.opt")
-        val firstFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/count", "17")
-                .put("test_statuses/test_statuses:0/count|normal_status", "X")
-                .build()
+        val firstFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/count" to "17",
+            "test_statuses/test_statuses:0/count|normal_status" to "X"
+        )
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(firstFlatComposition, ConversionContext.create().build()) }
-                .isInstanceOf(ConversionException::class.java)
-                .hasMessageContaining("Invalid NORMAL_STATUS code: X")
+            .isInstanceOf(ConversionException::class.java)
+            .hasMessageContaining("Invalid NORMAL_STATUS code: X")
 
-        val secondFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/count", "17")
-                .put("test_statuses/test_statuses:0/count|magnitude_status", "!")
-                .build()
+        val secondFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/count" to "17",
+            "test_statuses/test_statuses:0/count|magnitude_status" to "!"
+        )
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(secondFlatComposition, ConversionContext.create().build()) }
-                .isInstanceOf(ConversionException::class.java)
-                .hasMessageContaining("Invalid MAGNITUDE_STATUS: !")
+            .isInstanceOf(ConversionException::class.java)
+            .hasMessageContaining("Invalid MAGNITUDE_STATUS: !")
     }
 
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testProportion() {
         val webTemplate = getWebTemplate("/convert/templates/test_statuses.opt")
-        val firstFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/proportion|numerator", "17")
-                .put("test_statuses/test_statuses:0/proportion|denominator", "33")
-                .put("test_statuses/test_statuses:0/proportion|normal_status", "L")
-                .put("test_statuses/test_statuses:0/proportion|magnitude_status", ">=")
-                .build()
+        val firstFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/proportion|numerator" to "17",
+            "test_statuses/test_statuses:0/proportion|denominator" to "33",
+            "test_statuses/test_statuses:0/proportion|normal_status" to "L",
+            "test_statuses/test_statuses:0/proportion|magnitude_status" to ">="
+        )
 
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(firstFlatComposition, ConversionContext.create().build())
         assertThat(firstComposition).isNotNull
@@ -627,15 +626,15 @@ class StatusesTest : AbstractWebTemplateTest() {
         assertThat(firstFlatMap).contains(entry("test_statuses/test_statuses:0/proportion|normal_status", "L"))
         assertThat(firstFlatMap).contains(entry("test_statuses/test_statuses:0/proportion|magnitude_status", ">="))
 
-        val secondFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/proportion|numerator", "17")
-                .put("test_statuses/test_statuses:0/proportion|denominator", "33")
-                .build()
+        val secondFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/proportion|numerator" to "17",
+            "test_statuses/test_statuses:0/proportion|denominator" to "33"
+        )
 
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(secondFlatComposition, ConversionContext.create().build())
         assertThat(secondComposition).isNotNull
@@ -652,35 +651,35 @@ class StatusesTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testProportionInvalid() {
         val webTemplate = getWebTemplate("/convert/templates/test_statuses.opt")
-        val firstFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/proportion|numerator", "17")
-                .put("test_statuses/test_statuses:0/proportion|denominator", "33")
-                .put("test_statuses/test_statuses:0/proportion|normal_status", "X")
-                .build()
+        val firstFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/proportion|numerator" to "17",
+            "test_statuses/test_statuses:0/proportion|denominator" to "33",
+            "test_statuses/test_statuses:0/proportion|normal_status" to "X"
+        )
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(firstFlatComposition, ConversionContext.create().build()) }
-                .isInstanceOf(ConversionException::class.java)
-                .hasMessageContaining("Invalid NORMAL_STATUS code: X")
+            .isInstanceOf(ConversionException::class.java)
+            .hasMessageContaining("Invalid NORMAL_STATUS code: X")
 
-        val secondFlatComposition: Map<String, String> = ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("test_statuses/test_statuses:0/proportion|numerator", "17")
-                .put("test_statuses/test_statuses:0/proportion|denominator", "33")
-                .put("test_statuses/test_statuses:0/proportion|magnitude_status", "!")
-                .build()
+        val secondFlatComposition: Map<String, String> = mapOf(
+            "ctx/language" to "sl",
+            "ctx/territory" to "SI",
+            "ctx/id_scheme" to "ispek",
+            "ctx/id_namespace" to "ispek",
+            "ctx/composer_name" to "George Orwell",
+            "test_statuses/test_statuses:0/proportion|numerator" to "17",
+            "test_statuses/test_statuses:0/proportion|denominator" to "33",
+            "test_statuses/test_statuses:0/proportion|magnitude_status" to "!"
+        )
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(secondFlatComposition, ConversionContext.create().build()) }
-                .isInstanceOf(ConversionException::class.java)
-                .hasMessageContaining("Invalid MAGNITUDE_STATUS: !")
+            .isInstanceOf(ConversionException::class.java)
+            .hasMessageContaining("Invalid MAGNITUDE_STATUS: !")
     }
 
 

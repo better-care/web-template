@@ -20,7 +20,6 @@ import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import com.google.common.collect.ImmutableMap
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
@@ -45,16 +44,17 @@ class SubjectTest : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("sl")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-                ImmutableMap.builder<String, String>()
-                        .put("ctx/language", "sl")
-                        .put("ctx/territory", "SI")
-                        .put("ctx/id_scheme", "ispek")
-                        .put("ctx/id_namespace", "ispek")
-                        .put("ctx/composer_name", "George Orwell")
-                        .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology", "local")
-                        .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|code", "at0037")
-                        .build(),
-                ConversionContext.create().build())
+            mapOf(
+                "ctx/language" to "sl",
+                "ctx/territory" to "SI",
+                "ctx/id_scheme" to "ispek",
+                "ctx/id_namespace" to "ispek",
+                "ctx/composer_name" to "George Orwell",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology" to "local",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|code" to "at0037"
+            ),
+            ConversionContext.create().build()
+        )
         val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap.keys).doesNotContain("vitals/vitals/haemoglobin_a1c:0/subject|name", "vitals/vitals/haemoglobin_a1c:0/subject|id")
 
@@ -69,19 +69,21 @@ class SubjectTest : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("sl")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Test constrained subject.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-                ImmutableMap.builder<String, String>()
-                        .put("ctx/language", "sl")
-                        .put("ctx/territory", "SI")
-                        .put("ctx/id_scheme", "ispek")
-                        .put("ctx/id_namespace", "ispek")
-                        .put("ctx/composer_name", "George Orwell")
-                        .put("test_constrained_subject/maternal_pregnancy:0/maternal_age", "P25Y")
-                        .build(),
-                ConversionContext.create().build())
+            mapOf(
+                "ctx/language" to "sl",
+                "ctx/territory" to "SI",
+                "ctx/id_scheme" to "ispek",
+                "ctx/id_namespace" to "ispek",
+                "ctx/composer_name" to "George Orwell",
+                "test_constrained_subject/maternal_pregnancy:0/maternal_age" to "P25Y"
+            ),
+            ConversionContext.create().build()
+        )
         val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap.keys).doesNotContain(
-                "test_constrained_subject/maternal_pregnancy:0/subject|name",
-                "test_constrained_subject/maternal_pregnancy:0/subject|id")
+            "test_constrained_subject/maternal_pregnancy:0/subject|name",
+            "test_constrained_subject/maternal_pregnancy:0/subject|id"
+        )
 
         val evaluation = composition.content[0] as Evaluation
         assertThat(evaluation.subject).isInstanceOf(PartyRelated::class.java)
@@ -93,23 +95,23 @@ class SubjectTest : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("sl")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-                ImmutableMap.builder<String, String>()
-                        .put("ctx/language", "sl")
-                        .put("ctx/territory", "SI")
-                        .put("ctx/id_scheme", "ispek")
-                        .put("ctx/id_namespace", "ispek")
-                        .put("ctx/composer_name", "George Orwell")
-                        .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology", "local")
-                        .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|code", "at0037")
-                        .put("vitals/vitals/haemoglobin_a1c/subject|name", "Marija Medved")
-                        .put("vitals/vitals/haemoglobin_a1c/subject|id", "998")
-                        .build(),
-                ConversionContext.create().build()
+            mapOf(
+                "ctx/language" to "sl",
+                "ctx/territory" to "SI",
+                "ctx/id_scheme" to "ispek",
+                "ctx/id_namespace" to "ispek",
+                "ctx/composer_name" to "George Orwell",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology" to "local",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|code" to "at0037",
+                "vitals/vitals/haemoglobin_a1c/subject|name" to "Marija Medved",
+                "vitals/vitals/haemoglobin_a1c/subject|id" to "998"
+            ),
+            ConversionContext.create().build()
         )
         val flatMap: MutableMap<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create()).toMutableMap()
         assertThat(flatMap).contains(
-                entry("vitals/vitals/haemoglobin_a1c:0/subject|name", "Marija Medved"),
-                entry("vitals/vitals/haemoglobin_a1c:0/subject|id", "998")
+            entry("vitals/vitals/haemoglobin_a1c:0/subject|name", "Marija Medved"),
+            entry("vitals/vitals/haemoglobin_a1c:0/subject|id", "998")
         )
         flatMap["ctx/language"] = "sl"
         flatMap["ctx/territory"] = "SI"
@@ -129,16 +131,16 @@ class SubjectTest : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("sl")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-                ImmutableMap.builder<String, String>()
-                        .put("ctx/language", "sl")
-                        .put("ctx/territory", "SI")
-                        .put("ctx/id_scheme", "ispek")
-                        .put("ctx/id_namespace", "ispek")
-                        .put("ctx/composer_name", "George Orwell")
-                        .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology", "local")
-                        .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|code", "at0037")
-                        .build(),
-                ConversionContext.create().build()
+            mapOf(
+                "ctx/language" to "sl",
+                "ctx/territory" to "SI",
+                "ctx/id_scheme" to "ispek",
+                "ctx/id_namespace" to "ispek",
+                "ctx/composer_name" to "George Orwell",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology" to "local",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|code" to "at0037"
+            ),
+            ConversionContext.create().build()
         )
         val section = composition!!.content[0] as Section
         val observation = section.items[0] as Observation
@@ -156,50 +158,52 @@ class SubjectTest : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("en")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/clinical-summary-events.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-                ImmutableMap.builder<String, Any>()
-                        .put("ctx/language", "pt")
-                        .put("ctx/territory", "BR")
-                        .put("ctx/composer_name", "User")
-                        .put("clinical_summary_events/_uid", "75bab263-a9d4-4522-b265-bada4b298f56::bostjanl::1")
-                        .put("clinical_summary_events/context/start_time", "2015-10-05T10:26:18.000Z")
-                        .put("clinical_summary_events/context/setting|code", "")
-                        .put("clinical_summary_events/context/setting|value", "")
-                        .put("clinical_summary_events/context/setting|terminology", "")
-                        .put("clinical_summary_events/episodes/admission/patient_admission/patient_class", "Pronto socorro")
-                        .put("clinical_summary_events/episodes/admission/patient_admission/attending_doctor/id_issuer", "CRM-SP")
-                        .put("clinical_summary_events/episodes/admission/patient_admission/referring_doctor/id_issuer", "CRM-SP")
-                        .put("clinical_summary_events/episodes/admission/patient_admission/consulting_doctor/id", "39")
-                        .put("clinical_summary_events/episodes/admission/patient_admission/consulting_doctor/name", "Drª Margarida Martins")
-                        .put("clinical_summary_events/episodes/admission/patient_admission/consulting_doctor/id_issuer", "CRM-SP")
-                        .put("clinical_summary_events/episodes/admission/patient_admission/admitting_doctor/id", "39")
-                        .put("clinical_summary_events/episodes/admission/patient_admission/admitting_doctor/name", "Drª Margarida Martins")
-                        .put("clinical_summary_events/episodes/admission/patient_admission/admitting_doctor/id_issuer", "CRM-SP")
-                        .put("clinical_summary_events/episodes/admission/patient_admission/admit_date_time", "2013-11-19T17:00:00.000Z")
-                        .put("clinical_summary_events/episodes/admission/patient_admission/readmission", false)
-                        .put("clinical_summary_events/episodes/reason_for_encounter/reason_for_encounter:0/_uid", "d083c3e3-8403-48fe-8bee-927dbc641f07")
-                        .put("clinical_summary_events/episodes/reason_for_encounter/reason_for_encounter:0/_provider|name", "Drª Margarida Martins")
-                        .put("clinical_summary_events/episodes/reason_for_encounter/reason_for_encounter:0/presenting_problem", "Choque anafilático")
-                        .put("clinical_summary_events/episodes/reason_for_encounter/reason_for_encounter:0/registration_date", "2013-11-19T17:00:00.000Z")
-                        .put("clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/_uid", "33f205ad-7da7-44cc-92d0-85e4618acf64")
-                        .put("clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/_provider|name", "CHS Admin")
-                        .put("clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/substance_agent", "Antibacterianos Beta-Lactâmicos, Penicilinas")
-                        .put("clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/absolute_contraindication", false)
-                        .put("clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/overall_comment", "")
-                        .put("clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/reaction_event/specific_substance_agent", "Amoxicilina")
-                        .put("clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/reaction_event/manifestation:0", "Rash, Urticária")
-                        .put("clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/reaction_event/reaction_type", "Alergia")
-                        .put("clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/reaction_event/certainty", "Confirmado")
-                        .put("clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/reaction_event/reaction_description", "Esta é uma reação que aconteceu tardiamente, depois de várias administrações durante a vida da paciente nas quais não houve qualquer tipo de reação adversa manifestada.")
-                        .put("clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/reaction_event/onset_of_reaction", "2003-11-12T00:00:00.000Z")
-                        .put("clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/registration_date", "2003-11-19T17:00:00.000Z")
-                        .put("clinical_summary_events/vital_signs/blood_pressure/blood_pressure:0/_uid", "8eaf393d-94ac-485d-8058-e5641935f7ad")
-                        .put("clinical_summary_events/vital_signs/blood_pressure/blood_pressure:0/_provider|name", "Drª Margarida Martins")
-                        .put("clinical_summary_events/vital_signs/blood_pressure/blood_pressure:0/any_event:0/systolic|magnitude", 136)
-                        .put("clinical_summary_events/vital_signs/blood_pressure/blood_pressure:0/any_event:0/systolic|unit", "mm[Hg]")
-                        .put("clinical_summary_events/vital_signs/blood_pressure/blood_pressure:0/any_event:0/diastolic|magnitude", 81)
-                        .put("clinical_summary_events/vital_signs/blood_pressure/blood_pressure:0/any_event:0/diastolic|unit", "mm[Hg]")
-                        .put("clinical_summary_events/vital_signs/blood_pressure/blood_pressure:0/any_event:0/time", "2013-11-19T17:00:00.000Z").build(),
-                ConversionContext.create().build())
+            mapOf(
+                "ctx/language" to "pt",
+                "ctx/territory" to "BR",
+                "ctx/composer_name" to "User",
+                "clinical_summary_events/_uid" to "75bab263-a9d4-4522-b265-bada4b298f56::bostjanl::1",
+                "clinical_summary_events/context/start_time" to "2015-10-05T10:26:18.000Z",
+                "clinical_summary_events/context/setting|code" to "",
+                "clinical_summary_events/context/setting|value" to "",
+                "clinical_summary_events/context/setting|terminology" to "",
+                "clinical_summary_events/episodes/admission/patient_admission/patient_class" to "Pronto socorro",
+                "clinical_summary_events/episodes/admission/patient_admission/attending_doctor/id_issuer" to "CRM-SP",
+                "clinical_summary_events/episodes/admission/patient_admission/referring_doctor/id_issuer" to "CRM-SP",
+                "clinical_summary_events/episodes/admission/patient_admission/consulting_doctor/id" to "39",
+                "clinical_summary_events/episodes/admission/patient_admission/consulting_doctor/name" to "Drª Margarida Martins",
+                "clinical_summary_events/episodes/admission/patient_admission/consulting_doctor/id_issuer" to "CRM-SP",
+                "clinical_summary_events/episodes/admission/patient_admission/admitting_doctor/id" to "39",
+                "clinical_summary_events/episodes/admission/patient_admission/admitting_doctor/name" to "Drª Margarida Martins",
+                "clinical_summary_events/episodes/admission/patient_admission/admitting_doctor/id_issuer" to "CRM-SP",
+                "clinical_summary_events/episodes/admission/patient_admission/admit_date_time" to "2013-11-19T17:00:00.000Z",
+                "clinical_summary_events/episodes/admission/patient_admission/readmission" to false,
+                "clinical_summary_events/episodes/reason_for_encounter/reason_for_encounter:0/_uid" to "d083c3e3-8403-48fe-8bee-927dbc641f07",
+                "clinical_summary_events/episodes/reason_for_encounter/reason_for_encounter:0/_provider|name" to "Drª Margarida Martins",
+                "clinical_summary_events/episodes/reason_for_encounter/reason_for_encounter:0/presenting_problem" to "Choque anafilático",
+                "clinical_summary_events/episodes/reason_for_encounter/reason_for_encounter:0/registration_date" to "2013-11-19T17:00:00.000Z",
+                "clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/_uid" to "33f205ad-7da7-44cc-92d0-85e4618acf64",
+                "clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/_provider|name" to "CHS Admin",
+                "clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/substance_agent" to "Antibacterianos Beta-Lactâmicos, Penicilinas",
+                "clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/absolute_contraindication" to false,
+                "clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/overall_comment" to "",
+                "clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/reaction_event/specific_substance_agent" to "Amoxicilina",
+                "clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/reaction_event/manifestation:0" to "Rash, Urticária",
+                "clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/reaction_event/reaction_type" to "Alergia",
+                "clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/reaction_event/certainty" to "Confirmado",
+                "clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/reaction_event/reaction_description" to "Esta é uma reação que aconteceu tardiamente, depois de várias administrações durante a vida da paciente nas quais não houve qualquer tipo de reação adversa manifestada.",
+                "clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/reaction_event/onset_of_reaction" to "2003-11-12T00:00:00.000Z",
+                "clinical_summary_events/alergies_adverse_reactions_and_intolerances/allergies_and_adverse_reactions/adverse_reaction:0/registration_date" to "2003-11-19T17:00:00.000Z",
+                "clinical_summary_events/vital_signs/blood_pressure/blood_pressure:0/_uid" to "8eaf393d-94ac-485d-8058-e5641935f7ad",
+                "clinical_summary_events/vital_signs/blood_pressure/blood_pressure:0/_provider|name" to "Drª Margarida Martins",
+                "clinical_summary_events/vital_signs/blood_pressure/blood_pressure:0/any_event:0/systolic|magnitude" to 136,
+                "clinical_summary_events/vital_signs/blood_pressure/blood_pressure:0/any_event:0/systolic|unit" to "mm[Hg]",
+                "clinical_summary_events/vital_signs/blood_pressure/blood_pressure:0/any_event:0/diastolic|magnitude" to 81,
+                "clinical_summary_events/vital_signs/blood_pressure/blood_pressure:0/any_event:0/diastolic|unit" to "mm[Hg]",
+                "clinical_summary_events/vital_signs/blood_pressure/blood_pressure:0/any_event:0/time" to "2013-11-19T17:00:00.000Z"
+            ),
+            ConversionContext.create().build()
+        )
 
         assertThat(composition?.content ?: emptyList()).isNotEmpty
     }

@@ -19,7 +19,6 @@ import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import com.google.common.collect.ImmutableMap
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
@@ -37,22 +36,23 @@ class LinksTests : AbstractWebTemplateTest() {
     fun testLinks() {
         val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), WebTemplateBuilderContext("sl"))
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology", "local")
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|code", "at0037")
-                .put("vitals/vitals/haemoglobin_a1c/_link:0|meaning", "none")
-                .put("vitals/vitals/haemoglobin_a1c/_link:0|type", "href")
-                .put("vitals/vitals/haemoglobin_a1c/_link:0|target", "http://www.sun.com")
-                .put("vitals/vitals/haemoglobin_a1c/_link:1|meaning", "serious")
-                .put("vitals/vitals/haemoglobin_a1c/_link:1|type", "url")
-                .put("vitals/vitals/haemoglobin_a1c/_link:1|target", "http://www.ehrscape.com")
-                .build(),
-            ConversionContext.create().build())
+            mapOf(
+                "ctx/language" to "sl",
+                "ctx/territory" to "SI",
+                "ctx/id_scheme" to "ispek",
+                "ctx/id_namespace" to "ispek",
+                "ctx/composer_name" to "George Orwell",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology" to "local",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|code" to "at0037",
+                "vitals/vitals/haemoglobin_a1c/_link:0|meaning" to "none",
+                "vitals/vitals/haemoglobin_a1c/_link:0|type" to "href",
+                "vitals/vitals/haemoglobin_a1c/_link:0|target" to "http://www.sun.com",
+                "vitals/vitals/haemoglobin_a1c/_link:1|meaning" to "serious",
+                "vitals/vitals/haemoglobin_a1c/_link:1|type" to "url",
+                "vitals/vitals/haemoglobin_a1c/_link:1|target" to "http://www.ehrscape.com"
+            ),
+            ConversionContext.create().build()
+        )
 
         val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap).contains(
@@ -71,16 +71,17 @@ class LinksTests : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("sl")
         val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/link|type", "EHR")
-                .put("ctx/link|meaning", "link")
-                .put("ctx/link|target", "ehr://uid/value")
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology", "local")
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|code", "at0037")
-                .build(),
-            ConversionContext.create().build())
+            mapOf(
+                "ctx/language" to "sl",
+                "ctx/territory" to "SI",
+                "ctx/link|type" to "EHR",
+                "ctx/link|meaning" to "link",
+                "ctx/link|target" to "ehr://uid/value",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology" to "local",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|code" to "at0037"
+            ),
+            ConversionContext.create().build()
+        )
 
         val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap).contains(
@@ -96,19 +97,20 @@ class LinksTests : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("sl")
         val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/link:17|type", "EHR1")
-                .put("ctx/link:17|meaning", "link1")
-                .put("ctx/link:17|target", "ehr://uid/value1")
-                .put("ctx/link:99|type", "EHR2")
-                .put("ctx/link:99|meaning", "link2")
-                .put("ctx/link:99|target", "ehr://uid/value2")
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology", "local")
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|code", "at0037")
-                .build(),
-            ConversionContext.create().build())
+            mapOf(
+                "ctx/language" to "sl",
+                "ctx/territory" to "SI",
+                "ctx/link:17|type" to "EHR1",
+                "ctx/link:17|meaning" to "link1",
+                "ctx/link:17|target" to "ehr://uid/value1",
+                "ctx/link:99|type" to "EHR2",
+                "ctx/link:99|meaning" to "link2",
+                "ctx/link:99|target" to "ehr://uid/value2",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology" to "local",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|code" to "at0037"
+            ),
+            ConversionContext.create().build()
+        )
 
         val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap).contains(

@@ -20,7 +20,6 @@ import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import com.google.common.collect.ImmutableMap
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -39,17 +38,18 @@ class ComposerTest : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("sl")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("ctx/composer_id", "1191")
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology", "local")
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|code", "at0037")
-                .build(),
-            ConversionContext.create().build())
+            mapOf(
+                "ctx/language" to "sl",
+                "ctx/territory" to "SI",
+                "ctx/id_scheme" to "ispek",
+                "ctx/id_namespace" to "ispek",
+                "ctx/composer_name" to "George Orwell",
+                "ctx/composer_id" to "1191",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology" to "local",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|code" to "at0037"
+            ),
+            ConversionContext.create().build()
+        )
         assertThat(composition!!.composer?.externalRef?.id?.value).isEqualTo("1191")
     }
 
@@ -59,17 +59,18 @@ class ComposerTest : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("sl")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_self", "true")
-                .put("ctx/composer_id", "1191")
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology", "local")
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|code", "at0037")
-                .build(),
-            ConversionContext.create().build())
+            mapOf(
+                "ctx/language" to "sl",
+                "ctx/territory" to "SI",
+                "ctx/id_scheme" to "ispek",
+                "ctx/id_namespace" to "ispek",
+                "ctx/composer_self" to "true",
+                "ctx/composer_id" to "1191",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology" to "local",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|code" to "at0037"
+            ),
+            ConversionContext.create().build()
+        )
 
         assertThat(composition!!.composer?.externalRef?.id?.value).isEqualTo("1191")
         assertThat(composition.composer).isInstanceOf(PartySelf::class.java)

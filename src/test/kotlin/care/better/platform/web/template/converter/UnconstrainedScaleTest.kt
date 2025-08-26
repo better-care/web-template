@@ -21,7 +21,6 @@ import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.node.ObjectNode
-import com.google.common.collect.ImmutableList
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
@@ -43,7 +42,7 @@ class UnconstrainedScaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun unconstrainedScaleTest() {
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en", "sl"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/UnconstrainedScale.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("en").withTerritory("GB").withComposerName("Test").build()
 

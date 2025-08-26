@@ -20,7 +20,6 @@ import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import com.google.common.collect.ImmutableList
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
@@ -36,7 +35,7 @@ class FixedValuesTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testFixed() {
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en", "sl"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/ZN - Assessment Scales Encounter2.opt"), builderContext)
 
         val values: Map<String, String> = mapOf(Pair("assessment_scales/pain_assessment/story/pain/exascerbating_factor/factor", "test"))
@@ -53,7 +52,7 @@ class FixedValuesTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testFixedCodedInDvText() {
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en", "sl"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template N1.opt"), builderContext)
         val values: Map<String, String> = mapOf(Pair("test_encounter/testing/testing/name_1", "hello world!"))
 

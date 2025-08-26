@@ -21,7 +21,6 @@ import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.core.type.TypeReference
-import com.google.common.collect.ImmutableList
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -38,7 +37,7 @@ class PersistentCompositionTest : AbstractWebTemplateTest() {
     fun testPersistentWithContext() {
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(
             getTemplate("/convert/templates/Falls care plan.opt"),
-            WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+            WebTemplateBuilderContext("en", listOf("en", "sl")))
 
         val flatMap: Map<String, Any?> =
             getObjectMapper().readValue(getJson("/convert/compositions/Falls care plan.json"), object : TypeReference<Map<String, Any?>>() {})
@@ -53,7 +52,7 @@ class PersistentCompositionTest : AbstractWebTemplateTest() {
     fun testPersistentWithoutContext() {
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(
             getTemplate("/convert/templates/persistent.opt"),
-            WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+            WebTemplateBuilderContext("en", listOf("en", "sl")))
 
         val flatMap: Map<String, Any?> =
             getObjectMapper().readValue(getJson("/convert/compositions/persistent.json"), object : TypeReference<Map<String, Any?>>() {})

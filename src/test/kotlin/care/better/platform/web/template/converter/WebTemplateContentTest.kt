@@ -19,7 +19,6 @@ import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import com.google.common.collect.ImmutableMap
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat
@@ -50,12 +49,13 @@ class WebTemplateContentTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.Builder<String, Any?>()
-                .put("vitals/vitals/body_temperature/any_event/temperature|magnitude", 39.1)
-                .put("vitals/vitals/body_temperature/any_event/temperature|unit", "°C")
-                .put("vitals/vitals/body_temperature/any_event/body_exposure", "at0031")
-                .build(),
-            context)
+            mapOf(
+                "vitals/vitals/body_temperature/any_event/temperature|magnitude" to 39.1,
+                "vitals/vitals/body_temperature/any_event/temperature|unit" to "°C",
+                "vitals/vitals/body_temperature/any_event/body_exposure" to "at0031"
+            ),
+            context
+        )
 
         assertThat(composition).isNotNull
 
@@ -82,12 +82,13 @@ class WebTemplateContentTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.Builder<String, Any?>()
-                .put("vitals/vitals/body_temperature/any_event/temperature|magnitude", 39.1)
-                .put("vitals/vitals/body_temperature/any_event/temperature|unit", "°C")
-                .put("vitals/vitals/body_temperature/any_event/body_exposure", "at0031")
-                .build(),
-            context)
+            mapOf(
+                "vitals/vitals/body_temperature/any_event/temperature|magnitude" to 39.1,
+                "vitals/vitals/body_temperature/any_event/temperature|unit" to "°C",
+                "vitals/vitals/body_temperature/any_event/body_exposure" to "at0031"
+            ),
+            context
+        )
         assertThat(composition).isNotNull
 
         val flatMap: Map<String, Any?> = webTemplate.convertFromRawToFlat(composition!!, FromRawConversion.create())
@@ -108,12 +109,13 @@ class WebTemplateContentTest : AbstractWebTemplateTest() {
             .build()
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.Builder<String, Any>()
-                .put("vitals/vitals/body_temperature/any_event/temperature|magnitude", 39.1)
-                .put("vitals/vitals/body_temperature/any_event/temperature|unit", "°C")
-                .put("vitals/vitals/body_temperature/any_event/body_exposure", "at0031")
-                .build(),
-            context)
+            mapOf(
+                "vitals/vitals/body_temperature/any_event/temperature|magnitude" to 39.1,
+                "vitals/vitals/body_temperature/any_event/temperature|unit" to "°C",
+                "vitals/vitals/body_temperature/any_event/body_exposure" to "at0031"
+            ),
+            context
+        )
         assertThat(composition).isNotNull
 
         val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
@@ -135,12 +137,13 @@ class WebTemplateContentTest : AbstractWebTemplateTest() {
             .build()
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.Builder<String, Any>()
-                .put("vitals/vitals/body_temperature/any_event/temperature|magnitude", 39.1)
-                .put("vitals/vitals/body_temperature/any_event/temperature|unit", "°C")
-                .put("vitals/vitals/body_temperature/any_event/body_exposure", "at0031")
-                .build(),
-            context)
+            mapOf(
+                "vitals/vitals/body_temperature/any_event/temperature|magnitude" to 39.1,
+                "vitals/vitals/body_temperature/any_event/temperature|unit" to "°C",
+                "vitals/vitals/body_temperature/any_event/body_exposure" to "at0031"
+            ),
+            context
+        )
         assertThat(composition).isNotNull
 
         val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())

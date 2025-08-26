@@ -21,7 +21,6 @@ import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.core.type.TypeReference
-import com.google.common.collect.ImmutableList
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
@@ -38,7 +37,7 @@ class GelBuilderTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testMissingNameMapping() {
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en", "sl"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/GEL_-_Generic_Lab_Report_import.v0.opt"), builderContext)
 
         val compositionFlatMap = getObjectMapper().readValue(

@@ -20,7 +20,6 @@ import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import com.google.common.collect.ImmutableMap
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -45,9 +44,7 @@ class CodedTextTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withLanguage("en").withTerritory("IE").withComposerName("composer").build()
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en"))
 
-        val values: Map<String, String> = ImmutableMap.builder<String, String>()
-            .put("vitals/vitals/haemoglobin_a1c/any_event/test_status", "at0038")
-            .build()
+        val values: Map<String, String> = mapOf("vitals/vitals/haemoglobin_a1c/any_event/test_status" to "at0038")
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(values, context)
         val section = composition!!.content[0] as Section

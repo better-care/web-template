@@ -23,8 +23,6 @@ import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.builder.model.input.CareflowStepWebTemplateCodedValue
 import care.better.platform.web.template.builder.model.input.WebTemplateCodedValue
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import com.google.common.collect.ImmutableList
-import com.google.common.collect.ImmutableMap
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -41,7 +39,7 @@ class IsmTransitionTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testCareflowStepAqlPath() {
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en", "sl"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("medication_order/medication_detail/medication_action/ism_transition/careflow_step")
         assertThat(node.path).contains("/ism_transition/careflow_step")
@@ -50,7 +48,7 @@ class IsmTransitionTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testCareflowStepCurrentState() {
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en", "sl"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
 
         val nodes = getWebTemplateNodes(webTemplate.tree) { it.jsonId == "careflow_step" }
@@ -61,7 +59,7 @@ class IsmTransitionTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testCurrentState() {
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en", "sl"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
 
         val nodes = getWebTemplateNodes(webTemplate.tree) { it.jsonId == "current_state" }
@@ -74,7 +72,7 @@ class IsmTransitionTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testCareflowStepWT() {
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en", "sl"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
 
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("medication_order/medication_detail/medication_action/ism_transition/careflow_step")
@@ -90,14 +88,16 @@ class IsmTransitionTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testCareflowStepBuilder() {
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en", "sl"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.of<String, Any>(
-                "medication_order/medication_detail/medication_action/ism_transition/careflow_step", "at0001",
-                "medication_order/medication_detail/medication_action/medicine", "Aspirin"),
-            context)
+            mapOf(
+                "medication_order/medication_detail/medication_action/ism_transition/careflow_step" to "at0001",
+                "medication_order/medication_detail/medication_action/medicine" to "Aspirin"
+            ),
+            context
+        )
 
         val action = (composition!!.content[0] as Section).items[0] as Action
 
@@ -115,14 +115,16 @@ class IsmTransitionTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testCareflowStepBuilderMultipleCurrentState() {
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en", "sl"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.of<String, Any>(
-                "medication_order/medication_detail/medication_action/ism_transition/careflow_step", "at0002",
-                "medication_order/medication_detail/medication_action/medicine", "Aspirin"),
-            context)
+            mapOf(
+                "medication_order/medication_detail/medication_action/ism_transition/careflow_step" to "at0002",
+                "medication_order/medication_detail/medication_action/medicine" to "Aspirin"
+            ),
+            context
+        )
 
         val action = (composition!!.content[0] as Section).items[0] as Action
 
@@ -140,15 +142,17 @@ class IsmTransitionTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testCareflowStepBuilderMultipleCurrentStateOverride() {
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en", "sl"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.of<String, Any>(
-                "medication_order/medication_detail/medication_action/ism_transition/careflow_step", "at0002",
-                "medication_order/medication_detail/medication_action/ism_transition/current_state|value", "initial",
-                "medication_order/medication_detail/medication_action/medicine", "Aspirin"),
-            context)
+            mapOf(
+                "medication_order/medication_detail/medication_action/ism_transition/careflow_step" to "at0002",
+                "medication_order/medication_detail/medication_action/ism_transition/current_state|value" to "initial",
+                "medication_order/medication_detail/medication_action/medicine" to "Aspirin"
+            ),
+            context
+        )
 
         val firstAction = (firstComposition!!.content[0] as Section).items[0] as Action
 
@@ -163,11 +167,13 @@ class IsmTransitionTest : AbstractWebTemplateTest() {
         assertThat(firstCareFlowStep.value).isEqualTo("*Issue prescription for medication(en)")
 
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.of<String, Any>(
-                "medication_order/medication_detail/medication_action/ism_transition/careflow_step", "at0002",
-                "medication_order/medication_detail/medication_action/ism_transition/current_state", "524",
-                "medication_order/medication_detail/medication_action/medicine", "Aspirin"),
-            context)
+            mapOf(
+                "medication_order/medication_detail/medication_action/ism_transition/careflow_step" to "at0002",
+                "medication_order/medication_detail/medication_action/ism_transition/current_state" to "524",
+                "medication_order/medication_detail/medication_action/medicine" to "Aspirin"
+            ),
+            context
+        )
 
         val secondAction = (secondComposition!!.content[0] as Section).items[0] as Action
         val secondCurrentState = secondAction.ismTransition!!.currentState

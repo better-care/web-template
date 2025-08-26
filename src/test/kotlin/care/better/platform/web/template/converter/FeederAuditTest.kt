@@ -24,8 +24,6 @@ import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import com.google.common.collect.ImmutableList
-import com.google.common.collect.ImmutableMap
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
@@ -50,7 +48,8 @@ class FeederAuditTest : AbstractWebTemplateTest() {
 
     private val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(
         getTemplate("/convert/templates/older/Demo Vitals.xml"),
-        WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        WebTemplateBuilderContext("en", listOf("en", "sl"))
+    )
 
     @Test
     fun testWtToComposition() {
@@ -79,7 +78,8 @@ class FeederAuditTest : AbstractWebTemplateTest() {
         val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition, FromRawConversion.create())
         assertThat(flatMap).contains(
             entry("vitals/vitals/body_temperature:0/_feeder_audit/original_content_multimedia", "http://www.marand.com"),
-            entry("vitals/vitals/body_temperature:0/_feeder_audit/original_content_multimedia|mediatype", "text/html"))
+            entry("vitals/vitals/body_temperature:0/_feeder_audit/original_content_multimedia|mediatype", "text/html")
+        )
     }
 
     @Test
@@ -121,7 +121,8 @@ class FeederAuditTest : AbstractWebTemplateTest() {
             entry("vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:1", "id2"),
             entry("vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:1|type", "PERSON"),
             entry("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_audit|system_id", "orig"),
-            entry("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_audit|version_id", "vvv"))
+            entry("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_audit|version_id", "vvv")
+        )
     }
 
     @Test
@@ -161,7 +162,7 @@ class FeederAuditTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testFeederAuditBroken() {
-        val flatMap = getObjectMapper().readValue(getJson("/convert/compositions/gel_data.json"), object : TypeReference<Map<String, Any>>(){})
+        val flatMap = getObjectMapper().readValue(getJson("/convert/compositions/gel_data.json"), object : TypeReference<Map<String, Any>>() {})
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/GEL Cancer diagnosis input.opt"), WebTemplateBuilderContext("en"))
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(flatMap, ConversionContext.create().build())
@@ -180,79 +181,79 @@ class FeederAuditTest : AbstractWebTemplateTest() {
     @Test
     fun testFeederAuditOnElement() {
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Clinical course.opt"), WebTemplateBuilderContext("en"))
-        val flatMap = getObjectMapper().readValue(getJson("/convert/compositions/clinical_course.json"), object : TypeReference<Map<String, Any>>(){})
+        val flatMap = getObjectMapper().readValue(getJson("/convert/compositions/clinical_course.json"), object : TypeReference<Map<String, Any>>() {})
 
         val builderContext = ConversionContext.create().withLanguage("en").withTerritory("SI").build()
-        val composition: Composition? =  webTemplate.convertFromFlatToRaw(flatMap, builderContext)
+        val composition: Composition? = webTemplate.convertFromFlatToRaw(flatMap, builderContext)
         assertThat(composition).isNotNull
 
         val webTemplateNode = webTemplate.findWebTemplateNode("clinical_course/meap/assessment_a/clinical_synopsis")
         val extractor = NameAndNodeMatchingPathValueExtractor(webTemplateNode.path)
-        val evaluation: Evaluation =  extractor.getValue(composition)[0] as Evaluation
+        val evaluation: Evaluation = extractor.getValue(composition)[0] as Evaluation
         assertThat(((evaluation.data as ItemTree).items[0] as Element).feederAudit?.originatingSystemAudit?.systemId).isEqualTo("386053000")
     }
 
     private fun buildDeepComposition(): Composition {
-        val values: Map<String, Any> = ImmutableMap.builder<String, Any>()
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_audit/location|id", "123")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_audit/location|name", "Testing Doctor")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_audit/location|id_scheme", "seq")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_audit/location|id_namespace", "kzz")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_audit|time", "2017-01-31T00:00:00Z")
-            .put("vitals/vitals/body_temperature:0/any_event:0/temperature|magnitude", 34.1)
-            .put("vitals/vitals/body_temperature:0/any_event:0/temperature|unit", "°C")
-            .put("vitals/vitals/body_temperature:0/any_event:0/symptoms:0|code", "at0.65")
-            .put("vitals/vitals/body_temperature:0/any_event:0/body_exposure|code", "at0033")
-            .put("vitals/vitals/body_temperature:0/any_event:0/description_of_thermal_stress", "Description of thermal stress 73")
-            .build()
+        val values: Map<String, Any> = mapOf(
+            "vitals/vitals/body_temperature:0/_feeder_audit/originating_system_audit/location|id" to "123",
+            "vitals/vitals/body_temperature:0/_feeder_audit/originating_system_audit/location|name" to "Testing Doctor",
+            "vitals/vitals/body_temperature:0/_feeder_audit/originating_system_audit/location|id_scheme" to "seq",
+            "vitals/vitals/body_temperature:0/_feeder_audit/originating_system_audit/location|id_namespace" to "kzz",
+            "vitals/vitals/body_temperature:0/_feeder_audit/originating_system_audit|time" to "2017-01-31T00:00:00Z",
+            "vitals/vitals/body_temperature:0/any_event:0/temperature|magnitude" to 34.1,
+            "vitals/vitals/body_temperature:0/any_event:0/temperature|unit" to "°C",
+            "vitals/vitals/body_temperature:0/any_event:0/symptoms:0|code" to "at0.65",
+            "vitals/vitals/body_temperature:0/any_event:0/body_exposure|code" to "at0033",
+            "vitals/vitals/body_temperature:0/any_event:0/description_of_thermal_stress" to "Description of thermal stress 73"
+        )
 
         val builderContext = ConversionContext.create().withLanguage("en").withTerritory("SI").build()
         return webTemplate.convertFromFlatToRaw(values, builderContext)!!
     }
 
     private fun buildCompositionWithMultiMedia(): Composition {
-        val values: Map<String, Any> = ImmutableMap.builder<String, Any>()
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/original_content_multimedia|url", "http://www.marand.com")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/original_content_multimedia|mediatype", "text/html")
-            .put("vitals/vitals/body_temperature:0/any_event:0/temperature|magnitude", 34.1)
-            .put("vitals/vitals/body_temperature:0/any_event:0/temperature|unit", "°C")
-            .put("vitals/vitals/body_temperature:0/any_event:0/symptoms:0|code", "at0.65")
-            .put("vitals/vitals/body_temperature:0/any_event:0/body_exposure|code", "at0033")
-            .put("vitals/vitals/body_temperature:0/any_event:0/description_of_thermal_stress", "Description of thermal stress 73")
-            .build()
+        val values: Map<String, Any> = mapOf(
+            "vitals/vitals/body_temperature:0/_feeder_audit/original_content_multimedia|url" to "http://www.marand.com",
+            "vitals/vitals/body_temperature:0/_feeder_audit/original_content_multimedia|mediatype" to "text/html",
+            "vitals/vitals/body_temperature:0/any_event:0/temperature|magnitude" to 34.1,
+            "vitals/vitals/body_temperature:0/any_event:0/temperature|unit" to "°C",
+            "vitals/vitals/body_temperature:0/any_event:0/symptoms:0|code" to "at0.65",
+            "vitals/vitals/body_temperature:0/any_event:0/body_exposure|code" to "at0033",
+            "vitals/vitals/body_temperature:0/any_event:0/description_of_thermal_stress" to "Description of thermal stress 73"
+        )
 
         val builderContext = ConversionContext.create().withLanguage("en").withTerritory("SI").build()
         return webTemplate.convertFromFlatToRaw(values, builderContext)!!
     }
 
     private fun buildComposition(): Composition {
-        val values: Map<String, Any> = ImmutableMap.builder<String, Any>()
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/original_content", "Hello world!")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/original_content|formalism", "text/plain")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:0|assigner", "assigner1")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:0|issuer", "issuer1")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:0|id", "id1")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:0|type", "PERSON")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:1|assigner", "assigner2")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:1|issuer", "issuer2")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:1|id", "id2")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:1|type", "PERSON")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:0|assigner", "assigner1")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:0|issuer", "issuer1")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:0|id", "id1")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:0|type", "PERSON")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:1|assigner", "assigner2")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:1|issuer", "issuer2")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:1|id", "id2")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:1|type", "PERSON")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_audit|system_id", "orig")
-            .put("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_audit|version_id", "vvv")
-            .put("vitals/vitals/body_temperature:0/any_event:0/temperature|magnitude", 34.1)
-            .put("vitals/vitals/body_temperature:0/any_event:0/temperature|unit", "°C")
-            .put("vitals/vitals/body_temperature:0/any_event:0/symptoms:0|code", "at0.65")
-            .put("vitals/vitals/body_temperature:0/any_event:0/body_exposure|code", "at0033")
-            .put("vitals/vitals/body_temperature:0/any_event:0/description_of_thermal_stress", "Description of thermal stress 73")
-            .build()
+        val values: Map<String, Any> = mapOf(
+            "vitals/vitals/body_temperature:0/_feeder_audit/original_content" to "Hello world!",
+            "vitals/vitals/body_temperature:0/_feeder_audit/original_content|formalism" to "text/plain",
+            "vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:0|assigner" to "assigner1",
+            "vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:0|issuer" to "issuer1",
+            "vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:0|id" to "id1",
+            "vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:0|type" to "PERSON",
+            "vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:1|assigner" to "assigner2",
+            "vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:1|issuer" to "issuer2",
+            "vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:1|id" to "id2",
+            "vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:1|type" to "PERSON",
+            "vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:0|assigner" to "assigner1",
+            "vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:0|issuer" to "issuer1",
+            "vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:0|id" to "id1",
+            "vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:0|type" to "PERSON",
+            "vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:1|assigner" to "assigner2",
+            "vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:1|issuer" to "issuer2",
+            "vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:1|id" to "id2",
+            "vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:1|type" to "PERSON",
+            "vitals/vitals/body_temperature:0/_feeder_audit/originating_system_audit|system_id" to "orig",
+            "vitals/vitals/body_temperature:0/_feeder_audit/originating_system_audit|version_id" to "vvv",
+            "vitals/vitals/body_temperature:0/any_event:0/temperature|magnitude" to 34.1,
+            "vitals/vitals/body_temperature:0/any_event:0/temperature|unit" to "°C",
+            "vitals/vitals/body_temperature:0/any_event:0/symptoms:0|code" to "at0.65",
+            "vitals/vitals/body_temperature:0/any_event:0/body_exposure|code" to "at0033",
+            "vitals/vitals/body_temperature:0/any_event:0/description_of_thermal_stress" to "Description of thermal stress 73"
+        )
 
         val builderContext = ConversionContext.create().withLanguage("en").withTerritory("SI").build()
         return webTemplate.convertFromFlatToRaw(values, builderContext)!!

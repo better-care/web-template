@@ -20,7 +20,6 @@ import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.builder.model.WebTemplateNode
-import com.google.common.collect.ImmutableList
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -46,9 +45,10 @@ class BuilderTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testWebTemplateNodesAreNotEquals() {
         val template = getTemplate("/build/ICU - Ventilator device Report3.opt")
-        val webTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", ImmutableList.of("en")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", listOf("en")))
         val firstNode: WebTemplateNode = webTemplate.findWebTemplateNode("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/peak_airway_pressure_p_peak")
-        val secondNode: WebTemplateNode = webTemplate.findWebTemplateNode("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/plateau_airway_pressure_p_plateau")
+        val secondNode: WebTemplateNode =
+            webTemplate.findWebTemplateNode("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/plateau_airway_pressure_p_plateau")
         assertThat(firstNode.path).isNotEqualTo(secondNode.path)
     }
 
@@ -63,7 +63,7 @@ class BuilderTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testLocalizedNames() {
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en", "sl"))
         val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/build/ZN - Assessment Scales Encounter.opt"), builderContext)
         val firstNode: WebTemplateNode = webTemplate.findWebTemplateNode("assessment_scales/pain_assessment/story/pain/relieving_factor")
         val secondNode: WebTemplateNode = webTemplate.findWebTemplateNode("assessment_scales/pain_assessment/story/pain/exascerbating_factor")

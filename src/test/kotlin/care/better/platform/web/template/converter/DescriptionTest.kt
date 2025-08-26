@@ -24,7 +24,6 @@ import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.builder.model.input.CodedValue
 import care.better.platform.web.template.builder.model.input.CodedValueWithDescription
 import care.better.platform.web.template.builder.model.input.WebTemplateCodedValue
-import com.google.common.collect.ImmutableList
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -39,7 +38,7 @@ class DescriptionTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCodesAndDescriptions() {
         val template = getTemplate("/convert/templates/MSE - Initial Medication Safety Report.opt")
-        val context = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
+        val context = WebTemplateBuilderContext("en", listOf("en", "sl"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, context)
 
         val codes: List<CodedValueWithDescription> = webTemplate.getCodesWithDescription("initial_medication_safety_report/context/event_participant/participant_clinical_role", "sl")
@@ -51,7 +50,7 @@ class DescriptionTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testSecondCodesAndDescriptions() {
         val template = getTemplate("/convert/templates/Vital Signs.xml")
-        val context = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
+        val context = WebTemplateBuilderContext("en", listOf("en", "sl"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, context)
 
         val codes: List<CodedValueWithDescription> = webTemplate.getCodesWithDescription("vital_signs/body_temperature/any_event/body_exposure", "sl")
@@ -67,7 +66,7 @@ class DescriptionTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCodesAndDescriptionsDips() {
         val template = getTemplate("/convert/templates/BNA_Test_CodeSetAndICD10.opt")
-        val context = WebTemplateBuilderContext("nb", ImmutableList.of("nb"))
+        val context = WebTemplateBuilderContext("nb", listOf("nb"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, context)
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("test_icd10_and_codeset/problem_diagnose/asa_fysisk_status_klassifikasjon/asa_pasient_status")
 

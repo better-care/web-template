@@ -22,7 +22,6 @@ import care.better.platform.web.template.builder.context.WebTemplateBuilderConte
 import care.better.platform.web.template.builder.model.WebTemplateNode
 import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.google.common.collect.Lists
 import jakarta.xml.bind.JAXBException
 import jakarta.xml.bind.Unmarshaller
 import org.apache.commons.io.IOUtils
@@ -129,7 +128,7 @@ abstract class AbstractWebTemplateTest {
     @Throws(JAXBException::class, IOException::class)
     protected open fun getWebTemplate(templateFile: String): WebTemplate {
         val template = getTemplate(templateFile)
-        return WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", Lists.newArrayList("en")))
+        return WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", listOf("en")))
     }
 
     /**

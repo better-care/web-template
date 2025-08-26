@@ -21,7 +21,6 @@ import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
-import com.google.common.collect.ImmutableMap
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -46,42 +45,44 @@ class DoraTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.Builder<String, Any>()
-                .put("radiographer_mammography_report/context/report_name", "at0.0.19")
-                .put("radiographer_mammography_report/context/episode_code", "30-03052010")
-                .put("radiographer_mammography_report/context/round_number", "1")
-                .put("radiographer_mammography_report/context/start_time", "2010-05-03T13:59:23.000+02:00")
-                .put("radiographer_mammography_report/context/report_id", "SCR_7505")
-                .put("radiographer_mammography_report/procedure_details/procedure_details/examination_request_details/accession_number", "")
-                .put("radiographer_mammography_report/procedure_details/procedure_details/mammography_procedure_details/imaging_quality", "at0012")
-                .put("radiographer_mammography_report/procedure_details/procedure_details/mammography_procedure_details/completion_status", "at0014")
-                .put("radiographer_mammography_report/procedure_details/procedure_details/mammography_procedure_details/number_of_images", "4")
-                .put("radiographer_mammography_report/procedure_details/procedure_details/mammography_procedure_details/repeat_image_status", "at0005")
-                .put("radiographer_mammography_report/procedure_details/procedure_details/mammography_procedure_details/number_of_repeat_images", "0")
-                .put("radiographer_mammography_report/procedure_details/procedure_details/time", "2010-05-03T09:49:54.000+02:00")
-                .put("radiographer_mammography_report/procedure_details/procedure_details/ism_transition/current_state", "526")
-                .put("radiographer_mammography_report/past_therapies/breast-related_interventions_tmds/location", "dora")
-                .put("radiographer_mammography_report/past_therapies/breast-related_interventions_tmds/time", "2008-01-01T00:00:00.000+01:00")
-                .put("radiographer_mammography_report/past_therapies/breast-related_interventions_tmds/comments", "")
-                .put("radiographer_mammography_report/past_therapies/breast-related_interventions_tmds/intervention", "at0.68")
-                .put("radiographer_mammography_report/past_therapies/breast-related_interventions_tmds/ism_transition/current_state", "524")
-                .put("radiographer_mammography_report/past_procedures/breast-related_interventions_tmds:0/ism_transition/current_state", "524")
-                .put("radiographer_mammography_report/past_procedures/breast-related_interventions_tmds:0/breast_location/specific_location/side", "at0003")
-                .put("radiographer_mammography_report/past_procedures/breast-related_interventions_tmds:1/ism_transition/current_state", "524")
-                .put("radiographer_mammography_report/past_procedures/breast-related_interventions_tmds:1/breast_location/specific_location/side", "at0004")
-                .put("radiographer_mammography_report/mammography_procedures/imaging_examination_dora:0/breast_location/specific_location/side", "at0003")
-                .put("radiographer_mammography_report/mammography_procedures/imaging_examination_dora:0/examination_name:0", "at0.30")
-                .put("radiographer_mammography_report/mammography_procedures/imaging_examination_dora:0/examination_name:1", "at0.31")
-                .put("radiographer_mammography_report/mammography_procedures/imaging_examination_dora:0/ism_transition/current_state", "526")
-                .put("radiographer_mammography_report/examination_findings:0/breast_exam_screen/breast_findings/breast_location/specific_location/side", "at0003")
-                .put("radiographer_mammography_report/examination_findings:0/breast_exam_screen/breast_findings/breast_finding:0", "at0010")
-                .put("radiographer_mammography_report/mammography_procedures/imaging_examination_dora:1/breast_location/specific_location/side", "at0004")
-                .put("radiographer_mammography_report/mammography_procedures/imaging_examination_dora:1/examination_name:0", "at0.30")
-                .put("radiographer_mammography_report/mammography_procedures/imaging_examination_dora:1/examination_name:1", "at0.31")
-                .put("radiographer_mammography_report/mammography_procedures/imaging_examination_dora:1/ism_transition/current_state", "526")
-                .put("radiographer_mammography_report/examination_findings:1/breast_exam_screen/breast_findings/breast_location/specific_location/side", "at0004")
-                .put("radiographer_mammography_report/examination_findings:1/breast_exam_screen/breast_findings/breast_finding:0", "at0010")
-                .build(), context)
+            mapOf(
+                "radiographer_mammography_report/context/report_name" to "at0.0.19",
+                "radiographer_mammography_report/context/episode_code" to "30-03052010",
+                "radiographer_mammography_report/context/round_number" to "1",
+                "radiographer_mammography_report/context/start_time" to "2010-05-03T13:59:23.000+02:00",
+                "radiographer_mammography_report/context/report_id" to "SCR_7505",
+                "radiographer_mammography_report/procedure_details/procedure_details/examination_request_details/accession_number" to "",
+                "radiographer_mammography_report/procedure_details/procedure_details/mammography_procedure_details/imaging_quality" to "at0012",
+                "radiographer_mammography_report/procedure_details/procedure_details/mammography_procedure_details/completion_status" to "at0014",
+                "radiographer_mammography_report/procedure_details/procedure_details/mammography_procedure_details/number_of_images" to "4",
+                "radiographer_mammography_report/procedure_details/procedure_details/mammography_procedure_details/repeat_image_status" to "at0005",
+                "radiographer_mammography_report/procedure_details/procedure_details/mammography_procedure_details/number_of_repeat_images" to "0",
+                "radiographer_mammography_report/procedure_details/procedure_details/time" to "2010-05-03T09:49:54.000+02:00",
+                "radiographer_mammography_report/procedure_details/procedure_details/ism_transition/current_state" to "526",
+                "radiographer_mammography_report/past_therapies/breast-related_interventions_tmds/location" to "dora",
+                "radiographer_mammography_report/past_therapies/breast-related_interventions_tmds/time" to "2008-01-01T00:00:00.000+01:00",
+                "radiographer_mammography_report/past_therapies/breast-related_interventions_tmds/comments" to "",
+                "radiographer_mammography_report/past_therapies/breast-related_interventions_tmds/intervention" to "at0.68",
+                "radiographer_mammography_report/past_therapies/breast-related_interventions_tmds/ism_transition/current_state" to "524",
+                "radiographer_mammography_report/past_procedures/breast-related_interventions_tmds:0/ism_transition/current_state" to "524",
+                "radiographer_mammography_report/past_procedures/breast-related_interventions_tmds:0/breast_location/specific_location/side" to "at0003",
+                "radiographer_mammography_report/past_procedures/breast-related_interventions_tmds:1/ism_transition/current_state" to "524",
+                "radiographer_mammography_report/past_procedures/breast-related_interventions_tmds:1/breast_location/specific_location/side" to "at0004",
+                "radiographer_mammography_report/mammography_procedures/imaging_examination_dora:0/breast_location/specific_location/side" to "at0003",
+                "radiographer_mammography_report/mammography_procedures/imaging_examination_dora:0/examination_name:0" to "at0.30",
+                "radiographer_mammography_report/mammography_procedures/imaging_examination_dora:0/examination_name:1" to "at0.31",
+                "radiographer_mammography_report/mammography_procedures/imaging_examination_dora:0/ism_transition/current_state" to "526",
+                "radiographer_mammography_report/examination_findings:0/breast_exam_screen/breast_findings/breast_location/specific_location/side" to "at0003",
+                "radiographer_mammography_report/examination_findings:0/breast_exam_screen/breast_findings/breast_finding:0" to "at0010",
+                "radiographer_mammography_report/mammography_procedures/imaging_examination_dora:1/breast_location/specific_location/side" to "at0004",
+                "radiographer_mammography_report/mammography_procedures/imaging_examination_dora:1/examination_name:0" to "at0.30",
+                "radiographer_mammography_report/mammography_procedures/imaging_examination_dora:1/examination_name:1" to "at0.31",
+                "radiographer_mammography_report/mammography_procedures/imaging_examination_dora:1/ism_transition/current_state" to "526",
+                "radiographer_mammography_report/examination_findings:1/breast_exam_screen/breast_findings/breast_location/specific_location/side" to "at0004",
+                "radiographer_mammography_report/examination_findings:1/breast_exam_screen/breast_findings/breast_finding:0" to "at0010"
+            ),
+            context
+        )
 
         val node: JsonNode? = webTemplate.convertFromRawToStructured(composition!!, FromRawConversion.create())
         assertThat(
@@ -90,7 +91,8 @@ class DoraTest : AbstractWebTemplateTest() {
                 .path("breast-related_interventions_tmds").path(0)
                 .path("ism_transition").path(0)
                 .path("current_state").path(0).path("|code")
-                .asText()).isEqualTo("524")
+                .asText()
+        ).isEqualTo("524")
 
         assertThat(
             node.path("radiographer_mammography_report")
@@ -98,7 +100,8 @@ class DoraTest : AbstractWebTemplateTest() {
                 .path("breast-related_interventions_tmds").path(1)
                 .path("ism_transition").path(0)
                 .path("current_state").path(0).path("|code")
-                .asText()).isEqualTo("524")
+                .asText()
+        ).isEqualTo("524")
 
         assertThat(
             node.path("radiographer_mammography_report")
@@ -106,7 +109,8 @@ class DoraTest : AbstractWebTemplateTest() {
                 .path("procedure_details").path(0)
                 .path("ism_transition").path(0)
                 .path("current_state").path(0).path("|code")
-                .asText()).isEqualTo("526")
+                .asText()
+        ).isEqualTo("526")
     }
 
     @Test
@@ -130,41 +134,42 @@ class DoraTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposer(partyIdentified).build()
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.Builder<String, Any>()
-                .put("radiographer_mammography_report/context/report_name", "at0.0.19")
-                .put("radiographer_mammography_report/context/episode_code", "30-03052010")
-                .put("radiographer_mammography_report/context/round_number", "1")
-                .put("radiographer_mammography_report/context/start_time", "2010-05-03T13:59:23.000+02:00")
-                .put("radiographer_mammography_report/context/report_id", "SCR_7505")
-                .put("radiographer_mammography_report/procedure_details/procedure_details/mammography_procedure_details/imaging_quality", "at0012")
-                .put("radiographer_mammography_report/procedure_details/procedure_details/mammography_procedure_details/completion_status", "at0014")
-                .put("radiographer_mammography_report/procedure_details/procedure_details/mammography_procedure_details/number_of_images", "4")
-                .put("radiographer_mammography_report/procedure_details/procedure_details/mammography_procedure_details/repeat_image_status", "at0005")
-                .put("radiographer_mammography_report/procedure_details/procedure_details/mammography_procedure_details/number_of_repeat_images", "0")
-                .put("radiographer_mammography_report/procedure_details/procedure_details/time", "2010-05-03T09:49:54.000+02:00")
-                .put("radiographer_mammography_report/procedure_details/procedure_details/ism_transition/current_state", "526")
-                .put("radiographer_mammography_report/past_therapies/breast-related_interventions_tmds/location", "dora")
-                .put("radiographer_mammography_report/past_therapies/breast-related_interventions_tmds/time", "2008-01-01T00:00:00.000+01:00")
-                .put("radiographer_mammography_report/past_therapies/breast-related_interventions_tmds/comments", "")
-                .put("radiographer_mammography_report/past_therapies/breast-related_interventions_tmds/intervention", "at0.68")
-                .put("radiographer_mammography_report/past_therapies/breast-related_interventions_tmds/ism_transition/current_state", "524")
-                .put("radiographer_mammography_report/past_procedures/breast-related_interventions_tmds:0/ism_transition/current_state", "524")
-                .put("radiographer_mammography_report/past_procedures/breast-related_interventions_tmds:0/breast_location/specific_location/side", "at0003")
-                .put("radiographer_mammography_report/past_procedures/breast-related_interventions_tmds:1/ism_transition/current_state", "524")
-                .put("radiographer_mammography_report/past_procedures/breast-related_interventions_tmds:1/breast_location/specific_location/side", "at0004")
-                .put("radiographer_mammography_report/mammography_procedures/imaging_examination_dora:0/breast_location/specific_location/side", "at0003")
-                .put("radiographer_mammography_report/mammography_procedures/imaging_examination_dora:0/examination_name:0", "at0.30")
-                .put("radiographer_mammography_report/mammography_procedures/imaging_examination_dora:0/examination_name:1", "at0.31")
-                .put("radiographer_mammography_report/mammography_procedures/imaging_examination_dora:0/ism_transition/current_state", "526")
-                .put("radiographer_mammography_report/examination_findings:0/breast_exam_screen/breast_findings/breast_location/specific_location/side", "at0003")
-                .put("radiographer_mammography_report/examination_findings:0/breast_exam_screen/breast_findings/breast_finding:0", "at0010")
-                .put("radiographer_mammography_report/mammography_procedures/imaging_examination_dora:1/breast_location/specific_location/side", "at0004")
-                .put("radiographer_mammography_report/mammography_procedures/imaging_examination_dora:1/examination_name:0", "at0.30")
-                .put("radiographer_mammography_report/mammography_procedures/imaging_examination_dora:1/examination_name:1", "at0.31")
-                .put("radiographer_mammography_report/mammography_procedures/imaging_examination_dora:1/ism_transition/current_state", "526")
-                .put("radiographer_mammography_report/examination_findings:1/breast_exam_screen/breast_findings/breast_location/specific_location/side", "at0004")
-                .put("radiographer_mammography_report/examination_findings:1/breast_exam_screen/breast_findings/breast_finding:0", "at0010")
-                .build(), context)
+            mapOf(
+                "radiographer_mammography_report/context/report_name" to "at0.0.19",
+                "radiographer_mammography_report/context/episode_code" to "30-03052010",
+                "radiographer_mammography_report/context/round_number" to "1",
+                "radiographer_mammography_report/context/start_time" to "2010-05-03T13:59:23.000+02:00",
+                "radiographer_mammography_report/context/report_id" to "SCR_7505",
+                "radiographer_mammography_report/procedure_details/procedure_details/mammography_procedure_details/imaging_quality" to "at0012",
+                "radiographer_mammography_report/procedure_details/procedure_details/mammography_procedure_details/completion_status" to "at0014",
+                "radiographer_mammography_report/procedure_details/procedure_details/mammography_procedure_details/number_of_images" to "4",
+                "radiographer_mammography_report/procedure_details/procedure_details/mammography_procedure_details/repeat_image_status" to "at0005",
+                "radiographer_mammography_report/procedure_details/procedure_details/mammography_procedure_details/number_of_repeat_images" to "0",
+                "radiographer_mammography_report/procedure_details/procedure_details/time" to "2010-05-03T09:49:54.000+02:00",
+                "radiographer_mammography_report/procedure_details/procedure_details/ism_transition/current_state" to "526",
+                "radiographer_mammography_report/past_therapies/breast-related_interventions_tmds/location" to "dora",
+                "radiographer_mammography_report/past_therapies/breast-related_interventions_tmds/time" to "2008-01-01T00:00:00.000+01:00",
+                "radiographer_mammography_report/past_therapies/breast-related_interventions_tmds/comments" to "",
+                "radiographer_mammography_report/past_therapies/breast-related_interventions_tmds/intervention" to "at0.68",
+                "radiographer_mammography_report/past_therapies/breast-related_interventions_tmds/ism_transition/current_state" to "524",
+                "radiographer_mammography_report/past_procedures/breast-related_interventions_tmds:0/ism_transition/current_state" to "524",
+                "radiographer_mammography_report/past_procedures/breast-related_interventions_tmds:0/breast_location/specific_location/side" to "at0003",
+                "radiographer_mammography_report/past_procedures/breast-related_interventions_tmds:1/ism_transition/current_state" to "524",
+                "radiographer_mammography_report/past_procedures/breast-related_interventions_tmds:1/breast_location/specific_location/side" to "at0004",
+                "radiographer_mammography_report/mammography_procedures/imaging_examination_dora:0/breast_location/specific_location/side" to "at0003",
+                "radiographer_mammography_report/mammography_procedures/imaging_examination_dora:0/examination_name:0" to "at0.30",
+                "radiographer_mammography_report/mammography_procedures/imaging_examination_dora:0/examination_name:1" to "at0.31",
+                "radiographer_mammography_report/mammography_procedures/imaging_examination_dora:0/ism_transition/current_state" to "526",
+                "radiographer_mammography_report/examination_findings:0/breast_exam_screen/breast_findings/breast_location/specific_location/side" to "at0003",
+                "radiographer_mammography_report/examination_findings:0/breast_exam_screen/breast_findings/breast_finding:0" to "at0010",
+                "radiographer_mammography_report/mammography_procedures/imaging_examination_dora:1/breast_location/specific_location/side" to "at0004",
+                "radiographer_mammography_report/mammography_procedures/imaging_examination_dora:1/examination_name:0" to "at0.30",
+                "radiographer_mammography_report/mammography_procedures/imaging_examination_dora:1/examination_name:1" to "at0.31",
+                "radiographer_mammography_report/mammography_procedures/imaging_examination_dora:1/ism_transition/current_state" to "526",
+                "radiographer_mammography_report/examination_findings:1/breast_exam_screen/breast_findings/breast_location/specific_location/side" to "at0004",
+                "radiographer_mammography_report/examination_findings:1/breast_exam_screen/breast_findings/breast_finding:0" to "at0010"
+            ), context
+        )
 
         val node: JsonNode? = webTemplate.convertFromRawToStructured(composition!!, FromRawConversion.create())
         assertThat(
@@ -173,7 +178,8 @@ class DoraTest : AbstractWebTemplateTest() {
                 .path("breast-related_interventions_tmds").path(0)
                 .path("ism_transition").path(0)
                 .path("current_state").path(0).path("|code")
-                .asText()).isEqualTo("524")
+                .asText()
+        ).isEqualTo("524")
 
         assertThat(
             node.path("radiographer_mammography_report")
@@ -181,7 +187,8 @@ class DoraTest : AbstractWebTemplateTest() {
                 .path("breast-related_interventions_tmds").path(1)
                 .path("ism_transition").path(0)
                 .path("current_state").path(0).path("|code")
-                .asText()).isEqualTo("524")
+                .asText()
+        ).isEqualTo("524")
 
         assertThat(
             node.path("radiographer_mammography_report")
@@ -189,6 +196,7 @@ class DoraTest : AbstractWebTemplateTest() {
                 .path("procedure_details").path(0)
                 .path("ism_transition").path(0)
                 .path("current_state").path(0).path("|code")
-                .asText()).isEqualTo("526")
+                .asText()
+        ).isEqualTo("526")
     }
 }
