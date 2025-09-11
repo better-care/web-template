@@ -20,16 +20,12 @@ import care.better.platform.template.AmUtils
 import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils
-import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils.extractTerminologyCode
 import org.openehr.am.aom.CCodePhrase
 import org.openehr.base.basetypes.ArchetypeId
-import org.openehr.base.basetypes.TerminologyId
 import org.openehr.rm.common.Archetyped
 import org.openehr.rm.common.Locatable
-import org.openehr.rm.datatypes.CodePhrase
 import org.openehr.rm.datatypes.DvCodedText
 import org.openehr.rm.datatypes.DvText
-import org.openehr.rm.datatypes.TermMapping
 import java.util.*
 
 /**

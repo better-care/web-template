@@ -36,4 +36,16 @@ class LocalizedLabelsTest : AbstractWebTemplateTest() {
             assertThat(it.localizedLabels["en"]).isNotBlank()
         }
     }
+
+    @Test
+    fun testBuildingNotEmptyDvCodedText() {
+        val template = getTemplate("/build/UCC_App_Fragebogen_Daten_TEMPLATE.opt")
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("de", languages = listOf("de")))
+        val node = webTemplate.findWebTemplateNodeByAqlPath("content[openEHR-EHR-OBSERVATION.questionnaire_entry.v0,'Gesamtergebnis']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.questionnaire_item.v0,'Gesamtstatus']/items[openEHR-EHR-CLUSTER.questionnaire_item.v0,'Frage 8']/items[openEHR-EHR-CLUSTER.questionnaire_item.v0,'Frage 8b']/items[at0003]/value")
+        assertThat(node).isNotNull
+        node.inputs[0].list.forEach {
+            assertThat(it.localizedLabels["de"]).isNotBlank()
+        }
+
+    }
 }

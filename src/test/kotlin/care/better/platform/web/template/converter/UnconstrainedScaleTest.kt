@@ -22,7 +22,7 @@ import care.better.platform.web.template.builder.context.WebTemplateBuilderConte
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.node.ObjectNode
 import jakarta.xml.bind.JAXBException
-import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
 import org.openehr.rm.composition.Observation
@@ -47,18 +47,20 @@ class UnconstrainedScaleTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withLanguage("en").withTerritory("GB").withComposerName("Test").build()
 
         val root: ObjectNode = getObjectMapper().readTree(getJson("/convert/compositions/UnconstrainedScale-comp.json")) as ObjectNode
-        val composition: Composition = webTemplate.convertFromStructuredToRaw<Composition>(root, context)!!
+        val composition: Composition = webTemplate.convertFromStructuredToRaw(root, context)!!
 
         val dvScale = (((((composition.content[0] as Observation).data as History).events[0] as PointEvent).data as ItemTree).items[1] as Element).value as DvScale
-        Assertions.assertThat(dvScale.value).isEqualTo(1.2)
+        assertThat(dvScale.value).isEqualTo(1.2)
 
         val symbol = dvScale.symbol
-        Assertions.assertThat(symbol!!.value).isEqualTo("t1")
-        Assertions.assertThat(symbol!!.definingCode!!.codeString).isEqualTo("11929db5-a4c8-4d58-9ca3-8478dd7eb9f7")
+        assertThat(symbol!!.value).isEqualTo("t1")
+        assertThat(symbol.definingCode!!.codeString).isEqualTo("11929db5-a4c8-4d58-9ca3-8478dd7eb9f7")
+        assertThat(symbol.definingCode!!.preferredTerm).isEqualTo("term2")
 
         val dvCodedText = (((((composition.content[0] as Observation).data as History).events[0] as PointEvent).data as ItemTree).items[0] as Element).value as DvCodedText
-        Assertions.assertThat(dvCodedText.value).isEqualTo("I.74 description")
-        Assertions.assertThat(dvCodedText.definingCode!!.codeString).isEqualTo("I.74")
-        Assertions.assertThat(dvCodedText.definingCode!!.terminologyId!!.value).isEqualTo("external_terminology")
+        assertThat(dvCodedText.value).isEqualTo("I.74 description")
+        assertThat(dvCodedText.definingCode!!.codeString).isEqualTo("I.74")
+        assertThat(dvCodedText.definingCode!!.preferredTerm).isEqualTo("term1")
+        assertThat(dvCodedText.definingCode!!.terminologyId!!.value).isEqualTo("external_terminology")
     }
 }
