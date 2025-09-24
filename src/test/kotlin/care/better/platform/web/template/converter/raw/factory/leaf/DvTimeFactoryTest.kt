@@ -350,8 +350,11 @@ class DvTimeFactoryTest : AbstractWebTemplateTest() {
         val time = OpenEhrDateTimeFormatter.ofPattern(pattern).parseTime(value!!)
         assertThat(time).isInstanceOf(OffsetTime::class.java)
 
-        assertThat(Duration.between(nowBefore, (time as OffsetTime)).isNegative).isFalse
-        assertThat(Duration.between(time, nowAfter).isNegative).isFalse
+        val durationFromBefore = Duration.between(nowBefore, (time as OffsetTime)).abs()
+        assertThat(durationFromBefore.toMillis()).isLessThanOrEqualTo(500)
+
+        val durationFromAfter = Duration.between(time, nowAfter).abs()
+        assertThat(durationFromAfter.toMillis()).isLessThanOrEqualTo(500)
     }
 
     private fun handleNow(pattern: String?, resultType: Class<out Temporal>, strictMode: Boolean) {

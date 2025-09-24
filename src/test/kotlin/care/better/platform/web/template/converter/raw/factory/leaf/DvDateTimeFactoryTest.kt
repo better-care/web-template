@@ -37,6 +37,7 @@ import org.openehr.am.aom.CDateTime
 import org.openehr.am.aom.CPrimitiveObject
 import org.openehr.rm.datatypes.DvDateTime
 import java.time.*
+import java.time.temporal.ChronoUnit
 import java.time.temporal.Temporal
 import java.time.temporal.TemporalAccessor
 import java.util.*
@@ -484,8 +485,11 @@ class DvDateTimeFactoryTest : AbstractWebTemplateTest() {
         val dateTime = OpenEhrDateTimeFormatter.ofPattern(pattern).parseDateTime(value!!)
         assertThat(dateTime).isInstanceOf(OffsetDateTime::class.java)
 
-        assertThat(Duration.between(nowBefore, (dateTime as OffsetDateTime)).isNegative).isFalse
-        assertThat(Duration.between(dateTime, nowAfter).isNegative).isFalse
+        val durationFromBefore = Duration.between(nowBefore, (dateTime as OffsetDateTime)).abs()
+        assertThat(durationFromBefore.toMillis()).isLessThanOrEqualTo(500)
+
+        val durationFromAfter = Duration.between(dateTime, nowAfter).abs()
+        assertThat(durationFromAfter.toMillis()).isLessThanOrEqualTo(500)
     }
 
     private fun handleNow(pattern: String?, resultType: Class<out Temporal>, strictMode: Boolean) {

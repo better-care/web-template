@@ -2,11 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-<!--
-## 4.2.0 - 
+## 4.2.0 - 2025-09-23
 
 - Update dependency of ehr-common to 4.2.0
--->
 
 ## 4.1.2 - 2025-07-22
 
