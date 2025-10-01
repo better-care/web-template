@@ -102,20 +102,20 @@ open class InCompositionActionToInstructionHandler @JvmOverloads constructor(
                                     val activity = instruction.activities[index]
                                     val name = activity.name?.value!!
                                     if (name.contains("#")) {
-                                        instructionDetails.activityId = "activities[" + activity.archetypeNodeId + ",'" + Link.quote(name) + "']"
+                                        instructionDetails.activityId = "activities[" + activity.archetypeNodeId + "," + Link.quote(name) + "]"
                                     } else {
-                                        instructionDetails.activityId = "activities[" + activity.archetypeNodeId + ',' + Link.getNameSuffix(name, index) + ']'
+                                        instructionDetails.activityId =
+                                            "activities[" + activity.archetypeNodeId + ',' + Link.getNameSuffix(name, index) + ']'
                                     }
                                 }
                             }
                         } else {
                             val activity = instruction.activities[0]
-                            instructionDetails.activityId = "activities[" + activity.archetypeNodeId + ']'
+                            instructionDetails.activityId = "activities[" + activity.archetypeNodeId + ',' + Link.quote(activity.name?.value!!) + ']'
                         }
                     }
                 }
             }
-
         }
     }
 

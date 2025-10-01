@@ -150,19 +150,18 @@ internal object CompositionPostProcessor : LocatablePostProcessor<Composition>()
                     }
                 }
 
-
-                instructionDetailsData.instructionNode.also { instructionAmNode ->
-                    if (instructionAmNode != null) {
-                        instructionAmNode.attributes["activities"]?.also {
-                            if (it.children.size == 1) {
-                                val activityAmNode = it.children[0]
-                                val nameSuffix =
-                                    instructionDetailsData.activityIndex?.let { index -> ",${Link.getNameSuffix(activityAmNode.name!!, index)}" } ?: ""
-                                instructionDetails.activityId = "activities[${activityAmNode.nodeId}${nameSuffix}]"
+                if (instructionDetails.activityId == null) {
+                    instructionDetailsData.instructionNode.also { instructionAmNode ->
+                        if (instructionAmNode != null) {
+                            instructionAmNode.attributes["activities"]?.also {
+                                if (it.children.size == 1) {
+                                    val activityAmNode = it.children[0]
+                                    val nameSuffix =
+                                        activityAmNode.name?.let { name -> ",${Link.getNameSuffix(name, instructionDetailsData.activityIndex ?: 0)}" } ?: ""
+                                    instructionDetails.activityId = "activities[${activityAmNode.nodeId}${nameSuffix}]"
+                                }
                             }
-                        }
-                    } else if (conversionContext.actionToInstructionHandler != null) {
-                        conversionContext.actionToInstructionHandler.handle(composition, instructionDetails, instructionDetailsData, conversionContext)
+                        } else conversionContext.actionToInstructionHandler?.handle(composition, instructionDetails, instructionDetailsData, conversionContext)
                     }
                 }
             }
