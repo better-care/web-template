@@ -71,7 +71,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
             entry("medication_order/medication_detail/medication_instruction:0/order:0/medicine", "Aspirin"),
             entry("medication_order/medication_detail/medication_instruction:0/order:0/timing", "R3/2014-01-10T00:00:00.000+01:00"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|composition_uid", "compositionuid"),
-            entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001]"),
+            entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001,'Order']"),
             entry(
                 "medication_order/medication_detail/medication_action:0/_instruction_details|path",
                 "/content[openEHR-EHR-SECTION.medication.v1,'Medication detail']/items[openEHR-EHR-INSTRUCTION.medication.v1 and uid/value='insuid']"
@@ -103,6 +103,46 @@ class InstructionActionTest : AbstractWebTemplateTest() {
                 "medication_order/medication_detail/medication_action/_instruction_details|composition_uid" to "compositionuid",
                 "medication_order/medication_detail/medication_action/_instruction_details|wt_path" to "medication_order/medication_detail/medication_instruction"
             ),
+            ConversionContext.create().build()
+        )
+
+        val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
+        assertThat(flatMap).contains(
+            entry("medication_order/medication_detail/medication_instruction:0/narrative", "Take Aspirin as needed"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:0/medicine", "Aspirin"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing", "R3/2014-01-10T00:00:00.000+01:00"),
+            entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001,'Order']"),
+            entry(
+                "medication_order/medication_detail/medication_action:0/_instruction_details|path",
+                "/content[openEHR-EHR-SECTION.medication.v1,'Medication detail']/items[openEHR-EHR-INSTRUCTION.medication.v1,'Medication instruction']"
+            )
+        )
+    }
+
+    @Test
+    @Throws(IOException::class, JAXBException::class)
+    fun testSingleInstructionDetailsRetainGivenActivityId() {
+        val builderContext = WebTemplateBuilderContext("sl", setOf("en", "sl"))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val composition: Composition? = webTemplate.convertFromFlatToRaw(
+            buildMap<String, String> {
+                put("ctx/language", "sl")
+                put("ctx/territory", "SI")
+                put("ctx/id_scheme", "ispek")
+                put("ctx/id_namespace", "ispek")
+                put("ctx/composer_name", "George Orwell")
+                put("medication_order/medication_detail/medication_instruction/narrative", "Take Aspirin as needed")
+                put("medication_order/medication_detail/medication_instruction/order/medicine", "Aspirin")
+                put("medication_order/medication_detail/medication_instruction/order/timing", "R3/2014-01-10T00:00:00.000+01:00")
+                put("medication_order/medication_detail/medication_action/time", "2015-01-01T01:01:01.000Z")
+                put("medication_order/medication_detail/medication_action/ism_transition/current_state", "524")
+                put("medication_order/medication_detail/medication_action/medicine|code", "a")
+                put("medication_order/medication_detail/medication_action/medicine|value", "Aspirin")
+                put("medication_order/medication_detail/medication_action/instructions", "Take Aspirin as needed")
+                put("medication_order/medication_detail/medication_action/_instruction_details|composition_uid", "compositionuid")
+                put("medication_order/medication_detail/medication_action/_instruction_details|wt_path", "medication_order/medication_detail/medication_instruction")
+                put("medication_order/medication_detail/medication_action/_instruction_details|activity_id", "activities[at0001]")
+            },
             ConversionContext.create().build()
         )
 
@@ -178,6 +218,65 @@ class InstructionActionTest : AbstractWebTemplateTest() {
 
     @Test
     @Throws(IOException::class, JAXBException::class)
+    fun testMultipleActivitiesRetainGivenActivityId() {
+        val builderContext = WebTemplateBuilderContext("sl", setOf("en", "sl"))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
+        val composition: Composition? = webTemplate.convertFromFlatToRaw(
+            buildMap<String, String> {
+                put("ctx/language", "sl")
+                put("ctx/territory", "SI")
+                put("ctx/id_scheme", "ispek")
+                put("ctx/id_namespace", "ispek")
+                put("ctx/composer_name", "George Orwell")
+                put("medication_order/medication_detail/medication_instruction/narrative", "Take Aspirin as needed")
+                put("medication_order/medication_detail/medication_instruction/order:0/medicine", "Aspirin")
+                put("medication_order/medication_detail/medication_instruction/order:0/timing", "R3/2014-01-10T00:00:00.000+01:00")
+                put("medication_order/medication_detail/medication_instruction/order:1/medicine", "Aspirin")
+                put("medication_order/medication_detail/medication_instruction/order:1/timing", "R2/2014-01-12T00:00:00.000+01:00")
+                put("medication_order/medication_detail/medication_action:0/time", "2015-01-01T01:01:01.000Z")
+                put("medication_order/medication_detail/medication_action:0/ism_transition/current_state", "524")
+                put("medication_order/medication_detail/medication_action:0/medicine|code", "a")
+                put("medication_order/medication_detail/medication_action:0/medicine|value", "Aspirin")
+                put("medication_order/medication_detail/medication_action:0/instructions", "Take Aspirin as needed")
+                put("medication_order/medication_detail/medication_action:0/_instruction_details|composition_uid", "compositionuid")
+                put("medication_order/medication_detail/medication_action:0/_instruction_details|wt_path", "medication_order/medication_detail/medication_instruction")
+                put("medication_order/medication_detail/medication_action:0/_instruction_details|activity_index", "0")
+                put("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001]")
+                put("medication_order/medication_detail/medication_action:1/time", "2015-01-01T01:01:01.000Z")
+                put("medication_order/medication_detail/medication_action:1/ism_transition/current_state", "completed")
+                put("medication_order/medication_detail/medication_action:1/medicine|code", "b")
+                put("medication_order/medication_detail/medication_action:1/medicine|value", "Aspirin B")
+                put("medication_order/medication_detail/medication_action:1/instructions", "Take Aspirin as needed")
+                put("medication_order/medication_detail/medication_action:1/_instruction_details|composition_uid", "compositionuid")
+                put("medication_order/medication_detail/medication_action:1/_instruction_details|wt_path", "medication_order/medication_detail/medication_instruction")
+                put("medication_order/medication_detail/medication_action:1/_instruction_details|activity_index", "1")
+                put("medication_order/medication_detail/medication_action:1/_instruction_details|activity_id", "activities[at0001]")
+            },
+            ConversionContext.create().build()
+        )
+
+        val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
+        assertThat(flatMap).contains(
+            entry("medication_order/medication_detail/medication_instruction:0/narrative", "Take Aspirin as needed"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:0/medicine", "Aspirin"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing", "R3/2014-01-10T00:00:00.000+01:00"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:1/medicine", "Aspirin"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:1/timing", "R2/2014-01-12T00:00:00.000+01:00"),
+            entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001]"),
+            entry(
+                "medication_order/medication_detail/medication_action:0/_instruction_details|path",
+                "/content[openEHR-EHR-SECTION.medication.v1,'Medication detail']/items[openEHR-EHR-INSTRUCTION.medication.v1,'Medication instruction']"
+            ),
+            entry("medication_order/medication_detail/medication_action:1/_instruction_details|activity_id", "activities[at0001]"),
+            entry(
+                "medication_order/medication_detail/medication_action:1/_instruction_details|path",
+                "/content[openEHR-EHR-SECTION.medication.v1,'Medication detail']/items[openEHR-EHR-INSTRUCTION.medication.v1,'Medication instruction']"
+            )
+        )
+    }
+
+    @Test
+    @Throws(IOException::class, JAXBException::class)
     fun testMultipleActivitiesPathAndIndex() {
         val builderContext = WebTemplateBuilderContext("sl", setOf("en", "sl"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/MED - Medication Order.opt"), builderContext)
@@ -205,7 +304,6 @@ class InstructionActionTest : AbstractWebTemplateTest() {
                 "medication_order/medication_detail/medication_action:0/_instruction_details|composition_uid" to "\$selfComposition",
                 "medication_order/medication_detail/medication_action:0/_instruction_details|path" to
                         "/content[openEHR-EHR-SECTION.medication.v1,'Medication detail']/items[openEHR-EHR-INSTRUCTION.medication.v1,'Medication instruction']",
-                "medication_order/medication_detail/medication_action:0/_instruction_details|activity_id" to "activities[at0001]",
                 "medication_order/medication_detail/medication_action:0/_instruction_details|activity_index" to "0", // action #2
                 "medication_order/medication_detail/medication_action:1/time" to "2015-01-01T01:01:01.000Z",
                 "medication_order/medication_detail/medication_action:1/ism_transition/current_state" to "completed",
@@ -215,7 +313,6 @@ class InstructionActionTest : AbstractWebTemplateTest() {
                 "medication_order/medication_detail/medication_action:1/_instruction_details|composition_uid" to "\$selfComposition",
                 "medication_order/medication_detail/medication_action:1/_instruction_details|path" to
                         "/content[openEHR-EHR-SECTION.medication.v1,'Medication detail']/items[openEHR-EHR-INSTRUCTION.medication.v1,'Medication instruction']",
-                "medication_order/medication_detail/medication_action:1/_instruction_details|activity_id" to "activities[at0001]",
                 "medication_order/medication_detail/medication_action:1/_instruction_details|activity_index" to "1"
             ),
             context
@@ -274,13 +371,13 @@ class InstructionActionTest : AbstractWebTemplateTest() {
         val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap).contains(
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|composition_uid", "cuid"),
-            entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001]"),
+            entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001,'Order']"),
             entry(
                 "medication_order/medication_detail/medication_action:0/_instruction_details|path",
                 "/content[openEHR-EHR-SECTION.medication.v1,'Medication detail']/items[openEHR-EHR-INSTRUCTION.medication.v1 and uid/value='iuid1']"
             ),
             entry("medication_order/medication_detail/medication_action:1/_instruction_details|composition_uid", "cuid"),
-            entry("medication_order/medication_detail/medication_action:1/_instruction_details|activity_id", "activities[at0001]"),
+            entry("medication_order/medication_detail/medication_action:1/_instruction_details|activity_id", "activities[at0001,'Order']"),
             entry(
                 "medication_order/medication_detail/medication_action:1/_instruction_details|path",
                 "/content[openEHR-EHR-SECTION.medication.v1,'Medication detail']/items[openEHR-EHR-INSTRUCTION.medication.v1 and uid/value='iuid2']"
@@ -362,7 +459,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
             entry("medication_order/medication_detail/medication_instruction:0/order:0/medicine", "Aspirin"),
             entry("medication_order/medication_detail/medication_instruction:0/order:0/timing", "R3/2014-01-10T00:00:00.000+01:00"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|composition_uid", "compositionuid"),
-            entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001]"),
+            entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001,'Order']"),
             entry(
                 "medication_order/medication_detail/medication_action:0/_instruction_details|path",
                 "/content[openEHR-EHR-SECTION.medication.v1,'Medication detail']/items[openEHR-EHR-INSTRUCTION.medication.v1,'Medication instruction #3']"

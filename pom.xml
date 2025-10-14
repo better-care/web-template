@@ -50,7 +50,7 @@
         <maven-assembly-plugin.version>3.7.1</maven-assembly-plugin.version>
         <maven-clean-plugin.version>3.5.0</maven-clean-plugin.version>
         <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
-        <maven-dependency-check-plugin.version>12.1.3</maven-dependency-check-plugin.version>
+        <maven-dependency-check-plugin.version>12.1.6</maven-dependency-check-plugin.version>
         <maven-dokka-plugin.version>2.0.0</maven-dokka-plugin.version>
         <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
         <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
@@ -403,6 +403,8 @@
                         <outputDirectory>${dependency.check.report.dir}</outputDirectory>
                         <nvdApiKey>${dependency.check.nvdApiKey}</nvdApiKey>
                         <nvdDatafeedUrl>${dependency.check.nvdDatafeedUrl}</nvdDatafeedUrl>
+                        <ossIndexUsername>${dependency.check.ossIndexUsername}</ossIndexUsername>
+                        <ossIndexPassword>${dependency.check.ossIndexPassword}</ossIndexPassword>
                         <assemblyAnalyzerEnabled>false</assemblyAnalyzerEnabled>
                     </configuration>
                 </plugin>
