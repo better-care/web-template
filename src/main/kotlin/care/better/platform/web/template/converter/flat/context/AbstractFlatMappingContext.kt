@@ -48,11 +48,9 @@ abstract class AbstractFlatMappingContext<T> {
  */
 class FlatMappingContext : AbstractFlatMappingContext<Any>()
 
-
 /**
  * Instance of [AbstractFlatMappingContext] that converts the RM object in RAW format to the RM object in FLAT format with formatted values.
  *
  * @constructor Creates a new instance of [FormattedFlatMappingContext]
  */
 class FormattedFlatMappingContext : AbstractFlatMappingContext<String>()
-

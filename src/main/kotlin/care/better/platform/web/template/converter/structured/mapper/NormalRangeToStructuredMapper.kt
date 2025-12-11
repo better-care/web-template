@@ -51,7 +51,12 @@ internal object NormalRangeToStructuredMapper : RmObjectToStructuredMapper<DvInt
             this
         }
 
-    fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvInterval, objectNode: ObjectNode) {
+    fun mapFormatted(
+        webTemplateNode: WebTemplateNode,
+        valueConverter: ValueConverter,
+        rmObject: DvInterval,
+        objectNode: ObjectNode
+    ) {
         rmObject.lower?.also {
             objectNode.putSingletonAsArray("lower") { RmObjectToStructuredMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it) }
         }

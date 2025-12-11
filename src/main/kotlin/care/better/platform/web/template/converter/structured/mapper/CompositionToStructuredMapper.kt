@@ -15,11 +15,11 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putSingletonAsArray
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.composition.Composition
 
 /**

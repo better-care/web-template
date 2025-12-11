@@ -60,7 +60,7 @@ object RmObjectToStructuredMapperDelegator {
             Pair(DvUri::class.java, DvUriToStructuredMapper),
             Pair(DvEhrUri::class.java, DvUriToStructuredMapper),
             Pair(Element::class.java, ElementToStructuredMapper),
-            Pair(Observation::class.java, EntryToStructuredMapper.getInstance()),
+            Pair(Observation::class.java, ObservationToStructuredMapper),
             Pair(Evaluation::class.java, EntryToStructuredMapper.getInstance()),
             Pair(Instruction::class.java, EntryToStructuredMapper.getInstance()),
             Pair(AdminEntry::class.java, EntryToStructuredMapper.getInstance()),
@@ -94,9 +94,10 @@ object RmObjectToStructuredMapperDelegator {
     @JvmStatic
     @Suppress("UNCHECKED_CAST")
     fun <T : RmObject> delegate(
-            webTemplateNode: WebTemplateNode,
-            valueConverter: ValueConverter,
-            rmObject: T): JsonNode? =
+        webTemplateNode: WebTemplateNode,
+        valueConverter: ValueConverter,
+        rmObject: T
+    ): JsonNode? =
         rmObjectToStructuredMappers[rmObject::class.java]?.let { (it as RmObjectToStructuredMapper<T>).map(webTemplateNode, valueConverter, rmObject) }
 
     /**
@@ -110,10 +111,15 @@ object RmObjectToStructuredMapperDelegator {
     @JvmStatic
     @Suppress("UNCHECKED_CAST")
     fun <T : RmObject> delegateFormatted(
-            webTemplateNode: WebTemplateNode,
-            valueConverter: ValueConverter,
-            rmObject: T): JsonNode? =
-        rmObjectToStructuredMappers[rmObject::class.java]?.let { (it as RmObjectToStructuredMapper<T>).mapFormatted(webTemplateNode, valueConverter, rmObject) }
+        webTemplateNode: WebTemplateNode,
+        valueConverter: ValueConverter,
+        rmObject: T
+    ): JsonNode? =
+        rmObjectToStructuredMappers[rmObject::class.java]?.let { (it as RmObjectToStructuredMapper<T>).mapFormatted(
+            webTemplateNode,
+            valueConverter,
+            rmObject
+        ) }
 
     /**
      * Delegates default attribute name resolving to the [RmObjectToStructuredMapper] and returns the resolved attribute.

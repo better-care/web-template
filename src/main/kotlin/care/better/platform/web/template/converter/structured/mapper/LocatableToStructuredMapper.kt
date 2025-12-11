@@ -55,7 +55,12 @@ internal open class LocatableToStructuredMapper<T : Locatable> : RmObjectToStruc
         }
 
     @Suppress("MoveLambdaOutsideParentheses")
-    protected open fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: T, objectNode: ObjectNode) {
+    protected open fun map(
+        webTemplateNode: WebTemplateNode,
+        valueConverter: ValueConverter,
+        rmObject: T,
+        objectNode: ObjectNode
+    ) {
         objectNode.putCollectionAsArray("_link", rmObject.links) { LinkToStructuredMapper.map(webTemplateNode, valueConverter, it) }
         rmObject.uid?.also { objectNode.putArray("_uid").add(TextNode(it.value)) }
 
@@ -72,7 +77,12 @@ internal open class LocatableToStructuredMapper<T : Locatable> : RmObjectToStruc
     }
 
     @Suppress("MoveLambdaOutsideParentheses")
-    protected open fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: T, objectNode: ObjectNode) {
+    protected open fun mapFormatted(
+        webTemplateNode: WebTemplateNode,
+        valueConverter: ValueConverter,
+        rmObject: T,
+        objectNode: ObjectNode
+    ) {
         objectNode.putCollectionAsArray("_link", rmObject.links) { LinkToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
         rmObject.uid?.also { objectNode.putArray("_uid").add(TextNode(it.value)) }
 

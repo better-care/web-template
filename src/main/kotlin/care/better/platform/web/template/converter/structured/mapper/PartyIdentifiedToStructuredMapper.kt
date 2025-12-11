@@ -47,7 +47,11 @@ internal object PartyIdentifiedToStructuredMapper : RmObjectToStructuredMapper<P
             rmObject.externalRef?.also { mapPartyRef(it, this) }
             this.putIfNotNull("|name", rmObject.name)
 
-            this.putCollectionAsArray("_identifier", rmObject.identifiers) { DvIdentifierToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+            this.putCollectionAsArray("_identifier", rmObject.identifiers) { DvIdentifierToStructuredMapper.mapFormatted(
+                webTemplateNode,
+                valueConverter,
+                it
+            ) }
             this
         }
 
