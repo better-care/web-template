@@ -19,7 +19,6 @@ import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import com.google.common.collect.ImmutableMap
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -42,24 +41,24 @@ class VisitorTest : AbstractWebTemplateTest() {
         val visited: MutableList<String> = ArrayList()
         val names: MutableList<String> = ArrayList()
 
-        val values: Map<String, String> = ImmutableMap.builder<String, String>()
-            .put("cda_document/context/setting|code", "238")
-            .put("cda_document/context/setting|value", "other care")
-            .put("cda_document/cda_component:0/name", "HOSPITAL ADMISSION DX")
-            .put("cda_document/cda_component:0/templateid", "1.3.6.1.4.1.19376.1.5.3.1.3.3")
-            .put("cda_document/cda_component:0/code|code", "46241-6")
-            .put("cda_document/cda_component:0/code|value", "HOSPITAL ADMISSION DX")
-            .put("cda_document/cda_component:0/title", "2. Aktivni zdravstveni problemi:")
-            .put("cda_document/cda_component:0/text", "Osteoartroza in TEP kolena leta 2000.")
-            .put("cda_document/cda_component:0/text|formalism", "text/html")
-            .put("cda_document/cda_component:1/name", "HOSPITAL ADMISSION DX1")
-            .put("cda_document/cda_component:1/templateid", "1.3.6.1.4.1.19376.1.5.3.1.3.3")
-            .put("cda_document/cda_component:1/code|code", "46241-6")
-            .put("cda_document/cda_component:1/code|value", "HOSPITAL ADMISSION DX")
-            .put("cda_document/cda_component:1/title", "2. Aktivni zdravstveni problemi:")
-            .put("cda_document/cda_component:1/text", "Osteoartroza in TEP kolena leta 2000.")
-            .put("cda_document/cda_component:1/text|formalism", "text/html")
-            .build()
+        val values: Map<String, String> = mapOf(
+            "cda_document/context/setting|code" to "238",
+            "cda_document/context/setting|value" to "other care",
+            "cda_document/cda_component:0/name" to "HOSPITAL ADMISSION DX",
+            "cda_document/cda_component:0/templateid" to "1.3.6.1.4.1.19376.1.5.3.1.3.3",
+            "cda_document/cda_component:0/code|code" to "46241-6",
+            "cda_document/cda_component:0/code|value" to "HOSPITAL ADMISSION DX",
+            "cda_document/cda_component:0/title" to "2. Aktivni zdravstveni problemi:",
+            "cda_document/cda_component:0/text" to "Osteoartroza in TEP kolena leta 2000.",
+            "cda_document/cda_component:0/text|formalism" to "text/html",
+            "cda_document/cda_component:1/name" to "HOSPITAL ADMISSION DX1",
+            "cda_document/cda_component:1/templateid" to "1.3.6.1.4.1.19376.1.5.3.1.3.3",
+            "cda_document/cda_component:1/code|code" to "46241-6",
+            "cda_document/cda_component:1/code|value" to "HOSPITAL ADMISSION DX",
+            "cda_document/cda_component:1/title" to "2. Aktivni zdravstveni problemi:",
+            "cda_document/cda_component:1/text" to "Osteoartroza in TEP kolena leta 2000.",
+            "cda_document/cda_component:1/text|formalism" to "text/html"
+        )
 
         val context = ConversionContext.create()
             .withLanguage("sl")
@@ -78,6 +77,7 @@ class VisitorTest : AbstractWebTemplateTest() {
             "cda_document/cda_component:0",
             "cda_document/cda_component:1",
             "cda_document/cda_component:0/text",
-            "cda_document/cda_component:1/text")
+            "cda_document/cda_component:1/text"
+        )
     }
 }

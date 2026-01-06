@@ -23,7 +23,6 @@ import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.value.LocaleBasedValueConverter
 import com.fasterxml.jackson.databind.node.ObjectNode
-import com.google.common.collect.ImmutableSet
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -87,7 +86,7 @@ class InfinityTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testOccurrences() {
         val template = getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.t_oncology_reference_form_027_1.v1.opt")
-        val context = WebTemplateBuilderContext("ru", ImmutableSet.of("en", "ru"))
+        val context = WebTemplateBuilderContext("ru", setOf("en", "ru"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, context)
         assertThat(webTemplate).isNotNull
 
@@ -108,7 +107,7 @@ class InfinityTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testCompositionNotNull() {
         val template = getTemplate("/convert/templates/openEHR-EHR-COMPOSITION.prevaccinal_examination.v1.xml")
-        val context = WebTemplateBuilderContext("ru", ImmutableSet.of("en", "ru"))
+        val context = WebTemplateBuilderContext("ru", setOf("en", "ru"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, context)
         assertThat(webTemplate).isNotNull
 

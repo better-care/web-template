@@ -46,12 +46,10 @@
             "|code": "238",
             "|value": "other care",
             "|terminology": "openehr"
-          }
-        ]
-      }
-    ],
-    "malnutrition_universal_screening_tool_must": [
-      {
+      } ]
+    } ],
+    "malnutrition_universal_screening_tool_must" : [ {
+      "history_origin" : [ "2020-07-23T12:29:57.569+02:00" ],
         "body_mass_index_score": [
           {
             "|code": "at0005",
@@ -116,12 +114,10 @@
           {
             "|code": "UTF-8",
             "|terminology": "IANA_character-sets"
-          }
-        ]
-      }
-    ],
-    "body_weight": [
-      {
+      } ]
+    } ],
+    "body_weight" : [ {
+      "history_origin" : [ "2020-07-23T12:29:57.569+02:00" ],
         "any_event": [
           {
             "weight": [
@@ -145,12 +141,10 @@
           {
             "|code": "UTF-8",
             "|terminology": "IANA_character-sets"
-          }
-        ]
-      }
-    ],
-    "height_length": [
-      {
+      } ]
+    } ],
+    "height_length" : [ {
+      "history_origin" : [ "2020-07-23T12:29:57.569+02:00" ],
         "any_event": [
           {
             "height_length": [
@@ -174,12 +168,10 @@
           {
             "|code": "UTF-8",
             "|terminology": "IANA_character-sets"
-          }
-        ]
-      }
-    ],
-    "body_mass_index": [
-      {
+      } ]
+    } ],
+    "body_mass_index" : [ {
+      "history_origin" : [ "2020-07-23T12:29:57.569+02:00" ],
         "any_event": [
           {
             "body_mass_index": [
@@ -228,8 +220,8 @@
     ],
     "weight_loss_comparison": [
       {
-        "body_weight_3_to_6_months_ago": [
-          {
+      "body_weight_3_to_6_months_ago" : [ {
+        "history_origin" : [ "2020-07-23T12:29:57.569+02:00" ],
             "last_3_to_6_month_ago": [
               {
                 "weight": [

@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.2.1 - 2025-10-10
+
+- Update dependency of ehr-common to 4.2.1
+- Change INSTRUCTION_DETAILS processing so that activity_id is retained intact if it is present, and a generated activity_id always contains the name predicate
+
+## 4.2.0 - 2025-09-23
+
+- Update dependency of ehr-common to 4.2.0
+
+## 4.1.2 - 2025-07-22
+
+- Fix empty `DV_CODED_TEXT` labels
+
 ## 4.1.1 - 2025-05-30
 
 - `NameAndNodeMatchingPathValueExtractor` cache optimization

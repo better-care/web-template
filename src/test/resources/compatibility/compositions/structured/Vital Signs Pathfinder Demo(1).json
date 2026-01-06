@@ -45,6 +45,9 @@
     ],
     "blood_pressure": [
       {
+        "history_origin": [
+          "2019-09-05T09:29:56.48+02:00"
+        ],
         "any_event": [
           {
             "systolic": [
@@ -104,6 +107,9 @@
     ],
     "body_temperature": [
       {
+        "history_origin": [
+          "2019-09-05T09:29:56.48+02:00"
+        ],
         "any_event": [
           {
             "temperature": [
@@ -150,6 +156,9 @@
     ],
     "pulse_oximetry": [
       {
+        "history_origin": [
+          "2019-09-05T09:29:56.48+02:00"
+        ],
         "any_event": [
           {
             "spo": [
@@ -184,6 +193,9 @@
     ],
     "pulse_heart_beat": [
       {
+        "history_origin": [
+          "2019-09-05T09:29:56.48+02:00"
+        ],
         "any_event": [
           {
             "heart_rate": [
@@ -237,6 +249,9 @@
     ],
     "body_weight": [
       {
+        "history_origin": [
+          "2019-09-05T09:29:56.48+02:00"
+        ],
         "any_event": [
           {
             "weight": [

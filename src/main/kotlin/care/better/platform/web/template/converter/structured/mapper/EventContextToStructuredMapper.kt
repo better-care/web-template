@@ -33,7 +33,11 @@ import org.openehr.rm.composition.EventContext
 internal object EventContextToStructuredMapper : RmObjectToStructuredMapper<EventContext> {
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: EventContext): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            this.putCollectionAsArray("_participation", rmObject.participations) { ParticipationToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+            this.putCollectionAsArray("_participation", rmObject.participations) { ParticipationToStructuredMapper.map(
+                webTemplateNode,
+                valueConverter,
+                it
+            ) }
             rmObject.healthCareFacility?.also {
                 this.putSingletonAsArray("_health_care_facility") { PartyIdentifiedToStructuredMapper.map(webTemplateNode, valueConverter, it) }
             }
@@ -50,7 +54,8 @@ internal object EventContextToStructuredMapper : RmObjectToStructuredMapper<Even
                 ParticipationToStructuredMapper.mapFormatted(
                     webTemplateNode,
                     valueConverter,
-                    it)
+                    it
+                )
             }
             rmObject.healthCareFacility?.also {
                 this.putSingletonAsArray("_health_care_facility") { PartyIdentifiedToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }

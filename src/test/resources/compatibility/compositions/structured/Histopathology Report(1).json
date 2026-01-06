@@ -65,6 +65,9 @@
     ],
     "laboratory_test_result": [
       {
+        "history_origin": [
+          "2020-04-08T12:05:16.145+02:00"
+        ],
         "test_name": [
           {
             "|code": "250537006",
@@ -335,6 +338,9 @@
     ],
     "tnm_stage_-_pathological": [
       {
+        "history_origin": [
+          "2020-04-08T12:05:16.145+02:00"
+        ],
         "any_event": [
           {
             "primary_tumour_pt": [
@@ -368,6 +374,9 @@
     ],
     "figo_stage_-_pathological": [
       {
+        "history_origin": [
+          "2020-04-08T12:05:16.145+02:00"
+        ],
         "any_event": [
           {
             "primary_tumour_pt": [

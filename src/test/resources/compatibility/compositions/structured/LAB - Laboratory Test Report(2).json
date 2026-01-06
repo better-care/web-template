@@ -51,6 +51,9 @@
     ],
     "laboratory_test_result": [
       {
+        "history_origin": [
+          "2015-01-22T13:58:54.005+01:00"
+        ],
         "any_event": [
           {
             "universal_service_identifier": [
@@ -173,6 +176,9 @@
         ]
       },
       {
+        "history_origin": [
+          "2015-01-22T13:58:54.005+01:00"
+        ],
         "any_event": [
           {
             "universal_service_identifier": [

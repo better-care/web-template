@@ -51,6 +51,9 @@
     ],
     "laboratory_test_result": [
       {
+        "history_origin": [
+          "2015-03-17T15:57:16.708+01:00"
+        ],
         "any_event": [
           {
             "universal_service_identifier": [
@@ -200,6 +203,9 @@
         ]
       },
       {
+        "history_origin": [
+          "2015-03-17T15:57:16.708+01:00"
+        ],
         "any_event": [
           {
             "universal_service_identifier": [
@@ -311,6 +317,9 @@
         ]
       },
       {
+        "history_origin": [
+          "2015-03-17T16:31:32.333+01:00"
+        ],
         "any_event": [
           {
             "universal_service_identifier": [
@@ -433,6 +442,9 @@
         ]
       },
       {
+        "history_origin": [
+          "2015-03-17T16:31:32.333+01:00"
+        ],
         "any_event": [
           {
             "universal_service_identifier": [
@@ -1230,6 +1242,9 @@
         ]
       },
       {
+        "history_origin": [
+          "2015-03-17T16:31:32.333+01:00"
+        ],
         "any_event": [
           {
             "universal_service_identifier": [
@@ -2035,6 +2050,9 @@
         ]
       },
       {
+        "history_origin": [
+          "2015-03-17T17:23:21.754+01:00"
+        ],
         "any_event": [
           {
             "universal_service_identifier": [
@@ -2184,6 +2202,9 @@
         ]
       },
       {
+        "history_origin": [
+          "2015-03-17T17:23:21.754+01:00"
+        ],
         "any_event": [
           {
             "universal_service_identifier": [
@@ -2333,6 +2354,9 @@
         ]
       },
       {
+        "history_origin": [
+          "2015-03-17T17:23:21.754+01:00"
+        ],
         "any_event": [
           {
             "universal_service_identifier": [
@@ -2482,6 +2506,9 @@
         ]
       },
       {
+        "history_origin": [
+          "2015-03-17T17:23:21.754+01:00"
+        ],
         "any_event": [
           {
             "universal_service_identifier": [
@@ -2631,6 +2658,9 @@
         ]
       },
       {
+        "history_origin": [
+          "2015-03-17T17:23:21.754+01:00"
+        ],
         "any_event": [
           {
             "universal_service_identifier": [
@@ -2780,6 +2810,9 @@
         ]
       },
       {
+        "history_origin": [
+          "2015-03-17T17:23:21.754+01:00"
+        ],
         "any_event": [
           {
             "universal_service_identifier": [
@@ -2929,6 +2962,9 @@
         ]
       },
       {
+        "history_origin": [
+          "2015-03-17T17:23:21.754+01:00"
+        ],
         "any_event": [
           {
             "universal_service_identifier": [
@@ -3078,6 +3114,9 @@
         ]
       },
       {
+        "history_origin": [
+          "2015-03-17T17:23:21.754+01:00"
+        ],
         "any_event": [
           {
             "universal_service_identifier": [
@@ -3227,6 +3266,9 @@
         ]
       },
       {
+        "history_origin": [
+          "2015-03-24T10:04:06.424+01:00"
+        ],
         "any_event": [
           {
             "universal_service_identifier": [
@@ -3363,4 +3405,3 @@
     ]
   }
 }
-

@@ -52,6 +52,9 @@
     ],
     "waterlow_score": [
       {
+        "history_origin": [
+          "2019-10-08T14:22:47.391+02:00"
+        ],
         "any_point_in_time_event": [
           {
             "waterlow_score": [
@@ -213,6 +216,9 @@
     ],
     "body_weight": [
       {
+        "history_origin": [
+          "2019-10-08T14:22:47.391+02:00"
+        ],
         "any_event": [
           {
             "weight": [
@@ -242,6 +248,9 @@
     ],
     "height_length": [
       {
+        "history_origin": [
+          "2019-10-08T14:22:47.391+02:00"
+        ],
         "any_event": [
           {
             "height_length": [
@@ -271,6 +280,9 @@
     ],
     "body_mass_index": [
       {
+        "history_origin": [
+          "2019-10-08T14:22:47.391+02:00"
+        ],
         "any_event": [
           {
             "body_mass_index": [

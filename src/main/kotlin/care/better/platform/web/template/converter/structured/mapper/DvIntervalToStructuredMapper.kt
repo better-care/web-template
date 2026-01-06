@@ -57,7 +57,8 @@ internal object DvIntervalToStructuredMapper : RmObjectToStructuredMapper<DvInte
                     RmObjectToStructuredMapperDelegator.delegateFormatted(
                         webTemplateNode.children.first { child -> child.jsonId == "lower" },
                         valueConverter,
-                        it)
+                        it
+                    )
                 }
             }
             rmObject.upper?.also {
@@ -65,7 +66,8 @@ internal object DvIntervalToStructuredMapper : RmObjectToStructuredMapper<DvInte
                     RmObjectToStructuredMapperDelegator.delegateFormatted(
                         webTemplateNode.children.first { child -> child.jsonId == "upper" },
                         valueConverter,
-                        it)
+                        it
+                    )
                 }
             }
             this.put("|lower_included", rmObject.lowerIncluded?.toString())

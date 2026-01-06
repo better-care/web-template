@@ -21,7 +21,6 @@ import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.node.ObjectNode
-import com.google.common.collect.ImmutableList
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -38,7 +37,7 @@ class ParentTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testConvertToFlat() {
         val template = getTemplate("/convert/templates/RES Primary Hip Arthroplasty Report.xml")
-        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", ImmutableList.of("en")))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(template, WebTemplateBuilderContext("en", listOf("en")))
 
         val context = ConversionContext.create().withLanguage("pt").withTerritory("US").withComposerName("Compoeser").build()
 

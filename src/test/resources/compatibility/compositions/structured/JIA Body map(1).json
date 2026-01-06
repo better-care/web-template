@@ -42,8 +42,8 @@
     ],
     "active_joints": [
       {
-        "physical_examination_findings": [
-          {
+      "physical_examination_findings" : [ {
+        "history_origin" : [ "2021-02-17T11:11:00+01:00" ],
             "any_event": [
               {
                 "active_joints": [
@@ -137,8 +137,8 @@
     ],
     "dactylitis": [
       {
-        "physical_examination_findings": [
-          {
+      "physical_examination_findings" : [ {
+        "history_origin" : [ "2021-02-17T11:11:00+01:00" ],
             "any_event": [
               {
                 "examination_findings": [
@@ -203,8 +203,8 @@
     ],
     "enthesitis": [
       {
-        "physical_examination_findings": [
-          {
+      "physical_examination_findings" : [ {
+        "history_origin" : [ "2021-02-17T11:11:00+01:00" ],
             "any_event": [
               {
                 "enthesitis": [
@@ -267,8 +267,8 @@
     ],
     "tenosynovitis": [
       {
-        "physical_examination_findings": [
-          {
+      "physical_examination_findings" : [ {
+        "history_origin" : [ "2021-02-17T11:11:00+01:00" ],
             "any_event": [
               {
                 "tenosynovitis": [
@@ -326,12 +326,10 @@
               {
                 "|code": "UTF-8",
                 "|terminology": "IANA_character-sets"
-              }
-            ]
-          }
-        ],
-        "physical_examination_findings": [
-          {
+        } ]
+      } ],
+      "physical_examination_findings" : [ {
+        "history_origin" : [ "2021-02-17T11:11:00+01:00" ],
             "any_event": [
               {
                 "examination_findings": [

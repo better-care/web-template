@@ -38,6 +38,6 @@ internal open class LocatableInstanceFallbackNameClassFactory<T : Locatable>(pri
         try {
             rmClass.getConstructor().newInstance().apply { setFallbackName(this, className) }
         } catch (e: Exception) {
-            throw ConversionException(e)
+            throw ConversionException("Cannot create object instance.", e)
         }
 }

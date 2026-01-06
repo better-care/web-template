@@ -36,12 +36,10 @@
             "|code": "238",
             "|value": "other care",
             "|terminology": "openehr"
-          }
-        ]
-      }
-    ],
-    "tanner_stages": [
-      {
+      } ]
+    } ],
+    "tanner_stages" : [ {
+      "history_origin" : [ "2021-02-17T11:11:00+01:00" ],
         "any_point_in_time_event": [
           {
             "genitals": [

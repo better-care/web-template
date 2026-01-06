@@ -20,7 +20,6 @@ import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.node.ObjectNode
-import com.google.common.collect.ImmutableList
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
@@ -32,7 +31,7 @@ class TransientAttributeTest : AbstractWebTemplateTest() {
 
     private val webTemplate = WebTemplateBuilder.buildNonNull(
             getTemplate("/convert/templates/TM - Discharge Activity Plan Encounter.xml"),
-            WebTemplateBuilderContext("sl", ImmutableList.of("sl")))
+            WebTemplateBuilderContext("sl", listOf("sl")))
 
     @Test
     fun testTransientLeafNode() {

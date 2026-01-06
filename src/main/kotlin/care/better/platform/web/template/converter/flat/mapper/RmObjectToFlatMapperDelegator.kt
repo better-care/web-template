@@ -61,7 +61,7 @@ object RmObjectToFlatMapperDelegator {
         Pair(DvUri::class.java, DvUriToFlatMapper),
         Pair(DvEhrUri::class.java, DvUriToFlatMapper),
         Pair(Element::class.java, ElementToFlatMapper),
-        Pair(Observation::class.java, EntryToFlatMapper.getInstance()),
+        Pair(Observation::class.java, ObservationToFlatMapper),
         Pair(Evaluation::class.java, EntryToFlatMapper.getInstance()),
         Pair(Instruction::class.java, EntryToFlatMapper.getInstance()),
         Pair(AdminEntry::class.java, EntryToFlatMapper.getInstance()),

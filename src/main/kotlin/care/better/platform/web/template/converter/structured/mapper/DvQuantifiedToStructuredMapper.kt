@@ -36,7 +36,12 @@ internal abstract class DvQuantifiedToStructuredMapper<T : DvQuantified> : DvOrd
         objectNode.putIfNotNull("|magnitude_status", rmObject.magnitudeStatus)
     }
 
-    override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: T, objectNode: ObjectNode) {
+    override fun mapFormatted(
+        webTemplateNode: WebTemplateNode,
+        valueConverter: ValueConverter,
+        rmObject: T,
+        objectNode: ObjectNode
+    ) {
         super.mapFormatted(webTemplateNode, valueConverter, rmObject, objectNode)
         objectNode.putIfNotNull("|magnitude_status", rmObject.magnitudeStatus)
     }

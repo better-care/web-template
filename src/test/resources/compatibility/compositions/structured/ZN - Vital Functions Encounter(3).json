@@ -60,6 +60,9 @@
       {
         "pulse": [
           {
+            "history_origin": [
+              "2011-11-17T00:22:26.171+01:00"
+            ],
             "any_event": [
               {
                 "heart_rate": [
@@ -89,6 +92,9 @@
         ],
         "patient_state": [
           {
+            "history_origin": [
+              "2011-11-17T00:22:26.171+01:00"
+            ],
             "patient_state": [
               {
                 "confounding_factors": [
@@ -123,6 +129,9 @@
       {
         "respirations": [
           {
+            "history_origin": [
+              "2011-11-17T00:22:39.046+01:00"
+            ],
             "any_event": [
               {
                 "rate": [
@@ -159,6 +168,9 @@
         ],
         "respiratory_examination": [
           {
+            "history_origin": [
+              "2011-11-17T00:22:39.046+01:00"
+            ],
             "difficulties_effort": [
               {
                 "|code": "at0047",
@@ -232,6 +244,9 @@
         ],
         "indirect_oximetry": [
           {
+            "history_origin": [
+              "2011-11-17T00:22:39.046+01:00"
+            ],
             "spo2": [
               {
                 "|numerator": 96.0,

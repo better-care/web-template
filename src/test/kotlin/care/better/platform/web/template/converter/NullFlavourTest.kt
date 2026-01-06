@@ -30,8 +30,6 @@ import care.better.platform.web.template.converter.value.SimpleValueConverter
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import com.google.common.collect.ImmutableList
-import com.google.common.collect.ImmutableMap
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
@@ -69,7 +67,7 @@ class NullFlavourTest : AbstractWebTemplateTest() {
     fun testNullFlavorElementToFormattedFlatMap() {
         val formattedFlatConversionContext = FormattedFlatMappingContext()
         val element = Element().apply { this.nullFlavour = DvCodedText.create("openehr", "272", "masked") }
-        ElementToFlatMapper.mapFormatted(WebTemplateNode(AmNode(null, "ELEMENT"),"ELEMENT", "/"), SimpleValueConverter, element, "id", formattedFlatConversionContext)
+        ElementToFlatMapper.mapFormatted(WebTemplateNode(AmNode(null, "ELEMENT"), "ELEMENT", "/"), SimpleValueConverter, element, "id", formattedFlatConversionContext)
         assertThat(formattedFlatConversionContext.get()).hasSize(3)
 
         assertThat(formattedFlatConversionContext.get()).hasSize(3)
@@ -82,11 +80,12 @@ class NullFlavourTest : AbstractWebTemplateTest() {
     @Throws(IOException::class)
     fun testNullFlavorJsonRetrieve() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("Composer").build()
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", listOf("en", "sl")));
 
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(
-                getObjectMapper().readTree(getJson("/convert/compositions/Demo Vitals Null Flavour(1).json")) as ObjectNode,
-                context)
+            getObjectMapper().readTree(getJson("/convert/compositions/Demo Vitals Null Flavour(1).json")) as ObjectNode,
+            context
+        )
         assertThat(composition).isNotNull
         val section = composition!!.content[0] as Section
         val observation = section.items[0] as Observation
@@ -104,19 +103,24 @@ class NullFlavourTest : AbstractWebTemplateTest() {
         assertThat(structuredNode["vitals"]["vitals"][0]["haemoglobin_a1c"][0]["any_event"][0]["test_name"][0].isObject).isTrue
         assertThat(structuredNode["vitals"]["vitals"][0]["haemoglobin_a1c"][0]["any_event"][0]["test_name"][0].get("_null_flavour").isArray()).isTrue()
         assertThat(structuredNode["vitals"]["vitals"][0]["haemoglobin_a1c"][0]["any_event"][0]["test_name"][0].get("_null_flavour").get(0).get("|code").asText()).isEqualTo("273")
-        assertThat(structuredNode["vitals"]["vitals"][0]["haemoglobin_a1c"][0]["any_event"][0]["test_name"][0].get("_null_flavour").get(0).get("|value").asText()).isEqualTo("not applicable")
-        assertThat(structuredNode["vitals"]["vitals"][0]["haemoglobin_a1c"][0]["any_event"][0]["test_name"][0].get("_null_flavour").get(0).get("|terminology").asText()).isEqualTo("openehr")
+        assertThat(
+            structuredNode["vitals"]["vitals"][0]["haemoglobin_a1c"][0]["any_event"][0]["test_name"][0].get("_null_flavour").get(0).get("|value").asText()
+        ).isEqualTo("not applicable")
+        assertThat(
+            structuredNode["vitals"]["vitals"][0]["haemoglobin_a1c"][0]["any_event"][0]["test_name"][0].get("_null_flavour").get(0).get("|terminology").asText()
+        ).isEqualTo("openehr")
     }
 
     @Test
     @Throws(IOException::class)
     fun testNullFlavorPlainRetrieve() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("Composer").build()
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", listOf("en", "sl")));
 
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(
-                getObjectMapper().readTree(getJson("/convert/compositions/Demo Vitals Null Flavour(2).json")) as ObjectNode,
-                context)
+            getObjectMapper().readTree(getJson("/convert/compositions/Demo Vitals Null Flavour(2).json")) as ObjectNode,
+            context
+        )
         assertThat(composition).isNotNull
         val section = composition!!.content[0] as Section
         val observation = section.items[0] as Observation
@@ -136,11 +140,12 @@ class NullFlavourTest : AbstractWebTemplateTest() {
     @Throws(IOException::class)
     fun testNullFlavorJsonBuild() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("Composer").build()
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", listOf("en", "sl")));
 
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(
-                getObjectMapper().readTree(getJson("/convert/compositions/Demo Vitals Null Flavour(3).json")) as ObjectNode,
-                context)
+            getObjectMapper().readTree(getJson("/convert/compositions/Demo Vitals Null Flavour(3).json")) as ObjectNode,
+            context
+        )
         assertThat(composition).isNotNull
         val section = composition!!.content[0] as Section
         val observation = section.items[0] as Observation
@@ -170,8 +175,9 @@ class NullFlavourTest : AbstractWebTemplateTest() {
     @Throws(IOException::class)
     fun testNullFlavorMapBuild() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("Composer").build()
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
-        val flatMap: Map<String, Any?> = getObjectMapper().readValue(getJson("/convert/compositions/Demo Vitals Null Flavour(4).json"), object : TypeReference<Map<String, Any?>>() {})
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", listOf("en", "sl")));
+        val flatMap: Map<String, Any?> =
+            getObjectMapper().readValue(getJson("/convert/compositions/Demo Vitals Null Flavour(4).json"), object : TypeReference<Map<String, Any?>>() {})
         val composition: Composition? = webTemplate.convertFromFlatToRaw(flatMap, context)
         assertThat(composition).isNotNull
         val section = composition!!.content[0] as Section
@@ -193,9 +199,10 @@ class NullFlavourTest : AbstractWebTemplateTest() {
     @Throws(IOException::class)
     fun testNullFlavorMissingTerminology() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("Composer").build()
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", listOf("en", "sl")));
 
-        val flatMap: Map<String, Any?> = getObjectMapper().readValue(getJson("/convert/compositions/Demo Vitals Null Flavour(5).json"), object : TypeReference<Map<String, Any?>>() {})
+        val flatMap: Map<String, Any?> =
+            getObjectMapper().readValue(getJson("/convert/compositions/Demo Vitals Null Flavour(5).json"), object : TypeReference<Map<String, Any?>>() {})
         val composition: Composition? = webTemplate.convertFromFlatToRaw(flatMap, context)
         assertThat(composition).isNotNull
         val section = composition!!.content[0] as Section
@@ -213,20 +220,20 @@ class NullFlavourTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testNullFlavorDirectValueToJson() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", listOf("en", "sl")));
 
         val composition = getDemoVitalsComposition(webTemplate, true)
 
         val node: JsonNode? = webTemplate.convertFromRawToStructured(composition, FromRawConversion.create())
         assertThat(node).isNotNull
         val dvTextNode = node!!.path("vitals")
-                .path("vitals")
-                .path(0)
-                .path("body_temperature")
-                .path(0)
-                .path("any_event")
-                .path(0)
-                .path("description_of_thermal_stress")
+            .path("vitals")
+            .path(0)
+            .path("body_temperature")
+            .path(0)
+            .path("any_event")
+            .path(0)
+            .path("description_of_thermal_stress")
 
         assertThat(dvTextNode.isArray).isTrue
         assertThat(dvTextNode.size()).isEqualTo(1)
@@ -243,19 +250,19 @@ class NullFlavourTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testNullFlavorDirectValueFromJson() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")));
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", listOf("en", "sl")));
 
         val composition = getDemoVitalsComposition(webTemplate, true)
         val node: JsonNode? = webTemplate.convertFromRawToStructured(composition, FromRawConversion.create())
         assertThat(node).isNotNull
         val dvTextNode = node!!.path("vitals")
-                .path("vitals")
-                .path(0)
-                .path("body_temperature")
-                .path(0)
-                .path("any_event")
-                .path(0)
-                .path("description_of_thermal_stress")
+            .path("vitals")
+            .path(0)
+            .path("body_temperature")
+            .path(0)
+            .path("any_event")
+            .path(0)
+            .path("description_of_thermal_stress")
 
         assertThat(dvTextNode.isArray).isTrue
         assertThat(dvTextNode.size()).isEqualTo(1)
@@ -291,15 +298,16 @@ class NullFlavourTest : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("sl")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-                ImmutableMap.builder<String, String>()
-                        .put("ctx/language", "sl")
-                        .put("ctx/territory", "SI")
-                        .put("ctx/composer_name", "Composer")
-                        .put("ctx/id_scheme", "ispek")
-                        .put("ctx/id_namespace", "ispek")
-                        .put("vitals/vitals/body_temperature:0/any_event:0/temperature/_null_flavour|code", "253")
-                        .build(),
-                ConversionContext.create().build())
+            mapOf(
+                "ctx/language" to "sl",
+                "ctx/territory" to "SI",
+                "ctx/composer_name" to "Composer",
+                "ctx/id_scheme" to "ispek",
+                "ctx/id_namespace" to "ispek",
+                "vitals/vitals/body_temperature:0/any_event:0/temperature/_null_flavour|code" to "253"
+            ),
+            ConversionContext.create().build()
+        )
 
         val flatMap: Map<String, Any?> = webTemplate.convertFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap).contains(entry("vitals/vitals/body_temperature:0/any_event:0/temperature/_null_flavour|code", "253"))
@@ -313,15 +321,16 @@ class NullFlavourTest : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("sl")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-                ImmutableMap.builder<String, String>()
-                        .put("ctx/language", "sl")
-                        .put("ctx/territory", "SI")
-                        .put("ctx/composer_name", "Composer")
-                        .put("ctx/id_scheme", "ispek")
-                        .put("ctx/id_namespace", "ispek")
-                        .put("vitals/vitals/body_temperature:0/any_event:0/temperature/_null_flavour|value", "no information")
-                        .build(),
-                ConversionContext.create().build())
+            mapOf(
+                "ctx/language" to "sl",
+                "ctx/territory" to "SI",
+                "ctx/composer_name" to "Composer",
+                "ctx/id_scheme" to "ispek",
+                "ctx/id_namespace" to "ispek",
+                "vitals/vitals/body_temperature:0/any_event:0/temperature/_null_flavour|value" to "no information"
+            ),
+            ConversionContext.create().build()
+        )
 
         val flatMap: Map<String, Any?> = webTemplate.convertFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap).contains(entry("vitals/vitals/body_temperature:0/any_event:0/temperature/_null_flavour|code", "271"))
@@ -332,13 +341,14 @@ class NullFlavourTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testNullFlavourBroken() {
-        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/clinical-summary-events.opt"),  WebTemplateBuilderContext("en"))
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/clinical-summary-events.opt"), WebTemplateBuilderContext("en"))
         val context = ConversionContext.create()
-                .withActivityTimingProvider { _ -> DvParsable("R1", "timing")  }
-                .withInstructionNarrativeProvider { _ -> DvText("narrative") }
-                .build()
+            .withActivityTimingProvider { _ -> DvParsable("R1", "timing") }
+            .withInstructionNarrativeProvider { _ -> DvText("narrative") }
+            .build()
 
-        val flatMap: Map<String, Any?> = getObjectMapper().readValue(getJson("/convert/compositions/Demo Vitals Null Flavour(6).json"), object : TypeReference<Map<String, Any?>>() {})
+        val flatMap: Map<String, Any?> =
+            getObjectMapper().readValue(getJson("/convert/compositions/Demo Vitals Null Flavour(6).json"), object : TypeReference<Map<String, Any?>>() {})
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(flatMap, context)
 
@@ -352,11 +362,12 @@ class NullFlavourTest : AbstractWebTemplateTest() {
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/PIANISSIMO - Pain assessment.opt"), builderContext)
 
         val flatComposition = mapOf(
-                "ctx/language" to "en",
-                "ctx/territory" to "LU",
-                "ctx/composer_name" to "vanessap",
-                "pianissimo_-_pain_assessment/symptom_sign_screening_questionnaire/any_event:0/specific_symptom_sign/symptom_sign_name/_null_flavour|code" to "273",
-                "pianissimo_-_pain_assessment/symptom_sign_screening_questionnaire/any_event:0/specific_symptom_sign/symptom_sign_name/_null_flavour|value" to "not applicable")
+            "ctx/language" to "en",
+            "ctx/territory" to "LU",
+            "ctx/composer_name" to "vanessap",
+            "pianissimo_-_pain_assessment/symptom_sign_screening_questionnaire/any_event:0/specific_symptom_sign/symptom_sign_name/_null_flavour|code" to "273",
+            "pianissimo_-_pain_assessment/symptom_sign_screening_questionnaire/any_event:0/specific_symptom_sign/symptom_sign_name/_null_flavour|value" to "not applicable"
+        )
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(flatComposition, ConversionContext.create().build())
 
@@ -374,8 +385,9 @@ class NullFlavourTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("test_composer").build()
 
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(
-                getObjectMapper().readTree(getJson("/convert/compositions/DemoVitalsComposition.json")) as ObjectNode,
-                context)
+            getObjectMapper().readTree(getJson("/convert/compositions/DemoVitalsComposition.json")) as ObjectNode,
+            context
+        )
         val section = composition!!.content[0] as Section
         val observation = section.items[1] as Observation
         val stateItem = observation.data!!.events[0].state as ItemTree?

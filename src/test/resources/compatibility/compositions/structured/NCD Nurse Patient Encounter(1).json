@@ -66,6 +66,9 @@
       {
         "blood_pressure": [
           {
+            "history_origin": [
+              "2021-01-11T22:10:03.4+01:00"
+            ],
             "blood_pressure_reading": [
               {
                 "systolic": [
@@ -122,6 +125,9 @@
         ],
         "heart_rate": [
           {
+            "history_origin": [
+              "2021-01-11T22:10:03.4+01:00"
+            ],
             "heart_rate_reading": [
               {
                 "heart_rate": [
@@ -151,6 +157,9 @@
         ],
         "respiration": [
           {
+            "history_origin": [
+              "2021-01-11T22:10:03.4+01:00"
+            ],
             "respiration_rate": [
               {
                 "respiratory_rate": [
@@ -180,6 +189,9 @@
         ],
         "body_temperature": [
           {
+            "history_origin": [
+              "2021-01-11T22:10:03.4+01:00"
+            ],
             "body_temperature_reading": [
               {
                 "temperature": [
@@ -209,6 +221,9 @@
         ],
         "oxygen_saturation": [
           {
+            "history_origin": [
+              "2021-01-11T22:10:03.4+01:00"
+            ],
             "spo2_reading": [
               {
                 "spo": [
@@ -257,6 +272,9 @@
       {
         "height_length": [
           {
+            "history_origin": [
+              "2021-01-11T22:10:03.4+01:00"
+            ],
             "height_length_measurement": [
               {
                 "height_length": [
@@ -293,6 +311,9 @@
         ],
         "body_weight": [
           {
+            "history_origin": [
+              "2021-01-11T22:10:03.4+01:00"
+            ],
             "body_weight_measurement": [
               {
                 "weight": [
@@ -329,6 +350,9 @@
         ],
         "body_mass_index": [
           {
+            "history_origin": [
+              "2021-01-11T22:10:03.4+01:00"
+            ],
             "bmi_measurement": [
               {
                 "body_mass_index": [
@@ -358,6 +382,9 @@
         ],
         "waist_circumference": [
           {
+            "history_origin": [
+              "2021-01-11T22:10:03.4+01:00"
+            ],
             "waist_circumference_measurement": [
               {
                 "waist_circumference": [
@@ -391,6 +418,9 @@
       {
         "random_blood_glucose": [
           {
+            "history_origin": [
+              "2021-01-11T22:10:03.4+01:00"
+            ],
             "rbg_test": [
               {
                 "test_name": [
@@ -438,6 +468,9 @@
         ],
         "hiv_rapid_test": [
           {
+            "history_origin": [
+              "2021-01-11T22:10:03.4+01:00"
+            ],
             "hiv_test": [
               {
                 "test_name": [
@@ -475,6 +508,9 @@
         ],
         "vdrl_test_result": [
           {
+            "history_origin": [
+              "2021-01-11T22:10:03.4+01:00"
+            ],
             "vdrl_test": [
               {
                 "test_name": [
@@ -512,6 +548,9 @@
         ],
         "urine_dipstick": [
           {
+            "history_origin": [
+              "2021-01-11T22:10:03.4+01:00"
+            ],
             "point_in_time": [
               {
                 "glucose": [
@@ -612,6 +651,9 @@
         ],
         "hba1c": [
           {
+            "history_origin": [
+              "2021-01-11T22:10:03.4+01:00"
+            ],
             "hba1c_test": [
               {
                 "test_name": [
@@ -648,6 +690,9 @@
         ],
         "cholesterol": [
           {
+            "history_origin": [
+              "2021-01-11T22:10:03.4+01:00"
+            ],
             "cholesterol_test": [
               {
                 "test_name": [
@@ -684,6 +729,9 @@
         ],
         "cd4_count": [
           {
+            "history_origin": [
+              "2021-01-11T22:10:03.4+01:00"
+            ],
             "cd4_test": [
               {
                 "test_name": [
@@ -720,6 +768,9 @@
         ],
         "covid_antigen_test_result": [
           {
+            "history_origin": [
+              "2021-01-11T22:10:03.4+01:00"
+            ],
             "covid_antigen_test": [
               {
                 "test_name": [

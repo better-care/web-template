@@ -51,6 +51,9 @@
     ],
     "laboratory_test_result": [
       {
+        "history_origin": [
+          "2013-02-21T11:48:10.898+01:00"
+        ],
         "any_event": [
           {
             "universal_service_identifier": [
@@ -167,6 +170,9 @@
         ]
       },
       {
+        "history_origin": [
+          "2013-02-21T11:48:10.898+01:00"
+        ],
         "any_event": [
           {
             "universal_service_identifier": [
@@ -838,6 +844,9 @@
         ]
       },
       {
+        "history_origin": [
+          "2013-02-21T11:48:10.898+01:00"
+        ],
         "any_event": [
           {
             "universal_service_identifier": [
@@ -1415,6 +1424,9 @@
         ]
       },
       {
+        "history_origin": [
+          "2013-02-21T12:14:35.322+01:00"
+        ],
         "any_event": [
           {
             "universal_service_identifier": [

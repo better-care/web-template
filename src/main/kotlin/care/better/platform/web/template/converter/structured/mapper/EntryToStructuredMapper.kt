@@ -71,7 +71,12 @@ internal open class EntryToStructuredMapper<T : Entry> : LocatableToStructuredMa
         }
     }
 
-    override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: T, objectNode: ObjectNode) {
+    override fun mapFormatted(
+        webTemplateNode: WebTemplateNode,
+        valueConverter: ValueConverter,
+        rmObject: T,
+        objectNode: ObjectNode
+    ) {
         super.mapFormatted(webTemplateNode, valueConverter, rmObject, objectNode)
         objectNode.putCollectionAsArray("_other_participation", rmObject.otherParticipations) {
             ParticipationToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it)

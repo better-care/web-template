@@ -49,12 +49,10 @@
             "|code": "238",
             "|value": "other care",
             "|terminology": "openehr"
-          }
-        ]
-      }
-    ],
-    "laboratory_test_result": [
-      {
+      } ]
+    } ],
+    "laboratory_test_result" : [ {
+      "history_origin" : [ "2020-04-10T17:50:21.549+02:00" ],
         "test_name": [
           {
             "|code": "116147009",

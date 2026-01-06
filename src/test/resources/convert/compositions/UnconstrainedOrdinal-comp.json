@@ -21,6 +21,7 @@
             "empty_ordinal": [
               {
                 "|code": "11929db5-a4c8-4d58-9ca3-8478dd7eb9f7",
+                "|preferred_term": "term1",
                 "|value": "t1",
                 "|ordinal": 1
               }
@@ -28,7 +29,8 @@
             "empty_coded_text": [
               {
                 "|code": "f6e5e39e-d665-485b-a16b-4902869474d5",
-                "|value": "1"
+                "|value": "1",
+                "|preferred_term": "term2"
               }
             ]
           }

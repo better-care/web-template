@@ -32,7 +32,12 @@ import org.openehr.rm.datatypes.DvOrdered
  * @constructor Creates a new instance of [DvOrdinalToStructuredMapper]
  */
 internal abstract class DvOrderedToStructuredMapper<T : DvOrdered> : RmObjectToStructuredMapper<T> {
-    protected open fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: T, objectNode: ObjectNode) {
+    protected open fun map(
+        webTemplateNode: WebTemplateNode,
+        valueConverter: ValueConverter,
+        rmObject: T,
+        objectNode: ObjectNode
+    ) {
         rmObject.normalRange?.also {
             objectNode.putSingletonAsArray("_normal_range") { NormalRangeToStructuredMapper.map(webTemplateNode, valueConverter, it) }
         }
@@ -44,7 +49,12 @@ internal abstract class DvOrderedToStructuredMapper<T : DvOrdered> : RmObjectToS
         objectNode.putIfNotNull("|normal_status", rmObject.normalStatus?.codeString)
     }
 
-    protected open fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: T, objectNode: ObjectNode) {
+    protected open fun mapFormatted(
+        webTemplateNode: WebTemplateNode,
+        valueConverter: ValueConverter,
+        rmObject: T,
+        objectNode: ObjectNode
+    ) {
         rmObject.normalRange?.also {
             objectNode.putSingletonAsArray("_normal_range") { NormalRangeToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
         }

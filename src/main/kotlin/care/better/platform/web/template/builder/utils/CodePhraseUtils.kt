@@ -56,12 +56,14 @@ internal object CodePhraseUtils {
                     OpenEhrTerminology.getInstance().getText(language, code)
                 } else {
                     if (context.isAddDescriptions) {
-                        val description = findDescription(amNode, language, if (terminology == "local") code else "$terminology::$code")
+                        val description = findDescription(amNode, language, code)
+                            ?: findDescription(amNode, language, "$terminology::$code")
                         if (description != null) {
                             webTemplateCodedValue.localizedDescriptions[language] = StringUtils.defaultString(description)
                         }
                     }
-                    findText(amNode, language, if (terminology == "local") code else "$terminology::$code")
+
+                    findText(amNode, language, code) ?: findText(amNode, language, "$terminology::$code")
                 }
             webTemplateCodedValue.localizedLabels[language] = StringUtils.defaultString(label)
         }

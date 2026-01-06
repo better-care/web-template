@@ -36,12 +36,10 @@
             "|code": "238",
             "|value": "other care",
             "|terminology": "openehr"
-          }
-        ]
-      }
-    ],
-    "jadas": [
-      {
+      } ]
+    } ],
+    "jadas" : [ {
+      "history_origin" : [ "2021-02-17T11:11:00+01:00" ],
         "any_event": [
           {
             "physician_global_assessment_of_disease_activity": [

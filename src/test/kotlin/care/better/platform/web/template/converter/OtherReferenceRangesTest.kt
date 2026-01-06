@@ -22,7 +22,6 @@ import care.better.platform.web.template.builder.context.WebTemplateBuilderConte
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.core.type.TypeReference
-import com.google.common.collect.ImmutableList
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
@@ -40,7 +39,7 @@ class OtherReferenceRangesTest : AbstractWebTemplateTest() {
     fun testOtherReferenceRangesSingle() {
         val compositionFlatMap: Map<String, Any?> = getObjectMapper().readValue(getJson("/convert/compositions/IDCR_-_Laboratory_Test_Report(1).json"), object : TypeReference<Map<String, Any?>>() {})
 
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/IDCR_-_Laboratory_Test_Report.v0.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(compositionFlatMap, ConversionContext.create().build())
 
@@ -62,7 +61,7 @@ class OtherReferenceRangesTest : AbstractWebTemplateTest() {
     fun testOtherReferenceRangesInvalidAttribute() {
         val compositionFlatMap: Map<String, Any?> = getObjectMapper().readValue(getJson("/convert/compositions/IDCR_-_Laboratory_Test_Report(2).json"), object : TypeReference<Map<String, Any?>>() {})
 
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/IDCR_-_Laboratory_Test_Report.v0.opt"), builderContext)
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(compositionFlatMap, ConversionContext.create().build()) }
             .isInstanceOf(ConversionException::class.java)
@@ -74,7 +73,7 @@ class OtherReferenceRangesTest : AbstractWebTemplateTest() {
     fun testOtherReferenceRangesMulti() {
         val compositionFlatMap: Map<String, Any?> = getObjectMapper().readValue(getJson("/convert/compositions/IDCR_-_Laboratory_Test_Report(3).json"), object : TypeReference<Map<String, Any?>>() {})
 
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/IDCR_-_Laboratory_Test_Report.v0.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(compositionFlatMap, ConversionContext.create().build())
 

@@ -20,7 +20,6 @@ import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import com.google.common.collect.ImmutableMap
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
@@ -41,23 +40,25 @@ class ProviderTest : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("sl")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology", "local")
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|code", "at0037")
-                .put("vitals/vitals/haemoglobin_a1c/_provider|name", "Marija Medved")
-                .put("vitals/vitals/haemoglobin_a1c/_provider|id", "998")
-                .build(),
-            ConversionContext.create().build())
+            mapOf(
+                "ctx/language" to "sl",
+                "ctx/territory" to "SI",
+                "ctx/id_scheme" to "ispek",
+                "ctx/id_namespace" to "ispek",
+                "ctx/composer_name" to "George Orwell",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology" to "local",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|code" to "at0037",
+                "vitals/vitals/haemoglobin_a1c/_provider|name" to "Marija Medved",
+                "vitals/vitals/haemoglobin_a1c/_provider|id" to "998"
+            ),
+            ConversionContext.create().build()
+        )
 
         val flatMap: MutableMap<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create()).toMutableMap()
         assertThat(flatMap).contains(
             entry("vitals/vitals/haemoglobin_a1c:0/_provider|name", "Marija Medved"),
-            entry("vitals/vitals/haemoglobin_a1c:0/_provider|id", "998"))
+            entry("vitals/vitals/haemoglobin_a1c:0/_provider|id", "998")
+        )
 
         flatMap["ctx/language"] = "sl"
         flatMap["ctx/territory"] = "SI"
@@ -77,26 +78,27 @@ class ProviderTest : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("sl")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology", "local")
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|code", "at0037")
-                .put("vitals/vitals/haemoglobin_a1c/_provider|name", "Marija Medved")
-                .put("vitals/vitals/haemoglobin_a1c/_provider|id", "998")
-                .put("vitals/vitals/haemoglobin_a1c/_provider/_identifier:0", "1")
-                .put("vitals/vitals/haemoglobin_a1c/_provider/_identifier:0|type", "person")
-                .put("vitals/vitals/haemoglobin_a1c/_provider/_identifier:0|assigner", "nhs")
-                .put("vitals/vitals/haemoglobin_a1c/_provider/_identifier:0|issuer", "nhs")
-                .put("vitals/vitals/haemoglobin_a1c/_provider/_identifier:1", "123")
-                .put("vitals/vitals/haemoglobin_a1c/_provider/_identifier:1|type", "person")
-                .put("vitals/vitals/haemoglobin_a1c/_provider/_identifier:1|assigner", "uk")
-                .put("vitals/vitals/haemoglobin_a1c/_provider/_identifier:1|issuer", "uk")
-                .build(),
-            ConversionContext.create().build())
+            mapOf(
+                "ctx/language" to "sl",
+                "ctx/territory" to "SI",
+                "ctx/id_scheme" to "ispek",
+                "ctx/id_namespace" to "ispek",
+                "ctx/composer_name" to "George Orwell",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology" to "local",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|code" to "at0037",
+                "vitals/vitals/haemoglobin_a1c/_provider|name" to "Marija Medved",
+                "vitals/vitals/haemoglobin_a1c/_provider|id" to "998",
+                "vitals/vitals/haemoglobin_a1c/_provider/_identifier:0" to "1",
+                "vitals/vitals/haemoglobin_a1c/_provider/_identifier:0|type" to "person",
+                "vitals/vitals/haemoglobin_a1c/_provider/_identifier:0|assigner" to "nhs",
+                "vitals/vitals/haemoglobin_a1c/_provider/_identifier:0|issuer" to "nhs",
+                "vitals/vitals/haemoglobin_a1c/_provider/_identifier:1" to "123",
+                "vitals/vitals/haemoglobin_a1c/_provider/_identifier:1|type" to "person",
+                "vitals/vitals/haemoglobin_a1c/_provider/_identifier:1|assigner" to "uk",
+                "vitals/vitals/haemoglobin_a1c/_provider/_identifier:1|issuer" to "uk"
+            ),
+            ConversionContext.create().build()
+        )
 
         val flatMap: MutableMap<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create()).toMutableMap()
         assertThat(flatMap).contains(
@@ -109,7 +111,8 @@ class ProviderTest : AbstractWebTemplateTest() {
             entry("vitals/vitals/haemoglobin_a1c:0/_provider/_identifier:1", "123"),
             entry("vitals/vitals/haemoglobin_a1c:0/_provider/_identifier:1|type", "person"),
             entry("vitals/vitals/haemoglobin_a1c:0/_provider/_identifier:1|assigner", "uk"),
-            entry("vitals/vitals/haemoglobin_a1c:0/_provider/_identifier:1|issuer", "uk"))
+            entry("vitals/vitals/haemoglobin_a1c:0/_provider/_identifier:1|issuer", "uk")
+        )
 
         flatMap["ctx/language"] = "sl"
         flatMap["ctx/territory"] = "SI"
@@ -129,20 +132,21 @@ class ProviderTest : AbstractWebTemplateTest() {
         val builderContext = WebTemplateBuilderContext("sl")
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("vitals/context/_health_care_facility|name", "Hospital")
-                .put("vitals/context/_health_care_facility/_identifier:0", "17")
-                .put("vitals/context/_health_care_facility/_identifier:0|assigner", "uk")
-                .put("vitals/context/_health_care_facility/_identifier:0|issuer", "uk")
-                .put("vitals/context/_health_care_facility/_identifier:0|type", "ESTABLISHMENT")
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|code", "at0037")
-                .build(),
-            ConversionContext.create().build())
+            mapOf(
+                "ctx/language" to "sl",
+                "ctx/territory" to "SI",
+                "ctx/id_scheme" to "ispek",
+                "ctx/id_namespace" to "ispek",
+                "ctx/composer_name" to "George Orwell",
+                "vitals/context/_health_care_facility|name" to "Hospital",
+                "vitals/context/_health_care_facility/_identifier:0" to "17",
+                "vitals/context/_health_care_facility/_identifier:0|assigner" to "uk",
+                "vitals/context/_health_care_facility/_identifier:0|issuer" to "uk",
+                "vitals/context/_health_care_facility/_identifier:0|type" to "ESTABLISHMENT",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|code" to "at0037"
+            ),
+            ConversionContext.create().build()
+        )
 
         val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap).contains(

@@ -36,12 +36,10 @@
             "|code": "238",
             "|value": "other care",
             "|terminology": "openehr"
-          }
-        ]
-      }
-    ],
-    "body_temperature": [
-      {
+      } ]
+    } ],
+    "body_temperature" : [ {
+      "history_origin" : [ "2016-01-01T13:10:00.0000002Z" ],
         "any_event": [
           {
             "temperature": [
@@ -65,12 +63,10 @@
           {
             "|code": "UTF-8",
             "|terminology": "IANA_character-sets"
-          }
-        ]
-      }
-    ],
-    "blood_pressure": [
-      {
+      } ]
+    } ],
+    "blood_pressure" : [ {
+      "history_origin" : [ "2016-01-01T13:10:00.0000002Z" ],
         "any_event": [
           {
             "systolic": [
@@ -100,12 +96,10 @@
           {
             "|code": "UTF-8",
             "|terminology": "IANA_character-sets"
-          }
-        ]
-      }
-    ],
-    "height_length": [
-      {
+      } ]
+    } ],
+    "height_length" : [ {
+      "history_origin" : [ "2016-01-01T13:10:00.0000002Z" ],
         "any_event": [
           {
             "body_height_length": [
@@ -129,12 +123,10 @@
           {
             "|code": "UTF-8",
             "|terminology": "IANA_character-sets"
-          }
-        ]
-      }
-    ],
-    "body_weight": [
-      {
+      } ]
+    } ],
+    "body_weight" : [ {
+      "history_origin" : [ "2016-01-01T13:10:00.0000002Z" ],
         "any_event": [
           {
             "body_weight": [

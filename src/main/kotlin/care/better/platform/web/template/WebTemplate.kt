@@ -72,14 +72,15 @@ import java.io.OutputStream
 @JsonPropertyOrder("templateId", "semVer", "version", "defaultLanguage", "languages", "tree", "otherDetails")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 open class WebTemplate internal constructor(
-        open val tree: WebTemplateNode,
-        open val templateId: String,
-        open val semVer: String?,
-        open val defaultLanguage: String,
-        open val languages: Collection<String>,
-        open val version: String,
-        @JsonIgnore private val nodes: Multimap<AmNode, WebTemplateNode>,
-        open val otherDetails: Map<String, Any?> = mapOf()) {
+    open val tree: WebTemplateNode,
+    open val templateId: String,
+    open val semVer: String?,
+    open val defaultLanguage: String,
+    open val languages: Collection<String>,
+    open val version: String,
+    @JsonIgnore private val nodes: Multimap<AmNode, WebTemplateNode>,
+    open val otherDetails: Map<String, Any?> = mapOf()
+) {
 
     companion object {
         /**
@@ -239,7 +240,8 @@ open class WebTemplate internal constructor(
             if (webTemplatePath.startsWith("/"))
                 "${tree.jsonId}$webTemplatePath"
             else
-                webTemplatePath)
+                webTemplatePath
+        )
         return when {
             path.key != tree.jsonId -> throw UnknownPathBuilderException(path.getId(), path.key)
             path.child == null -> tree
@@ -357,9 +359,10 @@ open class WebTemplate internal constructor(
      * @param archetypeWebTemplateNodes [MutableList] of [WebTemplateNode]
      */
     private fun findWebTemplateNodesByArchetypeId(
-            webTemplateNode: WebTemplateNode,
-            archetypeId: String,
-            archetypeWebTemplateNodes: MutableList<WebTemplateNode>) {
+        webTemplateNode: WebTemplateNode,
+        archetypeId: String,
+        archetypeWebTemplateNodes: MutableList<WebTemplateNode>
+    ) {
         if (archetypeId == webTemplateNode.nodeId) {
             archetypeWebTemplateNodes.add(webTemplateNode)
         }
@@ -375,16 +378,15 @@ open class WebTemplate internal constructor(
      * @return [WebTemplateNode] if found, otherwise, return null
      */
     private fun getMatchingWebTemplateNode(pathSegments: List<PathSegment>, amNode: AmNode?): WebTemplateNode? =
-        with(nodes[amNode]) {
-            if (this == null) {
-                null
-            } else {
+        amNode?.let { an ->
+            with(nodes[an]) {
                 when {
                     this.size == 1 -> this.iterator().next()
                     this.isNotEmpty() -> {
                         val lastSegment = pathSegments.last()
                         if (lastSegment.name == null) this.iterator().next() else this.firstOrNull { lastSegment.name == it.name }
                     }
+
                     else -> null
                 }
             }
@@ -395,7 +397,7 @@ open class WebTemplate internal constructor(
      * @param amNode [AmNode]
      * @return [Collection] of [WebTemplateNode]
      */
-    open fun getWebTemplateNodes(amNode: AmNode?): Collection<WebTemplateNode> = amNode?.let { nodes.get(it)?.toList() } ?: emptyList()
+    open fun getWebTemplateNodes(amNode: AmNode?): Collection<WebTemplateNode> = amNode?.let { nodes[it].toList() } ?: emptyList()
 
     /**
      * Returns [List] of [CodedValue] for the web template path.
@@ -465,7 +467,8 @@ open class WebTemplate internal constructor(
             if (webTemplatePath.startsWith("/"))
                 "${tree.jsonId}$webTemplatePath"
             else
-                webTemplatePath)
+                webTemplatePath
+        )
         return when {
             path.key != tree.jsonId || path.child == null -> throw UnknownPathBuilderException(path.getId(), path.key)
             else -> getLinkPathRecursive(path.child, path.getId(), "", tree)
@@ -478,12 +481,7 @@ open class WebTemplate internal constructor(
      * @param amNode [AmNode]
      * @return [List] of [WebTemplateNode]
      */
-    open fun getNodes(amNode: AmNode?): List<WebTemplateNode> =
-        if (amNode == null)
-            emptyList()
-        else
-            nodes[amNode]?.toList() ?: emptyList()
-
+    open fun getNodes(amNode: AmNode?): List<WebTemplateNode> = amNode?.let { nodes[amNode].toList() } ?: emptyList()
 
     /**
      * Recursively gets a RM path suitable to be used for [DvEhrUri] or [Link] for the given web template path.
@@ -504,7 +502,8 @@ open class WebTemplate internal constructor(
                     webTemplatePath.child,
                     id,
                     "$linkPath${this.getSubPath(webTemplatePath.index ?: 0, StandardArchetypePredicateProvider)}",
-                    this)
+                    this
+                )
             }
         }
 }

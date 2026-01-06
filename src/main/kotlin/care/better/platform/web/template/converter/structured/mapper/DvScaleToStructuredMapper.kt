@@ -34,7 +34,7 @@ internal object DvScaleToStructuredMapper : DvOrderedToStructuredMapper<DvScale>
             this.putIfNotNull("|code", rmObject.symbol?.definingCode?.codeString)
             this.putIfNotNull("|value", rmObject.symbol?.value)
             this.putIfNotNull("|scale", rmObject.value)
-            DvScaleToStructuredMapper.map(webTemplateNode, valueConverter, rmObject, this)
+            map(webTemplateNode, valueConverter, rmObject, this)
             this
         }
 
@@ -43,7 +43,7 @@ internal object DvScaleToStructuredMapper : DvOrderedToStructuredMapper<DvScale>
             this.putIfNotNull("|code", rmObject.symbol?.definingCode?.codeString)
             this.putIfNotNull("|value", rmObject.symbol?.value)
             this.putIfNotNull("|scale", rmObject.value.toString())
-            DvScaleToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, rmObject, this)
+            mapFormatted(webTemplateNode, valueConverter, rmObject, this)
             this
         }
 }

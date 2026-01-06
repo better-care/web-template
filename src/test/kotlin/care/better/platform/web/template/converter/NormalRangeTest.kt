@@ -21,7 +21,6 @@ import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.core.type.TypeReference
-import com.google.common.collect.ImmutableList
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
@@ -38,7 +37,7 @@ class NormalRangeTest : AbstractWebTemplateTest() {
     @Throws(JAXBException::class, IOException::class)
     fun testNormalRanges() {
 
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/IDCR_-_Laboratory_Test_Report.v0.opt"), builderContext)
 
         val flatMap: Map<String, Any?> = getObjectMapper().readValue(

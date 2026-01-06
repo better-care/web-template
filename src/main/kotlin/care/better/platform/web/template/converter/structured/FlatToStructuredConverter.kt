@@ -269,7 +269,9 @@ class FlatToStructuredConverter(private val objectMapper: ObjectMapper) : (Map<S
             is OpenEhrLocalTime -> TextNode.valueOf(convertOpenEhrLocalTime(value))
             is Period -> TextNode.valueOf(ISOPeriodFormat.standard().print(value))
             is RmObject -> objectMapper.createObjectNode().apply { this.replace("|raw", objectMapper.valueToTree(value)) }
-            else -> throw ConversionException("${value::class.java.name} is not supported!")
+            is Map<*, *> -> throw ConversionException("Object is not supported!")
+            is List<*> -> throw ConversionException("Array is not supported!")
+            else -> throw ConversionException("${value::class.java.simpleName} not supported!")
         }
 
 

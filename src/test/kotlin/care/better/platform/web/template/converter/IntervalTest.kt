@@ -20,8 +20,6 @@ import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.converter.raw.context.ConversionContext
-import com.google.common.collect.ImmutableMap
-import com.google.common.collect.ImmutableSet
 import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -36,19 +34,20 @@ class IntervalTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testIntervalEvent() {
-        val builderContext = WebTemplateBuilderContext("sl", ImmutableSet.of("en", "sl"))
+        val builderContext = WebTemplateBuilderContext("sl", setOf("en", "sl"))
         val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Headache.opt"), builderContext)
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("ctx/language", "sl")
-                .put("ctx/territory", "SI")
-                .put("ctx/id_scheme", "ispek")
-                .put("ctx/id_namespace", "ispek")
-                .put("ctx/composer_name", "George Orwell")
-                .put("headache/headache/severity", "1")
-                .put("headache/headache/width", "PT1M")
-                .build(),
-            ConversionContext.create().build())
+            mapOf(
+                "ctx/language" to "sl",
+                "ctx/territory" to "SI",
+                "ctx/id_scheme" to "ispek",
+                "ctx/id_namespace" to "ispek",
+                "ctx/composer_name" to "George Orwell",
+                "headache/headache/severity" to "1",
+                "headache/headache/width" to "PT1M"
+            ),
+            ConversionContext.create().build()
+        )
 
         assertThat(composition?.content ?: emptyList()).isNotEmpty
     }

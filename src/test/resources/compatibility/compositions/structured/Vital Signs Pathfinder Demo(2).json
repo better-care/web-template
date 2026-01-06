@@ -45,6 +45,9 @@
     ],
     "body_temperature": [
       {
+        "history_origin": [
+          "2020-02-19T14:01:53.014+01:00"
+        ],
         "any_event": [
           {
             "temperature": [
@@ -81,6 +84,9 @@
     ],
     "pulse_oximetry": [
       {
+        "history_origin": [
+          "2020-02-19T14:01:53.014+01:00"
+        ],
         "any_event": [
           {
             "spo": [
@@ -122,6 +128,9 @@
     ],
     "pulse_heart_beat": [
       {
+        "history_origin": [
+          "2020-02-19T14:01:53.014+01:00"
+        ],
         "any_event": [
           {
             "heart_rate": [
@@ -158,6 +167,9 @@
     ],
     "body_weight": [
       {
+        "history_origin": [
+          "2020-02-19T14:01:53.014+01:00"
+        ],
         "any_event": [
           {
             "weight": [

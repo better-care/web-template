@@ -55,6 +55,9 @@
     ],
     "laboratory_test_result": [
       {
+        "history_origin": [
+          "2020-04-09T15:06:27.971+02:00"
+        ],
         "test_name": [
           {
             "|code": "116147009",

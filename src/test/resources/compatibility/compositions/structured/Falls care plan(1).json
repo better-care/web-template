@@ -165,6 +165,9 @@
             "|id_scheme": "HOSPITAL-NS"
           }
         ],
+        "history_origin": [
+          "2021-02-11T11:33:29.266+01:00"
+        ],
         "any_event": [
           {
             "lying_and_standing_bp_completed": [

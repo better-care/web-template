@@ -52,6 +52,9 @@
     ],
     "malnutrition_universal_screening_tool_must": [
       {
+        "history_origin": [
+          "2019-10-14T12:00:00+02:00"
+        ],
         "body_mass_index_score": [
           {
             "|code": "at0005",
@@ -129,6 +132,9 @@
     ],
     "body_weight": [
       {
+        "history_origin": [
+          "2019-10-14T15:35:58.41+02:00"
+        ],
         "any_event": [
           {
             "weight": [
@@ -158,6 +164,9 @@
       {
         "_name": [
           "Body weight 3 to 6 months ago"
+        ],
+        "history_origin": [
+          "2019-10-14T15:35:58.41+02:00"
         ],
         "any_event": [
           {
@@ -198,6 +207,9 @@
     ],
     "height_length": [
       {
+        "history_origin": [
+          "2019-10-14T15:35:58.41+02:00"
+        ],
         "any_event": [
           {
             "height_length": [
@@ -234,6 +246,9 @@
     ],
     "body_mass_index": [
       {
+        "history_origin": [
+          "2019-10-14T15:35:58.41+02:00"
+        ],
         "any_event": [
           {
             "body_mass_index": [
@@ -282,6 +297,9 @@
     ],
     "body_segment_-_length": [
       {
+        "history_origin": [
+          "2019-10-14T15:35:58.41+02:00"
+        ],
         "any_event": [
           {
             "body_segment": [

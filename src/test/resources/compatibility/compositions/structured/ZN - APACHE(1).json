@@ -54,6 +54,9 @@
       {
         "body_temperature": [
           {
+            "history_origin": [
+              "2016-05-09T15:25:06.219+02:00"
+            ],
             "any_event": [
               {
                 "temperature": [
@@ -83,6 +86,9 @@
         ],
         "pulse": [
           {
+            "history_origin": [
+              "2016-05-09T15:25:06.219+02:00"
+            ],
             "any_event": [
               {
                 "rate": [
@@ -112,6 +118,9 @@
         ],
         "blood_pressure": [
           {
+            "history_origin": [
+              "2016-05-09T15:25:06.219+02:00"
+            ],
             "any_event": [
               {
                 "mean_arterial_pressure": [
@@ -141,6 +150,9 @@
         ],
         "respirations": [
           {
+            "history_origin": [
+              "2016-05-09T15:25:06.219+02:00"
+            ],
             "any_event": [
               {
                 "rate": [
@@ -215,6 +227,9 @@
       {
         "glasgow_coma_scale": [
           {
+            "history_origin": [
+              "2016-05-09T15:25:06.219+02:00"
+            ],
             "total_score": [
               9
             ],
@@ -241,6 +256,9 @@
       {
         "apache_ii_scoring_system": [
           {
+            "history_origin": [
+              "2016-05-09T15:25:06.219+02:00"
+            ],
             "lab_resaults": [
               {
                 "serum_na": [

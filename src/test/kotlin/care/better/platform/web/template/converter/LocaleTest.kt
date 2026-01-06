@@ -18,7 +18,6 @@ package care.better.platform.web.template.converter
 import care.better.platform.path.NameAndNodeMatchingPathValueExtractor
 import care.better.platform.path.SimplePathValueExtractor
 import care.better.platform.utils.DateTimeConversionUtils
-import care.better.platform.time.temporal.OpenEhrLocalDate
 import care.better.platform.web.template.abstraction.AbstractWebTemplateTest
 import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
@@ -35,9 +34,7 @@ import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.datatype.joda.JodaModule
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
-import com.google.common.collect.ImmutableList
-import com.google.common.collect.ImmutableMap
-import com.google.common.collect.ImmutableSet
+import jakarta.xml.bind.JAXBException
 import org.assertj.core.api.Assertions.*
 import org.joda.time.DateTime
 import org.joda.time.LocalDate
@@ -59,7 +56,6 @@ import java.time.OffsetDateTime
 import java.time.YearMonth
 import java.time.ZoneOffset
 import java.util.*
-import jakarta.xml.bind.JAXBException
 
 /**
  * @author Primoz Delopst
@@ -128,15 +124,17 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testName() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template N.opt"),  WebTemplateBuilderContext("en"))
-        val values: Map<String, Any> = ImmutableMap.of<String, Any>(
-            "test_encounter/testing/testing/count1", 12,
-            "test_encounter/testing/testing/count1/_name|code", "at0001",
-            "test_encounter/testing/testing/count1/_name|value", "Hello world")
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template N.opt"), WebTemplateBuilderContext("en"))
+        val values: Map<String, Any> = mapOf(
+            "test_encounter/testing/testing/count1" to 12,
+            "test_encounter/testing/testing/count1/_name|code" to "at0001",
+            "test_encounter/testing/testing/count1/_name|value" to "Hello world"
+        )
 
         val context = ConversionContext.create().withComposerName("Joe").withLanguage("en").withTerritory("CA").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(values, context)
-        val extractor = SimplePathValueExtractor("/content[openEHR-EHR-OBSERVATION.testing.v1 and name/value='Testing']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.testing.v1 and name/value='Testing']/items[at0064]")
+        val extractor =
+            SimplePathValueExtractor("/content[openEHR-EHR-OBSERVATION.testing.v1 and name/value='Testing']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.testing.v1 and name/value='Testing']/items[at0064]")
         val value = extractor.getValue(composition!!)
         val actual = value[0] as Element
         val name = actual.name as DvCodedText?
@@ -147,7 +145,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testSerialization() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing.opt"),  WebTemplateBuilderContext("en"))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing.opt"), WebTemplateBuilderContext("en"))
         val mapper = ObjectMapper().apply {
             this.registerModule(JavaTimeModule())
         }
@@ -161,7 +159,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     fun testBoolean() {
         val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing.opt"), WebTemplateBuilderContext("en"))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
-        val composition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("encounter/testing/boolean", true), context)
+        val composition: Composition? = webTemplate.convertFromFlatToRaw(mapOf("encounter/testing/boolean" to true), context)
 
         val formatted: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(formatted).contains(entry("encounter/testing:0/boolean", "true"))
@@ -176,7 +174,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testBooleanJson() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing.opt"),  WebTemplateBuilderContext("en"))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing.opt"), WebTemplateBuilderContext("en"))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
 
         val mapper = createObjectMapper().apply {
@@ -215,9 +213,9 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testDuration() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing.opt"),  WebTemplateBuilderContext("en"))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing.opt"), WebTemplateBuilderContext("en"))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
-        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("encounter/testing/duration|xyz", 10), context) }
+        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(mapOf("encounter/testing/duration|xyz" to 10), context) }
             .isInstanceOf(ConversionException::class.java)
             .hasMessage("DV_DURATION has no attribute |xyz (path: encounter/testing:0/duration|xyz).")
 
@@ -228,7 +226,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     fun testSecondDuration() {
         val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing.opt"), WebTemplateBuilderContext("en"))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
-        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("encounter/testing/duration|year", true), context) }
+        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(mapOf("encounter/testing/duration|year" to true), context) }
             .isInstanceOf(ConversionException::class.java)
             .hasMessage("Invalid value of duration field '|year': true (path: encounter/testing:0/duration).")
     }
@@ -236,7 +234,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testWtTestDefaultValues() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing.opt"),  WebTemplateBuilderContext("en"))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing.opt"), WebTemplateBuilderContext("en"))
 
         val textNode: WebTemplateNode = webTemplate.findWebTemplateNode("encounter/testing/text")
         assertThat(textNode.getInput()?.defaultValue).isEqualTo("hello world!")
@@ -281,21 +279,21 @@ class LocaleTest : AbstractWebTemplateTest() {
         val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing.opt"), WebTemplateBuilderContext("sl"))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("encounter/testing/identifier", "id")
-                .put("encounter/testing/identifier|issuer", "issuer")
-                .put("encounter/testing/identifier|assigner", "assigner")
-                .put("encounter/testing/identifier|type", "type")
-                .put("encounter/testing/text", "hi there")
-                .put("encounter/testing/quantity|magnitude", "17,1")
-                .put("encounter/testing/count", "1")
-                .put("encounter/testing/datetime", "2013-1-1T01:00:17.000Z")
-                .put("encounter/testing/duration|year", "1")
-                .put("encounter/testing/ordinal|at0030", "on")
-                .put("encounter/testing/boolean", "true")
-                .put("encounter/testing/proportion", "37,0")
-                .put("encounter/testing/parsable", "<html><body>hello world!</body></html>")
-                .build(),
+            mapOf(
+                "encounter/testing/identifier" to "id",
+                "encounter/testing/identifier|issuer" to "issuer",
+                "encounter/testing/identifier|assigner" to "assigner",
+                "encounter/testing/identifier|type" to "type",
+                "encounter/testing/text" to "hi there",
+                "encounter/testing/quantity|magnitude" to "17,1",
+                "encounter/testing/count" to "1",
+                "encounter/testing/datetime" to "2013-1-1T01:00:17.000Z",
+                "encounter/testing/duration|year" to "1",
+                "encounter/testing/ordinal|at0030" to "on",
+                "encounter/testing/boolean" to "true",
+                "encounter/testing/proportion" to "37,0",
+                "encounter/testing/parsable" to "<html><body>hello world!</body></html>"
+            ),
             context
         )
         assertThat(webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())).contains(
@@ -313,7 +311,8 @@ class LocaleTest : AbstractWebTemplateTest() {
             entry("encounter/testing:0/ordinal|ordinal", "2"),
             entry("encounter/testing:0/boolean", "true"),
             entry("encounter/testing:0/proportion", "37.0%"),
-            entry("encounter/testing:0/parsable", "<html><body>hello world!</body></html>"))
+            entry("encounter/testing:0/parsable", "<html><body>hello world!</body></html>")
+        )
     }
 
     @Test
@@ -322,21 +321,21 @@ class LocaleTest : AbstractWebTemplateTest() {
         val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing.opt"), WebTemplateBuilderContext("sl"))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("encounter/testing/identifier", "")
-                .put("encounter/testing/identifier|issuer", "issuer")
-                .put("encounter/testing/identifier|assigner", "assigner")
-                .put("encounter/testing/identifier|type", "type")
-                .put("encounter/testing/text", "hi there")
-                .put("encounter/testing/quantity|magnitude", "17,1")
-                .put("encounter/testing/count", "1")
-                .put("encounter/testing/datetime", "2013-1-1T01:00:17.000Z")
-                .put("encounter/testing/duration|year", "1")
-                .put("encounter/testing/ordinal|at0030", "on")
-                .put("encounter/testing/boolean", "true")
-                .put("encounter/testing/proportion", "37,0")
-                .put("encounter/testing/parsable", "<html><body>hello world!</body></html>")
-                .build(),
+            mapOf(
+                "encounter/testing/identifier" to "",
+                "encounter/testing/identifier|issuer" to "issuer",
+                "encounter/testing/identifier|assigner" to "assigner",
+                "encounter/testing/identifier|type" to "type",
+                "encounter/testing/text" to "hi there",
+                "encounter/testing/quantity|magnitude" to "17,1",
+                "encounter/testing/count" to "1",
+                "encounter/testing/datetime" to "2013-1-1T01:00:17.000Z",
+                "encounter/testing/duration|year" to "1",
+                "encounter/testing/ordinal|at0030" to "on",
+                "encounter/testing/boolean" to "true",
+                "encounter/testing/proportion" to "37,0",
+                "encounter/testing/parsable" to "<html><body>hello world!</body></html>"
+            ),
             context
         )
         val retrieved: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
@@ -351,13 +350,15 @@ class LocaleTest : AbstractWebTemplateTest() {
             entry("encounter/testing:0/ordinal|ordinal", "2"),
             entry("encounter/testing:0/boolean", "true"),
             entry("encounter/testing:0/proportion", "37.0%"),
-            entry("encounter/testing:0/parsable", "<html><body>hello world!</body></html>"))
+            entry("encounter/testing:0/parsable", "<html><body>hello world!</body></html>")
+        )
 
         assertThat(retrieved).doesNotContain(
             entry("encounter/testing:0/identifier", ""),
             entry("encounter/testing:0/identifier|issuer", "issuer"),
             entry("encounter/testing:0/identifier|assigner", "assigner"),
-            entry("encounter/testing:0/identifier|type", "type"))
+            entry("encounter/testing:0/identifier|type", "type")
+        )
     }
 
     @Test
@@ -366,13 +367,15 @@ class LocaleTest : AbstractWebTemplateTest() {
         val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing.opt"), WebTemplateBuilderContext("sl"))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>().put("encounter/testing/text", "hi there").build(),
-            context)
+            mapOf("encounter/testing/text" to "hi there"),
+            context
+        )
         assertThat(composition).isNotNull
 
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(
             webTemplate.convertFromRawToFlat(composition!!, FromRawConversion.create()),
-            ConversionContext.create().build())
+            ConversionContext.create().build()
+        )
         assertThat(secondComposition).isNotNull
     }
 
@@ -382,28 +385,29 @@ class LocaleTest : AbstractWebTemplateTest() {
         val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Medications.xml"), WebTemplateBuilderContext("sl"))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("ctx/language", "en")
-                .put("ctx/territory", "US")
-                .put("ctx/composer_name", "Testing Nurse")
-                .put("ctx/time", "2016-04-21T16:32:39.271+02:00")
-                .put("ctx/id_namespace", "HOSPITAL-NS")
-                .put("ctx/id_scheme", "HOSPITAL-NS")
-                .put("ctx/participation_name", "Testing Doctor")
-                .put("ctx/participation_function", "requester")
-                .put("ctx/participation_mode", "face-to-face communication")
-                .put("ctx/participation_id", "199")
-                .put("ctx/participation_name:1", "Testing Nurse")
-                .put("ctx/participation_function:1", "performer")
-                .put("ctx/participation_id:1", "198")
-                .put("ctx/health_care_facility|name", "Hospital")
-                .put("ctx/health_care_facility|id", "9091")
-                .put("medications/medication_instruction:0/order:0/medicine", "Medicine 19")
-                .put("medications/medication_instruction:0/order:0/directions", "Directions 96")
-                .put("medications/medication_instruction:0/order:0/timing", "R1")
-                .put("medications/medication_instruction:0/narrative", "Human readable instruction narrative")
-                .build(),
-            context)
+            mapOf(
+                "ctx/language" to "en",
+                "ctx/territory" to "US",
+                "ctx/composer_name" to "Testing Nurse",
+                "ctx/time" to "2016-04-21T16:32:39.271+02:00",
+                "ctx/id_namespace" to "HOSPITAL-NS",
+                "ctx/id_scheme" to "HOSPITAL-NS",
+                "ctx/participation_name" to "Testing Doctor",
+                "ctx/participation_function" to "requester",
+                "ctx/participation_mode" to "face-to-face communication",
+                "ctx/participation_id" to "199",
+                "ctx/participation_name:1" to "Testing Nurse",
+                "ctx/participation_function:1" to "performer",
+                "ctx/participation_id:1" to "198",
+                "ctx/health_care_facility|name" to "Hospital",
+                "ctx/health_care_facility|id" to "9091",
+                "medications/medication_instruction:0/order:0/medicine" to "Medicine 19",
+                "medications/medication_instruction:0/order:0/directions" to "Directions 96",
+                "medications/medication_instruction:0/order:0/timing" to "R1",
+                "medications/medication_instruction:0/narrative" to "Human readable instruction narrative"
+            ),
+            context
+        )
 
         assertThat(composition).isNotNull
     }
@@ -414,11 +418,12 @@ class LocaleTest : AbstractWebTemplateTest() {
         val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), WebTemplateBuilderContext("sl"))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology", "local")
-                .put("vitals/vitals/haemoglobin_a1c/any_event/test_status|code", "at0037")
-                .build(),
-            context)
+            mapOf(
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|terminology" to "local",
+                "vitals/vitals/haemoglobin_a1c/any_event/test_status|code" to "at0037"
+            ),
+            context
+        )
 
         val retrieved: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(retrieved).contains(
@@ -431,8 +436,8 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testDiffStructure() {
-        val firstWebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"),  WebTemplateBuilderContext("sl"))
-        val secondWebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"),  WebTemplateBuilderContext("sl"))
+        val firstWebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), WebTemplateBuilderContext("sl"))
+        val secondWebTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), WebTemplateBuilderContext("sl"))
         FileOutputStream(File(System.getProperty("java.io.tmpdir") + File.separator + "demo1.json")).use { outputStream ->
             firstWebTemplate.write(outputStream, true)
         }
@@ -462,7 +467,8 @@ class LocaleTest : AbstractWebTemplateTest() {
             entry("vitals/vitals/body_temperature:0/any_event:0/time", "2014-01-17T22:10:13+01:00"),
             entry("vitals/vitals/body_temperature:0/any_event:1/time", "2014-01-18T07:41:07+01:00"),
             entry("vitals/vitals/body_temperature:0/any_event:0/temperature|magnitude", "37.1"),
-            entry("vitals/vitals/body_temperature:0/any_event:1/temperature|magnitude", "38.1"))
+            entry("vitals/vitals/body_temperature:0/any_event:1/temperature|magnitude", "38.1")
+        )
     }
 
     @Test
@@ -479,14 +485,16 @@ class LocaleTest : AbstractWebTemplateTest() {
             Pair("vitals/vitals/body_temperature/any_event/temperature|unit", "°C"),
             Pair("vitals/vitals/body_temperature/any_event:1/time", "2014-01-18T07:41:07.000+01:00"),
             Pair("vitals/vitals/body_temperature/any_event:1/temperature|magnitude", "38.1"),
-            Pair("vitals/vitals/body_temperature/any_event:1/temperature|unit", "°C"))
+            Pair("vitals/vitals/body_temperature/any_event:1/temperature|unit", "°C")
+        )
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(values, ConversionContext.create().build())
 
         val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap).contains(
             entry("vitals/vitals/body_temperature:0/any_event:0/time", "2014-01-18T07:41:07+01:00"),
-            entry("vitals/vitals/body_temperature:0/any_event:0/temperature|magnitude", "38.1"))
+            entry("vitals/vitals/body_temperature:0/any_event:0/temperature|magnitude", "38.1")
+        )
 
         assertThat(flatMap.containsKey("vitals/vitals/body_temperature:0/any_event:1/time")).isFalse
     }
@@ -497,20 +505,22 @@ class LocaleTest : AbstractWebTemplateTest() {
         val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing.opt"), WebTemplateBuilderContext("en"))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("encounter/testing/intervalquantity/lower|magnitude", "101,0")
-                .put("encounter/testing/intervalquantity/lower|unit", "mm[Hg]")
-                .put("encounter/testing/intervalquantity/upper|magnitude", "107,0")
-                .put("encounter/testing/intervalquantity/upper|unit", "mm[Hg]")
-                .build(),
-            context)
+            mapOf(
+                "encounter/testing/intervalquantity/lower|magnitude" to "101,0",
+                "encounter/testing/intervalquantity/lower|unit" to "mm[Hg]",
+                "encounter/testing/intervalquantity/upper|magnitude" to "107,0",
+                "encounter/testing/intervalquantity/upper|unit" to "mm[Hg]"
+            ),
+            context
+        )
 
         val actual: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(actual).contains(
             entry("encounter/testing:0/intervalquantity/lower|magnitude", "101.0"),
             entry("encounter/testing:0/intervalquantity/lower|unit", "mm[Hg]"),
             entry("encounter/testing:0/intervalquantity/upper|magnitude", "107.0"),
-            entry("encounter/testing:0/intervalquantity/upper|unit", "mm[Hg]"))
+            entry("encounter/testing:0/intervalquantity/upper|unit", "mm[Hg]")
+        )
     }
 
     @Test
@@ -519,13 +529,14 @@ class LocaleTest : AbstractWebTemplateTest() {
         val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing.opt"), WebTemplateBuilderContext("en"))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("encounter/testing/intervalquantity/lower|magnitude", "101,0")
-                .put("encounter/testing/intervalquantity/lower|unit", "mm[Hg]")
-                .put("encounter/testing/intervalquantity/upper|magnitude", "107,0")
-                .put("encounter/testing/intervalquantity/upper|unit", "mm[Hg]")
-                .build(),
-            context)
+            mapOf(
+                "encounter/testing/intervalquantity/lower|magnitude" to "101,0",
+                "encounter/testing/intervalquantity/lower|unit" to "mm[Hg]",
+                "encounter/testing/intervalquantity/upper|magnitude" to "107,0",
+                "encounter/testing/intervalquantity/upper|unit" to "mm[Hg]"
+            ),
+            context
+        )
 
         val link = Link().apply {
             this.type = DvText("type")
@@ -545,17 +556,18 @@ class LocaleTest : AbstractWebTemplateTest() {
         val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate(templateName), WebTemplateBuilderContext("en"))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("diabetes_encounter_ver2/problem_diagnosis/problem_diagnosis", "test")
-                .put("diabetes_encounter_ver2/haemoglobin_a1c/any_event/hba1c", "20")
-                .put("diabetes_encounter_ver2/blood_glucose/any_event/glucose_challenge/dose", "10")
-                .put("diabetes_encounter_ver2/blood_glucose/any_event/glucose_challenge/route", "at0.105")
-                .build(),
-            context)
+            mapOf(
+                "diabetes_encounter_ver2/problem_diagnosis/problem_diagnosis" to "test",
+                "diabetes_encounter_ver2/haemoglobin_a1c/any_event/hba1c" to "20",
+                "diabetes_encounter_ver2/blood_glucose/any_event/glucose_challenge/dose" to "10",
+                "diabetes_encounter_ver2/blood_glucose/any_event/glucose_challenge/route" to "at0.105"
+            ),
+            context
+        )
 
         assertThat(composition).isNotNull
 
-        buildAndExport(templateName, "diabetes2", "sl", ImmutableSet.of("sl", "en"))
+        buildAndExport(templateName, "diabetes2", "sl", setOf("sl", "en"))
     }
 
     @Test
@@ -564,11 +576,12 @@ class LocaleTest : AbstractWebTemplateTest() {
         val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Diagnosis.opt"), WebTemplateBuilderContext("en"))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("diagnosis/diagnosis/diagnosis|code", "A01")
-                .put("diagnosis/diagnosis/diagnosis|value", "test")
-                .build(),
-            context)
+            mapOf(
+                "diagnosis/diagnosis/diagnosis|code" to "A01",
+                "diagnosis/diagnosis/diagnosis|value" to "test"
+            ),
+            context
+        )
 
         assertThat(composition).isNotNull
 
@@ -579,44 +592,47 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testCodedTextWithOther() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Forms Demo.opt"),  WebTemplateBuilderContext("en"))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Forms Demo.opt"), WebTemplateBuilderContext("en"))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("forms_demo/vitals/body_temperature/any_event/symptoms")
         assertThat(node.getInput()).isNotNull
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("forms_demo/vitals/body_temperature/any_event/body_exposure", "at0033")
-                .put("forms_demo/vitals/body_temperature/any_event/description_of_thermal_stress", "stress 1")
-                .put("forms_demo/vitals/body_temperature/any_event/symptoms|other", "other symptom")
-                .put("forms_demo/vitals/body_temperature/any_event/temperature", "38")
-                .put("forms_demo/vitals/body_temperature/any_event/temperature|unit", "°C")
-                .put("forms_demo/vitals/body_temperature/site_of_measurement", "at0.60")
-                .build(), context)
+            mapOf(
+                "forms_demo/vitals/body_temperature/any_event/body_exposure" to "at0033",
+                "forms_demo/vitals/body_temperature/any_event/description_of_thermal_stress" to "stress 1",
+                "forms_demo/vitals/body_temperature/any_event/symptoms|other" to "other symptom",
+                "forms_demo/vitals/body_temperature/any_event/temperature" to "38",
+                "forms_demo/vitals/body_temperature/any_event/temperature|unit" to "°C",
+                "forms_demo/vitals/body_temperature/site_of_measurement" to "at0.60"
+            ), context
+        )
         assertThat(composition).isNotNull
 
         val flatMap: Map<String, Any?> = webTemplate.convertFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap).contains(entry("forms_demo/vitals/body_temperature:0/any_event:0/symptoms|other", "other symptom"))
 
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("forms_demo/vitals/body_temperature/any_event/description_of_thermal_stress", "s1")
-                .put("forms_demo/vitals/body_temperature/any_event/temperature", "38")
-                .put("forms_demo/vitals/body_temperature/any_event/temperature|unit", "°C")
-                .put("forms_demo/vitals/body_temperature/any_event/symptoms", "at0.64")
-                .put("forms_demo/vitals/body_temperature/any_event/body_exposure", "at0032")
-                .put("forms_demo/vitals/body_temperature/any_event:1/description_of_thermal_stress", "s2")
-                .put("forms_demo/vitals/body_temperature/any_event:1/temperature", "39")
-                .put("forms_demo/vitals/body_temperature/any_event:1/temperature|unit", "°C")
-                .put("forms_demo/vitals/body_temperature/any_event:1/symptoms|other", "xxx")
-                .put("forms_demo/vitals/body_temperature/any_event:1/body_exposure", "at0033")
-                .put("forms_demo/vitals/body_temperature/site_of_measurement", "at0.60")
-                .build(), context)
+            mapOf(
+                "forms_demo/vitals/body_temperature/any_event/description_of_thermal_stress" to "s1",
+                "forms_demo/vitals/body_temperature/any_event/temperature" to "38",
+                "forms_demo/vitals/body_temperature/any_event/temperature|unit" to "°C",
+                "forms_demo/vitals/body_temperature/any_event/symptoms" to "at0.64",
+                "forms_demo/vitals/body_temperature/any_event/body_exposure" to "at0032",
+                "forms_demo/vitals/body_temperature/any_event:1/description_of_thermal_stress" to "s2",
+                "forms_demo/vitals/body_temperature/any_event:1/temperature" to "39",
+                "forms_demo/vitals/body_temperature/any_event:1/temperature|unit" to "°C",
+                "forms_demo/vitals/body_temperature/any_event:1/symptoms|other" to "xxx",
+                "forms_demo/vitals/body_temperature/any_event:1/body_exposure" to "at0033",
+                "forms_demo/vitals/body_temperature/site_of_measurement" to "at0.60"
+            ), context
+        )
         assertThat(secondComposition).isNotNull
 
         val secodFlatMap: Map<String, Any?> = webTemplate.convertFromRawToFlat(secondComposition!!, FromRawConversion.create())
         assertThat(secodFlatMap).contains(
             entry("forms_demo/vitals/body_temperature:0/any_event:0/symptoms|code", "at0.64"),
-            entry("forms_demo/vitals/body_temperature:0/any_event:1/symptoms|other", "xxx"))
+            entry("forms_demo/vitals/body_temperature:0/any_event:1/symptoms|other", "xxx")
+        )
     }
 
     @Test
@@ -625,33 +641,36 @@ class LocaleTest : AbstractWebTemplateTest() {
         val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Breast pre-operative conference report.opt"), WebTemplateBuilderContext("en"))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.Builder<String, Any>()
-                .put("pre-op_conference_report/context/report_name", "at0.0.22")
-                .put("pre-op_conference_report/context/episode_code", "15-08062009")
-                .put("pre-op_conference_report/context/round_number", "1")
-                .put("pre-op_conference_report/context/start_time", DateTime())
-                .put("pre-op_conference_report/context/report_id", "ASM_691")
-                .put("pre-op_conference_report/context/breast_location:0/specific_location/lesion_unique_number", "1")
-                .put("pre-op_conference_report/context/breast_location:0/specific_location/side", "at0004")
-                .put("pre-op_conference_report/context/breast_location:0/specific_location/breast_compass_position", "2")
-                .put("pre-op_conference_report/context/breast_location:1/specific_location/lesion_unique_number", "2")
-                .put("pre-op_conference_report/context/breast_location:1/specific_location/side", "at0003")
-                .put("pre-op_conference_report/context/breast_location:1/specific_location/breast_compass_position", "3")
-                .put("pre-op_conference_report/breast_pre-op_conclusion_tmds/pre_operative_conclusion", "at0005")
-                .build(), context)
+            mapOf(
+                "pre-op_conference_report/context/report_name" to "at0.0.22",
+                "pre-op_conference_report/context/episode_code" to "15-08062009",
+                "pre-op_conference_report/context/round_number" to "1",
+                "pre-op_conference_report/context/start_time" to DateTime(),
+                "pre-op_conference_report/context/report_id" to "ASM_691",
+                "pre-op_conference_report/context/breast_location:0/specific_location/lesion_unique_number" to "1",
+                "pre-op_conference_report/context/breast_location:0/specific_location/side" to "at0004",
+                "pre-op_conference_report/context/breast_location:0/specific_location/breast_compass_position" to "2",
+                "pre-op_conference_report/context/breast_location:1/specific_location/lesion_unique_number" to "2",
+                "pre-op_conference_report/context/breast_location:1/specific_location/side" to "at0003",
+                "pre-op_conference_report/context/breast_location:1/specific_location/breast_compass_position" to "3",
+                "pre-op_conference_report/breast_pre-op_conclusion_tmds/pre_operative_conclusion" to "at0005"
+            ), context
+        )
         assertThat(composition?.content ?: emptyList()).isNotEmpty
     }
 
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testOrdinalLanguage() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Simple Vital Functions.opt"), WebTemplateBuilderContext("en", ImmutableSet.of("en", "sl")))
+        val webTemplate =
+            WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Simple Vital Functions.opt"), WebTemplateBuilderContext("en", setOf("en", "sl")))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, String>()
-                .put("simple_vital_functions/story_or_history/pain/observed_current_intensity/degree", "at0169")
-                .build(),
-            context)
+            mapOf(
+                "simple_vital_functions/story_or_history/pain/observed_current_intensity/degree" to "at0169"
+            ),
+            context
+        )
         assertThat(composition).isNotNull
 
         val retrieve: Map<String, Any?> = webTemplate.convertFromRawToFlat(composition!!, FromRawConversion.create())
@@ -661,10 +680,11 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testUndefinedItems() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Simple Body Observation.opt"), WebTemplateBuilderContext("en", ImmutableSet.of("en", "sl")))
+        val webTemplate =
+            WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Simple Body Observation.opt"), WebTemplateBuilderContext("en", setOf("en", "sl")))
         val node: WebTemplateNode? = try {
-             webTemplate.findWebTemplateNode("simple_body_observation/simptomi_bolečine/pain/location/location_in_body/items")
-        } catch (ignored: UnknownPathBuilderException) {
+            webTemplate.findWebTemplateNode("simple_body_observation/simptomi_bolečine/pain/location/location_in_body/items")
+        } catch (_: UnknownPathBuilderException) {
             null
         }
         assertThat(node).isNull()
@@ -674,7 +694,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testWebTemplateBuilder() {
         buildAndExport("/convert/templates/Testing3.opt", "testing3")
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing3.opt"), WebTemplateBuilderContext("en", ImmutableSet.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing3.opt"), WebTemplateBuilderContext("en", setOf("en", "sl")))
 
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("encounter/testing/quantity")
         assertThat(node.inputs).hasSize(2)
@@ -684,7 +704,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testDateDefaultValue() {
         buildAndExport("/convert/templates/Testing3.opt", "testing3")
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing3.opt"),  WebTemplateBuilderContext("en", ImmutableSet.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing3.opt"), WebTemplateBuilderContext("en", setOf("en", "sl")))
 
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("encounter/testing/date")
         assertThat(node.inputs).hasSize(1)
@@ -697,7 +717,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testTimeDefaultValue() {
         buildAndExport("/convert/templates/Testing3.opt", "testing3")
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing3.opt"), WebTemplateBuilderContext("en", ImmutableSet.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing3.opt"), WebTemplateBuilderContext("en", setOf("en", "sl")))
 
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("encounter/testing/time")
         assertThat(node.inputs).hasSize(1)
@@ -709,13 +729,14 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testDischargeSummary() {
-        buildAndExport("/convert/templates/Discharge plan.opt", "dischargeplan", "en", ImmutableSet.of("sl", "en"))
+        buildAndExport("/convert/templates/Discharge plan.opt", "dischargeplan", "en", setOf("sl", "en"))
     }
 
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testAqlNodeNames() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/ZN - Vital Functions Encounter.opt"), WebTemplateBuilderContext("en", ImmutableSet.of("en", "sl")))
+        val webTemplate =
+            WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/ZN - Vital Functions Encounter.opt"), WebTemplateBuilderContext("en", setOf("en", "sl")))
 
         val firstNode: WebTemplateNode = webTemplate.findWebTemplateNode("/context/context_detail")
         assertThat(firstNode.path).isEqualTo("/context/other_context[at0001]/items[openEHR-EHR-CLUSTER.composition_context_detail.v1]")
@@ -730,15 +751,16 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testMissingUnits() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate( "/convert/templates/inference_engine_result_set3.opt"), WebTemplateBuilderContext("en"))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/inference_engine_result_set3.opt"), WebTemplateBuilderContext("en"))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.Builder<String, Any>()
-                .put("inference_engine_result_set_composition/inference_engine_result_set_observation/inference_engine_result_set/result/likelihood|unit", "%")
-                .put("inference_engine_result_set_composition/inference_engine_result_set_observation/inference_engine_result_set/result/likelihood", "0.1")
-                .put("inference_engine_result_set_composition/inference_engine_result_set_observation/inference_engine_result_set/result/disease_code", "R81")
-                .build(),
-            context)
+            mapOf(
+                "inference_engine_result_set_composition/inference_engine_result_set_observation/inference_engine_result_set/result/likelihood|unit" to "%",
+                "inference_engine_result_set_composition/inference_engine_result_set_observation/inference_engine_result_set/result/likelihood" to "0.1",
+                "inference_engine_result_set_composition/inference_engine_result_set_observation/inference_engine_result_set/result/disease_code" to "R81"
+            ),
+            context
+        )
 
         assertThat(composition?.content ?: emptyList()).isNotEmpty
     }
@@ -746,7 +768,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testLabelsOnXoredDataValues() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/ZN - Diabetes monthly check-up.opt"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/ZN - Diabetes monthly check-up.opt"), WebTemplateBuilderContext("en", listOf("en", "sl")))
 
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("diabetes_monthly_check-up/assessment_of_diabetes_symptoms/hipoglycemia/value")
         assertThat(node.localizedName).isEqualTo("Hipoglycemia")
@@ -760,9 +782,10 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testIdsOnXoredDataValues() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Thyroid Examination Encounter.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Thyroid Examination Encounter.xml"), WebTemplateBuilderContext("en", listOf("en", "sl")))
 
-        val node: WebTemplateNode = webTemplate.findWebTemplateNode("thyroid_examination_encounter/thyroid_examination_findings/thyroid_palpation_findings/thyroid_mass_finding/location_of_mass/coordinates/x_offset")
+        val node: WebTemplateNode =
+            webTemplate.findWebTemplateNode("thyroid_examination_encounter/thyroid_examination_findings/thyroid_palpation_findings/thyroid_mass_finding/location_of_mass/coordinates/x_offset")
         assertThat(node.children[0].jsonId).isEqualTo("quantity_value")
         assertThat(node.children[0].alternativeJsonId).isEqualTo("value")
         assertThat(node.children[1].jsonId).isEqualTo("count_value")
@@ -772,9 +795,10 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testOccurencesOnXoredDataValues() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Thyroid Examination Encounter.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Thyroid Examination Encounter.xml"), WebTemplateBuilderContext("en", listOf("en", "sl")))
 
-        val node: WebTemplateNode = webTemplate.findWebTemplateNode("thyroid_examination_encounter/thyroid_examination_findings/thyroid_palpation_findings/thyroid_mass_finding/location_of_mass/coordinates/x_offset")
+        val node: WebTemplateNode =
+            webTemplate.findWebTemplateNode("thyroid_examination_encounter/thyroid_examination_findings/thyroid_palpation_findings/thyroid_mass_finding/location_of_mass/coordinates/x_offset")
         assertThat(node.children[0].occurences?.min).isEqualTo(0)
         assertThat(node.children[1].occurences?.min).isEqualTo(0)
     }
@@ -783,7 +807,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testWebTemplateCompositionOrder() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals.opt"), WebTemplateBuilderContext("en", listOf("en", "sl")))
         val jsonNode: ObjectNode = getObjectMapper().readTree(getJson("/convert/compositions/DemoVitalsComposition.json")) as ObjectNode
 
         val conversionContext = ConversionContext.create().withValueConvert(LocaleBasedValueConverter(Locale("en", "SI"))).build()
@@ -806,7 +830,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun testRetrievedXoredDataValues() {
         val composition = getComposition("/convert/compositions/Clinical Notes Report.xml")
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Clinical Notes Report.opt"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Clinical Notes Report.opt"), WebTemplateBuilderContext("en", listOf("en", "sl")))
 
         val flatMap: MutableMap<String, Any?> = webTemplate.convertFromRawToFlat(composition, FromRawConversion.create()).toMutableMap()
         assertThat(flatMap).contains(entry("clinical_notes_report/clinical_notes/clinical_synopses/synopsis/text_value", "matija je tukaj1"))
@@ -822,7 +846,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testProportion() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/ICU -Ventilator device Report.opt"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/ICU -Ventilator device Report.opt"), WebTemplateBuilderContext("en", listOf("en", "sl")))
 
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/i_e_inspiration_expiration")
         assertThat(node.inputs).hasSize(2)
@@ -831,7 +855,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testRuntimeNameConstraints() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/ICU -Ventilator device Report.opt"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/ICU -Ventilator device Report.opt"), WebTemplateBuilderContext("en", listOf("en", "sl")))
         val firstNode: WebTemplateNode = webTemplate.findWebTemplateNode("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/cpap")
         assertThat(firstNode.getInput()).isNotNull
         assertThat(firstNode.nodeId).isEqualTo("at0015")
@@ -850,19 +874,21 @@ class LocaleTest : AbstractWebTemplateTest() {
 
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.Builder<String, Any>()
-                .put("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/epap|magnitude", 101.0)
-                .put("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/epap|unit", "mbar")
-                .put("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/ipap|magnitude", 102.0)
-                .put("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/ipap|unit", "mbar")
-                .put("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/peep|magnitude", 103.0)
-                .put("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/peep|unit", "mbar")
-                .put("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/map_-_mean_airway_pressure_central_pressure|magnitude", 104.0)
-                .put("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/map_-_mean_airway_pressure_central_pressure|unit", "mbar")
-                .build(),
-            context)
+            mapOf(
+                "ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/epap|magnitude" to 101.0,
+                "ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/epap|unit" to "mbar",
+                "ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/ipap|magnitude" to 102.0,
+                "ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/ipap|unit" to "mbar",
+                "ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/peep|magnitude" to 103.0,
+                "ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/peep|unit" to "mbar",
+                "ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/map_-_mean_airway_pressure_central_pressure|magnitude" to 104.0,
+                "ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/map_-_mean_airway_pressure_central_pressure|unit" to "mbar"
+            ),
+            context
+        )
 
-        val extractor = SimplePathValueExtractor("﻿/content[openEHR-EHR-SECTION.adhoc.v1 and name/value='NBP840']/items[openEHR-EHR-OBSERVATION.ventilator_vital_signs.v1 and name/value='NBP840  observtions']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.ventilator_settings2.v1]/items[at0015]")
+        val extractor =
+            SimplePathValueExtractor("﻿/content[openEHR-EHR-SECTION.adhoc.v1 and name/value='NBP840']/items[openEHR-EHR-OBSERVATION.ventilator_vital_signs.v1 and name/value='NBP840  observtions']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.ventilator_settings2.v1]/items[at0015]")
         val values = extractor.getValue(composition)
         assertThat(values).hasSize(4)
 
@@ -890,7 +916,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testRuntimeNameConstraintsWT() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/ICU -Ventilator device Report.opt"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/ICU -Ventilator device Report.opt"), WebTemplateBuilderContext("en", listOf("en", "sl")))
         val firstNode: WebTemplateNode = webTemplate.findWebTemplateNode("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/cpap")
         assertThat(firstNode.getInput()).isNotNull
         assertThat(firstNode.nodeId).isEqualTo("at0015")
@@ -909,19 +935,20 @@ class LocaleTest : AbstractWebTemplateTest() {
 
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.Builder<String, Any>()
-                .put("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/epap|magnitude", 101.0)
-                .put("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/epap|unit", "mbar")
-                .put("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/ipap|magnitude", 102.0)
-                .put("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/ipap|unit", "mbar")
-                .put("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/peep|magnitude", 103.0)
-                .put("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/peep|unit", "mbar")
-                .put("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/map_-_mean_airway_pressure_central_pressure|magnitude", 104.0)
-                .put("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/map_-_mean_airway_pressure_central_pressure|unit", "mbar")
-                .build(), context
+            mapOf(
+                "ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/epap|magnitude" to 101.0,
+                "ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/epap|unit" to "mbar",
+                "ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/ipap|magnitude" to 102.0,
+                "ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/ipap|unit" to "mbar",
+                "ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/peep|magnitude" to 103.0,
+                "ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/peep|unit" to "mbar",
+                "ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/map_-_mean_airway_pressure_central_pressure|magnitude" to 104.0,
+                "ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/map_-_mean_airway_pressure_central_pressure|unit" to "mbar"
+            ), context
         )
 
-        val extractor = SimplePathValueExtractor("﻿/content[openEHR-EHR-SECTION.adhoc.v1 and name/value='NBP840']/items[openEHR-EHR-OBSERVATION.ventilator_vital_signs.v1 and name/value='NBP840  observtions']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.ventilator_settings2.v1]/items[at0015]")
+        val extractor =
+            SimplePathValueExtractor("﻿/content[openEHR-EHR-SECTION.adhoc.v1 and name/value='NBP840']/items[openEHR-EHR-OBSERVATION.ventilator_vital_signs.v1 and name/value='NBP840  observtions']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.ventilator_settings2.v1]/items[at0015]")
         val values = extractor.getValue(composition)
         assertThat(values).hasSize(4)
 
@@ -942,20 +969,21 @@ class LocaleTest : AbstractWebTemplateTest() {
             entry("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/epap:0|magnitude", 101.0),
             entry("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/ipap:0|magnitude", 102.0),
             entry("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/peep:0|magnitude", 103.0),
-            entry("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/map_-_mean_airway_pressure_central_pressure:0|magnitude", 104.0))
+            entry("ventilator_device_report/nbp840/nbp840_observtions/ventilator_findings/map_-_mean_airway_pressure_central_pressure:0|magnitude", 104.0)
+        )
     }
 
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testMissingOpenehrCodedValue() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Diabetes Encounter.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Diabetes Encounter.xml"), WebTemplateBuilderContext("en", listOf("en", "sl")))
         assertThat(webTemplate).isNotNull
     }
 
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testDvTextListOfValues() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.xml"), WebTemplateBuilderContext("en", listOf("en", "sl")))
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("vitals/vitals/haemoglobin_a1c/any_event/diagnostic_service")
         assertThat(node.getInput()?.list).isNotEmpty
     }
@@ -963,17 +991,18 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testDvTextListOfValuesFixedValue() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.opt"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/older/Demo Vitals.opt"), WebTemplateBuilderContext("en", listOf("en", "sl")))
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("vitals/vitals/body_temperature:0/any_event:0/description_of_thermal_stress")
         assertThat(node.getInput()?.fixed).isTrue
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.Builder<String, Any>()
-                .put("vitals/vitals/body_temperature/any_event/temperature|magnitude", 39.1)
-                .put("vitals/vitals/body_temperature/any_event/temperature|unit", "°C")
-                .put("vitals/vitals/body_temperature/any_event/body_exposure", "at0031")
-                .build(),
-            context)
+            mapOf(
+                "vitals/vitals/body_temperature/any_event/temperature|magnitude" to 39.1,
+                "vitals/vitals/body_temperature/any_event/temperature|unit" to "°C",
+                "vitals/vitals/body_temperature/any_event/body_exposure" to "at0031"
+            ),
+            context
+        )
 
         val flatMap: Map<String, Any?> = webTemplate.convertFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap).contains(entry("vitals/vitals/body_temperature:0/any_event:0/description_of_thermal_stress", "Fixed value"))
@@ -982,20 +1011,23 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testProportionFieldType() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Vital Signs.xml"),  WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Vital Signs.xml"), WebTemplateBuilderContext("en", listOf("en", "sl")))
         val composition = getComposition("/convert/compositions/proportion.xml")
         val jsonNode: ObjectNode = webTemplate.convertFromRawToStructured(composition, FromRawConversion.create()) as ObjectNode
-        assertThat(jsonNode.path("vital_signs")
-                       .path("indirect_oximetry")
-                       .path(0).path("spo2")
-                       .path(0).path("|numerator")
-                       .floatValue()).isEqualTo(79.21f)
+        assertThat(
+            jsonNode.path("vital_signs")
+                .path("indirect_oximetry")
+                .path(0).path("spo2")
+                .path(0).path("|numerator")
+                .floatValue()
+        ).isEqualTo(79.21f)
     }
 
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testDurationValidation() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Patient Diagnosis (composition).xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate =
+            WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Patient Diagnosis (composition).xml"), WebTemplateBuilderContext("en", listOf("en", "sl")))
         val jsonString = """{
                                 "ctx/composer_name":"Dr Louise Jones",
                                 "ctx/health_care_facility|id":"9091",
@@ -1031,7 +1063,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testIdNamespace() {
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en", "sl"))
         val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Patient Diagnosis (composition).xml"), builderContext)
         val jsonString = """{
                                 "ctx/composer_name":"Dr Louise Jones",
@@ -1068,7 +1100,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testOrdinalWithNoOptions() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/ZN - APACHE.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/ZN - APACHE.xml"), WebTemplateBuilderContext("en", listOf("en", "sl")))
         assertThat(webTemplate).isNotNull
     }
 
@@ -1076,23 +1108,25 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testAnyEventWithIntervalEvent() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Test Template.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Test Template.xml"), WebTemplateBuilderContext("en", listOf("en", "sl")))
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
 
         val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.Builder<String, Any>()
-                .put("test_composition/blood_pressure/any_event/systolic|magnitude", 120.0)
-                .put("test_composition/blood_pressure/any_event/systolic|unit", "mm[Hg]")
-                .build(),
-            context)
+            mapOf(
+                "test_composition/blood_pressure/any_event/systolic|magnitude" to 120.0,
+                "test_composition/blood_pressure/any_event/systolic|unit" to "mm[Hg]"
+            ),
+            context
+        )
         assertThat(firstComposition).isNotNull
 
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.Builder<String, Any>()
-                .put("test_composition/blood_pressure/a24_hour_average/systolic|magnitude", 120.0)
-                .put("test_composition/blood_pressure/a24_hour_average/systolic|unit", "mm[Hg]")
-                .build(),
-            context)
+            mapOf(
+                "test_composition/blood_pressure/a24_hour_average/systolic|magnitude" to 120.0,
+                "test_composition/blood_pressure/a24_hour_average/systolic|unit" to "mm[Hg]"
+            ),
+            context
+        )
         assertThat(secondComposition).isNotNull
     }
 
@@ -1100,8 +1134,9 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testPatientSummary() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Patient Summary.opt"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
-        val node: WebTemplateNode = webTemplate.findWebTemplateNode("ppop_national_patient_summary/a1._allergies_and_other_adverse_reactions_section/adverse_reaction/a1.7_8_allergen")
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Patient Summary.opt"), WebTemplateBuilderContext("en", listOf("en", "sl")))
+        val node: WebTemplateNode =
+            webTemplate.findWebTemplateNode("ppop_national_patient_summary/a1._allergies_and_other_adverse_reactions_section/adverse_reaction/a1.7_8_allergen")
         assertThat(node.getInput()?.listOpen).isTrue
     }
 
@@ -1109,29 +1144,36 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testPartialDate() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template N5.opt"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template N5.opt"), WebTemplateBuilderContext("en", listOf("en", "sl")))
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("test_encounter/testing:0/testing:0/partial_date")
         assertThat(node.getInput()?.validation?.pattern).isEqualTo("yyyy-mm-??")
 
         val context = ConversionContext.create().withTerritory("SI").withLanguage("en").withComposerName("Test").build()
 
-        val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("test_encounter/testing:0/testing:0/partial_date", "2016-01"), context)
-        assertThat(webTemplate.convertFromRawToFlat(firstComposition!!, FromRawConversion.create())["test_encounter/testing:0/testing:0/partial_date"]).isEqualTo(YearMonth.of(2016,1))
+        val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(mapOf("test_encounter/testing:0/testing:0/partial_date" to "2016-01"), context)
+        assertThat(webTemplate.convertFromRawToFlat(firstComposition!!, FromRawConversion.create())["test_encounter/testing:0/testing:0/partial_date"]).isEqualTo(
+            YearMonth.of(
+                2016,
+                1
+            )
+        )
 
-        val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("test_encounter/testing:0/testing:0/partial_date", java.time.LocalDate.of(2016, 1, 1)), context)
+        val secondComposition: Composition? =
+            webTemplate.convertFromFlatToRaw(mapOf("test_encounter/testing:0/testing:0/partial_date" to java.time.LocalDate.of(2016, 1, 1)), context)
         assertThat(webTemplate.convertFromRawToFlat(secondComposition!!, FromRawConversion.create())["test_encounter/testing:0/testing:0/partial_date"]).isEqualTo(
-                java.time.LocalDate.of(2016, 1, 1))
+            java.time.LocalDate.of(2016, 1, 1)
+        )
     }
 
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testInvalidPartialDate() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template N5.opt"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template N5.opt"), WebTemplateBuilderContext("en", listOf("en", "sl")))
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("test_encounter/testing:0/testing:0/partial_date")
         assertThat(node.getInput()?.validation?.pattern).isEqualTo("yyyy-mm-??")
 
         val context = ConversionContext.create().withTerritory("SI").withLanguage("en").withComposerName("Test").build()
-        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("test_encounter/testing:0/testing:0/partial_date", "2016-13"), context) }
+        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(mapOf("test_encounter/testing:0/testing:0/partial_date" to "2016-13"), context) }
             .isInstanceOf(ConversionException::class.java)
             .hasMessage("Error processing value \"2016-13\" for pattern \"yyyy-mm-??\" (path: test_encounter/testing:0/testing:0/partial_date).")
     }
@@ -1139,12 +1181,12 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testSecondInvalidPartialDate() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template N5.opt"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template N5.opt"), WebTemplateBuilderContext("en", listOf("en", "sl")))
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("test_encounter/testing:0/testing:0/partial_date")
         assertThat(node.getInput()?.validation?.pattern).isEqualTo("yyyy-mm-??")
 
         val context = ConversionContext.create().withTerritory("SI").withLanguage("en").withComposerName("Test").build()
-        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("test_encounter/testing:0/testing:0/partial_date", "z2016-12"), context) }
+        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(mapOf("test_encounter/testing:0/testing:0/partial_date" to "z2016-12"), context) }
             .isInstanceOf(ConversionException::class.java)
             .hasMessage("Error processing value \"z2016-12\" for pattern \"yyyy-mm-??\" (path: test_encounter/testing:0/testing:0/partial_date).")
     }
@@ -1152,26 +1194,36 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testPartialDateXX() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template N6.opt"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template N6.opt"), WebTemplateBuilderContext("en", listOf("en", "sl")))
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("test_encounter/testing:0/testing:0/partial_date")
         assertThat(node.getInput()?.validation?.pattern).isEqualTo("yyyy-??-XX")
 
         val context = ConversionContext.create().withTerritory("SI").withLanguage("en").withComposerName("Test").build()
 
-        val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("test_encounter/testing:0/testing:0/partial_date", "2016-01"), context)
-        assertThat(webTemplate.convertFromRawToFlat(firstComposition!!, FromRawConversion.create())["test_encounter/testing:0/testing:0/partial_date"]).isEqualTo(YearMonth.of(2016, 1))
+        val firstComposition: Composition? = webTemplate.convertFromFlatToRaw(mapOf("test_encounter/testing:0/testing:0/partial_date" to "2016-01"), context)
+        assertThat(webTemplate.convertFromRawToFlat(firstComposition!!, FromRawConversion.create())["test_encounter/testing:0/testing:0/partial_date"]).isEqualTo(
+            YearMonth.of(
+                2016,
+                1
+            )
+        )
 
-        val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(ImmutableMap.of("test_encounter/testing:0/testing:0/partial_date", "2016-12-01"), context)
-        assertThat(webTemplate.convertFromRawToFlat(secondComposition!!, FromRawConversion.create())["test_encounter/testing:0/testing:0/partial_date"]).isEqualTo(YearMonth.of(2016, 12))
+        val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(mapOf("test_encounter/testing:0/testing:0/partial_date" to "2016-12-01"), context)
+        assertThat(
+            webTemplate.convertFromRawToFlat(
+                secondComposition!!,
+                FromRawConversion.create()
+            )["test_encounter/testing:0/testing:0/partial_date"]
+        ).isEqualTo(YearMonth.of(2016, 12))
     }
 
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testInvalidPartialDateXX1() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template N6.opt"),  WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Testing Template N6.opt"), WebTemplateBuilderContext("en", listOf("en", "sl")))
 
         val context = ConversionContext.create().withTerritory("SI").withLanguage("en").withComposerName("Test").build()
-        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(ImmutableMap.of("test_encounter/testing:0/testing:0/partial_date", "2016-13"), context) }
+        assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(mapOf("test_encounter/testing:0/testing:0/partial_date" to "2016-13"), context) }
             .isInstanceOf(ConversionException::class.java)
             .hasMessage("Error processing value \"2016-13\" for pattern \"yyyy-??-XX\" (path: test_encounter/testing:0/testing:0/partial_date).")
     }
@@ -1179,20 +1231,22 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(JAXBException::class, IOException::class)
     fun testMissingValue() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/clinical-summary-events2.opt"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/clinical-summary-events2.opt"), WebTemplateBuilderContext("en", listOf("en", "sl")))
 
         val context = ConversionContext.create().withTerritory("SI").withLanguage("en").withComposerName("Test").build()
 
         val composition = getComposition("/convert/compositions/clinical-summary-events.xml")
         val flatMap: Map<String, Any?> = webTemplate.convertFromRawToFlat(composition, FromRawConversion.create())
 
-        val node: WebTemplateNode = webTemplate.findWebTemplateNode("clinical_summary_events/laboratory_exams/laboratory_exams_results/pathology_test_result:1/any_event:1/result_group/result/result_value/quantity_value")
+        val node: WebTemplateNode =
+            webTemplate.findWebTemplateNode("clinical_summary_events/laboratory_exams/laboratory_exams_results/pathology_test_result:1/any_event:1/result_group/result/result_value/quantity_value")
         assertThat(node).isNotNull
 
         assertThat(flatMap["clinical_summary_events/laboratory_exams/laboratory_exams_results/pathology_test_result:1/any_event:1/result_group/result/result_value/quantity_value|magnitude"]).isNotNull
 
         val secondComposition: Composition? = webTemplate.convertFromFlatToRaw(flatMap, context)
-        val pathValueExtractor = NameAndNodeMatchingPathValueExtractor("/content[openEHR-EHR-SECTION.adhoc_ubr.v1,'Laboratory exams']/items[openEHR-EHR-SECTION.adhoc_ubr.v1,'Laboratory exams results']/items[openEHR-EHR-OBSERVATION.pathology_test-ubr.v1, 'Pathology Test Result #2']/data[at0001]/events[at0002, 'Any event #2']/data[at0003]/items[at0095,'Result Group']/items[at0096,'Result']/items[at0078]")
+        val pathValueExtractor =
+            NameAndNodeMatchingPathValueExtractor("/content[openEHR-EHR-SECTION.adhoc_ubr.v1,'Laboratory exams']/items[openEHR-EHR-SECTION.adhoc_ubr.v1,'Laboratory exams results']/items[openEHR-EHR-OBSERVATION.pathology_test-ubr.v1, 'Pathology Test Result #2']/data[at0001]/events[at0002, 'Any event #2']/data[at0003]/items[at0095,'Result Group']/items[at0096,'Result']/items[at0078]")
         val values = pathValueExtractor.getValue(secondComposition)
         assertThat(values[0]).isInstanceOf(Element::class.java)
         val element = values[0] as Element
@@ -1205,7 +1259,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testIntervalEventWidth() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Liver Donor.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Liver Donor.xml"), WebTemplateBuilderContext("en", listOf("en", "sl")))
         val jsonString = getJson("/convert/compositions/Liver Donor.json")
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(getObjectMapper().readTree(jsonString) as ObjectNode, ConversionContext.create().build())
         assertThat(composition).isNotNull
@@ -1215,7 +1269,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testStructuredNoPipes() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Liver Recipient Information.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Liver Recipient Information.xml"), WebTemplateBuilderContext("en", listOf("en")))
         val jsonString = getJson("/convert/compositions/Liver Recipient Information.json")
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(getObjectMapper().readTree(jsonString) as ObjectNode, ConversionContext.create().build())
         assertThat(composition).isNotNull
@@ -1224,7 +1278,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testTermMappings() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals term mapping.opt"), WebTemplateBuilderContext("en", ImmutableList.of("en")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Demo Vitals term mapping.opt"), WebTemplateBuilderContext("en", listOf("en")))
         val context = ConversionContext.create()
             .withLanguage("sl")
             .withTerritory("SI")
@@ -1233,15 +1287,17 @@ class LocaleTest : AbstractWebTemplateTest() {
             .build()
 
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
-            ImmutableMap.builder<String, Any>()
-                .put("vitals/vitals/body_temperature/any_event/temperature|magnitude", 39.1)
-                .put("vitals/vitals/body_temperature/any_event/temperature|unit", "°C")
-                .put("vitals/vitals/body_temperature/any_event/symptoms", "at0.64")
-                .put("vitals/vitals/body_temperature/any_event/body_exposure", "at0031")
-                .build(),
-            context)
+            mapOf(
+                "vitals/vitals/body_temperature/any_event/temperature|magnitude" to 39.1,
+                "vitals/vitals/body_temperature/any_event/temperature|unit" to "°C",
+                "vitals/vitals/body_temperature/any_event/symptoms" to "at0.64",
+                "vitals/vitals/body_temperature/any_event/body_exposure" to "at0031"
+            ),
+            context
+        )
 
-        val pathValueExtractor = NameAndNodeMatchingPathValueExtractor("/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Vitals']/items[openEHR-EHR-OBSERVATION.body_temperature-zn.v1]/data[at0002]/events[at0003]/data[at0001]/items[at0.63]/value")
+        val pathValueExtractor =
+            NameAndNodeMatchingPathValueExtractor("/content[openEHR-EHR-SECTION.ispek_dialog.v1,'Vitals']/items[openEHR-EHR-OBSERVATION.body_temperature-zn.v1]/data[at0002]/events[at0003]/data[at0001]/items[at0.63]/value")
         val value = pathValueExtractor.getValue(composition)
         assertThat(value).hasSize(1)
         assertThat(value[0]).isInstanceOf(DvCodedText::class.java)
@@ -1255,14 +1311,14 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testAdl20() {
-        val builderContext = WebTemplateBuilderContext("en", ImmutableList.of("en", "sl"))
+        val builderContext = WebTemplateBuilderContext("en", listOf("en", "sl"))
         assertThat(WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Diabetes Check-up.opt"), builderContext))
     }
 
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testServerError() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Adverse Reaction List.v1.opt"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Adverse Reaction List.v1.opt"), WebTemplateBuilderContext("en", listOf("en", "sl")))
         val values: Map<String, Any> = mapOf(
             Pair("ctx/language", "en"),
             Pair("ctx/territory", "GB"),
@@ -1272,7 +1328,8 @@ class LocaleTest : AbstractWebTemplateTest() {
             Pair("adverse_reaction_list/allergies_and_adverse_reactions/adverse_reaction_risk:0/status/defining_code", "Likely"),
             Pair("adverse_reaction_list/allergies_and_adverse_reactions/adverse_reaction_risk:0/reaction_details/manifestation:0", "Somthing might happen"),
             Pair("adverse_reaction_list/allergies_and_adverse_reactions/adverse_reaction_risk:0/reaction_details/record_provenance/information_source", "Patient"),
-            Pair("adverse_reaction_list/allergies_and_adverse_reactions/adverse_reaction_risk:0/last_updated", "2018-02-13T11:52:41.8090137+00:00"))
+            Pair("adverse_reaction_list/allergies_and_adverse_reactions/adverse_reaction_risk:0/last_updated", "2018-02-13T11:52:41.8090137+00:00")
+        )
 
         assertThatThrownBy { webTemplate.convertFromFlatToRaw<Composition>(values, ConversionContext.create().build()) }
             .isInstanceOf(ConversionException::class.java)
@@ -1282,7 +1339,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testCytologyIssue() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Cytology Report.xml"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Cytology Report.xml"), WebTemplateBuilderContext("en", listOf("en", "sl")))
         val node: ObjectNode = getObjectMapper().readValue(getJson("/convert/compositions/cytology.json"), ObjectNode::class.java)
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(node, ConversionContext.create().build())
         assertThat(composition).isNotNull
@@ -1291,7 +1348,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testHistoryFixedOffset() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Apgar_1.opt"),  WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Apgar_1.opt"), WebTemplateBuilderContext("en", listOf("en", "sl")))
         val node: ObjectNode = getObjectMapper().readValue(getJson("/convert/compositions/apgar_composition.json"), ObjectNode::class.java)
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(node, ConversionContext.create().build())
         assertThat(composition).isNotNull
@@ -1300,7 +1357,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testHistoryFixedOffsetInvalidContent() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Apgar_1.opt"),  WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Apgar_1.opt"), WebTemplateBuilderContext("en", listOf("en", "sl")))
         val node: ObjectNode = getObjectMapper().readValue(getJson("/convert/compositions/apgar_composition_with_invalidtimes.json"), ObjectNode::class.java)
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(node, ConversionContext.create().build())
         assertThat(composition).isNotNull
@@ -1309,7 +1366,7 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Test
     @Throws(IOException::class, JAXBException::class)
     fun testDurationDefaultValues() {
-        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Temperature.opt"), WebTemplateBuilderContext("en", ImmutableList.of("en", "sl")))
+        val webTemplate = WebTemplateBuilder.buildNonNull(getTemplate("/convert/templates/Temperature.opt"), WebTemplateBuilderContext("en", listOf("en", "sl")))
         val node: WebTemplateNode = webTemplate.findWebTemplateNode("temperature/body_temperature/any_event/duration")
         assertThat(node.getInput("year")?.defaultValue).isNull()
         assertThat(node.getInput("month")?.defaultValue).isNull()
@@ -1320,7 +1377,8 @@ class LocaleTest : AbstractWebTemplateTest() {
     @Throws(IOException::class, JAXBException::class)
     fun templateWithTypedRmType() {
         val webTemplate = WebTemplateBuilder.build(getTemplate("/convert/templates/KDS_Laborbericht.opt"), WebTemplateBuilderContext("en"))!!
-        val aqlPathToOffendingNode = "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Laborbefund']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Probenmaterial']/items[at0015]/value"
+        val aqlPathToOffendingNode =
+            "/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1,'Laborbefund']/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.specimen.v1,'Probenmaterial']/items[at0015]/value"
         val node = webTemplate.findWebTemplateNodeByAqlPath(aqlPathToOffendingNode)
         assertThat(node).isNotNull
         assertThat(node.rmType).isEqualTo("DV_DATE_TIME")
@@ -1329,6 +1387,6 @@ class LocaleTest : AbstractWebTemplateTest() {
 
     @Throws(JAXBException::class, IOException::class)
     private fun buildAndExport(templateName: String, prefix: String) {
-        buildAndExport(templateName, prefix, "sl", ImmutableSet.of("sl", "en"))
+        buildAndExport(templateName, prefix, "sl", setOf("sl", "en"))
     }
 }

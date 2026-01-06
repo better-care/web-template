@@ -47,12 +47,10 @@
             "|code": "238",
             "|value": "other care",
             "|terminology": "openehr"
-          }
-        ]
-      }
-    ],
-    "menstrual_cycle": [
-      {
+      } ]
+    } ],
+    "menstrual_cycle" : [ {
+      "history_origin" : [ "2021-02-15T12:14:00+01:00" ],
         "length_of_cycle": [
           "P23D"
         ],

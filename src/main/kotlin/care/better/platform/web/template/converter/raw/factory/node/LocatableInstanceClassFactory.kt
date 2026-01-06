@@ -36,6 +36,6 @@ internal open class LocatableInstanceClassFactory<T : Locatable>(private val rmC
         try {
             rmClass.getConstructor().newInstance()
         } catch (e: Exception) {
-            throw ConversionException(e)
+            throw ConversionException("Cannot create object instance.", e)
         }
 }
