@@ -70,12 +70,6 @@ internal object DvProportionFactory : DvQuantifiedFactory<DvProportion>() {
                     attribute.attribute == "numerator" -> {
                         ensureType(amNode, rmObject)
                         rmObject.numerator = convertValue(conversionContext, jsonNode, getMaxPrecision(amNode))
-
-                        rmObject.type?.also {
-                            if (it.toInt() == PERCENTAGE_PROPORTION_TYPE) {
-                                rmObject.denominator = 100.0f
-                            }
-                        }
                         true
                     }
                     attribute.attribute == "denominator" -> {
@@ -89,6 +83,9 @@ internal object DvProportionFactory : DvQuantifiedFactory<DvProportion>() {
     override fun afterPropertiesSet(conversionContext: ConversionContext, amNode: AmNode, jsonNode: JsonNode, rmObject: DvProportion) {
         if (rmObject.precision == null) {
             rmObject.precision = getMaxPrecision(amNode)
+        }
+        if (rmObject.type == PERCENTAGE_PROPORTION_TYPE) {
+            rmObject.denominator = 100.0f
         }
     }
 
