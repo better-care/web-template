@@ -28,6 +28,11 @@ import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
 import org.openehr.rm.composition.Composition
+import org.openehr.rm.composition.Observation
+import org.openehr.rm.composition.Section
+import org.openehr.rm.datastructures.Element
+import org.openehr.rm.datastructures.ItemTree
+import org.openehr.rm.datatypes.DvProportion
 import java.io.IOException
 
 /**
@@ -43,6 +48,48 @@ class ProportionTest : AbstractWebTemplateTest() {
         val structuredComposition: ObjectNode = getObjectMapper().readTree(getJson("/convert/compositions/vitals_proportion.json")) as ObjectNode
         val composition: Composition? = webTemplate.convertFromStructuredToRaw(structuredComposition, ConversionContext.create().build())
         assertThat(composition?.content ?: emptyList()).isEmpty()
+    }
+
+    @Test
+    @Throws(IOException::class, JAXBException::class)
+    fun testProportionPercentWithoutDenominator() {
+        val templateName = "/convert/templates/older/Demo Vitals.opt"
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate(templateName), WebTemplateBuilderContext("en"))
+        val structuredComposition: ObjectNode = getObjectMapper().readTree(getJson("/convert/compositions/vitals_proportion-percent_without_denominator.json")) as ObjectNode
+        val composition: Composition? = webTemplate.convertFromStructuredToRaw(structuredComposition, ConversionContext.create().build())
+
+        val proportion = ((((composition!!.content[0] as Section).items[0] as Observation).data!!.events[0].data as ItemTree).items[0] as Element).value as DvProportion
+        assertThat(proportion.numerator).isEqualTo(77.0f)
+        assertThat(proportion.denominator).isEqualTo(100.0f)
+        assertThat(proportion.type).isEqualTo(2)
+    }
+
+    @Test
+    @Throws(IOException::class, JAXBException::class)
+    fun testProportionPercentWithoutDenominatorTypeFirst() {
+        val templateName = "/convert/templates/older/Demo Vitals.opt"
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate(templateName), WebTemplateBuilderContext("en"))
+        val structuredComposition: ObjectNode = getObjectMapper().readTree(getJson("/convert/compositions/vitals_proportion-percent_without_denominator_type_first.json")) as ObjectNode
+        val composition: Composition? = webTemplate.convertFromStructuredToRaw(structuredComposition, ConversionContext.create().build())
+
+        val proportion = ((((composition!!.content[0] as Section).items[0] as Observation).data!!.events[0].data as ItemTree).items[0] as Element).value as DvProportion
+        assertThat(proportion.numerator).isEqualTo(77.0f)
+        assertThat(proportion.denominator).isEqualTo(100.0f)
+        assertThat(proportion.type).isEqualTo(2)
+    }
+
+    @Test
+    @Throws(IOException::class, JAXBException::class)
+    fun testProportionNonpercentTypeLast() {
+        val templateName = "/convert/templates/older/Demo Vitals.opt"
+        val webTemplate: WebTemplate = WebTemplateBuilder.buildNonNull(getTemplate(templateName), WebTemplateBuilderContext("en"))
+        val structuredComposition: ObjectNode = getObjectMapper().readTree(getJson("/convert/compositions/vitals_proportion-nonpercent_type_last.json")) as ObjectNode
+        val composition: Composition? = webTemplate.convertFromStructuredToRaw(structuredComposition, ConversionContext.create().build())
+
+        val proportion = ((((composition!!.content[0] as Section).items[0] as Observation).data!!.events[0].data as ItemTree).items[0] as Element).value as DvProportion
+        assertThat(proportion.numerator).isEqualTo(77.0f)
+        assertThat(proportion.denominator).isEqualTo(2.0f)
+        assertThat(proportion.type).isEqualTo(0)
     }
 
     @Test
