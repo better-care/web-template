@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.3.0 - 2026-01-21
+
+- Update dependency of ehr-common to 4.3.0
+- Make ConversionException messages less specific (more accurate)
+- Always output history_origin for Observations
+- Fix Proportion conversion not to override denominator when type is not percent
+
 ## 4.2.1 - 2025-10-10
 
 - Update dependency of ehr-common to 4.2.1
