@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.3.1 - 2026-03-10
+
+- Upgrade ehr-common to 4.3.1
+
 ## 4.3.0 - 2026-01-21
 
 - Update dependency of ehr-common to 4.3.0
