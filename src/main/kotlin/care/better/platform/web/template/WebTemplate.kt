@@ -39,6 +39,10 @@ import care.better.platform.web.template.converter.structured.FlatToStructuredCo
 import care.better.platform.web.template.converter.structured.FormattedRawToStructuredConverter
 import care.better.platform.web.template.converter.structured.RawToStructuredConverter
 import care.better.platform.web.template.converter.structured.StructuredCompositionFilter
+import care.better.platform.web.template.path.facade.WebTemplatePathExpressionFacade
+import care.better.platform.web.template.path.format.RmObjectFormat
+import care.better.platform.web.template.path.model.EvaluationContext
+import care.better.platform.web.template.path.model.WebTemplatePathExpressionNode
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonPropertyOrder
@@ -51,7 +55,6 @@ import org.openehr.rm.common.Link
 import org.openehr.rm.datatypes.DvEhrUri
 import java.io.IOException
 import java.io.OutputStream
-
 
 /**
  * @author Primoz Delopst
@@ -227,6 +230,99 @@ open class WebTemplate internal constructor(
     @Throws(IOException::class)
     @JvmOverloads
     open fun write(outputStream: OutputStream, pretty: Boolean = false) = WebTemplateObjectMapper.getWriter(pretty).writeValue(outputStream, this)
+
+    /**
+     * Parses a WebTemplate path expression without evaluating it.
+     *
+     * @param expression WebTemplate Path expression
+     * @return [WebTemplatePathExpressionNode]
+     */
+    open fun parseExpression(expression: String): WebTemplatePathExpressionNode =
+        WebTemplatePathExpressionFacade.parse(expression)
+
+    /**
+     * Evaluates a WebTemplate path expression against an RM object in FLAT format.
+     *
+     * @param expression WebTemplate path expression
+     * @param flatRmObject RM object in FLAT format
+     * @param format Desired output format
+     * @param evaluationContext [EvaluationContext]
+     * @return [List] of values in the requested format
+     */
+    @JvmOverloads
+    open fun evaluateExpression(
+        expression: String,
+        flatRmObject: Map<String, Any?>,
+        format: RmObjectFormat = RmObjectFormat.FLAT,
+        evaluationContext: EvaluationContext = EvaluationContext()): List<Any?> =
+        evaluateExpressionInternal(
+            expression,
+            FlatToStructuredConverter.getInstance().invoke(flatRmObject) as ObjectNode,
+            format,
+            resolveWebTemplateNode(evaluationContext))
+
+    /**
+     * Evaluates a WebTemplate path expression against an RM object in STRUCTURED format.
+     *
+     * @param expression WebTemplate path expression
+     * @param structuredRmObject RM object in STRUCTURED format
+     * @param format Desired output format
+     * @param evaluationContext [EvaluationContext]
+     * @return [List] of values in the requested format
+     */
+    @JvmOverloads
+    open fun evaluateExpression(
+        expression: String,
+        structuredRmObject: ObjectNode,
+        format: RmObjectFormat = RmObjectFormat.STRUCTURED,
+        evaluationContext: EvaluationContext = EvaluationContext()): List<Any?> =
+        evaluateExpressionInternal(expression, structuredRmObject, format, resolveWebTemplateNode(evaluationContext))
+
+    /**
+     * Evaluates a WebTemplate path expression against an RM object in RAW format.
+     *
+     * @param expression WebTemplate path expression
+     * @param rmObject RM object in RAW format
+     * @param format Desired output format
+     * @param evaluationContext [EvaluationContext]
+     * @return [List] of values in the requested format
+     */
+    @JvmOverloads
+    open fun evaluateExpression(
+        expression: String,
+        rmObject: RmObject,
+        format: RmObjectFormat = RmObjectFormat.STRUCTURED,
+        evaluationContext: EvaluationContext = EvaluationContext()): List<Any?> {
+        val fromRawConversion = evaluationContext.toFromRawConversion()
+        return evaluateExpressionInternal(
+            expression,
+            RawToStructuredConverter(fromRawConversion.objectMapper).convert(this, fromRawConversion, rmObject) as ObjectNode,
+            format,
+            resolveWebTemplateNode(evaluationContext))
+    }
+
+    /**
+     * Resolves an [EvaluationContext] to a [WebTemplateNode].
+     *
+     * @param evaluationContext [EvaluationContext]
+     * @return Resolved [WebTemplateNode]
+     */
+    private fun resolveWebTemplateNode(evaluationContext: EvaluationContext): WebTemplateNode =
+        when {
+            evaluationContext.webTemplatePath != null -> findWebTemplateNode(evaluationContext.webTemplatePath)
+            evaluationContext.aqlPath != null -> findWebTemplateNodeByAqlPath(evaluationContext.aqlPath)
+            else -> tree
+        }
+
+    private fun evaluateExpressionInternal(
+        expression: String,
+        structuredRmObject: ObjectNode,
+        rmObjectFormat: RmObjectFormat,
+        webTemplateNode: WebTemplateNode): List<Any?> =
+        RmObjectFormat.convert(
+            WebTemplatePathExpressionFacade.evaluate(expression, structuredRmObject, webTemplateNode),
+            rmObjectFormat,
+            this)
 
     /**
      * Finds [WebTemplateNode] for the web template path.
@@ -484,7 +580,7 @@ open class WebTemplate internal constructor(
     open fun getNodes(amNode: AmNode?): List<WebTemplateNode> = amNode?.let { nodes[amNode].toList() } ?: emptyList()
 
     /**
-     * Recursively gets a RM path suitable to be used for [DvEhrUri] or [Link] for the given web template path.
+     * Recursively gets WebTemplatePathExpressionEvaluator.kt a RM path suitable to be used for [DvEhrUri] or [Link] for the given web template path.
      * Returned path takes into account segment indexes. Returned path does not include portion for the EHR uid and composition uid.
      *
      * @param webTemplatePath [ReversedWebTemplatePath]

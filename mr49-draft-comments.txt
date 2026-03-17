@@ -1,0 +1,134 @@
+Draft (Pending) Comments — MR !49
+Generated: 2026-03-09
+Project: thinkehr/web-template
+Commits: cb309ff..a2ef159
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+FILE: WT_PATH_EXPRESSION_SPEC.md
+────────────────────────────────────────────────────────────────────────────────
+
+[Draft #18669] Line 1
+  Sicer bi v naši dokumentaciji tole najbrž želel videti tam pri kotlinscript,
+  ali pa vsaj od tam link do semle, ampak kje se bo pa tole zares prikazaovalo?
+  Bi v README bil kakšen link do semle, ali kaj bi naredili?
+
+[Draft #18667] Line 26
+  Manjka pika na koncu, pa "can be" je v bistvu "are", ker če se ne motim, v
+  vsakem primeru ob klicu poveš željeni format in tvoja koda poskrbi za to
+  konverzijo.
+
+[Draft #18668] Line 310
+  Just rambling to myself, ampak zakaj hudiča ni tole `if`? :D (Se strinjam,
+  da ohranimo isto kot v FHIRPath -- za njih se to sprašujem.)
+
+────────────────────────────────────────────────────────────────────────────────
+FILE: src/main/antlr4/care/better/platform/web/template/path/parser/WebTemplatePathExpression.g4
+────────────────────────────────────────────────────────────────────────────────
+
+[Draft #18644] Line 81
+  functionInvocation bi bilo bolj razumljivo ime.
+
+────────────────────────────────────────────────────────────────────────────────
+FILE: src/main/kotlin/care/better/platform/web/template/WebTemplate.kt
+────────────────────────────────────────────────────────────────────────────────
+
+[Draft #18658] Line 208
+  **P1 [TEST] Missing tests for `pruneFlatCompositionToPath` and `pruneStructuredCompositionToPath`**
+
+  Claudova pripomba, ki jo bom pustil noter. :)
+
+  These are new public API methods on `WebTemplate` (lines 199 and 208). No
+  tests in this MR cover them directly. Missing cases:
+  - Pruning to a multi-level path
+  - Path with occurrence index (`:n` segment)
+  - Path not found in composition (should it return empty or throw?)
+  - Empty composition input
+
+  Please add test coverage in `FlatCompositionPruneTest` /
+  `StructuredCompositionPruneTest` or a new dedicated test class.
+
+[Draft #18653] Line 259
+  Ne rabiš temu converterju podati ObjectMapperja, ki ga dobiš noter čez
+  evaluationContext?
+
+────────────────────────────────────────────────────────────────────────────────
+FILE: src/main/kotlin/care/better/platform/web/template/converter/FromRawConversion.kt
+────────────────────────────────────────────────────────────────────────────────
+
+[Draft #18645] Line 31
+  Ne bi raje v EvaluationContext, kjer kličeš tale konstruktor, klical eno ali
+  drugo `create` metodo, glede na to, ali podajaš aqlPath ali webTemplatePath?
+  Bi bilo bolj clean; zdaj se zanašaš, da tam narediš ustrezno validacijo, da
+  je le en od teh dveh non-null. Kar sicer narediš, ampak ...
+
+────────────────────────────────────────────────────────────────────────────────
+FILE: src/main/kotlin/care/better/platform/web/template/path/evaluator/WebTemplatePathExpressionEvaluator.kt
+────────────────────────────────────────────────────────────────────────────────
+
+[Draft #18646] Line 234
+  A prav razumem, da če child je array, ampak je index out of bounds, potem
+  vrnemo kar cel array? Se pravi isti izraz enkrat vrne vrednost iz arraya,
+  drugič (pri manjšem arrayu) pa cel array? To se mi ne zdi OK; nekatere stvari
+  bodo pač naravno rezultirale v napaki, in ta bi morala biti ena od njih. :)
+  No, ali pa null rezultat, stvar dogovora.
+
+[Draft #18671] Line 256
+  Ne bi namesto -> false (isto spodaj pri številkah) raje vrgli napake? Skrbi
+  me, da bo nekdo napisal kaj neumnega in ker ne bo javilo napake, bo
+  predpostavil, da tisti operator nekako deluje nad tipom, ki ga ima, v resnici
+  bo pa vedno vrnilo false ...
+
+[Draft #18647] Line 349
+  Pri tem naboru funkcij smo se po čem zgledovali? Saj ima vse nek smisel,
+  ampak vprašanje pa, če se vse to rabi in to je treba potem blazno natančno
+  dokumentirati. Recimo razliko med `any` in `anyTrue`. No, saj je v
+  dokumentaciji, priznam, samo naglas razmišljam ... :)
+
+[Draft #18657] Line 448
+  Ne bi za številke pričakoval tule numeričnega sorta, ne pa po `asText()`?
+  (Za booleane tudi, ampak tam je že itak false=0 leksikografsko pred true=1,
+  tako da tisto nima veze.)
+
+[Draft #18654] Line 494
+  Malo pikolovsko, but fair point:
+
+  **P1 [SEC] ReDoS vulnerability via user-supplied regex in `matches()` / `replaceMatches()`**
+
+  `Regex(userInput).matches(...)` uses Java's `java.util.regex.Pattern` which
+  is vulnerable to catastrophic backtracking. A pattern like `(a+)+b` evaluated
+  against a long string causes exponential backtracking and can block a server
+  thread indefinitely.
+
+  If expressions are evaluated in a multi-tenant or server context, this is
+  exploitable. Mitigations:
+  1. Run regex matching with a timeout via a `Future` + thread interrupt, or
+  2. Use a backtracking-safe engine (e.g. RE2/J), or
+  3. Validate/reject patterns with known exponential constructs at parse time.
+
+  At a minimum, add a Javadoc warning that untrusted expressions must not be
+  passed to `evaluateExpression`.
+
+[Draft #18672] Line 557
+  Ne bi ti dve evaluaciji tudi morali prejeti kopije konteksta, kjer je `value`
+  prav nastavljen? Nimaš testa, kjer bi to uporabil (ha, napaka! ;)), ampak
+  vsaj v excelu pogosto prav pride, da tisto vrednost, ki jo v prvem parametru
+  IF-a preverjaš, potem v drugem uporabiš. Recimo "iif($this >= 0, $this, 0)".
+  (Pismo, tale "iif". Vedno se zatipkam "iff", kar je v matematiki okrajšava za
+  "if and only if" ...)
+
+[Draft #18670] Line 575
+  Se strinjam s temle infinite loop protectionom in recimo da je 100 korakov
+  res dovolj, ampak če jih izčrpaš, bi po mojem tule moral vreči exception, ne
+  pa kar nehat evaluirat in vrnit delni rezultat?
+
+────────────────────────────────────────────────────────────────────────────────
+FILE: src/main/kotlin/care/better/platform/web/template/path/model/PathOperator.kt
+────────────────────────────────────────────────────────────────────────────────
+
+[Draft #18663] Line 29
+  Tole bi bilo bolje, če bi se imenovalo `MOD` (tudi če je uporabljen simbol
+  potem `%`).
+
+================================================================================
+Total: 15 draft comments across 6 files
