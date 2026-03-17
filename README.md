@@ -15,6 +15,10 @@ WebTemplate implementation for openEHR CDR
 ## Test Coverage
 [![codecov](https://codecov.io/gh/better-care/web-template/branch/master/graph/badge.svg?token=XAL78TEMAF)](https://codecov.io/gh/better-care/web-template)
 
+## Documentation
+
+- [WebTemplate Path Expression Specification](WT_PATH_EXPRESSION_SPEC.md)
+
 ## Contributing
 
 See our [CONTRIBUTING](/CONTRIBUTING.md) guide.
