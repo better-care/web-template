@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.3.2 - ...
+
+- Upgrade ehr-common to 4.3.2
+- Introduce WebTemplate Path Expression
+
 ## 4.3.1 - 2026-03-10
 
 - Upgrade ehr-common to 4.3.1

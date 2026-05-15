@@ -83,26 +83,38 @@ internal object QuantityWebTemplateInputBuilder : WebTemplateInputBuilder<CDvQua
 
     private fun buildFromList(input: WebTemplateInput, quantityItems: List<CQuantityItem>, amNode: AmNode, languages: Collection<String>) {
         for (item in quantityItems) {
-            val precision = WebTemplateValidationIntegerRange(item.precision)
-            val range = WebTemplateDecimalRange(item.magnitude)
-            val value = WebTemplateCodedValue(item.units, item.units)
-            if (!precision.isEmpty() || !range.isEmpty()) {
-                value.validation = WebTemplateValidation().apply {
-                    if (!precision.isEmpty()) {
-                        this.precision = precision
-                    }
-                    if (!range.isEmpty()) {
-                        this.range = range
+            if (item.units == null) {
+                // Using only terminology when units are not present; does not seem to make sense to respect precision and magnitude where there are multiple
+                // possible units in the terminology
+                item.unitsSystem?.also { unitsSystem ->
+                    if (input.terminology == null) {
+                        input.terminology = unitsSystem
+                    } else {
+                        input.otherTerminologies.add(unitsSystem)
                     }
                 }
+            } else {
+                val precision = WebTemplateValidationIntegerRange(item.precision)
+                val range = WebTemplateDecimalRange(item.magnitude)
+                val value = WebTemplateCodedValue(item.units!!, item.units)
+                if (!precision.isEmpty() || !range.isEmpty()) {
+                    value.validation = WebTemplateValidation().apply {
+                        if (!precision.isEmpty()) {
+                            this.precision = precision
+                        }
+                        if (!range.isEmpty()) {
+                            this.range = range
+                        }
+                    }
+                }
+
+                languages.asSequence()
+                    .map { Pair(it, findText(amNode, it, item.units)) }
+                    .filter { it.second != null }
+                    .forEach { value.localizedLabels[it.first] = it.second!! }
+
+                input.list.add(value)
             }
-
-            languages.asSequence()
-                .map { Pair(it, findText(amNode, it, item.units)) }
-                .filter { it.second != null }
-                .forEach { value.localizedLabels[it.first] = it.second!! }
-
-            input.list.add(value)
         }
     }
 }
