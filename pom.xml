@@ -28,29 +28,29 @@
 
     <properties>
         <java.version>25</java.version>
-        <kotlin.version>2.3.20</kotlin.version>
+        <kotlin.version>2.3.21</kotlin.version>
 
         <jetbrains-annotations.version>26.0.2-1</jetbrains-annotations.version>
         <log4j-api-kotlin.version>1.5.0</log4j-api-kotlin.version>
 
-        <ehr-common.version>5.0.0-A11</ehr-common.version>
+        <ehr-common.version>5.0.0-A36</ehr-common.version>
 
         <antlr4.version>4.13.2</antlr4.version>
-        <assertj.version>3.27.4</assertj.version>
-        <caffeine.version>3.2.3</caffeine.version>
-        <commons-io.version>2.21.0</commons-io.version>
+        <assertj.version>3.27.7</assertj.version>
+        <caffeine.version>3.2.4</caffeine.version>
+        <commons-io.version>2.22.0</commons-io.version>
         <commons-lang3.version>3.20.0</commons-lang3.version>
         <commons-math3.version>3.6.1</commons-math3.version>
-        <jackson.version>2.20.1</jackson.version>
+        <jackson.version>2.21.3</jackson.version>
         <jakarta.xml.bind.version>4.0.4</jakarta.xml.bind.version>
         <jaxb-runtime.version>4.0.6</jaxb-runtime.version>
         <joda-time.version>2.14.0</joda-time.version>
         <json-unit.version>5.1.0</json-unit.version>
         <jupiter.version>6.0.1</jupiter.version>
 
-        <maven-assembly-plugin.version>3.7.1</maven-assembly-plugin.version>
+        <maven-assembly-plugin.version>3.8.0</maven-assembly-plugin.version>
         <maven-clean-plugin.version>3.5.0</maven-clean-plugin.version>
-        <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
         <maven-dependency-check-plugin.version>12.1.9</maven-dependency-check-plugin.version>
         <maven-dokka-plugin.version>2.0.0</maven-dokka-plugin.version>
         <maven-enforcer-plugin.version>3.6.2</maven-enforcer-plugin.version>
