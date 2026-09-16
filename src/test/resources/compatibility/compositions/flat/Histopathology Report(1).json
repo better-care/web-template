@@ -18,7 +18,7 @@
   "histopathology_report/_link:0|target": "2e4689cf-1a85-4688-aad8-1f3630a04120::Testing::1",
   "histopathology_report/_uid": "b34a1abe-3964-4fb4-b7d1-ebc8303cfba2::Testing::1",
   "histopathology_report/_feeder_audit/originating_system_audit|system_id": "FormRenderer",
-  "histopathology_report/_feeder_audit/original_content": "{\"/generic-label-2771981\":[],\"/generic-spacer-9932385\":[],\"/generic-label-9585108\":[]}",
+  "histopathology_report/_feeder_audit/original_content|value": "{\"/generic-label-2771981\":[],\"/generic-spacer-9932385\":[],\"/generic-label-9585108\":[]}",
   "histopathology_report/_feeder_audit/original_content|formalism": "application/json",
   "histopathology_report/language|code": "sl",
   "histopathology_report/language|terminology": "ISO_639-1",

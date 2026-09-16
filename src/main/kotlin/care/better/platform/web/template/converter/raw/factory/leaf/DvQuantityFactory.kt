@@ -18,6 +18,12 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 import care.better.platform.template.AmNode
 import care.better.platform.template.AmUtils
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MAGNITUDE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PRECISION
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UNIT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UNIT_DISPLAY_NAME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UNIT_SYSTEM
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
@@ -43,27 +49,27 @@ internal object DvQuantityFactory : DvQuantifiedFactory<DvQuantity>() {
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean =
         super.handleField(conversionContext, amNode, attribute, rmObject, jsonNode, webTemplatePath) ||
-                if (attribute.attribute.isBlank() || attribute.attribute == "magnitude" || attribute.attribute == "value") {
+                if (attribute.attribute.isBlank() || attribute.attribute == MAGNITUDE || attribute.attribute == VALUE) {
                     if (jsonNode.isNumber) {
                         rmObject.magnitude = jsonNode.numberValue().toDouble()
                     } else {
                         rmObject.magnitude = conversionContext.valueConverter.parseDouble(jsonNode.asText())
                     }
                     true
-                } else if (attribute.attribute == "precision") {
+                } else if (attribute.attribute == PRECISION) {
                     try {
                         rmObject.precision = jsonNode.asText().toInt()
                         true
                     } catch (e: NumberFormatException) {
                         throw ConversionException("Invalid value for attribute 'precision' on DV_QUANTITY: ${jsonNode.asText()}", e, webTemplatePath.toString())
                     }
-                } else if (attribute.attribute == "unit") {
+                } else if (attribute.attribute == UNIT) {
                     rmObject.units = jsonNode.asText()
                     true
-                } else if (attribute.attribute == "unit_system") {
+                } else if (attribute.attribute == UNIT_SYSTEM) {
                     rmObject.unitsSystem = jsonNode.asText()
                     true
-                } else if (attribute.attribute == "unit_display_name") {
+                } else if (attribute.attribute == UNIT_DISPLAY_NAME) {
                     rmObject.unitsDisplayName = jsonNode.asText()
                     true
                 } else {
@@ -93,8 +99,8 @@ internal object DvQuantityFactory : DvQuantifiedFactory<DvQuantity>() {
     }
 
     override fun removeDependentValues(map: MutableMap<AttributeDto, JsonNode>): Boolean {
-        if (map[AttributeDto.forAttribute("unit")] != null && map[AttributeDto.forAttribute("value")] == null && map[AttributeDto.forAttribute("magnitude")] == null && map[AttributeDto.ofBlank()] == null) {
-            map.remove(AttributeDto.forAttribute("unit"))
+        if (map[AttributeDto.forAttribute(UNIT)] != null && map[AttributeDto.forAttribute(VALUE)] == null && map[AttributeDto.forAttribute(MAGNITUDE)] == null && map[AttributeDto.ofBlank()] == null) {
+            map.remove(AttributeDto.forAttribute(UNIT))
             map.remove(AttributeDto.ofBlank())
             return true
         }

@@ -15,10 +15,16 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY_IS_PERCENT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.DENOMINATOR
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NUMERATOR
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PRECISION
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TYPE
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvProportion
 
 /**
@@ -35,10 +41,13 @@ internal object DvProportionToFlatMapper : DvQuantifiedToFlatMapper<DvProportion
             rmObject: DvProportion,
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
-        flatConversionContext["$webTemplatePath|numerator"] = rmObject.numerator
-        flatConversionContext["$webTemplatePath|denominator"] = rmObject.denominator
-        flatConversionContext["$webTemplatePath|type"] = rmObject.type
+        flatConversionContext["$webTemplatePath|$NUMERATOR"] = rmObject.numerator
+        flatConversionContext["$webTemplatePath|$DENOMINATOR"] = rmObject.denominator
+        flatConversionContext["$webTemplatePath|$TYPE"] = rmObject.type
         flatConversionContext[webTemplatePath] = rmObject.numerator / rmObject.denominator
+        flatConversionContext["$webTemplatePath|$PRECISION"] = rmObject.precision
+        flatConversionContext["$webTemplatePath|$ACCURACY"] = rmObject.accuracy
+        flatConversionContext["$webTemplatePath|$ACCURACY_IS_PERCENT"] = rmObject.accuracyIsPercent
         super.map(webTemplateNode, valueConverter, rmObject, webTemplatePath, flatConversionContext)
     }
 
@@ -49,13 +58,16 @@ internal object DvProportionToFlatMapper : DvQuantifiedToFlatMapper<DvProportion
             webTemplatePath: String,
             formattedFlatConversionContext: FormattedFlatMappingContext) {
         if (2 == rmObject.type) {
-            formattedFlatConversionContext[webTemplatePath] = "${valueConverter.formatDouble(rmObject.numerator.toDouble())}%"
+            formattedFlatConversionContext[webTemplatePath] = "${valueConverter.formatFloat(rmObject.numerator)}%"
         } else {
-            formattedFlatConversionContext[webTemplatePath] = "${valueConverter.formatDouble(rmObject.numerator.toDouble())}/${valueConverter.formatDouble(rmObject.denominator.toDouble())}"
-            formattedFlatConversionContext["$webTemplatePath|numerator"] = valueConverter.formatDouble(rmObject.numerator.toDouble())
-            formattedFlatConversionContext["$webTemplatePath|denominator"] = valueConverter.formatDouble(rmObject.denominator.toDouble())
-            formattedFlatConversionContext["$webTemplatePath|type"] = rmObject.type.toString()
+            formattedFlatConversionContext[webTemplatePath] = "${valueConverter.formatFloat(rmObject.numerator)}/${valueConverter.formatFloat(rmObject.denominator)}"
         }
+        formattedFlatConversionContext["$webTemplatePath|$NUMERATOR"] = valueConverter.formatFloat(rmObject.numerator)
+        formattedFlatConversionContext["$webTemplatePath|$DENOMINATOR"] = valueConverter.formatFloat(rmObject.denominator)
+        formattedFlatConversionContext["$webTemplatePath|$TYPE"] = rmObject.type.toString()
+        formattedFlatConversionContext["$webTemplatePath|$PRECISION"] = rmObject.precision?.toString()
+        formattedFlatConversionContext["$webTemplatePath|$ACCURACY"] = rmObject.accuracy?.let { valueConverter.formatFloat(it) }
+        formattedFlatConversionContext["$webTemplatePath|$ACCURACY_IS_PERCENT"] = rmObject.accuracyIsPercent?.toString()
         super.mapFormatted(webTemplateNode, valueConverter, rmObject, webTemplatePath, formattedFlatConversionContext)
     }
 }

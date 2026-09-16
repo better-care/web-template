@@ -15,11 +15,15 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID_SCHEME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NAMESPACE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TYPE
 import care.better.platform.web.template.converter.flat.context.AbstractFlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.base.basetypes.GenericId
 import org.openehr.base.basetypes.ObjectRef
 
@@ -55,12 +59,12 @@ internal object ObjectRefToFlatMapper : RmObjectToFlatMapper<ObjectRef> {
             webTemplatePath: String,
             flatMappingContext: AbstractFlatMappingContext<T>) {
         rmObject.id?.also {
-            flatMappingContext["$webTemplatePath|id"] = it.value as T?
+            flatMappingContext["$webTemplatePath|$ID"] = it.value as T?
             if (it is GenericId) {
-                flatMappingContext["$webTemplatePath|id_scheme"] = it.scheme as T?
+                flatMappingContext["$webTemplatePath|$ID_SCHEME"] = it.scheme as T?
             }
         }
-        flatMappingContext["$webTemplatePath|type"] = rmObject.type as T?
-        flatMappingContext["$webTemplatePath|namespace"] = rmObject.namespace as T?
+        flatMappingContext["$webTemplatePath|$TYPE"] = rmObject.type as T?
+        flatMappingContext["$webTemplatePath|$NAMESPACE"] = rmObject.namespace as T?
     }
 }

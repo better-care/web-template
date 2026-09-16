@@ -15,10 +15,14 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CATEGORY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.COMPOSER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LANGUAGE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERRITORY
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.composition.Composition
 
 /**
@@ -29,34 +33,46 @@ import org.openehr.rm.composition.Composition
  */
 internal object CompositionToFlatMapper : LocatableToFlatMapper<Composition>() {
     override fun map(
-            webTemplateNode: WebTemplateNode,
-            valueConverter: ValueConverter,
-            rmObject: Composition,
-            webTemplatePath: String,
-            flatConversionContext: FlatMappingContext) {
+        webTemplateNode: WebTemplateNode,
+        valueConverter: ValueConverter,
+        rmObject: Composition,
+        webTemplatePath: String,
+        flatConversionContext: FlatMappingContext) {
         super.map(webTemplateNode, valueConverter, rmObject, webTemplatePath, flatConversionContext)
 
         rmObject.language?.also {
-            CodePhraseToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/language", flatConversionContext)
+            CodePhraseToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/$LANGUAGE", flatConversionContext)
         }
         rmObject.territory?.also {
-            CodePhraseToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/territory", flatConversionContext)
+            CodePhraseToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/$TERRITORY", flatConversionContext)
+        }
+        rmObject.category?.also {
+            DvCodedTextToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/$CATEGORY", flatConversionContext)
+        }
+        rmObject.composer?.also {
+            RmObjectToFlatMapperDelegator.delegate(webTemplateNode, valueConverter, it, "$webTemplatePath/$COMPOSER", flatConversionContext)
         }
     }
 
     override fun mapFormatted(
-            webTemplateNode: WebTemplateNode,
-            valueConverter: ValueConverter,
-            rmObject: Composition,
-            webTemplatePath: String,
-            formattedFlatConversionContext: FormattedFlatMappingContext) {
+        webTemplateNode: WebTemplateNode,
+        valueConverter: ValueConverter,
+        rmObject: Composition,
+        webTemplatePath: String,
+        formattedFlatConversionContext: FormattedFlatMappingContext) {
         super.mapFormatted(webTemplateNode, valueConverter, rmObject, webTemplatePath, formattedFlatConversionContext)
 
         rmObject.language?.also {
-            CodePhraseToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/language", formattedFlatConversionContext)
+            CodePhraseToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/$LANGUAGE", formattedFlatConversionContext)
         }
         rmObject.territory?.also {
-            CodePhraseToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/territory", formattedFlatConversionContext)
+            CodePhraseToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/$TERRITORY", formattedFlatConversionContext)
+        }
+        rmObject.category?.also {
+            DvCodedTextToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/$CATEGORY", formattedFlatConversionContext)
+        }
+        rmObject.composer?.also {
+            RmObjectToFlatMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/$COMPOSER", formattedFlatConversionContext)
         }
     }
 }

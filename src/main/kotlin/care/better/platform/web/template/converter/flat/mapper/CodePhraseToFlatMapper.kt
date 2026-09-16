@@ -15,10 +15,13 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CODE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PREFERRED_TERM
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.CodePhrase
 
 /**
@@ -34,9 +37,9 @@ internal object CodePhraseToFlatMapper : RmObjectToFlatMapper<CodePhrase> {
             rmObject: CodePhrase,
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
-        flatConversionContext["$webTemplatePath|code"] = rmObject.codeString
-        flatConversionContext["$webTemplatePath|terminology"] = rmObject.terminologyId?.value
-        flatConversionContext["$webTemplatePath|preferred_term"] = rmObject.preferredTerm
+        flatConversionContext["$webTemplatePath|$CODE"] = rmObject.codeString
+        flatConversionContext["$webTemplatePath|$TERMINOLOGY"] = rmObject.terminologyId?.value
+        flatConversionContext["$webTemplatePath|$PREFERRED_TERM"] = rmObject.preferredTerm
     }
 
     override fun mapFormatted(
@@ -45,8 +48,8 @@ internal object CodePhraseToFlatMapper : RmObjectToFlatMapper<CodePhrase> {
             rmObject: CodePhrase,
             webTemplatePath: String,
             formattedFlatConversionContext: FormattedFlatMappingContext) {
-        formattedFlatConversionContext["$webTemplatePath|code"] = rmObject.codeString
-        formattedFlatConversionContext["$webTemplatePath|terminology"] = rmObject.terminologyId?.value
-        formattedFlatConversionContext["$webTemplatePath|preferred_term"] = rmObject.preferredTerm
+        formattedFlatConversionContext["$webTemplatePath|$CODE"] = rmObject.codeString
+        formattedFlatConversionContext["$webTemplatePath|$TERMINOLOGY"] = rmObject.terminologyId?.value
+        formattedFlatConversionContext["$webTemplatePath|$PREFERRED_TERM"] = rmObject.preferredTerm
     }
 }

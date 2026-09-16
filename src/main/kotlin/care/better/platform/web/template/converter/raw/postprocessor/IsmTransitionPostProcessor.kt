@@ -18,7 +18,7 @@ package care.better.platform.web.template.converter.raw.postprocessor
 import care.better.platform.template.AmNode
 import care.better.platform.template.AmUtils
 import care.better.platform.web.template.converter.WebTemplatePath
-import care.better.platform.web.template.converter.constant.WebTemplateConstants.ISM_TRANSITION_GROUP_NAME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY_GROUP_ISM_TRANSITION
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.extensions.createFromOpenEhrTerminology
 import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils
@@ -57,7 +57,7 @@ internal object IsmTransitionPostProcessor : PostProcessor<IsmTransition> {
                 }
             }
         } else if (instance.currentState == null) {
-            instance.currentState = DvCodedText.createFromOpenEhrTerminology(ISM_TRANSITION_GROUP_NAME, conversionContext.ismTransitionCurrentState)
+            instance.currentState = DvCodedText.createFromOpenEhrTerminology(TERMINOLOGY_GROUP_ISM_TRANSITION, conversionContext.ismTransitionCurrentState)
         }
     }
 

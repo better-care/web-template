@@ -15,12 +15,18 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LOWER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LOWER_INCLUDED
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LOWER_UNBOUNDED
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UPPER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UPPER_INCLUDED
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UPPER_UNBOUNDED
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putSingletonAsArray
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvInterval
 
 /**
@@ -38,11 +44,15 @@ internal object NormalRangeToStructuredMapper : RmObjectToStructuredMapper<DvInt
 
     fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvInterval, objectNode: ObjectNode) {
         rmObject.lower?.also {
-            objectNode.putSingletonAsArray("lower") { RmObjectToStructuredMapperDelegator.delegate(webTemplateNode, valueConverter, it) }
+            objectNode.putSingletonAsArray(LOWER) { RmObjectToStructuredMapperDelegator.delegate(webTemplateNode, valueConverter, it) }
         }
         rmObject.upper?.also {
-            objectNode.putSingletonAsArray("upper") { RmObjectToStructuredMapperDelegator.delegate(webTemplateNode, valueConverter, it) }
+            objectNode.putSingletonAsArray(UPPER) { RmObjectToStructuredMapperDelegator.delegate(webTemplateNode, valueConverter, it) }
         }
+        if (rmObject.lowerUnbounded) objectNode.put("|$LOWER_UNBOUNDED", true)
+        if (rmObject.upperUnbounded) objectNode.put("|$UPPER_UNBOUNDED", true)
+        if (rmObject.lowerIncluded == false) objectNode.put("|$LOWER_INCLUDED", false)
+        if (rmObject.upperIncluded == false) objectNode.put("|$UPPER_INCLUDED", false)
     }
 
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvInterval): JsonNode =
@@ -58,10 +68,14 @@ internal object NormalRangeToStructuredMapper : RmObjectToStructuredMapper<DvInt
         objectNode: ObjectNode
     ) {
         rmObject.lower?.also {
-            objectNode.putSingletonAsArray("lower") { RmObjectToStructuredMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it) }
+            objectNode.putSingletonAsArray(LOWER) { RmObjectToStructuredMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it) }
         }
         rmObject.upper?.also {
-            objectNode.putSingletonAsArray("upper") { RmObjectToStructuredMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it) }
+            objectNode.putSingletonAsArray(UPPER) { RmObjectToStructuredMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it) }
         }
+        if (rmObject.lowerUnbounded) objectNode.put("|$LOWER_UNBOUNDED", true.toString())
+        if (rmObject.upperUnbounded) objectNode.put("|$UPPER_UNBOUNDED", true.toString())
+        if (rmObject.lowerIncluded == false) objectNode.put("|$LOWER_INCLUDED", false.toString())
+        if (rmObject.upperIncluded == false) objectNode.put("|$UPPER_INCLUDED", false.toString())
     }
 }

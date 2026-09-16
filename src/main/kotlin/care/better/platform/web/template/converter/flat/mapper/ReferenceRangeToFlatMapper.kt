@@ -15,10 +15,11 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MEANING
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.ReferenceRange
 
 /**
@@ -36,7 +37,7 @@ internal object ReferenceRangeToFlatMapper : RmObjectToFlatMapper<ReferenceRange
             flatConversionContext: FlatMappingContext) {
 
         rmObject.meaning?.also {
-            RmObjectToFlatMapperDelegator.delegate(webTemplateNode, valueConverter, it, "$webTemplatePath/meaning", flatConversionContext)
+            RmObjectToFlatMapperDelegator.delegate(webTemplateNode, valueConverter, it, "$webTemplatePath/$MEANING", flatConversionContext)
         }
 
         rmObject.range?.also { NormalRangeToFlatMapper.map(webTemplateNode, valueConverter, it, webTemplatePath, flatConversionContext) }
@@ -50,7 +51,7 @@ internal object ReferenceRangeToFlatMapper : RmObjectToFlatMapper<ReferenceRange
             formattedFlatConversionContext: FormattedFlatMappingContext) {
 
         rmObject.meaning?.also {
-            RmObjectToFlatMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/meaning", formattedFlatConversionContext)
+            RmObjectToFlatMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/$MEANING", formattedFlatConversionContext)
         }
 
         rmObject.range?.also { NormalRangeToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, webTemplatePath, formattedFlatConversionContext) }

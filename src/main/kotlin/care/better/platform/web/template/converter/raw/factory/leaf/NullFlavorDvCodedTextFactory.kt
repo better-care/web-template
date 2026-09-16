@@ -16,6 +16,7 @@
 package care.better.platform.web.template.converter.raw.factory.leaf
 
 import care.better.platform.template.AmNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY_OPENEHR
 import org.openehr.base.basetypes.TerminologyId
 import org.openehr.rm.datatypes.DvCodedText
 
@@ -33,5 +34,5 @@ internal object NullFlavorDvCodedTextFactory : DvCodedTextFactory() {
         }
     }
 
-    override fun getDefaultTerminology(): String = "openehr"
+    override fun getDefaultTerminology(): String = TERMINOLOGY_OPENEHR
 }

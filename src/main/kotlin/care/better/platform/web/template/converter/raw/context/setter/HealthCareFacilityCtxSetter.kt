@@ -15,6 +15,8 @@
 
 package care.better.platform.web.template.converter.raw.context.setter
 
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NAME
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.value.ValueConverter
 import org.openehr.base.basetypes.GenericId
@@ -36,7 +38,7 @@ internal object HealthCareFacilityCtxSetter : CtxSetter {
                     PartyIdentified().also { builder.withHealthCareFacility(it) }
                 else builder.getHealthCareFacility()!!
 
-            this["|id"]?.also { id ->
+            this["|$ID"]?.also { id ->
                 healthCareFacility.also {
                     it.externalRef = PartyRef().apply {
                         this.type = "PARTY"
@@ -49,7 +51,7 @@ internal object HealthCareFacilityCtxSetter : CtxSetter {
                 }
             }
 
-            this["|name"]?.also { name ->
+            this["|$NAME"]?.also { name ->
                 healthCareFacility.name = java.lang.String.valueOf(name)
             }
         }

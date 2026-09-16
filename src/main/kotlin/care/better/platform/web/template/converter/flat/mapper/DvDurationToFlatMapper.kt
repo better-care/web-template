@@ -16,11 +16,13 @@
 package care.better.platform.web.template.converter.flat.mapper
 
 import care.better.platform.utils.JodaConversionUtils
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.builder.model.input.WebTemplateDurationField
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY_IS_PERCENT
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
-import care.better.platform.web.template.builder.model.input.WebTemplateDurationField
 import org.joda.time.Period
 import org.openehr.rm.datatypes.DvDuration
 
@@ -39,6 +41,9 @@ internal object DvDurationToFlatMapper : DvQuantifiedToFlatMapper<DvDuration>() 
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
         flatConversionContext[webTemplatePath] = JodaConversionUtils.toPeriod(rmObject)
+
+        flatConversionContext["$webTemplatePath|$ACCURACY"] = rmObject.accuracy
+        flatConversionContext["$webTemplatePath|$ACCURACY_IS_PERCENT"] = rmObject.accuracyIsPercent
         super.map(webTemplateNode, valueConverter, rmObject, webTemplatePath, flatConversionContext)
     }
 
@@ -57,6 +62,8 @@ internal object DvDurationToFlatMapper : DvQuantifiedToFlatMapper<DvDuration>() 
                 formattedFlatConversionContext["$webTemplatePath|$key"] = value.toString()
             }
         }
+        formattedFlatConversionContext["$webTemplatePath|$ACCURACY"] = rmObject.accuracy?.toString()
+        formattedFlatConversionContext["$webTemplatePath|$ACCURACY_IS_PERCENT"] = rmObject.accuracyIsPercent?.toString()
         super.mapFormatted(webTemplateNode, valueConverter, rmObject, webTemplatePath, formattedFlatConversionContext)
     }
 }

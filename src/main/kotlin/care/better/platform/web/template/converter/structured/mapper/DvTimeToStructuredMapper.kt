@@ -17,9 +17,12 @@ package care.better.platform.web.template.converter.structured.mapper
 
 import care.better.platform.template.AmUtils
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putIfNotNull
+import care.better.platform.web.template.converter.mapper.putSingletonAsArray
 import care.better.platform.web.template.converter.mapper.resolve
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
@@ -39,6 +42,9 @@ internal object DvTimeToStructuredMapper : DvQuantifiedToStructuredMapper<DvTime
         with(ConversionObjectMapper.createObjectNode()) {
             putValue(this, rmObject, valueConverter, "")
             map(webTemplateNode, valueConverter, rmObject, this)
+            rmObject.accuracy?.also {
+                this.putSingletonAsArray("_$ACCURACY") { DvDurationToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+            }
             this.resolve()
         }
 
@@ -47,12 +53,15 @@ internal object DvTimeToStructuredMapper : DvQuantifiedToStructuredMapper<DvTime
             val pattern = AmUtils.getPrimitiveItem(webTemplateNode.amNode, CTime::class.java, "value")?.pattern ?: ""
             putValue(this, rmObject, valueConverter, pattern)
             mapFormatted(webTemplateNode, valueConverter, rmObject, this)
+            rmObject.accuracy?.also {
+                this.putSingletonAsArray("_$ACCURACY") { DvDurationToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+            }
             this.resolve()
         }
 
     override fun supportsValueNode(): Boolean = true
 
-    override fun defaultValueNodeAttribute(): String = "|value"
+    override fun defaultValueNodeAttribute(): String = "|$VALUE"
 
     private fun putValue(node: ObjectNode, rmObject: DvTime, valueConverter: ValueConverter, pattern: String) {
         val value = requireNotNull(rmObject.value) { "DV_TIME value must not be null!" }

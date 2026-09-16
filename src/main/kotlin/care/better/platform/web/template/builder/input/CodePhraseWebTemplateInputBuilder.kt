@@ -29,6 +29,9 @@ import care.better.platform.web.template.builder.model.input.WebTemplateCodedVal
 import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.builder.utils.CodePhraseUtils
 import care.better.platform.web.template.builder.utils.WebTemplateBuilderUtils
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CODE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY_LOCAL
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import org.apache.commons.lang3.StringUtils
 import org.openehr.am.aom.CCodePhrase
 import org.openehr.am.aom.CCodeReference
@@ -92,14 +95,14 @@ internal object CodePhraseWebTemplateInputBuilder : WebTemplateInputBuilder<CCod
                 if (codes.isEmpty()) {
                     addExternalTerminologyInputs(node, terminology, defaultValue, assumedValue)
                 } else {
-                    val input = WebTemplateInput(WebTemplateInputType.CODED_TEXT, "code")
+                    val input = WebTemplateInput(WebTemplateInputType.CODED_TEXT, CODE)
                     input.list.addAll(codes)
                     input.fixed = isFixed(input.list)
                     input.defaultValue = assumedValue?.codeString
                     if (defaultValue != null) {
                         input.defaultValue = defaultValue.definingCode?.codeString
                     }
-                    if (StringUtils.isNotBlank(terminology) && "local" != terminology) {
+                    if (StringUtils.isNotBlank(terminology) && TERMINOLOGY_LOCAL != terminology) {
                         input.terminology = terminology
                     }
                     node.inputs.add(input)
@@ -145,7 +148,7 @@ internal object CodePhraseWebTemplateInputBuilder : WebTemplateInputBuilder<CCod
         }
 
     private fun addExternalTerminologyInputs(node: WebTemplateNode, terminology: String?, defaultValue: DvCodedText?, assumedValue: CodePhrase?) {
-        val codeInput = WebTemplateInput(WebTemplateInputType.TEXT, "code")
+        val codeInput = WebTemplateInput(WebTemplateInputType.TEXT, CODE)
         codeInput.terminology = terminology
         if (defaultValue != null) {
             codeInput.defaultValue = defaultValue.definingCode!!.codeString
@@ -153,7 +156,7 @@ internal object CodePhraseWebTemplateInputBuilder : WebTemplateInputBuilder<CCod
             codeInput.defaultValue = assumedValue.codeString
         }
         node.inputs.add(codeInput)
-        val valueInput = WebTemplateInput(WebTemplateInputType.TEXT, "value")
+        val valueInput = WebTemplateInput(WebTemplateInputType.TEXT, VALUE)
         valueInput.terminology = terminology
         if (defaultValue != null) {
             valueInput.defaultValue = defaultValue.value

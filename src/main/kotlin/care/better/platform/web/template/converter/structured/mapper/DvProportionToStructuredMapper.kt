@@ -16,6 +16,13 @@
 package care.better.platform.web.template.converter.structured.mapper
 
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY_IS_PERCENT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.DENOMINATOR
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NUMERATOR
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PRECISION
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TYPE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.mapper.resolve
@@ -32,10 +39,13 @@ import org.openehr.rm.datatypes.DvProportion
 internal object DvProportionToStructuredMapper : DvQuantifiedToStructuredMapper<DvProportion>() {
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvProportion): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            this.putIfNotNull("|numerator", rmObject.numerator)
-            this.putIfNotNull("|denominator", rmObject.denominator)
-            this.putIfNotNull("|type", rmObject.type)
-            this.putIfNotNull("|value", rmObject.numerator / rmObject.denominator)
+            this.putIfNotNull("|$NUMERATOR", rmObject.numerator)
+            this.putIfNotNull("|$DENOMINATOR", rmObject.denominator)
+            this.putIfNotNull("|$TYPE", rmObject.type)
+            this.putIfNotNull("|$VALUE", rmObject.numerator / rmObject.denominator)
+            this.putIfNotNull("|$PRECISION", rmObject.precision)
+            this.putIfNotNull("|$ACCURACY", rmObject.accuracy)
+            this.putIfNotNull("|$ACCURACY_IS_PERCENT", rmObject.accuracyIsPercent)
             map(webTemplateNode, valueConverter, rmObject, this)
             this.resolve()
         }
@@ -43,15 +53,18 @@ internal object DvProportionToStructuredMapper : DvQuantifiedToStructuredMapper<
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvProportion): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
             if (2 == rmObject.type) {
-                this.putIfNotNull("|value", "${valueConverter.formatDouble(rmObject.numerator.toDouble())}%")
+                this.putIfNotNull("|$VALUE", "${valueConverter.formatFloat(rmObject.numerator)}%")
             } else {
                 this.putIfNotNull(
-                    "|value",
-                    "${valueConverter.formatDouble(rmObject.numerator.toDouble())}/${valueConverter.formatDouble(rmObject.denominator.toDouble())}")
-                this.putIfNotNull("|numerator", valueConverter.formatDouble(rmObject.numerator.toDouble()))
-                this.putIfNotNull("|denominator", valueConverter.formatDouble(rmObject.denominator.toDouble()))
-                this.putIfNotNull("|type", rmObject.type.toString())
+                    "|$VALUE",
+                    "${valueConverter.formatFloat(rmObject.numerator)}/${valueConverter.formatFloat(rmObject.denominator)}")
             }
+            this.putIfNotNull("|$NUMERATOR", valueConverter.formatFloat(rmObject.numerator))
+            this.putIfNotNull("|$DENOMINATOR", valueConverter.formatFloat(rmObject.denominator))
+            this.putIfNotNull("|$TYPE", rmObject.type.toString())
+            this.putIfNotNull("|$PRECISION", rmObject.precision.toString())
+            this.putIfNotNull("|$ACCURACY", rmObject.accuracy?.let { valueConverter.formatFloat(it) })
+            this.putIfNotNull("|$ACCURACY_IS_PERCENT", rmObject.accuracyIsPercent.toString())
             mapFormatted(webTemplateNode, valueConverter, rmObject, this)
             this.resolve()
         }

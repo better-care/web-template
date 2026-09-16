@@ -102,23 +102,23 @@ class FeederAuditTest : AbstractWebTemplateTest() {
         val composition = buildComposition()
         val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition, FromRawConversion.create())
         assertThat(flatMap).contains(
-            entry("vitals/vitals/body_temperature:0/_feeder_audit/original_content", "Hello world!"),
+            entry("vitals/vitals/body_temperature:0/_feeder_audit/original_content|value", "Hello world!"),
             entry("vitals/vitals/body_temperature:0/_feeder_audit/original_content|formalism", "text/plain"),
             entry("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:0|assigner", "assigner1"),
             entry("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:0|issuer", "issuer1"),
-            entry("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:0", "id1"),
+            entry("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:0|id", "id1"),
             entry("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:0|type", "PERSON"),
             entry("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:1|assigner", "assigner2"),
             entry("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:1|issuer", "issuer2"),
-            entry("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:1", "id2"),
+            entry("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:1|id", "id2"),
             entry("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_item_id:1|type", "PERSON"),
             entry("vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:0|assigner", "assigner1"),
             entry("vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:0|issuer", "issuer1"),
-            entry("vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:0", "id1"),
+            entry("vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:0|id", "id1"),
             entry("vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:0|type", "PERSON"),
             entry("vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:1|assigner", "assigner2"),
             entry("vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:1|issuer", "issuer2"),
-            entry("vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:1", "id2"),
+            entry("vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:1|id", "id2"),
             entry("vitals/vitals/body_temperature:0/_feeder_audit/feeder_system_item_id:1|type", "PERSON"),
             entry("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_audit|system_id", "orig"),
             entry("vitals/vitals/body_temperature:0/_feeder_audit/originating_system_audit|version_id", "vvv")
@@ -134,7 +134,7 @@ class FeederAuditTest : AbstractWebTemplateTest() {
 
         val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap).contains(
-            entry("vitals/_feeder_audit/original_content", "{\"hello\": \"world\"}"),
+            entry("vitals/_feeder_audit/original_content|value", "{\"hello\": \"world\"}"),
             entry("vitals/_feeder_audit/original_content|formalism", "application/json"),
             entry("vitals/_feeder_audit/originating_system_audit|system_id", "mine")
         )

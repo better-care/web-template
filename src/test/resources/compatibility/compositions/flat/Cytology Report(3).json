@@ -14,7 +14,7 @@
 
 {
   "cytology_report/_feeder_audit/originating_system_audit|system_id": "FormRenderer",
-  "cytology_report/_feeder_audit/original_content": "{}",
+  "cytology_report/_feeder_audit/original_content|value": "{}",
   "cytology_report/_feeder_audit/original_content|formalism": "application/json",
   "cytology_report/language|code": "sl",
   "cytology_report/language|terminology": "ISO_639-1",

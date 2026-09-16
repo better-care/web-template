@@ -15,12 +15,15 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CODE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PREFERRED_TERM
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.CodePhrase
 
 /**
@@ -40,8 +43,8 @@ internal object CodePhraseToStructuredMapper : RmObjectToStructuredMapper<CodePh
         map(webTemplateNode, valueConverter, rmObject)
 
     private fun mapCodePhrase(codePhrase: CodePhrase, objectNode: ObjectNode) {
-        objectNode.putIfNotNull("|code", codePhrase.codeString)
-        objectNode.putIfNotNull("|terminology", codePhrase.terminologyId?.value)
-        objectNode.putIfNotNull("|preferred_term", codePhrase.preferredTerm)
+        objectNode.putIfNotNull("|$CODE", codePhrase.codeString)
+        objectNode.putIfNotNull("|$TERMINOLOGY", codePhrase.terminologyId?.value)
+        objectNode.putIfNotNull("|$PREFERRED_TERM", codePhrase.preferredTerm)
     }
 }

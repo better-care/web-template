@@ -15,12 +15,18 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LOWER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LOWER_INCLUDED
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LOWER_UNBOUNDED
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UPPER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UPPER_INCLUDED
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UPPER_UNBOUNDED
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.mapper.putSingletonAsArray
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvInterval
 
 /**
@@ -33,48 +39,46 @@ internal object DvIntervalToStructuredMapper : RmObjectToStructuredMapper<DvInte
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvInterval): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
             rmObject.lower?.also {
-                this.putSingletonAsArray("lower") {
-                    RmObjectToStructuredMapperDelegator.delegate(webTemplateNode.children.first { child -> child.jsonId == "lower" }, valueConverter, it)
+                this.putSingletonAsArray(LOWER) {
+                    RmObjectToStructuredMapperDelegator.delegate(webTemplateNode.children.first { child -> child.jsonId == LOWER }, valueConverter, it)
                 }
             }
             rmObject.upper?.also {
-                this.putSingletonAsArray("upper") {
-                    RmObjectToStructuredMapperDelegator.delegate(webTemplateNode.children.first { child -> child.jsonId == "upper" }, valueConverter, it)
+                this.putSingletonAsArray(UPPER) {
+                    RmObjectToStructuredMapperDelegator.delegate(webTemplateNode.children.first { child -> child.jsonId == UPPER }, valueConverter, it)
                 }
             }
-            this.putIfNotNull("|lower_included", rmObject.lowerIncluded)
-            this.putIfNotNull("|upper_included", rmObject.upperIncluded)
-
-            this.putIfNotNull("|lower_unbounded", rmObject.lowerUnbounded)
-            this.putIfNotNull("|upper_unbounded", rmObject.upperUnbounded)
+            if (rmObject.lowerIncluded == false) this.putIfNotNull("|$LOWER_INCLUDED", rmObject.lowerIncluded)
+            if (rmObject.upperIncluded == false) this.putIfNotNull("|$UPPER_INCLUDED", rmObject.upperIncluded)
+            if (rmObject.lowerUnbounded) this.putIfNotNull("|$LOWER_UNBOUNDED", rmObject.lowerUnbounded)
+            if (rmObject.upperUnbounded) this.putIfNotNull("|$UPPER_UNBOUNDED", rmObject.upperUnbounded)
             this
         }
 
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvInterval): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
             rmObject.lower?.also {
-                this.putSingletonAsArray("lower") {
+                this.putSingletonAsArray(LOWER) {
                     RmObjectToStructuredMapperDelegator.delegateFormatted(
-                        webTemplateNode.children.first { child -> child.jsonId == "lower" },
+                        webTemplateNode.children.first { child -> child.jsonId == LOWER },
                         valueConverter,
                         it
                     )
                 }
             }
             rmObject.upper?.also {
-                this.putSingletonAsArray("upper") {
+                this.putSingletonAsArray(UPPER) {
                     RmObjectToStructuredMapperDelegator.delegateFormatted(
-                        webTemplateNode.children.first { child -> child.jsonId == "upper" },
+                        webTemplateNode.children.first { child -> child.jsonId == UPPER },
                         valueConverter,
                         it
                     )
                 }
             }
-            this.put("|lower_included", rmObject.lowerIncluded?.toString())
-            this.put("|upper_included", rmObject.upperIncluded?.toString())
-
-            this.put("|lower_unbounded", rmObject.lowerUnbounded.toString())
-            this.put("|upper_unbounded", rmObject.upperUnbounded.toString())
+            if (rmObject.lowerIncluded == false) this.put("|$LOWER_INCLUDED", "false")
+            if (rmObject.upperIncluded == false) this.put("|$UPPER_INCLUDED", "false")
+            if (rmObject.lowerUnbounded) this.put("|$LOWER_UNBOUNDED", "true")
+            if (rmObject.upperUnbounded) this.put("|$UPPER_UNBOUNDED", "true")
             this
         }
 

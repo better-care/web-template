@@ -17,6 +17,10 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID_SCHEME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NAMESPACE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TYPE
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
@@ -49,19 +53,19 @@ internal object ObjectRefFactory : RmObjectLeafNodeFactory<ObjectRef>() {
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean =
         when (attribute.attribute) {
-            "id" -> {
+            ID -> {
                 getOrCreateId(rmObject).value = jsonNode.asText()
                 true
             }
-            "type" -> {
+            TYPE -> {
                 rmObject.type = jsonNode.asText()
                 true
             }
-            "namespace" -> {
+            NAMESPACE -> {
                 rmObject.namespace = jsonNode.asText()
                 true
             }
-            "id_scheme" -> {
+            ID_SCHEME -> {
                 getOrCreateId(rmObject).scheme = jsonNode.asText()
                 true
             }

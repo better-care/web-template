@@ -29,6 +29,8 @@ import org.openehr.rm.datatypes.DvParsable
  *
  * Singleton instance of [LocatableFactory] that creates a new instance of [Activity].
  */
+internal const val DEFAULT_ACTION_ARCHETYPE_ID = "/.*/"
+
 internal object ActivityFactory : LocatableFactory<Activity>() {
     override fun createLocatable(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): Activity =
         Activity().apply {
@@ -42,7 +44,7 @@ internal object ActivityFactory : LocatableFactory<Activity>() {
             if (cString?.pattern != null)
                 this.actionArchetypeId = cString.pattern
             else
-                this.actionArchetypeId = "/.*/"
+                this.actionArchetypeId = DEFAULT_ACTION_ARCHETYPE_ID
 
         }
 }

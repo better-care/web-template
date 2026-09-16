@@ -15,11 +15,12 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MEANING
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putSingletonAsArray
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.ReferenceRange
 
 /**
@@ -32,7 +33,7 @@ internal object ReferenceRangeToStructuredMapper : RmObjectToStructuredMapper<Re
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: ReferenceRange): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
             rmObject.meaning?.also {
-                this.putSingletonAsArray("meaning") { RmObjectToStructuredMapperDelegator.delegate(webTemplateNode, valueConverter, it) }
+                this.putSingletonAsArray(MEANING) { RmObjectToStructuredMapperDelegator.delegate(webTemplateNode, valueConverter, it) }
             }
             rmObject.range?.also { NormalRangeToStructuredMapper.map(webTemplateNode, valueConverter, it, this) }
             this
@@ -41,7 +42,7 @@ internal object ReferenceRangeToStructuredMapper : RmObjectToStructuredMapper<Re
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: ReferenceRange): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
             rmObject.meaning?.also {
-                this.putSingletonAsArray("meaning") { RmObjectToStructuredMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it) }
+                this.putSingletonAsArray(MEANING) { RmObjectToStructuredMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it) }
             }
             rmObject.range?.also { NormalRangeToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it, this) }
             this

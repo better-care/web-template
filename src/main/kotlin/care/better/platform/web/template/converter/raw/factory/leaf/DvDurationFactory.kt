@@ -22,6 +22,7 @@ import care.better.platform.web.template.builder.model.input.WebTemplateDuration
 import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.builder.utils.DurationUtils
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
@@ -67,7 +68,7 @@ internal object DvDurationFactory : DvQuantifiedFactory<DvDuration>() {
                         handleDurationEnumAttribute(attribute, jsonNode, rmObject)
                         true
                     }
-                    attribute.attribute.isBlank() || attribute.attribute == "value" -> {
+                    attribute.attribute.isBlank() || attribute.attribute == VALUE -> {
                         rmObject.value = PERIOD_FORMATTER.print(JodaConversionUtils.toPeriod(jsonNode.asText()))
                         true
                     }

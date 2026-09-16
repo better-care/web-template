@@ -22,6 +22,8 @@ import care.better.platform.web.template.builder.model.WebTemplateInputType
 import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.builder.model.input.range.WebTemplateIntegerRange
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.DEFINING_CODE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.OTHER
 import com.google.common.collect.Iterables
 import org.apache.commons.lang3.StringUtils
 import org.openehr.rm.datastructures.*
@@ -179,12 +181,12 @@ internal open class MinimalWebTemplateCompactor : WebTemplateCompactor {
             val node1 = children[1]
             if (setOf("DV_TEXT", "DV_CODED_TEXT") == setOf(node0.rmType, node1.rmType)) {
                 val difference = StringUtils.difference(node0.path, node1.path)
-                if ("/defining_code" == difference) {
-                    node1.inputs.add(WebTemplateInput(WebTemplateInputType.TEXT, "other"))
+                if ("/$DEFINING_CODE" == difference) {
+                    node1.inputs.add(WebTemplateInput(WebTemplateInputType.TEXT, OTHER))
                     node1.getInput()?.listOpen = true
                     children.removeAt(0)
                 } else if (difference.isEmpty()) {
-                    node0.inputs.add(WebTemplateInput(WebTemplateInputType.TEXT, "other"))
+                    node0.inputs.add(WebTemplateInput(WebTemplateInputType.TEXT, OTHER))
                     node0.getInput()?.listOpen = true
                     children.removeAt(1)
                 }
@@ -196,7 +198,7 @@ internal open class MinimalWebTemplateCompactor : WebTemplateCompactor {
         val matchingChildren = mergeChildrenWithMatchingPaths(children)
         for (webTemplateNodes in matchingChildren.values) {
             // are all for defining_code
-            if (webTemplateNodes.size == 2 && webTemplateNodes[0].path.endsWith("defining_code")) {
+            if (webTemplateNodes.size == 2 && webTemplateNodes[0].path.endsWith(DEFINING_CODE)) {
                 val child0 = webTemplateNodes[0]
                 val constrained0 = isConstrained(child0)
                 val child1 = webTemplateNodes[1]

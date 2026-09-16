@@ -16,6 +16,8 @@
 package care.better.platform.web.template.builder.postprocess
 
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.INSTRUCTION_DETAILS
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PROTOCOL
 
 
 /**
@@ -26,8 +28,8 @@ import care.better.platform.web.template.builder.model.WebTemplateNode
 class ActionChildrenPostProcessor : WebTemplateNodeChildrenPostProcessor {
     override fun postProcess(webTemplateNode: WebTemplateNode) {
         webTemplateNode.children.forEach {
-            if (it.path.startsWith("${webTemplateNode.path}/protocol")) {
-                it.dependsOn = mutableListOf("${webTemplateNode.path}/instruction_details")
+            if (it.path.startsWith("${webTemplateNode.path}/$PROTOCOL")) {
+                it.dependsOn = mutableListOf("${webTemplateNode.path}/$INSTRUCTION_DETAILS")
             }
         }
     }

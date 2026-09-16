@@ -140,6 +140,17 @@
             "|code": "UTF-8",
             "|terminology": "IANA_character-sets"
           }
+        ],
+        "ism_transition": [
+          {
+            "current_state": [
+              {
+                "|code": "532",
+                "|terminology": "openehr",
+                "|value": "completed"
+              }
+            ]
+          }
         ]
       }
     ],
@@ -180,6 +191,17 @@
           {
             "|code": "UTF-8",
             "|terminology": "IANA_character-sets"
+          }
+        ],
+        "ism_transition": [
+          {
+            "current_state": [
+              {
+                "|code": "532",
+                "|terminology": "openehr",
+                "|value": "completed"
+              }
+            ]
           }
         ]
       }
@@ -224,6 +246,17 @@
           {
             "|code": "UTF-8",
             "|terminology": "IANA_character-sets"
+          }
+        ],
+        "ism_transition": [
+          {
+            "current_state": [
+              {
+                "|code": "532",
+                "|terminology": "openehr",
+                "|value": "completed"
+              }
+            ]
           }
         ]
       }

@@ -15,10 +15,14 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.FEEDER_AUDIT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LINK
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NAME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UID
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.common.Locatable
 import org.openehr.rm.datatypes.DvText
 
@@ -46,17 +50,17 @@ internal open class LocatableToFlatMapper<T : Locatable> : RmObjectToFlatMapper<
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
         rmObject.links.forEachIndexed { index, link ->
-            LinkToFlatMapper.map(webTemplateNode, valueConverter, link, "$webTemplatePath/_link:$index", flatConversionContext)
+            LinkToFlatMapper.map(webTemplateNode, valueConverter, link, "$webTemplatePath/_$LINK:$index", flatConversionContext)
         }
-        flatConversionContext["$webTemplatePath/_uid"] = rmObject.uid?.value
+        flatConversionContext["$webTemplatePath/_$UID"] = rmObject.uid?.value
 
         rmObject.name?.also { name ->
             addCustomName(
                 webTemplateNode,
                 name,
-                { RmObjectToFlatMapperDelegator.delegate(webTemplateNode, valueConverter, it, "$webTemplatePath/_name", flatConversionContext) })
+                { RmObjectToFlatMapperDelegator.delegate(webTemplateNode, valueConverter, it, "$webTemplatePath/_$NAME", flatConversionContext) })
         }
-        rmObject.feederAudit?.also { FeederAuditToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/_feeder_audit", flatConversionContext) }
+        rmObject.feederAudit?.also { FeederAuditToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/_$FEEDER_AUDIT", flatConversionContext) }
     }
 
     override fun mapFormatted(
@@ -66,10 +70,10 @@ internal open class LocatableToFlatMapper<T : Locatable> : RmObjectToFlatMapper<
             webTemplatePath: String,
             formattedFlatConversionContext: FormattedFlatMappingContext) {
         rmObject.links.forEachIndexed { index, link ->
-            LinkToFlatMapper.mapFormatted(webTemplateNode, valueConverter, link, "$webTemplatePath/_link:$index", formattedFlatConversionContext)
+            LinkToFlatMapper.mapFormatted(webTemplateNode, valueConverter, link, "$webTemplatePath/_$LINK:$index", formattedFlatConversionContext)
         }
 
-        formattedFlatConversionContext["$webTemplatePath/_uid"] = rmObject.uid?.value
+        formattedFlatConversionContext["$webTemplatePath/_$UID"] = rmObject.uid?.value
 
         rmObject.name?.also { name ->
             addCustomName(
@@ -80,7 +84,7 @@ internal open class LocatableToFlatMapper<T : Locatable> : RmObjectToFlatMapper<
                         webTemplateNode,
                         valueConverter,
                         it,
-                        "$webTemplatePath/_name",
+                        "$webTemplatePath/_$NAME",
                         formattedFlatConversionContext)
                 })
         }
@@ -90,7 +94,7 @@ internal open class LocatableToFlatMapper<T : Locatable> : RmObjectToFlatMapper<
                 webTemplateNode,
                 valueConverter,
                 it,
-                "$webTemplatePath/_feeder_audit",
+                "$webTemplatePath/_$FEEDER_AUDIT",
                 formattedFlatConversionContext)
         }
     }

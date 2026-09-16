@@ -34,7 +34,6 @@ import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.datatype.joda.JodaModule
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
-import net.javacrumbs.jsonunit.assertj.assertThatJson
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
@@ -263,7 +262,9 @@ class CompatibilityTest : AbstractWebTemplateTest() {
         val actualJson = WebTemplateObjectMapper.getWriter(pretty = true).writeValueAsString(value)
         val tempFileOnFailure = Files.createTempFile(tempDirectory, File(referenceJsonFile).name, ".json")
         try {
-            assertThatJson(getJson(referenceJsonFile)).isEqualTo(actualJson)
+            val referenceMap = CompatibilityMapper.readValue(getJson(referenceJsonFile), object : TypeReference<Map<String, Any?>>() {})
+            val actualMap = CompatibilityMapper.readValue(actualJson, object : TypeReference<Map<String, Any?>>() {})
+            assertThat(actualMap).describedAs(description).containsExactlyInAnyOrderEntriesOf(referenceMap)
             tempFileOnFailure.deleteIfExists()
         } catch (e: AssertionError) {
             tempFileOnFailure.writeText(actualJson)

@@ -17,9 +17,16 @@ package care.better.platform.web.template.converter.structured.mapper
 
 import care.better.platform.utils.RmUtils
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ENCODING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.FORMATTING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LANGUAGE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MAPPING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.OTHER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putCollectionAsArray
 import care.better.platform.web.template.converter.mapper.putIfNotNull
+import care.better.platform.web.template.converter.mapper.putSingletonAsArray
 import care.better.platform.web.template.converter.mapper.resolve
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
@@ -37,31 +44,49 @@ internal object DvTextToStructuredMapper : RmObjectToStructuredMapper<DvText> {
 
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvText): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            this.putCollectionAsArray("_mapping", rmObject.mappings) { TermMappingToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+            this.putCollectionAsArray("_$MAPPING", rmObject.mappings) { TermMappingToStructuredMapper.map(webTemplateNode, valueConverter, it) }
 
             if (webTemplateNode.rmType == dvCodedTextRmType) {
-                this.putIfNotNull("|other", rmObject.value)
+                this.putIfNotNull("|$OTHER", rmObject.value)
             } else {
-                this.putIfNotNull(if (rmObject.mappings.isEmpty() && rmObject.formatting.isNullOrBlank()) "" else "|value", rmObject.value)
+                this.putIfNotNull(if (rmObject.mappings.isEmpty() && rmObject.formatting.isNullOrBlank()) "" else "|$VALUE", rmObject.value)
             }
-            this.putIfNotNull("|formatting", rmObject.formatting)
+            this.putIfNotNull("|$FORMATTING", rmObject.formatting)
+
+            rmObject.language?.also {
+                this.putSingletonAsArray("_$LANGUAGE") { CodePhraseToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+            }
+
+            rmObject.encoding?.also {
+                this.putSingletonAsArray("_$ENCODING") { CodePhraseToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+            }
+
             this.resolve()
         }
 
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvText): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            this.putCollectionAsArray("_mapping", rmObject.mappings) { TermMappingToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+            this.putCollectionAsArray("_$MAPPING", rmObject.mappings) { TermMappingToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
 
             if (webTemplateNode.rmType == dvCodedTextRmType) {
-                this.putIfNotNull("|other", rmObject.value)
+                this.putIfNotNull("|$OTHER", rmObject.value)
             } else {
-                this.putIfNotNull(if (rmObject.mappings.isEmpty() && rmObject.formatting.isNullOrBlank()) "" else "|value", rmObject.value)
+                this.putIfNotNull(if (rmObject.mappings.isEmpty() && rmObject.formatting.isNullOrBlank()) "" else "|$VALUE", rmObject.value)
             }
-            this.putIfNotNull("|formatting", rmObject.formatting)
+            this.putIfNotNull("|$FORMATTING", rmObject.formatting)
+
+            rmObject.language?.also {
+                this.putSingletonAsArray("_$LANGUAGE") { CodePhraseToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+            }
+
+            rmObject.encoding?.also {
+                this.putSingletonAsArray("_$ENCODING") { CodePhraseToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+            }
+
             this.resolve()
         }
 
     override fun supportsValueNode(): Boolean = true
 
-    override fun defaultValueNodeAttribute(): String = "|value"
+    override fun defaultValueNodeAttribute(): String = "|$VALUE"
 }

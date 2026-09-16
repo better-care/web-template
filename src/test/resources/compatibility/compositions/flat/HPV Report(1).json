@@ -14,7 +14,7 @@
 
 {
   "hpv_report/_feeder_audit/originating_system_audit|system_id": "FormRenderer",
-  "hpv_report/_feeder_audit/original_content": "{}",
+  "hpv_report/_feeder_audit/original_content|value": "{}",
   "hpv_report/_feeder_audit/original_content|formalism": "application/json",
   "hpv_report/language|code": "sl",
   "hpv_report/language|terminology": "ISO_639-1",

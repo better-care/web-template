@@ -64,7 +64,7 @@ internal object CompositionFactory : LocatableFactory<Composition>() {
             this.category = when {
                 categoryDvCodedText != null -> categoryDvCodedText
                 conversionContext.category != null ->
-                    DvCodedText.createFromOpenEhrTerminology(WebTemplateConstants.COMPOSITION_CATEGORY_GROUP_NAME, conversionContext.category)
+                    DvCodedText.createFromOpenEhrTerminology(WebTemplateConstants.TERMINOLOGY_GROUP_COMPOSITION_CATEGORY, conversionContext.category)
                 else -> throw ConversionException("Composition category is not valid: ${conversionContext.category}")
             }
 

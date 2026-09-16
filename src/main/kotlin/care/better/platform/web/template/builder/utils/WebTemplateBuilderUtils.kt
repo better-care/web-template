@@ -23,6 +23,7 @@ import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.builder.WebTemplateBuilder
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import com.google.common.base.Splitter
 import org.openehr.am.aom.Template
 import org.openehr.rm.common.StringDictionaryItem
@@ -119,7 +120,7 @@ object WebTemplateBuilderUtils {
     }
 
     @JvmStatic
-    internal fun getChoiceWebTemplateId(typeName: String): String = "${typeName.substring(3).lowercase()}_value"
+    internal fun getChoiceWebTemplateId(typeName: String): String = "${typeName.substring(3).lowercase()}_$VALUE"
 
     @JvmStatic
     fun buildWebTemplate(template: Template): WebTemplate {

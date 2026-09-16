@@ -17,7 +17,8 @@ package care.better.platform.web.template.converter.raw.postprocessor
 
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
-import care.better.platform.web.template.converter.constant.WebTemplateConstants.NULL_FLAVOURS_GROUP_NAME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY_GROUP_NULL_FLAVOURS
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY_OPENEHR
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.extensions.createFromOpenEhrTerminology
 import org.openehr.base.basetypes.TerminologyId
@@ -36,14 +37,14 @@ internal object ElementPostProcessor : LocatablePostProcessor<Element>() {
     override fun postProcess(conversionContext: ConversionContext, amNode: AmNode?, instance: Element, webTemplatePath: WebTemplatePath?) {
         instance.nullFlavour?.also { nullFlavour ->
             if (nullFlavour.value == null && nullFlavour.definingCode?.codeString != null) {
-                instance.nullFlavour = DvCodedText.createFromOpenEhrTerminology(NULL_FLAVOURS_GROUP_NAME, nullFlavour.definingCode?.codeString!!)
+                instance.nullFlavour = DvCodedText.createFromOpenEhrTerminology(TERMINOLOGY_GROUP_NULL_FLAVOURS, nullFlavour.definingCode?.codeString!!)
             } else if (nullFlavour.value != null && nullFlavour.definingCode?.codeString == null) {
-                DvCodedText.createFromOpenEhrTerminology(NULL_FLAVOURS_GROUP_NAME, nullFlavour.value!!).also { nullFlavour.definingCode = it.definingCode }
+                DvCodedText.createFromOpenEhrTerminology(TERMINOLOGY_GROUP_NULL_FLAVOURS, nullFlavour.value!!).also { nullFlavour.definingCode = it.definingCode }
             }
 
             nullFlavour.definingCode?.also {
-                if (it.terminologyId == null || !it.terminologyId?.value.equals("openehr")) {
-                    it.terminologyId = TerminologyId().apply { this.value = "openehr" }
+                if (it.terminologyId == null || !it.terminologyId?.value.equals(TERMINOLOGY_OPENEHR)) {
+                    it.terminologyId = TerminologyId().apply { this.value = TERMINOLOGY_OPENEHR }
                 }
             }
         }

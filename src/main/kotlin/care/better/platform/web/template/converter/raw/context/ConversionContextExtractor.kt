@@ -15,6 +15,8 @@
 
 package care.better.platform.web.template.converter.raw.context
 
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CONTEXT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CONTEXT_PREFIX
 import care.better.platform.web.template.converter.mapper.asTextOrNull
 import care.better.platform.web.template.converter.raw.context.setter.CtxConstants
 import care.better.platform.web.template.converter.structured.FlatToStructuredConverter
@@ -97,16 +99,16 @@ internal object ConversionContextExtractor : (JsonNode, ConversionContext) -> Co
      * @return [JsonNode] of the ctx element
      */
     private fun extractContext(structuredObjectNode: ObjectNode): JsonNode {
-        val contextNode: JsonNode = with(structuredObjectNode.get("ctx")) {
+        val contextNode: JsonNode = with(structuredObjectNode.get(CONTEXT)) {
             when {
                 this == null -> MissingNode.getInstance()
                 this.isMissingNode -> this
                 hasCtxElementHasFlatKeys(this as ObjectNode) -> {
                     val flatCtxValues: MutableMap<String, Any?> = mutableMapOf()
                     this.fields().forEach {
-                        it.value.asTextOrNull()?.let { nonNull -> flatCtxValues["ctx/${it.key}"] = nonNull }
+                        it.value.asTextOrNull()?.let { nonNull -> flatCtxValues["$CONTEXT/${it.key}"] = nonNull }
                     }
-                    FlatToStructuredConverter.getInstance().invoke(flatCtxValues).get("ctx")
+                    FlatToStructuredConverter.getInstance().invoke(flatCtxValues).get(CONTEXT)
                 }
                 else -> this
             }
@@ -114,13 +116,13 @@ internal object ConversionContextExtractor : (JsonNode, ConversionContext) -> Co
 
         val flatCtxValues: MutableMap<String, Any?> = mutableMapOf()
         structuredObjectNode.fields().forEach {
-            if (it.key.startsWith("ctx/")) {
+            if (it.key.startsWith(CONTEXT_PREFIX)) {
                 it.value.asTextOrNull()?.let { nonNull -> flatCtxValues[it.key] = nonNull }
             }
         }
 
         val convertedContextNode =
-            if (flatCtxValues.isEmpty()) MissingNode.getInstance() else FlatToStructuredConverter.getInstance().invoke(flatCtxValues).get("ctx")
+            if (flatCtxValues.isEmpty()) MissingNode.getInstance() else FlatToStructuredConverter.getInstance().invoke(flatCtxValues).get(CONTEXT)
 
         return when {
             contextNode.isMissingNode -> convertedContextNode

@@ -18,6 +18,7 @@ package care.better.platform.web.template.builder.postprocess
 import care.better.platform.web.template.builder.model.WebTemplateInputType
 import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.builder.model.input.WebTemplateInput
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.OTHER
 
 /**
  * @author Bostjan Lah
@@ -43,7 +44,7 @@ class ElementChildrenPostProcessor : WebTemplateNodeChildrenPostProcessor {
 
     private fun compactToCodedTextWithOther(webTemplateNode: WebTemplateNode, codedTextIndex: Int, textIndex: Int) {
         webTemplateNode.children[codedTextIndex].also {
-            it.inputs.add(WebTemplateInput(WebTemplateInputType.TEXT, "other"))
+            it.inputs.add(WebTemplateInput(WebTemplateInputType.TEXT, OTHER))
         }
         webTemplateNode.children[codedTextIndex].getInput()?.listOpen = true
         webTemplateNode.children.removeAt(textIndex)

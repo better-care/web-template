@@ -1,12 +1,13 @@
 package care.better.platform.web.template.converter.flat.mapper
 
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.HISTORY_ORIGIN
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
 import org.openehr.rm.composition.Observation
 
-internal object ObservationToFlatMapper : EntryToFlatMapper<Observation>() {
+internal object ObservationToFlatMapper : CareEntryToFlatMapper<Observation>() {
     override fun map(
         webTemplateNode: WebTemplateNode,
         valueConverter: ValueConverter,
@@ -18,7 +19,7 @@ internal object ObservationToFlatMapper : EntryToFlatMapper<Observation>() {
 
         rmObject.data?.origin?.let { origin ->
             DvDateTimeToFlatMapper.map(
-                webTemplateNode, valueConverter, origin, "$webTemplatePath/history_origin", flatConversionContext
+                webTemplateNode, valueConverter, origin, "$webTemplatePath/$HISTORY_ORIGIN", flatConversionContext
             )
         }
     }
@@ -35,7 +36,7 @@ internal object ObservationToFlatMapper : EntryToFlatMapper<Observation>() {
 
         rmObject.data?.origin?.let { origin ->
             DvDateTimeToFlatMapper.mapFormatted(
-                webTemplateNode, valueConverter, origin, "$webTemplatePath/history_origin", formattedFlatConversionContext
+                webTemplateNode, valueConverter, origin, "$webTemplatePath/$HISTORY_ORIGIN", formattedFlatConversionContext
             )
         }
     }

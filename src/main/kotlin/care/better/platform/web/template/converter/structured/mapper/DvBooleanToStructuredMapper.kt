@@ -16,6 +16,7 @@
 package care.better.platform.web.template.converter.structured.mapper
 
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.BooleanNode
@@ -37,5 +38,5 @@ internal object DvBooleanToStructuredMapper : RmObjectToStructuredMapper<DvBoole
 
     override fun supportsValueNode(): Boolean = true
 
-    override fun defaultValueNodeAttribute(): String = "|value"
+    override fun defaultValueNodeAttribute(): String = "|$VALUE"
 }

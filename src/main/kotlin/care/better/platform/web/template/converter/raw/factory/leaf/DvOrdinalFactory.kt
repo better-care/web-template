@@ -18,6 +18,11 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CODE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ORDINAL
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PREFERRED_TERM
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils
@@ -58,29 +63,32 @@ internal object DvOrdinalFactory : DvOrderedFactory<DvOrdinal>() {
         super.handleField(conversionContext, amNode, attribute, rmObject, jsonNode, webTemplatePath) || run {
             val cDvOrdinal = if (amNode.cObject is CDvOrdinal) amNode.cObject as CDvOrdinal else null
             if (cDvOrdinal != null) {
-                if (attribute.attribute.isBlank() || attribute.attribute == "value") {
+                if (attribute.attribute.isBlank() || attribute.attribute == VALUE) {
                     handleValueAttribute(conversionContext, amNode, jsonNode, rmObject, cDvOrdinal)
                     true
-                } else if (attribute.attribute == "code") {
+                } else if (attribute.attribute == CODE) {
                     handleCodeAttribute(conversionContext, amNode, jsonNode, rmObject, cDvOrdinal)
+                    true
+                } else if (attribute.attribute == ORDINAL) {
+                    handleOrdinalAttribute(conversionContext, amNode, jsonNode, rmObject, cDvOrdinal)
                     true
                 } else {
                     false
                 }
             } else {
-                if (attribute.attribute == "ordinal") {
+                if (attribute.attribute == ORDINAL) {
                     handleOrdinalAttributeIfNoConstraint(jsonNode, rmObject)
                     true
-                } else if (attribute.attribute == "code") {
+                } else if (attribute.attribute == CODE) {
                     handleCodeAttributeIfNoConstraint(jsonNode, rmObject)
                     true
-                } else if (attribute.attribute.isBlank() || attribute.attribute == "value") {
+                } else if (attribute.attribute.isBlank() || attribute.attribute == VALUE) {
                     getInitializedSymbol(rmObject).value = jsonNode.asText()
                     true
-                } else if (attribute.attribute == "preferred_term") {
+                } else if (attribute.attribute == PREFERRED_TERM) {
                     handlePreferredTermAttributeIfNoConstraint(jsonNode, rmObject)
                     true
-                } else if (attribute.attribute == "terminology") {
+                } else if (attribute.attribute == TERMINOLOGY) {
                     handleTerminologyIdAttributeIfNoConstraint(jsonNode, rmObject)
                     true
                 } else {
@@ -147,18 +155,19 @@ internal object DvOrdinalFactory : DvOrderedFactory<DvOrdinal>() {
     }
 
     private fun handleOrdinalAttributeIfNoConstraint(jsonNode: JsonNode, rmObject: DvOrdinal) {
-        if (jsonNode.isNumber) {
-            rmObject.value = jsonNode.numberValue().toInt()
-        } else {
-            val textValue = jsonNode.asText()
+        rmObject.value = parseOrdinalValue(jsonNode)
+    }
 
+    private fun parseOrdinalValue(jsonNode: JsonNode): Int =
+        if (jsonNode.isNumber) {
+            jsonNode.numberValue().toInt()
+        } else {
             try {
-                rmObject.value = textValue.toInt()
+                jsonNode.asText().toInt()
             } catch (ex: NumberFormatException) {
                 throw ConversionException("Invalid value for attribute 'ordinal' on DV_ORDINAL: ${jsonNode.asText()}", ex)
             }
         }
-    }
 
     /**
      * Sets values to [DvOrdinal] from [JsonNode] "|value" entry value.
@@ -207,6 +216,25 @@ internal object DvOrdinalFactory : DvOrderedFactory<DvOrdinal>() {
         cDvOrdinal.list.firstOrNull { jsonNode.asText() == it.symbol?.definingCode?.codeString }?.also {
             copyFromDvOrdinal(conversionContext, amNode, rmObject, it)
         }
+    }
+
+    /**
+     * Sets values to [DvOrdinal] from [JsonNode] "|ordinal" entry value.
+     *
+     * @param conversionContext [ConversionContext]
+     * @param amNode [amNode]
+     * @param jsonNode [JsonNode]
+     * @param rmObject [DvOrdinal]
+     * @param cDvOrdinal [CDvOrdinal]
+     */
+    private fun handleOrdinalAttribute(conversionContext: ConversionContext, amNode: AmNode, jsonNode: JsonNode, rmObject: DvOrdinal, cDvOrdinal: CDvOrdinal) {
+        if (rmObject.symbol != null) {
+            return
+        }
+        val ordinalValue = parseOrdinalValue(jsonNode)
+        cDvOrdinal.list.firstOrNull { it.value == ordinalValue }
+            ?.also { copyFromDvOrdinal(conversionContext, amNode, rmObject, it) }
+            ?: run { rmObject.value = ordinalValue }
     }
 
     /**

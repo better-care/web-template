@@ -15,10 +15,12 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY_IS_PERCENT
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvCount
 
 /**
@@ -35,6 +37,8 @@ internal object DvCountToFlatMapper : DvQuantifiedToFlatMapper<DvCount>() {
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
         flatConversionContext[webTemplatePath] = rmObject.magnitude
+        flatConversionContext["$webTemplatePath|$ACCURACY"] = rmObject.accuracy
+        flatConversionContext["$webTemplatePath|$ACCURACY_IS_PERCENT"] = rmObject.accuracyIsPercent
         super.map(webTemplateNode, valueConverter, rmObject, webTemplatePath, flatConversionContext)
     }
 
@@ -45,6 +49,8 @@ internal object DvCountToFlatMapper : DvQuantifiedToFlatMapper<DvCount>() {
             webTemplatePath: String,
             formattedFlatConversionContext: FormattedFlatMappingContext) {
         formattedFlatConversionContext[webTemplatePath] = rmObject.magnitude.toString()
+        formattedFlatConversionContext["$webTemplatePath|$ACCURACY"] = rmObject.accuracy?.toString()
+        formattedFlatConversionContext["$webTemplatePath|$ACCURACY_IS_PERCENT"] = rmObject.accuracyIsPercent?.toString()
         super.mapFormatted(webTemplateNode, valueConverter, rmObject, webTemplatePath, formattedFlatConversionContext)
     }
 }

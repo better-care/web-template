@@ -15,10 +15,14 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CHARSET
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.FORMALISM
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LANGUAGE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvParsable
 
 /**
@@ -34,8 +38,14 @@ internal object DvParsableToFlatMapper : RmObjectToFlatMapper<DvParsable> {
             rmObject: DvParsable,
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
-        flatConversionContext[webTemplatePath] = rmObject.value
-        flatConversionContext["$webTemplatePath|formalism"] = rmObject.formalism
+        flatConversionContext["$webTemplatePath|$VALUE"] = rmObject.value
+        flatConversionContext["$webTemplatePath|$FORMALISM"] = rmObject.formalism
+        rmObject.charset?.also {
+            CodePhraseToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/_$CHARSET", flatConversionContext)
+        }
+        rmObject.language?.also {
+            CodePhraseToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/_$LANGUAGE", flatConversionContext)
+        }
     }
 
     override fun mapFormatted(
@@ -44,7 +54,13 @@ internal object DvParsableToFlatMapper : RmObjectToFlatMapper<DvParsable> {
             rmObject: DvParsable,
             webTemplatePath: String,
             formattedFlatConversionContext: FormattedFlatMappingContext) {
-        formattedFlatConversionContext[webTemplatePath] = rmObject.value
-        formattedFlatConversionContext["$webTemplatePath|formalism"] = rmObject.formalism
+        formattedFlatConversionContext["$webTemplatePath|$VALUE"] = rmObject.value
+        formattedFlatConversionContext["$webTemplatePath|$FORMALISM"] = rmObject.formalism
+        rmObject.charset?.also {
+            CodePhraseToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/_$CHARSET", formattedFlatConversionContext)
+        }
+        rmObject.language?.also {
+            CodePhraseToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/_$LANGUAGE", formattedFlatConversionContext)
+        }
     }
 }

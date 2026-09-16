@@ -69,7 +69,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
         assertThat(flatMap).contains(
             entry("medication_order/medication_detail/medication_instruction:0/narrative", "Take Aspirin as needed"),
             entry("medication_order/medication_detail/medication_instruction:0/order:0/medicine", "Aspirin"),
-            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing", "R3/2014-01-10T00:00:00.000+01:00"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing|value", "R3/2014-01-10T00:00:00.000+01:00"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|composition_uid", "compositionuid"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001,'Order']"),
             entry(
@@ -110,7 +110,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
         assertThat(flatMap).contains(
             entry("medication_order/medication_detail/medication_instruction:0/narrative", "Take Aspirin as needed"),
             entry("medication_order/medication_detail/medication_instruction:0/order:0/medicine", "Aspirin"),
-            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing", "R3/2014-01-10T00:00:00.000+01:00"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing|value", "R3/2014-01-10T00:00:00.000+01:00"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001,'Order']"),
             entry(
                 "medication_order/medication_detail/medication_action:0/_instruction_details|path",
@@ -150,7 +150,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
         assertThat(flatMap).contains(
             entry("medication_order/medication_detail/medication_instruction:0/narrative", "Take Aspirin as needed"),
             entry("medication_order/medication_detail/medication_instruction:0/order:0/medicine", "Aspirin"),
-            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing", "R3/2014-01-10T00:00:00.000+01:00"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing|value", "R3/2014-01-10T00:00:00.000+01:00"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001]"),
             entry(
                 "medication_order/medication_detail/medication_action:0/_instruction_details|path",
@@ -200,9 +200,9 @@ class InstructionActionTest : AbstractWebTemplateTest() {
         assertThat(flatMap).contains(
             entry("medication_order/medication_detail/medication_instruction:0/narrative", "Take Aspirin as needed"),
             entry("medication_order/medication_detail/medication_instruction:0/order:0/medicine", "Aspirin"),
-            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing", "R3/2014-01-10T00:00:00.000+01:00"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing|value", "R3/2014-01-10T00:00:00.000+01:00"),
             entry("medication_order/medication_detail/medication_instruction:0/order:1/medicine", "Aspirin"),
-            entry("medication_order/medication_detail/medication_instruction:0/order:1/timing", "R2/2014-01-12T00:00:00.000+01:00"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:1/timing|value", "R2/2014-01-12T00:00:00.000+01:00"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001,'Order']"),
             entry(
                 "medication_order/medication_detail/medication_action:0/_instruction_details|path",
@@ -259,9 +259,9 @@ class InstructionActionTest : AbstractWebTemplateTest() {
         assertThat(flatMap).contains(
             entry("medication_order/medication_detail/medication_instruction:0/narrative", "Take Aspirin as needed"),
             entry("medication_order/medication_detail/medication_instruction:0/order:0/medicine", "Aspirin"),
-            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing", "R3/2014-01-10T00:00:00.000+01:00"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing|value", "R3/2014-01-10T00:00:00.000+01:00"),
             entry("medication_order/medication_detail/medication_instruction:0/order:1/medicine", "Aspirin"),
-            entry("medication_order/medication_detail/medication_instruction:0/order:1/timing", "R2/2014-01-12T00:00:00.000+01:00"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:1/timing|value", "R2/2014-01-12T00:00:00.000+01:00"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001]"),
             entry(
                 "medication_order/medication_detail/medication_action:0/_instruction_details|path",
@@ -322,9 +322,9 @@ class InstructionActionTest : AbstractWebTemplateTest() {
         assertThat(flatMap).contains(
             entry("medication_order/medication_detail/medication_instruction:0/narrative", "Take Aspirin as needed"),
             entry("medication_order/medication_detail/medication_instruction:0/order:0/medicine", "Aspirin"),
-            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing", "R3/2014-01-10T00:00:00.000+01:00"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing|value", "R3/2014-01-10T00:00:00.000+01:00"),
             entry("medication_order/medication_detail/medication_instruction:0/order:1/medicine", "Aspirin"),
-            entry("medication_order/medication_detail/medication_instruction:0/order:1/timing", "R2/2014-01-12T00:00:00.000+01:00"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:1/timing|value", "R2/2014-01-12T00:00:00.000+01:00"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001,'Order']"),
             entry(
                 "medication_order/medication_detail/medication_action:0/_instruction_details|path",
@@ -417,7 +417,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
         assertThat(flatMap).contains(
             entry("medication_order/medication_detail/medication_instruction:0/narrative", "Take Aspirin as needed"),
             entry("medication_order/medication_detail/medication_instruction:0/order:0/medicine", "Aspirin"),
-            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing", "R3/2014-01-10T00:00:00.000+01:00"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing|value", "R3/2014-01-10T00:00:00.000+01:00"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|composition_uid", "compositionuid"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001]"),
             entry(
@@ -457,7 +457,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
         assertThat(flatMap).contains(
             entry("medication_order/medication_detail/medication_instruction:0/narrative", "Take Aspirin as needed"),
             entry("medication_order/medication_detail/medication_instruction:0/order:0/medicine", "Aspirin"),
-            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing", "R3/2014-01-10T00:00:00.000+01:00"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing|value", "R3/2014-01-10T00:00:00.000+01:00"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|composition_uid", "compositionuid"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001,'Order']"),
             entry(
@@ -499,7 +499,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
         assertThat(flatMap).contains(
             entry("medication_order/medication_detail/medication_instruction:0/narrative", "Take Aspirin as needed"),
             entry("medication_order/medication_detail/medication_instruction:0/order:0/medicine", "Aspirin"),
-            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing", "R3/2014-01-10T00:00:00.000+01:00"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing|value", "R3/2014-01-10T00:00:00.000+01:00"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|composition_uid", "compositionuid"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001]"),
             entry(
@@ -540,7 +540,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
         assertThat(flatMap).contains(
             entry("medication_order/medication_detail/medication_instruction:0/narrative", "Take Aspirin as needed"),
             entry("medication_order/medication_detail/medication_instruction:0/order:0/medicine", "Aspirin"),
-            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing", "R3/2014-01-10T00:00:00.000+01:00"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing|value", "R3/2014-01-10T00:00:00.000+01:00"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|composition_uid", "compositionuid"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001]"),
             entry(
@@ -581,7 +581,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
         assertThat(flatMap).contains(
             entry("medication_order/medication_detail/medication_instruction:0/narrative", "Take Aspirin as needed"),
             entry("medication_order/medication_detail/medication_instruction:0/order:0/medicine", "Aspirin"),
-            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing", "R3/2014-01-10T00:00:00.000+01:00"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing|value", "R3/2014-01-10T00:00:00.000+01:00"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|composition_uid", "compositionuid"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001]"),
             entry(
@@ -624,7 +624,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
             entry("medication_order/medication_detail/medication_instruction:0/_uid", "insuid"),
             entry("medication_order/medication_detail/medication_instruction:0/narrative", "Take Aspirin as needed"),
             entry("medication_order/medication_detail/medication_instruction:0/order:0/medicine", "Aspirin"),
-            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing", "R3/2014-01-10T00:00:00.000+01:00"),
+            entry("medication_order/medication_detail/medication_instruction:0/order:0/timing|value", "R3/2014-01-10T00:00:00.000+01:00"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|composition_uid", "compositionuid"),
             entry("medication_order/medication_detail/medication_action:0/_instruction_details|activity_id", "activities[at0001]"),
             entry(
@@ -692,7 +692,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
 
         val flatMap: Map<String, Any?> = webTemplate.convertFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap).contains(entry("medication_order/medication_detail/medication_instruction:0/narrative", "<none>"))
-        assertThat(flatMap).contains(entry("medication_order/medication_detail/medication_instruction:0/order:0/timing", "R1"))
+        assertThat(flatMap).contains(entry("medication_order/medication_detail/medication_instruction:0/order:0/timing|value", "R1"))
     }
 
     @Test
@@ -716,7 +716,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
 
         val flatMap: Map<String, Any?> = webTemplate.convertFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap).contains(entry("medication_order/medication_detail/medication_instruction:0/narrative", "Hello world!"))
-        assertThat(flatMap).contains(entry("medication_order/medication_detail/medication_instruction:0/order:0/timing", "R7"))
+        assertThat(flatMap).contains(entry("medication_order/medication_detail/medication_instruction:0/order:0/timing|value", "R7"))
     }
 
     @Test
@@ -882,7 +882,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
         val firstFlatMap: Map<String, Any?> = webTemplate.convertFromRawToFlat(firstComposition, FromRawConversion.create())
         assertThat(firstFlatMap).contains(
             entry(
-                "service_request/service_request:0/_wf_definition",
+                "service_request/service_request:0/_wf_definition|value",
                 "Hello world"
             ), //Both "" and "|value" are valid. Before new version we used |value. But in new version we are now using "".
             entry("service_request/service_request:0/_wf_definition|formalism", "myown")
@@ -891,7 +891,7 @@ class InstructionActionTest : AbstractWebTemplateTest() {
         val secondFlatMap: Map<String, Any?> = webTemplate.convertFromRawToFlat(secondComposition, FromRawConversion.create())
         assertThat(secondFlatMap).contains(
             entry(
-                "service_request/service_request:0/_wf_definition",
+                "service_request/service_request:0/_wf_definition|value",
                 "Hello world"
             ), //Both "" and "|value" are valid. Before new version we used |value. But in new version we are now using "".
             entry("service_request/service_request:0/_wf_definition|formalism", "xxx")

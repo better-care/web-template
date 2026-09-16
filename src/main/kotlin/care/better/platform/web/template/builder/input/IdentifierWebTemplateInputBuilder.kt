@@ -22,6 +22,10 @@ import care.better.platform.web.template.builder.model.WebTemplateInputType
 import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.builder.utils.WebTemplateBuilderUtils
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ASSIGNER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ISSUER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TYPE
 import org.openehr.am.aom.CString
 import org.openehr.rm.datatypes.DvIdentifier
 
@@ -36,10 +40,10 @@ internal object IdentifierWebTemplateInputBuilder : WebTemplateInputBuilder<Any>
 
     override fun build(node: WebTemplateNode, context: WebTemplateBuilderContext) {
         val defaultValue = WebTemplateBuilderUtils.getDefaultValue(node.amNode, DvIdentifier::class.java)
-        node.inputs.add(createInput(node, "id", defaultValue?.id))
-        node.inputs.add(createInput(node, "type", defaultValue?.type))
-        node.inputs.add(createInput(node, "issuer", defaultValue?.issuer))
-        node.inputs.add(createInput(node, "assigner", defaultValue?.assigner))
+        node.inputs.add(createInput(node, ID, defaultValue?.id))
+        node.inputs.add(createInput(node, TYPE, defaultValue?.type))
+        node.inputs.add(createInput(node, ISSUER, defaultValue?.issuer))
+        node.inputs.add(createInput(node, ASSIGNER, defaultValue?.assigner))
     }
 
     private fun createInput(node: WebTemplateNode, suffix: String, defaultValue: String?): WebTemplateInput {

@@ -24,10 +24,12 @@ import org.openehr.base.basetypes.*
 import org.openehr.rm.common.Link
 import org.openehr.rm.common.Participation
 import org.openehr.rm.common.PartyIdentified
+import org.openehr.rm.common.PartySelf
 import org.openehr.rm.common.PartyRelated
 import org.openehr.rm.composition.*
 import org.openehr.rm.datastructures.Cluster
 import org.openehr.rm.datastructures.Element
+import org.openehr.rm.datastructures.IntervalEvent
 import org.openehr.rm.datatypes.*
 
 /**
@@ -62,16 +64,17 @@ object RmObjectToFlatMapperDelegator {
         Pair(DvEhrUri::class.java, DvUriToFlatMapper),
         Pair(Element::class.java, ElementToFlatMapper),
         Pair(Observation::class.java, ObservationToFlatMapper),
-        Pair(Evaluation::class.java, EntryToFlatMapper.getInstance()),
-        Pair(Instruction::class.java, EntryToFlatMapper.getInstance()),
+        Pair(Evaluation::class.java, CareEntryToFlatMapper.getInstance()),
         Pair(AdminEntry::class.java, EntryToFlatMapper.getInstance()),
         Pair(EventContext::class.java, EventContextToFlatMapper),
         Pair(Instruction::class.java, InstructionToFlatMapper),
+        Pair(IsmTransition::class.java, IsmTransitionToFlatMapper),
         Pair(Link::class.java, LinkToFlatMapper),
         Pair(LocatableRef::class.java, LocatableRefToFlatMapper),
         Pair(Section::class.java, LocatableToFlatMapper.getInstance()),
         Pair(Cluster::class.java, LocatableToFlatMapper.getInstance()),
-        Pair(Activity::class.java, LocatableToFlatMapper.getInstance()),
+        Pair(Activity::class.java, ActivityToFlatMapper),
+        Pair(IntervalEvent::class.java, IntervalEventToFlatMapper),
         Pair(ObjectId::class.java, ObjectIdToFlatMapper),
         Pair(HierObjectId::class.java, ObjectIdToFlatMapper),
         Pair(ObjectVersionId::class.java, ObjectIdToFlatMapper),
@@ -82,7 +85,8 @@ object RmObjectToFlatMapperDelegator {
         Pair(AccessGroupRef::class.java, ObjectRefToFlatMapper),
         Pair(Participation::class.java, ParticipationToFlatMapper),
         Pair(PartyIdentified::class.java, PartyIdentifiedToFlatMapper),
-        Pair(PartyRelated::class.java, PartyIdentifiedToFlatMapper))
+        Pair(PartyRelated::class.java, PartyRelatedToFlatMapper),
+        Pair(PartySelf::class.java, PartySelfToFlatMapper))
 
 
     /**

@@ -15,10 +15,13 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.EXPIRY_TIME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NARRATIVE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.WF_DEFINITION
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.composition.Instruction
 
 /**
@@ -27,7 +30,7 @@ import org.openehr.rm.composition.Instruction
  *
  * Singleton instance of [EntryToFlatMapper] that maps [Instruction] to FLAT format.
  */
-internal object InstructionToFlatMapper : EntryToFlatMapper<Instruction>() {
+internal object InstructionToFlatMapper : CareEntryToFlatMapper<Instruction>() {
 
     override fun map(
             webTemplateNode: WebTemplateNode,
@@ -36,8 +39,14 @@ internal object InstructionToFlatMapper : EntryToFlatMapper<Instruction>() {
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
         super.map(webTemplateNode, valueConverter, rmObject, webTemplatePath, flatConversionContext)
+        rmObject.narrative?.also {
+            DvTextToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/$NARRATIVE", flatConversionContext)
+        }
+        rmObject.expiryTime?.also {
+            DvDateTimeToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/$EXPIRY_TIME", flatConversionContext)
+        }
         rmObject.wfDefinition?.also {
-            DvParsableToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/_wf_definition", flatConversionContext)
+            DvParsableToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/_$WF_DEFINITION", flatConversionContext)
         }
     }
 
@@ -48,8 +57,14 @@ internal object InstructionToFlatMapper : EntryToFlatMapper<Instruction>() {
             webTemplatePath: String,
             formattedFlatConversionContext: FormattedFlatMappingContext) {
         super.mapFormatted(webTemplateNode, valueConverter, rmObject, webTemplatePath, formattedFlatConversionContext)
+        rmObject.narrative?.also {
+            DvTextToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/$NARRATIVE", formattedFlatConversionContext)
+        }
+        rmObject.expiryTime?.also {
+            DvDateTimeToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/$EXPIRY_TIME", formattedFlatConversionContext)
+        }
         rmObject.wfDefinition?.also {
-            DvParsableToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/_wf_definition", formattedFlatConversionContext)
+            DvParsableToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/_$WF_DEFINITION", formattedFlatConversionContext)
         }
     }
 }

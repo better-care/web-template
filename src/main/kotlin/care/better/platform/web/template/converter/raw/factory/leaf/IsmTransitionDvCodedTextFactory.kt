@@ -16,7 +16,9 @@
 package care.better.platform.web.template.converter.raw.factory.leaf
 
 import care.better.platform.template.AmNode
-import care.better.platform.web.template.converter.constant.WebTemplateConstants.ISM_TRANSITION_GROUP_NAME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY_GROUP_ISM_TRANSITION
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY_LOCAL
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY_OPENEHR
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.extensions.createFromOpenEhrTerminology
@@ -51,7 +53,7 @@ internal object IsmTransitionDvCodedTextFactory : DvCodedTextFactory() {
     override fun handleBlankAttribute(conversionContext: ConversionContext, amNode: AmNode, jsonNode: JsonNode, rmObject: DvCodedText) {
         if (isCurrentStateNode(amNode)) {
             try {
-                DvCodedText.createFromOpenEhrTerminology(ISM_TRANSITION_GROUP_NAME, jsonNode.asText()).also {
+                DvCodedText.createFromOpenEhrTerminology(TERMINOLOGY_GROUP_ISM_TRANSITION, jsonNode.asText()).also {
                     rmObject.definingCode = it.definingCode
                     rmObject.value = it.value
                 }
@@ -75,14 +77,14 @@ internal object IsmTransitionDvCodedTextFactory : DvCodedTextFactory() {
         super.handleValueAttribute(amNode, jsonNode, rmObject)
         if (isCurrentStateNode(amNode)) {
             try {
-                DvCodedText.createFromOpenEhrTerminology(ISM_TRANSITION_GROUP_NAME, jsonNode.asText()).also { rmObject.definingCode = it.definingCode }
+                DvCodedText.createFromOpenEhrTerminology(TERMINOLOGY_GROUP_ISM_TRANSITION, jsonNode.asText()).also { rmObject.definingCode = it.definingCode }
             } catch (ignored: ConversionException) {
             }
         }
     }
 
     override fun getTerminologyIdFromAnNode(amNode: AmNode): TerminologyId =
-        TerminologyId().apply { this.value = if (isCareFlowStepNode(amNode)) "local" else "openehr" }
+        TerminologyId().apply { this.value = if (isCareFlowStepNode(amNode)) TERMINOLOGY_LOCAL else TERMINOLOGY_OPENEHR }
 
     /**
      * Checks if [AmNode] is for careflow_step.

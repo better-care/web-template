@@ -17,6 +17,10 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ASSIGNER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ISSUER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TYPE
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import org.openehr.rm.datatypes.DvIdentifier
@@ -39,19 +43,19 @@ internal object DvIdentifierFactory : RmObjectLeafNodeFactory<DvIdentifier>() {
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean =
         when {
-            attribute.attribute.isBlank() || attribute.attribute == "id" -> {
+            attribute.attribute.isBlank() || attribute.attribute == ID -> {
                 rmObject.id = jsonNode.asText()
                 true
             }
-            attribute.attribute == "issuer" -> {
+            attribute.attribute == ISSUER -> {
                 rmObject.issuer = jsonNode.asText()
                 true
             }
-            attribute.attribute == "assigner" -> {
+            attribute.attribute == ASSIGNER -> {
                 rmObject.assigner = jsonNode.asText()
                 true
             }
-            attribute.attribute == "type" -> {
+            attribute.attribute == TYPE -> {
                 rmObject.type = jsonNode.asText()
                 true
             }

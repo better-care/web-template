@@ -15,10 +15,13 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NORMAL_RANGE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NORMAL_STATUS
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.OTHER_REFERENCE_RANGES
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvOrdered
 
 /**
@@ -37,7 +40,7 @@ internal abstract class DvOrderedToFlatMapper<T : DvOrdered> : RmObjectToFlatMap
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
         rmObject.normalRange?.also {
-            NormalRangeToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/_normal_range", flatConversionContext)
+            NormalRangeToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/_$NORMAL_RANGE", flatConversionContext)
         }
 
         rmObject.otherReferenceRanges.forEachIndexed { index, referenceRange ->
@@ -45,11 +48,11 @@ internal abstract class DvOrderedToFlatMapper<T : DvOrdered> : RmObjectToFlatMap
                 webTemplateNode,
                 valueConverter,
                 referenceRange,
-                "$webTemplatePath/_other_reference_ranges:$index",
+                "$webTemplatePath/_$OTHER_REFERENCE_RANGES:$index",
                 flatConversionContext)
         }
 
-        flatConversionContext["$webTemplatePath|normal_status"] = rmObject.normalStatus?.codeString
+        flatConversionContext["$webTemplatePath|$NORMAL_STATUS"] = rmObject.normalStatus?.codeString
     }
 
     override fun mapFormatted(
@@ -59,7 +62,7 @@ internal abstract class DvOrderedToFlatMapper<T : DvOrdered> : RmObjectToFlatMap
             webTemplatePath: String,
             formattedFlatConversionContext: FormattedFlatMappingContext) {
         rmObject.normalRange?.also {
-            NormalRangeToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/_normal_range", formattedFlatConversionContext)
+            NormalRangeToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/_$NORMAL_RANGE", formattedFlatConversionContext)
         }
 
         rmObject.otherReferenceRanges.forEachIndexed { index, referenceRange ->
@@ -67,10 +70,10 @@ internal abstract class DvOrderedToFlatMapper<T : DvOrdered> : RmObjectToFlatMap
                 webTemplateNode,
                 valueConverter,
                 referenceRange,
-                "$webTemplatePath/_other_reference_ranges:$index",
+                "$webTemplatePath/_$OTHER_REFERENCE_RANGES:$index",
                 formattedFlatConversionContext)
         }
 
-        formattedFlatConversionContext["$webTemplatePath|normal_status"] = rmObject.normalStatus?.codeString
+        formattedFlatConversionContext["$webTemplatePath|$NORMAL_STATUS"] = rmObject.normalStatus?.codeString
     }
 }

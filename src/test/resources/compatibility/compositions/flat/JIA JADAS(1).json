@@ -14,7 +14,7 @@
 
 {
   "jia_jadas/_feeder_audit/originating_system_audit|system_id": "FormRenderer",
-  "jia_jadas/_feeder_audit/original_content": "{\"/generic-fieldset-3563905/generic-date_field-5409744\":[\"2021-02-06T23:54:00Z\"],\"/generic-fieldset-3563905/generic-date_field-8358595\":[\"2021-02-16T13:38:00Z\"],\"/generic-fieldset-3563905/generic-date_field-9790178\":[\"2021-02-03T10:21:00Z\"],\"/generic-fieldset-3563905/generic-date_field-8068721\":[\"2021-02-17T15:06:11+00:00\"],\"/generic-fieldset-3563905/generic-date_field-5376774\":[\"2021-02-17T15:06:12+00:00\"],\"/generic-numeric_field-2798964\":[9],\"/generic-numeric_field-1960128\":[9],\"/generic-numeric_field-3547240\":[9]}",
+  "jia_jadas/_feeder_audit/original_content|value": "{\"/generic-fieldset-3563905/generic-date_field-5409744\":[\"2021-02-06T23:54:00Z\"],\"/generic-fieldset-3563905/generic-date_field-8358595\":[\"2021-02-16T13:38:00Z\"],\"/generic-fieldset-3563905/generic-date_field-9790178\":[\"2021-02-03T10:21:00Z\"],\"/generic-fieldset-3563905/generic-date_field-8068721\":[\"2021-02-17T15:06:11+00:00\"],\"/generic-fieldset-3563905/generic-date_field-5376774\":[\"2021-02-17T15:06:12+00:00\"],\"/generic-numeric_field-2798964\":[9],\"/generic-numeric_field-1960128\":[9],\"/generic-numeric_field-3547240\":[9]}",
   "jia_jadas/_feeder_audit/original_content|formalism": "application/json",
   "jia_jadas/language|code": "en",
   "jia_jadas/language|terminology": "ISO_639-1",

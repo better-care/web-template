@@ -15,7 +15,7 @@
 
 package care.better.platform.web.template.converter.raw.context.setter
 
-import care.better.platform.web.template.converter.constant.WebTemplateConstants.PARTICIPATION_MODE_GROUP_NAME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY_GROUP_PARTICIPATION_MODE
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.extensions.createFromOpenEhrTerminology
@@ -34,7 +34,7 @@ internal object ParticipationModeCtxSetter : CtxSetter {
         val modes = if (value is List<*>) value as List<String> else listOf(value.toString())
         modes.forEachIndexed { index, mode ->
             try {
-                DvCodedText.createFromOpenEhrTerminology(PARTICIPATION_MODE_GROUP_NAME, mode)
+                DvCodedText.createFromOpenEhrTerminology(TERMINOLOGY_GROUP_PARTICIPATION_MODE, mode)
             } catch (e: ConversionException) {
                 throw ConversionException("Unknown participation mode: '$mode'")
             }

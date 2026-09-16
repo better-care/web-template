@@ -21,6 +21,9 @@ import care.better.platform.web.template.builder.context.WebTemplateBuilderConte
 import care.better.platform.web.template.builder.model.WebTemplateInputType
 import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.builder.model.input.WebTemplateInput
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID_NAMESPACE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID_SCHEME
 import org.openehr.am.aom.CString
 
 /**
@@ -32,9 +35,9 @@ abstract class PartyProxyWebTemplateInputBuilder : WebTemplateInputBuilder<Any> 
     override fun build(amNode: AmNode, validator: Any?, context: WebTemplateBuilderContext): WebTemplateInput = WebTemplateInput(WebTemplateInputType.TEXT)
 
     override fun build(node: WebTemplateNode, context: WebTemplateBuilderContext) {
-        node.inputs.add(createInput(node, "id"))
-        node.inputs.add(createInput(node, "id_scheme"))
-        node.inputs.add(createInput(node, "id_namespace"))
+        node.inputs.add(createInput(node, ID))
+        node.inputs.add(createInput(node, ID_SCHEME))
+        node.inputs.add(createInput(node, ID_NAMESPACE))
     }
 
     protected open fun createInput(node: WebTemplateNode, suffix: String): WebTemplateInput {

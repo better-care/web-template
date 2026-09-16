@@ -64,6 +64,7 @@ class ValueConverterTest : AbstractWebTemplateTest() {
         assertThat(SimpleValueConverter.parseDateTime("2010-01-01T01:01:01.000Z"))
             .isEqualTo(OffsetDateTime.of(2010, 1, 1, 1, 1, 1, 0, ZoneOffset.UTC))
         assertThat(SimpleValueConverter.formatDouble(1000.6)).isEqualTo("1000.6")
+        assertThat(SimpleValueConverter.formatFloat(1000.6F)).isEqualTo("1000.6")
         assertThat(SimpleValueConverter.formatDateTime(OffsetDateTime.of(2010, 1, 1, 1, 1, 1, 0, ZoneOffset.UTC)))
             .isEqualTo("2010-01-01T01:01:01Z")
     }

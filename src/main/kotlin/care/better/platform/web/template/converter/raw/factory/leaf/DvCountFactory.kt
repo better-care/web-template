@@ -18,6 +18,8 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MAGNITUDE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import org.openehr.rm.datatypes.DvCount
@@ -53,7 +55,7 @@ internal object DvCountFactory : DvQuantifiedFactory<DvCount>() {
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean =
         super.handleField(conversionContext, amNode, attribute, rmObject, jsonNode, webTemplatePath) ||
-                if (attribute.attribute.isBlank() || attribute.attribute == "magnitude" || attribute.attribute == "value") {
+                if (attribute.attribute.isBlank() || attribute.attribute == MAGNITUDE || attribute.attribute == VALUE) {
                     if (jsonNode.isNumber) {
                         rmObject.magnitude = jsonNode.numberValue().toLong()
                     } else {

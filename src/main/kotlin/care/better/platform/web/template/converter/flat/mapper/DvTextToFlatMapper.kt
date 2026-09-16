@@ -17,6 +17,12 @@ package care.better.platform.web.template.converter.flat.mapper
 
 import care.better.platform.utils.RmUtils
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ENCODING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.FORMATTING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LANGUAGE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MAPPING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.OTHER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
@@ -33,49 +39,67 @@ internal object DvTextToFlatMapper : RmObjectToFlatMapper<DvText> {
     private val dvCodedTextRmType = RmUtils.getRmTypeName(DvCodedText::class.java)
 
     override fun map(
-            webTemplateNode: WebTemplateNode,
-            valueConverter: ValueConverter,
-            rmObject: DvText,
-            webTemplatePath: String,
-            flatConversionContext: FlatMappingContext) {
+        webTemplateNode: WebTemplateNode,
+        valueConverter: ValueConverter,
+        rmObject: DvText,
+        webTemplatePath: String,
+        flatConversionContext: FlatMappingContext
+    ) {
         rmObject.mappings.forEachIndexed { index, termMapping ->
-            TermMappingToFlatMapper.map(webTemplateNode, valueConverter, termMapping, "$webTemplatePath/_mapping:$index", flatConversionContext)
+            TermMappingToFlatMapper.map(webTemplateNode, valueConverter, termMapping, "$webTemplatePath/_$MAPPING:$index", flatConversionContext)
         }
 
         if (webTemplateNode.rmType == dvCodedTextRmType) {
-            flatConversionContext["$webTemplatePath|other"] = rmObject.value
+            flatConversionContext["$webTemplatePath|$OTHER"] = rmObject.value
         } else {
-            flatConversionContext["$webTemplatePath${if (rmObject.mappings.isEmpty() && rmObject.formatting.isNullOrBlank()) "" else "|value"}"] = rmObject.value
+            flatConversionContext["$webTemplatePath${if (rmObject.mappings.isEmpty() && rmObject.formatting.isNullOrBlank()) "" else "|$VALUE"}"] = rmObject.value
         }
 
         rmObject.formatting?.also {
-            flatConversionContext["$webTemplatePath|formatting"] = it
+            flatConversionContext["$webTemplatePath|$FORMATTING"] = it
+        }
+
+        rmObject.language?.also {
+            CodePhraseToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/_$LANGUAGE", flatConversionContext)
+        }
+
+        rmObject.encoding?.also {
+            CodePhraseToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/_$ENCODING", flatConversionContext)
         }
     }
 
     override fun mapFormatted(
-            webTemplateNode: WebTemplateNode,
-            valueConverter: ValueConverter,
-            rmObject: DvText,
-            webTemplatePath: String,
-            formattedFlatConversionContext: FormattedFlatMappingContext) {
+        webTemplateNode: WebTemplateNode,
+        valueConverter: ValueConverter,
+        rmObject: DvText,
+        webTemplatePath: String,
+        formattedFlatConversionContext: FormattedFlatMappingContext
+    ) {
         rmObject.mappings.forEachIndexed { index, termMapping ->
             TermMappingToFlatMapper.mapFormatted(
                 webTemplateNode,
                 valueConverter,
                 termMapping,
-                "$webTemplatePath/_mapping:$index",
+                "$webTemplatePath/_$MAPPING:$index",
                 formattedFlatConversionContext)
         }
 
         if (webTemplateNode.rmType == dvCodedTextRmType) {
-            formattedFlatConversionContext["$webTemplatePath|other"] = rmObject.value
+            formattedFlatConversionContext["$webTemplatePath|$OTHER"] = rmObject.value
         } else {
-            formattedFlatConversionContext["$webTemplatePath${if (rmObject.mappings.isEmpty() && rmObject.formatting.isNullOrBlank()) "" else "|value"}"] = rmObject.value
+            formattedFlatConversionContext["$webTemplatePath${if (rmObject.mappings.isEmpty() && rmObject.formatting.isNullOrBlank()) "" else "|$VALUE"}"] = rmObject.value
         }
 
         rmObject.formatting?.also {
-            formattedFlatConversionContext["$webTemplatePath|formatting"] = it
+            formattedFlatConversionContext["$webTemplatePath|$FORMATTING"] = it
+        }
+
+        rmObject.language?.also {
+            CodePhraseToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/_$LANGUAGE", formattedFlatConversionContext)
+        }
+
+        rmObject.encoding?.also {
+            CodePhraseToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/_$ENCODING", formattedFlatConversionContext)
         }
     }
 }

@@ -16,6 +16,9 @@
 package care.better.platform.web.template.converter.structured.mapper
 
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CODE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.SCALE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.value.ValueConverter
@@ -31,18 +34,18 @@ import org.openehr.rm.datatypes.DvScale
 internal object DvScaleToStructuredMapper : DvOrderedToStructuredMapper<DvScale>() {
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvScale): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            this.putIfNotNull("|code", rmObject.symbol?.definingCode?.codeString)
-            this.putIfNotNull("|value", rmObject.symbol?.value)
-            this.putIfNotNull("|scale", rmObject.value)
+            this.putIfNotNull("|$CODE", rmObject.symbol?.definingCode?.codeString)
+            this.putIfNotNull("|$VALUE", rmObject.symbol?.value)
+            this.putIfNotNull("|$SCALE", rmObject.value)
             map(webTemplateNode, valueConverter, rmObject, this)
             this
         }
 
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvScale): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            this.putIfNotNull("|code", rmObject.symbol?.definingCode?.codeString)
-            this.putIfNotNull("|value", rmObject.symbol?.value)
-            this.putIfNotNull("|scale", rmObject.value.toString())
+            this.putIfNotNull("|$CODE", rmObject.symbol?.definingCode?.codeString)
+            this.putIfNotNull("|$VALUE", rmObject.symbol?.value)
+            this.putIfNotNull("|$SCALE", rmObject.value.toString())
             mapFormatted(webTemplateNode, valueConverter, rmObject, this)
             this
         }

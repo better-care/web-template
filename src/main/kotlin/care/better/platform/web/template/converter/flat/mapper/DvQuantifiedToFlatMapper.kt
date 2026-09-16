@@ -15,10 +15,11 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MAGNITUDE_STATUS
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvQuantified
 
 /**
@@ -37,7 +38,7 @@ internal abstract class DvQuantifiedToFlatMapper<T : DvQuantified> : DvOrderedTo
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
         super.map(webTemplateNode, valueConverter, rmObject, webTemplatePath, flatConversionContext)
-        flatConversionContext["$webTemplatePath|magnitude_status"] = rmObject.magnitudeStatus
+        flatConversionContext["$webTemplatePath|$MAGNITUDE_STATUS"] = rmObject.magnitudeStatus
     }
 
     override fun mapFormatted(
@@ -47,6 +48,6 @@ internal abstract class DvQuantifiedToFlatMapper<T : DvQuantified> : DvOrderedTo
             webTemplatePath: String,
             formattedFlatConversionContext: FormattedFlatMappingContext) {
         super.mapFormatted(webTemplateNode, valueConverter, rmObject, webTemplatePath, formattedFlatConversionContext)
-        formattedFlatConversionContext["$webTemplatePath|magnitude_status"] = rmObject.magnitudeStatus
+        formattedFlatConversionContext["$webTemplatePath|$MAGNITUDE_STATUS"] = rmObject.magnitudeStatus
     }
 }

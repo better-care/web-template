@@ -15,12 +15,15 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY_IS_PERCENT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MAGNITUDE
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.mapper.resolve
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvCount
 
 /**
@@ -33,6 +36,8 @@ internal object DvCountToStructuredMapper : DvQuantifiedToStructuredMapper<DvCou
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvCount): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
             this.putIfNotNull("", rmObject.magnitude)
+            this.putIfNotNull(ACCURACY, rmObject.accuracy)
+            this.putIfNotNull(ACCURACY_IS_PERCENT, rmObject.accuracyIsPercent)
             map(webTemplateNode, valueConverter, rmObject, this)
             this.resolve()
         }
@@ -40,11 +45,13 @@ internal object DvCountToStructuredMapper : DvQuantifiedToStructuredMapper<DvCou
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvCount): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
             this.putIfNotNull("", rmObject.magnitude.toString())
+            this.putIfNotNull(ACCURACY, rmObject.accuracy.toString())
+            this.putIfNotNull(ACCURACY_IS_PERCENT, rmObject.accuracyIsPercent.toString())
             mapFormatted(webTemplateNode, valueConverter, rmObject, this)
             this.resolve()
         }
 
     override fun supportsValueNode(): Boolean = true
 
-    override fun defaultValueNodeAttribute(): String = "|magnitude"
+    override fun defaultValueNodeAttribute(): String = "|$MAGNITUDE"
 }

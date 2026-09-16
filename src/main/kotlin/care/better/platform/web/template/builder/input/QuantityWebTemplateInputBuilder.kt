@@ -26,6 +26,8 @@ import care.better.platform.web.template.builder.model.input.WebTemplateValidati
 import care.better.platform.web.template.builder.model.input.range.WebTemplateDecimalRange
 import care.better.platform.web.template.builder.model.input.range.WebTemplateValidationIntegerRange
 import care.better.platform.web.template.builder.utils.WebTemplateBuilderUtils
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MAGNITUDE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UNIT
 import org.openehr.am.aom.CDvQuantity
 import org.openehr.am.aom.CQuantityItem
 import org.openehr.rm.datatypes.DvQuantity
@@ -54,10 +56,10 @@ internal object QuantityWebTemplateInputBuilder : WebTemplateInputBuilder<CDvQua
     }
 
     override fun build(node: WebTemplateNode, context: WebTemplateBuilderContext) {
-        val magnitude = WebTemplateInput(WebTemplateInputType.DECIMAL, "magnitude")
+        val magnitude = WebTemplateInput(WebTemplateInputType.DECIMAL, MAGNITUDE)
         val units: WebTemplateInput
         if (node.amNode.cObject is CDvQuantity) {
-            units = WebTemplateInput(WebTemplateInputType.CODED_TEXT, "unit")
+            units = WebTemplateInput(WebTemplateInputType.CODED_TEXT, UNIT)
             val dvQuantity = node.amNode.cObject as CDvQuantity
             if (dvQuantity.list.isNotEmpty()) {
                 buildFromList(units, dvQuantity.list, node.amNode, context.languages)
@@ -75,7 +77,7 @@ internal object QuantityWebTemplateInputBuilder : WebTemplateInputBuilder<CDvQua
                 units.defaultValue = defaultValue.units
             }
         } else {
-            units = WebTemplateInput(WebTemplateInputType.TEXT, "unit")
+            units = WebTemplateInput(WebTemplateInputType.TEXT, UNIT)
         }
         node.inputs.add(magnitude)
         node.inputs.add(units)

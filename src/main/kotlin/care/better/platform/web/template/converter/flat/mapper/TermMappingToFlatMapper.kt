@@ -15,10 +15,13 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MATCH
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PURPOSE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TARGET
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.TermMapping
 
 /**
@@ -34,9 +37,9 @@ internal object TermMappingToFlatMapper : RmObjectToFlatMapper<TermMapping> {
             rmObject: TermMapping,
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
-        flatConversionContext["$webTemplatePath|match"] = rmObject.match
-        rmObject.target?.also { CodePhraseToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/target", flatConversionContext) }
-        rmObject.purpose?.also { DvCodedTextToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/purpose", flatConversionContext) }
+        flatConversionContext["$webTemplatePath|$MATCH"] = rmObject.match
+        rmObject.target?.also { CodePhraseToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/$TARGET", flatConversionContext) }
+        rmObject.purpose?.also { DvCodedTextToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/$PURPOSE", flatConversionContext) }
     }
 
     override fun mapFormatted(
@@ -45,13 +48,13 @@ internal object TermMappingToFlatMapper : RmObjectToFlatMapper<TermMapping> {
             rmObject: TermMapping,
             webTemplatePath: String,
             formattedFlatConversionContext: FormattedFlatMappingContext) {
-        formattedFlatConversionContext["$webTemplatePath|match"] = rmObject.match
+        formattedFlatConversionContext["$webTemplatePath|$MATCH"] = rmObject.match
         rmObject.target?.also {
             CodePhraseToFlatMapper.mapFormatted(
                 webTemplateNode,
                 valueConverter,
                 it,
-                "$webTemplatePath/target",
+                "$webTemplatePath/$TARGET",
                 formattedFlatConversionContext)
         }
         rmObject.purpose?.also {
@@ -59,7 +62,7 @@ internal object TermMappingToFlatMapper : RmObjectToFlatMapper<TermMapping> {
                 webTemplateNode,
                 valueConverter,
                 it,
-                "$webTemplatePath/purpose",
+                "$webTemplatePath/$PURPOSE",
                 formattedFlatConversionContext)
         }
     }

@@ -18,6 +18,7 @@ package care.better.platform.web.template.converter.raw.special
 import care.better.openehr.rm.RmObject
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LOWER_UNBOUNDED
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.BooleanNode
@@ -30,7 +31,7 @@ import org.openehr.rm.datatypes.DvInterval
  * Singleton instance of [SpecialCaseRmObjectHandler] that handles "lower_unbounded" attribute.
  */
 internal object DvIntervalLowerUnboundedHandler : SpecialCaseRmObjectHandler {
-    const val specialAttribute: String = "|lower_unbounded"
+    const val specialAttribute: String = "|$LOWER_UNBOUNDED"
 
     private val dvIntervalClass = DvInterval::class.java
 

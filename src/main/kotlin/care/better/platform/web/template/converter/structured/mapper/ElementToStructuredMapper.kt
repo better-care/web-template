@@ -15,11 +15,13 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NULL_FLAVOUR
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NULL_REASON
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putSingletonAsArray
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datastructures.Element
 
 /**
@@ -36,10 +38,10 @@ internal object ElementToStructuredMapper : LocatableToStructuredMapper<Element>
             val nullReason = rmObject.nullReason
             if (rmObject.value == null) {
                 if (nullFlavour != null) {
-                    this.putSingletonAsArray("_null_flavour") { DvCodedTextToStructuredMapper.map(webTemplateNode, valueConverter, nullFlavour) }
+                    this.putSingletonAsArray("_$NULL_FLAVOUR") { DvCodedTextToStructuredMapper.map(webTemplateNode, valueConverter, nullFlavour) }
                 }
                 if (nullReason != null) {
-                    this.putSingletonAsArray("_null_reason") { DvTextToStructuredMapper.map(webTemplateNode, valueConverter, nullReason) }
+                    this.putSingletonAsArray("_$NULL_REASON") { DvTextToStructuredMapper.map(webTemplateNode, valueConverter, nullReason) }
                 }
             }
             this
@@ -52,10 +54,10 @@ internal object ElementToStructuredMapper : LocatableToStructuredMapper<Element>
             val nullReason = rmObject.nullReason
             if (rmObject.value == null) {
                 if (nullFlavour != null) {
-                    this.putSingletonAsArray("_null_flavour") { DvCodedTextToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, nullFlavour) }
+                    this.putSingletonAsArray("_$NULL_FLAVOUR") { DvCodedTextToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, nullFlavour) }
                 }
                 if (nullReason != null) {
-                    this.putSingletonAsArray("_null_reason") { DvTextToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, nullReason) }
+                    this.putSingletonAsArray("_$NULL_REASON") { DvTextToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, nullReason) }
                 }
             }
             this

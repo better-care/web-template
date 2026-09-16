@@ -17,7 +17,19 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
-import care.better.platform.web.template.converter.constant.WebTemplateConstants.PARTICIPATION_MODE_GROUP_NAME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.FUNCTION
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.IDENTIFIERS_ASSIGNER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.IDENTIFIERS_ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.IDENTIFIERS_ISSUER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.IDENTIFIERS_TYPE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID_NAMESPACE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID_SCHEME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MODE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NAME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NAMESPACE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY_GROUP_PARTICIPATION_MODE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.RELATIONSHIP
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.extensions.createFromOpenEhrTerminology
@@ -29,6 +41,7 @@ import org.openehr.base.basetypes.GenericId
 import org.openehr.base.basetypes.PartyRef
 import org.openehr.rm.common.Participation
 import org.openehr.rm.common.PartyIdentified
+import org.openehr.rm.common.PartyRelated
 import org.openehr.rm.datatypes.DvCodedText
 import org.openehr.rm.datatypes.DvIdentifier
 import org.openehr.rm.datatypes.DvInterval
@@ -59,44 +72,51 @@ internal object ParticipationFactory : RmObjectLeafNodeFactory<Participation>() 
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean {
         return when {
-            attribute.attribute == "function" -> {
+            attribute.attribute == FUNCTION -> {
                 rmObject.function = DvText(jsonNode.asText())
                 true
             }
-            attribute.attribute == "name" -> {
+            attribute.attribute == NAME -> {
                 getOrCreatePerformer(rmObject).name = jsonNode.asText()
                 true
             }
-            attribute.attribute == "id" -> {
+            attribute.attribute == ID -> {
                 handleIdAttribute(getOrCreatePerformer(rmObject), jsonNode, conversionContext)
                 true
             }
-            attribute.attribute == "id_scheme" -> {
+            attribute.attribute == ID_SCHEME -> {
                 handleIdSchemeAttribute(getOrCreatePerformer(rmObject), jsonNode, conversionContext)
                 true
             }
-            attribute.attribute == "id_namespace" || attribute.attribute == "namespace" -> {
+            attribute.attribute == ID_NAMESPACE || attribute.attribute == NAMESPACE -> {
                 handleIdNamespaceAttribute(getOrCreatePerformer(rmObject), jsonNode, conversionContext)
                 true
             }
-            attribute.attribute == "mode" -> {
-                rmObject.mode = DvCodedText.createFromOpenEhrTerminology(PARTICIPATION_MODE_GROUP_NAME, jsonNode.asText())
+            attribute.attribute == MODE -> {
+                rmObject.mode = DvCodedText.createFromOpenEhrTerminology(TERMINOLOGY_GROUP_PARTICIPATION_MODE, jsonNode.asText())
                 true
             }
-            attribute.attribute.startsWith("identifiers_assigner") -> {
+            attribute.attribute.startsWith(IDENTIFIERS_ASSIGNER) -> {
                 mapToIdentifier(rmObject, jsonNode) { dvIdentifier, value -> dvIdentifier.assigner = value }
                 true
             }
-            attribute.attribute.startsWith("identifiers_issuer") -> {
+            attribute.attribute.startsWith(IDENTIFIERS_ISSUER) -> {
                 mapToIdentifier(rmObject, jsonNode) { dvIdentifier, value -> dvIdentifier.issuer = value }
                 true
             }
-            attribute.attribute.startsWith("identifiers_type") -> {
+            attribute.attribute.startsWith(IDENTIFIERS_TYPE) -> {
                 mapToIdentifier(rmObject, jsonNode) { dvIdentifier, value -> dvIdentifier.type = value }
                 true
             }
-            attribute.attribute.startsWith("identifiers_id") -> {
+            attribute.attribute.startsWith(IDENTIFIERS_ID) -> {
                 mapToIdentifier(rmObject, jsonNode) { dvIdentifier, value -> dvIdentifier.id = value }
+                true
+            }
+            attribute.attribute == RELATIONSHIP -> {
+                val partyRelated = getOrCreatePartyRelatedPerformer(rmObject)
+                partyRelated.relationship = jsonNode.firstNotNullOfOrNull {
+                    DvCodedTextFactory.getInstance().create(conversionContext, AmNode(amNode, "DV_CODED_TEXT"), it, webTemplatePath)
+                }
                 true
             }
             else -> false
@@ -120,7 +140,7 @@ internal object ParticipationFactory : RmObjectLeafNodeFactory<Participation>() 
      * @param jsonNode [JsonNode]
      * @param dvIdentifierSetter Consumer that sets value to the [DvIdentifier]
      */
-    private fun mapToIdentifier(participation: Participation, jsonNode: JsonNode, dvIdentifierSetter: (DvIdentifier, String) -> Unit) {
+    private fun  mapToIdentifier(participation: Participation, jsonNode: JsonNode, dvIdentifierSetter: (DvIdentifier, String) -> Unit) {
         val dvIdentifiers = getOrCreatePerformer(participation).identifiers
         if (jsonNode.isArray) {
             jsonNode.forEachIndexed { index, node ->
@@ -144,6 +164,20 @@ internal object ParticipationFactory : RmObjectLeafNodeFactory<Participation>() 
             PartyIdentified().also { rmObject.performer = it }
         else
             rmObject.performer as PartyIdentified
+
+    private fun getOrCreatePartyRelatedPerformer(rmObject: Participation): PartyRelated {
+        return when (val performer = rmObject.performer) {
+            is PartyRelated -> performer
+            is PartyIdentified -> PartyRelated().also {
+                it.name = performer.name
+                it.identifiers.addAll(performer.identifiers)
+                it.externalRef = performer.externalRef
+                rmObject.performer = it
+            }
+
+            else -> PartyRelated().also { rmObject.performer = it }
+        }
+    }
 
     /**
      * Sets ID to [PartyIdentified] from [JsonNode] "|id" entry value.

@@ -20,6 +20,16 @@ import care.better.platform.template.AmUtils
 import care.better.platform.utils.RmUtils
 import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CODE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ENCODING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.FORMATTING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LANGUAGE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MAPPING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NULL_FLAVOUR
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.OTHER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PREFERRED_TERM
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.extensions.isForElement
@@ -65,13 +75,13 @@ internal open class DvCodedTextFactory : RmObjectLeafNodeFactory<DvCodedText>() 
     private val sortMap: Map<AttributeDto, Int> =
         mapOf(
                 Pair(AttributeDto.ofBlank(), 0),
-                Pair(AttributeDto.forAttribute("value"), 1),
-                Pair(AttributeDto.forAttribute("code"), 2),
-                Pair(AttributeDto.forAttribute("terminology"), 3),
-                Pair(AttributeDto.forAttribute("preferred_term"), 4),
-                Pair(AttributeDto.forAttribute("_mapping"), 5),
-                Pair(AttributeDto.forAttribute("other"), 6),
-                Pair(AttributeDto.forAttribute("formatting"), 7))
+                Pair(AttributeDto.forAttribute(VALUE), 1),
+                Pair(AttributeDto.forAttribute(CODE), 2),
+                Pair(AttributeDto.forAttribute(TERMINOLOGY), 3),
+                Pair(AttributeDto.forAttribute(PREFERRED_TERM), 4),
+                Pair(AttributeDto.forAttribute("_$MAPPING"), 5),
+                Pair(AttributeDto.forAttribute(OTHER), 6),
+                Pair(AttributeDto.forAttribute(FORMATTING), 7))
 
     override fun sortFieldNames(attributes: List<AttributeDto>): List<AttributeDto> =
         attributes.asSequence().map { Pair(it, sortMap[it] ?: Integer.MAX_VALUE) }.sortedBy { it.second }.map { it.first }.toList()
@@ -107,35 +117,45 @@ internal open class DvCodedTextFactory : RmObjectLeafNodeFactory<DvCodedText>() 
                 true
             }
 
-            attribute.attribute == "value" -> {
+            attribute.attribute == VALUE -> {
                 handleValueAttribute(amNode, jsonNode, rmObject)
                 true
             }
 
-            attribute.attribute == "terminology" -> {
+            attribute.attribute == TERMINOLOGY -> {
                 handleTerminologyAttribute(jsonNode, rmObject)
                 true
             }
 
-            attribute.attribute == "code" -> {
+            attribute.attribute == CODE -> {
                 handleDvCodedTextString(conversionContext, amNode, rmObject, jsonNode.asText())
                 true
             }
 
-            attribute.attribute == "preferred_term" -> {
+            attribute.attribute == PREFERRED_TERM -> {
                 handlePreferredTermAttribute(jsonNode, rmObject)
                 true
             }
 
-            attribute.attribute == "_mapping" -> {
+            attribute.attribute == "_$MAPPING" -> {
                 rmObject.mappings = jsonNode.mapIndexedNotNull { index, node ->
                     TermMappingFactory.create(conversionContext, amNode, node, WebTemplatePath(attribute.originalAttribute, webTemplatePath, index))
                 }.toMutableList()
                 true
             }
 
-            attribute.attribute == "formatting" -> {
+            attribute.attribute == FORMATTING -> {
                 rmObject.formatting = jsonNode.asText()
+                true
+            }
+
+            attribute.attribute == "_$LANGUAGE" -> {
+                jsonNode.forEach { node -> CodePhraseFactory.create(conversionContext, amNode, node, webTemplatePath)?.also { rmObject.language = it } }
+                true
+            }
+
+            attribute.attribute == "_$ENCODING" -> {
+                jsonNode.forEach { node -> CodePhraseFactory.create(conversionContext, amNode, node, webTemplatePath)?.also { rmObject.encoding = it } }
                 true
             }
 
@@ -172,7 +192,7 @@ internal open class DvCodedTextFactory : RmObjectLeafNodeFactory<DvCodedText>() 
             rmObject: DvCodedText,
             webTemplatePath: WebTemplatePath,
             parents: List<Any>): Boolean {
-        if (attribute.attribute == "other") {
+        if (attribute.attribute == OTHER) {
             val dvText = DvText(jsonNode.asText())
             PostProcessDelegator.delegate(conversionContext, amNode, dvText, webTemplatePath + attribute.originalAttribute)
             if (dvText.isNotEmpty()) {
@@ -206,7 +226,7 @@ internal open class DvCodedTextFactory : RmObjectLeafNodeFactory<DvCodedText>() 
         super.handleOnParent(conversionContext, amNode, attribute, jsonNode, rmObject, webTemplatePath, parents, false)
 
     override fun removeDependentValues(map: MutableMap<AttributeDto, JsonNode>): Boolean {
-        val codeNode = map[AttributeDto.forAttribute("code")]
+        val codeNode = map[AttributeDto.forAttribute(CODE)]
         if (codeNode != null) {
             val codeAttribute = AttributeDto.forAttribute(codeNode.asText())
             if (map[codeAttribute] != null) {
@@ -403,7 +423,7 @@ internal open class DvCodedTextFactory : RmObjectLeafNodeFactory<DvCodedText>() 
      * @param amNode [AmNode]
      * @return [Boolean] indicating if [AmNode] is for null_flavor RM attribute or not
      */
-    private fun isNullFlavorNode(amNode: AmNode): Boolean = amNode.name == "null_flavour"
+    private fun isNullFlavorNode(amNode: AmNode): Boolean = amNode.name == NULL_FLAVOUR
 
     /**
      * Add new [DvText] or [DvCodedText] instance to the parent with multiple [Element] instances.

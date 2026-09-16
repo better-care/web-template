@@ -15,6 +15,10 @@
 
 package care.better.platform.web.template.converter.raw.context.setter
 
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID_SCHEME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NAMESPACE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TYPE
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.value.ValueConverter
 import org.openehr.base.basetypes.GenericId
@@ -41,15 +45,15 @@ internal object WorkFlowIdCtxSetter : CtxSetter {
 
         with(value as Map<String, String>) {
             val objectRef = builder.getWorkflowId()!!
-            this["|namespace"]?.also { objectRef.namespace = it }
-            this["|type"]?.also { objectRef.type = it }
-            this["|id_scheme"]?.also {
+            this["|$NAMESPACE"]?.also { objectRef.namespace = it }
+            this["|$TYPE"]?.also { objectRef.type = it }
+            this["|$ID_SCHEME"]?.also {
                 if (objectRef.id == null)
                     objectRef.id = GenericId().apply { this.scheme = it }
                 else
                     (objectRef.id as GenericId).scheme = it
             }
-            this["|id"]?.also {
+            this["|$ID"]?.also {
                 if (objectRef.id == null)
                     objectRef.id = GenericId().apply { this.value = it }
                 else

@@ -24,9 +24,11 @@ import org.openehr.rm.common.Link
 import org.openehr.rm.common.Participation
 import org.openehr.rm.common.PartyIdentified
 import org.openehr.rm.common.PartyRelated
+import org.openehr.rm.common.PartySelf
 import org.openehr.rm.composition.*
 import org.openehr.rm.datastructures.Cluster
 import org.openehr.rm.datastructures.Element
+import org.openehr.rm.datastructures.IntervalEvent
 import org.openehr.rm.datatypes.*
 
 /**
@@ -61,16 +63,17 @@ object RmObjectToStructuredMapperDelegator {
             Pair(DvEhrUri::class.java, DvUriToStructuredMapper),
             Pair(Element::class.java, ElementToStructuredMapper),
             Pair(Observation::class.java, ObservationToStructuredMapper),
-            Pair(Evaluation::class.java, EntryToStructuredMapper.getInstance()),
-            Pair(Instruction::class.java, EntryToStructuredMapper.getInstance()),
+            Pair(Evaluation::class.java, CareEntryToStructuredMapper.getInstance()),
             Pair(AdminEntry::class.java, EntryToStructuredMapper.getInstance()),
             Pair(EventContext::class.java, EventContextToStructuredMapper),
             Pair(Instruction::class.java, InstructionToStructuredMapper),
+            Pair(IsmTransition::class.java, IsmTransitionToStructuredMapper),
             Pair(Link::class.java, LinkToStructuredMapper),
             Pair(LocatableRef::class.java, LocatableRefToStructuredMapper),
             Pair(Section::class.java, LocatableToStructuredMapper.getInstance()),
             Pair(Cluster::class.java, LocatableToStructuredMapper.getInstance()),
-            Pair(Activity::class.java, LocatableToStructuredMapper.getInstance()),
+            Pair(Activity::class.java, ActivityToStructuredMapper),
+            Pair(IntervalEvent::class.java, IntervalEventToStructuredMapper),
             Pair(ObjectId::class.java, ObjectIdToStructuredMapper),
             Pair(HierObjectId::class.java, ObjectIdToStructuredMapper),
             Pair(ObjectVersionId::class.java, ObjectIdToStructuredMapper),
@@ -81,7 +84,8 @@ object RmObjectToStructuredMapperDelegator {
             Pair(AccessGroupRef::class.java, ObjectRefToStructuredMapper),
             Pair(Participation::class.java, ParticipationToStructuredMapper),
             Pair(PartyIdentified::class.java, PartyIdentifiedToStructuredMapper),
-            Pair(PartyRelated::class.java, PartyIdentifiedToStructuredMapper))
+            Pair(PartyRelated::class.java, PartyRelatedToStructuredMapper),
+            Pair(PartySelf::class.java, PartySelfToStructuredMapper))
 
     /**
      * Delegates the RM object to the [RmObjectToStructuredMapper] and executes the mapping.

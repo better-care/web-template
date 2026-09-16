@@ -19,6 +19,7 @@ import care.better.platform.template.AmNode
 import care.better.platform.template.AmUtils
 import care.better.platform.web.template.builder.model.input.range.WebTemplateDecimalRange
 import care.better.platform.web.template.builder.utils.CodePhraseUtils
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY_OPENEHR
 import org.joda.time.DateTime
 import org.joda.time.LocalDate
 import org.joda.time.LocalTime
@@ -110,7 +111,7 @@ object WebTemplateConversionUtils {
 
     @JvmStatic
     fun getTermText(amNode: AmNode, terminologyId: String?, codeString: String?, language: String?): String? =
-        if ("openehr" == terminologyId) {
+        if (TERMINOLOGY_OPENEHR == terminologyId) {
             CodePhraseUtils.getOpenEhrTerminologyText(codeString!!, language)
         } else {
             val term = if (amNode.termDefinitions.containsKey(language))

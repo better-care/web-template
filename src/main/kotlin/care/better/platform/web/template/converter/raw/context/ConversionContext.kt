@@ -17,7 +17,8 @@ package care.better.platform.web.template.converter.raw.context
 
 import care.better.openehr.rm.RmObject
 import care.better.platform.web.template.WebTemplate
-import care.better.platform.web.template.converter.constant.WebTemplateConstants.PARTICIPATION_MODE_GROUP_NAME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY_GROUP_PARTICIPATION_MODE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY_OPENEHR
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.raw.extensions.createFromOpenEhrTerminology
@@ -157,9 +158,9 @@ class ConversionContext private constructor(
                     }
                     val mode = if (participationModes.size > index) participationModes[index] else null
                     if (mode.isNullOrBlank()) {
-                        this.mode = DvCodedText.create("openehr", "193", "not specified")
+                        this.mode = DvCodedText.create(TERMINOLOGY_OPENEHR, "193", "not specified")
                     } else {
-                        this.mode = DvCodedText.createFromOpenEhrTerminology(PARTICIPATION_MODE_GROUP_NAME, mode)
+                        this.mode = DvCodedText.createFromOpenEhrTerminology(TERMINOLOGY_GROUP_PARTICIPATION_MODE, mode)
                     }
                     val id = if (participationIds.size > index) participationIds[index] else null
                     if (StringUtils.isNotBlank(id) && (StringUtils.isBlank(idNamespace) || StringUtils.isBlank(idScheme))) {

@@ -51,7 +51,21 @@ import care.better.platform.web.template.builder.model.input.range.WebTemplateIn
 import care.better.platform.web.template.builder.postprocess.WebTemplateNodeChildrenPostProcessorDelegator
 import care.better.platform.web.template.builder.utils.CodePhraseUtils
 import care.better.platform.web.template.builder.utils.WebTemplateBuilderUtils
-import care.better.platform.web.template.converter.constant.WebTemplateConstants.ISM_TRANSITION_GROUP_NAME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CAREFLOW_STEP
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CATEGORY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CODE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CURRENT_STATE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.DEFAULT_LANGUAGE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.DEFINING_CODE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.EXPIRY_TIME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ISM_TRANSITION
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NAME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.REASON
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY_GROUP_ISM_TRANSITION
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY_LOCAL
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TIMING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TRANSITION
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.raw.extensions.isForElement
 import care.better.platform.web.template.converter.raw.extensions.isNotNullOrBlank
 import care.better.platform.web.template.converter.raw.extensions.isNotNullOrEmpty
@@ -88,16 +102,16 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
 
         private val IGNORED_RM_PROPERTIES: Set<RmProperty> =
             setOf(
-                    RmProperty(Composition::class.java, "category"), // always constrained in the template otherwise default is OK
+                    RmProperty(Composition::class.java, CATEGORY), // always constrained in the template otherwise default is OK
                     RmProperty(History::class.java, "origin"), // can be calculated from events
-                    RmProperty(DvCodedText::class.java, "value"), // from code
+                    RmProperty(DvCodedText::class.java, VALUE), // from code
                     RmProperty(Locatable::class.java, "archetype_node_id"), // from template
-                    RmProperty(Locatable::class.java, "name")) // from template
+                    RmProperty(Locatable::class.java, NAME)) // from template
 
         private val OVERRIDE_OPTIONAL: Set<RmProperty> =
-            setOf(RmProperty(Activity::class.java, "timing")) // no longer mandatory in RM 1.0.4 (added for backward compatibility)
+            setOf(RmProperty(Activity::class.java, TIMING)) // no longer mandatory in RM 1.0.4 (added for backward compatibility)
 
-        private val SKIP_PATHS: Set<String> = setOf("name")
+        private val SKIP_PATHS: Set<String> = setOf(NAME)
 
         private val ANY_DATA_TYPES =
             arrayOf(
@@ -216,14 +230,14 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
         val amChildren: MutableList<AmNode> = mutableListOf()
 
         ANY_DATA_TYPES.forEach {
-            val childNode = createAmNode(amNode, it, "value", Element::class.java)
+            val childNode = createAmNode(amNode, it, VALUE, Element::class.java)
             amChildren.add(childNode)
             children.add(createCustomNode(childNode, amNode.name, WebTemplateIntegerRange(1, 1)).apply {
                 this.jsonId = WebTemplateBuilderUtils.getChoiceWebTemplateId(it.substring(3).lowercase())
             })
         }
 
-        amNode.attributes["value"] = AmAttribute(createInterval(1, 1), amChildren).apply { this.rmOnly = true }
+        amNode.attributes[VALUE] = AmAttribute(createInterval(1, 1), amChildren).apply { this.rmOnly = true }
         return children
     }
 
@@ -231,7 +245,7 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
         val children: MutableList<WebTemplateNode> = ArrayList()
         if (addAttributes(getRmType(node))) {
             amNode.attributes.entries.asSequence().filter { !it.value.rmOnly }.forEach {
-                if ("ACTION" == amNode.rmType && "ism_transition" == it.key)
+                if ("ACTION" == amNode.rmType && ISM_TRANSITION == it.key)
                     addIsmTransition(children, amNode)
                 else
                     addChildren(children, it.key, it.value)
@@ -250,7 +264,7 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
 
     private fun addSpecialAttributes(amNode: AmNode, children: MutableList<WebTemplateNode>) {
         if ("INSTRUCTION" == amNode.rmType) {
-            addChildren(children, "expiry_time", amNode.attributes["expiry_time"])
+            addChildren(children, EXPIRY_TIME, amNode.attributes[EXPIRY_TIME])
         }
     }
 
@@ -438,18 +452,21 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
     }
 
     private fun addIsmTransition(children: MutableList<WebTemplateNode>, amNode: AmNode) {
-        val ismTransition = AmNode(amNode, "ISM_TRANSITION").apply {
-            this.name = "ism_transition"
-            val getter = RmUtils.getGetterForAttribute("ism_transition", Action::class.java)
+        val ismTransition = AmNode(amNode, ISM_TRANSITION.uppercase()).apply {
+            this.name = ISM_TRANSITION
+            val getter = RmUtils.getGetterForAttribute(ISM_TRANSITION, Action::class.java)
             this.getter = getter
-            this.setter = RmUtils.getSetterForAttribute("ism_transition", Action::class.java)
+            this.setter = RmUtils.getSetterForAttribute(ISM_TRANSITION, Action::class.java)
             this.setType(TypeInfo(getter!!.returnType, null))
         }
 
-        val currentState = createIsmTransitionAttribute(ismTransition, "current_state", createInterval(1, 1))
-        val transition = createIsmTransitionAttribute(ismTransition, "transition", createInterval(0, 1))
-        val careflowStep = createIsmTransitionAttribute(ismTransition, "careflow_step", createInterval(0, 1))
-        val webTemplateNode = createCustomNode(ismTransition, "ism_transition", WebTemplateIntegerRange(1, 1))
+        val currentState = createIsmTransitionAttribute(ismTransition, CURRENT_STATE, createInterval(1, 1))
+        val transition = createIsmTransitionAttribute(ismTransition, TRANSITION, createInterval(0, 1))
+        val careflowStep = createIsmTransitionAttribute(ismTransition, CAREFLOW_STEP, createInterval(0, 1))
+        createAmNode(ismTransition, "DV_TEXT", REASON, IsmTransition::class.java).apply {
+            ismTransition.attributes[REASON] = AmAttribute(createInterval(0, Int.MAX_VALUE), mutableListOf(this)).apply { this.rmOnly = true }
+        }
+        val webTemplateNode = createCustomNode(ismTransition, ISM_TRANSITION, WebTemplateIntegerRange(1, 1))
 
         segments.push(webTemplateNode)
         webTemplateNode.children.clear()
@@ -461,9 +478,9 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
                 createCurrentStateInput(
                         currentState,
                         if (allowedCurrentStates.isEmpty()) OpenEhrTerminology.getInstance()
-                            .getGroupChildren(ISM_TRANSITION_GROUP_NAME) else allowedCurrentStates))
+                            .getGroupChildren(TERMINOLOGY_GROUP_ISM_TRANSITION) else allowedCurrentStates))
 
-        webTemplateNode.children.add(createCustomNode(transition, "transition", WebTemplateIntegerRange(0, 1)))
+        webTemplateNode.children.add(createCustomNode(transition, TRANSITION, WebTemplateIntegerRange(0, 1)))
         webTemplateNode.children.add(careflowStepWtNode)
         children.add(webTemplateNode)
 
@@ -471,15 +488,15 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
     }
 
     private fun createCareFlowStepNode(amNode: AmNode, careflowStep: AmNode, allowedCurrentStates: MutableSet<String>): WebTemplateNode =
-        createCustomNode(careflowStep, "careflow_step", WebTemplateIntegerRange(0, 1)).apply {
-            val ismTransitionAttribute = amNode.attributes["ism_transition"]
+        createCustomNode(careflowStep, CAREFLOW_STEP, WebTemplateIntegerRange(0, 1)).apply {
+            val ismTransitionAttribute = amNode.attributes[ISM_TRANSITION]
             if (ismTransitionAttribute != null) {
-                val transitionInput = WebTemplateInput(WebTemplateInputType.CODED_TEXT, "code")
+                val transitionInput = WebTemplateInput(WebTemplateInputType.CODED_TEXT, CODE)
                 val options = ismTransitionAttribute.children.asSequence()
                     .filter { !it.nodeId.isNullOrBlank() }
                     .map {
-                        val codedValue = CodePhraseUtils.getCodedValue("local", it.nodeId!!, amNode, context)
-                        val currentStateCCodePhrase = getCObjectItem(it, CCodePhrase::class.java, "current_state", "defining_code")
+                        val codedValue = CodePhraseUtils.getCodedValue(TERMINOLOGY_LOCAL, it.nodeId!!, amNode, context)
+                        val currentStateCCodePhrase = getCObjectItem(it, CCodePhrase::class.java, CURRENT_STATE, DEFINING_CODE)
                         CareflowStepWebTemplateCodedValue(
                                 codedValue,
                                 if (currentStateCCodePhrase?.codeList != null) currentStateCCodePhrase.codeList else emptyList()).apply {
@@ -493,9 +510,9 @@ class WebTemplateBuilder private constructor(template: Template, webTemplateBuil
         }
 
     private fun createCurrentStateInput(currentState: AmNode, currentStates: Collection<String>): WebTemplateNode =
-        createCustomNode(currentState, "current_state", WebTemplateIntegerRange(1, 1)).apply {
-            val currentStateInput = WebTemplateInput(WebTemplateInputType.CODED_TEXT, "code")
-            val currentStateOptions = currentStates.map { WebTemplateCodedValue(it, CodePhraseUtils.getOpenEhrTerminologyText(it, "en")) }
+        createCustomNode(currentState, CURRENT_STATE, WebTemplateIntegerRange(1, 1)).apply {
+            val currentStateInput = WebTemplateInput(WebTemplateInputType.CODED_TEXT, CODE)
+            val currentStateOptions = currentStates.map { WebTemplateCodedValue(it, CodePhraseUtils.getOpenEhrTerminologyText(it, DEFAULT_LANGUAGE)) }
 
             currentStateInput.list.addAll(currentStateOptions)
             this.inputs.clear()

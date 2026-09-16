@@ -15,10 +15,16 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.FEEDER_SYSTEM_AUDIT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.FEEDER_SYSTEM_ITEM_ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ORIGINAL_CONTENT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ORIGINAL_CONTENT_MULTIMEDIA
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ORIGINATING_SYSTEM_AUDIT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ORIGINATING_SYSTEM_ITEM_ID
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.common.FeederAudit
 import org.openehr.rm.datatypes.DvMultimedia
 import org.openehr.rm.datatypes.DvParsable
@@ -37,22 +43,22 @@ internal object FeederAuditToFlatMapper : RmObjectToFlatMapper<FeederAudit> {
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
         rmObject.feederSystemAudit?.also {
-            FeederAuditDetailsToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/feeder_system_audit", flatConversionContext)
+            FeederAuditDetailsToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/$FEEDER_SYSTEM_AUDIT", flatConversionContext)
         }
 
         rmObject.originatingSystemAudit?.also {
-            FeederAuditDetailsToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/originating_system_audit", flatConversionContext)
+            FeederAuditDetailsToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/$ORIGINATING_SYSTEM_AUDIT", flatConversionContext)
         }
 
         rmObject.originalContent?.also {
             if (it is DvMultimedia)
-                DvMultimediaToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/original_content_multimedia", flatConversionContext)
+                DvMultimediaToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/$ORIGINAL_CONTENT_MULTIMEDIA", flatConversionContext)
             else
-                DvParsableToFlatMapper.map(webTemplateNode, valueConverter, it as DvParsable, "$webTemplatePath/original_content", flatConversionContext)
+                DvParsableToFlatMapper.map(webTemplateNode, valueConverter, it as DvParsable, "$webTemplatePath/$ORIGINAL_CONTENT", flatConversionContext)
         }
 
         rmObject.feederSystemItemIds.forEachIndexed { index, dvIdentifier ->
-            DvIdentifierToFlatMapper.map(webTemplateNode, valueConverter, dvIdentifier, "$webTemplatePath/feeder_system_item_id:$index", flatConversionContext)
+            DvIdentifierToFlatMapper.map(webTemplateNode, valueConverter, dvIdentifier, "$webTemplatePath/$FEEDER_SYSTEM_ITEM_ID:$index", flatConversionContext)
         }
 
         rmObject.originatingSystemItemIds.forEachIndexed { index, dvIdentifier ->
@@ -60,7 +66,7 @@ internal object FeederAuditToFlatMapper : RmObjectToFlatMapper<FeederAudit> {
                 webTemplateNode,
                 valueConverter,
                 dvIdentifier,
-                "$webTemplatePath/originating_system_item_id:$index",
+                "$webTemplatePath/$ORIGINATING_SYSTEM_ITEM_ID:$index",
                 flatConversionContext)
         }
     }
@@ -76,7 +82,7 @@ internal object FeederAuditToFlatMapper : RmObjectToFlatMapper<FeederAudit> {
                 webTemplateNode,
                 valueConverter,
                 it,
-                "$webTemplatePath/feeder_system_audit",
+                "$webTemplatePath/$FEEDER_SYSTEM_AUDIT",
                 formattedFlatConversionContext)
         }
 
@@ -85,7 +91,7 @@ internal object FeederAuditToFlatMapper : RmObjectToFlatMapper<FeederAudit> {
                 webTemplateNode,
                 valueConverter,
                 it,
-                "$webTemplatePath/originating_system_audit",
+                "$webTemplatePath/$ORIGINATING_SYSTEM_AUDIT",
                 formattedFlatConversionContext)
         }
 
@@ -95,14 +101,14 @@ internal object FeederAuditToFlatMapper : RmObjectToFlatMapper<FeederAudit> {
                     webTemplateNode,
                     valueConverter,
                     it,
-                    "$webTemplatePath/original_content_multimedia",
+                    "$webTemplatePath/$ORIGINAL_CONTENT_MULTIMEDIA",
                     formattedFlatConversionContext)
             else
                 DvParsableToFlatMapper.mapFormatted(
                     webTemplateNode,
                     valueConverter,
                     it as DvParsable,
-                    "$webTemplatePath/original_content",
+                    "$webTemplatePath/$ORIGINAL_CONTENT",
                     formattedFlatConversionContext)
         }
 
@@ -111,7 +117,7 @@ internal object FeederAuditToFlatMapper : RmObjectToFlatMapper<FeederAudit> {
                 webTemplateNode,
                 valueConverter,
                 dvIdentifier,
-                "$webTemplatePath/feeder_system_item_id:$index",
+                "$webTemplatePath/$FEEDER_SYSTEM_ITEM_ID:$index",
                 formattedFlatConversionContext)
         }
 
@@ -120,7 +126,7 @@ internal object FeederAuditToFlatMapper : RmObjectToFlatMapper<FeederAudit> {
                 webTemplateNode,
                 valueConverter,
                 dvIdentifier,
-                "$webTemplatePath/originating_system_item_id:$index",
+                "$webTemplatePath/$ORIGINATING_SYSTEM_ITEM_ID:$index",
                 formattedFlatConversionContext)
         }
     }

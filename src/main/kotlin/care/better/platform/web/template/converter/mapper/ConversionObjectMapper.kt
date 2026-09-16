@@ -19,6 +19,8 @@ import care.better.openehr.rm.RmObject
 import care.better.platform.json.jackson.better.BetterObjectMapper
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CONTEXT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CONTEXT_PREFIX
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.extensions.isEmpty
@@ -79,7 +81,7 @@ internal fun getObjectNodeForWebTemplateSegment(objectNode: ObjectNode, webTempl
  */
 internal fun validateFieldsOnRoot(objectNode: ObjectNode, webTemplatePathSegment: String, rmType: String) {
     objectNode.fields().forEach { (key, _) ->
-        if (!key.startsWith("transient_") && key != "ctx" && !key.startsWith("ctx/") && key != webTemplatePathSegment) {
+        if (!key.startsWith("transient_") && key != CONTEXT && !key.startsWith(CONTEXT_PREFIX) && key != webTemplatePathSegment) {
             throw ConversionException("$rmType has no attribute $key.")
         }
     }

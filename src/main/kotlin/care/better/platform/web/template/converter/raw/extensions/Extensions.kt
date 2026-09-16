@@ -23,6 +23,7 @@ import care.better.platform.template.AmNode
 import care.better.platform.template.AmUtils
 import care.better.platform.utils.RmUtils
 import care.better.platform.web.template.converter.constant.WebTemplateConstants.DEFAULT_LANGUAGE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY_OPENEHR
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import org.openehr.am.aom.CCodePhrase
 import org.openehr.base.basetypes.GenericId
@@ -98,9 +99,9 @@ internal fun DvCodedText.Companion.createFromOpenEhrTerminology(groupName: Strin
         if (this == null) {
             val text = OpenEhrTerminology.getInstance().getText(DEFAULT_LANGUAGE, code)
                 ?: throw ConversionException("OpenEHR code for groupid/name not found: $groupName/$code")
-            return create("openehr", code, text)
+            return create(TERMINOLOGY_OPENEHR, code, text)
         }
-        return create("openehr", this, code)
+        return create(TERMINOLOGY_OPENEHR, this, code)
     }
 
 

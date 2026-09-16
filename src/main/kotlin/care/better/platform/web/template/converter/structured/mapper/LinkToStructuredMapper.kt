@@ -15,11 +15,14 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MEANING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TARGET
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TYPE
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.common.Link
 
 /**
@@ -31,9 +34,9 @@ import org.openehr.rm.common.Link
 internal object LinkToStructuredMapper : RmObjectToStructuredMapper<Link> {
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: Link): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            this.putIfNotNull("|meaning", rmObject.meaning?.value)
-            this.putIfNotNull("|type", rmObject.type?.value)
-            this.putIfNotNull("|target", rmObject.target?.value)
+            this.putIfNotNull("|$MEANING", rmObject.meaning?.value)
+            this.putIfNotNull("|$TYPE", rmObject.type?.value)
+            this.putIfNotNull("|$TARGET", rmObject.target?.value)
             this
         }
 

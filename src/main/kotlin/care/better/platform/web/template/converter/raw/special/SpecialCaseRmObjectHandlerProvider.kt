@@ -33,7 +33,8 @@ internal object SpecialCaseRmObjectHandlerProvider {
             Pair(DvIntervalLowerIncludedHandler.specialAttribute, DvIntervalLowerIncludedHandler),
             Pair(DvIntervalUpperIncludedHandler.specialAttribute, DvIntervalUpperIncludedHandler),
             Pair(DvIntervalLowerUnboundedHandler.specialAttribute, DvIntervalLowerUnboundedHandler),
-            Pair(DvIntervalUpperUnboundedHandler.specialAttribute, DvIntervalUpperUnboundedHandler))
+            Pair(DvIntervalUpperUnboundedHandler.specialAttribute, DvIntervalUpperUnboundedHandler),
+            Pair(IntervalEventSampleCountHandler.specialAttribute, IntervalEventSampleCountHandler))
 
     /**
      * Checks if [SpecialCaseRmObjectHandler] for the attribute exists.

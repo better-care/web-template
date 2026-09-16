@@ -14,7 +14,7 @@
 
 {
   "medtronic_vbhc_crc_clinical_outcomes_follow-up/_feeder_audit/originating_system_audit|system_id": "FormRenderer",
-  "medtronic_vbhc_crc_clinical_outcomes_follow-up/_feeder_audit/original_content": "{\"/generic-fieldset-8009165/generic-input_text-2463686\":[],\"/generic-fieldset-8009165/generic-input_text-6521670\":[],\"/generic-fieldset-5885294/generic-fieldset-7569843/generic-coded_text-8621066\":[]}",
+  "medtronic_vbhc_crc_clinical_outcomes_follow-up/_feeder_audit/original_content|value": "{\"/generic-fieldset-8009165/generic-input_text-2463686\":[],\"/generic-fieldset-8009165/generic-input_text-6521670\":[],\"/generic-fieldset-5885294/generic-fieldset-7569843/generic-coded_text-8621066\":[]}",
   "medtronic_vbhc_crc_clinical_outcomes_follow-up/_feeder_audit/original_content|formalism": "application/json",
   "medtronic_vbhc_crc_clinical_outcomes_follow-up/language|code": "en",
   "medtronic_vbhc_crc_clinical_outcomes_follow-up/language|terminology": "ISO_639-1",

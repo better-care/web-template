@@ -19,6 +19,8 @@ import care.better.openehr.rm.RmObject
 import care.better.platform.time.format.OpenEhrDateTimeFormatter
 import care.better.platform.time.temporal.*
 import care.better.platform.web.template.converter.WebTemplatePathSegment
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CONTEXT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PARTICIPATION_IDENTIFIERS
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.isEmptyInDepth
@@ -46,7 +48,6 @@ class FlatToStructuredConverter(private val objectMapper: ObjectMapper) : (Map<S
 
     companion object {
         private val segmentSeparatorPattern = Pattern.compile("/", Pattern.LITERAL)
-        private const val ctx = "ctx"
 
         @JvmStatic
         fun getInstance(objectMapper: ObjectMapper): FlatToStructuredConverter {
@@ -110,7 +111,7 @@ class FlatToStructuredConverter(private val objectMapper: ObjectMapper) : (Map<S
         val currentNode: ObjectNode = if (node.isObject) node as ObjectNode else (node as ArrayNode).addObject()
         entries.groupBy { it.name }.asSequence().forEach { entry ->
             when {
-                entry.key == ctx -> convertCtx(entry.value, currentNode)
+                entry.key == CONTEXT -> convertCtx(entry.value, currentNode)
                 entry.value.all { it.child == null } -> {
                     if (entry.value.size == 1 && entry.key == "|raw") {
                         currentNode.replace(entry.key, getWithoutRaw(entry.value.iterator().next().value))
@@ -191,7 +192,7 @@ class FlatToStructuredConverter(private val objectMapper: ObjectMapper) : (Map<S
                 }
                 else -> {
                     currentNode.putArray(entry.key).apply {
-                        if (entry.key.contains("participation_identifiers")) { //Only array of array case in FLAT format
+                        if (entry.key.contains(PARTICIPATION_IDENTIFIERS)) { //Only array of array case in FLAT format
                             entry.value.groupBy { it.order }.asSequence().sortedBy { it.key }.forEach {
                                 this.addArray().apply {
                                     if (it.value.size == 1 && it.value[0].value is String) {

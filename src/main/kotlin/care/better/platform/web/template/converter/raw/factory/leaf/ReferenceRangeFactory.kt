@@ -17,6 +17,9 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LOWER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MEANING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UPPER
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
@@ -49,7 +52,7 @@ internal object ReferenceRangeFactory : RmObjectLeafNodeFactory<ReferenceRange>(
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean =
         when (attribute.attribute) {
-            "lower" -> {
+            LOWER -> {
                 getOrCreateRange(rmObject).lower =
                     jsonNode.mapNotNull {
                         RmObjectLeafNodeFactoryDelegator.delegateOrThrow(
@@ -61,7 +64,7 @@ internal object ReferenceRangeFactory : RmObjectLeafNodeFactory<ReferenceRange>(
                     }.firstOrNull()
                 true
             }
-            "upper" -> {
+            UPPER -> {
                 getOrCreateRange(rmObject).upper =
                     jsonNode.mapNotNull {
                         RmObjectLeafNodeFactoryDelegator.delegateOrThrow(
@@ -73,7 +76,7 @@ internal object ReferenceRangeFactory : RmObjectLeafNodeFactory<ReferenceRange>(
                     }.firstOrNull()
                 true
             }
-            "meaning" -> {
+            MEANING -> {
                 if (jsonNode.isArray) {
                     rmObject.meaning =
                         jsonNode.mapNotNull {

@@ -15,12 +15,15 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NORMAL_RANGE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NORMAL_STATUS
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.OTHER_REFERENCE_RANGES
 import care.better.platform.web.template.converter.mapper.putCollectionAsArray
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.mapper.putSingletonAsArray
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.node.ObjectNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvOrdered
 
 /**
@@ -39,14 +42,14 @@ internal abstract class DvOrderedToStructuredMapper<T : DvOrdered> : RmObjectToS
         objectNode: ObjectNode
     ) {
         rmObject.normalRange?.also {
-            objectNode.putSingletonAsArray("_normal_range") { NormalRangeToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+            objectNode.putSingletonAsArray("_$NORMAL_RANGE") { NormalRangeToStructuredMapper.map(webTemplateNode, valueConverter, it) }
         }
 
-        objectNode.putCollectionAsArray("_other_reference_ranges", rmObject.otherReferenceRanges) {
+        objectNode.putCollectionAsArray("_$OTHER_REFERENCE_RANGES", rmObject.otherReferenceRanges) {
             ReferenceRangeToStructuredMapper.map(webTemplateNode, valueConverter, it)
         }
 
-        objectNode.putIfNotNull("|normal_status", rmObject.normalStatus?.codeString)
+        objectNode.putIfNotNull("|$NORMAL_STATUS", rmObject.normalStatus?.codeString)
     }
 
     protected open fun mapFormatted(
@@ -56,13 +59,13 @@ internal abstract class DvOrderedToStructuredMapper<T : DvOrdered> : RmObjectToS
         objectNode: ObjectNode
     ) {
         rmObject.normalRange?.also {
-            objectNode.putSingletonAsArray("_normal_range") { NormalRangeToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+            objectNode.putSingletonAsArray("_$NORMAL_RANGE") { NormalRangeToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
         }
 
-        objectNode.putCollectionAsArray("_other_reference_ranges", rmObject.otherReferenceRanges) {
+        objectNode.putCollectionAsArray("_$OTHER_REFERENCE_RANGES", rmObject.otherReferenceRanges) {
             ReferenceRangeToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it)
         }
 
-        objectNode.putIfNotNull("|normal_status", rmObject.normalStatus?.codeString)
+        objectNode.putIfNotNull("|$NORMAL_STATUS", rmObject.normalStatus?.codeString)
     }
 }

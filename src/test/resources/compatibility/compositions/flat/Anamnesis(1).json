@@ -14,7 +14,7 @@
 
 {
   "anamnesis/_feeder_audit/originating_system_audit|system_id": "FormRenderer",
-  "anamnesis/_feeder_audit/original_content": "{}",
+  "anamnesis/_feeder_audit/original_content|value": "{}",
   "anamnesis/_feeder_audit/original_content|formalism": "application/json",
   "anamnesis/language|code": "en",
   "anamnesis/language|terminology": "ISO_639-1",

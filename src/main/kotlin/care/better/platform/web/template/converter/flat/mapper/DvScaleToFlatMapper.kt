@@ -16,6 +16,9 @@
 package care.better.platform.web.template.converter.flat.mapper
 
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CODE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.SCALE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
@@ -35,9 +38,9 @@ internal object DvScaleToFlatMapper : DvOrderedToFlatMapper<DvScale>() {
             rmObject: DvScale,
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
-        flatConversionContext["$webTemplatePath|code"] = rmObject.symbol?.definingCode?.codeString
-        flatConversionContext["$webTemplatePath|value"] = rmObject.symbol?.value
-        flatConversionContext["$webTemplatePath|scale"] = rmObject.value
+        flatConversionContext["$webTemplatePath|$CODE"] = rmObject.symbol?.definingCode?.codeString
+        flatConversionContext["$webTemplatePath|$VALUE"] = rmObject.symbol?.value
+        flatConversionContext["$webTemplatePath|$SCALE"] = rmObject.value
         super.map(webTemplateNode, valueConverter, rmObject, webTemplatePath, flatConversionContext)
     }
 
@@ -47,9 +50,9 @@ internal object DvScaleToFlatMapper : DvOrderedToFlatMapper<DvScale>() {
             rmObject: DvScale,
             webTemplatePath: String,
             formattedFlatConversionContext: FormattedFlatMappingContext) {
-        formattedFlatConversionContext["$webTemplatePath|code"] = rmObject.symbol?.definingCode?.codeString
-        formattedFlatConversionContext["$webTemplatePath|value"] = rmObject.symbol?.value
-        formattedFlatConversionContext["$webTemplatePath|scale"] = rmObject.value.toString()
+        formattedFlatConversionContext["$webTemplatePath|$CODE"] = rmObject.symbol?.definingCode?.codeString
+        formattedFlatConversionContext["$webTemplatePath|$VALUE"] = rmObject.symbol?.value
+        formattedFlatConversionContext["$webTemplatePath|$SCALE"] = rmObject.value.toString()
         super.mapFormatted(webTemplateNode, valueConverter, rmObject, webTemplatePath, formattedFlatConversionContext)
     }
 }

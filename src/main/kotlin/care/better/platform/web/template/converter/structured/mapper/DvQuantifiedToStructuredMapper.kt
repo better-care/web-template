@@ -15,10 +15,11 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MAGNITUDE_STATUS
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.node.ObjectNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvQuantified
 
 /**
@@ -33,7 +34,7 @@ internal abstract class DvQuantifiedToStructuredMapper<T : DvQuantified> : DvOrd
 
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: T, objectNode: ObjectNode) {
         super.map(webTemplateNode, valueConverter, rmObject, objectNode)
-        objectNode.putIfNotNull("|magnitude_status", rmObject.magnitudeStatus)
+        objectNode.putIfNotNull("|$MAGNITUDE_STATUS", rmObject.magnitudeStatus)
     }
 
     override fun mapFormatted(
@@ -43,6 +44,6 @@ internal abstract class DvQuantifiedToStructuredMapper<T : DvQuantified> : DvOrd
         objectNode: ObjectNode
     ) {
         super.mapFormatted(webTemplateNode, valueConverter, rmObject, objectNode)
-        objectNode.putIfNotNull("|magnitude_status", rmObject.magnitudeStatus)
+        objectNode.putIfNotNull("|$MAGNITUDE_STATUS", rmObject.magnitudeStatus)
     }
 }

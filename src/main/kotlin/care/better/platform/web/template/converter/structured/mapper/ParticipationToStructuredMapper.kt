@@ -15,18 +15,31 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.FUNCTION
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.IDENTIFIERS_ASSIGNER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.IDENTIFIERS_ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.IDENTIFIERS_ISSUER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.IDENTIFIERS_TYPE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID_NAMESPACE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID_SCHEME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MODE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NAME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.RELATIONSHIP
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putCollectionAsArray
 import care.better.platform.web.template.converter.mapper.putIfNotNull
+import care.better.platform.web.template.converter.mapper.putSingletonAsArray
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.databind.node.TextNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.base.basetypes.GenericId
 import org.openehr.base.basetypes.ObjectRef
 import org.openehr.rm.common.Participation
 import org.openehr.rm.common.PartyIdentified
+import org.openehr.rm.common.PartyRelated
 
 /**
  * @author Primoz Delopst
@@ -38,6 +51,9 @@ internal object ParticipationToStructuredMapper : RmObjectToStructuredMapper<Par
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: Participation): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
             mapInternal(rmObject, this)
+            (rmObject.performer as? PartyRelated)?.relationship?.also {
+                putSingletonAsArray(RELATIONSHIP) { DvCodedTextToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+            }
             this
         }
 
@@ -47,36 +63,36 @@ internal object ParticipationToStructuredMapper : RmObjectToStructuredMapper<Par
     private fun mapInternal(
             rmObject: Participation,
             objectNode: ObjectNode) {
-        objectNode.putIfNotNull("|function", rmObject.function?.value)
-        objectNode.putIfNotNull("|mode", rmObject.mode?.value)
+        objectNode.putIfNotNull("|$FUNCTION", rmObject.function?.value)
+        objectNode.putIfNotNull("|$MODE", rmObject.mode?.value)
 
         val performer = rmObject.performer
         if (performer is PartyIdentified) {
-            objectNode.putIfNotNull("|name", performer.name)
+            objectNode.putIfNotNull("|$NAME", performer.name)
             performer.externalRef?.also { mapPartyRef(it, objectNode) }
 
             objectNode.putCollectionAsArray(
-                "|identifiers_assigner",
+                "|$IDENTIFIERS_ASSIGNER",
                 performer.identifiers.filter { !it.assigner.isNullOrBlank() }) {
                 it.assigner?.let { assigner -> TextNode.valueOf(assigner) }
             }
             objectNode.putCollectionAsArray(
-                "|identifiers_issuer",
+                "|$IDENTIFIERS_ISSUER",
                 performer.identifiers.filter { !it.issuer.isNullOrBlank() }) { it.issuer?.let { issuer -> TextNode.valueOf(issuer) } }
             objectNode.putCollectionAsArray(
-                "|identifiers_type",
+                "|$IDENTIFIERS_TYPE",
                 performer.identifiers.filter { !it.type.isNullOrBlank() }) { it.type?.let { type -> TextNode.valueOf(type) } }
             objectNode.putCollectionAsArray(
-                "|identifiers_id",
+                "|$IDENTIFIERS_ID",
                 performer.identifiers.filter { !it.id.isNullOrBlank() }) { it.id?.let { id -> TextNode.valueOf(id) } }
         }
     }
 
     private fun mapPartyRef(objectRef: ObjectRef, objectNode: ObjectNode) {
-        objectNode.putIfNotNull("|id", objectRef.id?.value)
-        objectNode.putIfNotNull("|id_namespace", objectRef.namespace)
+        objectNode.putIfNotNull("|$ID", objectRef.id?.value)
+        objectNode.putIfNotNull("|$ID_NAMESPACE", objectRef.namespace)
         if (objectRef.id is GenericId) {
-            objectNode.putIfNotNull("|id_scheme", (objectRef.id as GenericId).scheme)
+            objectNode.putIfNotNull("|$ID_SCHEME", (objectRef.id as GenericId).scheme)
         }
     }
 }

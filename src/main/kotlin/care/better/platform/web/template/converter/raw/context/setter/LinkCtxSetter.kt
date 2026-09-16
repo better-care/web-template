@@ -15,6 +15,9 @@
 
 package care.better.platform.web.template.converter.raw.context.setter
 
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MEANING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TARGET
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TYPE
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.value.ValueConverter
@@ -49,9 +52,9 @@ internal object LinkCtxSetter : CtxSetter {
     private fun addLinks(builder: ConversionContext.Builder, link: Map<String, String>, index: Int) {
         builder.addLink(
             Link().apply {
-                link["|meaning"]?.also { this.meaning = getDvTextOrCodedText(it) }
-                link["|type"]?.also { this.type = getDvTextOrCodedText(it) }
-                link["|target"]?.also { this.target = DvEhrUri().apply { this.value = it } }
+                link["|$MEANING"]?.also { this.meaning = getDvTextOrCodedText(it) }
+                link["|$TYPE"]?.also { this.type = getDvTextOrCodedText(it) }
+                link["|$TARGET"]?.also { this.target = DvEhrUri().apply { this.value = it } }
             },
             index)
     }

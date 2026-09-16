@@ -18,6 +18,7 @@ package care.better.platform.web.template.converter.raw.factory.node
 import care.better.platform.template.AmNode
 import care.better.platform.template.AmUtils
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY_OPENEHR
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import org.openehr.am.aom.CCodePhrase
 import org.openehr.rm.datastructures.IntervalEvent
@@ -46,7 +47,7 @@ internal object IntervalEventFactory : EventFactory<IntervalEvent>() {
     override fun createEvent(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): IntervalEvent =
         IntervalEvent().apply {
             this.mathFunction = DvCodedText().apply {
-                this.definingCode = CodePhrase.create("openehr", DEFAULT_CODE)
+                this.definingCode = CodePhrase.create(TERMINOLOGY_OPENEHR, DEFAULT_CODE)
                 this.value = MATH_FUNCTIONS[DEFAULT_CODE]
             }
 

@@ -16,6 +16,8 @@
 package care.better.platform.web.template.builder.postprocess
 
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CATEGORY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LANGUAGE
 
 
 /**
@@ -29,9 +31,9 @@ class CompositionChildrenPostProcessor : WebTemplateNodeChildrenPostProcessor {
         var languageIndex = -1
 
         webTemplateNode.children.forEachIndexed { index, node ->
-            if ("/category" == node.path)
+            if ("/$CATEGORY" == node.path)
                 categoryIndex = index
-            else if ("/language" == node.path)
+            else if ("/$LANGUAGE" == node.path)
                 languageIndex = index
         }
 

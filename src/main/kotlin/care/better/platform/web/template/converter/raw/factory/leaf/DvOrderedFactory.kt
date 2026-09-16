@@ -18,6 +18,10 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 import care.better.openehr.terminology.OpenEhrTerminology
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NORMAL_RANGE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NORMAL_STATUS
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.OTHER_REFERENCE_RANGES
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY_OPENEHR
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
@@ -41,23 +45,23 @@ internal abstract class DvOrderedFactory<T : DvOrdered> : RmObjectLeafNodeFactor
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean =
         when (attribute.attribute) {
-            "normal_status" -> {
+            NORMAL_STATUS -> {
                 val textValue = jsonNode.asText()
                 if (textValue != null) {
                     if (OpenEhrTerminology.getNormalStatusCodes().contains(textValue.uppercase()))
-                        rmObject.normalStatus = CodePhrase.create("openehr", textValue.uppercase())
+                        rmObject.normalStatus = CodePhrase.create(TERMINOLOGY_OPENEHR, textValue.uppercase())
                     else
                         throw ConversionException("Invalid NORMAL_STATUS code: $textValue", webTemplatePath.toString())
                 }
                 true
             }
-            "_normal_range" -> {
+            "_$NORMAL_RANGE" -> {
                 rmObject.normalRange = jsonNode.mapNotNull {
                     NormalRangeFactory.create(conversionContext, amNode, it, webTemplatePath + attribute.originalAttribute)
                 }.firstOrNull()
                 true
             }
-            "_other_reference_ranges" -> {
+            "_$OTHER_REFERENCE_RANGES" -> {
                 rmObject.otherReferenceRanges = jsonNode.mapIndexedNotNull { index, node ->
                     ReferenceRangeFactory.create(conversionContext, amNode, node, WebTemplatePath(attribute.originalAttribute, webTemplatePath, index))
                 }.toMutableList()

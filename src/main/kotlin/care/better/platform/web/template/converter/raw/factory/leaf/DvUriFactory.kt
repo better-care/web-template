@@ -17,6 +17,7 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import org.openehr.rm.datatypes.DvUri
@@ -38,7 +39,7 @@ internal object DvUriFactory : RmObjectLeafNodeFactory<DvUri>() {
             rmObject: DvUri,
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean =
-        if (attribute.attribute.isBlank() || attribute.attribute == "value") {
+        if (attribute.attribute.isBlank() || attribute.attribute == VALUE) {
             rmObject.value = jsonNode.asText()
             true
         } else {

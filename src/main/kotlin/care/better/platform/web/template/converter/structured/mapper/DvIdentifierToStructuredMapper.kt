@@ -15,12 +15,16 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ASSIGNER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ISSUER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TYPE
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvIdentifier
 
 /**
@@ -43,9 +47,9 @@ internal object DvIdentifierToStructuredMapper : RmObjectToStructuredMapper<DvId
         }
 
     private fun mapDvIdentifier(dvIdentifier: DvIdentifier, objectNode: ObjectNode) {
-        objectNode.putIfNotNull("|id", dvIdentifier.id)
-        objectNode.putIfNotNull("|issuer", dvIdentifier.issuer)
-        objectNode.putIfNotNull("|assigner", dvIdentifier.assigner)
-        objectNode.putIfNotNull("|type", dvIdentifier.type)
+        objectNode.putIfNotNull("|$ID", dvIdentifier.id)
+        objectNode.putIfNotNull("|$ISSUER", dvIdentifier.issuer)
+        objectNode.putIfNotNull("|$ASSIGNER", dvIdentifier.assigner)
+        objectNode.putIfNotNull("|$TYPE", dvIdentifier.type)
     }
 }

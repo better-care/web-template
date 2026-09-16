@@ -18,6 +18,14 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CODE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ENCODING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.FORMATTING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LANGUAGE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MAPPING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.OTHER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import org.openehr.rm.datatypes.DvCodedText
@@ -32,13 +40,13 @@ import org.openehr.rm.datatypes.DvText
 internal object DvTextFactory : RmObjectLeafNodeFactory<DvText>() {
 
     override fun removeDependentValues(map: MutableMap<AttributeDto, JsonNode>): Boolean =
-        if (map[AttributeDto.forAttribute("code")] != null || map[AttributeDto.forAttribute("terminology")] != null)
+        if (map[AttributeDto.forAttribute(CODE)] != null || map[AttributeDto.forAttribute(TERMINOLOGY)] != null)
             DvCodedTextFactory.getInstance().removeDependentValues(map)
         else
             false
 
     override fun createInstance(attributes: Set<AttributeDto>): DvText =
-        if (attributes.contains(AttributeDto.forAttribute("code")) || attributes.contains(AttributeDto.forAttribute("terminology")))
+        if (attributes.contains(AttributeDto.forAttribute(CODE)) || attributes.contains(AttributeDto.forAttribute(TERMINOLOGY)))
             DvCodedText()
         else
             DvText()
@@ -57,21 +65,32 @@ internal object DvTextFactory : RmObjectLeafNodeFactory<DvText>() {
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean {
         return if (rmObject is DvCodedText) {
-            return DvCodedTextFactory.getInstance().handleField(conversionContext, amNode, attribute, rmObject, jsonNode, webTemplatePath)
+            DvCodedTextFactory.getInstance().handleField(conversionContext, amNode, attribute, rmObject, jsonNode, webTemplatePath)
         } else {
-            if (attribute.attribute.isBlank() || attribute.attribute == "value") {
-                rmObject.value = jsonNode.asText()
-                true
-            } else if (attribute.attribute == "_mapping") {
-                rmObject.mappings = jsonNode.mapIndexedNotNull { index, node ->
-                    TermMappingFactory.create(conversionContext, amNode, node, WebTemplatePath(attribute.originalAttribute, webTemplatePath, index))
-                }.toMutableList()
-                true
-            } else if (attribute.attribute == "formatting") {
-                rmObject.formatting = jsonNode.asText()
-                true
-            } else {
-                false
+            when {
+                attribute.attribute.isBlank() || attribute.attribute == VALUE || attribute.attribute == OTHER -> {
+                    rmObject.value = jsonNode.asText()
+                    true
+                }
+                attribute.attribute == "_$MAPPING" -> {
+                    rmObject.mappings = jsonNode.mapIndexedNotNull { index, node ->
+                        TermMappingFactory.create(conversionContext, amNode, node, WebTemplatePath(attribute.originalAttribute, webTemplatePath, index))
+                    }.toMutableList()
+                    true
+                }
+                attribute.attribute == FORMATTING -> {
+                    rmObject.formatting = jsonNode.asText()
+                    true
+                }
+                attribute.attribute == "_$LANGUAGE" -> {
+                    jsonNode.forEach { node -> CodePhraseFactory.create(conversionContext, amNode, node, webTemplatePath)?.also { rmObject.language = it } }
+                    true
+                }
+                attribute.attribute == "_$ENCODING" -> {
+                    jsonNode.forEach { node -> CodePhraseFactory.create(conversionContext, amNode, node, webTemplatePath)?.also { rmObject.encoding = it } }
+                    true
+                }
+                else -> false
             }
         }
     }

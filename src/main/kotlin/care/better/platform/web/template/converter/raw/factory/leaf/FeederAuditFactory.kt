@@ -17,6 +17,12 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.FEEDER_SYSTEM_AUDIT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.FEEDER_SYSTEM_ITEM_ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ORIGINAL_CONTENT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ORIGINAL_CONTENT_MULTIMEDIA
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ORIGINATING_SYSTEM_AUDIT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ORIGINATING_SYSTEM_ITEM_ID
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
@@ -49,29 +55,29 @@ internal object FeederAuditFactory : RmObjectLeafNodeFactory<FeederAudit>() {
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean =
         when {
-            attribute.attribute.startsWith("original_content") -> {
+            attribute.attribute.startsWith(ORIGINAL_CONTENT) -> {
                 handleOriginalContent(attribute.attribute, conversionContext, amNode, jsonNode, rmObject, webTemplatePath)
                 true
             }
-            attribute.attribute == "originating_system_item_id" -> {
+            attribute.attribute == ORIGINATING_SYSTEM_ITEM_ID -> {
                 rmObject.originatingSystemItemIds = jsonNode.mapIndexedNotNull { index, node ->
                     DvIdentifierFactory.create(conversionContext, amNode, node, WebTemplatePath(attribute.originalAttribute, webTemplatePath, index))
                 }.toMutableList()
                 true
             }
-            attribute.attribute == "feeder_system_item_id" -> {
+            attribute.attribute == FEEDER_SYSTEM_ITEM_ID -> {
                 rmObject.feederSystemItemIds = jsonNode.mapIndexedNotNull { index, node ->
                     DvIdentifierFactory.create(conversionContext, amNode, node, WebTemplatePath(attribute.originalAttribute, webTemplatePath, index))
                 }.toMutableList()
                 true
             }
-            attribute.attribute == "originating_system_audit" -> {
+            attribute.attribute == ORIGINATING_SYSTEM_AUDIT -> {
                 rmObject.originatingSystemAudit = jsonNode.mapNotNull {
                     FeederAuditDetailsFactory.create(conversionContext, amNode, it, webTemplatePath + attribute.originalAttribute)
                 }.firstOrNull()
                 true
             }
-            attribute.attribute == "feeder_system_audit" -> {
+            attribute.attribute == FEEDER_SYSTEM_AUDIT -> {
                 rmObject.feederSystemAudit = jsonNode.mapNotNull {
                     FeederAuditDetailsFactory.create(conversionContext, amNode, it, webTemplatePath + attribute.originalAttribute)
                 }.firstOrNull()
@@ -93,7 +99,7 @@ internal object FeederAuditFactory : RmObjectLeafNodeFactory<FeederAudit>() {
             jsonNode: JsonNode,
             rmObject: FeederAudit,
             webTemplatePath: WebTemplatePath) {
-        if (attributeName == "original_content_multimedia") {
+        if (attributeName == ORIGINAL_CONTENT_MULTIMEDIA) {
             rmObject.originalContent = jsonNode.mapNotNull {
                 DvMultimediaFactory.create(conversionContext, amNode, it, webTemplatePath + attributeName)
             }.firstOrNull()

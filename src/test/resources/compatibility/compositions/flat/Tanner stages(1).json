@@ -14,7 +14,7 @@
 
 {
   "tanner_stages/_feeder_audit/originating_system_audit|system_id": "FormRenderer",
-  "tanner_stages/_feeder_audit/original_content": "{\"/generic-coded_text-8052464\":[{\"|code\":\"9cd9da98-f192-4517-8612-0a03f1c09c15\",\"|value\":\"Male\"}]}",
+  "tanner_stages/_feeder_audit/original_content|value": "{\"/generic-coded_text-8052464\":[{\"|code\":\"9cd9da98-f192-4517-8612-0a03f1c09c15\",\"|value\":\"Male\"}]}",
   "tanner_stages/_feeder_audit/original_content|formalism": "application/json",
   "tanner_stages/language|code": "en",
   "tanner_stages/language|terminology": "ISO_639-1",

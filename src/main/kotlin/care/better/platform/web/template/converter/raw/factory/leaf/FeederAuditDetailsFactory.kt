@@ -17,6 +17,15 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LOCATION
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PROVIDER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PROVIDER_RELATED
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.SUBJECT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.SUBJECT_RELATED
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.SUBJECT_SELF
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.SYSTEM_ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TIME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VERSION_ID
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
@@ -50,17 +59,17 @@ internal object FeederAuditDetailsFactory : RmObjectLeafNodeFactory<FeederAuditD
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean =
         when (attribute.attribute) {
-            "system_id" -> {
+            SYSTEM_ID -> {
                 rmObject.systemId = jsonNode.asText()
                 true
             }
 
-            "version_id" -> {
+            VERSION_ID -> {
                 rmObject.versionId = jsonNode.asText()
                 true
             }
 
-            "time" -> {
+            TIME -> {
                 rmObject.time = DvDateTimeFactory.create(
                         conversionContext,
                         amNode,
@@ -72,42 +81,42 @@ internal object FeederAuditDetailsFactory : RmObjectLeafNodeFactory<FeederAuditD
                 true
             }
 
-            "location" -> {
+            LOCATION -> {
                 rmObject.location = jsonNode.mapNotNull {
                     PartyIdentifiedFactory.create(conversionContext, amNode, it, webTemplatePath + attribute.originalAttribute)
                 }.firstOrNull()
                 true
             }
 
-            "provider" -> {
+            PROVIDER -> {
                 rmObject.provider = jsonNode.mapNotNull {
                     PartyIdentifiedFactory.create(conversionContext, amNode, it, webTemplatePath + attribute.originalAttribute)
                 }.firstOrNull()
                 true
             }
 
-            "provider_related" -> {
+            PROVIDER_RELATED -> {
                 rmObject.provider = jsonNode.mapNotNull {
                     PartyRelatedFactory.create(conversionContext, amNode, it, webTemplatePath + attribute.originalAttribute)
                 }.firstOrNull()
                 true
             }
 
-            "subject" -> {
+            SUBJECT -> {
                 rmObject.subject = jsonNode.mapNotNull {
                     PartyIdentifiedFactory.create(conversionContext, amNode, it, webTemplatePath + attribute.originalAttribute)
                 }.firstOrNull()
                 true
             }
 
-            "subject_related" -> {
+            SUBJECT_RELATED -> {
                 rmObject.subject = jsonNode.mapNotNull {
                     PartyRelatedFactory.create(conversionContext, amNode, it, webTemplatePath + attribute.originalAttribute)
                 }.firstOrNull()
                 true
             }
 
-            "subject_self" -> {
+            SUBJECT_SELF -> {
                 rmObject.subject = jsonNode.mapNotNull {
                     PartyIdentifiedFactory.create(conversionContext, amNode, it, webTemplatePath + attribute.originalAttribute)
                 }.firstOrNull()

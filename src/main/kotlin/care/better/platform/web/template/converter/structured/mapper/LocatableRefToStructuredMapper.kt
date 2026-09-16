@@ -15,11 +15,12 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PATH
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.base.basetypes.LocatableRef
 
 /**
@@ -31,13 +32,13 @@ import org.openehr.base.basetypes.LocatableRef
 internal object LocatableRefToStructuredMapper : RmObjectToStructuredMapper<LocatableRef> {
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: LocatableRef): JsonNode =
         with(ObjectRefToStructuredMapper.map(webTemplateNode, valueConverter, rmObject) as ObjectNode) {
-            this.putIfNotNull("|path", rmObject.path)
+            this.putIfNotNull("|$PATH", rmObject.path)
             this
         }
 
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: LocatableRef): JsonNode =
         with(ObjectRefToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, rmObject) as ObjectNode) {
-            this.putIfNotNull("|path", rmObject.path)
+            this.putIfNotNull("|$PATH", rmObject.path)
             this
         }
 }

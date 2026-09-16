@@ -16,6 +16,7 @@
 package care.better.platform.web.template.path.evaluator
 
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CONTEXT
 import care.better.platform.web.template.path.model.WebTemplatePathExpressionNode
 import care.better.platform.web.template.path.model.WebTemplatePathExpressionNode.*
 import care.better.platform.web.template.path.model.PathFunction
@@ -82,7 +83,7 @@ internal class WebTemplatePathExpressionEvaluator private constructor(private va
         }
 
         private fun stripWithTemplate(structuredRmObject: ObjectNode, webTemplateNode: WebTemplateNode): List<TrackedNode> {
-            val compositionFields = structuredRmObject.fieldNames().asSequence().toList().filter { it != "ctx" }
+            val compositionFields = structuredRmObject.fieldNames().asSequence().toList().filter { it != CONTEXT }
             return if (compositionFields.size == 1) {
                 flattenArrays(structuredRmObject.get(compositionFields[0])).map { TrackedNode(it, webTemplateNode) }
             } else {

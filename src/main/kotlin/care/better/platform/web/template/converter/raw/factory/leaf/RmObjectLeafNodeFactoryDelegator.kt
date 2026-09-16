@@ -209,4 +209,15 @@ object RmObjectLeafNodeFactoryDelegator {
         rmObjectLeafNodeFactories.values.asSequence()
             .filter { it.canRemoveDependantValues() }
             .any { it.isStructuredRmObjectEmpty(node)  }
+
+    /**
+     * Checks whether the given RM type is a leaf type (i.e. an [RmObjectLeafNodeFactory] is registered for it).
+     *
+     * @param rmType [RmObject] RM type
+     * @return [Boolean] indicating whether the RM type is a leaf type
+     */
+    @JvmStatic
+    fun hasLeafNodeFactory(rmType: String): Boolean =
+        rmObjectLeafNodeFactories.containsKey(RmUtils.getNonGenericRmNamePart(rmType))
+
 }

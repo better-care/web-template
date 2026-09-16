@@ -15,10 +15,16 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY_IS_PERCENT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MAGNITUDE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UNIT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UNIT_DISPLAY_NAME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UNIT_SYSTEM
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvQuantity
 
 /**
@@ -35,10 +41,12 @@ internal object DvQuantityToFlatMapper : DvQuantifiedToFlatMapper<DvQuantity>() 
             rmObject: DvQuantity,
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
-        flatConversionContext["$webTemplatePath|magnitude"] = rmObject.magnitude
-        flatConversionContext["$webTemplatePath|unit"] = rmObject.units
-        flatConversionContext["$webTemplatePath|unit_system"] = rmObject.unitsSystem
-        flatConversionContext["$webTemplatePath|unit_display_name"] = rmObject.unitsDisplayName
+        flatConversionContext["$webTemplatePath|$MAGNITUDE"] = rmObject.magnitude
+        flatConversionContext["$webTemplatePath|$UNIT"] = rmObject.units
+        flatConversionContext["$webTemplatePath|$UNIT_SYSTEM"] = rmObject.unitsSystem
+        flatConversionContext["$webTemplatePath|$UNIT_DISPLAY_NAME"] = rmObject.unitsDisplayName
+        flatConversionContext["$webTemplatePath|$ACCURACY"] = rmObject.accuracy
+        flatConversionContext["$webTemplatePath|$ACCURACY_IS_PERCENT"] = rmObject.accuracyIsPercent
 
         super.map(webTemplateNode, valueConverter, rmObject, webTemplatePath, flatConversionContext)
     }
@@ -49,10 +57,12 @@ internal object DvQuantityToFlatMapper : DvQuantifiedToFlatMapper<DvQuantity>() 
             rmObject: DvQuantity,
             webTemplatePath: String,
             formattedFlatConversionContext: FormattedFlatMappingContext) {
-        formattedFlatConversionContext["$webTemplatePath|magnitude"] = valueConverter.formatDouble(rmObject.magnitude)
-        formattedFlatConversionContext["$webTemplatePath|unit"] = rmObject.units
-        formattedFlatConversionContext["$webTemplatePath|unit_system"] = rmObject.unitsSystem
-        formattedFlatConversionContext["$webTemplatePath|unit_display_name"] = rmObject.unitsDisplayName
+        formattedFlatConversionContext["$webTemplatePath|$MAGNITUDE"] = valueConverter.formatDouble(rmObject.magnitude)
+        formattedFlatConversionContext["$webTemplatePath|$UNIT"] = rmObject.units
+        formattedFlatConversionContext["$webTemplatePath|$UNIT_SYSTEM"] = rmObject.unitsSystem
+        formattedFlatConversionContext["$webTemplatePath|$UNIT_DISPLAY_NAME"] = rmObject.unitsDisplayName
+        formattedFlatConversionContext["$webTemplatePath|$ACCURACY"] = rmObject.accuracy?.toString()
+        formattedFlatConversionContext["$webTemplatePath|$ACCURACY_IS_PERCENT"] = rmObject.accuracyIsPercent?.toString()
 
         super.mapFormatted(webTemplateNode, valueConverter, rmObject, webTemplatePath, formattedFlatConversionContext)
     }

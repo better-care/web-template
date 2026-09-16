@@ -17,6 +17,7 @@ package care.better.platform.web.template.converter.flat.mapper
 
 import care.better.platform.template.AmUtils
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
@@ -48,6 +49,11 @@ internal object DvTimeToFlatMapper : DvQuantifiedToFlatMapper<DvTime>() {
         } catch (ignored: DateTimeException) {
             flatConversionContext[webTemplatePath] = value
         }
+
+        rmObject.accuracy?.also {
+            DvDurationToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/_$ACCURACY", flatConversionContext)
+        }
+
         super.map(webTemplateNode, valueConverter, rmObject, webTemplatePath, flatConversionContext)
     }
 
@@ -67,6 +73,11 @@ internal object DvTimeToFlatMapper : DvQuantifiedToFlatMapper<DvTime>() {
         } catch (ignored: DateTimeException) {
             formattedFlatConversionContext[webTemplatePath] = value
         }
+
+        rmObject.accuracy?.also {
+            DvDurationToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/_$ACCURACY", formattedFlatConversionContext)
+        }
+
         super.mapFormatted(webTemplateNode, valueConverter, rmObject, webTemplatePath, formattedFlatConversionContext)
     }
 }

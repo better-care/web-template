@@ -24,6 +24,8 @@ import care.better.platform.web.template.builder.context.WebTemplateBuilderConte
 import care.better.platform.web.template.builder.model.input.WebTemplateBindingCodedValue
 import care.better.platform.web.template.builder.model.input.WebTemplateCodedValue
 import care.better.platform.web.template.converter.constant.WebTemplateConstants.DEFAULT_LANGUAGE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY_LOCAL
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY_OPENEHR
 import org.apache.commons.lang3.StringUtils
 import org.openehr.am.aom.TermBindingItem
 
@@ -45,14 +47,14 @@ internal object CodePhraseUtils {
     fun getCodedValue(terminology: String, code: String, amNode: AmNode, context: WebTemplateBuilderContext): WebTemplateCodedValue {
         val webTemplateCodedValue: WebTemplateCodedValue =
             when (terminology) {
-                "openehr" -> WebTemplateCodedValue(code, getOpenEhrTerminologyText(code, context.defaultLanguage))
-                "local" -> WebTemplateCodedValue(code, getLocalTerminologyText(code, amNode, context.defaultLanguage))
+                TERMINOLOGY_OPENEHR -> WebTemplateCodedValue(code, getOpenEhrTerminologyText(code, context.defaultLanguage))
+                TERMINOLOGY_LOCAL -> WebTemplateCodedValue(code, getLocalTerminologyText(code, amNode, context.defaultLanguage))
                 else -> WebTemplateCodedValue(code, findTermText(amNode, "$terminology::$code"))
             }
 
         for (language in context.languages) {
             val label: String? =
-                if ("openehr" == terminology) {
+                if (TERMINOLOGY_OPENEHR == terminology) {
                     OpenEhrTerminology.getInstance().getText(language, code)
                 } else {
                     if (context.isAddDescriptions) {

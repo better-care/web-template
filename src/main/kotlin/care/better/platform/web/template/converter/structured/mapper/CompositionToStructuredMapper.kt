@@ -16,6 +16,10 @@
 package care.better.platform.web.template.converter.structured.mapper
 
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CATEGORY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.COMPOSER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LANGUAGE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERRITORY
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putSingletonAsArray
 import care.better.platform.web.template.converter.value.ValueConverter
@@ -35,13 +39,20 @@ internal object CompositionToStructuredMapper : LocatableToStructuredMapper<Comp
             map(webTemplateNode, valueConverter, rmObject, this)
 
             rmObject.language?.also {
-                this.putSingletonAsArray("language") { CodePhraseToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+                this.putSingletonAsArray(LANGUAGE) { CodePhraseToStructuredMapper.map(webTemplateNode, valueConverter, it) }
             }
 
             rmObject.territory?.also {
-                this.putSingletonAsArray("territory") { CodePhraseToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+                this.putSingletonAsArray(TERRITORY) { CodePhraseToStructuredMapper.map(webTemplateNode, valueConverter, it) }
             }
 
+            rmObject.category?.also {
+                this.putSingletonAsArray(CATEGORY) { DvCodedTextToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+            }
+
+            rmObject.composer?.also {
+                this.putSingletonAsArray(COMPOSER) { RmObjectToStructuredMapperDelegator.delegate(webTemplateNode, valueConverter, it) }
+            }
             this
         }
 
@@ -50,11 +61,19 @@ internal object CompositionToStructuredMapper : LocatableToStructuredMapper<Comp
             mapFormatted(webTemplateNode, valueConverter, rmObject, this)
 
             rmObject.language?.also {
-                this.putSingletonAsArray("language") { CodePhraseToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+                this.putSingletonAsArray(LANGUAGE) { CodePhraseToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
             }
 
             rmObject.territory?.also {
-                this.putSingletonAsArray("territory") { CodePhraseToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+                this.putSingletonAsArray(TERRITORY) { CodePhraseToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+            }
+
+            rmObject.category?.also {
+                this.putSingletonAsArray(CATEGORY) { DvCodedTextToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+            }
+
+            rmObject.composer?.also {
+                this.putSingletonAsArray(COMPOSER) { RmObjectToStructuredMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it) }
             }
 
             this

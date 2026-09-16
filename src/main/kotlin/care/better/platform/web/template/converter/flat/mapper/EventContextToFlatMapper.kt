@@ -15,10 +15,16 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.END_TIME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.HEALTH_CARE_FACILITY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LOCATION
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PARTICIPATION
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.SETTING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.START_TIME
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.composition.EventContext
 
 /**
@@ -35,16 +41,22 @@ internal object EventContextToFlatMapper : RmObjectToFlatMapper<EventContext> {
             rmObject: EventContext,
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
+        rmObject.startTime?.also {
+            DvDateTimeToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/$START_TIME", flatConversionContext)
+        }
+        rmObject.setting?.also {
+            DvCodedTextToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/$SETTING", flatConversionContext)
+        }
         rmObject.participations.forEachIndexed { index, participation ->
-            ParticipationToFlatMapper.map(webTemplateNode, valueConverter, participation, "$webTemplatePath/_participation:$index", flatConversionContext)
+            ParticipationToFlatMapper.map(webTemplateNode, valueConverter, participation, "$webTemplatePath/_$PARTICIPATION:$index", flatConversionContext)
         }
         rmObject.healthCareFacility?.also {
-            PartyIdentifiedToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/_health_care_facility", flatConversionContext)
+            PartyIdentifiedToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/_$HEALTH_CARE_FACILITY", flatConversionContext)
         }
         rmObject.endTime?.also {
-            DvDateTimeToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/_end_time", flatConversionContext)
+            DvDateTimeToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/_$END_TIME", flatConversionContext)
         }
-        flatConversionContext["$webTemplatePath/_location"] = rmObject.location
+        flatConversionContext["$webTemplatePath/_$LOCATION"] = rmObject.location
     }
 
     override fun mapFormatted(
@@ -53,12 +65,18 @@ internal object EventContextToFlatMapper : RmObjectToFlatMapper<EventContext> {
             rmObject: EventContext,
             webTemplatePath: String,
             formattedFlatConversionContext: FormattedFlatMappingContext) {
+        rmObject.startTime?.also {
+            DvDateTimeToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/$START_TIME", formattedFlatConversionContext)
+        }
+        rmObject.setting?.also {
+            DvCodedTextToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/$SETTING", formattedFlatConversionContext)
+        }
         rmObject.participations.forEachIndexed { index, participation ->
             ParticipationToFlatMapper.mapFormatted(
                 webTemplateNode,
                 valueConverter,
                 participation,
-                "$webTemplatePath/_participation:$index",
+                "$webTemplatePath/_$PARTICIPATION:$index",
                 formattedFlatConversionContext)
         }
         rmObject.healthCareFacility?.also {
@@ -66,12 +84,12 @@ internal object EventContextToFlatMapper : RmObjectToFlatMapper<EventContext> {
                 webTemplateNode,
                 valueConverter,
                 it,
-                "$webTemplatePath/_health_care_facility",
+                "$webTemplatePath/_$HEALTH_CARE_FACILITY",
                 formattedFlatConversionContext)
         }
         rmObject.endTime?.also {
-            DvDateTimeToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/_end_time", formattedFlatConversionContext)
+            DvDateTimeToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/_$END_TIME", formattedFlatConversionContext)
         }
-        formattedFlatConversionContext["$webTemplatePath/_location"] = rmObject.location
+        formattedFlatConversionContext["$webTemplatePath/_$LOCATION"] = rmObject.location
     }
 }

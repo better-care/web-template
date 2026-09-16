@@ -15,11 +15,16 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CHARSET
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.FORMALISM
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LANGUAGE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putIfNotNull
+import care.better.platform.web.template.converter.mapper.putSingletonAsArray
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvParsable
 
 /**
@@ -31,11 +36,27 @@ import org.openehr.rm.datatypes.DvParsable
 internal object DvParsableToStructuredMapper : RmObjectToStructuredMapper<DvParsable> {
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvParsable): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            this.putIfNotNull("|value", rmObject.value)
-            this.putIfNotNull("|formalism", rmObject.formalism)
+            this.putIfNotNull("|$VALUE", rmObject.value)
+            this.putIfNotNull("|$FORMALISM", rmObject.formalism)
+            rmObject.charset?.also {
+                this.putSingletonAsArray("_$CHARSET") { CodePhraseToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+            }
+            rmObject.language?.also {
+                this.putSingletonAsArray("_$LANGUAGE") { CodePhraseToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+            }
             this
         }
 
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvParsable): JsonNode =
-        map(webTemplateNode, valueConverter, rmObject)
+        with(ConversionObjectMapper.createObjectNode()) {
+            this.putIfNotNull("|$VALUE", rmObject.value)
+            this.putIfNotNull("|$FORMALISM", rmObject.formalism)
+            rmObject.charset?.also {
+                this.putSingletonAsArray("_$CHARSET") { CodePhraseToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+            }
+            rmObject.language?.also {
+                this.putSingletonAsArray("_$LANGUAGE") { CodePhraseToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+            }
+            this
+        }
 }

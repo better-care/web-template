@@ -18,6 +18,8 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 import care.better.platform.template.AmNode
 import care.better.platform.template.AmUtils
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
@@ -44,11 +46,18 @@ internal object DvDateFactory : DvQuantifiedFactory<DvDate>() {
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean =
         super.handleField(conversionContext, amNode, attribute, rmObject, jsonNode, webTemplatePath) ||
-                if (attribute.attribute.isBlank() || attribute.attribute == "value") {
-                    handleDate(conversionContext, amNode, rmObject, jsonNode.asText(), webTemplatePath)
-                    true
-                } else {
-                    false
+                when {
+                    attribute.attribute.isBlank() || attribute.attribute == VALUE -> {
+                        handleDate(conversionContext, amNode, rmObject, jsonNode.asText(), webTemplatePath)
+                        true
+                    }
+                    attribute.attribute == "_$ACCURACY" -> {
+                        jsonNode.firstOrNull()?.also {
+                            rmObject.accuracy = DvDurationFactory.create(conversionContext, amNode, it, webTemplatePath + attribute.originalAttribute)
+                        }
+                        true
+                    }
+                    else -> false
                 }
 
     /**

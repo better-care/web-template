@@ -18,7 +18,12 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 import care.better.platform.template.AmNode
 import care.better.platform.template.AmUtils
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.DENOMINATOR
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NUMERATOR
 import care.better.platform.web.template.converter.constant.WebTemplateConstants.PERCENTAGE_PROPORTION_TYPE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PRECISION
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TYPE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils
@@ -38,11 +43,11 @@ import java.math.RoundingMode
 internal object DvProportionFactory : DvQuantifiedFactory<DvProportion>() {
 
     private val sortMap: Map<AttributeDto, Int> = mapOf(
-        Pair(AttributeDto.forAttribute("type"), 0),
+        Pair(AttributeDto.forAttribute(TYPE), 0),
         Pair(AttributeDto.forAttribute(""), 1),
-        Pair(AttributeDto.forAttribute("value"), 2),
-        Pair(AttributeDto.forAttribute("numerator"), 3),
-        Pair(AttributeDto.forAttribute("denominator"), 4))
+        Pair(AttributeDto.forAttribute(VALUE), 2),
+        Pair(AttributeDto.forAttribute(NUMERATOR), 3),
+        Pair(AttributeDto.forAttribute(DENOMINATOR), 4))
 
     override fun sortFieldNames(attributes: List<AttributeDto>): List<AttributeDto> =
         attributes.asSequence().map { Pair(it, sortMap[it] ?: Integer.MAX_VALUE) }.sortedBy { it.second }.map { it.first }.toList()
@@ -63,18 +68,22 @@ internal object DvProportionFactory : DvQuantifiedFactory<DvProportion>() {
                         setWithoutAttribute(conversionContext, amNode, rmObject, jsonNode, getMaxPrecision(amNode))
                         true
                     }
-                    attribute.attribute == "type" -> {
+                    attribute.attribute == TYPE -> {
                         setType(amNode, rmObject, jsonNode, webTemplatePath)
                         true
                     }
-                    attribute.attribute == "numerator" -> {
+                    attribute.attribute == NUMERATOR -> {
                         ensureType(amNode, rmObject)
                         rmObject.numerator = convertValue(conversionContext, jsonNode, getMaxPrecision(amNode))
                         true
                     }
-                    attribute.attribute == "denominator" -> {
+                    attribute.attribute == DENOMINATOR -> {
                         ensureType(amNode, rmObject)
                         rmObject.denominator = convertValue(conversionContext, jsonNode, getMaxPrecision(amNode))
+                        true
+                    }
+                    attribute.attribute == PRECISION -> {
+                        rmObject.precision = jsonNode.asInt()
                         true
                     }
                     else -> false
@@ -90,13 +99,13 @@ internal object DvProportionFactory : DvQuantifiedFactory<DvProportion>() {
     }
 
     override fun removeDependentValues(map: MutableMap<AttributeDto, JsonNode>): Boolean {
-        if (map[AttributeDto.forAttribute("numerator")] == null) {
+        if (map[AttributeDto.forAttribute(NUMERATOR)] == null) {
             val removedValues = listOf(
-                    map.remove(AttributeDto.forAttribute("numerator")),
-                    map.remove(AttributeDto.forAttribute("denominator")),
+                    map.remove(AttributeDto.forAttribute(NUMERATOR)),
+                    map.remove(AttributeDto.forAttribute(DENOMINATOR)),
                     map.remove(AttributeDto.ofBlank()),
-                    map.remove(AttributeDto.forAttribute("value")),
-                    map.remove(AttributeDto.forAttribute("type")))
+                    map.remove(AttributeDto.forAttribute(VALUE)),
+                    map.remove(AttributeDto.forAttribute(TYPE)))
             return removedValues.any { it != null }
         }
         return false

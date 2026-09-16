@@ -58,7 +58,7 @@
   "inpatient_prescription/medication_order:0/order/medication_additional_details:0/prescription_type|code": "Simple",
   "inpatient_prescription/medication_order:0/order/medication_additional_details:0/prescription_type|value": "Simple",
   "inpatient_prescription/medication_order:0/order/medication_additional_details:0/prescription_type|terminology": "local",
-  "inpatient_prescription/medication_order:0/order/timing": "R1",
+  "inpatient_prescription/medication_order:0/order/timing|value": "R1",
   "inpatient_prescription/medication_order:0/order/timing|formalism": "timing",
   "inpatient_prescription/medication_order:0/narrative": "<none>",
   "inpatient_prescription/medication_order:0/language|code": "sl",

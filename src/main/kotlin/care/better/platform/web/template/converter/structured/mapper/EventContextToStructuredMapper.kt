@@ -15,13 +15,19 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.END_TIME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.HEALTH_CARE_FACILITY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LOCATION
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PARTICIPATION
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.SETTING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.START_TIME
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putCollectionAsArray
 import care.better.platform.web.template.converter.mapper.putSingletonAsArray
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.TextNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.composition.EventContext
 
 /**
@@ -33,37 +39,49 @@ import org.openehr.rm.composition.EventContext
 internal object EventContextToStructuredMapper : RmObjectToStructuredMapper<EventContext> {
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: EventContext): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            this.putCollectionAsArray("_participation", rmObject.participations) { ParticipationToStructuredMapper.map(
+            this.putCollectionAsArray("_$PARTICIPATION", rmObject.participations) { ParticipationToStructuredMapper.map(
                 webTemplateNode,
                 valueConverter,
                 it
             ) }
+            rmObject.startTime?.also {
+                this.putSingletonAsArray(START_TIME) { DvDateTimeToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+            }
+            rmObject.setting?.also {
+                this.putSingletonAsArray(SETTING) { DvCodedTextToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+            }
             rmObject.healthCareFacility?.also {
-                this.putSingletonAsArray("_health_care_facility") { PartyIdentifiedToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+                this.putSingletonAsArray("_$HEALTH_CARE_FACILITY") { PartyIdentifiedToStructuredMapper.map(webTemplateNode, valueConverter, it) }
             }
             rmObject.endTime?.also {
-                this.putSingletonAsArray("_end_time") { DvDateTimeToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+                this.putSingletonAsArray("_$END_TIME") { DvDateTimeToStructuredMapper.map(webTemplateNode, valueConverter, it) }
             }
-            rmObject.location?.also { location -> this.putSingletonAsArray("_location") { TextNode.valueOf(location) } }
+            rmObject.location?.also { location -> this.putSingletonAsArray("_$LOCATION") { TextNode.valueOf(location) } }
             this
         }
 
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: EventContext): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            this.putCollectionAsArray("_participation", rmObject.participations) {
+            this.putCollectionAsArray("_$PARTICIPATION", rmObject.participations) {
                 ParticipationToStructuredMapper.mapFormatted(
                     webTemplateNode,
                     valueConverter,
                     it
                 )
             }
+            rmObject.startTime?.also {
+                this.putSingletonAsArray(START_TIME) { DvDateTimeToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+            }
+            rmObject.setting?.also {
+                this.putSingletonAsArray(SETTING) { DvCodedTextToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+            }
             rmObject.healthCareFacility?.also {
-                this.putSingletonAsArray("_health_care_facility") { PartyIdentifiedToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+                this.putSingletonAsArray("_$HEALTH_CARE_FACILITY") { PartyIdentifiedToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
             }
             rmObject.endTime?.also {
-                this.putSingletonAsArray("_end_time") { DvDateTimeToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+                this.putSingletonAsArray("_$END_TIME") { DvDateTimeToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
             }
-            rmObject.location?.also { location -> this.putSingletonAsArray("_location") { TextNode.valueOf(location) } }
+            rmObject.location?.also { location -> this.putSingletonAsArray("_$LOCATION") { TextNode.valueOf(location) } }
             this
         }
 }

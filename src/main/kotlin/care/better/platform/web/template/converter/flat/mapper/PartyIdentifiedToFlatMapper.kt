@@ -15,11 +15,16 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.IDENTIFIER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID_NAMESPACE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID_SCHEME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NAME
 import care.better.platform.web.template.converter.flat.context.AbstractFlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.base.basetypes.GenericId
 import org.openehr.base.basetypes.ObjectRef
 import org.openehr.rm.common.PartyIdentified
@@ -38,9 +43,9 @@ internal object PartyIdentifiedToFlatMapper : RmObjectToFlatMapper<PartyIdentifi
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
         rmObject.externalRef?.also { mapPartyRef(it, webTemplatePath, flatConversionContext) }
-        flatConversionContext["$webTemplatePath|name"] = rmObject.name
+        flatConversionContext["$webTemplatePath|$NAME"] = rmObject.name
         rmObject.identifiers.forEachIndexed { index, dvIdentifier ->
-            DvIdentifierToFlatMapper.map(webTemplateNode, valueConverter, dvIdentifier, "$webTemplatePath/_identifier:$index", flatConversionContext)
+            DvIdentifierToFlatMapper.map(webTemplateNode, valueConverter, dvIdentifier, "$webTemplatePath/_$IDENTIFIER:$index", flatConversionContext)
         }
     }
 
@@ -52,13 +57,13 @@ internal object PartyIdentifiedToFlatMapper : RmObjectToFlatMapper<PartyIdentifi
             webTemplatePath: String,
             formattedFlatConversionContext: FormattedFlatMappingContext) {
         rmObject.externalRef?.also { mapPartyRef(it, webTemplatePath, formattedFlatConversionContext) }
-        rmObject.name?.also { formattedFlatConversionContext["$webTemplatePath|name"] = it }
+        rmObject.name?.also { formattedFlatConversionContext["$webTemplatePath|$NAME"] = it }
         rmObject.identifiers.forEachIndexed { index, dvIdentifier ->
             DvIdentifierToFlatMapper.mapFormatted(
                 webTemplateNode,
                 valueConverter,
                 dvIdentifier,
-                "$webTemplatePath/_identifier:$index",
+                "$webTemplatePath/_$IDENTIFIER:$index",
                 formattedFlatConversionContext)
         }
     }
@@ -69,11 +74,11 @@ internal object PartyIdentifiedToFlatMapper : RmObjectToFlatMapper<PartyIdentifi
             webTemplatePath: String,
             flatMappingContext: AbstractFlatMappingContext<T>) {
         rmObject.id?.also {
-            flatMappingContext["$webTemplatePath|id"] = it.value as T?
+            flatMappingContext["$webTemplatePath|$ID"] = it.value as T?
             if (it is GenericId) {
-                flatMappingContext["$webTemplatePath|id_scheme"] = it.scheme as T?
+                flatMappingContext["$webTemplatePath|$ID_SCHEME"] = it.scheme as T?
             }
         }
-        flatMappingContext["$webTemplatePath|id_namespace"] = rmObject.namespace as T?
+        flatMappingContext["$webTemplatePath|$ID_NAMESPACE"] = rmObject.namespace as T?
     }
 }

@@ -23,6 +23,8 @@ import care.better.platform.web.template.builder.model.WebTemplateInputType
 import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CONTEXT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CONTEXT_PREFIX
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.mapper.*
 import care.better.platform.web.template.converter.raw.context.ConversionContext
@@ -158,7 +160,7 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
             }
 
             val isFieldTransient = key.startsWith("transient_") && !map.containsKey(key)
-            if (!isFieldTransient && key != "ctx" && !key.startsWith("ctx/")) { //Skip transient fields and ctx values (ctx was already set to the ConversionContext).
+            if (!isFieldTransient && key != CONTEXT && !key.startsWith(CONTEXT_PREFIX)) { //Skip transient fields and ctx values (ctx was already set to the ConversionContext).
                 val childWebTemplateNode = map[key]
                 when {
                     childWebTemplateNode != null -> {  //Handle WebTemplateNode structure.
@@ -235,7 +237,7 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
                     if (webTemplateInput != null) {
                         val chain = getAmNodeChain(webTemplateNode.amNode, child.amNode)
                         val handled = handleWebTemplateInputOnExistingElement(chain, rmObject, webTemplatePath, webTemplateInput)
-                        if (!handled) {
+                        if (!handled && !hasExistingValue(chain, rmObject)) {
                             convertArrayNode(
                                     ConversionObjectMapper.createArrayNode().apply { this.add(ConversionObjectMapper.nullNode()) },
                                     chain,
@@ -594,7 +596,7 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
                         value,
                         webTemplatePath.copy(webTemplateNode.amNode))
                 }
-                webTemplateNode.children.isEmpty() -> {
+                webTemplateNode.children.isEmpty() || RmObjectLeafNodeFactoryDelegator.hasLeafNodeFactory(webTemplateNode.rmType) -> {
                     if (RmUtils.isRmClass(webTemplateNode.amNode.getTypeOnParent().type)) {
                         val rmObject = RmObjectLeafNodeFactoryDelegator
                             .delegateOrThrow<RmObject>(
@@ -696,6 +698,18 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
         element.value = dataValue
 
         return true
+    }
+
+    /**
+     * Checks if the RM object already holds a non-empty value for a single-step [chain].
+     *
+     * @param chain [List] of [AmNode] from parent [WebTemplateNode] [AmNode] to child [WebTemplateNode] [AmNode]
+     * @param rmObject RM object in RAW format
+     * @return True if the value already exists, otherwise, false
+     */
+    private fun hasExistingValue(chain: List<AmNode>, rmObject: RmObject): Boolean {
+        val existingValue = chain.singleOrNull()?.getOnParent(rmObject)
+        return existingValue is RmObject && !existingValue.isEmpty(conversionContext.strictMode)
     }
 
     /**

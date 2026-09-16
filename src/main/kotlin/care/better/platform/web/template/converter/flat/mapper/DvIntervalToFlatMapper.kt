@@ -15,10 +15,16 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LOWER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LOWER_INCLUDED
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LOWER_UNBOUNDED
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UPPER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UPPER_INCLUDED
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UPPER_UNBOUNDED
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvInterval
 
 /**
@@ -36,25 +42,25 @@ internal object DvIntervalToFlatMapper : RmObjectToFlatMapper<DvInterval> {
             flatConversionContext: FlatMappingContext) {
         rmObject.lower?.also {
             RmObjectToFlatMapperDelegator.delegate(
-                webTemplateNode.children.first { child -> child.jsonId == "lower" },
+                webTemplateNode.children.first { child -> child.jsonId == LOWER },
                 valueConverter,
                 it,
-                "$webTemplatePath/lower",
+                "$webTemplatePath/$LOWER",
                 flatConversionContext)
         }
         rmObject.upper?.also {
             RmObjectToFlatMapperDelegator.delegate(
-                webTemplateNode.children.first { child -> child.jsonId == "upper" },
+                webTemplateNode.children.first { child -> child.jsonId == UPPER },
                 valueConverter,
                 it,
-                "$webTemplatePath/upper",
+                "$webTemplatePath/$UPPER",
                 flatConversionContext)
         }
 
-        flatConversionContext["$webTemplatePath|lower_included"] = rmObject.lowerIncluded
-        flatConversionContext["$webTemplatePath|upper_included"] = rmObject.upperIncluded
-        flatConversionContext["$webTemplatePath|lower_unbounded"] = rmObject.lowerUnbounded
-        flatConversionContext["$webTemplatePath|upper_unbounded"] = rmObject.upperUnbounded
+        if (rmObject.lowerIncluded == false) flatConversionContext["$webTemplatePath|$LOWER_INCLUDED"] = false
+        if (rmObject.upperIncluded == false) flatConversionContext["$webTemplatePath|$UPPER_INCLUDED"] = false
+        if (rmObject.lowerUnbounded) flatConversionContext["$webTemplatePath|$LOWER_UNBOUNDED"] = true
+        if (rmObject.upperUnbounded) flatConversionContext["$webTemplatePath|$UPPER_UNBOUNDED"] = true
     }
 
     override fun mapFormatted(
@@ -65,24 +71,24 @@ internal object DvIntervalToFlatMapper : RmObjectToFlatMapper<DvInterval> {
             formattedFlatConversionContext: FormattedFlatMappingContext) {
         rmObject.lower?.also {
             RmObjectToFlatMapperDelegator.delegateFormatted(
-                webTemplateNode.children.first { child -> child.jsonId == "lower" },
+                webTemplateNode.children.first { child -> child.jsonId == LOWER },
                 valueConverter,
                 it,
-                "$webTemplatePath/lower",
+                "$webTemplatePath/$LOWER",
                 formattedFlatConversionContext)
         }
         rmObject.upper?.also {
             RmObjectToFlatMapperDelegator.delegateFormatted(
-                webTemplateNode.children.first { child -> child.jsonId == "upper" },
+                webTemplateNode.children.first { child -> child.jsonId == UPPER },
                 valueConverter,
                 it,
-                "$webTemplatePath/upper",
+                "$webTemplatePath/$UPPER",
                 formattedFlatConversionContext)
         }
 
-        formattedFlatConversionContext["$webTemplatePath|lower_included"] = rmObject.lowerIncluded?.toString()
-        formattedFlatConversionContext["$webTemplatePath|upper_included"] = rmObject.upperIncluded?.toString()
-        formattedFlatConversionContext["$webTemplatePath|lower_unbounded"] = rmObject.lowerUnbounded.toString()
-        formattedFlatConversionContext["$webTemplatePath|upper_unbounded"] = rmObject.upperUnbounded.toString()
+        if (rmObject.lowerIncluded == false) formattedFlatConversionContext["$webTemplatePath|$LOWER_INCLUDED"] = "false"
+        if (rmObject.upperIncluded == false) formattedFlatConversionContext["$webTemplatePath|$UPPER_INCLUDED"] = "false"
+        if (rmObject.lowerUnbounded) formattedFlatConversionContext["$webTemplatePath|$LOWER_UNBOUNDED"] = "true"
+        if (rmObject.upperUnbounded) formattedFlatConversionContext["$webTemplatePath|$UPPER_UNBOUNDED"] = "true"
     }
 }

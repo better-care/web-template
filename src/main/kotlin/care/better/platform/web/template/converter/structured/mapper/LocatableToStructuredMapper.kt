@@ -15,6 +15,11 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.FEEDER_AUDIT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LINK
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NAME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UID
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putCollectionAsArray
 import care.better.platform.web.template.converter.mapper.putSingletonAsArray
@@ -22,7 +27,6 @@ import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.databind.node.TextNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.common.Locatable
 import org.openehr.rm.datatypes.DvText
 
@@ -61,18 +65,18 @@ internal open class LocatableToStructuredMapper<T : Locatable> : RmObjectToStruc
         rmObject: T,
         objectNode: ObjectNode
     ) {
-        objectNode.putCollectionAsArray("_link", rmObject.links) { LinkToStructuredMapper.map(webTemplateNode, valueConverter, it) }
-        rmObject.uid?.also { objectNode.putArray("_uid").add(TextNode(it.value)) }
+        objectNode.putCollectionAsArray("_$LINK", rmObject.links) { LinkToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+        rmObject.uid?.also { objectNode.putArray("_$UID").add(TextNode(it.value)) }
 
         rmObject.name?.also { name ->
             addCustomName(
                 webTemplateNode,
                 name,
-                { objectNode.putSingletonAsArray("_name") { RmObjectToStructuredMapperDelegator.delegate(webTemplateNode, valueConverter, it) } })
+                { objectNode.putSingletonAsArray("_$NAME") { RmObjectToStructuredMapperDelegator.delegate(webTemplateNode, valueConverter, it) } })
         }
 
         rmObject.feederAudit?.also {
-            objectNode.putSingletonAsArray("_feeder_audit") { FeederAuditToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+            objectNode.putSingletonAsArray("_$FEEDER_AUDIT") { FeederAuditToStructuredMapper.map(webTemplateNode, valueConverter, it) }
         }
     }
 
@@ -83,18 +87,18 @@ internal open class LocatableToStructuredMapper<T : Locatable> : RmObjectToStruc
         rmObject: T,
         objectNode: ObjectNode
     ) {
-        objectNode.putCollectionAsArray("_link", rmObject.links) { LinkToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
-        rmObject.uid?.also { objectNode.putArray("_uid").add(TextNode(it.value)) }
+        objectNode.putCollectionAsArray("_$LINK", rmObject.links) { LinkToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+        rmObject.uid?.also { objectNode.putArray("_$UID").add(TextNode(it.value)) }
 
         rmObject.name?.also { name ->
             addCustomName(
                 webTemplateNode,
                 name,
-                { objectNode.putSingletonAsArray("_name") { RmObjectToStructuredMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it) } })
+                { objectNode.putSingletonAsArray("_$NAME") { RmObjectToStructuredMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it) } })
         }
 
         rmObject.feederAudit?.also {
-            objectNode.putSingletonAsArray("_feeder_audit") { FeederAuditToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+            objectNode.putSingletonAsArray("_$FEEDER_AUDIT") { FeederAuditToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
         }
     }
 

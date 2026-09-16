@@ -15,10 +15,16 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LANGUAGE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.OTHER_PARTICIPATION
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PROVIDER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.SUBJECT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.WORK_FLOW_ID
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
+import org.openehr.rm.common.PartySelf
 import org.openehr.rm.composition.Entry
 
 /**
@@ -46,17 +52,21 @@ internal open class EntryToFlatMapper<T : Entry> : LocatableToFlatMapper<T>() {
         super.map(webTemplateNode, valueConverter, rmObject, webTemplatePath, flatConversionContext)
 
         rmObject.otherParticipations.forEachIndexed { index, participation ->
-            ParticipationToFlatMapper.map(webTemplateNode, valueConverter, participation, "$webTemplatePath/_other_participation:$index", flatConversionContext)
+            ParticipationToFlatMapper.map(webTemplateNode, valueConverter, participation, "$webTemplatePath/_$OTHER_PARTICIPATION:$index", flatConversionContext)
+        }
+        rmObject.language?.also {
+            CodePhraseToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/$LANGUAGE", flatConversionContext)
         }
 
         rmObject.provider?.also {
-            RmObjectToFlatMapperDelegator.delegate(webTemplateNode, valueConverter, it, "$webTemplatePath/_provider", flatConversionContext)
+            RmObjectToFlatMapperDelegator.delegate(webTemplateNode, valueConverter, it, "$webTemplatePath/_$PROVIDER", flatConversionContext)
         }
         rmObject.subject?.also {
-            RmObjectToFlatMapperDelegator.delegate(webTemplateNode, valueConverter, it, "$webTemplatePath/subject", flatConversionContext)
+            if (it !is PartySelf || it.externalRef != null)
+                RmObjectToFlatMapperDelegator.delegate(webTemplateNode, valueConverter, it, "$webTemplatePath/$SUBJECT", flatConversionContext)
         }
         rmObject.workFlowId?.also {
-            RmObjectToFlatMapperDelegator.delegate(webTemplateNode, valueConverter, it, "$webTemplatePath/_work_flow_id", flatConversionContext)
+            RmObjectToFlatMapperDelegator.delegate(webTemplateNode, valueConverter, it, "$webTemplatePath/_$WORK_FLOW_ID", flatConversionContext)
         }
     }
 
@@ -73,22 +83,26 @@ internal open class EntryToFlatMapper<T : Entry> : LocatableToFlatMapper<T>() {
                 webTemplateNode,
                 valueConverter,
                 participation,
-                "$webTemplatePath/_other_participation:$index",
+                "$webTemplatePath/_$OTHER_PARTICIPATION:$index",
                 formattedFlatConversionContext)
+        }
+        rmObject.language?.also {
+            CodePhraseToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/$LANGUAGE", formattedFlatConversionContext)
         }
 
         rmObject.provider?.also {
-            RmObjectToFlatMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/_provider", formattedFlatConversionContext)
+            RmObjectToFlatMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/_$PROVIDER", formattedFlatConversionContext)
         }
         rmObject.subject?.also {
-            RmObjectToFlatMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/subject", formattedFlatConversionContext)
+            if (it !is PartySelf || it.externalRef != null)
+                RmObjectToFlatMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/$SUBJECT", formattedFlatConversionContext)
         }
         rmObject.workFlowId?.also {
             RmObjectToFlatMapperDelegator.delegateFormatted(
                 webTemplateNode,
                 valueConverter,
                 it,
-                "$webTemplatePath/_work_flow_id",
+                "$webTemplatePath/_$WORK_FLOW_ID",
                 formattedFlatConversionContext)
         }
     }

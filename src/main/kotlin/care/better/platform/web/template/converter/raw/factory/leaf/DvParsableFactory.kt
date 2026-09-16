@@ -18,6 +18,8 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 import care.better.platform.template.AmNode
 import care.better.platform.template.AmUtils
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.FORMALISM
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import org.openehr.am.aom.CString
@@ -40,7 +42,7 @@ internal object DvParsableFactory : RmObjectLeafNodeFactory<DvParsable>() {
             rmObject: DvParsable,
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean =
-        if (attribute.attribute.isBlank() || attribute.attribute == "value") {
+        if (attribute.attribute.isBlank() || attribute.attribute == VALUE) {
             rmObject.value = jsonNode.asText()
             AmUtils.getPrimitiveItem(if ("STRING" == amNode.rmType) amNode.parent!! else amNode, CString::class.java, "formalism")?.also {
                 if (it.list.size == 1) {
@@ -48,7 +50,7 @@ internal object DvParsableFactory : RmObjectLeafNodeFactory<DvParsable>() {
                 }
             }
             true
-        } else if (attribute.attribute == "formalism") {
+        } else if (attribute.attribute == FORMALISM) {
             rmObject.formalism = jsonNode.asText()
             true
         } else {

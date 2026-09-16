@@ -15,12 +15,21 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CODE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ENCODING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.FORMATTING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LANGUAGE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MAPPING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PREFERRED_TERM
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putCollectionAsArray
 import care.better.platform.web.template.converter.mapper.putIfNotNull
+import care.better.platform.web.template.converter.mapper.putSingletonAsArray
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvCodedText
 
 /**
@@ -32,23 +41,35 @@ import org.openehr.rm.datatypes.DvCodedText
 internal object DvCodedTextToStructuredMapper : RmObjectToStructuredMapper<DvCodedText> {
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvCodedText): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            this.putCollectionAsArray("_mapping", rmObject.mappings) { TermMappingToStructuredMapper.map(webTemplateNode, valueConverter, it) }
-            this.putIfNotNull("|code", rmObject.definingCode?.codeString)
-            this.putIfNotNull("|value", rmObject.value)
-            this.putIfNotNull("|terminology", rmObject.definingCode?.terminologyId?.value)
-            this.putIfNotNull("|preferred_term", rmObject.definingCode?.preferredTerm)
-            this.putIfNotNull("|formatting", rmObject.formatting)
+            this.putCollectionAsArray("_$MAPPING", rmObject.mappings) { TermMappingToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+            this.putIfNotNull("|$CODE", rmObject.definingCode?.codeString)
+            this.putIfNotNull("|$VALUE", rmObject.value)
+            this.putIfNotNull("|$TERMINOLOGY", rmObject.definingCode?.terminologyId?.value)
+            this.putIfNotNull("|$PREFERRED_TERM", rmObject.definingCode?.preferredTerm)
+            this.putIfNotNull("|$FORMATTING", rmObject.formatting)
+            rmObject.language?.also {
+                this.putSingletonAsArray("_$LANGUAGE") { CodePhraseToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+            }
+            rmObject.encoding?.also {
+                this.putSingletonAsArray("_$ENCODING") { CodePhraseToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+            }
             this
         }
 
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvCodedText): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            this.putCollectionAsArray("_mapping", rmObject.mappings) { TermMappingToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
-            this.putIfNotNull("|code", rmObject.definingCode?.codeString)
-            this.putIfNotNull("|value", rmObject.value)
-            this.putIfNotNull("|terminology", rmObject.definingCode?.terminologyId?.value)
-            this.putIfNotNull("|preferred_term", rmObject.definingCode?.preferredTerm)
-            this.putIfNotNull("|formatting", rmObject.formatting)
+            this.putCollectionAsArray("_$MAPPING", rmObject.mappings) { TermMappingToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+            this.putIfNotNull("|$CODE", rmObject.definingCode?.codeString)
+            this.putIfNotNull("|$VALUE", rmObject.value)
+            this.putIfNotNull("|$TERMINOLOGY", rmObject.definingCode?.terminologyId?.value)
+            this.putIfNotNull("|$PREFERRED_TERM", rmObject.definingCode?.preferredTerm)
+            this.putIfNotNull("|$FORMATTING", rmObject.formatting)
+            rmObject.language?.also {
+                this.putSingletonAsArray("_$LANGUAGE") { CodePhraseToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+            }
+            rmObject.encoding?.also {
+                this.putSingletonAsArray("_$ENCODING") { CodePhraseToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+            }
             this
         }
 }

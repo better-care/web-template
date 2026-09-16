@@ -15,10 +15,11 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID_SCHEME
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.base.basetypes.GenericId
 
 /**
@@ -35,7 +36,7 @@ internal object GenericIdToFlatMapper : RmObjectToFlatMapper<GenericId> {
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
         ObjectIdToFlatMapper.map(webTemplateNode, valueConverter, rmObject, webTemplatePath, flatConversionContext)
-        flatConversionContext["$webTemplatePath|id_scheme"] = rmObject.scheme
+        flatConversionContext["$webTemplatePath|$ID_SCHEME"] = rmObject.scheme
     }
 
     override fun mapFormatted(
@@ -45,6 +46,6 @@ internal object GenericIdToFlatMapper : RmObjectToFlatMapper<GenericId> {
             webTemplatePath: String,
             formattedFlatConversionContext: FormattedFlatMappingContext) {
         ObjectIdToFlatMapper.mapFormatted(webTemplateNode, valueConverter, rmObject, webTemplatePath, formattedFlatConversionContext)
-        formattedFlatConversionContext["$webTemplatePath|id_scheme"] = rmObject.scheme
+        formattedFlatConversionContext["$webTemplatePath|$ID_SCHEME"] = rmObject.scheme
     }
 }

@@ -15,10 +15,14 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ASSIGNER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ISSUER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TYPE
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvIdentifier
 
 /**
@@ -34,10 +38,10 @@ internal object DvIdentifierToFlatMapper : RmObjectToFlatMapper<DvIdentifier> {
             rmObject: DvIdentifier,
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
-        flatConversionContext[webTemplatePath] = rmObject.id
-        flatConversionContext["$webTemplatePath|issuer"] = rmObject.issuer
-        flatConversionContext["$webTemplatePath|assigner"] = rmObject.assigner
-        flatConversionContext["$webTemplatePath|type"] = rmObject.type
+        flatConversionContext["$webTemplatePath|$ID"] = rmObject.id
+        flatConversionContext["$webTemplatePath|$ISSUER"] = rmObject.issuer
+        flatConversionContext["$webTemplatePath|$ASSIGNER"] = rmObject.assigner
+        flatConversionContext["$webTemplatePath|$TYPE"] = rmObject.type
     }
 
     override fun mapFormatted(
@@ -46,9 +50,9 @@ internal object DvIdentifierToFlatMapper : RmObjectToFlatMapper<DvIdentifier> {
             rmObject: DvIdentifier,
             webTemplatePath: String,
             formattedFlatConversionContext: FormattedFlatMappingContext) {
-        formattedFlatConversionContext[webTemplatePath] = rmObject.id
-        formattedFlatConversionContext["$webTemplatePath|issuer"] = rmObject.issuer
-        formattedFlatConversionContext["$webTemplatePath|assigner"] = rmObject.assigner
-        formattedFlatConversionContext["$webTemplatePath|type"] = rmObject.type
+        formattedFlatConversionContext["$webTemplatePath|$ID"] = rmObject.id
+        formattedFlatConversionContext["$webTemplatePath|$ISSUER"] = rmObject.issuer
+        formattedFlatConversionContext["$webTemplatePath|$ASSIGNER"] = rmObject.assigner
+        formattedFlatConversionContext["$webTemplatePath|$TYPE"] = rmObject.type
     }
 }

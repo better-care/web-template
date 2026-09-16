@@ -15,11 +15,17 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY_IS_PERCENT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MAGNITUDE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UNIT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UNIT_DISPLAY_NAME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UNIT_SYSTEM
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvQuantity
 
 /**
@@ -31,20 +37,24 @@ import org.openehr.rm.datatypes.DvQuantity
 internal object DvQuantityToStructuredMapper : DvQuantifiedToStructuredMapper<DvQuantity>() {
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvQuantity): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            this.putIfNotNull("|magnitude", rmObject.magnitude)
-            this.putIfNotNull("|unit", rmObject.units)
-            this.putIfNotNull("|unit_system", rmObject.unitsSystem)
-            this.putIfNotNull("|unit_display_name", rmObject.unitsDisplayName)
+            this.putIfNotNull("|$MAGNITUDE", rmObject.magnitude)
+            this.putIfNotNull("|$UNIT", rmObject.units)
+            this.putIfNotNull("|$UNIT_SYSTEM", rmObject.unitsSystem)
+            this.putIfNotNull("|$UNIT_DISPLAY_NAME", rmObject.unitsDisplayName)
+            this.putIfNotNull("|$ACCURACY", rmObject.accuracy)
+            this.putIfNotNull("|$ACCURACY_IS_PERCENT", rmObject.accuracyIsPercent)
             map(webTemplateNode, valueConverter, rmObject, this)
             this
         }
 
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvQuantity): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            this.putIfNotNull("|magnitude", valueConverter.formatDouble(rmObject.magnitude))
-            this.putIfNotNull("|unit", rmObject.units)
-            this.putIfNotNull("|unit_system", rmObject.unitsSystem)
-            this.putIfNotNull("|unit_display_name", rmObject.unitsDisplayName)
+            this.putIfNotNull("|$MAGNITUDE", valueConverter.formatDouble(rmObject.magnitude))
+            this.putIfNotNull("|$UNIT", rmObject.units)
+            this.putIfNotNull("|$UNIT_SYSTEM", rmObject.unitsSystem)
+            this.putIfNotNull("|$UNIT_DISPLAY_NAME", rmObject.unitsDisplayName)
+            this.putIfNotNull("|$ACCURACY", rmObject.accuracy?.toString())
+            this.putIfNotNull("|$ACCURACY_IS_PERCENT", rmObject.accuracyIsPercent?.toString())
             mapFormatted(webTemplateNode, valueConverter, rmObject, this)
             this
         }

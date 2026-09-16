@@ -18,6 +18,11 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CODE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PREFERRED_TERM
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.SCALE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.utils.WebTemplateConversionUtils
@@ -57,29 +62,29 @@ internal object DvScaleFactory : DvOrderedFactory<DvScale>() {
         super.handleField(conversionContext, amNode, attribute, rmObject, jsonNode, webTemplatePath) || run {
             val cDvScale = if (amNode.cObject is CDvScale) amNode.cObject as CDvScale else null
             if (cDvScale != null) {
-                if (attribute.attribute.isBlank() || attribute.attribute == "value") {
+                if (attribute.attribute.isBlank() || attribute.attribute == VALUE) {
                     handleValueAttribute(conversionContext, amNode, jsonNode, rmObject, cDvScale)
                     true
-                } else if (attribute.attribute == "code") {
+                } else if (attribute.attribute == CODE) {
                     handleCodeAttribute(conversionContext, amNode, jsonNode, rmObject, cDvScale)
                     true
                 } else {
                     false
                 }
             } else {
-                if (attribute.attribute == "scale") {
+                if (attribute.attribute == SCALE) {
                     handleScaleAttributeIfNoConstraint(jsonNode, rmObject)
                     true
-                } else if (attribute.attribute == "code") {
+                } else if (attribute.attribute == CODE) {
                     handleCodeAttributeIfNoConstraint(jsonNode, rmObject)
                     true
-                } else if (attribute.attribute.isBlank() || attribute.attribute == "value") {
+                } else if (attribute.attribute.isBlank() || attribute.attribute == VALUE) {
                     getInitializedSymbol(rmObject).value = jsonNode.asText()
                     true
-                } else if (attribute.attribute == "preferred_term") {
+                } else if (attribute.attribute == PREFERRED_TERM) {
                     handlePreferredTermAttributeIfNoConstraint(jsonNode, rmObject)
                     true
-                } else if (attribute.attribute == "terminology") {
+                } else if (attribute.attribute == TERMINOLOGY) {
                     handleTerminologyIdAttributeIfNoConstraint(jsonNode, rmObject)
                     true
                 } else {

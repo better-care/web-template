@@ -30,7 +30,7 @@
   "nutrition_order/nutrition/nutrition_order:0/order:0/order_details/nutrition_course_summary:0/type_of_next_meal|code": "at0037",
   "nutrition_order/nutrition/nutrition_order:0/order:0/order_details/nutrition_course_summary:0/type_of_next_meal|value": "Kosilo",
   "nutrition_order/nutrition/nutrition_order:0/order:0/order_details/nutrition_course_summary:0/type_of_next_meal|terminology": "local",
-  "nutrition_order/nutrition/nutrition_order:0/order:0/timing": "R1",
+  "nutrition_order/nutrition/nutrition_order:0/order:0/timing|value": "R1",
   "nutrition_order/nutrition/nutrition_order:0/order:0/timing|formalism": "timing",
   "nutrition_order/nutrition/nutrition_order:0/narrative": "<none>",
   "nutrition_order/nutrition/nutrition_order:0/language|code": "sl",

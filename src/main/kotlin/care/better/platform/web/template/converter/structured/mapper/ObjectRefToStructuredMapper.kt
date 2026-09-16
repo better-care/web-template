@@ -15,12 +15,16 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID_SCHEME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NAMESPACE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TYPE
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.base.basetypes.GenericId
 import org.openehr.base.basetypes.ObjectRef
 
@@ -42,12 +46,12 @@ internal object ObjectRefToStructuredMapper : RmObjectToStructuredMapper<ObjectR
 
     fun map(objectRef: ObjectRef, objectNode: ObjectNode) {
         objectRef.id?.also {
-            objectNode.putIfNotNull("|id", it.value)
+            objectNode.putIfNotNull("|$ID", it.value)
             if (it is GenericId) {
-                objectNode.putIfNotNull("|id_scheme", it.scheme)
+                objectNode.putIfNotNull("|$ID_SCHEME", it.scheme)
             }
         }
-        objectNode.putIfNotNull("|type", objectRef.type)
-        objectNode.putIfNotNull("|namespace", objectRef.namespace)
+        objectNode.putIfNotNull("|$TYPE", objectRef.type)
+        objectNode.putIfNotNull("|$NAMESPACE", objectRef.namespace)
     }
 }

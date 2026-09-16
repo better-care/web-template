@@ -15,10 +15,20 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ALTERNATETEXT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CHARSET
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.COMPRESSION_ALGORITHM
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.DATA
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.INTEGRITY_CHECK
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.INTEGRITY_CHECK_ALGORITHM
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LANGUAGE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MEDIATYPE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.SIZE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.THUMBNAIL
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvMultimedia
 
 /**
@@ -35,10 +45,23 @@ internal object DvMultimediaToFlatMapper : RmObjectToFlatMapper<DvMultimedia> {
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
         flatConversionContext[webTemplatePath] = rmObject.uri?.value
-        flatConversionContext["$webTemplatePath|mediatype"] = rmObject.mediaType?.codeString
-        flatConversionContext["$webTemplatePath|alternatetext"] = rmObject.alternateText
+        flatConversionContext["$webTemplatePath|$MEDIATYPE"] = rmObject.mediaType?.codeString
+        flatConversionContext["$webTemplatePath|$ALTERNATETEXT"] = rmObject.alternateText
         if (rmObject.size > 0) {
-            flatConversionContext["$webTemplatePath|size"] = rmObject.size
+            flatConversionContext["$webTemplatePath|$SIZE"] = rmObject.size
+        }
+        flatConversionContext["$webTemplatePath|$COMPRESSION_ALGORITHM"] = rmObject.compressionAlgorithm?.codeString
+        flatConversionContext["$webTemplatePath|$INTEGRITY_CHECK_ALGORITHM"] = rmObject.integrityCheckAlgorithm?.codeString
+        flatConversionContext["$webTemplatePath|$INTEGRITY_CHECK"] = rmObject.integrityCheck?.let { String(it) }
+        flatConversionContext["$webTemplatePath|$DATA"] = rmObject.data?.let { String(it) }
+        rmObject.thumbnail?.also {
+            map(webTemplateNode, valueConverter, it, "$webTemplatePath/_$THUMBNAIL", flatConversionContext)
+        }
+        rmObject.charset?.also {
+            CodePhraseToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/_$CHARSET", flatConversionContext)
+        }
+        rmObject.language?.also {
+            CodePhraseToFlatMapper.map(webTemplateNode, valueConverter, it, "$webTemplatePath/_$LANGUAGE", flatConversionContext)
         }
     }
 
@@ -49,10 +72,23 @@ internal object DvMultimediaToFlatMapper : RmObjectToFlatMapper<DvMultimedia> {
             webTemplatePath: String,
             formattedFlatConversionContext: FormattedFlatMappingContext) {
         formattedFlatConversionContext[webTemplatePath] = rmObject.uri?.value
-        formattedFlatConversionContext["$webTemplatePath|mediatype"] = rmObject.mediaType?.codeString
-        formattedFlatConversionContext["$webTemplatePath|alternatetext"] = rmObject.alternateText
+        formattedFlatConversionContext["$webTemplatePath|$MEDIATYPE"] = rmObject.mediaType?.codeString
+        formattedFlatConversionContext["$webTemplatePath|$ALTERNATETEXT"] = rmObject.alternateText
         if (rmObject.size > 0) {
-            formattedFlatConversionContext["$webTemplatePath|size"] = rmObject.size.toString()
+            formattedFlatConversionContext["$webTemplatePath|$SIZE"] = rmObject.size.toString()
+        }
+        formattedFlatConversionContext["$webTemplatePath|$COMPRESSION_ALGORITHM"] = rmObject.compressionAlgorithm?.codeString
+        formattedFlatConversionContext["$webTemplatePath|$INTEGRITY_CHECK_ALGORITHM"] = rmObject.integrityCheckAlgorithm?.codeString
+        formattedFlatConversionContext["$webTemplatePath|$INTEGRITY_CHECK"] = rmObject.integrityCheck?.let { String(it) }
+        formattedFlatConversionContext["$webTemplatePath|$DATA"] = rmObject.data?.let { String(it) }
+        rmObject.thumbnail?.also {
+            mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/_$THUMBNAIL", formattedFlatConversionContext)
+        }
+        rmObject.charset?.also {
+            CodePhraseToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/_$CHARSET", formattedFlatConversionContext)
+        }
+        rmObject.language?.also {
+            CodePhraseToFlatMapper.mapFormatted(webTemplateNode, valueConverter, it, "$webTemplatePath/_$LANGUAGE", formattedFlatConversionContext)
         }
     }
 }

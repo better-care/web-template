@@ -14,7 +14,7 @@
 
 {
   "medtronic_vbhc_crc_clinical_outcomes_baseline/_feeder_audit/originating_system_audit|system_id": "FormRenderer",
-  "medtronic_vbhc_crc_clinical_outcomes_baseline/_feeder_audit/original_content": "{\"/generic-fieldset-6178055/generic-input_text-8852038\":[],\"/generic-fieldset-5326480/generic-fieldset-4466210/generic-coded_text-2939849\":[]}",
+  "medtronic_vbhc_crc_clinical_outcomes_baseline/_feeder_audit/original_content|value": "{\"/generic-fieldset-6178055/generic-input_text-8852038\":[],\"/generic-fieldset-5326480/generic-fieldset-4466210/generic-coded_text-2939849\":[]}",
   "medtronic_vbhc_crc_clinical_outcomes_baseline/_feeder_audit/original_content|formalism": "application/json",
   "medtronic_vbhc_crc_clinical_outcomes_baseline/language|code": "en",
   "medtronic_vbhc_crc_clinical_outcomes_baseline/language|terminology": "ISO_639-1",
@@ -181,7 +181,7 @@
   "medtronic_vbhc_crc_clinical_outcomes_baseline/baseline_treatment_factors/treatment/current_activity:0/urgency|code": "1",
   "medtronic_vbhc_crc_clinical_outcomes_baseline/baseline_treatment_factors/treatment/current_activity:0/urgency|value": "Scheduled (an early operation but not immediately life-saving. Operation usually within 3 weeks )",
   "medtronic_vbhc_crc_clinical_outcomes_baseline/baseline_treatment_factors/treatment/current_activity:0/urgency|terminology": "procedureUrgencyICHOMCRC",
-  "medtronic_vbhc_crc_clinical_outcomes_baseline/baseline_treatment_factors/treatment/current_activity:0/timing": "R1",
+  "medtronic_vbhc_crc_clinical_outcomes_baseline/baseline_treatment_factors/treatment/current_activity:0/timing|value": "R1",
   "medtronic_vbhc_crc_clinical_outcomes_baseline/baseline_treatment_factors/treatment/current_activity:0/timing|formalism": "timing",
   "medtronic_vbhc_crc_clinical_outcomes_baseline/baseline_treatment_factors/treatment/narrative": "<none>",
   "medtronic_vbhc_crc_clinical_outcomes_baseline/baseline_treatment_factors/treatment/language|code": "en",

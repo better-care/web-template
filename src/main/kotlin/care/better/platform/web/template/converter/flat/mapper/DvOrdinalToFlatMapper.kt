@@ -15,10 +15,13 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CODE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ORDINAL
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvOrdinal
 
 /**
@@ -35,9 +38,9 @@ internal object DvOrdinalToFlatMapper : DvOrderedToFlatMapper<DvOrdinal>() {
             rmObject: DvOrdinal,
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
-        flatConversionContext["$webTemplatePath|code"] = rmObject.symbol?.definingCode?.codeString
-        flatConversionContext["$webTemplatePath|value"] = rmObject.symbol?.value
-        flatConversionContext["$webTemplatePath|ordinal"] = rmObject.value
+        flatConversionContext["$webTemplatePath|$CODE"] = rmObject.symbol?.definingCode?.codeString
+        flatConversionContext["$webTemplatePath|$VALUE"] = rmObject.symbol?.value
+        flatConversionContext["$webTemplatePath|$ORDINAL"] = rmObject.value
         super.map(webTemplateNode, valueConverter, rmObject, webTemplatePath, flatConversionContext)
     }
 
@@ -47,9 +50,9 @@ internal object DvOrdinalToFlatMapper : DvOrderedToFlatMapper<DvOrdinal>() {
             rmObject: DvOrdinal,
             webTemplatePath: String,
             formattedFlatConversionContext: FormattedFlatMappingContext) {
-        formattedFlatConversionContext["$webTemplatePath|code"] = rmObject.symbol?.definingCode?.codeString
-        formattedFlatConversionContext["$webTemplatePath|value"] = rmObject.symbol?.value
-        formattedFlatConversionContext["$webTemplatePath|ordinal"] = rmObject.value.toString()
+        formattedFlatConversionContext["$webTemplatePath|$CODE"] = rmObject.symbol?.definingCode?.codeString
+        formattedFlatConversionContext["$webTemplatePath|$VALUE"] = rmObject.symbol?.value
+        formattedFlatConversionContext["$webTemplatePath|$ORDINAL"] = rmObject.value.toString()
         super.mapFormatted(webTemplateNode, valueConverter, rmObject, webTemplatePath, formattedFlatConversionContext)
     }
 }

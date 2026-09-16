@@ -21,6 +21,7 @@ import care.better.platform.web.template.converter.utils.WebTemplateConversionUt
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.format.DateTimeFormatter
 import org.joda.time.format.ISODateTimeFormat
+import java.math.BigDecimal
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.text.ParseException
@@ -234,4 +235,6 @@ class LocaleBasedValueConverter(private val locale: Locale) : ValueConverter {
     }
 
     override fun formatDouble(value: Double): String = with(NumberFormat.getInstance(locale) as DecimalFormat) { this.format(value) }
+
+    override fun formatFloat(value: Float): String = with(NumberFormat.getInstance(locale) as DecimalFormat) { this.format(BigDecimal(value.toString())) }
 }

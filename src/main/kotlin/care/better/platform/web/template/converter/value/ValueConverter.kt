@@ -176,4 +176,14 @@ interface ValueConverter {
      * @return [Double] formatted as [String]
      */
     fun formatDouble(value: Double): String
+
+
+    /**
+     * Formats a [Float] as a [String].
+     *
+     * @param value [Float] value
+     * @return [Float] formatted as [String]
+     */
+
+    fun formatFloat(value: Float): String
 }

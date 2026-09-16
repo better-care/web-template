@@ -22,6 +22,8 @@ import care.better.platform.web.template.builder.model.WebTemplateInputType
 import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.builder.model.input.WebTemplateInput
 import care.better.platform.web.template.builder.utils.WebTemplateBuilderUtils
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.FORMALISM
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import org.openehr.am.aom.CString
 import org.openehr.rm.datatypes.DvParsable
 
@@ -36,8 +38,8 @@ internal object ParsableWebTemplateInputBuilder : WebTemplateInputBuilder<Any> {
 
     override fun build(node: WebTemplateNode, context: WebTemplateBuilderContext) {
         val defaultValue = WebTemplateBuilderUtils.getDefaultValue(node.amNode, DvParsable::class.java)
-        node.inputs.add(createInput(node, "value", defaultValue?.value))
-        node.inputs.add(createInput(node, "formalism", defaultValue?.formalism))
+        node.inputs.add(createInput(node, VALUE, defaultValue?.value))
+        node.inputs.add(createInput(node, FORMALISM, defaultValue?.formalism))
     }
 
     private fun createInput(node: WebTemplateNode, suffix: String, defaultValue: Any?): WebTemplateInput {

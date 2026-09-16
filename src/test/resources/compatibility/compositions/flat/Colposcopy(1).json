@@ -14,7 +14,7 @@
 
 {
   "colposcopy/_feeder_audit/originating_system_audit|system_id": "FormRenderer",
-  "colposcopy/_feeder_audit/original_content": "{\"/colposcopy_of_cervix/colposcopy_findings/generic-ANVAS-8538164\":[],\"/colposcopy_of_vulva/colposcopy_findings/generic-ANVAS-5561180\":[],\"/inspection_of_vagina/colposcopy_findings/generic-ANVAS-4151073\":[]}",
+  "colposcopy/_feeder_audit/original_content|value": "{\"/colposcopy_of_cervix/colposcopy_findings/generic-ANVAS-8538164\":[],\"/colposcopy_of_vulva/colposcopy_findings/generic-ANVAS-5561180\":[],\"/inspection_of_vagina/colposcopy_findings/generic-ANVAS-4151073\":[]}",
   "colposcopy/_feeder_audit/original_content|formalism": "application/json",
   "colposcopy/language|code": "sl",
   "colposcopy/language|terminology": "ISO_639-1",
@@ -31,6 +31,9 @@
   "colposcopy/colposcopy_of_cervix/site_of_procedure|code": "1",
   "colposcopy/colposcopy_of_cervix/site_of_procedure|value": "Maternični vrat",
   "colposcopy/colposcopy_of_cervix/site_of_procedure|terminology": "F_site_procedure",
+  "colposcopy/colposcopy_of_cervix/ism_transition/current_state|code": "532",
+  "colposcopy/colposcopy_of_cervix/ism_transition/current_state|value": "completed",
+  "colposcopy/colposcopy_of_cervix/ism_transition/current_state|terminology": "openehr",
   "colposcopy/colposcopy_of_cervix/colposcopy_findings:0/colposcopy_evaluation|code": "1",
   "colposcopy/colposcopy_of_cervix/colposcopy_findings:0/colposcopy_evaluation|value": "Zadovoljiva",
   "colposcopy/colposcopy_of_cervix/colposcopy_findings:0/colposcopy_evaluation|terminology": "AT_colposcopy_evaluation",
@@ -70,6 +73,9 @@
   "colposcopy/colposcopy_of_vulva/language|terminology": "ISO_639-1",
   "colposcopy/colposcopy_of_vulva/encoding|code": "UTF-8",
   "colposcopy/colposcopy_of_vulva/encoding|terminology": "IANA_character-sets",
+  "colposcopy/colposcopy_of_vulva/ism_transition/current_state|code": "532",
+  "colposcopy/colposcopy_of_vulva/ism_transition/current_state|value": "completed",
+  "colposcopy/colposcopy_of_vulva/ism_transition/current_state|terminology": "openehr",
   "colposcopy/inspection_of_vagina/inspection_of_vagina:0/no_abnormality_detected": true,
   "colposcopy/inspection_of_vagina/colposcopy_findings:0/anomalies:0/anomaly_type|code": "3",
   "colposcopy/inspection_of_vagina/colposcopy_findings:0/anomalies:0/anomaly_type|value": "Nespecifične lezije",
@@ -80,6 +86,9 @@
   "colposcopy/inspection_of_vagina/language|terminology": "ISO_639-1",
   "colposcopy/inspection_of_vagina/encoding|code": "UTF-8",
   "colposcopy/inspection_of_vagina/encoding|terminology": "IANA_character-sets",
+  "colposcopy/inspection_of_vagina/ism_transition/current_state|code": "532",
+  "colposcopy/inspection_of_vagina/ism_transition/current_state|value": "completed",
+  "colposcopy/inspection_of_vagina/ism_transition/current_state|terminology": "openehr",
   "colposcopy/category|code": "433",
   "colposcopy/category|value": "event",
   "colposcopy/category|terminology": "openehr"

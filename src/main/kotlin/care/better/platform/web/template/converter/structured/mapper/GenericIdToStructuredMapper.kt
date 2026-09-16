@@ -15,11 +15,12 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID_SCHEME
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.base.basetypes.GenericId
 
 /**
@@ -31,14 +32,14 @@ import org.openehr.base.basetypes.GenericId
 internal object GenericIdToStructuredMapper : RmObjectToStructuredMapper<GenericId> {
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: GenericId): JsonNode =
         with(ObjectIdToStructuredMapper.map(webTemplateNode, valueConverter, rmObject) as ObjectNode) {
-            this.putIfNotNull("|id_scheme", rmObject.scheme)
+            this.putIfNotNull("|$ID_SCHEME", rmObject.scheme)
 
             this
         }
 
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: GenericId): JsonNode =
         with(ObjectIdToStructuredMapper.map(webTemplateNode, valueConverter, rmObject) as ObjectNode) {
-            this.putIfNotNull("|id_scheme", rmObject.scheme)
+            this.putIfNotNull("|$ID_SCHEME", rmObject.scheme)
             this
         }
 }

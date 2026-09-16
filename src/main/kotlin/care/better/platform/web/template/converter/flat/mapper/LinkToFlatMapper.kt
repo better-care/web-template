@@ -15,10 +15,13 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MEANING
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TARGET
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TYPE
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.common.Link
 
 /**
@@ -34,9 +37,9 @@ internal object LinkToFlatMapper : RmObjectToFlatMapper<Link> {
             rmObject: Link,
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
-        flatConversionContext["$webTemplatePath|meaning"] = rmObject.meaning?.value
-        flatConversionContext["$webTemplatePath|type"] = rmObject.type?.value
-        flatConversionContext["$webTemplatePath|target"] = rmObject.target?.value
+        flatConversionContext["$webTemplatePath|$MEANING"] = rmObject.meaning?.value
+        flatConversionContext["$webTemplatePath|$TYPE"] = rmObject.type?.value
+        flatConversionContext["$webTemplatePath|$TARGET"] = rmObject.target?.value
     }
 
     override fun mapFormatted(
@@ -45,8 +48,8 @@ internal object LinkToFlatMapper : RmObjectToFlatMapper<Link> {
             rmObject: Link,
             webTemplatePath: String,
             formattedFlatConversionContext: FormattedFlatMappingContext) {
-        formattedFlatConversionContext["$webTemplatePath|meaning"] = rmObject.meaning?.value
-        formattedFlatConversionContext["$webTemplatePath|type"] = rmObject.type?.value
-        formattedFlatConversionContext["$webTemplatePath|target"] = rmObject.target?.value
+        formattedFlatConversionContext["$webTemplatePath|$MEANING"] = rmObject.meaning?.value
+        formattedFlatConversionContext["$webTemplatePath|$TYPE"] = rmObject.type?.value
+        formattedFlatConversionContext["$webTemplatePath|$TARGET"] = rmObject.target?.value
     }
 }

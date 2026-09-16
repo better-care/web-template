@@ -18,6 +18,9 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 import care.better.platform.template.AmNode
 import care.better.platform.template.AmUtils
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CODE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PREFERRED_TERM
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TERMINOLOGY
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
@@ -42,7 +45,7 @@ internal object CodePhraseFactory : RmObjectLeafNodeFactory<CodePhrase>() {
             rmObject: CodePhrase,
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean =
-        if (attribute.attribute.isBlank() || attribute.attribute == "code") {
+        if (attribute.attribute.isBlank() || attribute.attribute == CODE) {
             val textValue = jsonNode.asText()
             findConstraint(amNode)?.also {
                 if (it.codeList.isNotEmpty() && !it.codeList.contains(textValue)) {
@@ -52,10 +55,10 @@ internal object CodePhraseFactory : RmObjectLeafNodeFactory<CodePhrase>() {
 
             rmObject.codeString = textValue
             true
-        } else if (attribute.attribute == "terminology") {
+        } else if (attribute.attribute == TERMINOLOGY) {
             rmObject.terminologyId ?: TerminologyId().also { rmObject.terminologyId = it }.apply { this.value = jsonNode.asText() }
             true
-        } else if (attribute.attribute == "preferred_term") {
+        } else if (attribute.attribute == PREFERRED_TERM) {
             rmObject.preferredTerm = jsonNode.asText()
             true
         } else {
@@ -63,7 +66,7 @@ internal object CodePhraseFactory : RmObjectLeafNodeFactory<CodePhrase>() {
         }
 
     override fun removeDependentValues(map: MutableMap<AttributeDto, JsonNode>): Boolean {
-        val codeNode = map[AttributeDto.forAttribute("code")]
+        val codeNode = map[AttributeDto.forAttribute(CODE)]
         if (codeNode != null) {
             val codeAttribute = AttributeDto.forAttribute(codeNode.asText())
             if (map[codeAttribute] != null) {

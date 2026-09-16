@@ -15,6 +15,7 @@
 
 package care.better.platform.web.template.converter.raw.context.setter
 
+import care.better.platform.web.template.converter.constant.WebTemplateConstants
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.node.ObjectNode
@@ -36,91 +37,91 @@ import java.time.ZonedDateTime
 @Suppress("unused")
 internal enum class CtxConstants(val attributeName: String, val ctxSetter: CtxSetter) {
     ID_NAMESPACE(
-        "id_namespace",
+        WebTemplateConstants.ID_NAMESPACE,
         CtxSetter { builder, _, value -> builder.withIdNamespace(value.toString()) }),
     ID_SCHEMA(
-        "id_schema",
+        WebTemplateConstants.ID_SCHEMA,
         CtxSetter { builder, _, value -> builder.withIdScheme(value.toString()) }),
     ID_SCHEME(
-        "id_scheme",
+        WebTemplateConstants.ID_SCHEME,
         CtxSetter { builder, _, value -> builder.withIdScheme(value.toString()) }),
     COMPOSER_NAME(
-        "composer_name",
+        WebTemplateConstants.COMPOSER_NAME,
         CtxSetter { builder, _, value -> builder.withComposerName(value.toString()) }),
     COMPOSER_ID(
-        "composer_id",
+        WebTemplateConstants.COMPOSER_ID,
         CtxSetter { builder, _, value -> builder.withComposerId(value.toString()) }),
     COMPOSER_SELF(
-        "composer_self",
+        WebTemplateConstants.COMPOSER_SELF,
         CtxSetter { builder, _, value -> builder.withComposerSelf(value.toString().toBoolean()) }),
     CATEGORY(
-        "category",
+        WebTemplateConstants.CATEGORY,
         CtxSetter { builder, _, value -> builder.withCategory(value.toString()) }),
     LANGUAGE(
-        "language",
+        WebTemplateConstants.LANGUAGE,
         CtxSetter { builder, _, value -> builder.withLanguage(value.toString()) }),
     TERRITORY(
-        "territory",
+        WebTemplateConstants.TERRITORY,
         CtxSetter { builder, _, value -> builder.withTerritory(value.toString()) }),
     TIME(
-        "time",
+        WebTemplateConstants.TIME,
         CtxSetter { builder, valueConverter, value -> builder.withTime(convertToOffsetDateTime(valueConverter, value)) }),
     END_TIME(
-        "end_time",
+        WebTemplateConstants.END_TIME,
         CtxSetter { builder, valueConverter, value -> builder.withEndTime(convertToOffsetDateTime(valueConverter, value)) }),
     SETTING(
-        "setting",
+        WebTemplateConstants.SETTING,
         CtxSetter { builder, _, value -> builder.withSetting(value.toString()) }),
     HISTORY_ORIGIN(
-        "history_origin",
+        WebTemplateConstants.HISTORY_ORIGIN,
         CtxSetter { builder, valueConverter, value -> builder.withHistoryOrigin(convertToOffsetDateTime(valueConverter, value)) }),
     PROVIDER_NAME(
-        "provider_name",
+        WebTemplateConstants.PROVIDER_NAME,
         CtxSetter { builder, _, value -> builder.withProviderName(value.toString()) }),
     PROVIDER_ID(
-        "provider_id",
+        WebTemplateConstants.PROVIDER_ID,
         CtxSetter { builder, _, value -> builder.withProviderId(value.toString()) }),
     PARTICIPATION_NAME(
-        "participation_name",
+        WebTemplateConstants.PARTICIPATION_NAME,
         CtxSetter { builder, _, value -> setStringList(value) { index, element -> builder.addParticipationName(element, index) } }),
     PARTICIPATION_ID(
-        "participation_id",
+        WebTemplateConstants.PARTICIPATION_ID,
         CtxSetter { builder, _, value -> setStringList(value) { index, element -> builder.addParticipationId(element, index) } }),
     PARTICIPATION_FUNCTION(
-        "participation_function",
+        WebTemplateConstants.PARTICIPATION_FUNCTION,
         CtxSetter { builder, _, value -> setStringList(value) { index, element -> builder.addParticipationFunction(element, index) } }),
     PARTICIPATION_MODE(
-        "participation_mode",
+        WebTemplateConstants.PARTICIPATION_MODE,
         ParticipationModeCtxSetter),
     PARTICIPATION_IDENTIFIERS(
-        "participation_identifiers",
+        WebTemplateConstants.PARTICIPATION_IDENTIFIERS,
         ParticipationIdentifiersCtxSetter),
     ACTION_TIME(
-        "action_time",
+        WebTemplateConstants.ACTION_TIME,
         CtxSetter { builder, valueConverter, value -> builder.withActionTime(convertToOffsetDateTime(valueConverter, value)) }),
     LOCATION(
-        "location",
+        WebTemplateConstants.LOCATION,
         CtxSetter { builder, _, value -> builder.withLocation(value.toString()) }),
     ACTION_ISM_TRANSITION_CURRENT_STATE(
-        "action_ism_transition_current_state",
+        WebTemplateConstants.ACTION_ISM_TRANSITION_CURRENT_STATE,
         CtxSetter { builder, _, value -> builder.withIsmTransitionCurrentState(value.toString()) }),
     INSTRUCTION_NARRATIVE(
-        "instruction_narrative",
+        WebTemplateConstants.INSTRUCTION_NARRATIVE,
         CtxSetter { builder, _, value -> builder.withInstructionNarrative(value.toString()) }),
     ACTIVITY_TIMING(
-        "activity_timing",
+        WebTemplateConstants.ACTIVITY_TIMING,
         CtxSetter { builder, _, value -> builder.withActivityTiming(value.toString()) }),
     HEALTH_CARE_FACILITY(
-        "health_care_facility",
+        WebTemplateConstants.HEALTH_CARE_FACILITY,
         HealthCareFacilityCtxSetter),
     HEALTHCARE_FACILITY(
-        "healthcare_facility",
+        WebTemplateConstants.HEALTHCARE_FACILITY,
         HealthCareFacilityCtxSetter),
     WORK_FLOW_ID(
-        "work_flow_id",
+        WebTemplateConstants.WORK_FLOW_ID,
         WorkFlowIdCtxSetter),
     LINK(
-        "link",
+        WebTemplateConstants.LINK,
         LinkCtxSetter);
 
     companion object {

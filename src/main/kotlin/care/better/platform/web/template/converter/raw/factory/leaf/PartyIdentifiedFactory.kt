@@ -17,6 +17,12 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.IDENTIFIER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID_NAMESPACE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID_SCHEME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NAME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NAMESPACE
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.extensions.createGenericId
@@ -52,25 +58,25 @@ internal object PartyIdentifiedFactory : RmObjectLeafNodeFactory<PartyIdentified
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean {
         return when (attribute.attribute) {
-            "name" -> {
+            NAME -> {
                 rmObject.name = jsonNode.asText()
                 true
             }
-            "id" -> {
+            ID -> {
                 handleIdAttribute(rmObject, jsonNode, conversionContext)
                 true
             }
-            "_identifier" -> {
+            "_$IDENTIFIER" -> {
                 rmObject.identifiers = jsonNode.mapIndexedNotNull { index, node ->
                     DvIdentifierFactory.create(conversionContext, amNode, node, WebTemplatePath(attribute.originalAttribute, webTemplatePath, index))
                 }.toMutableList()
                 true
             }
-            "id_scheme" -> {
+            ID_SCHEME -> {
                 handleIdSchemeAttribute(rmObject, jsonNode, conversionContext)
                 true
             }
-            "id_namespace", "namespace" -> {
+            ID_NAMESPACE, NAMESPACE -> {
                 handleIdNamespaceAttribute(rmObject, jsonNode, conversionContext)
                 true
             }

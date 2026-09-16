@@ -18,6 +18,7 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 import care.better.platform.template.AmNode
 import care.better.platform.template.AmUtils
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.RELATIONSHIP
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.extensions.createFromAmNode
@@ -49,9 +50,17 @@ internal object PartyRelatedFactory : RmObjectLeafNodeFactory<PartyRelated>() {
             rmObject: PartyRelated,
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean =
-        PartyIdentifiedFactory.handleField(conversionContext, amNode, attribute, rmObject, jsonNode, webTemplatePath)
+        PartyIdentifiedFactory.handleField(conversionContext, amNode, attribute, rmObject, jsonNode, webTemplatePath) ||
+                if (attribute.attribute == RELATIONSHIP) {
+                    rmObject.relationship = jsonNode.firstNotNullOfOrNull {
+                        DvCodedTextFactory.getInstance().create(conversionContext, AmNode(amNode, "DV_CODED_TEXT"), it, webTemplatePath)
+                    }
+                    true
+                } else false
 
     override fun afterPropertiesSet(conversionContext: ConversionContext, amNode: AmNode, jsonNode: JsonNode, rmObject: PartyRelated) {
-        AmUtils.getAmNode(amNode, "relationship")?.also { rmObject.relationship = DvCodedText.createFromAmNode(it) }
+        if (rmObject.relationship == null) {
+            AmUtils.getAmNode(amNode, "relationship")?.also { rmObject.relationship = DvCodedText.createFromAmNode(it) }
+        }
     }
 }

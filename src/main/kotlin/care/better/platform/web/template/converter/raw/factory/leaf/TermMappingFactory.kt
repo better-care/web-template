@@ -17,6 +17,9 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MATCH
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PURPOSE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TARGET
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
@@ -49,11 +52,11 @@ internal object TermMappingFactory : RmObjectLeafNodeFactory<TermMapping>() {
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean =
         when (attribute.attribute) {
-            "match" -> {
+            MATCH -> {
                 rmObject.match = jsonNode.asText()
                 true
             }
-            "target" -> {
+            TARGET -> {
                 rmObject.target = jsonNode.mapNotNull {
                     CodePhraseFactory.create(
                         conversionContext,
@@ -63,7 +66,7 @@ internal object TermMappingFactory : RmObjectLeafNodeFactory<TermMapping>() {
                 }.firstOrNull()
                 true
             }
-            "purpose" -> {
+            PURPOSE -> {
                 rmObject.purpose = jsonNode.mapNotNull {
                     DvCodedTextFactory.getInstance().create(
                         conversionContext,

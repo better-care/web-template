@@ -18,9 +18,13 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 import care.better.openehr.terminology.OpenEhrTerminology
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY_IS_PERCENT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MAGNITUDE_STATUS
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
+import org.openehr.rm.datatypes.DvAmount
 import org.openehr.rm.datatypes.DvQuantified
 
 /**
@@ -40,7 +44,7 @@ internal abstract class DvQuantifiedFactory<T : DvQuantified> : DvOrderedFactory
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean =
         super.handleField(conversionContext, amNode, attribute, rmObject, jsonNode, webTemplatePath) ||
-                if (attribute.attribute == "magnitude_status") {
+                if (attribute.attribute == MAGNITUDE_STATUS) {
                     val textValue = jsonNode.asText()
                     if (textValue != null) {
                         if (OpenEhrTerminology.getMagnitudeStatusCodes().contains(textValue.uppercase()))
@@ -48,6 +52,12 @@ internal abstract class DvQuantifiedFactory<T : DvQuantified> : DvOrderedFactory
                         else
                             throw ConversionException("Invalid MAGNITUDE_STATUS: $textValue", webTemplatePath.toString())
                     }
+                    true
+                } else if (attribute.attribute == ACCURACY && rmObject is DvAmount) {
+                    rmObject.accuracy = jsonNode.asDouble().toFloat()
+                    true
+                } else if (attribute.attribute == ACCURACY_IS_PERCENT && rmObject is DvAmount) {
+                    rmObject.accuracyIsPercent = jsonNode.asBoolean()
                     true
                 } else {
                     false

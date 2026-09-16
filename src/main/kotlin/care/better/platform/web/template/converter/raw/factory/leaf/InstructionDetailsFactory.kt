@@ -18,6 +18,13 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.builder.exception.UnknownPathBuilderException
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACTIVITY_ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACTIVITY_INDEX
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.COMPOSITION_UID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.INSTRUCTION_INDEX
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.INSTRUCTION_UID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PATH
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.WT_PATH
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
@@ -51,7 +58,7 @@ internal object InstructionDetailsFactory : RmObjectLeafNodeFactory<InstructionD
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean =
         when (attribute.attribute) {
-            "composition_uid" -> {
+            COMPOSITION_UID -> {
                 getOrCreateInstructionId(rmObject).also {
                     it.id = HierObjectId(jsonNode.asText())
                     it.type = "INSTRUCTION"
@@ -60,13 +67,13 @@ internal object InstructionDetailsFactory : RmObjectLeafNodeFactory<InstructionD
                 conversionContext.instructionDetailsDataHolder.computeIfAbsent(rmObject).isReferenceSelfComposition(jsonNode.asText())
                 true
             }
-            "path" -> {
+            PATH -> {
                 getOrCreateInstructionId(rmObject).also {
                     it.path = jsonNode.asText()
                 }
                 true
             }
-            "wt_path" -> {
+            WT_PATH -> {
                 try {
                     conversionContext.getWebTemplate().findWebTemplateNode(jsonNode.asText()).also {
                         conversionContext.instructionDetailsDataHolder.computeIfAbsent(rmObject).withInstructionNode(it.amNode)
@@ -77,19 +84,19 @@ internal object InstructionDetailsFactory : RmObjectLeafNodeFactory<InstructionD
                 }
                 true
             }
-            "instruction_uid" -> {
+            INSTRUCTION_UID -> {
                 conversionContext.instructionDetailsDataHolder.computeIfAbsent(rmObject).withInstructionUid(jsonNode.asText())
                 true
             }
-            "instruction_index" -> {
+            INSTRUCTION_INDEX -> {
                 conversionContext.instructionDetailsDataHolder.computeIfAbsent(rmObject).withInstructionIndex(jsonNode.asText().toInt())
                 true
             }
-            "activity_id" -> {
+            ACTIVITY_ID -> {
                 rmObject.activityId = jsonNode.asText()
                 true
             }
-            "activity_index" -> {
+            ACTIVITY_INDEX -> {
                 conversionContext.instructionDetailsDataHolder.computeIfAbsent(rmObject).withActivityIndex(jsonNode.asText().toInt())
                 true
             }

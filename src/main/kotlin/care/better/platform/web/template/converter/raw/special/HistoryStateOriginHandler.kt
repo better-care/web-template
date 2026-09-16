@@ -18,6 +18,7 @@ package care.better.platform.web.template.converter.raw.special
 import care.better.openehr.rm.RmObject
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.STATE_HISTORY_ORIGIN
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import org.openehr.rm.composition.Observation
@@ -29,7 +30,7 @@ import org.openehr.rm.composition.Observation
  * Singleton instance of [SpecialCaseRmObjectHandler] that handles "state_history_origin" attribute.
  */
 internal object HistoryStateOriginHandler : SpecialCaseRmObjectHandler {
-    const val specialAttribute: String = "state_history_origin"
+    const val specialAttribute: String = STATE_HISTORY_ORIGIN
 
     private val observationClass = Observation::class.java
 

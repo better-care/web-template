@@ -15,11 +15,14 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.EXPIRY_TIME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NARRATIVE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.WF_DEFINITION
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putSingletonAsArray
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.composition.Instruction
 
 /**
@@ -28,13 +31,19 @@ import org.openehr.rm.composition.Instruction
  *
  * Singleton instance of [EntryToStructuredMapper] that maps [Instruction] to STRUCTURED format.
  */
-internal object InstructionToStructuredMapper : EntryToStructuredMapper<Instruction>() {
+internal object InstructionToStructuredMapper : CareEntryToStructuredMapper<Instruction>() {
 
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: Instruction): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
             map(webTemplateNode, valueConverter, rmObject, this)
+            rmObject.narrative?.also {
+                this.putSingletonAsArray(NARRATIVE) { DvTextToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+            }
+            rmObject.expiryTime?.also {
+                this.putSingletonAsArray(EXPIRY_TIME) { DvDateTimeToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+            }
             rmObject.wfDefinition?.also {
-                this.putSingletonAsArray("_wf_definition") { DvParsableToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+                this.putSingletonAsArray("_$WF_DEFINITION") { DvParsableToStructuredMapper.map(webTemplateNode, valueConverter, it) }
             }
             this
         }
@@ -42,9 +51,14 @@ internal object InstructionToStructuredMapper : EntryToStructuredMapper<Instruct
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: Instruction): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
             mapFormatted(webTemplateNode, valueConverter, rmObject, this)
+            rmObject.narrative?.also {
+                this.putSingletonAsArray(NARRATIVE) { DvTextToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+            }
+            rmObject.expiryTime?.also {
+                this.putSingletonAsArray(EXPIRY_TIME) { DvDateTimeToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+            }
             rmObject.wfDefinition?.also {
-                this.putSingletonAsArray("_wf_definition") { DvParsableToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
-
+                this.putSingletonAsArray("_$WF_DEFINITION") { DvParsableToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
             }
             this
         }

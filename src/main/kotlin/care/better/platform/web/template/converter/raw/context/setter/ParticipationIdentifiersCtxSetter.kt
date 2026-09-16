@@ -15,6 +15,10 @@
 
 package care.better.platform.web.template.converter.raw.context.setter
 
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ASSIGNER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ISSUER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TYPE
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.value.ValueConverter
@@ -59,10 +63,10 @@ internal object ParticipationIdentifiersCtxSetter : CtxSetter {
             } else {
                 identifiers.forEachIndexed { identifierIndex, identifier ->
                     this.add(identifierIndex, DvIdentifier().apply {
-                        this.id = (identifier as Map<String, String>)["|id"]
-                        this.type = identifier["|type"]
-                        this.assigner = identifier["|assigner"]
-                        this.issuer = identifier["|issuer"]
+                        this.id = (identifier as Map<String, String>)["|$ID"]
+                        this.type = identifier["|$TYPE"]
+                        this.assigner = identifier["|$ASSIGNER"]
+                        this.issuer = identifier["|$ISSUER"]
                     })
                 }
             }

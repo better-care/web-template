@@ -18,6 +18,12 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 import care.better.openehr.rm.RmObject
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LOWER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LOWER_INCLUDED
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LOWER_UNBOUNDED
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UPPER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UPPER_INCLUDED
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UPPER_UNBOUNDED
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
@@ -50,7 +56,7 @@ internal object NormalRangeFactory : RmObjectLeafNodeFactory<DvInterval>() {
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean =
         when (attribute.attribute) {
-            "lower" -> {
+            LOWER -> {
                 rmObject.lower =
                     jsonNode.mapNotNull {
                         RmObjectLeafNodeFactoryDelegator.delegateOrThrow<RmObject>(
@@ -62,7 +68,7 @@ internal object NormalRangeFactory : RmObjectLeafNodeFactory<DvInterval>() {
                     }.firstOrNull()
                 true
             }
-            "upper" -> {
+            UPPER -> {
                 rmObject.upper =
                     jsonNode.mapNotNull {
                         RmObjectLeafNodeFactoryDelegator.delegateOrThrow<RmObject>(
@@ -72,6 +78,22 @@ internal object NormalRangeFactory : RmObjectLeafNodeFactory<DvInterval>() {
                             it,
                             webTemplatePath + attribute.originalAttribute) as DvOrdered?
                     }.firstOrNull()
+                true
+            }
+            LOWER_INCLUDED -> {
+                rmObject.lowerIncluded = jsonNode.asBoolean()
+                true
+            }
+            UPPER_INCLUDED -> {
+                rmObject.upperIncluded = jsonNode.asBoolean()
+                true
+            }
+            LOWER_UNBOUNDED -> {
+                rmObject.lowerUnbounded = jsonNode.asBoolean()
+                true
+            }
+            UPPER_UNBOUNDED -> {
+                rmObject.upperUnbounded = jsonNode.asBoolean()
                 true
             }
             else -> false

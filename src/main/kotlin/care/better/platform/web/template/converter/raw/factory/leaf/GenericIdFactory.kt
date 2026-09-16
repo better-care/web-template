@@ -17,6 +17,8 @@ package care.better.platform.web.template.converter.raw.factory.leaf
 
 import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.SCHEME
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import com.fasterxml.jackson.databind.JsonNode
 import org.openehr.base.basetypes.GenericId
@@ -38,10 +40,10 @@ internal object GenericIdFactory : RmObjectLeafNodeFactory<GenericId>() {
             rmObject: GenericId,
             jsonNode: JsonNode,
             webTemplatePath: WebTemplatePath): Boolean =
-        if (attribute.attribute.isBlank() || attribute.attribute == "value") {
+        if (attribute.attribute.isBlank() || attribute.attribute == VALUE) {
             rmObject.value = jsonNode.asText()
             true
-        } else if (attribute.attribute == "scheme") {
+        } else if (attribute.attribute == SCHEME) {
             rmObject.value = jsonNode.asText()
             true
         } else {

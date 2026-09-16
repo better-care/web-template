@@ -280,7 +280,7 @@ class LocaleTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             mapOf(
-                "encounter/testing/identifier" to "id",
+                "encounter/testing/identifier|id" to "id",
                 "encounter/testing/identifier|issuer" to "issuer",
                 "encounter/testing/identifier|assigner" to "assigner",
                 "encounter/testing/identifier|type" to "type",
@@ -297,7 +297,7 @@ class LocaleTest : AbstractWebTemplateTest() {
             context
         )
         assertThat(webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())).contains(
-            entry("encounter/testing:0/identifier", "id"),
+            entry("encounter/testing:0/identifier|id", "id"),
             entry("encounter/testing:0/identifier|issuer", "issuer"),
             entry("encounter/testing:0/identifier|assigner", "assigner"),
             entry("encounter/testing:0/identifier|type", "type"),
@@ -311,7 +311,7 @@ class LocaleTest : AbstractWebTemplateTest() {
             entry("encounter/testing:0/ordinal|ordinal", "2"),
             entry("encounter/testing:0/boolean", "true"),
             entry("encounter/testing:0/proportion", "37.0%"),
-            entry("encounter/testing:0/parsable", "<html><body>hello world!</body></html>")
+            entry("encounter/testing:0/parsable|value", "<html><body>hello world!</body></html>")
         )
     }
 
@@ -322,7 +322,7 @@ class LocaleTest : AbstractWebTemplateTest() {
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val composition: Composition? = webTemplate.convertFromFlatToRaw(
             mapOf(
-                "encounter/testing/identifier" to "",
+                "encounter/testing/identifier|id" to "",
                 "encounter/testing/identifier|issuer" to "issuer",
                 "encounter/testing/identifier|assigner" to "assigner",
                 "encounter/testing/identifier|type" to "type",
@@ -350,11 +350,11 @@ class LocaleTest : AbstractWebTemplateTest() {
             entry("encounter/testing:0/ordinal|ordinal", "2"),
             entry("encounter/testing:0/boolean", "true"),
             entry("encounter/testing:0/proportion", "37.0%"),
-            entry("encounter/testing:0/parsable", "<html><body>hello world!</body></html>")
+            entry("encounter/testing:0/parsable|value", "<html><body>hello world!</body></html>")
         )
 
         assertThat(retrieved).doesNotContain(
-            entry("encounter/testing:0/identifier", ""),
+            entry("encounter/testing:0/identifier|id", ""),
             entry("encounter/testing:0/identifier|issuer", "issuer"),
             entry("encounter/testing:0/identifier|assigner", "assigner"),
             entry("encounter/testing:0/identifier|type", "type")
@@ -835,12 +835,12 @@ class LocaleTest : AbstractWebTemplateTest() {
         val flatMap: MutableMap<String, Any?> = webTemplate.convertFromRawToFlat(composition, FromRawConversion.create()).toMutableMap()
         assertThat(flatMap).contains(entry("clinical_notes_report/clinical_notes/clinical_synopses/synopsis/text_value", "matija je tukaj1"))
         flatMap.remove("clinical_notes_report/clinical_notes/clinical_synopses/synopsis/text_value")
-        flatMap["clinical_notes_report/clinical_notes/clinical_synopses/synopsis/parsable_value"] = "html text"
+        flatMap["clinical_notes_report/clinical_notes/clinical_synopses/synopsis/parsable_value|value"] = "html text"
         flatMap["clinical_notes_report/clinical_notes/clinical_synopses/synopsis/parsable_value|formalism"] = "text/plain"
 
         val context = ConversionContext.create().withLanguage("sl").withTerritory("SI").withComposerName("composer").build()
         val secondFlatMap: Map<String, Any?> = webTemplate.convertFromRawToFlat(webTemplate.convertFromFlatToRaw<Composition>(flatMap, context)!!, FromRawConversion.create())
-        assertThat(secondFlatMap).contains(entry("clinical_notes_report/clinical_notes/clinical_synopses/synopsis/parsable_value", "html text"))
+        assertThat(secondFlatMap).contains(entry("clinical_notes_report/clinical_notes/clinical_synopses/synopsis/parsable_value|value", "html text"))
     }
 
     @Test

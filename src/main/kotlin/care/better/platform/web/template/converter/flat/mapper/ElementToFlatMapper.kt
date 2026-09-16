@@ -16,6 +16,8 @@
 package care.better.platform.web.template.converter.flat.mapper
 
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NULL_FLAVOUR
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NULL_REASON
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
@@ -41,10 +43,10 @@ internal object ElementToFlatMapper : LocatableToFlatMapper<Element>() {
         val nullReason = rmObject.nullReason
         if (rmObject.value == null) {
             if (nullFlavour != null) {
-                DvCodedTextToFlatMapper.map(webTemplateNode, valueConverter, nullFlavour, "$webTemplatePath/_null_flavour", flatConversionContext)
+                DvCodedTextToFlatMapper.map(webTemplateNode, valueConverter, nullFlavour, "$webTemplatePath/_$NULL_FLAVOUR", flatConversionContext)
             }
             if (nullReason != null) {
-                DvTextToFlatMapper.map(webTemplateNode, valueConverter, nullReason, "$webTemplatePath/_null_reason", flatConversionContext)
+                DvTextToFlatMapper.map(webTemplateNode, valueConverter, nullReason, "$webTemplatePath/_$NULL_REASON", flatConversionContext)
             }
         }
     }
@@ -61,10 +63,10 @@ internal object ElementToFlatMapper : LocatableToFlatMapper<Element>() {
         val nullReason = rmObject.nullReason
         if (rmObject.value == null) {
             if (nullFlavour != null) {
-                DvCodedTextToFlatMapper.mapFormatted(webTemplateNode, valueConverter, nullFlavour, "$webTemplatePath/_null_flavour", formattedFlatConversionContext)
+                DvCodedTextToFlatMapper.mapFormatted(webTemplateNode, valueConverter, nullFlavour, "$webTemplatePath/_$NULL_FLAVOUR", formattedFlatConversionContext)
             }
             if (nullReason != null) {
-                DvTextToFlatMapper.mapFormatted(webTemplateNode, valueConverter, nullReason, "$webTemplatePath/_null_reason", formattedFlatConversionContext)
+                DvTextToFlatMapper.mapFormatted(webTemplateNode, valueConverter, nullReason, "$webTemplatePath/_$NULL_REASON", formattedFlatConversionContext)
             }
         }
     }

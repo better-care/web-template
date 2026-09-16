@@ -15,13 +15,19 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACTIVITY_ID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.COMPOSITION_UID
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.INSTRUCTION_DETAILS
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ISM_TRANSITION
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PATH
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TIME
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.mapper.putSingletonAsArray
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.composition.Action
 
 /**
@@ -30,10 +36,16 @@ import org.openehr.rm.composition.Action
  *
  * Singleton instance of [EntryToStructuredMapper] that maps [Action] to STRUCTURED format.
  */
-internal object ActionToStructuredMapper : EntryToStructuredMapper<Action>() {
+internal object ActionToStructuredMapper : CareEntryToStructuredMapper<Action>() {
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: Action): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
             map(webTemplateNode, valueConverter, rmObject, this)
+            rmObject.time?.also {
+                this.putSingletonAsArray(TIME) { DvDateTimeToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+            }
+            rmObject.ismTransition?.also {
+                this.putSingletonAsArray(ISM_TRANSITION) { IsmTransitionToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+            }
             mapAction(rmObject, this)
             this
         }
@@ -41,20 +53,26 @@ internal object ActionToStructuredMapper : EntryToStructuredMapper<Action>() {
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: Action): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
             mapFormatted(webTemplateNode, valueConverter, rmObject, this)
+            rmObject.time?.also {
+                this.putSingletonAsArray(TIME) { DvDateTimeToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+            }
+            rmObject.ismTransition?.also {
+                this.putSingletonAsArray(ISM_TRANSITION) { IsmTransitionToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+            }
             mapAction(rmObject, this)
             this
         }
 
     private fun mapAction(action: Action, objectNode: ObjectNode) {
-        objectNode.putSingletonAsArray("_instruction_details") {
+        objectNode.putSingletonAsArray("_$INSTRUCTION_DETAILS") {
             action.instructionDetails?.also { details ->
                 val actionObjectNode = ConversionObjectMapper.createObjectNode()
 
                 details.instructionId?.also {
-                    actionObjectNode.putIfNotNull("|composition_uid", it.id?.value)
-                    actionObjectNode.putIfNotNull("|path", it.path)
+                    actionObjectNode.putIfNotNull("|$COMPOSITION_UID", it.id?.value)
+                    actionObjectNode.putIfNotNull("|$PATH", it.path)
                 }
-                actionObjectNode.putIfNotNull("|activity_id", details.activityId)
+                actionObjectNode.putIfNotNull("|$ACTIVITY_ID", details.activityId)
                 return@putSingletonAsArray actionObjectNode
             }
             return@putSingletonAsArray null

@@ -15,10 +15,11 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PATH
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.base.basetypes.LocatableRef
 
 /**
@@ -35,7 +36,7 @@ internal object LocatableRefToFlatMapper : RmObjectToFlatMapper<LocatableRef> {
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
         ObjectRefToFlatMapper.map(webTemplateNode, valueConverter, rmObject, webTemplatePath, flatConversionContext)
-        flatConversionContext["$webTemplatePath|path"] = rmObject.path
+        flatConversionContext["$webTemplatePath|$PATH"] = rmObject.path
     }
 
     override fun mapFormatted(
@@ -45,6 +46,6 @@ internal object LocatableRefToFlatMapper : RmObjectToFlatMapper<LocatableRef> {
             webTemplatePath: String,
             formattedFlatConversionContext: FormattedFlatMappingContext) {
         ObjectRefToFlatMapper.mapFormatted(webTemplateNode, valueConverter, rmObject, webTemplatePath, formattedFlatConversionContext)
-        formattedFlatConversionContext["$webTemplatePath|path"] = rmObject.path
+        formattedFlatConversionContext["$webTemplatePath|$PATH"] = rmObject.path
     }
 }

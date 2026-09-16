@@ -15,6 +15,8 @@
 
 package care.better.platform.web.template.converter.raw.generics
 
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CONTEXT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.GENERIC_FIELDS
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import com.fasterxml.jackson.databind.JsonNode
@@ -38,8 +40,8 @@ internal object GenericFieldExtractor : (JsonNode) -> FeederAudit? {
      */
     override fun invoke(node: JsonNode): FeederAudit? {
 
-        val structuredGenericFieldNode = node.path("ctx").path("generic_fields")
-        val flatGenericFieldNode = node.path("ctx/generic_fields")
+        val structuredGenericFieldNode = node.path(CONTEXT).path(GENERIC_FIELDS)
+        val flatGenericFieldNode = node.path("$CONTEXT/$GENERIC_FIELDS")
 
         return when {
             structuredGenericFieldNode.isMissingNode && flatGenericFieldNode.isMissingNode -> null

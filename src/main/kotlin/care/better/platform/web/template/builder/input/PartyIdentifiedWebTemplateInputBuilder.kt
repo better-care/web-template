@@ -17,6 +17,7 @@ package care.better.platform.web.template.builder.input
 
 import care.better.platform.web.template.builder.context.WebTemplateBuilderContext
 import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.NAME
 
 /**
  * @author Bostjan Lah
@@ -26,6 +27,6 @@ import care.better.platform.web.template.builder.model.WebTemplateNode
 internal object PartyIdentifiedWebTemplateInputBuilder : PartyProxyWebTemplateInputBuilder() {
     override fun build(node: WebTemplateNode, context: WebTemplateBuilderContext) {
         super.build(node, context)
-        node.inputs.add(createInput(node, "name"))
+        node.inputs.add(createInput(node, NAME))
     }
 }

@@ -104,11 +104,11 @@ class ProviderTest : AbstractWebTemplateTest() {
         assertThat(flatMap).contains(
             entry("vitals/vitals/haemoglobin_a1c:0/_provider|name", "Marija Medved"),
             entry("vitals/vitals/haemoglobin_a1c:0/_provider|id", "998"),
-            entry("vitals/vitals/haemoglobin_a1c:0/_provider/_identifier:0", "1"),
+            entry("vitals/vitals/haemoglobin_a1c:0/_provider/_identifier:0|id", "1"),
             entry("vitals/vitals/haemoglobin_a1c:0/_provider/_identifier:0|type", "person"),
             entry("vitals/vitals/haemoglobin_a1c:0/_provider/_identifier:0|assigner", "nhs"),
             entry("vitals/vitals/haemoglobin_a1c:0/_provider/_identifier:0|issuer", "nhs"),
-            entry("vitals/vitals/haemoglobin_a1c:0/_provider/_identifier:1", "123"),
+            entry("vitals/vitals/haemoglobin_a1c:0/_provider/_identifier:1|id", "123"),
             entry("vitals/vitals/haemoglobin_a1c:0/_provider/_identifier:1|type", "person"),
             entry("vitals/vitals/haemoglobin_a1c:0/_provider/_identifier:1|assigner", "uk"),
             entry("vitals/vitals/haemoglobin_a1c:0/_provider/_identifier:1|issuer", "uk")
@@ -139,7 +139,7 @@ class ProviderTest : AbstractWebTemplateTest() {
                 "ctx/id_namespace" to "ispek",
                 "ctx/composer_name" to "George Orwell",
                 "vitals/context/_health_care_facility|name" to "Hospital",
-                "vitals/context/_health_care_facility/_identifier:0" to "17",
+                "vitals/context/_health_care_facility/_identifier:0|id" to "17",
                 "vitals/context/_health_care_facility/_identifier:0|assigner" to "uk",
                 "vitals/context/_health_care_facility/_identifier:0|issuer" to "uk",
                 "vitals/context/_health_care_facility/_identifier:0|type" to "ESTABLISHMENT",
@@ -151,7 +151,7 @@ class ProviderTest : AbstractWebTemplateTest() {
         val flatMap: Map<String, String?> = webTemplate.convertFormattedFromRawToFlat(composition!!, FromRawConversion.create())
         assertThat(flatMap).contains(
             entry("vitals/context/_health_care_facility|name", "Hospital"),
-            entry("vitals/context/_health_care_facility/_identifier:0", "17"),
+            entry("vitals/context/_health_care_facility/_identifier:0|id", "17"),
             entry("vitals/context/_health_care_facility/_identifier:0|type", "ESTABLISHMENT"),
             entry("vitals/context/_health_care_facility/_identifier:0|assigner", "uk"),
             entry("vitals/context/_health_care_facility/_identifier:0|issuer", "uk")

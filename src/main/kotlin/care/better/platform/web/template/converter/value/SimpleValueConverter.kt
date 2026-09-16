@@ -140,4 +140,6 @@ object SimpleValueConverter : ValueConverter {
         }
 
     override fun formatDouble(value: Double): String = value.toString()
+
+    override fun formatFloat(value: Float): String = value.toString()
 }

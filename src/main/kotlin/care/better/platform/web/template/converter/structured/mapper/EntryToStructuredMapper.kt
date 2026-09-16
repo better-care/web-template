@@ -15,13 +15,18 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LANGUAGE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.OTHER_PARTICIPATION
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PROVIDER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.SUBJECT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.WORK_FLOW_ID
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putCollectionAsArray
 import care.better.platform.web.template.converter.mapper.putSingletonAsArray
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.composition.Entry
 
 /**
@@ -56,18 +61,23 @@ internal open class EntryToStructuredMapper<T : Entry> : LocatableToStructuredMa
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: T, objectNode: ObjectNode) {
         super.map(webTemplateNode, valueConverter, rmObject, objectNode)
 
-        objectNode.putCollectionAsArray("_other_participation", rmObject.otherParticipations) {
+        rmObject.language?.also {
+            objectNode.putSingletonAsArray(LANGUAGE) { CodePhraseToStructuredMapper.map(webTemplateNode, valueConverter, it) }
+        }
+
+        objectNode.putCollectionAsArray("_$OTHER_PARTICIPATION", rmObject.otherParticipations) {
             ParticipationToStructuredMapper.map(webTemplateNode, valueConverter, it)
         }
 
         rmObject.provider?.also {
-            objectNode.putSingletonAsArray("_provider") { RmObjectToStructuredMapperDelegator.delegate(webTemplateNode, valueConverter, it) }
+            objectNode.putSingletonAsArray("_$PROVIDER") { RmObjectToStructuredMapperDelegator.delegate(webTemplateNode, valueConverter, it) }
         }
         rmObject.subject?.also {
-            objectNode.putSingletonAsArray("subject") { RmObjectToStructuredMapperDelegator.delegate(webTemplateNode, valueConverter, it) }
+            val node = RmObjectToStructuredMapperDelegator.delegate(webTemplateNode, valueConverter, it)
+            if ((node?.size() ?: 0) > 0) objectNode.putSingletonAsArray(SUBJECT) { node }
         }
         rmObject.workFlowId?.also {
-            objectNode.putSingletonAsArray("_work_flow_id") { RmObjectToStructuredMapperDelegator.delegate(webTemplateNode, valueConverter, it) }
+            objectNode.putSingletonAsArray("_$WORK_FLOW_ID") { RmObjectToStructuredMapperDelegator.delegate(webTemplateNode, valueConverter, it) }
         }
     }
 
@@ -78,18 +88,24 @@ internal open class EntryToStructuredMapper<T : Entry> : LocatableToStructuredMa
         objectNode: ObjectNode
     ) {
         super.mapFormatted(webTemplateNode, valueConverter, rmObject, objectNode)
-        objectNode.putCollectionAsArray("_other_participation", rmObject.otherParticipations) {
+
+        rmObject.language?.also {
+            objectNode.putSingletonAsArray(LANGUAGE) { CodePhraseToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it) }
+        }
+
+        objectNode.putCollectionAsArray("_$OTHER_PARTICIPATION", rmObject.otherParticipations) {
             ParticipationToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it)
         }
 
         rmObject.provider?.also {
-            objectNode.putSingletonAsArray("_provider") { RmObjectToStructuredMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it) }
+            objectNode.putSingletonAsArray("_$PROVIDER") { RmObjectToStructuredMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it) }
         }
         rmObject.subject?.also {
-            objectNode.putSingletonAsArray("subject") { RmObjectToStructuredMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it) }
+            val node = RmObjectToStructuredMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it)
+            if ((node?.size() ?: 0) > 0) objectNode.putSingletonAsArray(SUBJECT) { node }
         }
         rmObject.workFlowId?.also {
-            objectNode.putSingletonAsArray("_work_flow_id") { RmObjectToStructuredMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it) }
+            objectNode.putSingletonAsArray("_$WORK_FLOW_ID") { RmObjectToStructuredMapperDelegator.delegateFormatted(webTemplateNode, valueConverter, it) }
         }
     }
 }

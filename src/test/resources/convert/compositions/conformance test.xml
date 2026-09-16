@@ -519,6 +519,9 @@
             <name>
                 <value>Procedure request</value>
             </name>
+            <uid xmlns:v1="http://schemas.openehr.org/v1" xsi:type="v1:HIER_OBJECT_ID">
+                <value>c4b9138f-9c0e-4385-9cbd-33156fdec4bc</value>
+            </uid>
             <archetype_details>
                 <archetype_id>
                     <value>openEHR-EHR-INSTRUCTION.request-procedure.v1</value>
@@ -983,13 +986,13 @@
                                     <lower xsi:type="v1:DV_QUANTITY">
                                         <accuracy>0.0</accuracy>
                                         <magnitude>0.0</magnitude>
-                                        <units/>
+                                        <units>cm</units>
                                         <precision>0</precision>
                                     </lower>
                                     <upper xsi:type="v1:DV_QUANTITY">
                                         <accuracy>0.0</accuracy>
                                         <magnitude>1.0</magnitude>
-                                        <units/>
+                                        <units>cm</units>
                                         <precision>0</precision>
                                     </upper>
                                     <lower_unbounded>false</lower_unbounded>

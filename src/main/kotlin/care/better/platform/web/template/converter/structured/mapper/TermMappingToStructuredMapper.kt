@@ -15,12 +15,15 @@
 
 package care.better.platform.web.template.converter.structured.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.MATCH
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.PURPOSE
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.TARGET
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.mapper.putSingletonAsArray
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.TermMapping
 
 /**
@@ -32,14 +35,14 @@ import org.openehr.rm.datatypes.TermMapping
 internal object TermMappingToStructuredMapper : RmObjectToStructuredMapper<TermMapping> {
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: TermMapping): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            this.putIfNotNull("|match", rmObject.match)
+            this.putIfNotNull("|$MATCH", rmObject.match)
             rmObject.target?.also {
-                this.putSingletonAsArray("target") {
+                this.putSingletonAsArray(TARGET) {
                     CodePhraseToStructuredMapper.map(webTemplateNode, valueConverter, it)
                 }
             }
             rmObject.purpose?.also {
-                this.putSingletonAsArray("purpose") {
+                this.putSingletonAsArray(PURPOSE) {
                     DvCodedTextToStructuredMapper.map(webTemplateNode, valueConverter, it)
                 }
             }
@@ -48,14 +51,14 @@ internal object TermMappingToStructuredMapper : RmObjectToStructuredMapper<TermM
 
     override fun mapFormatted(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: TermMapping): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
-            this.putIfNotNull("|match", rmObject.match)
+            this.putIfNotNull("|$MATCH", rmObject.match)
             rmObject.target?.also {
-                this.putSingletonAsArray("target") {
+                this.putSingletonAsArray(TARGET) {
                     CodePhraseToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it)
                 }
             }
             rmObject.purpose?.also {
-                this.putSingletonAsArray("purpose") {
+                this.putSingletonAsArray(PURPOSE) {
                     DvCodedTextToStructuredMapper.mapFormatted(webTemplateNode, valueConverter, it)
                 }
             }

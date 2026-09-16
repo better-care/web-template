@@ -23,6 +23,9 @@ import care.better.platform.utils.exception.RmClassCastException
 import care.better.platform.web.template.WebTemplate
 import care.better.platform.web.template.builder.model.WebTemplateNode
 import care.better.platform.web.template.converter.FromRawConversion
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.CONTEXT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.FEEDER_AUDIT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.GENERIC_FIELDS
 import care.better.platform.web.template.converter.exceptions.ConversionException
 import care.better.platform.web.template.converter.structured.mapper.RmObjectToStructuredMapperDelegator
 import com.fasterxml.jackson.databind.JsonNode
@@ -400,10 +403,10 @@ internal abstract class AbstractRawToStructuredConverter(private val objectMappe
                     try {
                         val jsonNode = objectMapper.readTree(originalContent.value)
                         if (structuredComposition.has(webTemplateNode.jsonId)) {
-                            (structuredComposition.get(webTemplateNode.jsonId) as ObjectNode).remove("_feeder_audit")
+                            (structuredComposition.get(webTemplateNode.jsonId) as ObjectNode).remove("_$FEEDER_AUDIT")
                         }
 
-                        structuredComposition.putObject("ctx").set("generic_fields", jsonNode)
+                        structuredComposition.putObject(CONTEXT).set(GENERIC_FIELDS, jsonNode)
                     } catch (ignore: IOException) {
                     }
                 }

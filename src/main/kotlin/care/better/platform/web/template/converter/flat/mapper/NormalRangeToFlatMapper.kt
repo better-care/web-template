@@ -15,10 +15,16 @@
 
 package care.better.platform.web.template.converter.flat.mapper
 
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LOWER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LOWER_INCLUDED
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.LOWER_UNBOUNDED
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UPPER
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UPPER_INCLUDED
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.UPPER_UNBOUNDED
 import care.better.platform.web.template.converter.flat.context.FlatMappingContext
 import care.better.platform.web.template.converter.flat.context.FormattedFlatMappingContext
 import care.better.platform.web.template.converter.value.ValueConverter
-import care.better.platform.web.template.builder.model.WebTemplateNode
 import org.openehr.rm.datatypes.DvInterval
 
 /**
@@ -34,8 +40,12 @@ internal object NormalRangeToFlatMapper : RmObjectToFlatMapper<DvInterval> {
             rmObject: DvInterval,
             webTemplatePath: String,
             flatConversionContext: FlatMappingContext) {
-        rmObject.lower?.also { RmObjectToFlatMapperDelegator.delegate(webTemplateNode, valueConverter, it, "$webTemplatePath/lower", flatConversionContext) }
-        rmObject.upper?.also { RmObjectToFlatMapperDelegator.delegate(webTemplateNode, valueConverter, it, "$webTemplatePath/upper", flatConversionContext) }
+        rmObject.lower?.also { RmObjectToFlatMapperDelegator.delegate(webTemplateNode, valueConverter, it, "$webTemplatePath/$LOWER", flatConversionContext) }
+        rmObject.upper?.also { RmObjectToFlatMapperDelegator.delegate(webTemplateNode, valueConverter, it, "$webTemplatePath/$UPPER", flatConversionContext) }
+        if (rmObject.lowerUnbounded) flatConversionContext["$webTemplatePath|$LOWER_UNBOUNDED"] = true
+        if (rmObject.upperUnbounded) flatConversionContext["$webTemplatePath|$UPPER_UNBOUNDED"] = true
+        if (rmObject.lowerIncluded == false) flatConversionContext["$webTemplatePath|$LOWER_INCLUDED"] = false
+        if (rmObject.upperIncluded == false) flatConversionContext["$webTemplatePath|$UPPER_INCLUDED"] = false
     }
 
     override fun mapFormatted(
@@ -49,7 +59,7 @@ internal object NormalRangeToFlatMapper : RmObjectToFlatMapper<DvInterval> {
                 webTemplateNode,
                 valueConverter,
                 it,
-                "$webTemplatePath/lower",
+                "$webTemplatePath/$LOWER",
                 formattedFlatConversionContext)
         }
         rmObject.upper?.also {
@@ -57,8 +67,12 @@ internal object NormalRangeToFlatMapper : RmObjectToFlatMapper<DvInterval> {
                 webTemplateNode,
                 valueConverter,
                 it,
-                "$webTemplatePath/upper",
+                "$webTemplatePath/$UPPER",
                 formattedFlatConversionContext)
         }
+        if (rmObject.lowerUnbounded) formattedFlatConversionContext["$webTemplatePath|$LOWER_UNBOUNDED"] = true.toString()
+        if (rmObject.upperUnbounded) formattedFlatConversionContext["$webTemplatePath|$UPPER_UNBOUNDED"] = true.toString()
+        if (rmObject.lowerIncluded == false) formattedFlatConversionContext["$webTemplatePath|$LOWER_INCLUDED"] = false.toString()
+        if (rmObject.upperIncluded == false) formattedFlatConversionContext["$webTemplatePath|$UPPER_INCLUDED"] = false.toString()
     }
 }

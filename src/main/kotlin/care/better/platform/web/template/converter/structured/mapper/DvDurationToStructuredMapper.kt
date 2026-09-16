@@ -16,13 +16,16 @@
 package care.better.platform.web.template.converter.structured.mapper
 
 import care.better.platform.utils.JodaConversionUtils
+import care.better.platform.web.template.builder.model.WebTemplateNode
+import care.better.platform.web.template.builder.model.input.WebTemplateDurationField
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.ACCURACY_IS_PERCENT
+import care.better.platform.web.template.converter.constant.WebTemplateConstants.VALUE
 import care.better.platform.web.template.converter.mapper.ConversionObjectMapper
 import care.better.platform.web.template.converter.mapper.putIfNotNull
 import care.better.platform.web.template.converter.mapper.resolve
 import care.better.platform.web.template.converter.value.ValueConverter
 import com.fasterxml.jackson.databind.JsonNode
-import care.better.platform.web.template.builder.model.WebTemplateNode
-import care.better.platform.web.template.builder.model.input.WebTemplateDurationField
 import org.joda.time.Period
 import org.openehr.rm.datatypes.DvDuration
 
@@ -36,6 +39,8 @@ internal object DvDurationToStructuredMapper : DvQuantifiedToStructuredMapper<Dv
     override fun map(webTemplateNode: WebTemplateNode, valueConverter: ValueConverter, rmObject: DvDuration): JsonNode =
         with(ConversionObjectMapper.createObjectNode()) {
             this.putIfNotNull("", JodaConversionUtils.toPeriod(rmObject).toString())
+            this.putIfNotNull("|$ACCURACY", rmObject.accuracy)
+            this.putIfNotNull("|$ACCURACY_IS_PERCENT", rmObject.accuracyIsPercent)
             map(webTemplateNode, valueConverter, rmObject, this)
             this.resolve()
         }
@@ -51,11 +56,13 @@ internal object DvDurationToStructuredMapper : DvQuantifiedToStructuredMapper<Dv
                     this.putIfNotNull("|$key", value.toString())
                 }
             }
+            rmObject.accuracy?.also { this.putIfNotNull("|$ACCURACY", it.toString()) }
+            rmObject.accuracyIsPercent?.also { this.putIfNotNull("|$ACCURACY_IS_PERCENT", it.toString()) }
             mapFormatted(webTemplateNode, valueConverter, rmObject, this)
             this.resolve()
         }
 
     override fun supportsValueNode(): Boolean = true
 
-    override fun defaultValueNodeAttribute(): String = "|value"
+    override fun defaultValueNodeAttribute(): String = "|$VALUE"
 }
