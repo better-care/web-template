@@ -40,7 +40,7 @@ import org.openehr.rm.datatypes.DvDuration
 internal object DvDurationFactory : DvQuantifiedFactory<DvDuration>() {
 
     private val PERIOD_FORMATTER: PeriodFormatter = ISOPeriodFormat.standard()
-    private val durationFields: Set<String> = WebTemplateDurationField.values().map { it.name }.toSet()
+    private val durationFields: Set<String> = WebTemplateDurationField.entries.map { it.name }.toSet()
 
     override fun handleWebTemplateInput(conversionContext: ConversionContext, amNode: AmNode, rmObject: DvDuration, webTemplateInput: WebTemplateInput) {
         val item = AmUtils.getPrimitiveItem(amNode, CDuration::class.java, "value")
@@ -68,7 +68,10 @@ internal object DvDurationFactory : DvQuantifiedFactory<DvDuration>() {
                         true
                     }
                     attribute.attribute.isBlank() || attribute.attribute == "value" -> {
-                        rmObject.value = PERIOD_FORMATTER.print(JodaConversionUtils.toPeriod(jsonNode.asText()))
+                        jsonNode.asText().uppercase().also {
+                            JodaConversionUtils.toPeriod(it)
+                            rmObject.value = it
+                        }
                         true
                     }
                     else -> false
