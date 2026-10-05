@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.3.4 - 2026-10-05
+
+- Normalize duration values when converting to a COMPOSITION
+
+## 4.3.3 - 2026-07-16
+
+- Upgrade ehr-common to 4.3.3
+
 ## 4.3.2 - 2026-05-08
 
 - Upgrade ehr-common to 4.3.2
