@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## 4.3.5 - 2026-10-05
 
-- Upgrade ehr-common to 4.3.3
+- Upgrade ehr-common to 4.3.4
 - Increase dokka version to 1.9.20
 
 ## 4.3.4 - 2026-10-05
