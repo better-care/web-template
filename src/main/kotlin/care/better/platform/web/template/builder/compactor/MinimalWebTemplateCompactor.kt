@@ -180,17 +180,26 @@ internal open class MinimalWebTemplateCompactor : WebTemplateCompactor {
             if (setOf("DV_TEXT", "DV_CODED_TEXT") == setOf(node0.rmType, node1.rmType)) {
                 val difference = StringUtils.difference(node0.path, node1.path)
                 if ("/defining_code" == difference) {
-                    node1.inputs.add(WebTemplateInput(WebTemplateInputType.TEXT, "other"))
-                    node1.getInput()?.listOpen = true
-                    children.removeAt(0)
+                    compactToCodedTextWithOther(children, node1, node0)
                 } else if (difference.isEmpty()) {
-                    node0.inputs.add(WebTemplateInput(WebTemplateInputType.TEXT, "other"))
-                    node0.getInput()?.listOpen = true
-                    children.removeAt(1)
+                    if (node0.rmType == "DV_TEXT" && hasValueSet(node1)) {
+                        compactToCodedTextWithOther(children, node1, node0)
+                    } else {
+                        compactToCodedTextWithOther(children, node0, node1)
+                    }
                 }
             }
         }
     }
+
+    private fun compactToCodedTextWithOther(children: MutableList<WebTemplateNode>, nodeToKeep: WebTemplateNode, nodeToRemove: WebTemplateNode) {
+        nodeToKeep.inputs.add(WebTemplateInput(WebTemplateInputType.TEXT, "other"))
+        nodeToKeep.getInput()?.listOpen = true
+        children.remove(nodeToRemove)
+    }
+
+    private fun hasValueSet(node: WebTemplateNode): Boolean =
+        node.inputs.any { it.terminology != null || it.list.isNotEmpty() }
 
     private fun compactMultipleCodedTexts(children: MutableList<WebTemplateNode>) {
         val matchingChildren = mergeChildrenWithMatchingPaths(children)
