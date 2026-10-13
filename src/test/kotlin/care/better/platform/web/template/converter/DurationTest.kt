@@ -46,22 +46,22 @@ class DurationTest : AbstractWebTemplateTest() {
 
     @Test
     fun testMixed() {
-        validateDvDurationValue("P0Y1M0W1DT0H0M0S", "P1M1D")
+        validateDvDurationValue("P0Y1M0W1DT0H0M0S", "P0Y1M0W1DT0H0M0S")
     }
 
     @Test
     fun testNegative() {
-        validateDvDurationValue("P0Y-1M0W1DT0H0M0S", "P-1M1D")
-        validateDvDurationValue("P0Y1M0W-1DT0H0M0S", "P1M-1D")
-        validateDvDurationValue("-P0Y1M1W1DT0H0M0S", "P-1M-1W-1D")
-        validateDvDurationValue("-P0Y1M1W1DT0H0M0S", "P-1M-1W-1D")
-        validateDvDurationValue("-P0Y-1M1W1DT0H0M0S", "P1M-1W-1D")
-        validateDvDurationValue("-P0Y-1M-1W-1DT0H0M0S", "P1M1W1D")
+        validateDvDurationValue("P0Y-1M0W1DT0H0M0S", "P0Y-1M0W1DT0H0M0S")
+        validateDvDurationValue("P0Y1M0W-1DT0H0M0S", "P0Y1M0W-1DT0H0M0S")
+        validateDvDurationValue("-P0Y1M1W1DT0H0M0S", "-P0Y1M1W1DT0H0M0S")
+        validateDvDurationValue("-P0Y1M1W1DT0H0M0S", "-P0Y1M1W1DT0H0M0S")
+        validateDvDurationValue("-P0Y-1M1W1DT0H0M0S", "-P0Y-1M1W1DT0H0M0S")
+        validateDvDurationValue("-P0Y-1M-1W-1DT0H0M0S", "-P0Y-1M-1W-1DT0H0M0S")
     }
 
     @Test
     fun testMixedWeeksAndRest() {
-        validateDvDurationValue("P0Y1M2W1DT0H0M0S", "P1M2W1D")
+        validateDvDurationValue("P0Y1M2W1DT0H0M0S", "P0Y1M2W1DT0H0M0S")
     }
 
     private fun validateDvDurationValue(pattern: String, valueToCompare: String) {
