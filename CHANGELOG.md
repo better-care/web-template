@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 5.0.0 - 2026-10-13
+
+- Preserve the external value set for coded text when restricting it to a list
+- Add support for missing fields when doing conversion between formats
+
 ## 4.3.6 - 2026-10-05
 
 - Upgrade ehr-common to 4.3.4
