@@ -5,7 +5,7 @@ jobs:
   build:
     working_directory: ~/web-template
     docker:
-      - image: cimg/openjdk:17.0.6
+      - image: cimg/openjdk:25.0.4
     steps:
       - checkout
       - restore_cache:
