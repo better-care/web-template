@@ -33,7 +33,7 @@
         <jetbrains-annotations.version>26.1.0</jetbrains-annotations.version>
         <log4j-api-kotlin.version>1.5.0</log4j-api-kotlin.version>
 
-        <ehr-common.version>5.0.0</ehr-common.version>
+        <ehr-common.version>6.0.0-SNAPSHOT</ehr-common.version>
 
         <antlr4.version>4.13.2</antlr4.version>
         <assertj.version>3.27.7</assertj.version>
@@ -583,7 +583,7 @@
     <scm>
         <connection>scm:git:git://github.com:better-care/web-template.git</connection>
         <developerConnection>scm:git:ssh://github.com:better-care/web-template.git</developerConnection>
-        <url>https://github.com/better-care/web-template/tree/master/</url>
+        <url>https://github.com/better-care/web-template/tree/main/</url>
     </scm>
 
     <developers>
