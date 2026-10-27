@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 5.0.1 - 2026-10-27
+
+- Upgrade ehr-common to 5.0.1
+
 ## 5.0.0 - 2026-10-13
 
 - Preserve the external value set for coded text when restricting it to a list
