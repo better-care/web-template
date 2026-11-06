@@ -19,7 +19,6 @@ import care.better.platform.template.AmNode
 import care.better.platform.web.template.converter.WebTemplatePath
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import org.openehr.rm.datastructures.Event
-import org.openehr.rm.datatypes.DvDateTime
 
 /**
  * @author Primoz Delopst
@@ -31,9 +30,7 @@ import org.openehr.rm.datatypes.DvDateTime
  */
 internal abstract class EventFactory<T : Event> : LocatableFactory<T>() {
     override fun createLocatable(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): T =
-        createEvent(conversionContext, amNode, webTemplatePath).apply {
-            this.time = DvDateTime.create(conversionContext.time)
-        }
+        createEvent(conversionContext, amNode, webTemplatePath)
 
     protected abstract fun createEvent(conversionContext: ConversionContext, amNode: AmNode?, webTemplatePath: WebTemplatePath?): T
 }
