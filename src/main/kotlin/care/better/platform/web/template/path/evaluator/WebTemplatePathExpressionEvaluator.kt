@@ -147,8 +147,14 @@ internal class WebTemplatePathExpressionEvaluator private constructor(private va
                     PathOperator.PLUS -> left.toDouble() + right.toDouble()
                     PathOperator.MINUS -> left.toDouble() - right.toDouble()
                     PathOperator.STAR -> left.toDouble() * right.toDouble()
-                    PathOperator.DIV -> left.toDouble() / right.toDouble()
-                    PathOperator.MOD -> left.toDouble() % right.toDouble()
+                    PathOperator.DIV -> {
+                        if (right == 0) throw WebTemplatePathExpressionException("Division by zero")
+                        left.toDouble() / right.toDouble()
+                    }
+                    PathOperator.MOD -> {
+                        if (right == 0) throw WebTemplatePathExpressionException("Modulo by zero")
+                        left.toDouble() % right.toDouble()
+                    }
                     else -> throw WebTemplatePathExpressionException("Operator $operator is not supported.")
                 }
                 convertValueToEvaluationState(simplifyNumber(result))
