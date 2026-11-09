@@ -18,7 +18,7 @@
 
     <groupId>care.better.platform</groupId>
     <artifactId>web-template</artifactId>
-    <version>4.3.7</version>
+    <version>4.3.8-SNAPSHOT</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>WebTemplate implementation for openEHR CDR</description>
