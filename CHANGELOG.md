@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.3.7 - 2026-11-09
+
+- Preserve event and history attributes regardless of STRUCTURED key order
+- Preserve external value set for coded text with limit to list off
+
 ## 4.3.6 - 2026-10-05
 
 - Upgrade ehr-common to 4.3.4
