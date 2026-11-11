@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 5.0.2 - 2026-11-11
+
+- Preserve event and history attributes regardless of STRUCTURED key order
+- Preserve external value set for coded text with limit to list off
+
 ## 5.0.1 - 2026-10-27
 
 - Upgrade ehr-common to 5.0.1
@@ -10,6 +15,7 @@ All notable changes to this project will be documented in this file.
 
 - Preserve the external value set for coded text when restricting it to a list
 - Add support for missing fields when doing conversion between formats
+
 
 ## 4.3.6 - 2026-10-05
 
