@@ -29,6 +29,7 @@ import care.better.platform.web.template.converter.exceptions.ConversionExceptio
 import care.better.platform.web.template.converter.mapper.*
 import care.better.platform.web.template.converter.raw.context.ConversionContext
 import care.better.platform.web.template.converter.raw.context.ConversionContextExtractor
+import care.better.platform.web.template.converter.raw.extensions.hasExplicitlySetIgnoredAttributes
 import care.better.platform.web.template.converter.raw.extensions.isEmpty
 import care.better.platform.web.template.converter.raw.extensions.isForElement
 import care.better.platform.web.template.converter.raw.extensions.isNotEmpty
@@ -422,7 +423,7 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
                 convertInChain(mutableListOf(value), arrayNode, chain.drop(1), webTemplatePath, chainPostProcessors, factoryFunction)
 
                 return if (existingValue == null) {
-                    if (value.isEmpty(conversionContext.strictMode)) { //If RM object is empty, do nothing. If we will need it, we will create it again.
+                    if (value.isEmpty(conversionContext.strictMode) && !value.hasExplicitlySetIgnoredAttributes()) {
                         ChainConversionResult.nothing()
                     } else {
                         firstChainSingletonHolder[Pair(firstAmNode, webTemplatePath.parent?.toString() ?: "")] = value
@@ -536,8 +537,9 @@ class StructuredToRawConverter(conversionContext: ConversionContext, private val
                     factoryFunction)
 
                 if (isEmpty) {  //We want to post-process this object only when it was created.
+                    val retainCreatedObject = firstCollectionRmObject.isNotEmpty() || firstCollectionRmObject.hasExplicitlySetIgnoredAttributes()
                     PostProcessDelegator.delegate(conversionContext, amNode, firstCollectionRmObject, webTemplatePath)
-                    if (firstCollectionRmObject.isNotEmpty()) {  //If RM object is empty, do nothing. If we will need it, we will create it again.
+                    if (retainCreatedObject) {
                         collection.add(firstCollectionRmObject)
                     }
                 }

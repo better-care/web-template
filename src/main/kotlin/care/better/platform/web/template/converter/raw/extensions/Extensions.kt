@@ -86,6 +86,38 @@ private fun isRmObjectEmpty(rmObject: RmObject?): Boolean =
 internal fun RmObject?.isNotEmpty(strict: Boolean = false): Boolean = !this.isEmpty(strict)
 
 /**
+ * Checks if the RM object carries user-provided attributes that [isRmObjectEmpty] intentionally ignores, and which
+ * therefore must not cause the object to be discarded while it is being assembled during chain conversion.
+ *
+ * [isRmObjectEmpty] only inspects the "content" attributes that decide whether an object is clinically meaningful (e.g.
+ * an [Event] is empty unless it has data or state). However, several RM types expose additional user-settable attributes
+ * as their own WebTemplate nodes:
+ *  - [Event]: time
+ *  - [IntervalEvent]: width, sample count (in addition to time)
+ *  - [History]: origin, period, duration
+ *
+ * Because STRUCTURED JSON objects are unordered, such an attribute can be converted in its own chain before the
+ * content-bearing chain. At that moment the object looks empty to [isRmObjectEmpty], and discarding it would drop the
+ * attribute (and the object would be re-created with defaults when the content chain is converted). To support this, the
+ * object is retained whenever this function returns true.
+ *
+ * Note: this must be evaluated BEFORE the object is post-processed, because post-processing defaults some of these
+ * attributes (e.g. [Event] time and [IntervalEvent] width), which would make a user-provided value indistinguishable
+ * from the default. For this reason the time default was removed from the event factory and is applied only during
+ * post-processing.
+ *
+ * @return [Boolean] indicating if the RM object carries user-provided attributes ignored by [isRmObjectEmpty]
+ */
+@JvmSynthetic
+internal fun RmObject?.hasExplicitlySetIgnoredAttributes(): Boolean =
+    when (this) {
+        is IntervalEvent -> this.time != null || this.width != null || this.sampleCount != null
+        is Event -> this.time != null
+        is History -> this.origin != null || this.period != null || this.duration != null
+        else -> false
+    }
+
+/**
  * Creates and returns [DvCodedText] for the openEHR terminology.
  * Note that group ID and name pair must exits in the [OpenEhrTerminology].
  *
